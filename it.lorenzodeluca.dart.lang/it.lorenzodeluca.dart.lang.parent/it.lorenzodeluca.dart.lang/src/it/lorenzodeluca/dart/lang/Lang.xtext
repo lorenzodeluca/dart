@@ -1,9 +1,0 @@
-grammar it.lorenzodeluca.dart.lang.Lang with org.eclipse.xtext.common.Terminals
-
-generate lang "http://www.lorenzodeluca.it/dart/lang/Lang"
-
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';

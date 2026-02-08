@@ -1,0 +1,9 @@
+grammar it.lorenzodeluca.dart.Dart with org.eclipse.xtext.common.Terminals
+
+generate dart "http://www.lorenzodeluca.it/dart/Dart"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
