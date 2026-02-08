@@ -3,10 +3,12 @@ Automatic-Module-Name: it.lorenzodeluca.dart.ide
 Bundle-ManifestVersion: 2
 Bundle-Name: it.lorenzodeluca.dart.ide
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.202602080106
+Bundle-Version: 1.0.0.202602082138
 Bundle-SymbolicName: it.lorenzodeluca.dart.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: it.lorenzodeluca.dart,org.eclipse.xtext.ide,org.eclipse.
- xtext.xbase.ide
-Bundle-RequiredExecutionEnvironment: JavaSE-21
+ xtext.xbase.ide,org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Export-Package: it.lorenzodeluca.dart.ide.contentassist.antlr,it.lorenzo
+ deluca.dart.ide.contentassist.antlr.internal
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=21))"
 

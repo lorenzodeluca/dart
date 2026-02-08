@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: it.lorenzodeluca.dart.ui
+Bundle-ManifestVersion: 2
+Bundle-Name: it.lorenzodeluca.dart.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.202602082138
+Bundle-SymbolicName: it.lorenzodeluca.dart.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: it.lorenzodeluca.dart,it.lorenzodeluca.dart.ide,org.ecli
+ pse.xtext.ui,org.eclipse.xtext.ui.shared,org.eclipse.xtext.ui.codetempl
+ ates.ui,org.eclipse.ui.editors;bundle-version="3.14.300",org.eclipse.ui
+ .ide;bundle-version="3.18.500",org.eclipse.ui,org.eclipse.compare,org.e
+ clipse.xtext.builder
+Import-Package: org.apache.log4j
+Export-Package: it.lorenzodeluca.dart.ui.contentassist,it.lorenzodeluca.
+ dart.ui.quickfix,it.lorenzodeluca.dart.ui.internal
+Bundle-Activator: it.lorenzodeluca.dart.ui.internal.DartActivator
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=21))"
+

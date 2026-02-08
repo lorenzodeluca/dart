@@ -3,12 +3,15 @@ Automatic-Module-Name: it.lorenzodeluca.dart.tests
 Bundle-ManifestVersion: 2
 Bundle-Name: it.lorenzodeluca.dart.tests
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.202602080106
+Bundle-Version: 1.0.0.202602082201
 Bundle-SymbolicName: it.lorenzodeluca.dart.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: it.lorenzodeluca.dart,org.eclipse.xtext.testing,org.ecli
- pse.xtext.xbase.testing
+ pse.xtext.xbase.testing,org.eclipse.xtext.xbase.lib,junit-jupiter-api,j
+ unit-jupiter-engine
 Import-Package: org.junit.jupiter.api;version="[5.1.0,6.0.0)",org.junit.
- jupiter.api.extension;version="[5.1.0,6.0.0)"
-Bundle-RequiredExecutionEnvironment: JavaSE-21
+ jupiter.api.extension;version="[5.1.0,6.0.0)",org.eclipse.xtext.testing
+ .extensions
+Export-Package: it.lorenzodeluca.dart.tests;x-internal=true
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=21))"
 

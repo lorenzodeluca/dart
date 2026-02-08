@@ -8,5 +8,8 @@ Bundle-SymbolicName: it.lorenzodeluca.dart.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: it.lorenzodeluca.dart,
  org.eclipse.xtext.ide,
- org.eclipse.xtext.xbase.ide
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
+Export-Package: it.lorenzodeluca.dart.ide.contentassist.antlr,
+ it.lorenzodeluca.dart.ide.contentassist.antlr.internal

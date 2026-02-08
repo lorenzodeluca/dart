@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: it.lorenzodeluca.dart
+Bundle-ManifestVersion: 2
+Bundle-Name: it.lorenzodeluca.dart
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.202602082201
+Bundle-SymbolicName: it.lorenzodeluca.dart; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,org.eclipse.xtext.xbase,org.eclipse.eq
+ uinox.common;bundle-version="3.19.0",org.eclipse.emf.ecore,org.eclipse.
+ xtext.xbase.lib;bundle-version="2.41.0",org.eclipse.emf.common,org.antl
+ r.runtime;bundle-version="[3.2.0,3.2.1)",org.eclipse.xtext.testing;bund
+ le-version="2.41.0",org.eclipse.xtext.xbase.testing;bundle-version="2.4
+ 1.0"
+Export-Package: it.lorenzodeluca.dart.dart.util,it.lorenzodeluca.dart,it
+ .lorenzodeluca.dart.parser.antlr.internal,it.lorenzodeluca.dart.service
+ s,it.lorenzodeluca.dart.scoping,it.lorenzodeluca.dart.generator,it.lore
+ nzodeluca.dart.dart.impl,it.lorenzodeluca.dart.validation,it.lorenzodel
+ uca.dart.serializer,it.lorenzodeluca.dart.dart,it.lorenzodeluca.dart.pa
+ rser.antlr
+Import-Package: org.apache.log4j
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=21))"
+

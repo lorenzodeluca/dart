@@ -3,6 +3,16 @@ grammar it.lorenzodeluca.dart.Dart with org.eclipse.xtext.common.Terminals
 
 generate dart "http://www.lorenzodeluca.it/dart/Dart"
 
+/* sections:
+ * 1. COMPILATION UNIT & LIBRARIES(section 19)
+ * 2. DIRECTIVES: IMPORTS(section 19.1), EXPORTS(section 19.2) AND PARTS(section 19.5)
+ * 3. TOP-LEVEL DECLARATIONS(section 19)
+ * 4. EXPRESSIONS & LITERALS(section 17)
+ * 5. TERMINALS & LEXER RULES
+ * 6. TYPES (section 20)
+ */
+
+
 /*
  * =========================================================================
  * 1. COMPILATION UNIT & LIBRARIES (Section 19)
@@ -52,40 +62,41 @@ PartDirective:
  */
 
 TopLevelDeclaration:
-    (metadata+=Metadata)* (
-        ClassDeclaration | 
-        MixinDeclaration | 
-        ExtensionDeclaration | 
-        EnumDeclaration | 
-        TypeAlias | 
-        FunctionDeclaration | 
-        VariableDeclaration
-    );
+    ClassDeclaration | 
+    MixinDeclaration | 
+    ExtensionDeclaration | 
+    EnumDeclaration | 
+    TypeAlias | 
+    FunctionDeclaration | 
+    VariableDeclaration;
 
 ClassDeclaration:
-    'class' name=ID '{' '}';
+    (metadata+=Metadata)* 'class' name=ID '{' '}';
 
 MixinDeclaration:
-    'mixin' name=ID '{' '}';
+    (metadata+=Metadata)* 'mixin' name=ID '{' '}';
 
 ExtensionDeclaration:
-    'extension' name=ID 'on' ID '{' '}';
+    (metadata+=Metadata)* 'extension' name=ID 'on' ID '{' '}';
 
 EnumDeclaration:
-    'enum' name=ID '{' '}';
+    (metadata+=Metadata)* 'enum' name=ID '{' '}';
 
 TypeAlias:
-    'typedef' name=ID '=' ID ';';
+    (metadata+=Metadata)* 'typedef' name=ID '=' ID ';';
     
 FunctionDeclaration:
-    (external?='external')? (returnType=ID)? name=ID '(' ')' (body=FunctionBody | ';');
+    (metadata+=Metadata)* (external?='external')? (returnType=ID)? name=ID '(' ')' (body=FunctionBody | ';');
     
 FunctionBody:
     '{' '}';
 
 VariableDeclaration:
-    (late?='late')? (modifier=VariableModifier) (type=ID)? name=ID (initialValue=Expression)? ';';
+    (metadata+=Metadata)* (late?='late')? ((modifier=VariableModifier (type=Type)?) | type=Type) variables+=VariableSingleDeclaration (',' variables+=VariableSingleDeclaration)* ';';
 
+VariableSingleDeclaration:
+    name=ID ('=' initialValue=Expression)?;
+    
 VariableModifier:
     'var' | 'final' | 'const';
 
@@ -109,3 +120,18 @@ Expression:
 
 // ⟨scriptTag⟩ ::= ‘#!’ (~(‘\r’ | ‘\n’))* ⟨LINE_BREAK ⟩
 terminal SCRIPT_TAG: '#!' (!('\n'|'\r'))* ('\r'? '\n')?;
+
+
+/* =========================================================================
+ * 6. TYPES (§20)
+ * =========================================================================
+ */
+
+Type:
+    TypeName (nullable?='?')?;
+
+TypeName:
+    name=ID (typeArguments=TypeArguments)?;
+
+TypeArguments:
+    '<' elements+=Type (',' elements+=Type)* '>';

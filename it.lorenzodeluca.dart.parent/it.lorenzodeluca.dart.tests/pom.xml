@@ -18,4 +18,11 @@
 		</plugins>
 	</build>
 
+	<dependencies>
+		<dependency>
+			<groupId>it.lorenzodeluca.dart</groupId>
+			<artifactId>it.lorenzodeluca.dart</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 </project>
