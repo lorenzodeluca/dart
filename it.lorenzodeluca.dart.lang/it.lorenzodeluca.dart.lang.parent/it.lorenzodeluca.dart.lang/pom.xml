@@ -7,7 +7,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>it.lorenzodeluca.dart.lang</artifactId>
-	<packaging>jar</packaging>
+	<packaging>eclipse-plugin</packaging>
 
 	<build>
 		<plugins>
@@ -28,7 +28,7 @@
 				<configuration>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
-						<argument>/${project.basedir}/src/main/java/it/lorenzodeluca/dart/lang/GenerateLang.mwe2</argument>
+						<argument>/${project.basedir}/src/it/lorenzodeluca/dart/lang/GenerateLang.mwe2</argument>
 						<argument>-p</argument>
 						<argument>rootPath=/${project.basedir}/..</argument>
 					</arguments>
@@ -36,6 +36,13 @@
 					<includePluginDependencies>true</includePluginDependencies>
 					<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.xtext</groupId>
+						<artifactId>org.eclipse.xtext.xtext.generator.dependencies</artifactId>
+						<version>${xtextVersion}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.xtext</groupId>
@@ -48,19 +55,31 @@
 				<configuration>
 					<filesets combine.children="append">
 						<fileset>
-							<directory>${basedir}/../it.lorenzodeluca.dart.lang/src/main/xtext-gen/</directory>
+							<directory>${basedir}/../it.lorenzodeluca.dart.lang/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
 						</fileset>
 						<fileset>
-							<directory>${basedir}/../it.lorenzodeluca.dart.lang/src/test/xtext-gen/</directory>
+							<directory>${basedir}/../it.lorenzodeluca.dart.lang.tests/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
 						</fileset>
 						<fileset>
-							<directory>${basedir}/../it.lorenzodeluca.dart.lang.ide/src/main/xtext-gen/</directory>
+							<directory>${basedir}/../it.lorenzodeluca.dart.lang.ide/src-gen/</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/../it.lorenzodeluca.dart.lang.ui/src-gen/</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/../it.lorenzodeluca.dart.lang.ui.tests/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
@@ -71,127 +90,7 @@
 					</filesets>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.3.0</version>
-				<executions>
-					<execution>
-						<?m2e ignore?>
-						<id>add-source</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>add-source</goal>
-							<goal>add-resource</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>src/main/xtext-gen</source>
-							</sources>
-							<resources>
-								<resource>
-									<directory>src/main/xtext-gen</directory>
-									<excludes>
-										<exclude>**/*.java</exclude>
-										<exclude>**/*.g</exclude>
-									</excludes>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-					<execution>
-						<id>add-test-source</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>add-test-source</goal>
-							<goal>add-test-resource</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>src/test/xtext-gen</source>
-							</sources>
-							<resources>
-								<resource>
-									<directory>src/test/xtext-gen</directory>
-									<excludes>
-										<exclude>**/*.java</exclude>
-									</excludes>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>3.4.1</version>
-				<configuration>
-					<descriptors>
-						<descriptor>jar-with-ecore-model.xml</descriptor>
-					</descriptors>
-					<appendAssemblyId>false</appendAssemblyId>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext.testing</artifactId>
-			<version>${xtextVersion}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext.xbase.testing</artifactId>
-			<version>${xtextVersion}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext</artifactId>
-			<version>${xtextVersion}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext.xbase</artifactId>
-			<version>${xtextVersion}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
-			<version>${xtextVersion}</version>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.emf</groupId>
-			<artifactId>org.eclipse.emf.mwe2.launch</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>xtext-antlr-generator</artifactId>
-			<optional>true</optional>
-		</dependency>
-	</dependencies>
 </project>

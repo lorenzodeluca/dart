@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: it.lorenzodeluca.dart.lang.ui.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: it.lorenzodeluca.dart.lang.ui.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.202602080026
+Bundle-SymbolicName: it.lorenzodeluca.dart.lang.ui.tests; singleton:=tru
+ e
+Bundle-ActivationPolicy: lazy
+Require-Bundle: it.lorenzodeluca.dart.lang.ui,org.eclipse.xtext.testing,
+ org.eclipse.xtext.ui.testing,org.eclipse.xtext.xbase.testing,org.eclips
+ e.xtext.xbase.ui.testing
+Import-Package: org.junit.jupiter.api;version="[5.1.0,6.0.0)",org.junit.
+ jupiter.api.extension;version="[5.1.0,6.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+
