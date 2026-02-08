@@ -1,9 +1,111 @@
-grammar it.lorenzodeluca.dart.Dart with org.eclipse.xtext.common.Terminals
+grammar it.lorenzodeluca.dart.Dart with org.eclipse.xtext.common.Terminals 
+       hidden(WS, ML_COMMENT, SL_COMMENT)
 
 generate dart "http://www.lorenzodeluca.it/dart/Dart"
 
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
+/*
+ * =========================================================================
+ * 1. COMPILATION UNIT & LIBRARIES (Section 19)
+ * =========================================================================
+ * "A Dart program consists of one or more libraries, and may be built out 
+ * of one or more compilation units." (Spec section 19)
+ */
+//entry rule
+CompilationUnit:
+    scriptTag=ScriptTag?
+    libraryName=LibraryName?
+    (directives+=ImportOrExport)*
+    (partDirectives+=PartDirective)*
+    (declarations+=TopLevelDeclaration)*;
+
+ScriptTag:
+    content=SCRIPT_TAG;
+
+LibraryName:
+    'library' name=DottedIdentifier ';';
+
+DottedIdentifier:
+    ID ('.' ID)*;
+
+/*
+ * =========================================================================
+ * 2. DIRECTIVES: IMPORTS, EXPORTS AND PARTS (Section 19.1 - 19.5)
+ * =========================================================================
+ */
+ImportOrExport:
+    LibraryImport | LibraryExport;
+    
+LibraryImport:
+    'import' importURI=STRING ('as' alias=ID)? ';';
+    
+LibraryExport:
+    'export' exportURI=STRING ';';
+
+PartDirective:
+    'part' partURI=STRING ';';
+
+/*
+ * =========================================================================
+ * 3. TOP-LEVEL DECLARATIONS (Section 19.5)
+ * =========================================================================
+ * These declarations are the main members of a library.
+ */
+
+TopLevelDeclaration:
+    (metadata+=Metadata)* (
+        ClassDeclaration | 
+        MixinDeclaration | 
+        ExtensionDeclaration | 
+        EnumDeclaration | 
+        TypeAlias | 
+        FunctionDeclaration | 
+        VariableDeclaration
+    );
+
+ClassDeclaration:
+    'class' name=ID '{' '}';
+
+MixinDeclaration:
+    'mixin' name=ID '{' '}';
+
+ExtensionDeclaration:
+    'extension' name=ID 'on' ID '{' '}';
+
+EnumDeclaration:
+    'enum' name=ID '{' '}';
+
+TypeAlias:
+    'typedef' name=ID '=' ID ';';
+    
+FunctionDeclaration:
+    (external?='external')? (returnType=ID)? name=ID '(' ')' (body=FunctionBody | ';');
+    
+FunctionBody:
+    '{' '}';
+
+VariableDeclaration:
+    (late?='late')? (modifier=VariableModifier) (type=ID)? name=ID (initialValue=Expression)? ';';
+
+VariableModifier:
+    'var' | 'final' | 'const';
+
+Metadata:
+    '@' ID;
+
+/*
+ * =========================================================================
+ * 4. EXPRESSIONS & LITERALS (Section 16)
+ * =========================================================================
+ */
+
+Expression:
+    ID | INT;
+
+/*
+ * =========================================================================
+ * 5. TERMINALS & LEXER RULES
+ * =========================================================================
+ */
+
+// ⟨scriptTag⟩ ::= ‘#!’ (~(‘\r’ | ‘\n’))* ⟨LINE_BREAK ⟩
+terminal SCRIPT_TAG: '#!' (!('\n'|'\r'))* ('\r'? '\n')?;
