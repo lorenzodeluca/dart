@@ -3,63 +3,361 @@ grammar it.lorenzodeluca.dart.Dart with org.eclipse.xtext.common.Terminals
 
 generate dart "http://www.lorenzodeluca.it/dart/Dart"
 
-/* sections:
- * 1. COMPILATION UNIT & LIBRARIES(section 19)
- * 2. DIRECTIVES: IMPORTS(section 19.1), EXPORTS(section 19.2) AND PARTS(section 19.5)
- * 3. TOP-LEVEL DECLARATIONS(section 19)
- * 4. EXPRESSIONS & LITERALS(section 17)
- * 5. TERMINALS & LEXER RULES
- * 6. TYPES (section 20)
- */
-
-
+// Regola di ingresso (Entry Rule). 
 /*
+ * A Dart program consists of one or more libraries, 
+ and may be built out of one or more compilation units. 
+ A compilation unit may be a library or a part (19.5).
+ * */
+DartFile:
+    LibraryDeclaration | PartDeclaration;
+
+/* =========================================================================
+ * 8. VARIABLES
+ * ========================================================================= */
+
+// FIX: VarOrType rimosso e integrato per evitare conflitti tra tipi String ed EObject
+VariableDeclaration:
+    (metadata+=Metadata)* (late?='late')? 
+    (isVar?='var' | isFinal?='final' (type=Type)? | isConst?='const' (type=Type)? | type=Type) 
+    variables+=InitializedIdentifier (',' variables+=InitializedIdentifier)*;
+
+InitializedIdentifier:
+    name=ID ('=' initialValue=Expression)?;
+
+/* =========================================================================
+ * 9. FUNCTIONS
+ * ========================================================================= */
+
+FunctionDeclaration:
+    (metadata+=Metadata)* (isExternal?='external')? (returnType=Type)? name=ID signature=FormalParameterPart (body=FunctionBody | ';');
+
+FormalParameterPart:
+    (typeParameters=TypeParameters)? parameters=FormalParameterList;
+
+FormalParameterList:
+    {FormalParameterList} '(' 
+        (normalParameters+=NormalFormalParameter (',' normalParameters+=NormalFormalParameter)*)? 
+        (',' optionalParameters=OptionalOrNamedFormalParameters)? 
+    ')';
+
+NormalFormalParameter:
+    (metadata+=Metadata)* (isCovariant?='covariant')? (type=Type)? name=ID;
+
+OptionalOrNamedFormalParameters:
+    OptionalPositionalFormalParameters | NamedFormalParameters;
+
+OptionalPositionalFormalParameters:
+    {OptionalPositionalFormalParameters} '[' (parameters+=DefaultFormalParameter (',' parameters+=DefaultFormalParameter)*)? ']';
+
+NamedFormalParameters:
+    {NamedFormalParameters} '{' (parameters+=DefaultNamedParameter (',' parameters+=DefaultNamedParameter)*)? '}';
+
+DefaultFormalParameter:
+    parameter=NormalFormalParameter ('=' defaultValue=Expression)?;
+
+DefaultNamedParameter:
+    (isRequired?='required')? parameter=NormalFormalParameter (('=' | ':') defaultValue=Expression)?;
+
+FunctionBody:
+    (isAsync?='async' | isSync?='sync')? (isStar?='*')? ('=>' expression=Expression ';' | block=Block);
+
+/* =========================================================================
+ * 10. CLASSES
+ * ========================================================================= */
+
+ClassDeclaration:
+    (metadata+=Metadata)* (isAbstract?='abstract')? 'class' name=ID (typeParameters=TypeParameters)? 
+    (superclass=Superclass)? (interfaces=Interfaces)? 
+    '{' (members+=MemberDeclaration)* '}';
+
+Superclass:
+    'extends' type=Type (mixins=Mixins)?;
+
+Mixins:
+    'with' types+=Type (',' types+=Type)*;
+
+Interfaces:
+    'implements' types+=Type (',' types+=Type)*;
+
+// FIX: Metodi e Dichiarazioni adesso sono assegnati a una proprietà specifica 
+MemberDeclaration:
+    (metadata+=Metadata)* (
+        method=MethodSignature body=FunctionBody |
+        declaration=Declaration ';'
+    );
+
+MethodSignature:
+    (isStatic?='static')? (returnType=Type)? (isOperator?='operator' operator=Operator)? (isGetter?='get' | isSetter?='set')? name=ID (parameters=FormalParameterList)?;
+
+Declaration:
+    (isExternal?='external')? (isStatic?='static')? (isLate?='late')? (isFinal?='final' | isConst?='const')? (type=Type)? name=ID ('=' initialValue=Expression)?;
+
+Operator:
+    '~' | '==' | '[]' | '[]=' | '*' | '/' | '%' | '~/' | '+' | '-' | '<<' | '>>>' | '>>' | '&' | '^' | '|' | '>=' | '>' | '<=' | '<';
+
+/* =========================================================================
+ * 12. MIXINS
+ * ========================================================================= */
+
+MixinDeclaration:
+    (metadata+=Metadata)* 'mixin' name=ID (typeParameters=TypeParameters)? 
+    ('on' onTypes+=Type (',' onTypes+=Type)*)? 
+    (interfaces=Interfaces)? 
+    '{' (members+=MemberDeclaration)* '}';
+
+MixinApplicationClass:
+    name=ID (typeParameters=TypeParameters)? '=' type=Type mixins=Mixins (interfaces=Interfaces)? ';';
+
+/* =========================================================================
+ * 13. EXTENSIONS
+ * ========================================================================= */
+
+ExtensionDeclaration:
+    (metadata+=Metadata)* 'extension' (name=ID)? (typeParameters=TypeParameters)? 'on' onType=Type 
+    '{' (members+=MemberDeclaration)* '}';
+
+/* =========================================================================
+ * 14. ENUMS
+ * ========================================================================= */
+
+EnumDeclaration:
+    (metadata+=Metadata)* 'enum' name=ID '{' entries+=EnumEntry (',' entries+=EnumEntry)* ','? '}';
+
+EnumEntry:
+    (metadata+=Metadata)* name=ID;
+
+/* =========================================================================
+ * 15. GENERICS
+ * ========================================================================= */
+
+TypeParameters:
+    '<' parameters+=TypeParameter (',' parameters+=TypeParameter)* '>';
+
+TypeParameter:
+    (metadata+=Metadata)* name=ID ('extends' bound=Type)?;
+
+/* =========================================================================
+ * 16. METADATA
+ * ========================================================================= */
+
+Metadata:
+    '@' name=QualifiedName ('.' constructor=ID)? (arguments=Arguments)?;
+
+// FIX: Ora restituisce stringhe piatte, così può essere usato in TypeName in modo sicuro
+QualifiedName:
+    ID ('.' ID)*;
+
+Arguments:
+    {Arguments} '(' (arguments+=Expression (',' arguments+=Expression)*)? ')';
+
+/* =========================================================================
+ * 17. EXPRESSIONS
  * =========================================================================
- * 1. COMPILATION UNIT & LIBRARIES (Section 19)
- * =========================================================================
- * "A Dart program consists of one or more libraries, and may be built out 
- * of one or more compilation units." (Spec section 19)
  */
-//entry rule
-CompilationUnit:
-    scriptTag=ScriptTag?
-    libraryName=LibraryName?
+
+Expression:
+    AssignmentExpression;
+
+AssignmentExpression returns Expression:
+    ConditionalExpression ({Assignment.left=current} operator=AssignmentOperator right=AssignmentExpression)?;
+
+AssignmentOperator:
+    '=' | '*=' | '/=' | '~/=' | '%=' | '+=' | '-=' | '<<=' | '>>>=' | '>>=' | '&=' | '^=' | '|=' | '??=';
+
+ConditionalExpression returns Expression:
+    IfNullExpression ({Conditional.condition=current} '?' thenExpr=ExpressionWithoutCascade ':' elseExpr=ExpressionWithoutCascade)?;
+
+ExpressionWithoutCascade returns Expression:
+    IfNullExpression; 
+
+IfNullExpression returns Expression:
+    LogicalOrExpression ({IfNull.left=current} '??' right=LogicalOrExpression)*;
+
+LogicalOrExpression returns Expression:
+    LogicalAndExpression ({LogicalOr.left=current} '||' right=LogicalAndExpression)*;
+
+LogicalAndExpression returns Expression:
+    EqualityExpression ({LogicalAnd.left=current} '&&' right=EqualityExpression)*;
+
+EqualityExpression returns Expression:
+    RelationalExpression ({Equality.left=current} operator=('==' | '!=') right=RelationalExpression)?;
+
+RelationalExpression returns Expression:
+    BitwiseOrExpression (
+        ({Relational.left=current} operator=('>=' | '>' | '<=' | '<') right=BitwiseOrExpression) |
+        ({TypeCheck.left=current} operator=TypeCheckOperator type=Type)
+    )?;
+
+// Datatype rule per gestire i token multipli come stringa
+TypeCheckOperator:
+    'as' | 'is' '!' | 'is';
+
+BitwiseOrExpression returns Expression:
+    BitwiseXorExpression ({BitwiseOr.left=current} '|' right=BitwiseXorExpression)*;
+
+BitwiseXorExpression returns Expression:
+    BitwiseAndExpression ({BitwiseXor.left=current} '^' right=BitwiseAndExpression)*;
+
+BitwiseAndExpression returns Expression:
+    ShiftExpression ({BitwiseAnd.left=current} '&' right=ShiftExpression)*;
+
+ShiftExpression returns Expression:
+    AdditiveExpression ({Shift.left=current} operator=('<<' | '>>>' | '>>') right=AdditiveExpression)*;
+
+AdditiveExpression returns Expression:
+    MultiplicativeExpression ({Additive.left=current} operator=('+' | '-') right=MultiplicativeExpression)*;
+
+MultiplicativeExpression returns Expression:
+    UnaryExpression ({Multiplicative.left=current} operator=('*' | '/' | '%' | '~/') right=UnaryExpression)*;
+
+UnaryExpression returns Expression:
+    {PrefixExpression} operator=('-' | '!' | '~' | '++' | '--' | 'await') operand=UnaryExpression |
+    PostfixExpression;
+
+PostfixExpression returns Expression:
+    PrimaryExpression (
+        {Postfix.operand=current} operator=('++' | '--') |
+        {MethodInvocation.receiver=current} '.' method=ID (typeArguments=TypeArguments)? args=Arguments |
+        {IndexExpression.receiver=current} '[' index=Expression ']'
+    )*;
+
+PrimaryExpression returns Expression:
+    {ThisExpression} 'this' |
+    {SuperExpression} 'super' |
+    {NullLiteral} 'null' |
+    {BooleanLiteral} boolValue=('true' | 'false') |
+    {NumberLiteral} intValue=INT |
+    {StringLiteral} stringValue=STRING |
+    {IdentifierRef} name=ID |
+    {NewExpression} 'new' type=Type ('.' constructor=ID)? args=Arguments |
+    {ConstExpression} 'const' type=Type ('.' constructor=ID)? args=Arguments |
+    {ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
+    {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=MapOrSetElement (',' elements+=MapOrSetElement)*)? '}' |
+    {ParenthesizedExpression} '(' expression=Expression ')';
+
+MapOrSetElement:
+    Expression (':' value=Expression)?;
+
+/* =========================================================================
+ * 18. STATEMENTS
+ * ========================================================================= */
+
+// FIX: Come per MemberDeclaration, se labels è processato l'oggetto esiste già
+Statement:
+    (labels+=Label)* statement=NonLabelledStatement;
+
+Label:
+    name=ID ':';
+
+NonLabelledStatement:
+    Block |
+    LocalVariableDeclaration |
+    ForStatement |
+    WhileStatement |
+    DoStatement |
+    SwitchStatement |
+    IfStatement |
+    RethrowStatement |
+    TryStatement |
+    BreakStatement |
+    ContinueStatement |
+    ReturnStatement |
+    YieldStatement |
+    ExpressionStatement;
+
+Block:
+    {Block} '{' (statements+=Statement)* '}';
+
+LocalVariableDeclaration:
+    variable=VariableDeclaration ';';
+
+IfStatement:
+    'if' '(' condition=Expression ')' thenStatement=Statement ('else' elseStatement=Statement)?;
+
+ForStatement:
+    (isAwait?='await')? 'for' '(' (init=VariableDeclaration | initExpr=Expression)? ';' condition=Expression? ';' update=Expression? ')' body=Statement;
+
+WhileStatement:
+    'while' '(' condition=Expression ')' body=Statement;
+
+DoStatement:
+    'do' body=Statement 'while' '(' condition=Expression ')' ';';
+
+SwitchStatement:
+    'switch' '(' expression=Expression ')' '{' (cases+=SwitchCase)* (defaultCase=DefaultCase)? '}';
+
+SwitchCase:
+    (labels+=Label)* 'case' expression=Expression ':' (statements+=Statement)*;
+
+DefaultCase:
+    (labels+=Label)* 'default' ':' (statements+=Statement)*;
+
+RethrowStatement:
+    {RethrowStatement} 'rethrow' ';';
+
+TryStatement:
+    'try' block=Block (catchClauses+=CatchClause)* (finallyBlock=FinallyClause)?;
+
+CatchClause:
+    ('on' type=Type)? ('catch' '(' exception=ID (',' stackTrace=ID)? ')')? block=Block;
+
+FinallyClause:
+    'finally' block=Block;
+
+BreakStatement:
+    {BreakStatement} 'break' label=ID? ';';
+
+ContinueStatement:
+    {ContinueStatement} 'continue' label=ID? ';';
+
+ReturnStatement:
+    {ReturnStatement} 'return' expression=Expression? ';';
+
+YieldStatement:
+    {YieldStatement} 'yield' (isStar?='*')? expression=Expression ';';
+
+ExpressionStatement:
+    expression=Expression ';';
+
+/* =========================================================================
+ * 19. LIBRARIES AND SCRIPTS
+ * ========================================================================= */
+
+LibraryDeclaration:
+    (scriptTag=ScriptTag)?
+    (libraryName=LibraryName)?
     (directives+=ImportOrExport)*
     (partDirectives+=PartDirective)*
+    (declarations+=TopLevelDeclaration)*;
+
+PartDeclaration:
+    partHeader=PartHeader
     (declarations+=TopLevelDeclaration)*;
 
 ScriptTag:
     content=SCRIPT_TAG;
 
 LibraryName:
-    'library' name=DottedIdentifier ';';
+    (metadata+=Metadata)* 'library' name=QualifiedName ';';
 
-DottedIdentifier:
-    ID ('.' ID)*;
-
-/*
- * =========================================================================
- * 2. DIRECTIVES: IMPORTS, EXPORTS AND PARTS (Section 19.1 - 19.5)
- * =========================================================================
- */
 ImportOrExport:
     LibraryImport | LibraryExport;
-    
+
 LibraryImport:
-    'import' importURI=STRING ('as' alias=ID)? ';';
-    
+    (metadata+=Metadata)* 'import' importURI=STRING (isDeferred?='deferred'? 'as' prefix=ID)? (combinators+=Combinator)* ';';
+
 LibraryExport:
-    'export' exportURI=STRING ';';
+    (metadata+=Metadata)* 'export' exportURI=STRING (combinators+=Combinator)* ';';
 
 PartDirective:
-    'part' partURI=STRING ';';
+    (metadata+=Metadata)* 'part' partURI=STRING ';';
 
-/*
- * =========================================================================
- * 3. TOP-LEVEL DECLARATIONS (Section 19.5)
- * =========================================================================
- * These declarations are the main members of a library.
- */
+PartHeader:
+    (metadata+=Metadata)* 'part' 'of' (name=QualifiedName | uri=STRING) ';';
+
+Combinator:
+    ('show' | 'hide') identifiers+=ID (',' identifiers+=ID)*;
 
 TopLevelDeclaration:
     ClassDeclaration | 
@@ -68,70 +366,28 @@ TopLevelDeclaration:
     EnumDeclaration | 
     TypeAlias | 
     FunctionDeclaration | 
-    VariableDeclaration;
-
-ClassDeclaration:
-    (metadata+=Metadata)* 'class' name=ID '{' '}';
-
-MixinDeclaration:
-    (metadata+=Metadata)* 'mixin' name=ID '{' '}';
-
-ExtensionDeclaration:
-    (metadata+=Metadata)* 'extension' name=ID 'on' ID '{' '}';
-
-EnumDeclaration:
-    (metadata+=Metadata)* 'enum' name=ID '{' '}';
-
-TypeAlias:
-    (metadata+=Metadata)* 'typedef' name=ID '=' ID ';';
-    
-FunctionDeclaration:
-    (metadata+=Metadata)* (external?='external')? (returnType=ID)? name=ID '(' ')' (body=FunctionBody | ';');
-    
-FunctionBody:
-    '{' '}';
-
-VariableDeclaration:
-    (metadata+=Metadata)* (late?='late')? ((modifier=VariableModifier (type=Type)?) | type=Type) variables+=VariableSingleDeclaration (',' variables+=VariableSingleDeclaration)* ';';
-
-VariableSingleDeclaration:
-    name=ID ('=' initialValue=Expression)?;
-    
-VariableModifier:
-    'var' | 'final' | 'const';
-
-Metadata:
-    '@' ID;
-
-/*
- * =========================================================================
- * 4. EXPRESSIONS & LITERALS (Section 16)
- * =========================================================================
- */
-
-Expression:
-    ID | INT;
-
-/*
- * =========================================================================
- * 5. TERMINALS & LEXER RULES
- * =========================================================================
- */
-
-// ⟨scriptTag⟩ ::= ‘#!’ (~(‘\r’ | ‘\n’))* ⟨LINE_BREAK ⟩
-terminal SCRIPT_TAG: '#!' (!('\n'|'\r'))* ('\r'? '\n')?;
-
+    VariableDeclaration |
+    MixinApplicationClass;
 
 /* =========================================================================
- * 6. TYPES (§20)
- * =========================================================================
- */
+ * 20. TYPES
+ * ========================================================================= */
+
+TypeAlias:
+    (metadata+=Metadata)* 'typedef' name=ID (typeParameters=TypeParameters)? '=' type=Type ';';
 
 Type:
-    TypeName (nullable?='?')?;
+    typeName=TypeName (typeArguments=TypeArguments)? (isNullable?='?')?;
 
+// FIX: name raggruppato in modo che copra sia le stringhe che il QualifiedName
 TypeName:
-    name=ID (typeArguments=TypeArguments)?;
+    name=(QualifiedName | 'Function' | 'void' | 'dynamic');
 
 TypeArguments:
-    '<' elements+=Type (',' elements+=Type)* '>';
+    '<' types+=Type (',' types+=Type)* '>';
+
+/* =========================================================================
+ * 21. LEXICAL RULES
+ * ========================================================================= */
+
+terminal SCRIPT_TAG: '#!' (!('\n'|'\r'))* ('\r'? '\n')?;

@@ -3,7 +3,7 @@ Automatic-Module-Name: it.lorenzodeluca.dart
 Bundle-ManifestVersion: 2
 Bundle-Name: it.lorenzodeluca.dart
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.202602082201
+Bundle-Version: 1.0.0.202602281810
 Bundle-SymbolicName: it.lorenzodeluca.dart; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,org.eclipse.xtext.xbase,org.eclipse.eq
