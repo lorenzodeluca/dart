@@ -25,7 +25,12 @@ This project provides comprehensive tooling for parsing the full Dart grammar.
 4.  Browse to the root directory of the cloned repository and select it.
 5.  Click `Finish`. Eclipse will automatically configure the projects based on the `pom.xml` files.
 
-### 2. Run and Test the Editor
+### 2. Build
+
+1. Generate Xtext Artifacts: inside it.lorenzodeluca.dart, locate the Dart.xtext file inside the src directory, right-click the .xtext file -> Run As -> Generate Xtext Artifacts.
+2. Compile the Project (Maven): Right-click the parent project (it.lorenzodeluca.dart.parent) -> Run As -> Maven install
+
+### 3. Run and Test the Editor
 
 To test the generated Dart editor within an isolated Eclipse runtime environment:
 
