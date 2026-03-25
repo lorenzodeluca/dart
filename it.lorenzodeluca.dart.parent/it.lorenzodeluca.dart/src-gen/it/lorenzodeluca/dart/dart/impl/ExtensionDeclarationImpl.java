@@ -5,12 +5,24 @@ package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.ExtensionDeclaration;
+import it.lorenzodeluca.dart.dart.MemberDeclaration;
+import it.lorenzodeluca.dart.dart.Type;
+import it.lorenzodeluca.dart.dart.TypeParameters;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,11 +33,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.ExtensionDeclarationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.ExtensionDeclarationImpl#getTypeParameters <em>Type Parameters</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.ExtensionDeclarationImpl#getOnType <em>On Type</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.ExtensionDeclarationImpl#getMembers <em>Members</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ExtensionDeclarationImpl extends TopLevelDeclarationImpl implements ExtensionDeclaration
+public class ExtensionDeclarationImpl extends TopLevelDeclarationContentImpl implements ExtensionDeclaration
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -46,6 +61,36 @@ public class ExtensionDeclarationImpl extends TopLevelDeclarationImpl implements
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getTypeParameters() <em>Type Parameters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypeParameters()
+   * @generated
+   * @ordered
+   */
+  protected TypeParameters typeParameters;
+
+  /**
+   * The cached value of the '{@link #getOnType() <em>On Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOnType()
+   * @generated
+   * @ordered
+   */
+  protected Type onType;
+
+  /**
+   * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMembers()
+   * @generated
+   * @ordered
+   */
+  protected EList<MemberDeclaration> members;
 
   /**
    * <!-- begin-user-doc -->
@@ -99,12 +144,153 @@ public class ExtensionDeclarationImpl extends TopLevelDeclarationImpl implements
    * @generated
    */
   @Override
+  public TypeParameters getTypeParameters()
+  {
+    return typeParameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTypeParameters(TypeParameters newTypeParameters, NotificationChain msgs)
+  {
+    TypeParameters oldTypeParameters = typeParameters;
+    typeParameters = newTypeParameters;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.EXTENSION_DECLARATION__TYPE_PARAMETERS, oldTypeParameters, newTypeParameters);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTypeParameters(TypeParameters newTypeParameters)
+  {
+    if (newTypeParameters != typeParameters)
+    {
+      NotificationChain msgs = null;
+      if (typeParameters != null)
+        msgs = ((InternalEObject)typeParameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.EXTENSION_DECLARATION__TYPE_PARAMETERS, null, msgs);
+      if (newTypeParameters != null)
+        msgs = ((InternalEObject)newTypeParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.EXTENSION_DECLARATION__TYPE_PARAMETERS, null, msgs);
+      msgs = basicSetTypeParameters(newTypeParameters, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.EXTENSION_DECLARATION__TYPE_PARAMETERS, newTypeParameters, newTypeParameters));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Type getOnType()
+  {
+    return onType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetOnType(Type newOnType, NotificationChain msgs)
+  {
+    Type oldOnType = onType;
+    onType = newOnType;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.EXTENSION_DECLARATION__ON_TYPE, oldOnType, newOnType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOnType(Type newOnType)
+  {
+    if (newOnType != onType)
+    {
+      NotificationChain msgs = null;
+      if (onType != null)
+        msgs = ((InternalEObject)onType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.EXTENSION_DECLARATION__ON_TYPE, null, msgs);
+      if (newOnType != null)
+        msgs = ((InternalEObject)newOnType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.EXTENSION_DECLARATION__ON_TYPE, null, msgs);
+      msgs = basicSetOnType(newOnType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.EXTENSION_DECLARATION__ON_TYPE, newOnType, newOnType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<MemberDeclaration> getMembers()
+  {
+    if (members == null)
+    {
+      members = new EObjectContainmentEList<MemberDeclaration>(MemberDeclaration.class, this, DartPackage.EXTENSION_DECLARATION__MEMBERS);
+    }
+    return members;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DartPackage.EXTENSION_DECLARATION__TYPE_PARAMETERS:
+        return basicSetTypeParameters(null, msgs);
+      case DartPackage.EXTENSION_DECLARATION__ON_TYPE:
+        return basicSetOnType(null, msgs);
+      case DartPackage.EXTENSION_DECLARATION__MEMBERS:
+        return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
       case DartPackage.EXTENSION_DECLARATION__NAME:
         return getName();
+      case DartPackage.EXTENSION_DECLARATION__TYPE_PARAMETERS:
+        return getTypeParameters();
+      case DartPackage.EXTENSION_DECLARATION__ON_TYPE:
+        return getOnType();
+      case DartPackage.EXTENSION_DECLARATION__MEMBERS:
+        return getMembers();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -114,6 +300,7 @@ public class ExtensionDeclarationImpl extends TopLevelDeclarationImpl implements
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -121,6 +308,16 @@ public class ExtensionDeclarationImpl extends TopLevelDeclarationImpl implements
     {
       case DartPackage.EXTENSION_DECLARATION__NAME:
         setName((String)newValue);
+        return;
+      case DartPackage.EXTENSION_DECLARATION__TYPE_PARAMETERS:
+        setTypeParameters((TypeParameters)newValue);
+        return;
+      case DartPackage.EXTENSION_DECLARATION__ON_TYPE:
+        setOnType((Type)newValue);
+        return;
+      case DartPackage.EXTENSION_DECLARATION__MEMBERS:
+        getMembers().clear();
+        getMembers().addAll((Collection<? extends MemberDeclaration>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -139,6 +336,15 @@ public class ExtensionDeclarationImpl extends TopLevelDeclarationImpl implements
       case DartPackage.EXTENSION_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case DartPackage.EXTENSION_DECLARATION__TYPE_PARAMETERS:
+        setTypeParameters((TypeParameters)null);
+        return;
+      case DartPackage.EXTENSION_DECLARATION__ON_TYPE:
+        setOnType((Type)null);
+        return;
+      case DartPackage.EXTENSION_DECLARATION__MEMBERS:
+        getMembers().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -155,6 +361,12 @@ public class ExtensionDeclarationImpl extends TopLevelDeclarationImpl implements
     {
       case DartPackage.EXTENSION_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DartPackage.EXTENSION_DECLARATION__TYPE_PARAMETERS:
+        return typeParameters != null;
+      case DartPackage.EXTENSION_DECLARATION__ON_TYPE:
+        return onType != null;
+      case DartPackage.EXTENSION_DECLARATION__MEMBERS:
+        return members != null && !members.isEmpty();
     }
     return super.eIsSet(featureID);
   }

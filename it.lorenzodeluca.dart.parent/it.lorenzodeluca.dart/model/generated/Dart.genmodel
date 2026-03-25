@@ -6,12 +6,272 @@
     copyrightFields="false" runtimeVersion="2.36">
   <genPackages prefix="Dart" basePackage="it.lorenzodeluca.dart" disposableProviderFactory="true"
       fileExtensions="dart" ecorePackage="Dart.ecore#/">
-    <genClasses ecoreClass="Dart.ecore#//CompilationUnit">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//CompilationUnit/scriptTag"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//CompilationUnit/libraryName"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//CompilationUnit/directives"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//CompilationUnit/partDirectives"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//CompilationUnit/declarations"/>
+    <genClasses ecoreClass="Dart.ecore#//DartFile"/>
+    <genClasses ecoreClass="Dart.ecore#//VariableDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//VariableDeclaration/late"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//VariableDeclaration/isVar"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//VariableDeclaration/isFinal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//VariableDeclaration/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//VariableDeclaration/isConst"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//VariableDeclaration/variables"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//InitializedIdentifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//InitializedIdentifier/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//InitializedIdentifier/initialValue"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//FunctionDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//FunctionDeclaration/isExternal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FunctionDeclaration/returnType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//FunctionDeclaration/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FunctionDeclaration/signature"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FunctionDeclaration/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//FormalParameterPart">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FormalParameterPart/typeParameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FormalParameterPart/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//FormalParameterList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FormalParameterList/normalParameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FormalParameterList/optionalParameters"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//NormalFormalParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//NormalFormalParameter/metadata"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//NormalFormalParameter/isCovariant"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//NormalFormalParameter/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//NormalFormalParameter/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//OptionalOrNamedFormalParameters"/>
+    <genClasses ecoreClass="Dart.ecore#//OptionalPositionalFormalParameters">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//OptionalPositionalFormalParameters/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//NamedFormalParameters">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//NamedFormalParameters/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//DefaultFormalParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//DefaultFormalParameter/parameter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//DefaultFormalParameter/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//DefaultNamedParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//DefaultNamedParameter/isRequired"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//DefaultNamedParameter/parameter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//DefaultNamedParameter/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//FunctionBody">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//FunctionBody/isAsync"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//FunctionBody/isSync"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//FunctionBody/isStar"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FunctionBody/expression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FunctionBody/block"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//ClassDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ClassDeclaration/isAbstract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ClassDeclaration/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ClassDeclaration/typeParameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ClassDeclaration/superclass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ClassDeclaration/interfaces"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ClassDeclaration/members"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Superclass">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Superclass/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Superclass/mixins"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Mixins">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Mixins/types"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Interfaces">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Interfaces/types"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//MemberDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MemberDeclaration/metadata"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//MemberDeclaration/isStatic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MemberDeclaration/method"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MemberDeclaration/body"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MemberDeclaration/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//MethodSignature">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MethodSignature/returnType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//MethodSignature/isOperator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//MethodSignature/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//MethodSignature/isGetter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//MethodSignature/isSetter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//MethodSignature/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MethodSignature/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Declaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Declaration/isExternal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Declaration/isLate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Declaration/isFinal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Declaration/isConst"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Declaration/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Declaration/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Declaration/initialValue"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//MixinDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//MixinDeclaration/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MixinDeclaration/typeParameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MixinDeclaration/onTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MixinDeclaration/interfaces"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MixinDeclaration/members"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//MixinApplicationClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//MixinApplicationClass/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MixinApplicationClass/typeParameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MixinApplicationClass/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MixinApplicationClass/mixins"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MixinApplicationClass/interfaces"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//ExtensionDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ExtensionDeclaration/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ExtensionDeclaration/typeParameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ExtensionDeclaration/onType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ExtensionDeclaration/members"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//EnumDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//EnumDeclaration/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//EnumDeclaration/entries"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//EnumEntry">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//EnumEntry/metadata"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//EnumEntry/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//TypeParameters">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//TypeParameters/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//TypeParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//TypeParameter/metadata"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//TypeParameter/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//TypeParameter/bound"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Metadata">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Metadata/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Metadata/constructor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Metadata/arguments"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Arguments">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Arguments/arguments"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Expression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Expression/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//CollectionLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//CollectionLiteral/isConst"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//CollectionLiteral/typeArguments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//CollectionLiteral/listElements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//CollectionLiteral/mapElements"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//MapOrSetElement"/>
+    <genClasses ecoreClass="Dart.ecore#//Statement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Statement/labels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Statement/statement"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Label">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Label/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//NonLabelledStatement"/>
+    <genClasses ecoreClass="Dart.ecore#//Block">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Block/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//LocalVariableDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//LocalVariableDeclaration/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//IfStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//IfStatement/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//IfStatement/thenStatement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//IfStatement/elseStatement"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//ForStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ForStatement/isAwait"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ForStatement/init"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ForStatement/initExpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ForStatement/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ForStatement/update"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ForStatement/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//WhileStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//WhileStatement/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//WhileStatement/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//DoStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//DoStatement/body"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//DoStatement/condition"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//SwitchStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//SwitchStatement/expression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//SwitchStatement/cases"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//SwitchStatement/defaultCase"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//SwitchCase">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//SwitchCase/labels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//SwitchCase/expression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//SwitchCase/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//DefaultCase">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//DefaultCase/labels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//DefaultCase/statements"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//RethrowStatement"/>
+    <genClasses ecoreClass="Dart.ecore#//TryStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//TryStatement/block"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//TryStatement/catchClauses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//TryStatement/finallyBlock"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//CatchClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//CatchClause/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//CatchClause/exception"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//CatchClause/stackTrace"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//CatchClause/block"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//FinallyClause">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FinallyClause/block"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//BreakStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//BreakStatement/label"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//ContinueStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ContinueStatement/label"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//ReturnStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ReturnStatement/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//YieldStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//YieldStatement/isStar"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//YieldStatement/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//ExpressionStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ExpressionStatement/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//LibraryDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//LibraryDeclaration/scriptTag"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//LibraryDeclaration/libraryName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//LibraryDeclaration/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//ElementWithMetadata">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ElementWithMetadata/metadata"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ElementWithMetadata/element"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ElementWithMetadata/member"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//ImportOrExportContent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ImportOrExportContent/isImport"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ImportOrExportContent/importURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ImportOrExportContent/isDeferred"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ImportOrExportContent/prefix"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ImportOrExportContent/combinators"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ImportOrExportContent/isExport"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ImportOrExportContent/exportURI"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Combinator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Combinator/identifiers"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//PartDirectiveContent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//PartDirectiveContent/partURI"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//PartDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//PartDeclaration/partHeader"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//PartDeclaration/declarations"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//AnnotatedTopLevel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//AnnotatedTopLevel/metadata"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//AnnotatedTopLevel/member"/>
     </genClasses>
     <genClasses ecoreClass="Dart.ecore#//ScriptTag">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ScriptTag/content"/>
@@ -19,59 +279,136 @@
     <genClasses ecoreClass="Dart.ecore#//LibraryName">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//LibraryName/name"/>
     </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//ImportOrExport"/>
-    <genClasses ecoreClass="Dart.ecore#//LibraryImport">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//LibraryImport/importURI"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//LibraryImport/alias"/>
+    <genClasses ecoreClass="Dart.ecore#//PartHeader">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//PartHeader/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//PartHeader/uri"/>
     </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//LibraryExport">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//LibraryExport/exportURI"/>
-    </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//PartDirective">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//PartDirective/partURI"/>
-    </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//TopLevelDeclaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//TopLevelDeclaration/metadata"/>
-    </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//ClassDeclaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ClassDeclaration/name"/>
-    </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//MixinDeclaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//MixinDeclaration/name"/>
-    </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//ExtensionDeclaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ExtensionDeclaration/name"/>
-    </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//EnumDeclaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//EnumDeclaration/name"/>
-    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//TopLevelDeclarationContent"/>
     <genClasses ecoreClass="Dart.ecore#//TypeAlias">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//TypeAlias/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//TypeAlias/typeParameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//TypeAlias/type"/>
     </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//FunctionDeclaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//FunctionDeclaration/external"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//FunctionDeclaration/returnType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//FunctionDeclaration/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//FunctionDeclaration/body"/>
+    <genClasses ecoreClass="Dart.ecore#//Type">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Type/typeName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Type/typeArguments"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Type/isNullable"/>
     </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//VariableDeclaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//VariableDeclaration/late"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//VariableDeclaration/modifier"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//VariableDeclaration/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//VariableDeclaration/variables"/>
-    </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//VariableSingleDeclaration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//VariableSingleDeclaration/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//VariableSingleDeclaration/initialValue"/>
-    </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//Type"/>
     <genClasses ecoreClass="Dart.ecore#//TypeName">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//TypeName/nullable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//TypeName/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//TypeName/typeArguments"/>
     </genClasses>
     <genClasses ecoreClass="Dart.ecore#//TypeArguments">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//TypeArguments/elements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//TypeArguments/types"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Assignment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Assignment/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Assignment/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Assignment/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Conditional">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Conditional/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Conditional/thenExpr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Conditional/elseExpr"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//IfNull">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//IfNull/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//IfNull/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//LogicalOr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//LogicalOr/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//LogicalOr/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//LogicalAnd">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//LogicalAnd/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//LogicalAnd/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Equality">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Equality/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Equality/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Equality/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Relational">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Relational/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Relational/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Relational/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//TypeCheck">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//TypeCheck/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//TypeCheck/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//TypeCheck/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//BitwiseOr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//BitwiseOr/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//BitwiseOr/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//BitwiseXor">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//BitwiseXor/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//BitwiseXor/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//BitwiseAnd">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//BitwiseAnd/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//BitwiseAnd/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Shift">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Shift/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Shift/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Shift/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Additive">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Additive/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Additive/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Additive/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Multiplicative">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Multiplicative/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Multiplicative/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Multiplicative/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//PrefixExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//PrefixExpression/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//PrefixExpression/operand"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//Postfix">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Postfix/operand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//Postfix/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//MethodInvocation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MethodInvocation/receiver"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//MethodInvocation/method"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MethodInvocation/typeArguments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//MethodInvocation/args"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//IndexExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//IndexExpression/receiver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//IndexExpression/index"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//ThisExpression"/>
+    <genClasses ecoreClass="Dart.ecore#//SuperExpression"/>
+    <genClasses ecoreClass="Dart.ecore#//NullLiteral"/>
+    <genClasses ecoreClass="Dart.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//BooleanLiteral/boolValue"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//NumberLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//NumberLiteral/intValue"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//StringLiteral/stringValue"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//IdentifierRef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//IdentifierRef/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//NewExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//NewExpression/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//NewExpression/constructor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//NewExpression/args"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//ConstExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ConstExpression/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//ConstExpression/constructor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ConstExpression/args"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//ParenthesizedExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ParenthesizedExpression/expression"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

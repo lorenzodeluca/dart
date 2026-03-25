@@ -14,13 +14,15 @@ package it.lorenzodeluca.dart.dart;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.TypeAlias#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.TypeAlias#getTypeParameters <em>Type Parameters</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.TypeAlias#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeAlias()
  * @model
  * @generated
  */
-public interface TypeAlias extends TopLevelDeclaration
+public interface TypeAlias extends TopLevelDeclarationContent
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -43,5 +45,49 @@ public interface TypeAlias extends TopLevelDeclaration
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Type Parameters</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type Parameters</em>' containment reference.
+   * @see #setTypeParameters(TypeParameters)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeAlias_TypeParameters()
+   * @model containment="true"
+   * @generated
+   */
+  TypeParameters getTypeParameters();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.TypeAlias#getTypeParameters <em>Type Parameters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type Parameters</em>' containment reference.
+   * @see #getTypeParameters()
+   * @generated
+   */
+  void setTypeParameters(TypeParameters value);
+
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' containment reference.
+   * @see #setType(Type)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeAlias_Type()
+   * @model containment="true"
+   * @generated
+   */
+  Type getType();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.TypeAlias#getType <em>Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @see #getType()
+   * @generated
+   */
+  void setType(Type value);
 
 } // TypeAlias

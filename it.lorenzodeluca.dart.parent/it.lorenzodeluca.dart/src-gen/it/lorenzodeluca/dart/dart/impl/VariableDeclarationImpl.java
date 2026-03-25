@@ -4,9 +4,9 @@
 package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
+import it.lorenzodeluca.dart.dart.InitializedIdentifier;
 import it.lorenzodeluca.dart.dart.Type;
 import it.lorenzodeluca.dart.dart.VariableDeclaration;
-import it.lorenzodeluca.dart.dart.VariableSingleDeclaration;
 
 import java.util.Collection;
 
@@ -32,14 +32,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.VariableDeclarationImpl#isLate <em>Late</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.VariableDeclarationImpl#getModifier <em>Modifier</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.VariableDeclarationImpl#isIsVar <em>Is Var</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.VariableDeclarationImpl#isIsFinal <em>Is Final</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.VariableDeclarationImpl#getType <em>Type</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.VariableDeclarationImpl#isIsConst <em>Is Const</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.VariableDeclarationImpl#getVariables <em>Variables</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements VariableDeclaration
+public class VariableDeclarationImpl extends TopLevelDeclarationContentImpl implements VariableDeclaration
 {
   /**
    * The default value of the '{@link #isLate() <em>Late</em>}' attribute.
@@ -62,24 +64,44 @@ public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements 
   protected boolean late = LATE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getModifier() <em>Modifier</em>}' attribute.
+   * The default value of the '{@link #isIsVar() <em>Is Var</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getModifier()
+   * @see #isIsVar()
    * @generated
    * @ordered
    */
-  protected static final String MODIFIER_EDEFAULT = null;
+  protected static final boolean IS_VAR_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getModifier() <em>Modifier</em>}' attribute.
+   * The cached value of the '{@link #isIsVar() <em>Is Var</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getModifier()
+   * @see #isIsVar()
    * @generated
    * @ordered
    */
-  protected String modifier = MODIFIER_EDEFAULT;
+  protected boolean isVar = IS_VAR_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isIsFinal() <em>Is Final</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsFinal()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_FINAL_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsFinal() <em>Is Final</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsFinal()
+   * @generated
+   * @ordered
+   */
+  protected boolean isFinal = IS_FINAL_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -92,6 +114,26 @@ public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements 
   protected Type type;
 
   /**
+   * The default value of the '{@link #isIsConst() <em>Is Const</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsConst()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_CONST_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsConst() <em>Is Const</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsConst()
+   * @generated
+   * @ordered
+   */
+  protected boolean isConst = IS_CONST_EDEFAULT;
+
+  /**
    * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -99,7 +141,7 @@ public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements 
    * @generated
    * @ordered
    */
-  protected EList<VariableSingleDeclaration> variables;
+  protected EList<InitializedIdentifier> variables;
 
   /**
    * <!-- begin-user-doc -->
@@ -153,9 +195,9 @@ public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements 
    * @generated
    */
   @Override
-  public String getModifier()
+  public boolean isIsVar()
   {
-    return modifier;
+    return isVar;
   }
 
   /**
@@ -164,12 +206,37 @@ public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements 
    * @generated
    */
   @Override
-  public void setModifier(String newModifier)
+  public void setIsVar(boolean newIsVar)
   {
-    String oldModifier = modifier;
-    modifier = newModifier;
+    boolean oldIsVar = isVar;
+    isVar = newIsVar;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.VARIABLE_DECLARATION__MODIFIER, oldModifier, modifier));
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.VARIABLE_DECLARATION__IS_VAR, oldIsVar, isVar));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isIsFinal()
+  {
+    return isFinal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsFinal(boolean newIsFinal)
+  {
+    boolean oldIsFinal = isFinal;
+    isFinal = newIsFinal;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.VARIABLE_DECLARATION__IS_FINAL, oldIsFinal, isFinal));
   }
 
   /**
@@ -228,11 +295,36 @@ public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements 
    * @generated
    */
   @Override
-  public EList<VariableSingleDeclaration> getVariables()
+  public boolean isIsConst()
+  {
+    return isConst;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsConst(boolean newIsConst)
+  {
+    boolean oldIsConst = isConst;
+    isConst = newIsConst;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.VARIABLE_DECLARATION__IS_CONST, oldIsConst, isConst));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<InitializedIdentifier> getVariables()
   {
     if (variables == null)
     {
-      variables = new EObjectContainmentEList<VariableSingleDeclaration>(VariableSingleDeclaration.class, this, DartPackage.VARIABLE_DECLARATION__VARIABLES);
+      variables = new EObjectContainmentEList<InitializedIdentifier>(InitializedIdentifier.class, this, DartPackage.VARIABLE_DECLARATION__VARIABLES);
     }
     return variables;
   }
@@ -267,10 +359,14 @@ public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements 
     {
       case DartPackage.VARIABLE_DECLARATION__LATE:
         return isLate();
-      case DartPackage.VARIABLE_DECLARATION__MODIFIER:
-        return getModifier();
+      case DartPackage.VARIABLE_DECLARATION__IS_VAR:
+        return isIsVar();
+      case DartPackage.VARIABLE_DECLARATION__IS_FINAL:
+        return isIsFinal();
       case DartPackage.VARIABLE_DECLARATION__TYPE:
         return getType();
+      case DartPackage.VARIABLE_DECLARATION__IS_CONST:
+        return isIsConst();
       case DartPackage.VARIABLE_DECLARATION__VARIABLES:
         return getVariables();
     }
@@ -291,15 +387,21 @@ public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements 
       case DartPackage.VARIABLE_DECLARATION__LATE:
         setLate((Boolean)newValue);
         return;
-      case DartPackage.VARIABLE_DECLARATION__MODIFIER:
-        setModifier((String)newValue);
+      case DartPackage.VARIABLE_DECLARATION__IS_VAR:
+        setIsVar((Boolean)newValue);
+        return;
+      case DartPackage.VARIABLE_DECLARATION__IS_FINAL:
+        setIsFinal((Boolean)newValue);
         return;
       case DartPackage.VARIABLE_DECLARATION__TYPE:
         setType((Type)newValue);
         return;
+      case DartPackage.VARIABLE_DECLARATION__IS_CONST:
+        setIsConst((Boolean)newValue);
+        return;
       case DartPackage.VARIABLE_DECLARATION__VARIABLES:
         getVariables().clear();
-        getVariables().addAll((Collection<? extends VariableSingleDeclaration>)newValue);
+        getVariables().addAll((Collection<? extends InitializedIdentifier>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -318,11 +420,17 @@ public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements 
       case DartPackage.VARIABLE_DECLARATION__LATE:
         setLate(LATE_EDEFAULT);
         return;
-      case DartPackage.VARIABLE_DECLARATION__MODIFIER:
-        setModifier(MODIFIER_EDEFAULT);
+      case DartPackage.VARIABLE_DECLARATION__IS_VAR:
+        setIsVar(IS_VAR_EDEFAULT);
+        return;
+      case DartPackage.VARIABLE_DECLARATION__IS_FINAL:
+        setIsFinal(IS_FINAL_EDEFAULT);
         return;
       case DartPackage.VARIABLE_DECLARATION__TYPE:
         setType((Type)null);
+        return;
+      case DartPackage.VARIABLE_DECLARATION__IS_CONST:
+        setIsConst(IS_CONST_EDEFAULT);
         return;
       case DartPackage.VARIABLE_DECLARATION__VARIABLES:
         getVariables().clear();
@@ -343,10 +451,14 @@ public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements 
     {
       case DartPackage.VARIABLE_DECLARATION__LATE:
         return late != LATE_EDEFAULT;
-      case DartPackage.VARIABLE_DECLARATION__MODIFIER:
-        return MODIFIER_EDEFAULT == null ? modifier != null : !MODIFIER_EDEFAULT.equals(modifier);
+      case DartPackage.VARIABLE_DECLARATION__IS_VAR:
+        return isVar != IS_VAR_EDEFAULT;
+      case DartPackage.VARIABLE_DECLARATION__IS_FINAL:
+        return isFinal != IS_FINAL_EDEFAULT;
       case DartPackage.VARIABLE_DECLARATION__TYPE:
         return type != null;
+      case DartPackage.VARIABLE_DECLARATION__IS_CONST:
+        return isConst != IS_CONST_EDEFAULT;
       case DartPackage.VARIABLE_DECLARATION__VARIABLES:
         return variables != null && !variables.isEmpty();
     }
@@ -366,8 +478,12 @@ public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements 
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (late: ");
     result.append(late);
-    result.append(", modifier: ");
-    result.append(modifier);
+    result.append(", isVar: ");
+    result.append(isVar);
+    result.append(", isFinal: ");
+    result.append(isFinal);
+    result.append(", isConst: ");
+    result.append(isConst);
     result.append(')');
     return result.toString();
   }

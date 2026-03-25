@@ -4,11 +4,16 @@
 package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
+import it.lorenzodeluca.dart.dart.FormalParameterPart;
+import it.lorenzodeluca.dart.dart.FunctionBody;
 import it.lorenzodeluca.dart.dart.FunctionDeclaration;
+import it.lorenzodeluca.dart.dart.Type;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -20,55 +25,46 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.FunctionDeclarationImpl#isExternal <em>External</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.FunctionDeclarationImpl#isIsExternal <em>Is External</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.FunctionDeclarationImpl#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.FunctionDeclarationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.FunctionDeclarationImpl#getSignature <em>Signature</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.FunctionDeclarationImpl#getBody <em>Body</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements FunctionDeclaration
+public class FunctionDeclarationImpl extends TopLevelDeclarationContentImpl implements FunctionDeclaration
 {
   /**
-   * The default value of the '{@link #isExternal() <em>External</em>}' attribute.
+   * The default value of the '{@link #isIsExternal() <em>Is External</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isExternal()
+   * @see #isIsExternal()
    * @generated
    * @ordered
    */
-  protected static final boolean EXTERNAL_EDEFAULT = false;
+  protected static final boolean IS_EXTERNAL_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #isExternal() <em>External</em>}' attribute.
+   * The cached value of the '{@link #isIsExternal() <em>Is External</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isExternal()
+   * @see #isIsExternal()
    * @generated
    * @ordered
    */
-  protected boolean external = EXTERNAL_EDEFAULT;
+  protected boolean isExternal = IS_EXTERNAL_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getReturnType() <em>Return Type</em>}' attribute.
+   * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getReturnType()
    * @generated
    * @ordered
    */
-  protected static final String RETURN_TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReturnType()
-   * @generated
-   * @ordered
-   */
-  protected String returnType = RETURN_TYPE_EDEFAULT;
+  protected Type returnType;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -91,24 +87,24 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements 
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
+   * The cached value of the '{@link #getSignature() <em>Signature</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBody()
+   * @see #getSignature()
    * @generated
    * @ordered
    */
-  protected static final String BODY_EDEFAULT = null;
+  protected FormalParameterPart signature;
 
   /**
-   * The cached value of the '{@link #getBody() <em>Body</em>}' attribute.
+   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getBody()
    * @generated
    * @ordered
    */
-  protected String body = BODY_EDEFAULT;
+  protected FunctionBody body;
 
   /**
    * <!-- begin-user-doc -->
@@ -137,9 +133,9 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements 
    * @generated
    */
   @Override
-  public boolean isExternal()
+  public boolean isIsExternal()
   {
-    return external;
+    return isExternal;
   }
 
   /**
@@ -148,12 +144,12 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements 
    * @generated
    */
   @Override
-  public void setExternal(boolean newExternal)
+  public void setIsExternal(boolean newIsExternal)
   {
-    boolean oldExternal = external;
-    external = newExternal;
+    boolean oldIsExternal = isExternal;
+    isExternal = newIsExternal;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.FUNCTION_DECLARATION__EXTERNAL, oldExternal, external));
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.FUNCTION_DECLARATION__IS_EXTERNAL, oldIsExternal, isExternal));
   }
 
   /**
@@ -162,7 +158,7 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements 
    * @generated
    */
   @Override
-  public String getReturnType()
+  public Type getReturnType()
   {
     return returnType;
   }
@@ -172,13 +168,38 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setReturnType(String newReturnType)
+  public NotificationChain basicSetReturnType(Type newReturnType, NotificationChain msgs)
   {
-    String oldReturnType = returnType;
+    Type oldReturnType = returnType;
     returnType = newReturnType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.FUNCTION_DECLARATION__RETURN_TYPE, oldReturnType, returnType));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.FUNCTION_DECLARATION__RETURN_TYPE, oldReturnType, newReturnType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setReturnType(Type newReturnType)
+  {
+    if (newReturnType != returnType)
+    {
+      NotificationChain msgs = null;
+      if (returnType != null)
+        msgs = ((InternalEObject)returnType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.FUNCTION_DECLARATION__RETURN_TYPE, null, msgs);
+      if (newReturnType != null)
+        msgs = ((InternalEObject)newReturnType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.FUNCTION_DECLARATION__RETURN_TYPE, null, msgs);
+      msgs = basicSetReturnType(newReturnType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.FUNCTION_DECLARATION__RETURN_TYPE, newReturnType, newReturnType));
   }
 
   /**
@@ -212,7 +233,57 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements 
    * @generated
    */
   @Override
-  public String getBody()
+  public FormalParameterPart getSignature()
+  {
+    return signature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSignature(FormalParameterPart newSignature, NotificationChain msgs)
+  {
+    FormalParameterPart oldSignature = signature;
+    signature = newSignature;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.FUNCTION_DECLARATION__SIGNATURE, oldSignature, newSignature);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setSignature(FormalParameterPart newSignature)
+  {
+    if (newSignature != signature)
+    {
+      NotificationChain msgs = null;
+      if (signature != null)
+        msgs = ((InternalEObject)signature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.FUNCTION_DECLARATION__SIGNATURE, null, msgs);
+      if (newSignature != null)
+        msgs = ((InternalEObject)newSignature).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.FUNCTION_DECLARATION__SIGNATURE, null, msgs);
+      msgs = basicSetSignature(newSignature, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.FUNCTION_DECLARATION__SIGNATURE, newSignature, newSignature));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FunctionBody getBody()
   {
     return body;
   }
@@ -222,13 +293,58 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setBody(String newBody)
+  public NotificationChain basicSetBody(FunctionBody newBody, NotificationChain msgs)
   {
-    String oldBody = body;
+    FunctionBody oldBody = body;
     body = newBody;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.FUNCTION_DECLARATION__BODY, oldBody, body));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.FUNCTION_DECLARATION__BODY, oldBody, newBody);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setBody(FunctionBody newBody)
+  {
+    if (newBody != body)
+    {
+      NotificationChain msgs = null;
+      if (body != null)
+        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.FUNCTION_DECLARATION__BODY, null, msgs);
+      if (newBody != null)
+        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.FUNCTION_DECLARATION__BODY, null, msgs);
+      msgs = basicSetBody(newBody, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.FUNCTION_DECLARATION__BODY, newBody, newBody));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DartPackage.FUNCTION_DECLARATION__RETURN_TYPE:
+        return basicSetReturnType(null, msgs);
+      case DartPackage.FUNCTION_DECLARATION__SIGNATURE:
+        return basicSetSignature(null, msgs);
+      case DartPackage.FUNCTION_DECLARATION__BODY:
+        return basicSetBody(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -241,12 +357,14 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements 
   {
     switch (featureID)
     {
-      case DartPackage.FUNCTION_DECLARATION__EXTERNAL:
-        return isExternal();
+      case DartPackage.FUNCTION_DECLARATION__IS_EXTERNAL:
+        return isIsExternal();
       case DartPackage.FUNCTION_DECLARATION__RETURN_TYPE:
         return getReturnType();
       case DartPackage.FUNCTION_DECLARATION__NAME:
         return getName();
+      case DartPackage.FUNCTION_DECLARATION__SIGNATURE:
+        return getSignature();
       case DartPackage.FUNCTION_DECLARATION__BODY:
         return getBody();
     }
@@ -263,17 +381,20 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements 
   {
     switch (featureID)
     {
-      case DartPackage.FUNCTION_DECLARATION__EXTERNAL:
-        setExternal((Boolean)newValue);
+      case DartPackage.FUNCTION_DECLARATION__IS_EXTERNAL:
+        setIsExternal((Boolean)newValue);
         return;
       case DartPackage.FUNCTION_DECLARATION__RETURN_TYPE:
-        setReturnType((String)newValue);
+        setReturnType((Type)newValue);
         return;
       case DartPackage.FUNCTION_DECLARATION__NAME:
         setName((String)newValue);
         return;
+      case DartPackage.FUNCTION_DECLARATION__SIGNATURE:
+        setSignature((FormalParameterPart)newValue);
+        return;
       case DartPackage.FUNCTION_DECLARATION__BODY:
-        setBody((String)newValue);
+        setBody((FunctionBody)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -289,17 +410,20 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements 
   {
     switch (featureID)
     {
-      case DartPackage.FUNCTION_DECLARATION__EXTERNAL:
-        setExternal(EXTERNAL_EDEFAULT);
+      case DartPackage.FUNCTION_DECLARATION__IS_EXTERNAL:
+        setIsExternal(IS_EXTERNAL_EDEFAULT);
         return;
       case DartPackage.FUNCTION_DECLARATION__RETURN_TYPE:
-        setReturnType(RETURN_TYPE_EDEFAULT);
+        setReturnType((Type)null);
         return;
       case DartPackage.FUNCTION_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case DartPackage.FUNCTION_DECLARATION__SIGNATURE:
+        setSignature((FormalParameterPart)null);
+        return;
       case DartPackage.FUNCTION_DECLARATION__BODY:
-        setBody(BODY_EDEFAULT);
+        setBody((FunctionBody)null);
         return;
     }
     super.eUnset(featureID);
@@ -315,14 +439,16 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements 
   {
     switch (featureID)
     {
-      case DartPackage.FUNCTION_DECLARATION__EXTERNAL:
-        return external != EXTERNAL_EDEFAULT;
+      case DartPackage.FUNCTION_DECLARATION__IS_EXTERNAL:
+        return isExternal != IS_EXTERNAL_EDEFAULT;
       case DartPackage.FUNCTION_DECLARATION__RETURN_TYPE:
-        return RETURN_TYPE_EDEFAULT == null ? returnType != null : !RETURN_TYPE_EDEFAULT.equals(returnType);
+        return returnType != null;
       case DartPackage.FUNCTION_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DartPackage.FUNCTION_DECLARATION__SIGNATURE:
+        return signature != null;
       case DartPackage.FUNCTION_DECLARATION__BODY:
-        return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
+        return body != null;
     }
     return super.eIsSet(featureID);
   }
@@ -338,14 +464,10 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements 
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (external: ");
-    result.append(external);
-    result.append(", returnType: ");
-    result.append(returnType);
+    result.append(" (isExternal: ");
+    result.append(isExternal);
     result.append(", name: ");
     result.append(name);
-    result.append(", body: ");
-    result.append(body);
     result.append(')');
     return result.toString();
   }

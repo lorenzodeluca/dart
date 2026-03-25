@@ -3,6 +3,7 @@
  */
 package it.lorenzodeluca.dart.dart;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,39 +14,15 @@ package it.lorenzodeluca.dart.dart;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link it.lorenzodeluca.dart.dart.TypeName#isNullable <em>Nullable</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.TypeName#getName <em>Name</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.TypeName#getTypeArguments <em>Type Arguments</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeName()
  * @model
  * @generated
  */
-public interface TypeName extends Type
+public interface TypeName extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Nullable</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Nullable</em>' attribute.
-   * @see #setNullable(boolean)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeName_Nullable()
-   * @model
-   * @generated
-   */
-  boolean isNullable();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.TypeName#isNullable <em>Nullable</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Nullable</em>' attribute.
-   * @see #isNullable()
-   * @generated
-   */
-  void setNullable(boolean value);
-
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -67,27 +44,5 @@ public interface TypeName extends Type
    * @generated
    */
   void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Type Arguments</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Type Arguments</em>' containment reference.
-   * @see #setTypeArguments(TypeArguments)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeName_TypeArguments()
-   * @model containment="true"
-   * @generated
-   */
-  TypeArguments getTypeArguments();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.TypeName#getTypeArguments <em>Type Arguments</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type Arguments</em>' containment reference.
-   * @see #getTypeArguments()
-   * @generated
-   */
-  void setTypeArguments(TypeArguments value);
 
 } // TypeName

@@ -3,27 +3,104 @@
  */
 package it.lorenzodeluca.dart.dart.impl;
 
+import it.lorenzodeluca.dart.dart.Additive;
+import it.lorenzodeluca.dart.dart.AnnotatedTopLevel;
+import it.lorenzodeluca.dart.dart.Arguments;
+import it.lorenzodeluca.dart.dart.Assignment;
+import it.lorenzodeluca.dart.dart.BitwiseAnd;
+import it.lorenzodeluca.dart.dart.BitwiseOr;
+import it.lorenzodeluca.dart.dart.BitwiseXor;
+import it.lorenzodeluca.dart.dart.Block;
+import it.lorenzodeluca.dart.dart.BooleanLiteral;
+import it.lorenzodeluca.dart.dart.BreakStatement;
+import it.lorenzodeluca.dart.dart.CatchClause;
 import it.lorenzodeluca.dart.dart.ClassDeclaration;
-import it.lorenzodeluca.dart.dart.CompilationUnit;
+import it.lorenzodeluca.dart.dart.CollectionLiteral;
+import it.lorenzodeluca.dart.dart.Combinator;
+import it.lorenzodeluca.dart.dart.Conditional;
+import it.lorenzodeluca.dart.dart.ConstExpression;
+import it.lorenzodeluca.dart.dart.ContinueStatement;
 import it.lorenzodeluca.dart.dart.DartFactory;
+import it.lorenzodeluca.dart.dart.DartFile;
 import it.lorenzodeluca.dart.dart.DartPackage;
+import it.lorenzodeluca.dart.dart.Declaration;
+import it.lorenzodeluca.dart.dart.DefaultCase;
+import it.lorenzodeluca.dart.dart.DefaultFormalParameter;
+import it.lorenzodeluca.dart.dart.DefaultNamedParameter;
+import it.lorenzodeluca.dart.dart.DoStatement;
+import it.lorenzodeluca.dart.dart.ElementWithMetadata;
 import it.lorenzodeluca.dart.dart.EnumDeclaration;
+import it.lorenzodeluca.dart.dart.EnumEntry;
+import it.lorenzodeluca.dart.dart.Equality;
+import it.lorenzodeluca.dart.dart.Expression;
+import it.lorenzodeluca.dart.dart.ExpressionStatement;
 import it.lorenzodeluca.dart.dart.ExtensionDeclaration;
+import it.lorenzodeluca.dart.dart.FinallyClause;
+import it.lorenzodeluca.dart.dart.ForStatement;
+import it.lorenzodeluca.dart.dart.FormalParameterList;
+import it.lorenzodeluca.dart.dart.FormalParameterPart;
+import it.lorenzodeluca.dart.dart.FunctionBody;
 import it.lorenzodeluca.dart.dart.FunctionDeclaration;
-import it.lorenzodeluca.dart.dart.ImportOrExport;
-import it.lorenzodeluca.dart.dart.LibraryExport;
-import it.lorenzodeluca.dart.dart.LibraryImport;
+import it.lorenzodeluca.dart.dart.IdentifierRef;
+import it.lorenzodeluca.dart.dart.IfNull;
+import it.lorenzodeluca.dart.dart.IfStatement;
+import it.lorenzodeluca.dart.dart.ImportOrExportContent;
+import it.lorenzodeluca.dart.dart.IndexExpression;
+import it.lorenzodeluca.dart.dart.InitializedIdentifier;
+import it.lorenzodeluca.dart.dart.Interfaces;
+import it.lorenzodeluca.dart.dart.Label;
+import it.lorenzodeluca.dart.dart.LibraryDeclaration;
 import it.lorenzodeluca.dart.dart.LibraryName;
+import it.lorenzodeluca.dart.dart.LocalVariableDeclaration;
+import it.lorenzodeluca.dart.dart.LogicalAnd;
+import it.lorenzodeluca.dart.dart.LogicalOr;
+import it.lorenzodeluca.dart.dart.MapOrSetElement;
+import it.lorenzodeluca.dart.dart.MemberDeclaration;
+import it.lorenzodeluca.dart.dart.Metadata;
+import it.lorenzodeluca.dart.dart.MethodInvocation;
+import it.lorenzodeluca.dart.dart.MethodSignature;
+import it.lorenzodeluca.dart.dart.MixinApplicationClass;
 import it.lorenzodeluca.dart.dart.MixinDeclaration;
-import it.lorenzodeluca.dart.dart.PartDirective;
+import it.lorenzodeluca.dart.dart.Mixins;
+import it.lorenzodeluca.dart.dart.Multiplicative;
+import it.lorenzodeluca.dart.dart.NamedFormalParameters;
+import it.lorenzodeluca.dart.dart.NewExpression;
+import it.lorenzodeluca.dart.dart.NonLabelledStatement;
+import it.lorenzodeluca.dart.dart.NormalFormalParameter;
+import it.lorenzodeluca.dart.dart.NullLiteral;
+import it.lorenzodeluca.dart.dart.NumberLiteral;
+import it.lorenzodeluca.dart.dart.OptionalOrNamedFormalParameters;
+import it.lorenzodeluca.dart.dart.OptionalPositionalFormalParameters;
+import it.lorenzodeluca.dart.dart.ParenthesizedExpression;
+import it.lorenzodeluca.dart.dart.PartDeclaration;
+import it.lorenzodeluca.dart.dart.PartDirectiveContent;
+import it.lorenzodeluca.dart.dart.PartHeader;
+import it.lorenzodeluca.dart.dart.Postfix;
+import it.lorenzodeluca.dart.dart.PrefixExpression;
+import it.lorenzodeluca.dart.dart.Relational;
+import it.lorenzodeluca.dart.dart.RethrowStatement;
+import it.lorenzodeluca.dart.dart.ReturnStatement;
 import it.lorenzodeluca.dart.dart.ScriptTag;
-import it.lorenzodeluca.dart.dart.TopLevelDeclaration;
+import it.lorenzodeluca.dart.dart.Shift;
+import it.lorenzodeluca.dart.dart.Statement;
+import it.lorenzodeluca.dart.dart.StringLiteral;
+import it.lorenzodeluca.dart.dart.SuperExpression;
+import it.lorenzodeluca.dart.dart.Superclass;
+import it.lorenzodeluca.dart.dart.SwitchCase;
+import it.lorenzodeluca.dart.dart.SwitchStatement;
+import it.lorenzodeluca.dart.dart.ThisExpression;
+import it.lorenzodeluca.dart.dart.TopLevelDeclarationContent;
+import it.lorenzodeluca.dart.dart.TryStatement;
 import it.lorenzodeluca.dart.dart.Type;
 import it.lorenzodeluca.dart.dart.TypeAlias;
 import it.lorenzodeluca.dart.dart.TypeArguments;
+import it.lorenzodeluca.dart.dart.TypeCheck;
 import it.lorenzodeluca.dart.dart.TypeName;
+import it.lorenzodeluca.dart.dart.TypeParameter;
+import it.lorenzodeluca.dart.dart.TypeParameters;
 import it.lorenzodeluca.dart.dart.VariableDeclaration;
-import it.lorenzodeluca.dart.dart.VariableSingleDeclaration;
+import it.lorenzodeluca.dart.dart.WhileStatement;
+import it.lorenzodeluca.dart.dart.YieldStatement;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -45,56 +122,91 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass compilationUnitEClass = null;
+  private EClass dartFileEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass scriptTagEClass = null;
+  private EClass variableDeclarationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass libraryNameEClass = null;
+  private EClass initializedIdentifierEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass importOrExportEClass = null;
+  private EClass functionDeclarationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass libraryImportEClass = null;
+  private EClass formalParameterPartEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass libraryExportEClass = null;
+  private EClass formalParameterListEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass partDirectiveEClass = null;
+  private EClass normalFormalParameterEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass topLevelDeclarationEClass = null;
+  private EClass optionalOrNamedFormalParametersEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass optionalPositionalFormalParametersEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass namedFormalParametersEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass defaultFormalParameterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass defaultNamedParameterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionBodyEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -108,7 +220,56 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass superclassEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mixinsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass interfacesEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass memberDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass methodSignatureEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass declarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass mixinDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mixinApplicationClassEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -129,28 +290,287 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass enumEntryEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeParametersEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeParameterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass metadataEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass argumentsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass collectionLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mapOrSetElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass statementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass labelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass nonLabelledStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass blockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass localVariableDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ifStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass forStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass whileStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass doStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass switchStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass switchCaseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass defaultCaseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass rethrowStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tryStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass catchClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass finallyClauseEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass breakStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass continueStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass returnStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass yieldStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass libraryDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass elementWithMetadataEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass importOrExportContentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass combinatorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass partDirectiveContentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass partDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass annotatedTopLevelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass scriptTagEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass libraryNameEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass partHeaderEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass topLevelDeclarationContentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass typeAliasEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass functionDeclarationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass variableDeclarationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass variableSingleDeclarationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -172,6 +592,202 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   private EClass typeArgumentsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass assignmentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass conditionalEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ifNullEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass logicalOrEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass logicalAndEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass equalityEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass relationalEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeCheckEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass bitwiseOrEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass bitwiseXorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass bitwiseAndEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass shiftEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass additiveEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass multiplicativeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass prefixExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass postfixEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass methodInvocationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass indexExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass thisExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass superExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass nullLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass booleanLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass numberLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stringLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass identifierRefEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass newExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass constExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parenthesizedExpressionEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -241,9 +857,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EClass getCompilationUnit()
+  public EClass getDartFile()
   {
-    return compilationUnitEClass;
+    return dartFileEClass;
   }
 
   /**
@@ -252,9 +868,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getCompilationUnit_ScriptTag()
+  public EClass getVariableDeclaration()
   {
-    return (EReference)compilationUnitEClass.getEStructuralFeatures().get(0);
+    return variableDeclarationEClass;
   }
 
   /**
@@ -263,9 +879,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getCompilationUnit_LibraryName()
+  public EAttribute getVariableDeclaration_Late()
   {
-    return (EReference)compilationUnitEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -274,9 +890,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getCompilationUnit_Directives()
+  public EAttribute getVariableDeclaration_IsVar()
   {
-    return (EReference)compilationUnitEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -285,9 +901,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getCompilationUnit_PartDirectives()
+  public EAttribute getVariableDeclaration_IsFinal()
   {
-    return (EReference)compilationUnitEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -296,9 +912,2275 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getCompilationUnit_Declarations()
+  public EReference getVariableDeclaration_Type()
   {
-    return (EReference)compilationUnitEClass.getEStructuralFeatures().get(4);
+    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getVariableDeclaration_IsConst()
+  {
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getVariableDeclaration_Variables()
+  {
+    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getInitializedIdentifier()
+  {
+    return initializedIdentifierEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getInitializedIdentifier_Name()
+  {
+    return (EAttribute)initializedIdentifierEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getInitializedIdentifier_InitialValue()
+  {
+    return (EReference)initializedIdentifierEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFunctionDeclaration()
+  {
+    return functionDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFunctionDeclaration_IsExternal()
+  {
+    return (EAttribute)functionDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionDeclaration_ReturnType()
+  {
+    return (EReference)functionDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFunctionDeclaration_Name()
+  {
+    return (EAttribute)functionDeclarationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionDeclaration_Signature()
+  {
+    return (EReference)functionDeclarationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionDeclaration_Body()
+  {
+    return (EReference)functionDeclarationEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFormalParameterPart()
+  {
+    return formalParameterPartEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFormalParameterPart_TypeParameters()
+  {
+    return (EReference)formalParameterPartEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFormalParameterPart_Parameters()
+  {
+    return (EReference)formalParameterPartEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFormalParameterList()
+  {
+    return formalParameterListEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFormalParameterList_NormalParameters()
+  {
+    return (EReference)formalParameterListEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFormalParameterList_OptionalParameters()
+  {
+    return (EReference)formalParameterListEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNormalFormalParameter()
+  {
+    return normalFormalParameterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNormalFormalParameter_Metadata()
+  {
+    return (EReference)normalFormalParameterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNormalFormalParameter_IsCovariant()
+  {
+    return (EAttribute)normalFormalParameterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNormalFormalParameter_Type()
+  {
+    return (EReference)normalFormalParameterEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNormalFormalParameter_Name()
+  {
+    return (EAttribute)normalFormalParameterEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getOptionalOrNamedFormalParameters()
+  {
+    return optionalOrNamedFormalParametersEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getOptionalPositionalFormalParameters()
+  {
+    return optionalPositionalFormalParametersEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getOptionalPositionalFormalParameters_Parameters()
+  {
+    return (EReference)optionalPositionalFormalParametersEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNamedFormalParameters()
+  {
+    return namedFormalParametersEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNamedFormalParameters_Parameters()
+  {
+    return (EReference)namedFormalParametersEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDefaultFormalParameter()
+  {
+    return defaultFormalParameterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDefaultFormalParameter_Parameter()
+  {
+    return (EReference)defaultFormalParameterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDefaultFormalParameter_DefaultValue()
+  {
+    return (EReference)defaultFormalParameterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDefaultNamedParameter()
+  {
+    return defaultNamedParameterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDefaultNamedParameter_IsRequired()
+  {
+    return (EAttribute)defaultNamedParameterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDefaultNamedParameter_Parameter()
+  {
+    return (EReference)defaultNamedParameterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDefaultNamedParameter_DefaultValue()
+  {
+    return (EReference)defaultNamedParameterEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFunctionBody()
+  {
+    return functionBodyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFunctionBody_IsAsync()
+  {
+    return (EAttribute)functionBodyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFunctionBody_IsSync()
+  {
+    return (EAttribute)functionBodyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFunctionBody_IsStar()
+  {
+    return (EAttribute)functionBodyEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionBody_Expression()
+  {
+    return (EReference)functionBodyEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionBody_Block()
+  {
+    return (EReference)functionBodyEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getClassDeclaration()
+  {
+    return classDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getClassDeclaration_IsAbstract()
+  {
+    return (EAttribute)classDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getClassDeclaration_Name()
+  {
+    return (EAttribute)classDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getClassDeclaration_TypeParameters()
+  {
+    return (EReference)classDeclarationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getClassDeclaration_Superclass()
+  {
+    return (EReference)classDeclarationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getClassDeclaration_Interfaces()
+  {
+    return (EReference)classDeclarationEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getClassDeclaration_Members()
+  {
+    return (EReference)classDeclarationEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSuperclass()
+  {
+    return superclassEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSuperclass_Type()
+  {
+    return (EReference)superclassEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSuperclass_Mixins()
+  {
+    return (EReference)superclassEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMixins()
+  {
+    return mixinsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMixins_Types()
+  {
+    return (EReference)mixinsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getInterfaces()
+  {
+    return interfacesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getInterfaces_Types()
+  {
+    return (EReference)interfacesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMemberDeclaration()
+  {
+    return memberDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMemberDeclaration_Metadata()
+  {
+    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMemberDeclaration_IsStatic()
+  {
+    return (EAttribute)memberDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMemberDeclaration_Method()
+  {
+    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMemberDeclaration_Body()
+  {
+    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMemberDeclaration_Variable()
+  {
+    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMethodSignature()
+  {
+    return methodSignatureEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMethodSignature_ReturnType()
+  {
+    return (EReference)methodSignatureEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMethodSignature_IsOperator()
+  {
+    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMethodSignature_Operator()
+  {
+    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMethodSignature_IsGetter()
+  {
+    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMethodSignature_IsSetter()
+  {
+    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMethodSignature_Name()
+  {
+    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMethodSignature_Parameters()
+  {
+    return (EReference)methodSignatureEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDeclaration()
+  {
+    return declarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDeclaration_IsExternal()
+  {
+    return (EAttribute)declarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDeclaration_IsLate()
+  {
+    return (EAttribute)declarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDeclaration_IsFinal()
+  {
+    return (EAttribute)declarationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDeclaration_IsConst()
+  {
+    return (EAttribute)declarationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDeclaration_Type()
+  {
+    return (EReference)declarationEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDeclaration_Name()
+  {
+    return (EAttribute)declarationEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDeclaration_InitialValue()
+  {
+    return (EReference)declarationEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMixinDeclaration()
+  {
+    return mixinDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMixinDeclaration_Name()
+  {
+    return (EAttribute)mixinDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMixinDeclaration_TypeParameters()
+  {
+    return (EReference)mixinDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMixinDeclaration_OnTypes()
+  {
+    return (EReference)mixinDeclarationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMixinDeclaration_Interfaces()
+  {
+    return (EReference)mixinDeclarationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMixinDeclaration_Members()
+  {
+    return (EReference)mixinDeclarationEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMixinApplicationClass()
+  {
+    return mixinApplicationClassEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMixinApplicationClass_Name()
+  {
+    return (EAttribute)mixinApplicationClassEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMixinApplicationClass_TypeParameters()
+  {
+    return (EReference)mixinApplicationClassEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMixinApplicationClass_Type()
+  {
+    return (EReference)mixinApplicationClassEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMixinApplicationClass_Mixins()
+  {
+    return (EReference)mixinApplicationClassEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMixinApplicationClass_Interfaces()
+  {
+    return (EReference)mixinApplicationClassEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExtensionDeclaration()
+  {
+    return extensionDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getExtensionDeclaration_Name()
+  {
+    return (EAttribute)extensionDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExtensionDeclaration_TypeParameters()
+  {
+    return (EReference)extensionDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExtensionDeclaration_OnType()
+  {
+    return (EReference)extensionDeclarationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExtensionDeclaration_Members()
+  {
+    return (EReference)extensionDeclarationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEnumDeclaration()
+  {
+    return enumDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEnumDeclaration_Name()
+  {
+    return (EAttribute)enumDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEnumDeclaration_Entries()
+  {
+    return (EReference)enumDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEnumEntry()
+  {
+    return enumEntryEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEnumEntry_Metadata()
+  {
+    return (EReference)enumEntryEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEnumEntry_Name()
+  {
+    return (EAttribute)enumEntryEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTypeParameters()
+  {
+    return typeParametersEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTypeParameters_Parameters()
+  {
+    return (EReference)typeParametersEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTypeParameter()
+  {
+    return typeParameterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTypeParameter_Metadata()
+  {
+    return (EReference)typeParameterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTypeParameter_Name()
+  {
+    return (EAttribute)typeParameterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTypeParameter_Bound()
+  {
+    return (EReference)typeParameterEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMetadata()
+  {
+    return metadataEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMetadata_Name()
+  {
+    return (EAttribute)metadataEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMetadata_Constructor()
+  {
+    return (EAttribute)metadataEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMetadata_Arguments()
+  {
+    return (EReference)metadataEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getArguments()
+  {
+    return argumentsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getArguments_Arguments()
+  {
+    return (EReference)argumentsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExpression()
+  {
+    return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExpression_Value()
+  {
+    return (EReference)expressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCollectionLiteral()
+  {
+    return collectionLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCollectionLiteral_IsConst()
+  {
+    return (EAttribute)collectionLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCollectionLiteral_TypeArguments()
+  {
+    return (EReference)collectionLiteralEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCollectionLiteral_ListElements()
+  {
+    return (EReference)collectionLiteralEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCollectionLiteral_MapElements()
+  {
+    return (EReference)collectionLiteralEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMapOrSetElement()
+  {
+    return mapOrSetElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getStatement()
+  {
+    return statementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getStatement_Labels()
+  {
+    return (EReference)statementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getStatement_Statement()
+  {
+    return (EReference)statementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLabel()
+  {
+    return labelEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLabel_Name()
+  {
+    return (EAttribute)labelEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNonLabelledStatement()
+  {
+    return nonLabelledStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBlock()
+  {
+    return blockEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBlock_Statements()
+  {
+    return (EReference)blockEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLocalVariableDeclaration()
+  {
+    return localVariableDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLocalVariableDeclaration_Variable()
+  {
+    return (EReference)localVariableDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getIfStatement()
+  {
+    return ifStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfStatement_Condition()
+  {
+    return (EReference)ifStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfStatement_ThenStatement()
+  {
+    return (EReference)ifStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfStatement_ElseStatement()
+  {
+    return (EReference)ifStatementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getForStatement()
+  {
+    return forStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getForStatement_IsAwait()
+  {
+    return (EAttribute)forStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForStatement_Init()
+  {
+    return (EReference)forStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForStatement_InitExpr()
+  {
+    return (EReference)forStatementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForStatement_Condition()
+  {
+    return (EReference)forStatementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForStatement_Update()
+  {
+    return (EReference)forStatementEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForStatement_Body()
+  {
+    return (EReference)forStatementEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getWhileStatement()
+  {
+    return whileStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getWhileStatement_Condition()
+  {
+    return (EReference)whileStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getWhileStatement_Body()
+  {
+    return (EReference)whileStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDoStatement()
+  {
+    return doStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDoStatement_Body()
+  {
+    return (EReference)doStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDoStatement_Condition()
+  {
+    return (EReference)doStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSwitchStatement()
+  {
+    return switchStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSwitchStatement_Expression()
+  {
+    return (EReference)switchStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSwitchStatement_Cases()
+  {
+    return (EReference)switchStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSwitchStatement_DefaultCase()
+  {
+    return (EReference)switchStatementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSwitchCase()
+  {
+    return switchCaseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSwitchCase_Labels()
+  {
+    return (EReference)switchCaseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSwitchCase_Expression()
+  {
+    return (EReference)switchCaseEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSwitchCase_Statements()
+  {
+    return (EReference)switchCaseEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDefaultCase()
+  {
+    return defaultCaseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDefaultCase_Labels()
+  {
+    return (EReference)defaultCaseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDefaultCase_Statements()
+  {
+    return (EReference)defaultCaseEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getRethrowStatement()
+  {
+    return rethrowStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTryStatement()
+  {
+    return tryStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTryStatement_Block()
+  {
+    return (EReference)tryStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTryStatement_CatchClauses()
+  {
+    return (EReference)tryStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTryStatement_FinallyBlock()
+  {
+    return (EReference)tryStatementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCatchClause()
+  {
+    return catchClauseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCatchClause_Type()
+  {
+    return (EReference)catchClauseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCatchClause_Exception()
+  {
+    return (EAttribute)catchClauseEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCatchClause_StackTrace()
+  {
+    return (EAttribute)catchClauseEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCatchClause_Block()
+  {
+    return (EReference)catchClauseEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFinallyClause()
+  {
+    return finallyClauseEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFinallyClause_Block()
+  {
+    return (EReference)finallyClauseEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBreakStatement()
+  {
+    return breakStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getBreakStatement_Label()
+  {
+    return (EAttribute)breakStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getContinueStatement()
+  {
+    return continueStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getContinueStatement_Label()
+  {
+    return (EAttribute)continueStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getReturnStatement()
+  {
+    return returnStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getReturnStatement_Expression()
+  {
+    return (EReference)returnStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getYieldStatement()
+  {
+    return yieldStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getYieldStatement_IsStar()
+  {
+    return (EAttribute)yieldStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getYieldStatement_Expression()
+  {
+    return (EReference)yieldStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExpressionStatement()
+  {
+    return expressionStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExpressionStatement_Expression()
+  {
+    return (EReference)expressionStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLibraryDeclaration()
+  {
+    return libraryDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLibraryDeclaration_ScriptTag()
+  {
+    return (EReference)libraryDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLibraryDeclaration_LibraryName()
+  {
+    return (EReference)libraryDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLibraryDeclaration_Elements()
+  {
+    return (EReference)libraryDeclarationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getElementWithMetadata()
+  {
+    return elementWithMetadataEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getElementWithMetadata_Metadata()
+  {
+    return (EReference)elementWithMetadataEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getElementWithMetadata_Element()
+  {
+    return (EReference)elementWithMetadataEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getElementWithMetadata_Member()
+  {
+    return (EReference)elementWithMetadataEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getImportOrExportContent()
+  {
+    return importOrExportContentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getImportOrExportContent_IsImport()
+  {
+    return (EAttribute)importOrExportContentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getImportOrExportContent_ImportURI()
+  {
+    return (EAttribute)importOrExportContentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getImportOrExportContent_IsDeferred()
+  {
+    return (EAttribute)importOrExportContentEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getImportOrExportContent_Prefix()
+  {
+    return (EAttribute)importOrExportContentEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getImportOrExportContent_Combinators()
+  {
+    return (EReference)importOrExportContentEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getImportOrExportContent_IsExport()
+  {
+    return (EAttribute)importOrExportContentEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getImportOrExportContent_ExportURI()
+  {
+    return (EAttribute)importOrExportContentEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCombinator()
+  {
+    return combinatorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCombinator_Identifiers()
+  {
+    return (EAttribute)combinatorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPartDirectiveContent()
+  {
+    return partDirectiveContentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPartDirectiveContent_PartURI()
+  {
+    return (EAttribute)partDirectiveContentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPartDeclaration()
+  {
+    return partDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPartDeclaration_PartHeader()
+  {
+    return (EReference)partDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPartDeclaration_Declarations()
+  {
+    return (EReference)partDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAnnotatedTopLevel()
+  {
+    return annotatedTopLevelEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAnnotatedTopLevel_Metadata()
+  {
+    return (EReference)annotatedTopLevelEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAnnotatedTopLevel_Member()
+  {
+    return (EReference)annotatedTopLevelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -351,9 +3233,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EClass getImportOrExport()
+  public EClass getPartHeader()
   {
-    return importOrExportEClass;
+    return partHeaderEClass;
   }
 
   /**
@@ -362,9 +3244,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EClass getLibraryImport()
+  public EAttribute getPartHeader_Name()
   {
-    return libraryImportEClass;
+    return (EAttribute)partHeaderEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -373,9 +3255,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getLibraryImport_ImportURI()
+  public EAttribute getPartHeader_Uri()
   {
-    return (EAttribute)libraryImportEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)partHeaderEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -384,163 +3266,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getLibraryImport_Alias()
+  public EClass getTopLevelDeclarationContent()
   {
-    return (EAttribute)libraryImportEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getLibraryExport()
-  {
-    return libraryExportEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getLibraryExport_ExportURI()
-  {
-    return (EAttribute)libraryExportEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getPartDirective()
-  {
-    return partDirectiveEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getPartDirective_PartURI()
-  {
-    return (EAttribute)partDirectiveEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getTopLevelDeclaration()
-  {
-    return topLevelDeclarationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getTopLevelDeclaration_Metadata()
-  {
-    return (EAttribute)topLevelDeclarationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getClassDeclaration()
-  {
-    return classDeclarationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getClassDeclaration_Name()
-  {
-    return (EAttribute)classDeclarationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getMixinDeclaration()
-  {
-    return mixinDeclarationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getMixinDeclaration_Name()
-  {
-    return (EAttribute)mixinDeclarationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getExtensionDeclaration()
-  {
-    return extensionDeclarationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getExtensionDeclaration_Name()
-  {
-    return (EAttribute)extensionDeclarationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getEnumDeclaration()
-  {
-    return enumDeclarationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getEnumDeclaration_Name()
-  {
-    return (EAttribute)enumDeclarationEClass.getEStructuralFeatures().get(0);
+    return topLevelDeclarationContentEClass;
   }
 
   /**
@@ -571,9 +3299,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EClass getFunctionDeclaration()
+  public EReference getTypeAlias_TypeParameters()
   {
-    return functionDeclarationEClass;
+    return (EReference)typeAliasEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -582,130 +3310,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getFunctionDeclaration_External()
+  public EReference getTypeAlias_Type()
   {
-    return (EAttribute)functionDeclarationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getFunctionDeclaration_ReturnType()
-  {
-    return (EAttribute)functionDeclarationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getFunctionDeclaration_Name()
-  {
-    return (EAttribute)functionDeclarationEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getFunctionDeclaration_Body()
-  {
-    return (EAttribute)functionDeclarationEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getVariableDeclaration()
-  {
-    return variableDeclarationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getVariableDeclaration_Late()
-  {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getVariableDeclaration_Modifier()
-  {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getVariableDeclaration_Type()
-  {
-    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getVariableDeclaration_Variables()
-  {
-    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getVariableSingleDeclaration()
-  {
-    return variableSingleDeclarationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getVariableSingleDeclaration_Name()
-  {
-    return (EAttribute)variableSingleDeclarationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getVariableSingleDeclaration_InitialValue()
-  {
-    return (EAttribute)variableSingleDeclarationEClass.getEStructuralFeatures().get(1);
+    return (EReference)typeAliasEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -725,6 +3332,39 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EReference getType_TypeName()
+  {
+    return (EReference)typeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getType_TypeArguments()
+  {
+    return (EReference)typeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getType_IsNullable()
+  {
+    return (EAttribute)typeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getTypeName()
   {
     return typeNameEClass;
@@ -736,31 +3376,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getTypeName_Nullable()
-  {
-    return (EAttribute)typeNameEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EAttribute getTypeName_Name()
   {
-    return (EAttribute)typeNameEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getTypeName_TypeArguments()
-  {
-    return (EReference)typeNameEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)typeNameEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -780,9 +3398,944 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getTypeArguments_Elements()
+  public EReference getTypeArguments_Types()
   {
     return (EReference)typeArgumentsEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAssignment()
+  {
+    return assignmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAssignment_Left()
+  {
+    return (EReference)assignmentEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getAssignment_Operator()
+  {
+    return (EAttribute)assignmentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAssignment_Right()
+  {
+    return (EReference)assignmentEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getConditional()
+  {
+    return conditionalEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConditional_Condition()
+  {
+    return (EReference)conditionalEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConditional_ThenExpr()
+  {
+    return (EReference)conditionalEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConditional_ElseExpr()
+  {
+    return (EReference)conditionalEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getIfNull()
+  {
+    return ifNullEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfNull_Left()
+  {
+    return (EReference)ifNullEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfNull_Right()
+  {
+    return (EReference)ifNullEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLogicalOr()
+  {
+    return logicalOrEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLogicalOr_Left()
+  {
+    return (EReference)logicalOrEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLogicalOr_Right()
+  {
+    return (EReference)logicalOrEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLogicalAnd()
+  {
+    return logicalAndEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLogicalAnd_Left()
+  {
+    return (EReference)logicalAndEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLogicalAnd_Right()
+  {
+    return (EReference)logicalAndEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEquality()
+  {
+    return equalityEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEquality_Left()
+  {
+    return (EReference)equalityEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getEquality_Operator()
+  {
+    return (EAttribute)equalityEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEquality_Right()
+  {
+    return (EReference)equalityEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getRelational()
+  {
+    return relationalEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRelational_Left()
+  {
+    return (EReference)relationalEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRelational_Operator()
+  {
+    return (EAttribute)relationalEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRelational_Right()
+  {
+    return (EReference)relationalEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTypeCheck()
+  {
+    return typeCheckEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTypeCheck_Left()
+  {
+    return (EReference)typeCheckEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTypeCheck_Operator()
+  {
+    return (EAttribute)typeCheckEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTypeCheck_Type()
+  {
+    return (EReference)typeCheckEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBitwiseOr()
+  {
+    return bitwiseOrEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBitwiseOr_Left()
+  {
+    return (EReference)bitwiseOrEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBitwiseOr_Right()
+  {
+    return (EReference)bitwiseOrEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBitwiseXor()
+  {
+    return bitwiseXorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBitwiseXor_Left()
+  {
+    return (EReference)bitwiseXorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBitwiseXor_Right()
+  {
+    return (EReference)bitwiseXorEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBitwiseAnd()
+  {
+    return bitwiseAndEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBitwiseAnd_Left()
+  {
+    return (EReference)bitwiseAndEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBitwiseAnd_Right()
+  {
+    return (EReference)bitwiseAndEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getShift()
+  {
+    return shiftEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getShift_Left()
+  {
+    return (EReference)shiftEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getShift_Operator()
+  {
+    return (EAttribute)shiftEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getShift_Right()
+  {
+    return (EReference)shiftEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAdditive()
+  {
+    return additiveEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAdditive_Left()
+  {
+    return (EReference)additiveEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getAdditive_Operator()
+  {
+    return (EAttribute)additiveEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAdditive_Right()
+  {
+    return (EReference)additiveEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMultiplicative()
+  {
+    return multiplicativeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMultiplicative_Left()
+  {
+    return (EReference)multiplicativeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMultiplicative_Operator()
+  {
+    return (EAttribute)multiplicativeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMultiplicative_Right()
+  {
+    return (EReference)multiplicativeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPrefixExpression()
+  {
+    return prefixExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPrefixExpression_Operator()
+  {
+    return (EAttribute)prefixExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPrefixExpression_Operand()
+  {
+    return (EReference)prefixExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPostfix()
+  {
+    return postfixEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPostfix_Operand()
+  {
+    return (EReference)postfixEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPostfix_Operator()
+  {
+    return (EAttribute)postfixEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMethodInvocation()
+  {
+    return methodInvocationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMethodInvocation_Receiver()
+  {
+    return (EReference)methodInvocationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMethodInvocation_Method()
+  {
+    return (EAttribute)methodInvocationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMethodInvocation_TypeArguments()
+  {
+    return (EReference)methodInvocationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMethodInvocation_Args()
+  {
+    return (EReference)methodInvocationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getIndexExpression()
+  {
+    return indexExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIndexExpression_Receiver()
+  {
+    return (EReference)indexExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIndexExpression_Index()
+  {
+    return (EReference)indexExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getThisExpression()
+  {
+    return thisExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSuperExpression()
+  {
+    return superExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNullLiteral()
+  {
+    return nullLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBooleanLiteral()
+  {
+    return booleanLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getBooleanLiteral_BoolValue()
+  {
+    return (EAttribute)booleanLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNumberLiteral()
+  {
+    return numberLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNumberLiteral_IntValue()
+  {
+    return (EAttribute)numberLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getStringLiteral()
+  {
+    return stringLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStringLiteral_StringValue()
+  {
+    return (EAttribute)stringLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getIdentifierRef()
+  {
+    return identifierRefEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getIdentifierRef_Name()
+  {
+    return (EAttribute)identifierRefEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNewExpression()
+  {
+    return newExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNewExpression_Type()
+  {
+    return (EReference)newExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNewExpression_Constructor()
+  {
+    return (EAttribute)newExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNewExpression_Args()
+  {
+    return (EReference)newExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getConstExpression()
+  {
+    return constExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConstExpression_Type()
+  {
+    return (EReference)constExpressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getConstExpression_Constructor()
+  {
+    return (EAttribute)constExpressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConstExpression_Args()
+  {
+    return (EReference)constExpressionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getParenthesizedExpression()
+  {
+    return parenthesizedExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getParenthesizedExpression_Expression()
+  {
+    return (EReference)parenthesizedExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -816,12 +4369,277 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     isCreated = true;
 
     // Create classes and their features
-    compilationUnitEClass = createEClass(COMPILATION_UNIT);
-    createEReference(compilationUnitEClass, COMPILATION_UNIT__SCRIPT_TAG);
-    createEReference(compilationUnitEClass, COMPILATION_UNIT__LIBRARY_NAME);
-    createEReference(compilationUnitEClass, COMPILATION_UNIT__DIRECTIVES);
-    createEReference(compilationUnitEClass, COMPILATION_UNIT__PART_DIRECTIVES);
-    createEReference(compilationUnitEClass, COMPILATION_UNIT__DECLARATIONS);
+    dartFileEClass = createEClass(DART_FILE);
+
+    variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
+    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__LATE);
+    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__IS_VAR);
+    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__IS_FINAL);
+    createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__TYPE);
+    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__IS_CONST);
+    createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__VARIABLES);
+
+    initializedIdentifierEClass = createEClass(INITIALIZED_IDENTIFIER);
+    createEAttribute(initializedIdentifierEClass, INITIALIZED_IDENTIFIER__NAME);
+    createEReference(initializedIdentifierEClass, INITIALIZED_IDENTIFIER__INITIAL_VALUE);
+
+    functionDeclarationEClass = createEClass(FUNCTION_DECLARATION);
+    createEAttribute(functionDeclarationEClass, FUNCTION_DECLARATION__IS_EXTERNAL);
+    createEReference(functionDeclarationEClass, FUNCTION_DECLARATION__RETURN_TYPE);
+    createEAttribute(functionDeclarationEClass, FUNCTION_DECLARATION__NAME);
+    createEReference(functionDeclarationEClass, FUNCTION_DECLARATION__SIGNATURE);
+    createEReference(functionDeclarationEClass, FUNCTION_DECLARATION__BODY);
+
+    formalParameterPartEClass = createEClass(FORMAL_PARAMETER_PART);
+    createEReference(formalParameterPartEClass, FORMAL_PARAMETER_PART__TYPE_PARAMETERS);
+    createEReference(formalParameterPartEClass, FORMAL_PARAMETER_PART__PARAMETERS);
+
+    formalParameterListEClass = createEClass(FORMAL_PARAMETER_LIST);
+    createEReference(formalParameterListEClass, FORMAL_PARAMETER_LIST__NORMAL_PARAMETERS);
+    createEReference(formalParameterListEClass, FORMAL_PARAMETER_LIST__OPTIONAL_PARAMETERS);
+
+    normalFormalParameterEClass = createEClass(NORMAL_FORMAL_PARAMETER);
+    createEReference(normalFormalParameterEClass, NORMAL_FORMAL_PARAMETER__METADATA);
+    createEAttribute(normalFormalParameterEClass, NORMAL_FORMAL_PARAMETER__IS_COVARIANT);
+    createEReference(normalFormalParameterEClass, NORMAL_FORMAL_PARAMETER__TYPE);
+    createEAttribute(normalFormalParameterEClass, NORMAL_FORMAL_PARAMETER__NAME);
+
+    optionalOrNamedFormalParametersEClass = createEClass(OPTIONAL_OR_NAMED_FORMAL_PARAMETERS);
+
+    optionalPositionalFormalParametersEClass = createEClass(OPTIONAL_POSITIONAL_FORMAL_PARAMETERS);
+    createEReference(optionalPositionalFormalParametersEClass, OPTIONAL_POSITIONAL_FORMAL_PARAMETERS__PARAMETERS);
+
+    namedFormalParametersEClass = createEClass(NAMED_FORMAL_PARAMETERS);
+    createEReference(namedFormalParametersEClass, NAMED_FORMAL_PARAMETERS__PARAMETERS);
+
+    defaultFormalParameterEClass = createEClass(DEFAULT_FORMAL_PARAMETER);
+    createEReference(defaultFormalParameterEClass, DEFAULT_FORMAL_PARAMETER__PARAMETER);
+    createEReference(defaultFormalParameterEClass, DEFAULT_FORMAL_PARAMETER__DEFAULT_VALUE);
+
+    defaultNamedParameterEClass = createEClass(DEFAULT_NAMED_PARAMETER);
+    createEAttribute(defaultNamedParameterEClass, DEFAULT_NAMED_PARAMETER__IS_REQUIRED);
+    createEReference(defaultNamedParameterEClass, DEFAULT_NAMED_PARAMETER__PARAMETER);
+    createEReference(defaultNamedParameterEClass, DEFAULT_NAMED_PARAMETER__DEFAULT_VALUE);
+
+    functionBodyEClass = createEClass(FUNCTION_BODY);
+    createEAttribute(functionBodyEClass, FUNCTION_BODY__IS_ASYNC);
+    createEAttribute(functionBodyEClass, FUNCTION_BODY__IS_SYNC);
+    createEAttribute(functionBodyEClass, FUNCTION_BODY__IS_STAR);
+    createEReference(functionBodyEClass, FUNCTION_BODY__EXPRESSION);
+    createEReference(functionBodyEClass, FUNCTION_BODY__BLOCK);
+
+    classDeclarationEClass = createEClass(CLASS_DECLARATION);
+    createEAttribute(classDeclarationEClass, CLASS_DECLARATION__IS_ABSTRACT);
+    createEAttribute(classDeclarationEClass, CLASS_DECLARATION__NAME);
+    createEReference(classDeclarationEClass, CLASS_DECLARATION__TYPE_PARAMETERS);
+    createEReference(classDeclarationEClass, CLASS_DECLARATION__SUPERCLASS);
+    createEReference(classDeclarationEClass, CLASS_DECLARATION__INTERFACES);
+    createEReference(classDeclarationEClass, CLASS_DECLARATION__MEMBERS);
+
+    superclassEClass = createEClass(SUPERCLASS);
+    createEReference(superclassEClass, SUPERCLASS__TYPE);
+    createEReference(superclassEClass, SUPERCLASS__MIXINS);
+
+    mixinsEClass = createEClass(MIXINS);
+    createEReference(mixinsEClass, MIXINS__TYPES);
+
+    interfacesEClass = createEClass(INTERFACES);
+    createEReference(interfacesEClass, INTERFACES__TYPES);
+
+    memberDeclarationEClass = createEClass(MEMBER_DECLARATION);
+    createEReference(memberDeclarationEClass, MEMBER_DECLARATION__METADATA);
+    createEAttribute(memberDeclarationEClass, MEMBER_DECLARATION__IS_STATIC);
+    createEReference(memberDeclarationEClass, MEMBER_DECLARATION__METHOD);
+    createEReference(memberDeclarationEClass, MEMBER_DECLARATION__BODY);
+    createEReference(memberDeclarationEClass, MEMBER_DECLARATION__VARIABLE);
+
+    methodSignatureEClass = createEClass(METHOD_SIGNATURE);
+    createEReference(methodSignatureEClass, METHOD_SIGNATURE__RETURN_TYPE);
+    createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__IS_OPERATOR);
+    createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__OPERATOR);
+    createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__IS_GETTER);
+    createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__IS_SETTER);
+    createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__NAME);
+    createEReference(methodSignatureEClass, METHOD_SIGNATURE__PARAMETERS);
+
+    declarationEClass = createEClass(DECLARATION);
+    createEAttribute(declarationEClass, DECLARATION__IS_EXTERNAL);
+    createEAttribute(declarationEClass, DECLARATION__IS_LATE);
+    createEAttribute(declarationEClass, DECLARATION__IS_FINAL);
+    createEAttribute(declarationEClass, DECLARATION__IS_CONST);
+    createEReference(declarationEClass, DECLARATION__TYPE);
+    createEAttribute(declarationEClass, DECLARATION__NAME);
+    createEReference(declarationEClass, DECLARATION__INITIAL_VALUE);
+
+    mixinDeclarationEClass = createEClass(MIXIN_DECLARATION);
+    createEAttribute(mixinDeclarationEClass, MIXIN_DECLARATION__NAME);
+    createEReference(mixinDeclarationEClass, MIXIN_DECLARATION__TYPE_PARAMETERS);
+    createEReference(mixinDeclarationEClass, MIXIN_DECLARATION__ON_TYPES);
+    createEReference(mixinDeclarationEClass, MIXIN_DECLARATION__INTERFACES);
+    createEReference(mixinDeclarationEClass, MIXIN_DECLARATION__MEMBERS);
+
+    mixinApplicationClassEClass = createEClass(MIXIN_APPLICATION_CLASS);
+    createEAttribute(mixinApplicationClassEClass, MIXIN_APPLICATION_CLASS__NAME);
+    createEReference(mixinApplicationClassEClass, MIXIN_APPLICATION_CLASS__TYPE_PARAMETERS);
+    createEReference(mixinApplicationClassEClass, MIXIN_APPLICATION_CLASS__TYPE);
+    createEReference(mixinApplicationClassEClass, MIXIN_APPLICATION_CLASS__MIXINS);
+    createEReference(mixinApplicationClassEClass, MIXIN_APPLICATION_CLASS__INTERFACES);
+
+    extensionDeclarationEClass = createEClass(EXTENSION_DECLARATION);
+    createEAttribute(extensionDeclarationEClass, EXTENSION_DECLARATION__NAME);
+    createEReference(extensionDeclarationEClass, EXTENSION_DECLARATION__TYPE_PARAMETERS);
+    createEReference(extensionDeclarationEClass, EXTENSION_DECLARATION__ON_TYPE);
+    createEReference(extensionDeclarationEClass, EXTENSION_DECLARATION__MEMBERS);
+
+    enumDeclarationEClass = createEClass(ENUM_DECLARATION);
+    createEAttribute(enumDeclarationEClass, ENUM_DECLARATION__NAME);
+    createEReference(enumDeclarationEClass, ENUM_DECLARATION__ENTRIES);
+
+    enumEntryEClass = createEClass(ENUM_ENTRY);
+    createEReference(enumEntryEClass, ENUM_ENTRY__METADATA);
+    createEAttribute(enumEntryEClass, ENUM_ENTRY__NAME);
+
+    typeParametersEClass = createEClass(TYPE_PARAMETERS);
+    createEReference(typeParametersEClass, TYPE_PARAMETERS__PARAMETERS);
+
+    typeParameterEClass = createEClass(TYPE_PARAMETER);
+    createEReference(typeParameterEClass, TYPE_PARAMETER__METADATA);
+    createEAttribute(typeParameterEClass, TYPE_PARAMETER__NAME);
+    createEReference(typeParameterEClass, TYPE_PARAMETER__BOUND);
+
+    metadataEClass = createEClass(METADATA);
+    createEAttribute(metadataEClass, METADATA__NAME);
+    createEAttribute(metadataEClass, METADATA__CONSTRUCTOR);
+    createEReference(metadataEClass, METADATA__ARGUMENTS);
+
+    argumentsEClass = createEClass(ARGUMENTS);
+    createEReference(argumentsEClass, ARGUMENTS__ARGUMENTS);
+
+    expressionEClass = createEClass(EXPRESSION);
+    createEReference(expressionEClass, EXPRESSION__VALUE);
+
+    collectionLiteralEClass = createEClass(COLLECTION_LITERAL);
+    createEAttribute(collectionLiteralEClass, COLLECTION_LITERAL__IS_CONST);
+    createEReference(collectionLiteralEClass, COLLECTION_LITERAL__TYPE_ARGUMENTS);
+    createEReference(collectionLiteralEClass, COLLECTION_LITERAL__LIST_ELEMENTS);
+    createEReference(collectionLiteralEClass, COLLECTION_LITERAL__MAP_ELEMENTS);
+
+    mapOrSetElementEClass = createEClass(MAP_OR_SET_ELEMENT);
+
+    statementEClass = createEClass(STATEMENT);
+    createEReference(statementEClass, STATEMENT__LABELS);
+    createEReference(statementEClass, STATEMENT__STATEMENT);
+
+    labelEClass = createEClass(LABEL);
+    createEAttribute(labelEClass, LABEL__NAME);
+
+    nonLabelledStatementEClass = createEClass(NON_LABELLED_STATEMENT);
+
+    blockEClass = createEClass(BLOCK);
+    createEReference(blockEClass, BLOCK__STATEMENTS);
+
+    localVariableDeclarationEClass = createEClass(LOCAL_VARIABLE_DECLARATION);
+    createEReference(localVariableDeclarationEClass, LOCAL_VARIABLE_DECLARATION__VARIABLE);
+
+    ifStatementEClass = createEClass(IF_STATEMENT);
+    createEReference(ifStatementEClass, IF_STATEMENT__CONDITION);
+    createEReference(ifStatementEClass, IF_STATEMENT__THEN_STATEMENT);
+    createEReference(ifStatementEClass, IF_STATEMENT__ELSE_STATEMENT);
+
+    forStatementEClass = createEClass(FOR_STATEMENT);
+    createEAttribute(forStatementEClass, FOR_STATEMENT__IS_AWAIT);
+    createEReference(forStatementEClass, FOR_STATEMENT__INIT);
+    createEReference(forStatementEClass, FOR_STATEMENT__INIT_EXPR);
+    createEReference(forStatementEClass, FOR_STATEMENT__CONDITION);
+    createEReference(forStatementEClass, FOR_STATEMENT__UPDATE);
+    createEReference(forStatementEClass, FOR_STATEMENT__BODY);
+
+    whileStatementEClass = createEClass(WHILE_STATEMENT);
+    createEReference(whileStatementEClass, WHILE_STATEMENT__CONDITION);
+    createEReference(whileStatementEClass, WHILE_STATEMENT__BODY);
+
+    doStatementEClass = createEClass(DO_STATEMENT);
+    createEReference(doStatementEClass, DO_STATEMENT__BODY);
+    createEReference(doStatementEClass, DO_STATEMENT__CONDITION);
+
+    switchStatementEClass = createEClass(SWITCH_STATEMENT);
+    createEReference(switchStatementEClass, SWITCH_STATEMENT__EXPRESSION);
+    createEReference(switchStatementEClass, SWITCH_STATEMENT__CASES);
+    createEReference(switchStatementEClass, SWITCH_STATEMENT__DEFAULT_CASE);
+
+    switchCaseEClass = createEClass(SWITCH_CASE);
+    createEReference(switchCaseEClass, SWITCH_CASE__LABELS);
+    createEReference(switchCaseEClass, SWITCH_CASE__EXPRESSION);
+    createEReference(switchCaseEClass, SWITCH_CASE__STATEMENTS);
+
+    defaultCaseEClass = createEClass(DEFAULT_CASE);
+    createEReference(defaultCaseEClass, DEFAULT_CASE__LABELS);
+    createEReference(defaultCaseEClass, DEFAULT_CASE__STATEMENTS);
+
+    rethrowStatementEClass = createEClass(RETHROW_STATEMENT);
+
+    tryStatementEClass = createEClass(TRY_STATEMENT);
+    createEReference(tryStatementEClass, TRY_STATEMENT__BLOCK);
+    createEReference(tryStatementEClass, TRY_STATEMENT__CATCH_CLAUSES);
+    createEReference(tryStatementEClass, TRY_STATEMENT__FINALLY_BLOCK);
+
+    catchClauseEClass = createEClass(CATCH_CLAUSE);
+    createEReference(catchClauseEClass, CATCH_CLAUSE__TYPE);
+    createEAttribute(catchClauseEClass, CATCH_CLAUSE__EXCEPTION);
+    createEAttribute(catchClauseEClass, CATCH_CLAUSE__STACK_TRACE);
+    createEReference(catchClauseEClass, CATCH_CLAUSE__BLOCK);
+
+    finallyClauseEClass = createEClass(FINALLY_CLAUSE);
+    createEReference(finallyClauseEClass, FINALLY_CLAUSE__BLOCK);
+
+    breakStatementEClass = createEClass(BREAK_STATEMENT);
+    createEAttribute(breakStatementEClass, BREAK_STATEMENT__LABEL);
+
+    continueStatementEClass = createEClass(CONTINUE_STATEMENT);
+    createEAttribute(continueStatementEClass, CONTINUE_STATEMENT__LABEL);
+
+    returnStatementEClass = createEClass(RETURN_STATEMENT);
+    createEReference(returnStatementEClass, RETURN_STATEMENT__EXPRESSION);
+
+    yieldStatementEClass = createEClass(YIELD_STATEMENT);
+    createEAttribute(yieldStatementEClass, YIELD_STATEMENT__IS_STAR);
+    createEReference(yieldStatementEClass, YIELD_STATEMENT__EXPRESSION);
+
+    expressionStatementEClass = createEClass(EXPRESSION_STATEMENT);
+    createEReference(expressionStatementEClass, EXPRESSION_STATEMENT__EXPRESSION);
+
+    libraryDeclarationEClass = createEClass(LIBRARY_DECLARATION);
+    createEReference(libraryDeclarationEClass, LIBRARY_DECLARATION__SCRIPT_TAG);
+    createEReference(libraryDeclarationEClass, LIBRARY_DECLARATION__LIBRARY_NAME);
+    createEReference(libraryDeclarationEClass, LIBRARY_DECLARATION__ELEMENTS);
+
+    elementWithMetadataEClass = createEClass(ELEMENT_WITH_METADATA);
+    createEReference(elementWithMetadataEClass, ELEMENT_WITH_METADATA__METADATA);
+    createEReference(elementWithMetadataEClass, ELEMENT_WITH_METADATA__ELEMENT);
+    createEReference(elementWithMetadataEClass, ELEMENT_WITH_METADATA__MEMBER);
+
+    importOrExportContentEClass = createEClass(IMPORT_OR_EXPORT_CONTENT);
+    createEAttribute(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__IS_IMPORT);
+    createEAttribute(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__IMPORT_URI);
+    createEAttribute(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__IS_DEFERRED);
+    createEAttribute(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__PREFIX);
+    createEReference(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__COMBINATORS);
+    createEAttribute(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__IS_EXPORT);
+    createEAttribute(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__EXPORT_URI);
+
+    combinatorEClass = createEClass(COMBINATOR);
+    createEAttribute(combinatorEClass, COMBINATOR__IDENTIFIERS);
+
+    partDirectiveContentEClass = createEClass(PART_DIRECTIVE_CONTENT);
+    createEAttribute(partDirectiveContentEClass, PART_DIRECTIVE_CONTENT__PART_URI);
+
+    partDeclarationEClass = createEClass(PART_DECLARATION);
+    createEReference(partDeclarationEClass, PART_DECLARATION__PART_HEADER);
+    createEReference(partDeclarationEClass, PART_DECLARATION__DECLARATIONS);
+
+    annotatedTopLevelEClass = createEClass(ANNOTATED_TOP_LEVEL);
+    createEReference(annotatedTopLevelEClass, ANNOTATED_TOP_LEVEL__METADATA);
+    createEReference(annotatedTopLevelEClass, ANNOTATED_TOP_LEVEL__MEMBER);
 
     scriptTagEClass = createEClass(SCRIPT_TAG);
     createEAttribute(scriptTagEClass, SCRIPT_TAG__CONTENT);
@@ -829,61 +4647,140 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     libraryNameEClass = createEClass(LIBRARY_NAME);
     createEAttribute(libraryNameEClass, LIBRARY_NAME__NAME);
 
-    importOrExportEClass = createEClass(IMPORT_OR_EXPORT);
+    partHeaderEClass = createEClass(PART_HEADER);
+    createEAttribute(partHeaderEClass, PART_HEADER__NAME);
+    createEAttribute(partHeaderEClass, PART_HEADER__URI);
 
-    libraryImportEClass = createEClass(LIBRARY_IMPORT);
-    createEAttribute(libraryImportEClass, LIBRARY_IMPORT__IMPORT_URI);
-    createEAttribute(libraryImportEClass, LIBRARY_IMPORT__ALIAS);
-
-    libraryExportEClass = createEClass(LIBRARY_EXPORT);
-    createEAttribute(libraryExportEClass, LIBRARY_EXPORT__EXPORT_URI);
-
-    partDirectiveEClass = createEClass(PART_DIRECTIVE);
-    createEAttribute(partDirectiveEClass, PART_DIRECTIVE__PART_URI);
-
-    topLevelDeclarationEClass = createEClass(TOP_LEVEL_DECLARATION);
-    createEAttribute(topLevelDeclarationEClass, TOP_LEVEL_DECLARATION__METADATA);
-
-    classDeclarationEClass = createEClass(CLASS_DECLARATION);
-    createEAttribute(classDeclarationEClass, CLASS_DECLARATION__NAME);
-
-    mixinDeclarationEClass = createEClass(MIXIN_DECLARATION);
-    createEAttribute(mixinDeclarationEClass, MIXIN_DECLARATION__NAME);
-
-    extensionDeclarationEClass = createEClass(EXTENSION_DECLARATION);
-    createEAttribute(extensionDeclarationEClass, EXTENSION_DECLARATION__NAME);
-
-    enumDeclarationEClass = createEClass(ENUM_DECLARATION);
-    createEAttribute(enumDeclarationEClass, ENUM_DECLARATION__NAME);
+    topLevelDeclarationContentEClass = createEClass(TOP_LEVEL_DECLARATION_CONTENT);
 
     typeAliasEClass = createEClass(TYPE_ALIAS);
     createEAttribute(typeAliasEClass, TYPE_ALIAS__NAME);
-
-    functionDeclarationEClass = createEClass(FUNCTION_DECLARATION);
-    createEAttribute(functionDeclarationEClass, FUNCTION_DECLARATION__EXTERNAL);
-    createEAttribute(functionDeclarationEClass, FUNCTION_DECLARATION__RETURN_TYPE);
-    createEAttribute(functionDeclarationEClass, FUNCTION_DECLARATION__NAME);
-    createEAttribute(functionDeclarationEClass, FUNCTION_DECLARATION__BODY);
-
-    variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
-    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__LATE);
-    createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__MODIFIER);
-    createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__TYPE);
-    createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__VARIABLES);
-
-    variableSingleDeclarationEClass = createEClass(VARIABLE_SINGLE_DECLARATION);
-    createEAttribute(variableSingleDeclarationEClass, VARIABLE_SINGLE_DECLARATION__NAME);
-    createEAttribute(variableSingleDeclarationEClass, VARIABLE_SINGLE_DECLARATION__INITIAL_VALUE);
+    createEReference(typeAliasEClass, TYPE_ALIAS__TYPE_PARAMETERS);
+    createEReference(typeAliasEClass, TYPE_ALIAS__TYPE);
 
     typeEClass = createEClass(TYPE);
+    createEReference(typeEClass, TYPE__TYPE_NAME);
+    createEReference(typeEClass, TYPE__TYPE_ARGUMENTS);
+    createEAttribute(typeEClass, TYPE__IS_NULLABLE);
 
     typeNameEClass = createEClass(TYPE_NAME);
-    createEAttribute(typeNameEClass, TYPE_NAME__NULLABLE);
     createEAttribute(typeNameEClass, TYPE_NAME__NAME);
-    createEReference(typeNameEClass, TYPE_NAME__TYPE_ARGUMENTS);
 
     typeArgumentsEClass = createEClass(TYPE_ARGUMENTS);
-    createEReference(typeArgumentsEClass, TYPE_ARGUMENTS__ELEMENTS);
+    createEReference(typeArgumentsEClass, TYPE_ARGUMENTS__TYPES);
+
+    assignmentEClass = createEClass(ASSIGNMENT);
+    createEReference(assignmentEClass, ASSIGNMENT__LEFT);
+    createEAttribute(assignmentEClass, ASSIGNMENT__OPERATOR);
+    createEReference(assignmentEClass, ASSIGNMENT__RIGHT);
+
+    conditionalEClass = createEClass(CONDITIONAL);
+    createEReference(conditionalEClass, CONDITIONAL__CONDITION);
+    createEReference(conditionalEClass, CONDITIONAL__THEN_EXPR);
+    createEReference(conditionalEClass, CONDITIONAL__ELSE_EXPR);
+
+    ifNullEClass = createEClass(IF_NULL);
+    createEReference(ifNullEClass, IF_NULL__LEFT);
+    createEReference(ifNullEClass, IF_NULL__RIGHT);
+
+    logicalOrEClass = createEClass(LOGICAL_OR);
+    createEReference(logicalOrEClass, LOGICAL_OR__LEFT);
+    createEReference(logicalOrEClass, LOGICAL_OR__RIGHT);
+
+    logicalAndEClass = createEClass(LOGICAL_AND);
+    createEReference(logicalAndEClass, LOGICAL_AND__LEFT);
+    createEReference(logicalAndEClass, LOGICAL_AND__RIGHT);
+
+    equalityEClass = createEClass(EQUALITY);
+    createEReference(equalityEClass, EQUALITY__LEFT);
+    createEAttribute(equalityEClass, EQUALITY__OPERATOR);
+    createEReference(equalityEClass, EQUALITY__RIGHT);
+
+    relationalEClass = createEClass(RELATIONAL);
+    createEReference(relationalEClass, RELATIONAL__LEFT);
+    createEAttribute(relationalEClass, RELATIONAL__OPERATOR);
+    createEReference(relationalEClass, RELATIONAL__RIGHT);
+
+    typeCheckEClass = createEClass(TYPE_CHECK);
+    createEReference(typeCheckEClass, TYPE_CHECK__LEFT);
+    createEAttribute(typeCheckEClass, TYPE_CHECK__OPERATOR);
+    createEReference(typeCheckEClass, TYPE_CHECK__TYPE);
+
+    bitwiseOrEClass = createEClass(BITWISE_OR);
+    createEReference(bitwiseOrEClass, BITWISE_OR__LEFT);
+    createEReference(bitwiseOrEClass, BITWISE_OR__RIGHT);
+
+    bitwiseXorEClass = createEClass(BITWISE_XOR);
+    createEReference(bitwiseXorEClass, BITWISE_XOR__LEFT);
+    createEReference(bitwiseXorEClass, BITWISE_XOR__RIGHT);
+
+    bitwiseAndEClass = createEClass(BITWISE_AND);
+    createEReference(bitwiseAndEClass, BITWISE_AND__LEFT);
+    createEReference(bitwiseAndEClass, BITWISE_AND__RIGHT);
+
+    shiftEClass = createEClass(SHIFT);
+    createEReference(shiftEClass, SHIFT__LEFT);
+    createEAttribute(shiftEClass, SHIFT__OPERATOR);
+    createEReference(shiftEClass, SHIFT__RIGHT);
+
+    additiveEClass = createEClass(ADDITIVE);
+    createEReference(additiveEClass, ADDITIVE__LEFT);
+    createEAttribute(additiveEClass, ADDITIVE__OPERATOR);
+    createEReference(additiveEClass, ADDITIVE__RIGHT);
+
+    multiplicativeEClass = createEClass(MULTIPLICATIVE);
+    createEReference(multiplicativeEClass, MULTIPLICATIVE__LEFT);
+    createEAttribute(multiplicativeEClass, MULTIPLICATIVE__OPERATOR);
+    createEReference(multiplicativeEClass, MULTIPLICATIVE__RIGHT);
+
+    prefixExpressionEClass = createEClass(PREFIX_EXPRESSION);
+    createEAttribute(prefixExpressionEClass, PREFIX_EXPRESSION__OPERATOR);
+    createEReference(prefixExpressionEClass, PREFIX_EXPRESSION__OPERAND);
+
+    postfixEClass = createEClass(POSTFIX);
+    createEReference(postfixEClass, POSTFIX__OPERAND);
+    createEAttribute(postfixEClass, POSTFIX__OPERATOR);
+
+    methodInvocationEClass = createEClass(METHOD_INVOCATION);
+    createEReference(methodInvocationEClass, METHOD_INVOCATION__RECEIVER);
+    createEAttribute(methodInvocationEClass, METHOD_INVOCATION__METHOD);
+    createEReference(methodInvocationEClass, METHOD_INVOCATION__TYPE_ARGUMENTS);
+    createEReference(methodInvocationEClass, METHOD_INVOCATION__ARGS);
+
+    indexExpressionEClass = createEClass(INDEX_EXPRESSION);
+    createEReference(indexExpressionEClass, INDEX_EXPRESSION__RECEIVER);
+    createEReference(indexExpressionEClass, INDEX_EXPRESSION__INDEX);
+
+    thisExpressionEClass = createEClass(THIS_EXPRESSION);
+
+    superExpressionEClass = createEClass(SUPER_EXPRESSION);
+
+    nullLiteralEClass = createEClass(NULL_LITERAL);
+
+    booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
+    createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__BOOL_VALUE);
+
+    numberLiteralEClass = createEClass(NUMBER_LITERAL);
+    createEAttribute(numberLiteralEClass, NUMBER_LITERAL__INT_VALUE);
+
+    stringLiteralEClass = createEClass(STRING_LITERAL);
+    createEAttribute(stringLiteralEClass, STRING_LITERAL__STRING_VALUE);
+
+    identifierRefEClass = createEClass(IDENTIFIER_REF);
+    createEAttribute(identifierRefEClass, IDENTIFIER_REF__NAME);
+
+    newExpressionEClass = createEClass(NEW_EXPRESSION);
+    createEReference(newExpressionEClass, NEW_EXPRESSION__TYPE);
+    createEAttribute(newExpressionEClass, NEW_EXPRESSION__CONSTRUCTOR);
+    createEReference(newExpressionEClass, NEW_EXPRESSION__ARGS);
+
+    constExpressionEClass = createEClass(CONST_EXPRESSION);
+    createEReference(constExpressionEClass, CONST_EXPRESSION__TYPE);
+    createEAttribute(constExpressionEClass, CONST_EXPRESSION__CONSTRUCTOR);
+    createEReference(constExpressionEClass, CONST_EXPRESSION__ARGS);
+
+    parenthesizedExpressionEClass = createEClass(PARENTHESIZED_EXPRESSION);
+    createEReference(parenthesizedExpressionEClass, PARENTHESIZED_EXPRESSION__EXPRESSION);
   }
 
   /**
@@ -915,24 +4812,335 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    libraryImportEClass.getESuperTypes().add(this.getImportOrExport());
-    libraryExportEClass.getESuperTypes().add(this.getImportOrExport());
-    classDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
-    mixinDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
-    extensionDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
-    enumDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
-    typeAliasEClass.getESuperTypes().add(this.getTopLevelDeclaration());
-    functionDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
-    variableDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
-    typeNameEClass.getESuperTypes().add(this.getType());
+    variableDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
+    functionDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
+    optionalPositionalFormalParametersEClass.getESuperTypes().add(this.getOptionalOrNamedFormalParameters());
+    namedFormalParametersEClass.getESuperTypes().add(this.getOptionalOrNamedFormalParameters());
+    classDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
+    mixinDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
+    mixinApplicationClassEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
+    extensionDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
+    enumDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
+    expressionEClass.getESuperTypes().add(this.getMapOrSetElement());
+    collectionLiteralEClass.getESuperTypes().add(this.getExpression());
+    blockEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    localVariableDeclarationEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    ifStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    forStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    whileStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    doStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    switchStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    rethrowStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    tryStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    breakStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    continueStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    returnStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    yieldStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    expressionStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    libraryDeclarationEClass.getESuperTypes().add(this.getDartFile());
+    partDeclarationEClass.getESuperTypes().add(this.getDartFile());
+    typeAliasEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
+    assignmentEClass.getESuperTypes().add(this.getExpression());
+    conditionalEClass.getESuperTypes().add(this.getExpression());
+    ifNullEClass.getESuperTypes().add(this.getExpression());
+    logicalOrEClass.getESuperTypes().add(this.getExpression());
+    logicalAndEClass.getESuperTypes().add(this.getExpression());
+    equalityEClass.getESuperTypes().add(this.getExpression());
+    relationalEClass.getESuperTypes().add(this.getExpression());
+    typeCheckEClass.getESuperTypes().add(this.getExpression());
+    bitwiseOrEClass.getESuperTypes().add(this.getExpression());
+    bitwiseXorEClass.getESuperTypes().add(this.getExpression());
+    bitwiseAndEClass.getESuperTypes().add(this.getExpression());
+    shiftEClass.getESuperTypes().add(this.getExpression());
+    additiveEClass.getESuperTypes().add(this.getExpression());
+    multiplicativeEClass.getESuperTypes().add(this.getExpression());
+    prefixExpressionEClass.getESuperTypes().add(this.getExpression());
+    postfixEClass.getESuperTypes().add(this.getExpression());
+    methodInvocationEClass.getESuperTypes().add(this.getExpression());
+    indexExpressionEClass.getESuperTypes().add(this.getExpression());
+    thisExpressionEClass.getESuperTypes().add(this.getExpression());
+    superExpressionEClass.getESuperTypes().add(this.getExpression());
+    nullLiteralEClass.getESuperTypes().add(this.getExpression());
+    booleanLiteralEClass.getESuperTypes().add(this.getExpression());
+    numberLiteralEClass.getESuperTypes().add(this.getExpression());
+    stringLiteralEClass.getESuperTypes().add(this.getExpression());
+    identifierRefEClass.getESuperTypes().add(this.getExpression());
+    newExpressionEClass.getESuperTypes().add(this.getExpression());
+    constExpressionEClass.getESuperTypes().add(this.getExpression());
+    parenthesizedExpressionEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(compilationUnitEClass, CompilationUnit.class, "CompilationUnit", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCompilationUnit_ScriptTag(), this.getScriptTag(), null, "scriptTag", null, 0, 1, CompilationUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCompilationUnit_LibraryName(), this.getLibraryName(), null, "libraryName", null, 0, 1, CompilationUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCompilationUnit_Directives(), this.getImportOrExport(), null, "directives", null, 0, -1, CompilationUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCompilationUnit_PartDirectives(), this.getPartDirective(), null, "partDirectives", null, 0, -1, CompilationUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCompilationUnit_Declarations(), this.getTopLevelDeclaration(), null, "declarations", null, 0, -1, CompilationUnit.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(dartFileEClass, DartFile.class, "DartFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getVariableDeclaration_Late(), ecorePackage.getEBoolean(), "late", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDeclaration_IsVar(), ecorePackage.getEBoolean(), "isVar", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDeclaration_IsFinal(), ecorePackage.getEBoolean(), "isFinal", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableDeclaration_Type(), this.getType(), null, "type", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getVariableDeclaration_IsConst(), ecorePackage.getEBoolean(), "isConst", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getVariableDeclaration_Variables(), this.getInitializedIdentifier(), null, "variables", null, 0, -1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(initializedIdentifierEClass, InitializedIdentifier.class, "InitializedIdentifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getInitializedIdentifier_Name(), ecorePackage.getEString(), "name", null, 0, 1, InitializedIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInitializedIdentifier_InitialValue(), this.getExpression(), null, "initialValue", null, 0, 1, InitializedIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(functionDeclarationEClass, FunctionDeclaration.class, "FunctionDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFunctionDeclaration_IsExternal(), ecorePackage.getEBoolean(), "isExternal", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionDeclaration_ReturnType(), this.getType(), null, "returnType", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctionDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionDeclaration_Signature(), this.getFormalParameterPart(), null, "signature", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionDeclaration_Body(), this.getFunctionBody(), null, "body", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(formalParameterPartEClass, FormalParameterPart.class, "FormalParameterPart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFormalParameterPart_TypeParameters(), this.getTypeParameters(), null, "typeParameters", null, 0, 1, FormalParameterPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFormalParameterPart_Parameters(), this.getFormalParameterList(), null, "parameters", null, 0, 1, FormalParameterPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(formalParameterListEClass, FormalParameterList.class, "FormalParameterList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFormalParameterList_NormalParameters(), this.getNormalFormalParameter(), null, "normalParameters", null, 0, -1, FormalParameterList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFormalParameterList_OptionalParameters(), this.getOptionalOrNamedFormalParameters(), null, "optionalParameters", null, 0, 1, FormalParameterList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(normalFormalParameterEClass, NormalFormalParameter.class, "NormalFormalParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNormalFormalParameter_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, NormalFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getNormalFormalParameter_IsCovariant(), ecorePackage.getEBoolean(), "isCovariant", null, 0, 1, NormalFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNormalFormalParameter_Type(), this.getType(), null, "type", null, 0, 1, NormalFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getNormalFormalParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, NormalFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(optionalOrNamedFormalParametersEClass, OptionalOrNamedFormalParameters.class, "OptionalOrNamedFormalParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(optionalPositionalFormalParametersEClass, OptionalPositionalFormalParameters.class, "OptionalPositionalFormalParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOptionalPositionalFormalParameters_Parameters(), this.getDefaultFormalParameter(), null, "parameters", null, 0, -1, OptionalPositionalFormalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(namedFormalParametersEClass, NamedFormalParameters.class, "NamedFormalParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNamedFormalParameters_Parameters(), this.getDefaultNamedParameter(), null, "parameters", null, 0, -1, NamedFormalParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(defaultFormalParameterEClass, DefaultFormalParameter.class, "DefaultFormalParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDefaultFormalParameter_Parameter(), this.getNormalFormalParameter(), null, "parameter", null, 0, 1, DefaultFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDefaultFormalParameter_DefaultValue(), this.getExpression(), null, "defaultValue", null, 0, 1, DefaultFormalParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(defaultNamedParameterEClass, DefaultNamedParameter.class, "DefaultNamedParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDefaultNamedParameter_IsRequired(), ecorePackage.getEBoolean(), "isRequired", null, 0, 1, DefaultNamedParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDefaultNamedParameter_Parameter(), this.getNormalFormalParameter(), null, "parameter", null, 0, 1, DefaultNamedParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDefaultNamedParameter_DefaultValue(), this.getExpression(), null, "defaultValue", null, 0, 1, DefaultNamedParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(functionBodyEClass, FunctionBody.class, "FunctionBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFunctionBody_IsAsync(), ecorePackage.getEBoolean(), "isAsync", null, 0, 1, FunctionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctionBody_IsSync(), ecorePackage.getEBoolean(), "isSync", null, 0, 1, FunctionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctionBody_IsStar(), ecorePackage.getEBoolean(), "isStar", null, 0, 1, FunctionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionBody_Expression(), this.getExpression(), null, "expression", null, 0, 1, FunctionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionBody_Block(), this.getBlock(), null, "block", null, 0, 1, FunctionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(classDeclarationEClass, ClassDeclaration.class, "ClassDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getClassDeclaration_IsAbstract(), ecorePackage.getEBoolean(), "isAbstract", null, 0, 1, ClassDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getClassDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClassDeclaration_TypeParameters(), this.getTypeParameters(), null, "typeParameters", null, 0, 1, ClassDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClassDeclaration_Superclass(), this.getSuperclass(), null, "superclass", null, 0, 1, ClassDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClassDeclaration_Interfaces(), this.getInterfaces(), null, "interfaces", null, 0, 1, ClassDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClassDeclaration_Members(), this.getMemberDeclaration(), null, "members", null, 0, -1, ClassDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(superclassEClass, Superclass.class, "Superclass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSuperclass_Type(), this.getType(), null, "type", null, 0, 1, Superclass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSuperclass_Mixins(), this.getMixins(), null, "mixins", null, 0, 1, Superclass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mixinsEClass, Mixins.class, "Mixins", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMixins_Types(), this.getType(), null, "types", null, 0, -1, Mixins.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(interfacesEClass, Interfaces.class, "Interfaces", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getInterfaces_Types(), this.getType(), null, "types", null, 0, -1, Interfaces.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(memberDeclarationEClass, MemberDeclaration.class, "MemberDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMemberDeclaration_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMemberDeclaration_IsStatic(), ecorePackage.getEBoolean(), "isStatic", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMemberDeclaration_Method(), this.getMethodSignature(), null, "method", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMemberDeclaration_Body(), this.getFunctionBody(), null, "body", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMemberDeclaration_Variable(), this.getDeclaration(), null, "variable", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(methodSignatureEClass, MethodSignature.class, "MethodSignature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMethodSignature_ReturnType(), this.getType(), null, "returnType", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMethodSignature_IsOperator(), ecorePackage.getEBoolean(), "isOperator", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMethodSignature_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMethodSignature_IsGetter(), ecorePackage.getEBoolean(), "isGetter", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMethodSignature_IsSetter(), ecorePackage.getEBoolean(), "isSetter", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMethodSignature_Name(), ecorePackage.getEString(), "name", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethodSignature_Parameters(), this.getFormalParameterList(), null, "parameters", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(declarationEClass, Declaration.class, "Declaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDeclaration_IsExternal(), ecorePackage.getEBoolean(), "isExternal", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDeclaration_IsLate(), ecorePackage.getEBoolean(), "isLate", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDeclaration_IsFinal(), ecorePackage.getEBoolean(), "isFinal", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDeclaration_IsConst(), ecorePackage.getEBoolean(), "isConst", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeclaration_Type(), this.getType(), null, "type", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeclaration_InitialValue(), this.getExpression(), null, "initialValue", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mixinDeclarationEClass, MixinDeclaration.class, "MixinDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMixinDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, MixinDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMixinDeclaration_TypeParameters(), this.getTypeParameters(), null, "typeParameters", null, 0, 1, MixinDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMixinDeclaration_OnTypes(), this.getType(), null, "onTypes", null, 0, -1, MixinDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMixinDeclaration_Interfaces(), this.getInterfaces(), null, "interfaces", null, 0, 1, MixinDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMixinDeclaration_Members(), this.getMemberDeclaration(), null, "members", null, 0, -1, MixinDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mixinApplicationClassEClass, MixinApplicationClass.class, "MixinApplicationClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMixinApplicationClass_Name(), ecorePackage.getEString(), "name", null, 0, 1, MixinApplicationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMixinApplicationClass_TypeParameters(), this.getTypeParameters(), null, "typeParameters", null, 0, 1, MixinApplicationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMixinApplicationClass_Type(), this.getType(), null, "type", null, 0, 1, MixinApplicationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMixinApplicationClass_Mixins(), this.getMixins(), null, "mixins", null, 0, 1, MixinApplicationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMixinApplicationClass_Interfaces(), this.getInterfaces(), null, "interfaces", null, 0, 1, MixinApplicationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(extensionDeclarationEClass, ExtensionDeclaration.class, "ExtensionDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getExtensionDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, ExtensionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExtensionDeclaration_TypeParameters(), this.getTypeParameters(), null, "typeParameters", null, 0, 1, ExtensionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExtensionDeclaration_OnType(), this.getType(), null, "onType", null, 0, 1, ExtensionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExtensionDeclaration_Members(), this.getMemberDeclaration(), null, "members", null, 0, -1, ExtensionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(enumDeclarationEClass, EnumDeclaration.class, "EnumDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEnumDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnumDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEnumDeclaration_Entries(), this.getEnumEntry(), null, "entries", null, 0, -1, EnumDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(enumEntryEClass, EnumEntry.class, "EnumEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEnumEntry_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, EnumEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEnumEntry_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnumEntry.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(typeParametersEClass, TypeParameters.class, "TypeParameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTypeParameters_Parameters(), this.getTypeParameter(), null, "parameters", null, 0, -1, TypeParameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(typeParameterEClass, TypeParameter.class, "TypeParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTypeParameter_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, TypeParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTypeParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, TypeParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTypeParameter_Bound(), this.getType(), null, "bound", null, 0, 1, TypeParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(metadataEClass, Metadata.class, "Metadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMetadata_Name(), ecorePackage.getEString(), "name", null, 0, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMetadata_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMetadata_Arguments(), this.getArguments(), null, "arguments", null, 0, 1, Metadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(argumentsEClass, Arguments.class, "Arguments", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getArguments_Arguments(), this.getExpression(), null, "arguments", null, 0, -1, Arguments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExpression_Value(), this.getExpression(), null, "value", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(collectionLiteralEClass, CollectionLiteral.class, "CollectionLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCollectionLiteral_IsConst(), ecorePackage.getEBoolean(), "isConst", null, 0, 1, CollectionLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCollectionLiteral_TypeArguments(), this.getTypeArguments(), null, "typeArguments", null, 0, 1, CollectionLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCollectionLiteral_ListElements(), this.getExpression(), null, "listElements", null, 0, -1, CollectionLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCollectionLiteral_MapElements(), this.getMapOrSetElement(), null, "mapElements", null, 0, -1, CollectionLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(mapOrSetElementEClass, MapOrSetElement.class, "MapOrSetElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(statementEClass, Statement.class, "Statement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getStatement_Labels(), this.getLabel(), null, "labels", null, 0, -1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStatement_Statement(), this.getNonLabelledStatement(), null, "statement", null, 0, 1, Statement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(labelEClass, Label.class, "Label", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLabel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(nonLabelledStatementEClass, NonLabelledStatement.class, "NonLabelledStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(blockEClass, Block.class, "Block", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBlock_Statements(), this.getStatement(), null, "statements", null, 0, -1, Block.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(localVariableDeclarationEClass, LocalVariableDeclaration.class, "LocalVariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLocalVariableDeclaration_Variable(), this.getVariableDeclaration(), null, "variable", null, 0, 1, LocalVariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(ifStatementEClass, IfStatement.class, "IfStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIfStatement_Condition(), this.getExpression(), null, "condition", null, 0, 1, IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfStatement_ThenStatement(), this.getStatement(), null, "thenStatement", null, 0, 1, IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfStatement_ElseStatement(), this.getStatement(), null, "elseStatement", null, 0, 1, IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(forStatementEClass, ForStatement.class, "ForStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getForStatement_IsAwait(), ecorePackage.getEBoolean(), "isAwait", null, 0, 1, ForStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getForStatement_Init(), this.getVariableDeclaration(), null, "init", null, 0, 1, ForStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getForStatement_InitExpr(), this.getExpression(), null, "initExpr", null, 0, 1, ForStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getForStatement_Condition(), this.getExpression(), null, "condition", null, 0, 1, ForStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getForStatement_Update(), this.getExpression(), null, "update", null, 0, 1, ForStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getForStatement_Body(), this.getStatement(), null, "body", null, 0, 1, ForStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(whileStatementEClass, WhileStatement.class, "WhileStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getWhileStatement_Condition(), this.getExpression(), null, "condition", null, 0, 1, WhileStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWhileStatement_Body(), this.getStatement(), null, "body", null, 0, 1, WhileStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(doStatementEClass, DoStatement.class, "DoStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDoStatement_Body(), this.getStatement(), null, "body", null, 0, 1, DoStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDoStatement_Condition(), this.getExpression(), null, "condition", null, 0, 1, DoStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(switchStatementEClass, SwitchStatement.class, "SwitchStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSwitchStatement_Expression(), this.getExpression(), null, "expression", null, 0, 1, SwitchStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSwitchStatement_Cases(), this.getSwitchCase(), null, "cases", null, 0, -1, SwitchStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSwitchStatement_DefaultCase(), this.getDefaultCase(), null, "defaultCase", null, 0, 1, SwitchStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(switchCaseEClass, SwitchCase.class, "SwitchCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSwitchCase_Labels(), this.getLabel(), null, "labels", null, 0, -1, SwitchCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSwitchCase_Expression(), this.getExpression(), null, "expression", null, 0, 1, SwitchCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSwitchCase_Statements(), this.getStatement(), null, "statements", null, 0, -1, SwitchCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(defaultCaseEClass, DefaultCase.class, "DefaultCase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDefaultCase_Labels(), this.getLabel(), null, "labels", null, 0, -1, DefaultCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDefaultCase_Statements(), this.getStatement(), null, "statements", null, 0, -1, DefaultCase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(rethrowStatementEClass, RethrowStatement.class, "RethrowStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(tryStatementEClass, TryStatement.class, "TryStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTryStatement_Block(), this.getBlock(), null, "block", null, 0, 1, TryStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTryStatement_CatchClauses(), this.getCatchClause(), null, "catchClauses", null, 0, -1, TryStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTryStatement_FinallyBlock(), this.getFinallyClause(), null, "finallyBlock", null, 0, 1, TryStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(catchClauseEClass, CatchClause.class, "CatchClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCatchClause_Type(), this.getType(), null, "type", null, 0, 1, CatchClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCatchClause_Exception(), ecorePackage.getEString(), "exception", null, 0, 1, CatchClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCatchClause_StackTrace(), ecorePackage.getEString(), "stackTrace", null, 0, 1, CatchClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCatchClause_Block(), this.getBlock(), null, "block", null, 0, 1, CatchClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(finallyClauseEClass, FinallyClause.class, "FinallyClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFinallyClause_Block(), this.getBlock(), null, "block", null, 0, 1, FinallyClause.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(breakStatementEClass, BreakStatement.class, "BreakStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBreakStatement_Label(), ecorePackage.getEString(), "label", null, 0, 1, BreakStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(continueStatementEClass, ContinueStatement.class, "ContinueStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getContinueStatement_Label(), ecorePackage.getEString(), "label", null, 0, 1, ContinueStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(returnStatementEClass, ReturnStatement.class, "ReturnStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getReturnStatement_Expression(), this.getExpression(), null, "expression", null, 0, 1, ReturnStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(yieldStatementEClass, YieldStatement.class, "YieldStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getYieldStatement_IsStar(), ecorePackage.getEBoolean(), "isStar", null, 0, 1, YieldStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getYieldStatement_Expression(), this.getExpression(), null, "expression", null, 0, 1, YieldStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(expressionStatementEClass, ExpressionStatement.class, "ExpressionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExpressionStatement_Expression(), this.getExpression(), null, "expression", null, 0, 1, ExpressionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(libraryDeclarationEClass, LibraryDeclaration.class, "LibraryDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLibraryDeclaration_ScriptTag(), this.getScriptTag(), null, "scriptTag", null, 0, 1, LibraryDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLibraryDeclaration_LibraryName(), this.getLibraryName(), null, "libraryName", null, 0, 1, LibraryDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLibraryDeclaration_Elements(), this.getElementWithMetadata(), null, "elements", null, 0, -1, LibraryDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(elementWithMetadataEClass, ElementWithMetadata.class, "ElementWithMetadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getElementWithMetadata_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, ElementWithMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getElementWithMetadata_Element(), ecorePackage.getEObject(), null, "element", null, 0, 1, ElementWithMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getElementWithMetadata_Member(), this.getTopLevelDeclarationContent(), null, "member", null, 0, 1, ElementWithMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(importOrExportContentEClass, ImportOrExportContent.class, "ImportOrExportContent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getImportOrExportContent_IsImport(), ecorePackage.getEBoolean(), "isImport", null, 0, 1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getImportOrExportContent_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getImportOrExportContent_IsDeferred(), ecorePackage.getEBoolean(), "isDeferred", null, 0, 1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getImportOrExportContent_Prefix(), ecorePackage.getEString(), "prefix", null, 0, 1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getImportOrExportContent_Combinators(), this.getCombinator(), null, "combinators", null, 0, -1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getImportOrExportContent_IsExport(), ecorePackage.getEBoolean(), "isExport", null, 0, 1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getImportOrExportContent_ExportURI(), ecorePackage.getEString(), "exportURI", null, 0, 1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(combinatorEClass, Combinator.class, "Combinator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCombinator_Identifiers(), ecorePackage.getEString(), "identifiers", null, 0, -1, Combinator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(partDirectiveContentEClass, PartDirectiveContent.class, "PartDirectiveContent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPartDirectiveContent_PartURI(), ecorePackage.getEString(), "partURI", null, 0, 1, PartDirectiveContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(partDeclarationEClass, PartDeclaration.class, "PartDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPartDeclaration_PartHeader(), this.getPartHeader(), null, "partHeader", null, 0, 1, PartDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPartDeclaration_Declarations(), this.getAnnotatedTopLevel(), null, "declarations", null, 0, -1, PartDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(annotatedTopLevelEClass, AnnotatedTopLevel.class, "AnnotatedTopLevel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAnnotatedTopLevel_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, AnnotatedTopLevel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAnnotatedTopLevel_Member(), this.getTopLevelDeclarationContent(), null, "member", null, 0, 1, AnnotatedTopLevel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(scriptTagEClass, ScriptTag.class, "ScriptTag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getScriptTag_Content(), ecorePackage.getEString(), "content", null, 0, 1, ScriptTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -940,61 +5148,140 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     initEClass(libraryNameEClass, LibraryName.class, "LibraryName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLibraryName_Name(), ecorePackage.getEString(), "name", null, 0, 1, LibraryName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(importOrExportEClass, ImportOrExport.class, "ImportOrExport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(partHeaderEClass, PartHeader.class, "PartHeader", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPartHeader_Name(), ecorePackage.getEString(), "name", null, 0, 1, PartHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPartHeader_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, PartHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(libraryImportEClass, LibraryImport.class, "LibraryImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLibraryImport_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, LibraryImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getLibraryImport_Alias(), ecorePackage.getEString(), "alias", null, 0, 1, LibraryImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(libraryExportEClass, LibraryExport.class, "LibraryExport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getLibraryExport_ExportURI(), ecorePackage.getEString(), "exportURI", null, 0, 1, LibraryExport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(partDirectiveEClass, PartDirective.class, "PartDirective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPartDirective_PartURI(), ecorePackage.getEString(), "partURI", null, 0, 1, PartDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(topLevelDeclarationEClass, TopLevelDeclaration.class, "TopLevelDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTopLevelDeclaration_Metadata(), ecorePackage.getEString(), "metadata", null, 0, -1, TopLevelDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(classDeclarationEClass, ClassDeclaration.class, "ClassDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getClassDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(mixinDeclarationEClass, MixinDeclaration.class, "MixinDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMixinDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, MixinDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(extensionDeclarationEClass, ExtensionDeclaration.class, "ExtensionDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getExtensionDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, ExtensionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(enumDeclarationEClass, EnumDeclaration.class, "EnumDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getEnumDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnumDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(topLevelDeclarationContentEClass, TopLevelDeclarationContent.class, "TopLevelDeclarationContent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(typeAliasEClass, TypeAlias.class, "TypeAlias", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTypeAlias_Name(), ecorePackage.getEString(), "name", null, 0, 1, TypeAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(functionDeclarationEClass, FunctionDeclaration.class, "FunctionDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFunctionDeclaration_External(), ecorePackage.getEBoolean(), "external", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFunctionDeclaration_ReturnType(), ecorePackage.getEString(), "returnType", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFunctionDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFunctionDeclaration_Body(), ecorePackage.getEString(), "body", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVariableDeclaration_Late(), ecorePackage.getEBoolean(), "late", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVariableDeclaration_Modifier(), ecorePackage.getEString(), "modifier", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVariableDeclaration_Type(), this.getType(), null, "type", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getVariableDeclaration_Variables(), this.getVariableSingleDeclaration(), null, "variables", null, 0, -1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(variableSingleDeclarationEClass, VariableSingleDeclaration.class, "VariableSingleDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVariableSingleDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, VariableSingleDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVariableSingleDeclaration_InitialValue(), ecorePackage.getEString(), "initialValue", null, 0, 1, VariableSingleDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTypeAlias_TypeParameters(), this.getTypeParameters(), null, "typeParameters", null, 0, 1, TypeAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTypeAlias_Type(), this.getType(), null, "type", null, 0, 1, TypeAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getType_TypeName(), this.getTypeName(), null, "typeName", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getType_TypeArguments(), this.getTypeArguments(), null, "typeArguments", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getType_IsNullable(), ecorePackage.getEBoolean(), "isNullable", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeNameEClass, TypeName.class, "TypeName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getTypeName_Nullable(), ecorePackage.getEBoolean(), "nullable", null, 0, 1, TypeName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTypeName_Name(), ecorePackage.getEString(), "name", null, 0, 1, TypeName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getTypeName_TypeArguments(), this.getTypeArguments(), null, "typeArguments", null, 0, 1, TypeName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeArgumentsEClass, TypeArguments.class, "TypeArguments", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTypeArguments_Elements(), this.getType(), null, "elements", null, 0, -1, TypeArguments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTypeArguments_Types(), this.getType(), null, "types", null, 0, -1, TypeArguments.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(assignmentEClass, Assignment.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAssignment_Left(), this.getExpression(), null, "left", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAssignment_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAssignment_Right(), this.getExpression(), null, "right", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(conditionalEClass, Conditional.class, "Conditional", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConditional_Condition(), this.getExpression(), null, "condition", null, 0, 1, Conditional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConditional_ThenExpr(), this.getExpression(), null, "thenExpr", null, 0, 1, Conditional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConditional_ElseExpr(), this.getExpression(), null, "elseExpr", null, 0, 1, Conditional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(ifNullEClass, IfNull.class, "IfNull", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIfNull_Left(), this.getExpression(), null, "left", null, 0, 1, IfNull.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIfNull_Right(), this.getExpression(), null, "right", null, 0, 1, IfNull.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(logicalOrEClass, LogicalOr.class, "LogicalOr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLogicalOr_Left(), this.getExpression(), null, "left", null, 0, 1, LogicalOr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLogicalOr_Right(), this.getExpression(), null, "right", null, 0, 1, LogicalOr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(logicalAndEClass, LogicalAnd.class, "LogicalAnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLogicalAnd_Left(), this.getExpression(), null, "left", null, 0, 1, LogicalAnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLogicalAnd_Right(), this.getExpression(), null, "right", null, 0, 1, LogicalAnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(equalityEClass, Equality.class, "Equality", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEquality_Left(), this.getExpression(), null, "left", null, 0, 1, Equality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEquality_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, Equality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEquality_Right(), this.getExpression(), null, "right", null, 0, 1, Equality.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(relationalEClass, Relational.class, "Relational", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRelational_Left(), this.getExpression(), null, "left", null, 0, 1, Relational.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRelational_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, Relational.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRelational_Right(), this.getExpression(), null, "right", null, 0, 1, Relational.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(typeCheckEClass, TypeCheck.class, "TypeCheck", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTypeCheck_Left(), this.getExpression(), null, "left", null, 0, 1, TypeCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTypeCheck_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, TypeCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTypeCheck_Type(), this.getType(), null, "type", null, 0, 1, TypeCheck.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(bitwiseOrEClass, BitwiseOr.class, "BitwiseOr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBitwiseOr_Left(), this.getExpression(), null, "left", null, 0, 1, BitwiseOr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBitwiseOr_Right(), this.getExpression(), null, "right", null, 0, 1, BitwiseOr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(bitwiseXorEClass, BitwiseXor.class, "BitwiseXor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBitwiseXor_Left(), this.getExpression(), null, "left", null, 0, 1, BitwiseXor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBitwiseXor_Right(), this.getExpression(), null, "right", null, 0, 1, BitwiseXor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(bitwiseAndEClass, BitwiseAnd.class, "BitwiseAnd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBitwiseAnd_Left(), this.getExpression(), null, "left", null, 0, 1, BitwiseAnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBitwiseAnd_Right(), this.getExpression(), null, "right", null, 0, 1, BitwiseAnd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(shiftEClass, Shift.class, "Shift", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getShift_Left(), this.getExpression(), null, "left", null, 0, 1, Shift.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getShift_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, Shift.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getShift_Right(), this.getExpression(), null, "right", null, 0, 1, Shift.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(additiveEClass, Additive.class, "Additive", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAdditive_Left(), this.getExpression(), null, "left", null, 0, 1, Additive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAdditive_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, Additive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdditive_Right(), this.getExpression(), null, "right", null, 0, 1, Additive.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(multiplicativeEClass, Multiplicative.class, "Multiplicative", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMultiplicative_Left(), this.getExpression(), null, "left", null, 0, 1, Multiplicative.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMultiplicative_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, Multiplicative.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMultiplicative_Right(), this.getExpression(), null, "right", null, 0, 1, Multiplicative.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(prefixExpressionEClass, PrefixExpression.class, "PrefixExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPrefixExpression_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, PrefixExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPrefixExpression_Operand(), this.getExpression(), null, "operand", null, 0, 1, PrefixExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(postfixEClass, Postfix.class, "Postfix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPostfix_Operand(), this.getExpression(), null, "operand", null, 0, 1, Postfix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPostfix_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, Postfix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(methodInvocationEClass, MethodInvocation.class, "MethodInvocation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMethodInvocation_Receiver(), this.getExpression(), null, "receiver", null, 0, 1, MethodInvocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMethodInvocation_Method(), ecorePackage.getEString(), "method", null, 0, 1, MethodInvocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethodInvocation_TypeArguments(), this.getTypeArguments(), null, "typeArguments", null, 0, 1, MethodInvocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethodInvocation_Args(), this.getArguments(), null, "args", null, 0, 1, MethodInvocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(indexExpressionEClass, IndexExpression.class, "IndexExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getIndexExpression_Receiver(), this.getExpression(), null, "receiver", null, 0, 1, IndexExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getIndexExpression_Index(), this.getExpression(), null, "index", null, 0, 1, IndexExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(thisExpressionEClass, ThisExpression.class, "ThisExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(superExpressionEClass, SuperExpression.class, "SuperExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(nullLiteralEClass, NullLiteral.class, "NullLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(booleanLiteralEClass, BooleanLiteral.class, "BooleanLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBooleanLiteral_BoolValue(), ecorePackage.getEString(), "boolValue", null, 0, 1, BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(numberLiteralEClass, NumberLiteral.class, "NumberLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNumberLiteral_IntValue(), ecorePackage.getEInt(), "intValue", null, 0, 1, NumberLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringLiteral_StringValue(), ecorePackage.getEString(), "stringValue", null, 0, 1, StringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(identifierRefEClass, IdentifierRef.class, "IdentifierRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIdentifierRef_Name(), ecorePackage.getEString(), "name", null, 0, 1, IdentifierRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(newExpressionEClass, NewExpression.class, "NewExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNewExpression_Type(), this.getType(), null, "type", null, 0, 1, NewExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getNewExpression_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, NewExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNewExpression_Args(), this.getArguments(), null, "args", null, 0, 1, NewExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(constExpressionEClass, ConstExpression.class, "ConstExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConstExpression_Type(), this.getType(), null, "type", null, 0, 1, ConstExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConstExpression_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, ConstExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstExpression_Args(), this.getArguments(), null, "args", null, 0, 1, ConstExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parenthesizedExpressionEClass, ParenthesizedExpression.class, "ParenthesizedExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParenthesizedExpression_Expression(), this.getExpression(), null, "expression", null, 0, 1, ParenthesizedExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

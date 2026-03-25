@@ -3,6 +3,7 @@
  */
 package it.lorenzodeluca.dart.dart;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,13 +15,17 @@ package it.lorenzodeluca.dart.dart;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.MixinDeclaration#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MixinDeclaration#getTypeParameters <em>Type Parameters</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MixinDeclaration#getOnTypes <em>On Types</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MixinDeclaration#getInterfaces <em>Interfaces</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MixinDeclaration#getMembers <em>Members</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getMixinDeclaration()
  * @model
  * @generated
  */
-public interface MixinDeclaration extends TopLevelDeclaration
+public interface MixinDeclaration extends TopLevelDeclarationContent
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -43,5 +48,73 @@ public interface MixinDeclaration extends TopLevelDeclaration
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Type Parameters</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type Parameters</em>' containment reference.
+   * @see #setTypeParameters(TypeParameters)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMixinDeclaration_TypeParameters()
+   * @model containment="true"
+   * @generated
+   */
+  TypeParameters getTypeParameters();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MixinDeclaration#getTypeParameters <em>Type Parameters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type Parameters</em>' containment reference.
+   * @see #getTypeParameters()
+   * @generated
+   */
+  void setTypeParameters(TypeParameters value);
+
+  /**
+   * Returns the value of the '<em><b>On Types</b></em>' containment reference list.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.Type}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>On Types</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMixinDeclaration_OnTypes()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Type> getOnTypes();
+
+  /**
+   * Returns the value of the '<em><b>Interfaces</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Interfaces</em>' containment reference.
+   * @see #setInterfaces(Interfaces)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMixinDeclaration_Interfaces()
+   * @model containment="true"
+   * @generated
+   */
+  Interfaces getInterfaces();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MixinDeclaration#getInterfaces <em>Interfaces</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Interfaces</em>' containment reference.
+   * @see #getInterfaces()
+   * @generated
+   */
+  void setInterfaces(Interfaces value);
+
+  /**
+   * Returns the value of the '<em><b>Members</b></em>' containment reference list.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.MemberDeclaration}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Members</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMixinDeclaration_Members()
+   * @model containment="true"
+   * @generated
+   */
+  EList<MemberDeclaration> getMembers();
 
 } // MixinDeclaration

@@ -76,44 +76,69 @@ public class DartAdapterFactory extends AdapterFactoryImpl
     new DartSwitch<Adapter>()
     {
       @Override
-      public Adapter caseCompilationUnit(CompilationUnit object)
+      public Adapter caseDartFile(DartFile object)
       {
-        return createCompilationUnitAdapter();
+        return createDartFileAdapter();
       }
       @Override
-      public Adapter caseScriptTag(ScriptTag object)
+      public Adapter caseVariableDeclaration(VariableDeclaration object)
       {
-        return createScriptTagAdapter();
+        return createVariableDeclarationAdapter();
       }
       @Override
-      public Adapter caseLibraryName(LibraryName object)
+      public Adapter caseInitializedIdentifier(InitializedIdentifier object)
       {
-        return createLibraryNameAdapter();
+        return createInitializedIdentifierAdapter();
       }
       @Override
-      public Adapter caseImportOrExport(ImportOrExport object)
+      public Adapter caseFunctionDeclaration(FunctionDeclaration object)
       {
-        return createImportOrExportAdapter();
+        return createFunctionDeclarationAdapter();
       }
       @Override
-      public Adapter caseLibraryImport(LibraryImport object)
+      public Adapter caseFormalParameterPart(FormalParameterPart object)
       {
-        return createLibraryImportAdapter();
+        return createFormalParameterPartAdapter();
       }
       @Override
-      public Adapter caseLibraryExport(LibraryExport object)
+      public Adapter caseFormalParameterList(FormalParameterList object)
       {
-        return createLibraryExportAdapter();
+        return createFormalParameterListAdapter();
       }
       @Override
-      public Adapter casePartDirective(PartDirective object)
+      public Adapter caseNormalFormalParameter(NormalFormalParameter object)
       {
-        return createPartDirectiveAdapter();
+        return createNormalFormalParameterAdapter();
       }
       @Override
-      public Adapter caseTopLevelDeclaration(TopLevelDeclaration object)
+      public Adapter caseOptionalOrNamedFormalParameters(OptionalOrNamedFormalParameters object)
       {
-        return createTopLevelDeclarationAdapter();
+        return createOptionalOrNamedFormalParametersAdapter();
+      }
+      @Override
+      public Adapter caseOptionalPositionalFormalParameters(OptionalPositionalFormalParameters object)
+      {
+        return createOptionalPositionalFormalParametersAdapter();
+      }
+      @Override
+      public Adapter caseNamedFormalParameters(NamedFormalParameters object)
+      {
+        return createNamedFormalParametersAdapter();
+      }
+      @Override
+      public Adapter caseDefaultFormalParameter(DefaultFormalParameter object)
+      {
+        return createDefaultFormalParameterAdapter();
+      }
+      @Override
+      public Adapter caseDefaultNamedParameter(DefaultNamedParameter object)
+      {
+        return createDefaultNamedParameterAdapter();
+      }
+      @Override
+      public Adapter caseFunctionBody(FunctionBody object)
+      {
+        return createFunctionBodyAdapter();
       }
       @Override
       public Adapter caseClassDeclaration(ClassDeclaration object)
@@ -121,9 +146,44 @@ public class DartAdapterFactory extends AdapterFactoryImpl
         return createClassDeclarationAdapter();
       }
       @Override
+      public Adapter caseSuperclass(Superclass object)
+      {
+        return createSuperclassAdapter();
+      }
+      @Override
+      public Adapter caseMixins(Mixins object)
+      {
+        return createMixinsAdapter();
+      }
+      @Override
+      public Adapter caseInterfaces(Interfaces object)
+      {
+        return createInterfacesAdapter();
+      }
+      @Override
+      public Adapter caseMemberDeclaration(MemberDeclaration object)
+      {
+        return createMemberDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseMethodSignature(MethodSignature object)
+      {
+        return createMethodSignatureAdapter();
+      }
+      @Override
+      public Adapter caseDeclaration(Declaration object)
+      {
+        return createDeclarationAdapter();
+      }
+      @Override
       public Adapter caseMixinDeclaration(MixinDeclaration object)
       {
         return createMixinDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseMixinApplicationClass(MixinApplicationClass object)
+      {
+        return createMixinApplicationClassAdapter();
       }
       @Override
       public Adapter caseExtensionDeclaration(ExtensionDeclaration object)
@@ -136,24 +196,209 @@ public class DartAdapterFactory extends AdapterFactoryImpl
         return createEnumDeclarationAdapter();
       }
       @Override
+      public Adapter caseEnumEntry(EnumEntry object)
+      {
+        return createEnumEntryAdapter();
+      }
+      @Override
+      public Adapter caseTypeParameters(TypeParameters object)
+      {
+        return createTypeParametersAdapter();
+      }
+      @Override
+      public Adapter caseTypeParameter(TypeParameter object)
+      {
+        return createTypeParameterAdapter();
+      }
+      @Override
+      public Adapter caseMetadata(Metadata object)
+      {
+        return createMetadataAdapter();
+      }
+      @Override
+      public Adapter caseArguments(Arguments object)
+      {
+        return createArgumentsAdapter();
+      }
+      @Override
+      public Adapter caseExpression(Expression object)
+      {
+        return createExpressionAdapter();
+      }
+      @Override
+      public Adapter caseCollectionLiteral(CollectionLiteral object)
+      {
+        return createCollectionLiteralAdapter();
+      }
+      @Override
+      public Adapter caseMapOrSetElement(MapOrSetElement object)
+      {
+        return createMapOrSetElementAdapter();
+      }
+      @Override
+      public Adapter caseStatement(Statement object)
+      {
+        return createStatementAdapter();
+      }
+      @Override
+      public Adapter caseLabel(Label object)
+      {
+        return createLabelAdapter();
+      }
+      @Override
+      public Adapter caseNonLabelledStatement(NonLabelledStatement object)
+      {
+        return createNonLabelledStatementAdapter();
+      }
+      @Override
+      public Adapter caseBlock(Block object)
+      {
+        return createBlockAdapter();
+      }
+      @Override
+      public Adapter caseLocalVariableDeclaration(LocalVariableDeclaration object)
+      {
+        return createLocalVariableDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseIfStatement(IfStatement object)
+      {
+        return createIfStatementAdapter();
+      }
+      @Override
+      public Adapter caseForStatement(ForStatement object)
+      {
+        return createForStatementAdapter();
+      }
+      @Override
+      public Adapter caseWhileStatement(WhileStatement object)
+      {
+        return createWhileStatementAdapter();
+      }
+      @Override
+      public Adapter caseDoStatement(DoStatement object)
+      {
+        return createDoStatementAdapter();
+      }
+      @Override
+      public Adapter caseSwitchStatement(SwitchStatement object)
+      {
+        return createSwitchStatementAdapter();
+      }
+      @Override
+      public Adapter caseSwitchCase(SwitchCase object)
+      {
+        return createSwitchCaseAdapter();
+      }
+      @Override
+      public Adapter caseDefaultCase(DefaultCase object)
+      {
+        return createDefaultCaseAdapter();
+      }
+      @Override
+      public Adapter caseRethrowStatement(RethrowStatement object)
+      {
+        return createRethrowStatementAdapter();
+      }
+      @Override
+      public Adapter caseTryStatement(TryStatement object)
+      {
+        return createTryStatementAdapter();
+      }
+      @Override
+      public Adapter caseCatchClause(CatchClause object)
+      {
+        return createCatchClauseAdapter();
+      }
+      @Override
+      public Adapter caseFinallyClause(FinallyClause object)
+      {
+        return createFinallyClauseAdapter();
+      }
+      @Override
+      public Adapter caseBreakStatement(BreakStatement object)
+      {
+        return createBreakStatementAdapter();
+      }
+      @Override
+      public Adapter caseContinueStatement(ContinueStatement object)
+      {
+        return createContinueStatementAdapter();
+      }
+      @Override
+      public Adapter caseReturnStatement(ReturnStatement object)
+      {
+        return createReturnStatementAdapter();
+      }
+      @Override
+      public Adapter caseYieldStatement(YieldStatement object)
+      {
+        return createYieldStatementAdapter();
+      }
+      @Override
+      public Adapter caseExpressionStatement(ExpressionStatement object)
+      {
+        return createExpressionStatementAdapter();
+      }
+      @Override
+      public Adapter caseLibraryDeclaration(LibraryDeclaration object)
+      {
+        return createLibraryDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseElementWithMetadata(ElementWithMetadata object)
+      {
+        return createElementWithMetadataAdapter();
+      }
+      @Override
+      public Adapter caseImportOrExportContent(ImportOrExportContent object)
+      {
+        return createImportOrExportContentAdapter();
+      }
+      @Override
+      public Adapter caseCombinator(Combinator object)
+      {
+        return createCombinatorAdapter();
+      }
+      @Override
+      public Adapter casePartDirectiveContent(PartDirectiveContent object)
+      {
+        return createPartDirectiveContentAdapter();
+      }
+      @Override
+      public Adapter casePartDeclaration(PartDeclaration object)
+      {
+        return createPartDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseAnnotatedTopLevel(AnnotatedTopLevel object)
+      {
+        return createAnnotatedTopLevelAdapter();
+      }
+      @Override
+      public Adapter caseScriptTag(ScriptTag object)
+      {
+        return createScriptTagAdapter();
+      }
+      @Override
+      public Adapter caseLibraryName(LibraryName object)
+      {
+        return createLibraryNameAdapter();
+      }
+      @Override
+      public Adapter casePartHeader(PartHeader object)
+      {
+        return createPartHeaderAdapter();
+      }
+      @Override
+      public Adapter caseTopLevelDeclarationContent(TopLevelDeclarationContent object)
+      {
+        return createTopLevelDeclarationContentAdapter();
+      }
+      @Override
       public Adapter caseTypeAlias(TypeAlias object)
       {
         return createTypeAliasAdapter();
-      }
-      @Override
-      public Adapter caseFunctionDeclaration(FunctionDeclaration object)
-      {
-        return createFunctionDeclarationAdapter();
-      }
-      @Override
-      public Adapter caseVariableDeclaration(VariableDeclaration object)
-      {
-        return createVariableDeclarationAdapter();
-      }
-      @Override
-      public Adapter caseVariableSingleDeclaration(VariableSingleDeclaration object)
-      {
-        return createVariableSingleDeclarationAdapter();
       }
       @Override
       public Adapter caseType(Type object)
@@ -169,6 +414,146 @@ public class DartAdapterFactory extends AdapterFactoryImpl
       public Adapter caseTypeArguments(TypeArguments object)
       {
         return createTypeArgumentsAdapter();
+      }
+      @Override
+      public Adapter caseAssignment(Assignment object)
+      {
+        return createAssignmentAdapter();
+      }
+      @Override
+      public Adapter caseConditional(Conditional object)
+      {
+        return createConditionalAdapter();
+      }
+      @Override
+      public Adapter caseIfNull(IfNull object)
+      {
+        return createIfNullAdapter();
+      }
+      @Override
+      public Adapter caseLogicalOr(LogicalOr object)
+      {
+        return createLogicalOrAdapter();
+      }
+      @Override
+      public Adapter caseLogicalAnd(LogicalAnd object)
+      {
+        return createLogicalAndAdapter();
+      }
+      @Override
+      public Adapter caseEquality(Equality object)
+      {
+        return createEqualityAdapter();
+      }
+      @Override
+      public Adapter caseRelational(Relational object)
+      {
+        return createRelationalAdapter();
+      }
+      @Override
+      public Adapter caseTypeCheck(TypeCheck object)
+      {
+        return createTypeCheckAdapter();
+      }
+      @Override
+      public Adapter caseBitwiseOr(BitwiseOr object)
+      {
+        return createBitwiseOrAdapter();
+      }
+      @Override
+      public Adapter caseBitwiseXor(BitwiseXor object)
+      {
+        return createBitwiseXorAdapter();
+      }
+      @Override
+      public Adapter caseBitwiseAnd(BitwiseAnd object)
+      {
+        return createBitwiseAndAdapter();
+      }
+      @Override
+      public Adapter caseShift(Shift object)
+      {
+        return createShiftAdapter();
+      }
+      @Override
+      public Adapter caseAdditive(Additive object)
+      {
+        return createAdditiveAdapter();
+      }
+      @Override
+      public Adapter caseMultiplicative(Multiplicative object)
+      {
+        return createMultiplicativeAdapter();
+      }
+      @Override
+      public Adapter casePrefixExpression(PrefixExpression object)
+      {
+        return createPrefixExpressionAdapter();
+      }
+      @Override
+      public Adapter casePostfix(Postfix object)
+      {
+        return createPostfixAdapter();
+      }
+      @Override
+      public Adapter caseMethodInvocation(MethodInvocation object)
+      {
+        return createMethodInvocationAdapter();
+      }
+      @Override
+      public Adapter caseIndexExpression(IndexExpression object)
+      {
+        return createIndexExpressionAdapter();
+      }
+      @Override
+      public Adapter caseThisExpression(ThisExpression object)
+      {
+        return createThisExpressionAdapter();
+      }
+      @Override
+      public Adapter caseSuperExpression(SuperExpression object)
+      {
+        return createSuperExpressionAdapter();
+      }
+      @Override
+      public Adapter caseNullLiteral(NullLiteral object)
+      {
+        return createNullLiteralAdapter();
+      }
+      @Override
+      public Adapter caseBooleanLiteral(BooleanLiteral object)
+      {
+        return createBooleanLiteralAdapter();
+      }
+      @Override
+      public Adapter caseNumberLiteral(NumberLiteral object)
+      {
+        return createNumberLiteralAdapter();
+      }
+      @Override
+      public Adapter caseStringLiteral(StringLiteral object)
+      {
+        return createStringLiteralAdapter();
+      }
+      @Override
+      public Adapter caseIdentifierRef(IdentifierRef object)
+      {
+        return createIdentifierRefAdapter();
+      }
+      @Override
+      public Adapter caseNewExpression(NewExpression object)
+      {
+        return createNewExpressionAdapter();
+      }
+      @Override
+      public Adapter caseConstExpression(ConstExpression object)
+      {
+        return createConstExpressionAdapter();
+      }
+      @Override
+      public Adapter caseParenthesizedExpression(ParenthesizedExpression object)
+      {
+        return createParenthesizedExpressionAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -193,121 +578,196 @@ public class DartAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.CompilationUnit <em>Compilation Unit</em>}'.
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.DartFile <em>File</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.CompilationUnit
+   * @see it.lorenzodeluca.dart.dart.DartFile
    * @generated
    */
-  public Adapter createCompilationUnitAdapter()
+  public Adapter createDartFileAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ScriptTag <em>Script Tag</em>}'.
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.VariableDeclaration <em>Variable Declaration</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.ScriptTag
+   * @see it.lorenzodeluca.dart.dart.VariableDeclaration
    * @generated
    */
-  public Adapter createScriptTagAdapter()
+  public Adapter createVariableDeclarationAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.LibraryName <em>Library Name</em>}'.
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.InitializedIdentifier <em>Initialized Identifier</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.LibraryName
+   * @see it.lorenzodeluca.dart.dart.InitializedIdentifier
    * @generated
    */
-  public Adapter createLibraryNameAdapter()
+  public Adapter createInitializedIdentifierAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ImportOrExport <em>Import Or Export</em>}'.
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.FunctionDeclaration <em>Function Declaration</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.ImportOrExport
+   * @see it.lorenzodeluca.dart.dart.FunctionDeclaration
    * @generated
    */
-  public Adapter createImportOrExportAdapter()
+  public Adapter createFunctionDeclarationAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.LibraryImport <em>Library Import</em>}'.
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.FormalParameterPart <em>Formal Parameter Part</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.LibraryImport
+   * @see it.lorenzodeluca.dart.dart.FormalParameterPart
    * @generated
    */
-  public Adapter createLibraryImportAdapter()
+  public Adapter createFormalParameterPartAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.LibraryExport <em>Library Export</em>}'.
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.FormalParameterList <em>Formal Parameter List</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.LibraryExport
+   * @see it.lorenzodeluca.dart.dart.FormalParameterList
    * @generated
    */
-  public Adapter createLibraryExportAdapter()
+  public Adapter createFormalParameterListAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.PartDirective <em>Part Directive</em>}'.
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.NormalFormalParameter <em>Normal Formal Parameter</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.PartDirective
+   * @see it.lorenzodeluca.dart.dart.NormalFormalParameter
    * @generated
    */
-  public Adapter createPartDirectiveAdapter()
+  public Adapter createNormalFormalParameterAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.TopLevelDeclaration <em>Top Level Declaration</em>}'.
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.OptionalOrNamedFormalParameters <em>Optional Or Named Formal Parameters</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.TopLevelDeclaration
+   * @see it.lorenzodeluca.dart.dart.OptionalOrNamedFormalParameters
    * @generated
    */
-  public Adapter createTopLevelDeclarationAdapter()
+  public Adapter createOptionalOrNamedFormalParametersAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.OptionalPositionalFormalParameters <em>Optional Positional Formal Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.OptionalPositionalFormalParameters
+   * @generated
+   */
+  public Adapter createOptionalPositionalFormalParametersAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.NamedFormalParameters <em>Named Formal Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.NamedFormalParameters
+   * @generated
+   */
+  public Adapter createNamedFormalParametersAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.DefaultFormalParameter <em>Default Formal Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.DefaultFormalParameter
+   * @generated
+   */
+  public Adapter createDefaultFormalParameterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.DefaultNamedParameter <em>Default Named Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.DefaultNamedParameter
+   * @generated
+   */
+  public Adapter createDefaultNamedParameterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.FunctionBody <em>Function Body</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.FunctionBody
+   * @generated
+   */
+  public Adapter createFunctionBodyAdapter()
   {
     return null;
   }
@@ -328,6 +788,96 @@ public class DartAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Superclass <em>Superclass</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Superclass
+   * @generated
+   */
+  public Adapter createSuperclassAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Mixins <em>Mixins</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Mixins
+   * @generated
+   */
+  public Adapter createMixinsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Interfaces <em>Interfaces</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Interfaces
+   * @generated
+   */
+  public Adapter createInterfacesAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.MemberDeclaration <em>Member Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.MemberDeclaration
+   * @generated
+   */
+  public Adapter createMemberDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.MethodSignature <em>Method Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.MethodSignature
+   * @generated
+   */
+  public Adapter createMethodSignatureAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Declaration <em>Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Declaration
+   * @generated
+   */
+  public Adapter createDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.MixinDeclaration <em>Mixin Declaration</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -338,6 +888,21 @@ public class DartAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMixinDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.MixinApplicationClass <em>Mixin Application Class</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.MixinApplicationClass
+   * @generated
+   */
+  public Adapter createMixinApplicationClassAdapter()
   {
     return null;
   }
@@ -373,6 +938,606 @@ public class DartAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.EnumEntry <em>Enum Entry</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.EnumEntry
+   * @generated
+   */
+  public Adapter createEnumEntryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.TypeParameters <em>Type Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.TypeParameters
+   * @generated
+   */
+  public Adapter createTypeParametersAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.TypeParameter <em>Type Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.TypeParameter
+   * @generated
+   */
+  public Adapter createTypeParameterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Metadata <em>Metadata</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Metadata
+   * @generated
+   */
+  public Adapter createMetadataAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Arguments <em>Arguments</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Arguments
+   * @generated
+   */
+  public Adapter createArgumentsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Expression
+   * @generated
+   */
+  public Adapter createExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.CollectionLiteral <em>Collection Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.CollectionLiteral
+   * @generated
+   */
+  public Adapter createCollectionLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.MapOrSetElement <em>Map Or Set Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.MapOrSetElement
+   * @generated
+   */
+  public Adapter createMapOrSetElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Statement <em>Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Statement
+   * @generated
+   */
+  public Adapter createStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Label <em>Label</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Label
+   * @generated
+   */
+  public Adapter createLabelAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.NonLabelledStatement <em>Non Labelled Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.NonLabelledStatement
+   * @generated
+   */
+  public Adapter createNonLabelledStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Block <em>Block</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Block
+   * @generated
+   */
+  public Adapter createBlockAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.LocalVariableDeclaration <em>Local Variable Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.LocalVariableDeclaration
+   * @generated
+   */
+  public Adapter createLocalVariableDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.IfStatement <em>If Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.IfStatement
+   * @generated
+   */
+  public Adapter createIfStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ForStatement <em>For Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ForStatement
+   * @generated
+   */
+  public Adapter createForStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.WhileStatement <em>While Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.WhileStatement
+   * @generated
+   */
+  public Adapter createWhileStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.DoStatement <em>Do Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.DoStatement
+   * @generated
+   */
+  public Adapter createDoStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.SwitchStatement <em>Switch Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.SwitchStatement
+   * @generated
+   */
+  public Adapter createSwitchStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.SwitchCase <em>Switch Case</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.SwitchCase
+   * @generated
+   */
+  public Adapter createSwitchCaseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.DefaultCase <em>Default Case</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.DefaultCase
+   * @generated
+   */
+  public Adapter createDefaultCaseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.RethrowStatement <em>Rethrow Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.RethrowStatement
+   * @generated
+   */
+  public Adapter createRethrowStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.TryStatement <em>Try Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.TryStatement
+   * @generated
+   */
+  public Adapter createTryStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.CatchClause <em>Catch Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.CatchClause
+   * @generated
+   */
+  public Adapter createCatchClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.FinallyClause <em>Finally Clause</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.FinallyClause
+   * @generated
+   */
+  public Adapter createFinallyClauseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.BreakStatement <em>Break Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.BreakStatement
+   * @generated
+   */
+  public Adapter createBreakStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ContinueStatement <em>Continue Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ContinueStatement
+   * @generated
+   */
+  public Adapter createContinueStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ReturnStatement <em>Return Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ReturnStatement
+   * @generated
+   */
+  public Adapter createReturnStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.YieldStatement <em>Yield Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.YieldStatement
+   * @generated
+   */
+  public Adapter createYieldStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ExpressionStatement <em>Expression Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ExpressionStatement
+   * @generated
+   */
+  public Adapter createExpressionStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.LibraryDeclaration <em>Library Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.LibraryDeclaration
+   * @generated
+   */
+  public Adapter createLibraryDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ElementWithMetadata <em>Element With Metadata</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ElementWithMetadata
+   * @generated
+   */
+  public Adapter createElementWithMetadataAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ImportOrExportContent <em>Import Or Export Content</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ImportOrExportContent
+   * @generated
+   */
+  public Adapter createImportOrExportContentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Combinator <em>Combinator</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Combinator
+   * @generated
+   */
+  public Adapter createCombinatorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.PartDirectiveContent <em>Part Directive Content</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.PartDirectiveContent
+   * @generated
+   */
+  public Adapter createPartDirectiveContentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.PartDeclaration <em>Part Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.PartDeclaration
+   * @generated
+   */
+  public Adapter createPartDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.AnnotatedTopLevel <em>Annotated Top Level</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.AnnotatedTopLevel
+   * @generated
+   */
+  public Adapter createAnnotatedTopLevelAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ScriptTag <em>Script Tag</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ScriptTag
+   * @generated
+   */
+  public Adapter createScriptTagAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.LibraryName <em>Library Name</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.LibraryName
+   * @generated
+   */
+  public Adapter createLibraryNameAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.PartHeader <em>Part Header</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.PartHeader
+   * @generated
+   */
+  public Adapter createPartHeaderAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.TopLevelDeclarationContent <em>Top Level Declaration Content</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.TopLevelDeclarationContent
+   * @generated
+   */
+  public Adapter createTopLevelDeclarationContentAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.TypeAlias <em>Type Alias</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -383,51 +1548,6 @@ public class DartAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTypeAliasAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.FunctionDeclaration <em>Function Declaration</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.FunctionDeclaration
-   * @generated
-   */
-  public Adapter createFunctionDeclarationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.VariableDeclaration <em>Variable Declaration</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.VariableDeclaration
-   * @generated
-   */
-  public Adapter createVariableDeclarationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.VariableSingleDeclaration <em>Variable Single Declaration</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.VariableSingleDeclaration
-   * @generated
-   */
-  public Adapter createVariableSingleDeclarationAdapter()
   {
     return null;
   }
@@ -473,6 +1593,426 @@ public class DartAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTypeArgumentsAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Assignment <em>Assignment</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Assignment
+   * @generated
+   */
+  public Adapter createAssignmentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Conditional <em>Conditional</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Conditional
+   * @generated
+   */
+  public Adapter createConditionalAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.IfNull <em>If Null</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.IfNull
+   * @generated
+   */
+  public Adapter createIfNullAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.LogicalOr <em>Logical Or</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.LogicalOr
+   * @generated
+   */
+  public Adapter createLogicalOrAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.LogicalAnd <em>Logical And</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.LogicalAnd
+   * @generated
+   */
+  public Adapter createLogicalAndAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Equality <em>Equality</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Equality
+   * @generated
+   */
+  public Adapter createEqualityAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Relational <em>Relational</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Relational
+   * @generated
+   */
+  public Adapter createRelationalAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.TypeCheck <em>Type Check</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.TypeCheck
+   * @generated
+   */
+  public Adapter createTypeCheckAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.BitwiseOr <em>Bitwise Or</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.BitwiseOr
+   * @generated
+   */
+  public Adapter createBitwiseOrAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.BitwiseXor <em>Bitwise Xor</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.BitwiseXor
+   * @generated
+   */
+  public Adapter createBitwiseXorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.BitwiseAnd <em>Bitwise And</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.BitwiseAnd
+   * @generated
+   */
+  public Adapter createBitwiseAndAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Shift <em>Shift</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Shift
+   * @generated
+   */
+  public Adapter createShiftAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Additive <em>Additive</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Additive
+   * @generated
+   */
+  public Adapter createAdditiveAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Multiplicative <em>Multiplicative</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Multiplicative
+   * @generated
+   */
+  public Adapter createMultiplicativeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.PrefixExpression <em>Prefix Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.PrefixExpression
+   * @generated
+   */
+  public Adapter createPrefixExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Postfix <em>Postfix</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Postfix
+   * @generated
+   */
+  public Adapter createPostfixAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.MethodInvocation <em>Method Invocation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.MethodInvocation
+   * @generated
+   */
+  public Adapter createMethodInvocationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.IndexExpression <em>Index Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.IndexExpression
+   * @generated
+   */
+  public Adapter createIndexExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ThisExpression <em>This Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ThisExpression
+   * @generated
+   */
+  public Adapter createThisExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.SuperExpression <em>Super Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.SuperExpression
+   * @generated
+   */
+  public Adapter createSuperExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.NullLiteral <em>Null Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.NullLiteral
+   * @generated
+   */
+  public Adapter createNullLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.BooleanLiteral <em>Boolean Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.BooleanLiteral
+   * @generated
+   */
+  public Adapter createBooleanLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.NumberLiteral <em>Number Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.NumberLiteral
+   * @generated
+   */
+  public Adapter createNumberLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.StringLiteral
+   * @generated
+   */
+  public Adapter createStringLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.IdentifierRef <em>Identifier Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.IdentifierRef
+   * @generated
+   */
+  public Adapter createIdentifierRefAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.NewExpression <em>New Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.NewExpression
+   * @generated
+   */
+  public Adapter createNewExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ConstExpression <em>Const Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ConstExpression
+   * @generated
+   */
+  public Adapter createConstExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ParenthesizedExpression <em>Parenthesized Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ParenthesizedExpression
+   * @generated
+   */
+  public Adapter createParenthesizedExpressionAdapter()
   {
     return null;
   }

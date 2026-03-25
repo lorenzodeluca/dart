@@ -5,12 +5,22 @@ package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.EnumDeclaration;
+import it.lorenzodeluca.dart.dart.EnumEntry;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,11 +31,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumDeclarationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumDeclarationImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements EnumDeclaration
+public class EnumDeclarationImpl extends TopLevelDeclarationContentImpl implements EnumDeclaration
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -46,6 +57,16 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEntries()
+   * @generated
+   * @ordered
+   */
+  protected EList<EnumEntry> entries;
 
   /**
    * <!-- begin-user-doc -->
@@ -99,12 +120,45 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
    * @generated
    */
   @Override
+  public EList<EnumEntry> getEntries()
+  {
+    if (entries == null)
+    {
+      entries = new EObjectContainmentEList<EnumEntry>(EnumEntry.class, this, DartPackage.ENUM_DECLARATION__ENTRIES);
+    }
+    return entries;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DartPackage.ENUM_DECLARATION__ENTRIES:
+        return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
       case DartPackage.ENUM_DECLARATION__NAME:
         return getName();
+      case DartPackage.ENUM_DECLARATION__ENTRIES:
+        return getEntries();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -114,6 +168,7 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -121,6 +176,10 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
     {
       case DartPackage.ENUM_DECLARATION__NAME:
         setName((String)newValue);
+        return;
+      case DartPackage.ENUM_DECLARATION__ENTRIES:
+        getEntries().clear();
+        getEntries().addAll((Collection<? extends EnumEntry>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -139,6 +198,9 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
       case DartPackage.ENUM_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case DartPackage.ENUM_DECLARATION__ENTRIES:
+        getEntries().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -155,6 +217,8 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
     {
       case DartPackage.ENUM_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DartPackage.ENUM_DECLARATION__ENTRIES:
+        return entries != null && !entries.isEmpty();
     }
     return super.eIsSet(featureID);
   }

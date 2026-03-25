@@ -65,25 +65,102 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
   {
     switch (eClass.getClassifierID())
     {
-      case DartPackage.COMPILATION_UNIT: return createCompilationUnit();
-      case DartPackage.SCRIPT_TAG: return createScriptTag();
-      case DartPackage.LIBRARY_NAME: return createLibraryName();
-      case DartPackage.IMPORT_OR_EXPORT: return createImportOrExport();
-      case DartPackage.LIBRARY_IMPORT: return createLibraryImport();
-      case DartPackage.LIBRARY_EXPORT: return createLibraryExport();
-      case DartPackage.PART_DIRECTIVE: return createPartDirective();
-      case DartPackage.TOP_LEVEL_DECLARATION: return createTopLevelDeclaration();
+      case DartPackage.DART_FILE: return createDartFile();
+      case DartPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
+      case DartPackage.INITIALIZED_IDENTIFIER: return createInitializedIdentifier();
+      case DartPackage.FUNCTION_DECLARATION: return createFunctionDeclaration();
+      case DartPackage.FORMAL_PARAMETER_PART: return createFormalParameterPart();
+      case DartPackage.FORMAL_PARAMETER_LIST: return createFormalParameterList();
+      case DartPackage.NORMAL_FORMAL_PARAMETER: return createNormalFormalParameter();
+      case DartPackage.OPTIONAL_OR_NAMED_FORMAL_PARAMETERS: return createOptionalOrNamedFormalParameters();
+      case DartPackage.OPTIONAL_POSITIONAL_FORMAL_PARAMETERS: return createOptionalPositionalFormalParameters();
+      case DartPackage.NAMED_FORMAL_PARAMETERS: return createNamedFormalParameters();
+      case DartPackage.DEFAULT_FORMAL_PARAMETER: return createDefaultFormalParameter();
+      case DartPackage.DEFAULT_NAMED_PARAMETER: return createDefaultNamedParameter();
+      case DartPackage.FUNCTION_BODY: return createFunctionBody();
       case DartPackage.CLASS_DECLARATION: return createClassDeclaration();
+      case DartPackage.SUPERCLASS: return createSuperclass();
+      case DartPackage.MIXINS: return createMixins();
+      case DartPackage.INTERFACES: return createInterfaces();
+      case DartPackage.MEMBER_DECLARATION: return createMemberDeclaration();
+      case DartPackage.METHOD_SIGNATURE: return createMethodSignature();
+      case DartPackage.DECLARATION: return createDeclaration();
       case DartPackage.MIXIN_DECLARATION: return createMixinDeclaration();
+      case DartPackage.MIXIN_APPLICATION_CLASS: return createMixinApplicationClass();
       case DartPackage.EXTENSION_DECLARATION: return createExtensionDeclaration();
       case DartPackage.ENUM_DECLARATION: return createEnumDeclaration();
+      case DartPackage.ENUM_ENTRY: return createEnumEntry();
+      case DartPackage.TYPE_PARAMETERS: return createTypeParameters();
+      case DartPackage.TYPE_PARAMETER: return createTypeParameter();
+      case DartPackage.METADATA: return createMetadata();
+      case DartPackage.ARGUMENTS: return createArguments();
+      case DartPackage.EXPRESSION: return createExpression();
+      case DartPackage.COLLECTION_LITERAL: return createCollectionLiteral();
+      case DartPackage.MAP_OR_SET_ELEMENT: return createMapOrSetElement();
+      case DartPackage.STATEMENT: return createStatement();
+      case DartPackage.LABEL: return createLabel();
+      case DartPackage.NON_LABELLED_STATEMENT: return createNonLabelledStatement();
+      case DartPackage.BLOCK: return createBlock();
+      case DartPackage.LOCAL_VARIABLE_DECLARATION: return createLocalVariableDeclaration();
+      case DartPackage.IF_STATEMENT: return createIfStatement();
+      case DartPackage.FOR_STATEMENT: return createForStatement();
+      case DartPackage.WHILE_STATEMENT: return createWhileStatement();
+      case DartPackage.DO_STATEMENT: return createDoStatement();
+      case DartPackage.SWITCH_STATEMENT: return createSwitchStatement();
+      case DartPackage.SWITCH_CASE: return createSwitchCase();
+      case DartPackage.DEFAULT_CASE: return createDefaultCase();
+      case DartPackage.RETHROW_STATEMENT: return createRethrowStatement();
+      case DartPackage.TRY_STATEMENT: return createTryStatement();
+      case DartPackage.CATCH_CLAUSE: return createCatchClause();
+      case DartPackage.FINALLY_CLAUSE: return createFinallyClause();
+      case DartPackage.BREAK_STATEMENT: return createBreakStatement();
+      case DartPackage.CONTINUE_STATEMENT: return createContinueStatement();
+      case DartPackage.RETURN_STATEMENT: return createReturnStatement();
+      case DartPackage.YIELD_STATEMENT: return createYieldStatement();
+      case DartPackage.EXPRESSION_STATEMENT: return createExpressionStatement();
+      case DartPackage.LIBRARY_DECLARATION: return createLibraryDeclaration();
+      case DartPackage.ELEMENT_WITH_METADATA: return createElementWithMetadata();
+      case DartPackage.IMPORT_OR_EXPORT_CONTENT: return createImportOrExportContent();
+      case DartPackage.COMBINATOR: return createCombinator();
+      case DartPackage.PART_DIRECTIVE_CONTENT: return createPartDirectiveContent();
+      case DartPackage.PART_DECLARATION: return createPartDeclaration();
+      case DartPackage.ANNOTATED_TOP_LEVEL: return createAnnotatedTopLevel();
+      case DartPackage.SCRIPT_TAG: return createScriptTag();
+      case DartPackage.LIBRARY_NAME: return createLibraryName();
+      case DartPackage.PART_HEADER: return createPartHeader();
+      case DartPackage.TOP_LEVEL_DECLARATION_CONTENT: return createTopLevelDeclarationContent();
       case DartPackage.TYPE_ALIAS: return createTypeAlias();
-      case DartPackage.FUNCTION_DECLARATION: return createFunctionDeclaration();
-      case DartPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
-      case DartPackage.VARIABLE_SINGLE_DECLARATION: return createVariableSingleDeclaration();
       case DartPackage.TYPE: return createType();
       case DartPackage.TYPE_NAME: return createTypeName();
       case DartPackage.TYPE_ARGUMENTS: return createTypeArguments();
+      case DartPackage.ASSIGNMENT: return createAssignment();
+      case DartPackage.CONDITIONAL: return createConditional();
+      case DartPackage.IF_NULL: return createIfNull();
+      case DartPackage.LOGICAL_OR: return createLogicalOr();
+      case DartPackage.LOGICAL_AND: return createLogicalAnd();
+      case DartPackage.EQUALITY: return createEquality();
+      case DartPackage.RELATIONAL: return createRelational();
+      case DartPackage.TYPE_CHECK: return createTypeCheck();
+      case DartPackage.BITWISE_OR: return createBitwiseOr();
+      case DartPackage.BITWISE_XOR: return createBitwiseXor();
+      case DartPackage.BITWISE_AND: return createBitwiseAnd();
+      case DartPackage.SHIFT: return createShift();
+      case DartPackage.ADDITIVE: return createAdditive();
+      case DartPackage.MULTIPLICATIVE: return createMultiplicative();
+      case DartPackage.PREFIX_EXPRESSION: return createPrefixExpression();
+      case DartPackage.POSTFIX: return createPostfix();
+      case DartPackage.METHOD_INVOCATION: return createMethodInvocation();
+      case DartPackage.INDEX_EXPRESSION: return createIndexExpression();
+      case DartPackage.THIS_EXPRESSION: return createThisExpression();
+      case DartPackage.SUPER_EXPRESSION: return createSuperExpression();
+      case DartPackage.NULL_LITERAL: return createNullLiteral();
+      case DartPackage.BOOLEAN_LITERAL: return createBooleanLiteral();
+      case DartPackage.NUMBER_LITERAL: return createNumberLiteral();
+      case DartPackage.STRING_LITERAL: return createStringLiteral();
+      case DartPackage.IDENTIFIER_REF: return createIdentifierRef();
+      case DartPackage.NEW_EXPRESSION: return createNewExpression();
+      case DartPackage.CONST_EXPRESSION: return createConstExpression();
+      case DartPackage.PARENTHESIZED_EXPRESSION: return createParenthesizedExpression();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -95,10 +172,10 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
-  public CompilationUnit createCompilationUnit()
+  public DartFile createDartFile()
   {
-    CompilationUnitImpl compilationUnit = new CompilationUnitImpl();
-    return compilationUnit;
+    DartFileImpl dartFile = new DartFileImpl();
+    return dartFile;
   }
 
   /**
@@ -107,10 +184,10 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
-  public ScriptTag createScriptTag()
+  public VariableDeclaration createVariableDeclaration()
   {
-    ScriptTagImpl scriptTag = new ScriptTagImpl();
-    return scriptTag;
+    VariableDeclarationImpl variableDeclaration = new VariableDeclarationImpl();
+    return variableDeclaration;
   }
 
   /**
@@ -119,10 +196,10 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
-  public LibraryName createLibraryName()
+  public InitializedIdentifier createInitializedIdentifier()
   {
-    LibraryNameImpl libraryName = new LibraryNameImpl();
-    return libraryName;
+    InitializedIdentifierImpl initializedIdentifier = new InitializedIdentifierImpl();
+    return initializedIdentifier;
   }
 
   /**
@@ -131,10 +208,10 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
-  public ImportOrExport createImportOrExport()
+  public FunctionDeclaration createFunctionDeclaration()
   {
-    ImportOrExportImpl importOrExport = new ImportOrExportImpl();
-    return importOrExport;
+    FunctionDeclarationImpl functionDeclaration = new FunctionDeclarationImpl();
+    return functionDeclaration;
   }
 
   /**
@@ -143,10 +220,10 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
-  public LibraryImport createLibraryImport()
+  public FormalParameterPart createFormalParameterPart()
   {
-    LibraryImportImpl libraryImport = new LibraryImportImpl();
-    return libraryImport;
+    FormalParameterPartImpl formalParameterPart = new FormalParameterPartImpl();
+    return formalParameterPart;
   }
 
   /**
@@ -155,10 +232,10 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
-  public LibraryExport createLibraryExport()
+  public FormalParameterList createFormalParameterList()
   {
-    LibraryExportImpl libraryExport = new LibraryExportImpl();
-    return libraryExport;
+    FormalParameterListImpl formalParameterList = new FormalParameterListImpl();
+    return formalParameterList;
   }
 
   /**
@@ -167,10 +244,10 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
-  public PartDirective createPartDirective()
+  public NormalFormalParameter createNormalFormalParameter()
   {
-    PartDirectiveImpl partDirective = new PartDirectiveImpl();
-    return partDirective;
+    NormalFormalParameterImpl normalFormalParameter = new NormalFormalParameterImpl();
+    return normalFormalParameter;
   }
 
   /**
@@ -179,10 +256,70 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
-  public TopLevelDeclaration createTopLevelDeclaration()
+  public OptionalOrNamedFormalParameters createOptionalOrNamedFormalParameters()
   {
-    TopLevelDeclarationImpl topLevelDeclaration = new TopLevelDeclarationImpl();
-    return topLevelDeclaration;
+    OptionalOrNamedFormalParametersImpl optionalOrNamedFormalParameters = new OptionalOrNamedFormalParametersImpl();
+    return optionalOrNamedFormalParameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public OptionalPositionalFormalParameters createOptionalPositionalFormalParameters()
+  {
+    OptionalPositionalFormalParametersImpl optionalPositionalFormalParameters = new OptionalPositionalFormalParametersImpl();
+    return optionalPositionalFormalParameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NamedFormalParameters createNamedFormalParameters()
+  {
+    NamedFormalParametersImpl namedFormalParameters = new NamedFormalParametersImpl();
+    return namedFormalParameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DefaultFormalParameter createDefaultFormalParameter()
+  {
+    DefaultFormalParameterImpl defaultFormalParameter = new DefaultFormalParameterImpl();
+    return defaultFormalParameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DefaultNamedParameter createDefaultNamedParameter()
+  {
+    DefaultNamedParameterImpl defaultNamedParameter = new DefaultNamedParameterImpl();
+    return defaultNamedParameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FunctionBody createFunctionBody()
+  {
+    FunctionBodyImpl functionBody = new FunctionBodyImpl();
+    return functionBody;
   }
 
   /**
@@ -203,10 +340,94 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
+  public Superclass createSuperclass()
+  {
+    SuperclassImpl superclass = new SuperclassImpl();
+    return superclass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Mixins createMixins()
+  {
+    MixinsImpl mixins = new MixinsImpl();
+    return mixins;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Interfaces createInterfaces()
+  {
+    InterfacesImpl interfaces = new InterfacesImpl();
+    return interfaces;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MemberDeclaration createMemberDeclaration()
+  {
+    MemberDeclarationImpl memberDeclaration = new MemberDeclarationImpl();
+    return memberDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MethodSignature createMethodSignature()
+  {
+    MethodSignatureImpl methodSignature = new MethodSignatureImpl();
+    return methodSignature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Declaration createDeclaration()
+  {
+    DeclarationImpl declaration = new DeclarationImpl();
+    return declaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public MixinDeclaration createMixinDeclaration()
   {
     MixinDeclarationImpl mixinDeclaration = new MixinDeclarationImpl();
     return mixinDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MixinApplicationClass createMixinApplicationClass()
+  {
+    MixinApplicationClassImpl mixinApplicationClass = new MixinApplicationClassImpl();
+    return mixinApplicationClass;
   }
 
   /**
@@ -239,46 +460,490 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
+  public EnumEntry createEnumEntry()
+  {
+    EnumEntryImpl enumEntry = new EnumEntryImpl();
+    return enumEntry;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeParameters createTypeParameters()
+  {
+    TypeParametersImpl typeParameters = new TypeParametersImpl();
+    return typeParameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeParameter createTypeParameter()
+  {
+    TypeParameterImpl typeParameter = new TypeParameterImpl();
+    return typeParameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Metadata createMetadata()
+  {
+    MetadataImpl metadata = new MetadataImpl();
+    return metadata;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Arguments createArguments()
+  {
+    ArgumentsImpl arguments = new ArgumentsImpl();
+    return arguments;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expression createExpression()
+  {
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CollectionLiteral createCollectionLiteral()
+  {
+    CollectionLiteralImpl collectionLiteral = new CollectionLiteralImpl();
+    return collectionLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MapOrSetElement createMapOrSetElement()
+  {
+    MapOrSetElementImpl mapOrSetElement = new MapOrSetElementImpl();
+    return mapOrSetElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Statement createStatement()
+  {
+    StatementImpl statement = new StatementImpl();
+    return statement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Label createLabel()
+  {
+    LabelImpl label = new LabelImpl();
+    return label;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NonLabelledStatement createNonLabelledStatement()
+  {
+    NonLabelledStatementImpl nonLabelledStatement = new NonLabelledStatementImpl();
+    return nonLabelledStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Block createBlock()
+  {
+    BlockImpl block = new BlockImpl();
+    return block;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public LocalVariableDeclaration createLocalVariableDeclaration()
+  {
+    LocalVariableDeclarationImpl localVariableDeclaration = new LocalVariableDeclarationImpl();
+    return localVariableDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IfStatement createIfStatement()
+  {
+    IfStatementImpl ifStatement = new IfStatementImpl();
+    return ifStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ForStatement createForStatement()
+  {
+    ForStatementImpl forStatement = new ForStatementImpl();
+    return forStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public WhileStatement createWhileStatement()
+  {
+    WhileStatementImpl whileStatement = new WhileStatementImpl();
+    return whileStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DoStatement createDoStatement()
+  {
+    DoStatementImpl doStatement = new DoStatementImpl();
+    return doStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SwitchStatement createSwitchStatement()
+  {
+    SwitchStatementImpl switchStatement = new SwitchStatementImpl();
+    return switchStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SwitchCase createSwitchCase()
+  {
+    SwitchCaseImpl switchCase = new SwitchCaseImpl();
+    return switchCase;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DefaultCase createDefaultCase()
+  {
+    DefaultCaseImpl defaultCase = new DefaultCaseImpl();
+    return defaultCase;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public RethrowStatement createRethrowStatement()
+  {
+    RethrowStatementImpl rethrowStatement = new RethrowStatementImpl();
+    return rethrowStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TryStatement createTryStatement()
+  {
+    TryStatementImpl tryStatement = new TryStatementImpl();
+    return tryStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CatchClause createCatchClause()
+  {
+    CatchClauseImpl catchClause = new CatchClauseImpl();
+    return catchClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FinallyClause createFinallyClause()
+  {
+    FinallyClauseImpl finallyClause = new FinallyClauseImpl();
+    return finallyClause;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BreakStatement createBreakStatement()
+  {
+    BreakStatementImpl breakStatement = new BreakStatementImpl();
+    return breakStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ContinueStatement createContinueStatement()
+  {
+    ContinueStatementImpl continueStatement = new ContinueStatementImpl();
+    return continueStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ReturnStatement createReturnStatement()
+  {
+    ReturnStatementImpl returnStatement = new ReturnStatementImpl();
+    return returnStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public YieldStatement createYieldStatement()
+  {
+    YieldStatementImpl yieldStatement = new YieldStatementImpl();
+    return yieldStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ExpressionStatement createExpressionStatement()
+  {
+    ExpressionStatementImpl expressionStatement = new ExpressionStatementImpl();
+    return expressionStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public LibraryDeclaration createLibraryDeclaration()
+  {
+    LibraryDeclarationImpl libraryDeclaration = new LibraryDeclarationImpl();
+    return libraryDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ElementWithMetadata createElementWithMetadata()
+  {
+    ElementWithMetadataImpl elementWithMetadata = new ElementWithMetadataImpl();
+    return elementWithMetadata;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ImportOrExportContent createImportOrExportContent()
+  {
+    ImportOrExportContentImpl importOrExportContent = new ImportOrExportContentImpl();
+    return importOrExportContent;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Combinator createCombinator()
+  {
+    CombinatorImpl combinator = new CombinatorImpl();
+    return combinator;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public PartDirectiveContent createPartDirectiveContent()
+  {
+    PartDirectiveContentImpl partDirectiveContent = new PartDirectiveContentImpl();
+    return partDirectiveContent;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public PartDeclaration createPartDeclaration()
+  {
+    PartDeclarationImpl partDeclaration = new PartDeclarationImpl();
+    return partDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public AnnotatedTopLevel createAnnotatedTopLevel()
+  {
+    AnnotatedTopLevelImpl annotatedTopLevel = new AnnotatedTopLevelImpl();
+    return annotatedTopLevel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ScriptTag createScriptTag()
+  {
+    ScriptTagImpl scriptTag = new ScriptTagImpl();
+    return scriptTag;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public LibraryName createLibraryName()
+  {
+    LibraryNameImpl libraryName = new LibraryNameImpl();
+    return libraryName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public PartHeader createPartHeader()
+  {
+    PartHeaderImpl partHeader = new PartHeaderImpl();
+    return partHeader;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TopLevelDeclarationContent createTopLevelDeclarationContent()
+  {
+    TopLevelDeclarationContentImpl topLevelDeclarationContent = new TopLevelDeclarationContentImpl();
+    return topLevelDeclarationContent;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public TypeAlias createTypeAlias()
   {
     TypeAliasImpl typeAlias = new TypeAliasImpl();
     return typeAlias;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public FunctionDeclaration createFunctionDeclaration()
-  {
-    FunctionDeclarationImpl functionDeclaration = new FunctionDeclarationImpl();
-    return functionDeclaration;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public VariableDeclaration createVariableDeclaration()
-  {
-    VariableDeclarationImpl variableDeclaration = new VariableDeclarationImpl();
-    return variableDeclaration;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public VariableSingleDeclaration createVariableSingleDeclaration()
-  {
-    VariableSingleDeclarationImpl variableSingleDeclaration = new VariableSingleDeclarationImpl();
-    return variableSingleDeclaration;
   }
 
   /**
@@ -315,6 +980,342 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
   {
     TypeArgumentsImpl typeArguments = new TypeArgumentsImpl();
     return typeArguments;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Assignment createAssignment()
+  {
+    AssignmentImpl assignment = new AssignmentImpl();
+    return assignment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Conditional createConditional()
+  {
+    ConditionalImpl conditional = new ConditionalImpl();
+    return conditional;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IfNull createIfNull()
+  {
+    IfNullImpl ifNull = new IfNullImpl();
+    return ifNull;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public LogicalOr createLogicalOr()
+  {
+    LogicalOrImpl logicalOr = new LogicalOrImpl();
+    return logicalOr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public LogicalAnd createLogicalAnd()
+  {
+    LogicalAndImpl logicalAnd = new LogicalAndImpl();
+    return logicalAnd;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Equality createEquality()
+  {
+    EqualityImpl equality = new EqualityImpl();
+    return equality;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Relational createRelational()
+  {
+    RelationalImpl relational = new RelationalImpl();
+    return relational;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeCheck createTypeCheck()
+  {
+    TypeCheckImpl typeCheck = new TypeCheckImpl();
+    return typeCheck;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BitwiseOr createBitwiseOr()
+  {
+    BitwiseOrImpl bitwiseOr = new BitwiseOrImpl();
+    return bitwiseOr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BitwiseXor createBitwiseXor()
+  {
+    BitwiseXorImpl bitwiseXor = new BitwiseXorImpl();
+    return bitwiseXor;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BitwiseAnd createBitwiseAnd()
+  {
+    BitwiseAndImpl bitwiseAnd = new BitwiseAndImpl();
+    return bitwiseAnd;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Shift createShift()
+  {
+    ShiftImpl shift = new ShiftImpl();
+    return shift;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Additive createAdditive()
+  {
+    AdditiveImpl additive = new AdditiveImpl();
+    return additive;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Multiplicative createMultiplicative()
+  {
+    MultiplicativeImpl multiplicative = new MultiplicativeImpl();
+    return multiplicative;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public PrefixExpression createPrefixExpression()
+  {
+    PrefixExpressionImpl prefixExpression = new PrefixExpressionImpl();
+    return prefixExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Postfix createPostfix()
+  {
+    PostfixImpl postfix = new PostfixImpl();
+    return postfix;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MethodInvocation createMethodInvocation()
+  {
+    MethodInvocationImpl methodInvocation = new MethodInvocationImpl();
+    return methodInvocation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IndexExpression createIndexExpression()
+  {
+    IndexExpressionImpl indexExpression = new IndexExpressionImpl();
+    return indexExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ThisExpression createThisExpression()
+  {
+    ThisExpressionImpl thisExpression = new ThisExpressionImpl();
+    return thisExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SuperExpression createSuperExpression()
+  {
+    SuperExpressionImpl superExpression = new SuperExpressionImpl();
+    return superExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NullLiteral createNullLiteral()
+  {
+    NullLiteralImpl nullLiteral = new NullLiteralImpl();
+    return nullLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BooleanLiteral createBooleanLiteral()
+  {
+    BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
+    return booleanLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NumberLiteral createNumberLiteral()
+  {
+    NumberLiteralImpl numberLiteral = new NumberLiteralImpl();
+    return numberLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StringLiteral createStringLiteral()
+  {
+    StringLiteralImpl stringLiteral = new StringLiteralImpl();
+    return stringLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IdentifierRef createIdentifierRef()
+  {
+    IdentifierRefImpl identifierRef = new IdentifierRefImpl();
+    return identifierRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NewExpression createNewExpression()
+  {
+    NewExpressionImpl newExpression = new NewExpressionImpl();
+    return newExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ConstExpression createConstExpression()
+  {
+    ConstExpressionImpl constExpression = new ConstExpressionImpl();
+    return constExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ParenthesizedExpression createParenthesizedExpression()
+  {
+    ParenthesizedExpressionImpl parenthesizedExpression = new ParenthesizedExpressionImpl();
+    return parenthesizedExpression;
   }
 
   /**

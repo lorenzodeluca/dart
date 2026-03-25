@@ -3,6 +3,7 @@
  */
 package it.lorenzodeluca.dart.dart;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,13 +15,16 @@ package it.lorenzodeluca.dart.dart;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.ExtensionDeclaration#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.ExtensionDeclaration#getTypeParameters <em>Type Parameters</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.ExtensionDeclaration#getOnType <em>On Type</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.ExtensionDeclaration#getMembers <em>Members</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getExtensionDeclaration()
  * @model
  * @generated
  */
-public interface ExtensionDeclaration extends TopLevelDeclaration
+public interface ExtensionDeclaration extends TopLevelDeclarationContent
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -43,5 +47,61 @@ public interface ExtensionDeclaration extends TopLevelDeclaration
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Type Parameters</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type Parameters</em>' containment reference.
+   * @see #setTypeParameters(TypeParameters)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getExtensionDeclaration_TypeParameters()
+   * @model containment="true"
+   * @generated
+   */
+  TypeParameters getTypeParameters();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.ExtensionDeclaration#getTypeParameters <em>Type Parameters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type Parameters</em>' containment reference.
+   * @see #getTypeParameters()
+   * @generated
+   */
+  void setTypeParameters(TypeParameters value);
+
+  /**
+   * Returns the value of the '<em><b>On Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>On Type</em>' containment reference.
+   * @see #setOnType(Type)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getExtensionDeclaration_OnType()
+   * @model containment="true"
+   * @generated
+   */
+  Type getOnType();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.ExtensionDeclaration#getOnType <em>On Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>On Type</em>' containment reference.
+   * @see #getOnType()
+   * @generated
+   */
+  void setOnType(Type value);
+
+  /**
+   * Returns the value of the '<em><b>Members</b></em>' containment reference list.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.MemberDeclaration}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Members</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getExtensionDeclaration_Members()
+   * @model containment="true"
+   * @generated
+   */
+  EList<MemberDeclaration> getMembers();
 
 } // ExtensionDeclaration

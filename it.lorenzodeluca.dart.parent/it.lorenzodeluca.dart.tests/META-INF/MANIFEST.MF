@@ -9,7 +9,7 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: it.lorenzodeluca.dart,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
- org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.42.0",
  junit-jupiter-api,
  junit-jupiter-engine
 Import-Package: org.junit.jupiter.api;version="[5.1.0,6.0.0)",

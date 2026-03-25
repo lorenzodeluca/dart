@@ -13,9 +13,10 @@ package it.lorenzodeluca.dart.dart;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link it.lorenzodeluca.dart.dart.FunctionDeclaration#isExternal <em>External</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.FunctionDeclaration#isIsExternal <em>Is External</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.FunctionDeclaration#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.FunctionDeclaration#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.FunctionDeclaration#getSignature <em>Signature</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.FunctionDeclaration#getBody <em>Body</em>}</li>
  * </ul>
  *
@@ -23,51 +24,51 @@ package it.lorenzodeluca.dart.dart;
  * @model
  * @generated
  */
-public interface FunctionDeclaration extends TopLevelDeclaration
+public interface FunctionDeclaration extends TopLevelDeclarationContent
 {
   /**
-   * Returns the value of the '<em><b>External</b></em>' attribute.
+   * Returns the value of the '<em><b>Is External</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>External</em>' attribute.
-   * @see #setExternal(boolean)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getFunctionDeclaration_External()
+   * @return the value of the '<em>Is External</em>' attribute.
+   * @see #setIsExternal(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getFunctionDeclaration_IsExternal()
    * @model
    * @generated
    */
-  boolean isExternal();
+  boolean isIsExternal();
 
   /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.FunctionDeclaration#isExternal <em>External</em>}' attribute.
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.FunctionDeclaration#isIsExternal <em>Is External</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>External</em>' attribute.
-   * @see #isExternal()
+   * @param value the new value of the '<em>Is External</em>' attribute.
+   * @see #isIsExternal()
    * @generated
    */
-  void setExternal(boolean value);
+  void setIsExternal(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Return Type</b></em>' attribute.
+   * Returns the value of the '<em><b>Return Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Return Type</em>' attribute.
-   * @see #setReturnType(String)
+   * @return the value of the '<em>Return Type</em>' containment reference.
+   * @see #setReturnType(Type)
    * @see it.lorenzodeluca.dart.dart.DartPackage#getFunctionDeclaration_ReturnType()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getReturnType();
+  Type getReturnType();
 
   /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.FunctionDeclaration#getReturnType <em>Return Type</em>}' attribute.
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.FunctionDeclaration#getReturnType <em>Return Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Return Type</em>' attribute.
+   * @param value the new value of the '<em>Return Type</em>' containment reference.
    * @see #getReturnType()
    * @generated
    */
-  void setReturnType(String value);
+  void setReturnType(Type value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -92,25 +93,47 @@ public interface FunctionDeclaration extends TopLevelDeclaration
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Body</b></em>' attribute.
+   * Returns the value of the '<em><b>Signature</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Body</em>' attribute.
-   * @see #setBody(String)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getFunctionDeclaration_Body()
-   * @model
+   * @return the value of the '<em>Signature</em>' containment reference.
+   * @see #setSignature(FormalParameterPart)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getFunctionDeclaration_Signature()
+   * @model containment="true"
    * @generated
    */
-  String getBody();
+  FormalParameterPart getSignature();
 
   /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.FunctionDeclaration#getBody <em>Body</em>}' attribute.
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.FunctionDeclaration#getSignature <em>Signature</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Body</em>' attribute.
+   * @param value the new value of the '<em>Signature</em>' containment reference.
+   * @see #getSignature()
+   * @generated
+   */
+  void setSignature(FormalParameterPart value);
+
+  /**
+   * Returns the value of the '<em><b>Body</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Body</em>' containment reference.
+   * @see #setBody(FunctionBody)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getFunctionDeclaration_Body()
+   * @model containment="true"
+   * @generated
+   */
+  FunctionBody getBody();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.FunctionDeclaration#getBody <em>Body</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Body</em>' containment reference.
    * @see #getBody()
    * @generated
    */
-  void setBody(String value);
+  void setBody(FunctionBody value);
 
 } // FunctionDeclaration

@@ -5,20 +5,75 @@ package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.Type;
+import it.lorenzodeluca.dart.dart.TypeArguments;
+import it.lorenzodeluca.dart.dart.TypeName;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Type</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeImpl#getTypeName <em>Type Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeImpl#getTypeArguments <em>Type Arguments</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeImpl#isIsNullable <em>Is Nullable</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class TypeImpl extends MinimalEObjectImpl.Container implements Type
 {
+  /**
+   * The cached value of the '{@link #getTypeName() <em>Type Name</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypeName()
+   * @generated
+   * @ordered
+   */
+  protected TypeName typeName;
+
+  /**
+   * The cached value of the '{@link #getTypeArguments() <em>Type Arguments</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypeArguments()
+   * @generated
+   * @ordered
+   */
+  protected TypeArguments typeArguments;
+
+  /**
+   * The default value of the '{@link #isIsNullable() <em>Is Nullable</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsNullable()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_NULLABLE_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsNullable() <em>Is Nullable</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsNullable()
+   * @generated
+   * @ordered
+   */
+  protected boolean isNullable = IS_NULLABLE_EDEFAULT;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -38,6 +93,252 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
   protected EClass eStaticClass()
   {
     return DartPackage.Literals.TYPE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeName getTypeName()
+  {
+    return typeName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTypeName(TypeName newTypeName, NotificationChain msgs)
+  {
+    TypeName oldTypeName = typeName;
+    typeName = newTypeName;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.TYPE__TYPE_NAME, oldTypeName, newTypeName);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTypeName(TypeName newTypeName)
+  {
+    if (newTypeName != typeName)
+    {
+      NotificationChain msgs = null;
+      if (typeName != null)
+        msgs = ((InternalEObject)typeName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.TYPE__TYPE_NAME, null, msgs);
+      if (newTypeName != null)
+        msgs = ((InternalEObject)newTypeName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.TYPE__TYPE_NAME, null, msgs);
+      msgs = basicSetTypeName(newTypeName, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.TYPE__TYPE_NAME, newTypeName, newTypeName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeArguments getTypeArguments()
+  {
+    return typeArguments;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTypeArguments(TypeArguments newTypeArguments, NotificationChain msgs)
+  {
+    TypeArguments oldTypeArguments = typeArguments;
+    typeArguments = newTypeArguments;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.TYPE__TYPE_ARGUMENTS, oldTypeArguments, newTypeArguments);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTypeArguments(TypeArguments newTypeArguments)
+  {
+    if (newTypeArguments != typeArguments)
+    {
+      NotificationChain msgs = null;
+      if (typeArguments != null)
+        msgs = ((InternalEObject)typeArguments).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.TYPE__TYPE_ARGUMENTS, null, msgs);
+      if (newTypeArguments != null)
+        msgs = ((InternalEObject)newTypeArguments).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.TYPE__TYPE_ARGUMENTS, null, msgs);
+      msgs = basicSetTypeArguments(newTypeArguments, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.TYPE__TYPE_ARGUMENTS, newTypeArguments, newTypeArguments));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isIsNullable()
+  {
+    return isNullable;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsNullable(boolean newIsNullable)
+  {
+    boolean oldIsNullable = isNullable;
+    isNullable = newIsNullable;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.TYPE__IS_NULLABLE, oldIsNullable, isNullable));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DartPackage.TYPE__TYPE_NAME:
+        return basicSetTypeName(null, msgs);
+      case DartPackage.TYPE__TYPE_ARGUMENTS:
+        return basicSetTypeArguments(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case DartPackage.TYPE__TYPE_NAME:
+        return getTypeName();
+      case DartPackage.TYPE__TYPE_ARGUMENTS:
+        return getTypeArguments();
+      case DartPackage.TYPE__IS_NULLABLE:
+        return isIsNullable();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case DartPackage.TYPE__TYPE_NAME:
+        setTypeName((TypeName)newValue);
+        return;
+      case DartPackage.TYPE__TYPE_ARGUMENTS:
+        setTypeArguments((TypeArguments)newValue);
+        return;
+      case DartPackage.TYPE__IS_NULLABLE:
+        setIsNullable((Boolean)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case DartPackage.TYPE__TYPE_NAME:
+        setTypeName((TypeName)null);
+        return;
+      case DartPackage.TYPE__TYPE_ARGUMENTS:
+        setTypeArguments((TypeArguments)null);
+        return;
+      case DartPackage.TYPE__IS_NULLABLE:
+        setIsNullable(IS_NULLABLE_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case DartPackage.TYPE__TYPE_NAME:
+        return typeName != null;
+      case DartPackage.TYPE__TYPE_ARGUMENTS:
+        return typeArguments != null;
+      case DartPackage.TYPE__IS_NULLABLE:
+        return isNullable != IS_NULLABLE_EDEFAULT;
+    }
+    return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (isNullable: ");
+    result.append(isNullable);
+    result.append(')');
+    return result.toString();
   }
 
 } //TypeImpl

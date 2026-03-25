@@ -15,8 +15,10 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.VariableDeclaration#isLate <em>Late</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.VariableDeclaration#getModifier <em>Modifier</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.VariableDeclaration#isIsVar <em>Is Var</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.VariableDeclaration#isIsFinal <em>Is Final</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.VariableDeclaration#getType <em>Type</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.VariableDeclaration#isIsConst <em>Is Const</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.VariableDeclaration#getVariables <em>Variables</em>}</li>
  * </ul>
  *
@@ -24,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface VariableDeclaration extends TopLevelDeclaration
+public interface VariableDeclaration extends TopLevelDeclarationContent
 {
   /**
    * Returns the value of the '<em><b>Late</b></em>' attribute.
@@ -49,26 +51,48 @@ public interface VariableDeclaration extends TopLevelDeclaration
   void setLate(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Modifier</b></em>' attribute.
+   * Returns the value of the '<em><b>Is Var</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Modifier</em>' attribute.
-   * @see #setModifier(String)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getVariableDeclaration_Modifier()
+   * @return the value of the '<em>Is Var</em>' attribute.
+   * @see #setIsVar(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getVariableDeclaration_IsVar()
    * @model
    * @generated
    */
-  String getModifier();
+  boolean isIsVar();
 
   /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.VariableDeclaration#getModifier <em>Modifier</em>}' attribute.
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.VariableDeclaration#isIsVar <em>Is Var</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Modifier</em>' attribute.
-   * @see #getModifier()
+   * @param value the new value of the '<em>Is Var</em>' attribute.
+   * @see #isIsVar()
    * @generated
    */
-  void setModifier(String value);
+  void setIsVar(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Is Final</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Final</em>' attribute.
+   * @see #setIsFinal(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getVariableDeclaration_IsFinal()
+   * @model
+   * @generated
+   */
+  boolean isIsFinal();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.VariableDeclaration#isIsFinal <em>Is Final</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Final</em>' attribute.
+   * @see #isIsFinal()
+   * @generated
+   */
+  void setIsFinal(boolean value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.
@@ -93,8 +117,30 @@ public interface VariableDeclaration extends TopLevelDeclaration
   void setType(Type value);
 
   /**
+   * Returns the value of the '<em><b>Is Const</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Const</em>' attribute.
+   * @see #setIsConst(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getVariableDeclaration_IsConst()
+   * @model
+   * @generated
+   */
+  boolean isIsConst();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.VariableDeclaration#isIsConst <em>Is Const</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Const</em>' attribute.
+   * @see #isIsConst()
+   * @generated
+   */
+  void setIsConst(boolean value);
+
+  /**
    * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
-   * The list contents are of type {@link it.lorenzodeluca.dart.dart.VariableSingleDeclaration}.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.InitializedIdentifier}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Variables</em>' containment reference list.
@@ -102,6 +148,6 @@ public interface VariableDeclaration extends TopLevelDeclaration
    * @model containment="true"
    * @generated
    */
-  EList<VariableSingleDeclaration> getVariables();
+  EList<InitializedIdentifier> getVariables();
 
 } // VariableDeclaration

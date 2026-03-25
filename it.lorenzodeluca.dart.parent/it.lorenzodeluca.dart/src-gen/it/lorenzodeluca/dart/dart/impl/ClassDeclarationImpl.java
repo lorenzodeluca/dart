@@ -5,12 +5,25 @@ package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.ClassDeclaration;
 import it.lorenzodeluca.dart.dart.DartPackage;
+import it.lorenzodeluca.dart.dart.Interfaces;
+import it.lorenzodeluca.dart.dart.MemberDeclaration;
+import it.lorenzodeluca.dart.dart.Superclass;
+import it.lorenzodeluca.dart.dart.TypeParameters;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,13 +33,38 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.ClassDeclarationImpl#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.ClassDeclarationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.ClassDeclarationImpl#getTypeParameters <em>Type Parameters</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.ClassDeclarationImpl#getSuperclass <em>Superclass</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.ClassDeclarationImpl#getInterfaces <em>Interfaces</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.ClassDeclarationImpl#getMembers <em>Members</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ClassDeclarationImpl extends TopLevelDeclarationImpl implements ClassDeclaration
+public class ClassDeclarationImpl extends TopLevelDeclarationContentImpl implements ClassDeclaration
 {
+  /**
+   * The default value of the '{@link #isIsAbstract() <em>Is Abstract</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsAbstract()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_ABSTRACT_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsAbstract() <em>Is Abstract</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsAbstract()
+   * @generated
+   * @ordered
+   */
+  protected boolean isAbstract = IS_ABSTRACT_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -48,6 +86,46 @@ public class ClassDeclarationImpl extends TopLevelDeclarationImpl implements Cla
   protected String name = NAME_EDEFAULT;
 
   /**
+   * The cached value of the '{@link #getTypeParameters() <em>Type Parameters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypeParameters()
+   * @generated
+   * @ordered
+   */
+  protected TypeParameters typeParameters;
+
+  /**
+   * The cached value of the '{@link #getSuperclass() <em>Superclass</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSuperclass()
+   * @generated
+   * @ordered
+   */
+  protected Superclass superclass;
+
+  /**
+   * The cached value of the '{@link #getInterfaces() <em>Interfaces</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInterfaces()
+   * @generated
+   * @ordered
+   */
+  protected Interfaces interfaces;
+
+  /**
+   * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMembers()
+   * @generated
+   * @ordered
+   */
+  protected EList<MemberDeclaration> members;
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -66,6 +144,31 @@ public class ClassDeclarationImpl extends TopLevelDeclarationImpl implements Cla
   protected EClass eStaticClass()
   {
     return DartPackage.Literals.CLASS_DECLARATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isIsAbstract()
+  {
+    return isAbstract;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsAbstract(boolean newIsAbstract)
+  {
+    boolean oldIsAbstract = isAbstract;
+    isAbstract = newIsAbstract;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.CLASS_DECLARATION__IS_ABSTRACT, oldIsAbstract, isAbstract));
   }
 
   /**
@@ -99,12 +202,209 @@ public class ClassDeclarationImpl extends TopLevelDeclarationImpl implements Cla
    * @generated
    */
   @Override
+  public TypeParameters getTypeParameters()
+  {
+    return typeParameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTypeParameters(TypeParameters newTypeParameters, NotificationChain msgs)
+  {
+    TypeParameters oldTypeParameters = typeParameters;
+    typeParameters = newTypeParameters;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.CLASS_DECLARATION__TYPE_PARAMETERS, oldTypeParameters, newTypeParameters);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTypeParameters(TypeParameters newTypeParameters)
+  {
+    if (newTypeParameters != typeParameters)
+    {
+      NotificationChain msgs = null;
+      if (typeParameters != null)
+        msgs = ((InternalEObject)typeParameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.CLASS_DECLARATION__TYPE_PARAMETERS, null, msgs);
+      if (newTypeParameters != null)
+        msgs = ((InternalEObject)newTypeParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.CLASS_DECLARATION__TYPE_PARAMETERS, null, msgs);
+      msgs = basicSetTypeParameters(newTypeParameters, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.CLASS_DECLARATION__TYPE_PARAMETERS, newTypeParameters, newTypeParameters));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Superclass getSuperclass()
+  {
+    return superclass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSuperclass(Superclass newSuperclass, NotificationChain msgs)
+  {
+    Superclass oldSuperclass = superclass;
+    superclass = newSuperclass;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.CLASS_DECLARATION__SUPERCLASS, oldSuperclass, newSuperclass);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setSuperclass(Superclass newSuperclass)
+  {
+    if (newSuperclass != superclass)
+    {
+      NotificationChain msgs = null;
+      if (superclass != null)
+        msgs = ((InternalEObject)superclass).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.CLASS_DECLARATION__SUPERCLASS, null, msgs);
+      if (newSuperclass != null)
+        msgs = ((InternalEObject)newSuperclass).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.CLASS_DECLARATION__SUPERCLASS, null, msgs);
+      msgs = basicSetSuperclass(newSuperclass, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.CLASS_DECLARATION__SUPERCLASS, newSuperclass, newSuperclass));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Interfaces getInterfaces()
+  {
+    return interfaces;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetInterfaces(Interfaces newInterfaces, NotificationChain msgs)
+  {
+    Interfaces oldInterfaces = interfaces;
+    interfaces = newInterfaces;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.CLASS_DECLARATION__INTERFACES, oldInterfaces, newInterfaces);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setInterfaces(Interfaces newInterfaces)
+  {
+    if (newInterfaces != interfaces)
+    {
+      NotificationChain msgs = null;
+      if (interfaces != null)
+        msgs = ((InternalEObject)interfaces).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.CLASS_DECLARATION__INTERFACES, null, msgs);
+      if (newInterfaces != null)
+        msgs = ((InternalEObject)newInterfaces).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.CLASS_DECLARATION__INTERFACES, null, msgs);
+      msgs = basicSetInterfaces(newInterfaces, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.CLASS_DECLARATION__INTERFACES, newInterfaces, newInterfaces));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<MemberDeclaration> getMembers()
+  {
+    if (members == null)
+    {
+      members = new EObjectContainmentEList<MemberDeclaration>(MemberDeclaration.class, this, DartPackage.CLASS_DECLARATION__MEMBERS);
+    }
+    return members;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DartPackage.CLASS_DECLARATION__TYPE_PARAMETERS:
+        return basicSetTypeParameters(null, msgs);
+      case DartPackage.CLASS_DECLARATION__SUPERCLASS:
+        return basicSetSuperclass(null, msgs);
+      case DartPackage.CLASS_DECLARATION__INTERFACES:
+        return basicSetInterfaces(null, msgs);
+      case DartPackage.CLASS_DECLARATION__MEMBERS:
+        return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
+      case DartPackage.CLASS_DECLARATION__IS_ABSTRACT:
+        return isIsAbstract();
       case DartPackage.CLASS_DECLARATION__NAME:
         return getName();
+      case DartPackage.CLASS_DECLARATION__TYPE_PARAMETERS:
+        return getTypeParameters();
+      case DartPackage.CLASS_DECLARATION__SUPERCLASS:
+        return getSuperclass();
+      case DartPackage.CLASS_DECLARATION__INTERFACES:
+        return getInterfaces();
+      case DartPackage.CLASS_DECLARATION__MEMBERS:
+        return getMembers();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -114,13 +414,30 @@ public class ClassDeclarationImpl extends TopLevelDeclarationImpl implements Cla
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
+      case DartPackage.CLASS_DECLARATION__IS_ABSTRACT:
+        setIsAbstract((Boolean)newValue);
+        return;
       case DartPackage.CLASS_DECLARATION__NAME:
         setName((String)newValue);
+        return;
+      case DartPackage.CLASS_DECLARATION__TYPE_PARAMETERS:
+        setTypeParameters((TypeParameters)newValue);
+        return;
+      case DartPackage.CLASS_DECLARATION__SUPERCLASS:
+        setSuperclass((Superclass)newValue);
+        return;
+      case DartPackage.CLASS_DECLARATION__INTERFACES:
+        setInterfaces((Interfaces)newValue);
+        return;
+      case DartPackage.CLASS_DECLARATION__MEMBERS:
+        getMembers().clear();
+        getMembers().addAll((Collection<? extends MemberDeclaration>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +453,23 @@ public class ClassDeclarationImpl extends TopLevelDeclarationImpl implements Cla
   {
     switch (featureID)
     {
+      case DartPackage.CLASS_DECLARATION__IS_ABSTRACT:
+        setIsAbstract(IS_ABSTRACT_EDEFAULT);
+        return;
       case DartPackage.CLASS_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
+        return;
+      case DartPackage.CLASS_DECLARATION__TYPE_PARAMETERS:
+        setTypeParameters((TypeParameters)null);
+        return;
+      case DartPackage.CLASS_DECLARATION__SUPERCLASS:
+        setSuperclass((Superclass)null);
+        return;
+      case DartPackage.CLASS_DECLARATION__INTERFACES:
+        setInterfaces((Interfaces)null);
+        return;
+      case DartPackage.CLASS_DECLARATION__MEMBERS:
+        getMembers().clear();
         return;
     }
     super.eUnset(featureID);
@@ -153,8 +485,18 @@ public class ClassDeclarationImpl extends TopLevelDeclarationImpl implements Cla
   {
     switch (featureID)
     {
+      case DartPackage.CLASS_DECLARATION__IS_ABSTRACT:
+        return isAbstract != IS_ABSTRACT_EDEFAULT;
       case DartPackage.CLASS_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DartPackage.CLASS_DECLARATION__TYPE_PARAMETERS:
+        return typeParameters != null;
+      case DartPackage.CLASS_DECLARATION__SUPERCLASS:
+        return superclass != null;
+      case DartPackage.CLASS_DECLARATION__INTERFACES:
+        return interfaces != null;
+      case DartPackage.CLASS_DECLARATION__MEMBERS:
+        return members != null && !members.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -170,7 +512,9 @@ public class ClassDeclarationImpl extends TopLevelDeclarationImpl implements Cla
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
+    result.append(" (isAbstract: ");
+    result.append(isAbstract);
+    result.append(", name: ");
     result.append(name);
     result.append(')');
     return result.toString();

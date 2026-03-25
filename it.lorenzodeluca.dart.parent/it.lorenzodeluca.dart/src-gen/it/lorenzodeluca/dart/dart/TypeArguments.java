@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link it.lorenzodeluca.dart.dart.TypeArguments#getElements <em>Elements</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.TypeArguments#getTypes <em>Types</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeArguments()
@@ -26,15 +26,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface TypeArguments extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Types</b></em>' containment reference list.
    * The list contents are of type {@link it.lorenzodeluca.dart.dart.Type}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Elements</em>' containment reference list.
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeArguments_Elements()
+   * @return the value of the '<em>Types</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeArguments_Types()
    * @model containment="true"
    * @generated
    */
-  EList<Type> getElements();
+  EList<Type> getTypes();
 
 } // TypeArguments

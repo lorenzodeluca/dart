@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeArgumentsImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeArgumentsImpl#getTypes <em>Types</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,14 +37,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class TypeArgumentsImpl extends MinimalEObjectImpl.Container implements TypeArguments
 {
   /**
-   * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+   * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getElements()
+   * @see #getTypes()
    * @generated
    * @ordered
    */
-  protected EList<Type> elements;
+  protected EList<Type> types;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,13 +73,13 @@ public class TypeArgumentsImpl extends MinimalEObjectImpl.Container implements T
    * @generated
    */
   @Override
-  public EList<Type> getElements()
+  public EList<Type> getTypes()
   {
-    if (elements == null)
+    if (types == null)
     {
-      elements = new EObjectContainmentEList<Type>(Type.class, this, DartPackage.TYPE_ARGUMENTS__ELEMENTS);
+      types = new EObjectContainmentEList<Type>(Type.class, this, DartPackage.TYPE_ARGUMENTS__TYPES);
     }
-    return elements;
+    return types;
   }
 
   /**
@@ -92,8 +92,8 @@ public class TypeArgumentsImpl extends MinimalEObjectImpl.Container implements T
   {
     switch (featureID)
     {
-      case DartPackage.TYPE_ARGUMENTS__ELEMENTS:
-        return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+      case DartPackage.TYPE_ARGUMENTS__TYPES:
+        return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -108,8 +108,8 @@ public class TypeArgumentsImpl extends MinimalEObjectImpl.Container implements T
   {
     switch (featureID)
     {
-      case DartPackage.TYPE_ARGUMENTS__ELEMENTS:
-        return getElements();
+      case DartPackage.TYPE_ARGUMENTS__TYPES:
+        return getTypes();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -125,9 +125,9 @@ public class TypeArgumentsImpl extends MinimalEObjectImpl.Container implements T
   {
     switch (featureID)
     {
-      case DartPackage.TYPE_ARGUMENTS__ELEMENTS:
-        getElements().clear();
-        getElements().addAll((Collection<? extends Type>)newValue);
+      case DartPackage.TYPE_ARGUMENTS__TYPES:
+        getTypes().clear();
+        getTypes().addAll((Collection<? extends Type>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -143,8 +143,8 @@ public class TypeArgumentsImpl extends MinimalEObjectImpl.Container implements T
   {
     switch (featureID)
     {
-      case DartPackage.TYPE_ARGUMENTS__ELEMENTS:
-        getElements().clear();
+      case DartPackage.TYPE_ARGUMENTS__TYPES:
+        getTypes().clear();
         return;
     }
     super.eUnset(featureID);
@@ -160,8 +160,8 @@ public class TypeArgumentsImpl extends MinimalEObjectImpl.Container implements T
   {
     switch (featureID)
     {
-      case DartPackage.TYPE_ARGUMENTS__ELEMENTS:
-        return elements != null && !elements.isEmpty();
+      case DartPackage.TYPE_ARGUMENTS__TYPES:
+        return types != null && !types.isEmpty();
     }
     return super.eIsSet(featureID);
   }

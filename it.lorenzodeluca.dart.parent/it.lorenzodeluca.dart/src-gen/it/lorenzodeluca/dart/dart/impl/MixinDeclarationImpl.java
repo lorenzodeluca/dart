@@ -4,13 +4,26 @@
 package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
+import it.lorenzodeluca.dart.dart.Interfaces;
+import it.lorenzodeluca.dart.dart.MemberDeclaration;
 import it.lorenzodeluca.dart.dart.MixinDeclaration;
+import it.lorenzodeluca.dart.dart.Type;
+import it.lorenzodeluca.dart.dart.TypeParameters;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,11 +34,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MixinDeclarationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MixinDeclarationImpl#getTypeParameters <em>Type Parameters</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MixinDeclarationImpl#getOnTypes <em>On Types</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MixinDeclarationImpl#getInterfaces <em>Interfaces</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MixinDeclarationImpl#getMembers <em>Members</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MixinDeclarationImpl extends TopLevelDeclarationImpl implements MixinDeclaration
+public class MixinDeclarationImpl extends TopLevelDeclarationContentImpl implements MixinDeclaration
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -46,6 +63,46 @@ public class MixinDeclarationImpl extends TopLevelDeclarationImpl implements Mix
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getTypeParameters() <em>Type Parameters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypeParameters()
+   * @generated
+   * @ordered
+   */
+  protected TypeParameters typeParameters;
+
+  /**
+   * The cached value of the '{@link #getOnTypes() <em>On Types</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOnTypes()
+   * @generated
+   * @ordered
+   */
+  protected EList<Type> onTypes;
+
+  /**
+   * The cached value of the '{@link #getInterfaces() <em>Interfaces</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInterfaces()
+   * @generated
+   * @ordered
+   */
+  protected Interfaces interfaces;
+
+  /**
+   * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMembers()
+   * @generated
+   * @ordered
+   */
+  protected EList<MemberDeclaration> members;
 
   /**
    * <!-- begin-user-doc -->
@@ -99,12 +156,172 @@ public class MixinDeclarationImpl extends TopLevelDeclarationImpl implements Mix
    * @generated
    */
   @Override
+  public TypeParameters getTypeParameters()
+  {
+    return typeParameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTypeParameters(TypeParameters newTypeParameters, NotificationChain msgs)
+  {
+    TypeParameters oldTypeParameters = typeParameters;
+    typeParameters = newTypeParameters;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.MIXIN_DECLARATION__TYPE_PARAMETERS, oldTypeParameters, newTypeParameters);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTypeParameters(TypeParameters newTypeParameters)
+  {
+    if (newTypeParameters != typeParameters)
+    {
+      NotificationChain msgs = null;
+      if (typeParameters != null)
+        msgs = ((InternalEObject)typeParameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.MIXIN_DECLARATION__TYPE_PARAMETERS, null, msgs);
+      if (newTypeParameters != null)
+        msgs = ((InternalEObject)newTypeParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.MIXIN_DECLARATION__TYPE_PARAMETERS, null, msgs);
+      msgs = basicSetTypeParameters(newTypeParameters, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.MIXIN_DECLARATION__TYPE_PARAMETERS, newTypeParameters, newTypeParameters));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Type> getOnTypes()
+  {
+    if (onTypes == null)
+    {
+      onTypes = new EObjectContainmentEList<Type>(Type.class, this, DartPackage.MIXIN_DECLARATION__ON_TYPES);
+    }
+    return onTypes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Interfaces getInterfaces()
+  {
+    return interfaces;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetInterfaces(Interfaces newInterfaces, NotificationChain msgs)
+  {
+    Interfaces oldInterfaces = interfaces;
+    interfaces = newInterfaces;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.MIXIN_DECLARATION__INTERFACES, oldInterfaces, newInterfaces);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setInterfaces(Interfaces newInterfaces)
+  {
+    if (newInterfaces != interfaces)
+    {
+      NotificationChain msgs = null;
+      if (interfaces != null)
+        msgs = ((InternalEObject)interfaces).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.MIXIN_DECLARATION__INTERFACES, null, msgs);
+      if (newInterfaces != null)
+        msgs = ((InternalEObject)newInterfaces).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.MIXIN_DECLARATION__INTERFACES, null, msgs);
+      msgs = basicSetInterfaces(newInterfaces, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.MIXIN_DECLARATION__INTERFACES, newInterfaces, newInterfaces));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<MemberDeclaration> getMembers()
+  {
+    if (members == null)
+    {
+      members = new EObjectContainmentEList<MemberDeclaration>(MemberDeclaration.class, this, DartPackage.MIXIN_DECLARATION__MEMBERS);
+    }
+    return members;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DartPackage.MIXIN_DECLARATION__TYPE_PARAMETERS:
+        return basicSetTypeParameters(null, msgs);
+      case DartPackage.MIXIN_DECLARATION__ON_TYPES:
+        return ((InternalEList<?>)getOnTypes()).basicRemove(otherEnd, msgs);
+      case DartPackage.MIXIN_DECLARATION__INTERFACES:
+        return basicSetInterfaces(null, msgs);
+      case DartPackage.MIXIN_DECLARATION__MEMBERS:
+        return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
       case DartPackage.MIXIN_DECLARATION__NAME:
         return getName();
+      case DartPackage.MIXIN_DECLARATION__TYPE_PARAMETERS:
+        return getTypeParameters();
+      case DartPackage.MIXIN_DECLARATION__ON_TYPES:
+        return getOnTypes();
+      case DartPackage.MIXIN_DECLARATION__INTERFACES:
+        return getInterfaces();
+      case DartPackage.MIXIN_DECLARATION__MEMBERS:
+        return getMembers();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -114,6 +331,7 @@ public class MixinDeclarationImpl extends TopLevelDeclarationImpl implements Mix
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -121,6 +339,20 @@ public class MixinDeclarationImpl extends TopLevelDeclarationImpl implements Mix
     {
       case DartPackage.MIXIN_DECLARATION__NAME:
         setName((String)newValue);
+        return;
+      case DartPackage.MIXIN_DECLARATION__TYPE_PARAMETERS:
+        setTypeParameters((TypeParameters)newValue);
+        return;
+      case DartPackage.MIXIN_DECLARATION__ON_TYPES:
+        getOnTypes().clear();
+        getOnTypes().addAll((Collection<? extends Type>)newValue);
+        return;
+      case DartPackage.MIXIN_DECLARATION__INTERFACES:
+        setInterfaces((Interfaces)newValue);
+        return;
+      case DartPackage.MIXIN_DECLARATION__MEMBERS:
+        getMembers().clear();
+        getMembers().addAll((Collection<? extends MemberDeclaration>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -139,6 +371,18 @@ public class MixinDeclarationImpl extends TopLevelDeclarationImpl implements Mix
       case DartPackage.MIXIN_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case DartPackage.MIXIN_DECLARATION__TYPE_PARAMETERS:
+        setTypeParameters((TypeParameters)null);
+        return;
+      case DartPackage.MIXIN_DECLARATION__ON_TYPES:
+        getOnTypes().clear();
+        return;
+      case DartPackage.MIXIN_DECLARATION__INTERFACES:
+        setInterfaces((Interfaces)null);
+        return;
+      case DartPackage.MIXIN_DECLARATION__MEMBERS:
+        getMembers().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -155,6 +399,14 @@ public class MixinDeclarationImpl extends TopLevelDeclarationImpl implements Mix
     {
       case DartPackage.MIXIN_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DartPackage.MIXIN_DECLARATION__TYPE_PARAMETERS:
+        return typeParameters != null;
+      case DartPackage.MIXIN_DECLARATION__ON_TYPES:
+        return onTypes != null && !onTypes.isEmpty();
+      case DartPackage.MIXIN_DECLARATION__INTERFACES:
+        return interfaces != null;
+      case DartPackage.MIXIN_DECLARATION__MEMBERS:
+        return members != null && !members.isEmpty();
     }
     return super.eIsSet(featureID);
   }

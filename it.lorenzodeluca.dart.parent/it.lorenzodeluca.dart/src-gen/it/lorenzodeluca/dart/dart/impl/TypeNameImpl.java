@@ -4,16 +4,14 @@
 package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
-import it.lorenzodeluca.dart.dart.TypeArguments;
 import it.lorenzodeluca.dart.dart.TypeName;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,35 +21,13 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeNameImpl#isNullable <em>Nullable</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeNameImpl#getName <em>Name</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeNameImpl#getTypeArguments <em>Type Arguments</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class TypeNameImpl extends TypeImpl implements TypeName
+public class TypeNameImpl extends MinimalEObjectImpl.Container implements TypeName
 {
-  /**
-   * The default value of the '{@link #isNullable() <em>Nullable</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isNullable()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean NULLABLE_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isNullable() <em>Nullable</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isNullable()
-   * @generated
-   * @ordered
-   */
-  protected boolean nullable = NULLABLE_EDEFAULT;
-
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -73,16 +49,6 @@ public class TypeNameImpl extends TypeImpl implements TypeName
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTypeArguments() <em>Type Arguments</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTypeArguments()
-   * @generated
-   * @ordered
-   */
-  protected TypeArguments typeArguments;
-
-  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -101,31 +67,6 @@ public class TypeNameImpl extends TypeImpl implements TypeName
   protected EClass eStaticClass()
   {
     return DartPackage.Literals.TYPE_NAME;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean isNullable()
-  {
-    return nullable;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setNullable(boolean newNullable)
-  {
-    boolean oldNullable = nullable;
-    nullable = newNullable;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.TYPE_NAME__NULLABLE, oldNullable, nullable));
   }
 
   /**
@@ -159,82 +100,12 @@ public class TypeNameImpl extends TypeImpl implements TypeName
    * @generated
    */
   @Override
-  public TypeArguments getTypeArguments()
-  {
-    return typeArguments;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetTypeArguments(TypeArguments newTypeArguments, NotificationChain msgs)
-  {
-    TypeArguments oldTypeArguments = typeArguments;
-    typeArguments = newTypeArguments;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.TYPE_NAME__TYPE_ARGUMENTS, oldTypeArguments, newTypeArguments);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setTypeArguments(TypeArguments newTypeArguments)
-  {
-    if (newTypeArguments != typeArguments)
-    {
-      NotificationChain msgs = null;
-      if (typeArguments != null)
-        msgs = ((InternalEObject)typeArguments).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.TYPE_NAME__TYPE_ARGUMENTS, null, msgs);
-      if (newTypeArguments != null)
-        msgs = ((InternalEObject)newTypeArguments).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.TYPE_NAME__TYPE_ARGUMENTS, null, msgs);
-      msgs = basicSetTypeArguments(newTypeArguments, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.TYPE_NAME__TYPE_ARGUMENTS, newTypeArguments, newTypeArguments));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case DartPackage.TYPE_NAME__TYPE_ARGUMENTS:
-        return basicSetTypeArguments(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
-      case DartPackage.TYPE_NAME__NULLABLE:
-        return isNullable();
       case DartPackage.TYPE_NAME__NAME:
         return getName();
-      case DartPackage.TYPE_NAME__TYPE_ARGUMENTS:
-        return getTypeArguments();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -249,14 +120,8 @@ public class TypeNameImpl extends TypeImpl implements TypeName
   {
     switch (featureID)
     {
-      case DartPackage.TYPE_NAME__NULLABLE:
-        setNullable((Boolean)newValue);
-        return;
       case DartPackage.TYPE_NAME__NAME:
         setName((String)newValue);
-        return;
-      case DartPackage.TYPE_NAME__TYPE_ARGUMENTS:
-        setTypeArguments((TypeArguments)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -272,14 +137,8 @@ public class TypeNameImpl extends TypeImpl implements TypeName
   {
     switch (featureID)
     {
-      case DartPackage.TYPE_NAME__NULLABLE:
-        setNullable(NULLABLE_EDEFAULT);
-        return;
       case DartPackage.TYPE_NAME__NAME:
         setName(NAME_EDEFAULT);
-        return;
-      case DartPackage.TYPE_NAME__TYPE_ARGUMENTS:
-        setTypeArguments((TypeArguments)null);
         return;
     }
     super.eUnset(featureID);
@@ -295,12 +154,8 @@ public class TypeNameImpl extends TypeImpl implements TypeName
   {
     switch (featureID)
     {
-      case DartPackage.TYPE_NAME__NULLABLE:
-        return nullable != NULLABLE_EDEFAULT;
       case DartPackage.TYPE_NAME__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case DartPackage.TYPE_NAME__TYPE_ARGUMENTS:
-        return typeArguments != null;
     }
     return super.eIsSet(featureID);
   }
@@ -316,9 +171,7 @@ public class TypeNameImpl extends TypeImpl implements TypeName
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (nullable: ");
-    result.append(nullable);
-    result.append(", name: ");
+    result.append(" (name: ");
     result.append(name);
     result.append(')');
     return result.toString();

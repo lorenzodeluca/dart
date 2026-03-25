@@ -24,76 +24,121 @@ public interface DartFactory extends EFactory
   DartFactory eINSTANCE = it.lorenzodeluca.dart.dart.impl.DartFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Compilation Unit</em>'.
+   * Returns a new object of class '<em>File</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Compilation Unit</em>'.
+   * @return a new object of class '<em>File</em>'.
    * @generated
    */
-  CompilationUnit createCompilationUnit();
+  DartFile createDartFile();
 
   /**
-   * Returns a new object of class '<em>Script Tag</em>'.
+   * Returns a new object of class '<em>Variable Declaration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Script Tag</em>'.
+   * @return a new object of class '<em>Variable Declaration</em>'.
    * @generated
    */
-  ScriptTag createScriptTag();
+  VariableDeclaration createVariableDeclaration();
 
   /**
-   * Returns a new object of class '<em>Library Name</em>'.
+   * Returns a new object of class '<em>Initialized Identifier</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Library Name</em>'.
+   * @return a new object of class '<em>Initialized Identifier</em>'.
    * @generated
    */
-  LibraryName createLibraryName();
+  InitializedIdentifier createInitializedIdentifier();
 
   /**
-   * Returns a new object of class '<em>Import Or Export</em>'.
+   * Returns a new object of class '<em>Function Declaration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Import Or Export</em>'.
+   * @return a new object of class '<em>Function Declaration</em>'.
    * @generated
    */
-  ImportOrExport createImportOrExport();
+  FunctionDeclaration createFunctionDeclaration();
 
   /**
-   * Returns a new object of class '<em>Library Import</em>'.
+   * Returns a new object of class '<em>Formal Parameter Part</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Library Import</em>'.
+   * @return a new object of class '<em>Formal Parameter Part</em>'.
    * @generated
    */
-  LibraryImport createLibraryImport();
+  FormalParameterPart createFormalParameterPart();
 
   /**
-   * Returns a new object of class '<em>Library Export</em>'.
+   * Returns a new object of class '<em>Formal Parameter List</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Library Export</em>'.
+   * @return a new object of class '<em>Formal Parameter List</em>'.
    * @generated
    */
-  LibraryExport createLibraryExport();
+  FormalParameterList createFormalParameterList();
 
   /**
-   * Returns a new object of class '<em>Part Directive</em>'.
+   * Returns a new object of class '<em>Normal Formal Parameter</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Part Directive</em>'.
+   * @return a new object of class '<em>Normal Formal Parameter</em>'.
    * @generated
    */
-  PartDirective createPartDirective();
+  NormalFormalParameter createNormalFormalParameter();
 
   /**
-   * Returns a new object of class '<em>Top Level Declaration</em>'.
+   * Returns a new object of class '<em>Optional Or Named Formal Parameters</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Top Level Declaration</em>'.
+   * @return a new object of class '<em>Optional Or Named Formal Parameters</em>'.
    * @generated
    */
-  TopLevelDeclaration createTopLevelDeclaration();
+  OptionalOrNamedFormalParameters createOptionalOrNamedFormalParameters();
+
+  /**
+   * Returns a new object of class '<em>Optional Positional Formal Parameters</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Optional Positional Formal Parameters</em>'.
+   * @generated
+   */
+  OptionalPositionalFormalParameters createOptionalPositionalFormalParameters();
+
+  /**
+   * Returns a new object of class '<em>Named Formal Parameters</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Named Formal Parameters</em>'.
+   * @generated
+   */
+  NamedFormalParameters createNamedFormalParameters();
+
+  /**
+   * Returns a new object of class '<em>Default Formal Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Default Formal Parameter</em>'.
+   * @generated
+   */
+  DefaultFormalParameter createDefaultFormalParameter();
+
+  /**
+   * Returns a new object of class '<em>Default Named Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Default Named Parameter</em>'.
+   * @generated
+   */
+  DefaultNamedParameter createDefaultNamedParameter();
+
+  /**
+   * Returns a new object of class '<em>Function Body</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Body</em>'.
+   * @generated
+   */
+  FunctionBody createFunctionBody();
 
   /**
    * Returns a new object of class '<em>Class Declaration</em>'.
@@ -105,6 +150,60 @@ public interface DartFactory extends EFactory
   ClassDeclaration createClassDeclaration();
 
   /**
+   * Returns a new object of class '<em>Superclass</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Superclass</em>'.
+   * @generated
+   */
+  Superclass createSuperclass();
+
+  /**
+   * Returns a new object of class '<em>Mixins</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Mixins</em>'.
+   * @generated
+   */
+  Mixins createMixins();
+
+  /**
+   * Returns a new object of class '<em>Interfaces</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Interfaces</em>'.
+   * @generated
+   */
+  Interfaces createInterfaces();
+
+  /**
+   * Returns a new object of class '<em>Member Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Member Declaration</em>'.
+   * @generated
+   */
+  MemberDeclaration createMemberDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Method Signature</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Method Signature</em>'.
+   * @generated
+   */
+  MethodSignature createMethodSignature();
+
+  /**
+   * Returns a new object of class '<em>Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Declaration</em>'.
+   * @generated
+   */
+  Declaration createDeclaration();
+
+  /**
    * Returns a new object of class '<em>Mixin Declaration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -112,6 +211,15 @@ public interface DartFactory extends EFactory
    * @generated
    */
   MixinDeclaration createMixinDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Mixin Application Class</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Mixin Application Class</em>'.
+   * @generated
+   */
+  MixinApplicationClass createMixinApplicationClass();
 
   /**
    * Returns a new object of class '<em>Extension Declaration</em>'.
@@ -132,6 +240,366 @@ public interface DartFactory extends EFactory
   EnumDeclaration createEnumDeclaration();
 
   /**
+   * Returns a new object of class '<em>Enum Entry</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Enum Entry</em>'.
+   * @generated
+   */
+  EnumEntry createEnumEntry();
+
+  /**
+   * Returns a new object of class '<em>Type Parameters</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type Parameters</em>'.
+   * @generated
+   */
+  TypeParameters createTypeParameters();
+
+  /**
+   * Returns a new object of class '<em>Type Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type Parameter</em>'.
+   * @generated
+   */
+  TypeParameter createTypeParameter();
+
+  /**
+   * Returns a new object of class '<em>Metadata</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Metadata</em>'.
+   * @generated
+   */
+  Metadata createMetadata();
+
+  /**
+   * Returns a new object of class '<em>Arguments</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Arguments</em>'.
+   * @generated
+   */
+  Arguments createArguments();
+
+  /**
+   * Returns a new object of class '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression</em>'.
+   * @generated
+   */
+  Expression createExpression();
+
+  /**
+   * Returns a new object of class '<em>Collection Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Collection Literal</em>'.
+   * @generated
+   */
+  CollectionLiteral createCollectionLiteral();
+
+  /**
+   * Returns a new object of class '<em>Map Or Set Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Map Or Set Element</em>'.
+   * @generated
+   */
+  MapOrSetElement createMapOrSetElement();
+
+  /**
+   * Returns a new object of class '<em>Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Statement</em>'.
+   * @generated
+   */
+  Statement createStatement();
+
+  /**
+   * Returns a new object of class '<em>Label</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Label</em>'.
+   * @generated
+   */
+  Label createLabel();
+
+  /**
+   * Returns a new object of class '<em>Non Labelled Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Non Labelled Statement</em>'.
+   * @generated
+   */
+  NonLabelledStatement createNonLabelledStatement();
+
+  /**
+   * Returns a new object of class '<em>Block</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Block</em>'.
+   * @generated
+   */
+  Block createBlock();
+
+  /**
+   * Returns a new object of class '<em>Local Variable Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Local Variable Declaration</em>'.
+   * @generated
+   */
+  LocalVariableDeclaration createLocalVariableDeclaration();
+
+  /**
+   * Returns a new object of class '<em>If Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>If Statement</em>'.
+   * @generated
+   */
+  IfStatement createIfStatement();
+
+  /**
+   * Returns a new object of class '<em>For Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>For Statement</em>'.
+   * @generated
+   */
+  ForStatement createForStatement();
+
+  /**
+   * Returns a new object of class '<em>While Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>While Statement</em>'.
+   * @generated
+   */
+  WhileStatement createWhileStatement();
+
+  /**
+   * Returns a new object of class '<em>Do Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Do Statement</em>'.
+   * @generated
+   */
+  DoStatement createDoStatement();
+
+  /**
+   * Returns a new object of class '<em>Switch Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Switch Statement</em>'.
+   * @generated
+   */
+  SwitchStatement createSwitchStatement();
+
+  /**
+   * Returns a new object of class '<em>Switch Case</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Switch Case</em>'.
+   * @generated
+   */
+  SwitchCase createSwitchCase();
+
+  /**
+   * Returns a new object of class '<em>Default Case</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Default Case</em>'.
+   * @generated
+   */
+  DefaultCase createDefaultCase();
+
+  /**
+   * Returns a new object of class '<em>Rethrow Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Rethrow Statement</em>'.
+   * @generated
+   */
+  RethrowStatement createRethrowStatement();
+
+  /**
+   * Returns a new object of class '<em>Try Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Try Statement</em>'.
+   * @generated
+   */
+  TryStatement createTryStatement();
+
+  /**
+   * Returns a new object of class '<em>Catch Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Catch Clause</em>'.
+   * @generated
+   */
+  CatchClause createCatchClause();
+
+  /**
+   * Returns a new object of class '<em>Finally Clause</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Finally Clause</em>'.
+   * @generated
+   */
+  FinallyClause createFinallyClause();
+
+  /**
+   * Returns a new object of class '<em>Break Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Break Statement</em>'.
+   * @generated
+   */
+  BreakStatement createBreakStatement();
+
+  /**
+   * Returns a new object of class '<em>Continue Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Continue Statement</em>'.
+   * @generated
+   */
+  ContinueStatement createContinueStatement();
+
+  /**
+   * Returns a new object of class '<em>Return Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Return Statement</em>'.
+   * @generated
+   */
+  ReturnStatement createReturnStatement();
+
+  /**
+   * Returns a new object of class '<em>Yield Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Yield Statement</em>'.
+   * @generated
+   */
+  YieldStatement createYieldStatement();
+
+  /**
+   * Returns a new object of class '<em>Expression Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression Statement</em>'.
+   * @generated
+   */
+  ExpressionStatement createExpressionStatement();
+
+  /**
+   * Returns a new object of class '<em>Library Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Library Declaration</em>'.
+   * @generated
+   */
+  LibraryDeclaration createLibraryDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Element With Metadata</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Element With Metadata</em>'.
+   * @generated
+   */
+  ElementWithMetadata createElementWithMetadata();
+
+  /**
+   * Returns a new object of class '<em>Import Or Export Content</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Import Or Export Content</em>'.
+   * @generated
+   */
+  ImportOrExportContent createImportOrExportContent();
+
+  /**
+   * Returns a new object of class '<em>Combinator</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Combinator</em>'.
+   * @generated
+   */
+  Combinator createCombinator();
+
+  /**
+   * Returns a new object of class '<em>Part Directive Content</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Part Directive Content</em>'.
+   * @generated
+   */
+  PartDirectiveContent createPartDirectiveContent();
+
+  /**
+   * Returns a new object of class '<em>Part Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Part Declaration</em>'.
+   * @generated
+   */
+  PartDeclaration createPartDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Annotated Top Level</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Annotated Top Level</em>'.
+   * @generated
+   */
+  AnnotatedTopLevel createAnnotatedTopLevel();
+
+  /**
+   * Returns a new object of class '<em>Script Tag</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Script Tag</em>'.
+   * @generated
+   */
+  ScriptTag createScriptTag();
+
+  /**
+   * Returns a new object of class '<em>Library Name</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Library Name</em>'.
+   * @generated
+   */
+  LibraryName createLibraryName();
+
+  /**
+   * Returns a new object of class '<em>Part Header</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Part Header</em>'.
+   * @generated
+   */
+  PartHeader createPartHeader();
+
+  /**
+   * Returns a new object of class '<em>Top Level Declaration Content</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Top Level Declaration Content</em>'.
+   * @generated
+   */
+  TopLevelDeclarationContent createTopLevelDeclarationContent();
+
+  /**
    * Returns a new object of class '<em>Type Alias</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -139,33 +607,6 @@ public interface DartFactory extends EFactory
    * @generated
    */
   TypeAlias createTypeAlias();
-
-  /**
-   * Returns a new object of class '<em>Function Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Function Declaration</em>'.
-   * @generated
-   */
-  FunctionDeclaration createFunctionDeclaration();
-
-  /**
-   * Returns a new object of class '<em>Variable Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Declaration</em>'.
-   * @generated
-   */
-  VariableDeclaration createVariableDeclaration();
-
-  /**
-   * Returns a new object of class '<em>Variable Single Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Single Declaration</em>'.
-   * @generated
-   */
-  VariableSingleDeclaration createVariableSingleDeclaration();
 
   /**
    * Returns a new object of class '<em>Type</em>'.
@@ -193,6 +634,258 @@ public interface DartFactory extends EFactory
    * @generated
    */
   TypeArguments createTypeArguments();
+
+  /**
+   * Returns a new object of class '<em>Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Assignment</em>'.
+   * @generated
+   */
+  Assignment createAssignment();
+
+  /**
+   * Returns a new object of class '<em>Conditional</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Conditional</em>'.
+   * @generated
+   */
+  Conditional createConditional();
+
+  /**
+   * Returns a new object of class '<em>If Null</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>If Null</em>'.
+   * @generated
+   */
+  IfNull createIfNull();
+
+  /**
+   * Returns a new object of class '<em>Logical Or</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Logical Or</em>'.
+   * @generated
+   */
+  LogicalOr createLogicalOr();
+
+  /**
+   * Returns a new object of class '<em>Logical And</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Logical And</em>'.
+   * @generated
+   */
+  LogicalAnd createLogicalAnd();
+
+  /**
+   * Returns a new object of class '<em>Equality</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Equality</em>'.
+   * @generated
+   */
+  Equality createEquality();
+
+  /**
+   * Returns a new object of class '<em>Relational</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Relational</em>'.
+   * @generated
+   */
+  Relational createRelational();
+
+  /**
+   * Returns a new object of class '<em>Type Check</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type Check</em>'.
+   * @generated
+   */
+  TypeCheck createTypeCheck();
+
+  /**
+   * Returns a new object of class '<em>Bitwise Or</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Bitwise Or</em>'.
+   * @generated
+   */
+  BitwiseOr createBitwiseOr();
+
+  /**
+   * Returns a new object of class '<em>Bitwise Xor</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Bitwise Xor</em>'.
+   * @generated
+   */
+  BitwiseXor createBitwiseXor();
+
+  /**
+   * Returns a new object of class '<em>Bitwise And</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Bitwise And</em>'.
+   * @generated
+   */
+  BitwiseAnd createBitwiseAnd();
+
+  /**
+   * Returns a new object of class '<em>Shift</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Shift</em>'.
+   * @generated
+   */
+  Shift createShift();
+
+  /**
+   * Returns a new object of class '<em>Additive</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Additive</em>'.
+   * @generated
+   */
+  Additive createAdditive();
+
+  /**
+   * Returns a new object of class '<em>Multiplicative</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multiplicative</em>'.
+   * @generated
+   */
+  Multiplicative createMultiplicative();
+
+  /**
+   * Returns a new object of class '<em>Prefix Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Prefix Expression</em>'.
+   * @generated
+   */
+  PrefixExpression createPrefixExpression();
+
+  /**
+   * Returns a new object of class '<em>Postfix</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Postfix</em>'.
+   * @generated
+   */
+  Postfix createPostfix();
+
+  /**
+   * Returns a new object of class '<em>Method Invocation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Method Invocation</em>'.
+   * @generated
+   */
+  MethodInvocation createMethodInvocation();
+
+  /**
+   * Returns a new object of class '<em>Index Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Index Expression</em>'.
+   * @generated
+   */
+  IndexExpression createIndexExpression();
+
+  /**
+   * Returns a new object of class '<em>This Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>This Expression</em>'.
+   * @generated
+   */
+  ThisExpression createThisExpression();
+
+  /**
+   * Returns a new object of class '<em>Super Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Super Expression</em>'.
+   * @generated
+   */
+  SuperExpression createSuperExpression();
+
+  /**
+   * Returns a new object of class '<em>Null Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Null Literal</em>'.
+   * @generated
+   */
+  NullLiteral createNullLiteral();
+
+  /**
+   * Returns a new object of class '<em>Boolean Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Boolean Literal</em>'.
+   * @generated
+   */
+  BooleanLiteral createBooleanLiteral();
+
+  /**
+   * Returns a new object of class '<em>Number Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Number Literal</em>'.
+   * @generated
+   */
+  NumberLiteral createNumberLiteral();
+
+  /**
+   * Returns a new object of class '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Literal</em>'.
+   * @generated
+   */
+  StringLiteral createStringLiteral();
+
+  /**
+   * Returns a new object of class '<em>Identifier Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Identifier Ref</em>'.
+   * @generated
+   */
+  IdentifierRef createIdentifierRef();
+
+  /**
+   * Returns a new object of class '<em>New Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>New Expression</em>'.
+   * @generated
+   */
+  NewExpression createNewExpression();
+
+  /**
+   * Returns a new object of class '<em>Const Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Const Expression</em>'.
+   * @generated
+   */
+  ConstExpression createConstExpression();
+
+  /**
+   * Returns a new object of class '<em>Parenthesized Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parenthesized Expression</em>'.
+   * @generated
+   */
+  ParenthesizedExpression createParenthesizedExpression();
 
   /**
    * Returns the package supported by this factory.

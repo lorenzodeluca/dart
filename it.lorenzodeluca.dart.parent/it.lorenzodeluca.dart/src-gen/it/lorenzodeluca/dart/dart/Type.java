@@ -10,6 +10,14 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Type</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Type#getTypeName <em>Type Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Type#getTypeArguments <em>Type Arguments</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Type#isIsNullable <em>Is Nullable</em>}</li>
+ * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getType()
  * @model
@@ -17,4 +25,70 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Type extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Type Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type Name</em>' containment reference.
+   * @see #setTypeName(TypeName)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getType_TypeName()
+   * @model containment="true"
+   * @generated
+   */
+  TypeName getTypeName();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Type#getTypeName <em>Type Name</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type Name</em>' containment reference.
+   * @see #getTypeName()
+   * @generated
+   */
+  void setTypeName(TypeName value);
+
+  /**
+   * Returns the value of the '<em><b>Type Arguments</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type Arguments</em>' containment reference.
+   * @see #setTypeArguments(TypeArguments)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getType_TypeArguments()
+   * @model containment="true"
+   * @generated
+   */
+  TypeArguments getTypeArguments();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Type#getTypeArguments <em>Type Arguments</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type Arguments</em>' containment reference.
+   * @see #getTypeArguments()
+   * @generated
+   */
+  void setTypeArguments(TypeArguments value);
+
+  /**
+   * Returns the value of the '<em><b>Is Nullable</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Nullable</em>' attribute.
+   * @see #setIsNullable(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getType_IsNullable()
+   * @model
+   * @generated
+   */
+  boolean isIsNullable();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Type#isIsNullable <em>Is Nullable</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Nullable</em>' attribute.
+   * @see #isIsNullable()
+   * @generated
+   */
+  void setIsNullable(boolean value);
+
 } // Type

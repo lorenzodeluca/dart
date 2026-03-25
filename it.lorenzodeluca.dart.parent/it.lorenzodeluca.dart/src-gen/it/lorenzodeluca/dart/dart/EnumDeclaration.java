@@ -3,6 +3,7 @@
  */
 package it.lorenzodeluca.dart.dart;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,13 +15,14 @@ package it.lorenzodeluca.dart.dart;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.EnumDeclaration#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.EnumDeclaration#getEntries <em>Entries</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getEnumDeclaration()
  * @model
  * @generated
  */
-public interface EnumDeclaration extends TopLevelDeclaration
+public interface EnumDeclaration extends TopLevelDeclarationContent
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -43,5 +45,17 @@ public interface EnumDeclaration extends TopLevelDeclaration
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.EnumEntry}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Entries</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getEnumDeclaration_Entries()
+   * @model containment="true"
+   * @generated
+   */
+  EList<EnumEntry> getEntries();
 
 } // EnumDeclaration

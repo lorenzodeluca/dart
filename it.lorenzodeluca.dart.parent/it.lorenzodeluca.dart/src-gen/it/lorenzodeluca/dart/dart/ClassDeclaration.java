@@ -3,6 +3,7 @@
  */
 package it.lorenzodeluca.dart.dart;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,15 +14,42 @@ package it.lorenzodeluca.dart.dart;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.ClassDeclaration#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.ClassDeclaration#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.ClassDeclaration#getTypeParameters <em>Type Parameters</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.ClassDeclaration#getSuperclass <em>Superclass</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.ClassDeclaration#getInterfaces <em>Interfaces</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.ClassDeclaration#getMembers <em>Members</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getClassDeclaration()
  * @model
  * @generated
  */
-public interface ClassDeclaration extends TopLevelDeclaration
+public interface ClassDeclaration extends TopLevelDeclarationContent
 {
+  /**
+   * Returns the value of the '<em><b>Is Abstract</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Abstract</em>' attribute.
+   * @see #setIsAbstract(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getClassDeclaration_IsAbstract()
+   * @model
+   * @generated
+   */
+  boolean isIsAbstract();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.ClassDeclaration#isIsAbstract <em>Is Abstract</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Abstract</em>' attribute.
+   * @see #isIsAbstract()
+   * @generated
+   */
+  void setIsAbstract(boolean value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -43,5 +71,83 @@ public interface ClassDeclaration extends TopLevelDeclaration
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Type Parameters</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type Parameters</em>' containment reference.
+   * @see #setTypeParameters(TypeParameters)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getClassDeclaration_TypeParameters()
+   * @model containment="true"
+   * @generated
+   */
+  TypeParameters getTypeParameters();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.ClassDeclaration#getTypeParameters <em>Type Parameters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type Parameters</em>' containment reference.
+   * @see #getTypeParameters()
+   * @generated
+   */
+  void setTypeParameters(TypeParameters value);
+
+  /**
+   * Returns the value of the '<em><b>Superclass</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Superclass</em>' containment reference.
+   * @see #setSuperclass(Superclass)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getClassDeclaration_Superclass()
+   * @model containment="true"
+   * @generated
+   */
+  Superclass getSuperclass();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.ClassDeclaration#getSuperclass <em>Superclass</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Superclass</em>' containment reference.
+   * @see #getSuperclass()
+   * @generated
+   */
+  void setSuperclass(Superclass value);
+
+  /**
+   * Returns the value of the '<em><b>Interfaces</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Interfaces</em>' containment reference.
+   * @see #setInterfaces(Interfaces)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getClassDeclaration_Interfaces()
+   * @model containment="true"
+   * @generated
+   */
+  Interfaces getInterfaces();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.ClassDeclaration#getInterfaces <em>Interfaces</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Interfaces</em>' containment reference.
+   * @see #getInterfaces()
+   * @generated
+   */
+  void setInterfaces(Interfaces value);
+
+  /**
+   * Returns the value of the '<em><b>Members</b></em>' containment reference list.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.MemberDeclaration}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Members</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getClassDeclaration_Members()
+   * @model containment="true"
+   * @generated
+   */
+  EList<MemberDeclaration> getMembers();
 
 } // ClassDeclaration
