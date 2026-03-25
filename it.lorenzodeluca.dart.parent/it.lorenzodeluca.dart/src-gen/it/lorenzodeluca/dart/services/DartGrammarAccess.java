@@ -1653,7 +1653,6 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
-		//// FIX: Ora restituisce stringhe piatte, così può essere usato in TypeName in modo sicuro
 		//QualifiedName:
 		//    ID ('.' ID)*;
 		@Override public ParserRule getRule() { return rule; }
@@ -3327,12 +3326,12 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		
 		//ForStatement:
 		//    (isAwait?='await')? 'for' '('
-		//    ( (init=VariableDeclaration) | (initExpr=Expression)? )
+		//    ( (=>init=VariableDeclaration) | (initExpr=Expression)? )
 		//    ';' condition=Expression? ';' update=Expression? ')' body=Statement;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//(isAwait?='await')? 'for' '('
-		//( (init=VariableDeclaration) | (initExpr=Expression)? )
+		//( (=>init=VariableDeclaration) | (initExpr=Expression)? )
 		//';' condition=Expression? ';' update=Expression? ')' body=Statement
 		public Group getGroup() { return cGroup; }
 		
@@ -3348,10 +3347,10 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//'('
 		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
 		
-		//( (init=VariableDeclaration) | (initExpr=Expression)? )
+		//( (=>init=VariableDeclaration) | (initExpr=Expression)? )
 		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 		
-		//(init=VariableDeclaration)
+		//(=>init=VariableDeclaration)
 		public Assignment getInitAssignment_3_0() { return cInitAssignment_3_0; }
 		
 		//VariableDeclaration
@@ -3644,10 +3643,10 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final RuleCall cFinallyBlockFinallyClauseParserRuleCall_3_0 = (RuleCall)cFinallyBlockAssignment_3.eContents().get(0);
 		
 		//TryStatement:
-		//    'try' block=Block (catchClauses+=CatchClause)* (finallyBlock=FinallyClause)?;
+		//    'try' block=Block (=>catchClauses+=CatchClause)* (finallyBlock=FinallyClause)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'try' block=Block (catchClauses+=CatchClause)* (finallyBlock=FinallyClause)?
+		//'try' block=Block (=>catchClauses+=CatchClause)* (finallyBlock=FinallyClause)?
 		public Group getGroup() { return cGroup; }
 		
 		//'try'
@@ -3659,7 +3658,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//Block
 		public RuleCall getBlockBlockParserRuleCall_1_0() { return cBlockBlockParserRuleCall_1_0; }
 		
-		//(catchClauses+=CatchClause)*
+		//(=>catchClauses+=CatchClause)*
 		public Assignment getCatchClausesAssignment_2() { return cCatchClausesAssignment_2; }
 		
 		//CatchClause
@@ -4365,7 +4364,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//    ExtensionDeclaration |
 		//    EnumDeclaration |
 		//    TypeAlias |
-		//    FunctionDeclaration |
+		//    =>FunctionDeclaration |
 		//    VariableDeclaration |
 		//    MixinApplicationClass;
 		@Override public ParserRule getRule() { return rule; }
@@ -4375,7 +4374,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//ExtensionDeclaration |
 		//EnumDeclaration |
 		//TypeAlias |
-		//FunctionDeclaration |
+		//=>FunctionDeclaration |
 		//VariableDeclaration |
 		//MixinApplicationClass
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -4395,7 +4394,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//TypeAlias
 		public RuleCall getTypeAliasParserRuleCall_4() { return cTypeAliasParserRuleCall_4; }
 		
-		//FunctionDeclaration
+		//=>FunctionDeclaration
 		public RuleCall getFunctionDeclarationParserRuleCall_5() { return cFunctionDeclarationParserRuleCall_5; }
 		
 		//VariableDeclaration
@@ -4421,10 +4420,10 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		// * 20. TYPES
 		// * ========================================================================= */
 		//TypeAlias:
-		//    'typedef' name=ID (typeParameters=TypeParameters)? '=' type=Type ';';
+		//    'typedef' name=ID (=>typeParameters=TypeParameters)? '=' type=Type ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'typedef' name=ID (typeParameters=TypeParameters)? '=' type=Type ';'
+		//'typedef' name=ID (=>typeParameters=TypeParameters)? '=' type=Type ';'
 		public Group getGroup() { return cGroup; }
 		
 		//'typedef'
@@ -4436,7 +4435,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
-		//(typeParameters=TypeParameters)?
+		//(=>typeParameters=TypeParameters)?
 		public Assignment getTypeParametersAssignment_2() { return cTypeParametersAssignment_2; }
 		
 		//TypeParameters
@@ -4491,34 +4490,46 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	}
 	public class TypeNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.TypeName");
-		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
-		private final Alternatives cNameAlternatives_0 = (Alternatives)cNameAssignment.eContents().get(0);
-		private final Keyword cNameFunctionKeyword_0_0 = (Keyword)cNameAlternatives_0.eContents().get(0);
-		private final Keyword cNameVoidKeyword_0_1 = (Keyword)cNameAlternatives_0.eContents().get(1);
-		private final Keyword cNameDynamicKeyword_0_2 = (Keyword)cNameAlternatives_0.eContents().get(2);
-		private final RuleCall cNameQualifiedNameParserRuleCall_0_3 = (RuleCall)cNameAlternatives_0.eContents().get(3);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cNameVoidKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final Keyword cNameDynamicKeyword_1_0 = (Keyword)cNameAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final Keyword cNameFunctionKeyword_2_0 = (Keyword)cNameAssignment_2.eContents().get(0);
+		private final Assignment cNameAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
+		private final RuleCall cNameQualifiedNameParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
 		
 		//TypeName:
-		//    name=('Function' | 'void' | 'dynamic' | QualifiedName);
+		//    name='void' | name='dynamic' | name='Function' | name=QualifiedName;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=('Function' | 'void' | 'dynamic' | QualifiedName)
-		public Assignment getNameAssignment() { return cNameAssignment; }
+		//name='void' | name='dynamic' | name='Function' | name=QualifiedName
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//('Function' | 'void' | 'dynamic' | QualifiedName)
-		public Alternatives getNameAlternatives_0() { return cNameAlternatives_0; }
-		
-		//'Function'
-		public Keyword getNameFunctionKeyword_0_0() { return cNameFunctionKeyword_0_0; }
+		//name='void'
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 		
 		//'void'
-		public Keyword getNameVoidKeyword_0_1() { return cNameVoidKeyword_0_1; }
+		public Keyword getNameVoidKeyword_0_0() { return cNameVoidKeyword_0_0; }
+		
+		//name='dynamic'
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//'dynamic'
-		public Keyword getNameDynamicKeyword_0_2() { return cNameDynamicKeyword_0_2; }
+		public Keyword getNameDynamicKeyword_1_0() { return cNameDynamicKeyword_1_0; }
+		
+		//name='Function'
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//'Function'
+		public Keyword getNameFunctionKeyword_2_0() { return cNameFunctionKeyword_2_0; }
+		
+		//name=QualifiedName
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
 		
 		//QualifiedName
-		public RuleCall getNameQualifiedNameParserRuleCall_0_3() { return cNameQualifiedNameParserRuleCall_0_3; }
+		public RuleCall getNameQualifiedNameParserRuleCall_3_0() { return cNameQualifiedNameParserRuleCall_3_0; }
 	}
 	public class TypeArgumentsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.TypeArguments");
@@ -5123,7 +5134,6 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return getMetadataAccess().getRule();
 	}
 	
-	//// FIX: Ora restituisce stringhe piatte, così può essere usato in TypeName in modo sicuro
 	//QualifiedName:
 	//    ID ('.' ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
@@ -5476,7 +5486,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	
 	//ForStatement:
 	//    (isAwait?='await')? 'for' '('
-	//    ( (init=VariableDeclaration) | (initExpr=Expression)? )
+	//    ( (=>init=VariableDeclaration) | (initExpr=Expression)? )
 	//    ';' condition=Expression? ';' update=Expression? ')' body=Statement;
 	public ForStatementElements getForStatementAccess() {
 		return pForStatement;
@@ -5547,7 +5557,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	}
 	
 	//TryStatement:
-	//    'try' block=Block (catchClauses+=CatchClause)* (finallyBlock=FinallyClause)?;
+	//    'try' block=Block (=>catchClauses+=CatchClause)* (finallyBlock=FinallyClause)?;
 	public TryStatementElements getTryStatementAccess() {
 		return pTryStatement;
 	}
@@ -5749,7 +5759,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	//    ExtensionDeclaration |
 	//    EnumDeclaration |
 	//    TypeAlias |
-	//    FunctionDeclaration |
+	//    =>FunctionDeclaration |
 	//    VariableDeclaration |
 	//    MixinApplicationClass;
 	public TopLevelDeclarationContentElements getTopLevelDeclarationContentAccess() {
@@ -5764,7 +5774,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	// * 20. TYPES
 	// * ========================================================================= */
 	//TypeAlias:
-	//    'typedef' name=ID (typeParameters=TypeParameters)? '=' type=Type ';';
+	//    'typedef' name=ID (=>typeParameters=TypeParameters)? '=' type=Type ';';
 	public TypeAliasElements getTypeAliasAccess() {
 		return pTypeAlias;
 	}
@@ -5784,7 +5794,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	}
 	
 	//TypeName:
-	//    name=('Function' | 'void' | 'dynamic' | QualifiedName);
+	//    name='void' | name='dynamic' | name='Function' | name=QualifiedName;
 	public TypeNameElements getTypeNameAccess() {
 		return pTypeName;
 	}

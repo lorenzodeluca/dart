@@ -147,7 +147,6 @@ TypeParameter:
 Metadata:
     '@' name=QualifiedName ('.' constructor=ID)? (arguments=Arguments)?;
 
-// FIX: Ora restituisce stringhe piatte, così può essere usato in TypeName in modo sicuro
 QualifiedName:
     ID ('.' ID)*;
 
@@ -292,9 +291,9 @@ IfStatement:
 
 ForStatement:
     (isAwait?='await')? 'for' '(' 
-    ( (init=VariableDeclaration) | (initExpr=Expression)? ) 
+    ( (=>init=VariableDeclaration) | (initExpr=Expression)? ) 
     ';' condition=Expression? ';' update=Expression? ')' body=Statement;
-
+    
 WhileStatement:
     'while' '(' condition=Expression ')' body=Statement;
 
@@ -314,7 +313,7 @@ RethrowStatement:
     {RethrowStatement} 'rethrow' ';';
 
 TryStatement:
-    'try' block=Block (catchClauses+=CatchClause)* (finallyBlock=FinallyClause)?;
+    'try' block=Block (=>catchClauses+=CatchClause)* (finallyBlock=FinallyClause)?;
 
 CatchClause:
     ('on' type=Type)? ('catch' '(' exception=ID (',' stackTrace=ID)? ')')? block=Block;
@@ -392,7 +391,7 @@ TopLevelDeclarationContent:
     ExtensionDeclaration | 
     EnumDeclaration | 
     TypeAlias | 
-    FunctionDeclaration | 
+    =>FunctionDeclaration | 
     VariableDeclaration |
     MixinApplicationClass;
 
@@ -401,13 +400,13 @@ TopLevelDeclarationContent:
  * ========================================================================= */
 
 TypeAlias:
-    'typedef' name=ID (typeParameters=TypeParameters)? '=' type=Type ';';
+    'typedef' name=ID (=>typeParameters=TypeParameters)? '=' type=Type ';';
 
 Type:
     typeName=TypeName (typeArguments=TypeArguments)? (isNullable?='?')?;
 
 TypeName:
-    name=('Function' | 'void' | 'dynamic' | QualifiedName);
+    name='void' | name='dynamic' | name='Function' | name=QualifiedName;
 
 TypeArguments:
     '<' types+=Type (',' types+=Type)* '>';

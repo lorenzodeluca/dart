@@ -3802,7 +3802,7 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     TypeName returns TypeName
 	 *
 	 * Constraint:
-	 *     (name='Function' | name='void' | name='dynamic' | name=QualifiedName)
+	 *     (name='void' | name='dynamic' | name='Function' | name=QualifiedName)
 	 * </pre>
 	 */
 	protected void sequence_TypeName(ISerializationContext context, TypeName semanticObject) {
