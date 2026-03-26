@@ -54,4 +54,28 @@ public class DartTests {
         Block body = mainFunc.getBody().getBlock();
         Assertions.assertFalse(body.getStatements().isEmpty(), "Body should not be empty");
     }
+    
+    /*
+      @Test
+     
+    void testDebugParsing() throws Exception {
+        // Test 1: funzione senza return type
+        DartFile r1 = parseHelper.parse("main() {}");
+        System.out.println("=== main() {} ===");
+        System.out.println(EmfFormatter.objToStr(r1));
+        System.out.println("Errors: " + r1.eResource().getErrors());
+
+        // Test 2: funzione con keyword type
+        DartFile r2 = parseHelper.parse("void main() {}");
+        System.out.println("=== void main() {} ===");
+        System.out.println(EmfFormatter.objToStr(r2));
+        System.out.println("Errors: " + r2.eResource().getErrors());
+
+        // Test 3: solo void
+        DartFile r3 = parseHelper.parse("void main() { print('Hello'); }");
+        System.out.println("=== void main() { print('Hello'); } ===");
+        System.out.println(EmfFormatter.objToStr(r3));
+        System.out.println("Errors: " + r3.eResource().getErrors());
+    }
+    */
 }

@@ -37,6 +37,7 @@ import it.lorenzodeluca.dart.dart.ForStatement;
 import it.lorenzodeluca.dart.dart.FormalParameterList;
 import it.lorenzodeluca.dart.dart.FormalParameterPart;
 import it.lorenzodeluca.dart.dart.FunctionBody;
+import it.lorenzodeluca.dart.dart.FunctionCall;
 import it.lorenzodeluca.dart.dart.FunctionDeclaration;
 import it.lorenzodeluca.dart.dart.IdentifierRef;
 import it.lorenzodeluca.dart.dart.IfNull;
@@ -705,6 +706,13 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   private EClass methodInvocationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionCallEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -4099,6 +4107,39 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EClass getFunctionCall()
+  {
+    return functionCallEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionCall_Receiver()
+  {
+    return (EReference)functionCallEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionCall_Args()
+  {
+    return (EReference)functionCallEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getIndexExpression()
   {
     return indexExpressionEClass;
@@ -4854,6 +4895,10 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     createEReference(methodInvocationEClass, METHOD_INVOCATION__TYPE_ARGUMENTS);
     createEReference(methodInvocationEClass, METHOD_INVOCATION__ARGS);
 
+    functionCallEClass = createEClass(FUNCTION_CALL);
+    createEReference(functionCallEClass, FUNCTION_CALL__RECEIVER);
+    createEReference(functionCallEClass, FUNCTION_CALL__ARGS);
+
     indexExpressionEClass = createEClass(INDEX_EXPRESSION);
     createEReference(indexExpressionEClass, INDEX_EXPRESSION__RECEIVER);
     createEReference(indexExpressionEClass, INDEX_EXPRESSION__INDEX);
@@ -4975,6 +5020,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     prefixExpressionEClass.getESuperTypes().add(this.getExpression());
     postfixEClass.getESuperTypes().add(this.getExpression());
     methodInvocationEClass.getESuperTypes().add(this.getExpression());
+    functionCallEClass.getESuperTypes().add(this.getExpression());
     indexExpressionEClass.getESuperTypes().add(this.getExpression());
     thisExpressionEClass.getESuperTypes().add(this.getExpression());
     superExpressionEClass.getESuperTypes().add(this.getExpression());
@@ -5367,6 +5413,10 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     initEAttribute(getMethodInvocation_Method(), ecorePackage.getEString(), "method", null, 0, 1, MethodInvocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethodInvocation_TypeArguments(), this.getTypeArguments(), null, "typeArguments", null, 0, 1, MethodInvocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethodInvocation_Args(), this.getArguments(), null, "args", null, 0, 1, MethodInvocation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(functionCallEClass, FunctionCall.class, "FunctionCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFunctionCall_Receiver(), this.getExpression(), null, "receiver", null, 0, 1, FunctionCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionCall_Args(), this.getArguments(), null, "args", null, 0, 1, FunctionCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(indexExpressionEClass, IndexExpression.class, "IndexExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getIndexExpression_Receiver(), this.getExpression(), null, "receiver", null, 0, 1, IndexExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

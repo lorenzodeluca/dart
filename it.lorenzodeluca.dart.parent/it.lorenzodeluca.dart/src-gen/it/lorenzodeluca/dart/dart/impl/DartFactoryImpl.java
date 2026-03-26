@@ -149,6 +149,7 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.PREFIX_EXPRESSION: return createPrefixExpression();
       case DartPackage.POSTFIX: return createPostfix();
       case DartPackage.METHOD_INVOCATION: return createMethodInvocation();
+      case DartPackage.FUNCTION_CALL: return createFunctionCall();
       case DartPackage.INDEX_EXPRESSION: return createIndexExpression();
       case DartPackage.THIS_EXPRESSION: return createThisExpression();
       case DartPackage.SUPER_EXPRESSION: return createSuperExpression();
@@ -1173,6 +1174,18 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
   {
     MethodInvocationImpl methodInvocation = new MethodInvocationImpl();
     return methodInvocation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FunctionCall createFunctionCall()
+  {
+    FunctionCallImpl functionCall = new FunctionCallImpl();
+    return functionCall;
   }
 
   /**

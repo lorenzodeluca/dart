@@ -35,6 +35,7 @@ import it.lorenzodeluca.dart.dart.ForStatement;
 import it.lorenzodeluca.dart.dart.FormalParameterList;
 import it.lorenzodeluca.dart.dart.FormalParameterPart;
 import it.lorenzodeluca.dart.dart.FunctionBody;
+import it.lorenzodeluca.dart.dart.FunctionCall;
 import it.lorenzodeluca.dart.dart.FunctionDeclaration;
 import it.lorenzodeluca.dart.dart.IdentifierRef;
 import it.lorenzodeluca.dart.dart.IfNull;
@@ -302,7 +303,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()
 						|| rule == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (BooleanLiteral) semanticObject); 
 					return; 
@@ -371,7 +373,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()
 						|| rule == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (ConstExpression) semanticObject); 
 					return; 
@@ -444,6 +447,50 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case DartPackage.FUNCTION_BODY:
 				sequence_FunctionBody(context, (FunctionBody) semanticObject); 
 				return; 
+			case DartPackage.FUNCTION_CALL:
+				if (rule == grammarAccess.getMapOrSetElementRule()) {
+					sequence_MapOrSetElement_PostfixExpression(context, (FunctionCall) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getAssignmentExpressionRule()
+						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
+						|| rule == grammarAccess.getConditionalExpressionRule()
+						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
+						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
+						|| rule == grammarAccess.getIfNullExpressionRule()
+						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
+						|| rule == grammarAccess.getLogicalOrExpressionRule()
+						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
+						|| rule == grammarAccess.getLogicalAndExpressionRule()
+						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
+						|| rule == grammarAccess.getEqualityExpressionRule()
+						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
+						|| rule == grammarAccess.getRelationalExpressionRule()
+						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
+						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
+						|| rule == grammarAccess.getBitwiseOrExpressionRule()
+						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
+						|| rule == grammarAccess.getBitwiseXorExpressionRule()
+						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
+						|| rule == grammarAccess.getBitwiseAndExpressionRule()
+						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
+						|| rule == grammarAccess.getShiftExpressionRule()
+						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
+						|| rule == grammarAccess.getAdditiveExpressionRule()
+						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
+						|| rule == grammarAccess.getMultiplicativeExpressionRule()
+						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
+						|| rule == grammarAccess.getUnaryExpressionRule()
+						|| rule == grammarAccess.getPostfixExpressionRule()
+						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()) {
+					sequence_PostfixExpression(context, (FunctionCall) semanticObject); 
+					return; 
+				}
+				else break;
 			case DartPackage.FUNCTION_DECLARATION:
 				sequence_FunctionDeclaration(context, (FunctionDeclaration) semanticObject); 
 				return; 
@@ -485,7 +532,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()
 						|| rule == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (IdentifierRef) semanticObject); 
 					return; 
@@ -549,7 +597,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()) {
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()) {
 					sequence_PostfixExpression(context, (IndexExpression) semanticObject); 
 					return; 
 				}
@@ -613,7 +662,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()
 						|| rule == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (ListLiteral) semanticObject); 
 					return; 
@@ -706,7 +756,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()) {
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()) {
 					sequence_PostfixExpression(context, (MethodInvocation) semanticObject); 
 					return; 
 				}
@@ -802,7 +853,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()
 						|| rule == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (NewExpression) semanticObject); 
 					return; 
@@ -849,7 +901,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()
 						|| rule == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (NullLiteral) semanticObject); 
 					return; 
@@ -893,7 +946,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()
 						|| rule == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (NumberLiteral) semanticObject); 
 					return; 
@@ -940,7 +994,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()
 						|| rule == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (ParenthesizedExpression) semanticObject); 
 					return; 
@@ -993,7 +1048,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()) {
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()) {
 					sequence_PostfixExpression(context, (Postfix) semanticObject); 
 					return; 
 				}
@@ -1108,7 +1164,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()
 						|| rule == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (SetOrMapLiteral) semanticObject); 
 					return; 
@@ -1189,7 +1246,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()
 						|| rule == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (StringLiteral) semanticObject); 
 					return; 
@@ -1233,7 +1291,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()
 						|| rule == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (SuperExpression) semanticObject); 
 					return; 
@@ -1286,7 +1345,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 						|| rule == grammarAccess.getPostfixExpressionRule()
 						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
 						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0()
 						|| rule == grammarAccess.getPrimaryExpressionRule()) {
 					sequence_PrimaryExpression(context, (ThisExpression) semanticObject); 
 					return; 
@@ -2382,10 +2442,24 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     MapOrSetElement returns FunctionCall
+	 *
+	 * Constraint:
+	 *     (receiver=PostfixExpression_FunctionCall_1_2_0 args=Arguments value=Expression?)
+	 * </pre>
+	 */
+	protected void sequence_MapOrSetElement_PostfixExpression(ISerializationContext context, FunctionCall semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     MapOrSetElement returns IndexExpression
 	 *
 	 * Constraint:
-	 *     (receiver=PostfixExpression_IndexExpression_1_2_0 index=Expression value=Expression?)
+	 *     (receiver=PostfixExpression_IndexExpression_1_3_0 index=Expression value=Expression?)
 	 * </pre>
 	 */
 	protected void sequence_MapOrSetElement_PostfixExpression(ISerializationContext context, IndexExpression semanticObject) {
@@ -2893,6 +2967,63 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Expression returns FunctionCall
+	 *     AssignmentExpression returns FunctionCall
+	 *     AssignmentExpression.Assignment_1_0 returns FunctionCall
+	 *     ConditionalExpression returns FunctionCall
+	 *     ConditionalExpression.Conditional_1_0 returns FunctionCall
+	 *     ExpressionWithoutCascade returns FunctionCall
+	 *     IfNullExpression returns FunctionCall
+	 *     IfNullExpression.IfNull_1_0 returns FunctionCall
+	 *     LogicalOrExpression returns FunctionCall
+	 *     LogicalOrExpression.LogicalOr_1_0 returns FunctionCall
+	 *     LogicalAndExpression returns FunctionCall
+	 *     LogicalAndExpression.LogicalAnd_1_0 returns FunctionCall
+	 *     EqualityExpression returns FunctionCall
+	 *     EqualityExpression.Equality_1_0 returns FunctionCall
+	 *     RelationalExpression returns FunctionCall
+	 *     RelationalExpression.Relational_1_0_0 returns FunctionCall
+	 *     RelationalExpression.TypeCheck_1_1_0 returns FunctionCall
+	 *     BitwiseOrExpression returns FunctionCall
+	 *     BitwiseOrExpression.BitwiseOr_1_0 returns FunctionCall
+	 *     BitwiseXorExpression returns FunctionCall
+	 *     BitwiseXorExpression.BitwiseXor_1_0 returns FunctionCall
+	 *     BitwiseAndExpression returns FunctionCall
+	 *     BitwiseAndExpression.BitwiseAnd_1_0 returns FunctionCall
+	 *     ShiftExpression returns FunctionCall
+	 *     ShiftExpression.Shift_1_0 returns FunctionCall
+	 *     AdditiveExpression returns FunctionCall
+	 *     AdditiveExpression.Additive_1_0 returns FunctionCall
+	 *     MultiplicativeExpression returns FunctionCall
+	 *     MultiplicativeExpression.Multiplicative_1_0 returns FunctionCall
+	 *     UnaryExpression returns FunctionCall
+	 *     PostfixExpression returns FunctionCall
+	 *     PostfixExpression.Postfix_1_0_0 returns FunctionCall
+	 *     PostfixExpression.MethodInvocation_1_1_0 returns FunctionCall
+	 *     PostfixExpression.FunctionCall_1_2_0 returns FunctionCall
+	 *     PostfixExpression.IndexExpression_1_3_0 returns FunctionCall
+	 *
+	 * Constraint:
+	 *     (receiver=PostfixExpression_FunctionCall_1_2_0 args=Arguments)
+	 * </pre>
+	 */
+	protected void sequence_PostfixExpression(ISerializationContext context, FunctionCall semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DartPackage.Literals.FUNCTION_CALL__RECEIVER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.Literals.FUNCTION_CALL__RECEIVER));
+			if (transientValues.isValueTransient(semanticObject, DartPackage.Literals.FUNCTION_CALL__ARGS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.Literals.FUNCTION_CALL__ARGS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_2_0(), semanticObject.getReceiver());
+		feeder.accept(grammarAccess.getPostfixExpressionAccess().getArgsArgumentsParserRuleCall_1_2_1_0(), semanticObject.getArgs());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Expression returns IndexExpression
 	 *     AssignmentExpression returns IndexExpression
 	 *     AssignmentExpression.Assignment_1_0 returns IndexExpression
@@ -2926,10 +3057,11 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns IndexExpression
 	 *     PostfixExpression.Postfix_1_0_0 returns IndexExpression
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns IndexExpression
-	 *     PostfixExpression.IndexExpression_1_2_0 returns IndexExpression
+	 *     PostfixExpression.FunctionCall_1_2_0 returns IndexExpression
+	 *     PostfixExpression.IndexExpression_1_3_0 returns IndexExpression
 	 *
 	 * Constraint:
-	 *     (receiver=PostfixExpression_IndexExpression_1_2_0 index=Expression)
+	 *     (receiver=PostfixExpression_IndexExpression_1_3_0 index=Expression)
 	 * </pre>
 	 */
 	protected void sequence_PostfixExpression(ISerializationContext context, IndexExpression semanticObject) {
@@ -2940,8 +3072,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.Literals.INDEX_EXPRESSION__INDEX));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0(), semanticObject.getReceiver());
-		feeder.accept(grammarAccess.getPostfixExpressionAccess().getIndexExpressionParserRuleCall_1_2_2_0(), semanticObject.getIndex());
+		feeder.accept(grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_3_0(), semanticObject.getReceiver());
+		feeder.accept(grammarAccess.getPostfixExpressionAccess().getIndexExpressionParserRuleCall_1_3_2_0(), semanticObject.getIndex());
 		feeder.finish();
 	}
 	
@@ -2982,7 +3114,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns MethodInvocation
 	 *     PostfixExpression.Postfix_1_0_0 returns MethodInvocation
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns MethodInvocation
-	 *     PostfixExpression.IndexExpression_1_2_0 returns MethodInvocation
+	 *     PostfixExpression.FunctionCall_1_2_0 returns MethodInvocation
+	 *     PostfixExpression.IndexExpression_1_3_0 returns MethodInvocation
 	 *
 	 * Constraint:
 	 *     (receiver=PostfixExpression_MethodInvocation_1_1_0 method=ID typeArguments=TypeArguments? args=Arguments)
@@ -3029,7 +3162,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns Postfix
 	 *     PostfixExpression.Postfix_1_0_0 returns Postfix
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns Postfix
-	 *     PostfixExpression.IndexExpression_1_2_0 returns Postfix
+	 *     PostfixExpression.FunctionCall_1_2_0 returns Postfix
+	 *     PostfixExpression.IndexExpression_1_3_0 returns Postfix
 	 *
 	 * Constraint:
 	 *     (operand=PostfixExpression_Postfix_1_0_0 (operator='++' | operator='--'))
@@ -3076,7 +3210,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns BooleanLiteral
 	 *     PostfixExpression.Postfix_1_0_0 returns BooleanLiteral
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns BooleanLiteral
-	 *     PostfixExpression.IndexExpression_1_2_0 returns BooleanLiteral
+	 *     PostfixExpression.FunctionCall_1_2_0 returns BooleanLiteral
+	 *     PostfixExpression.IndexExpression_1_3_0 returns BooleanLiteral
 	 *     PrimaryExpression returns BooleanLiteral
 	 *
 	 * Constraint:
@@ -3124,7 +3259,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns ConstExpression
 	 *     PostfixExpression.Postfix_1_0_0 returns ConstExpression
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns ConstExpression
-	 *     PostfixExpression.IndexExpression_1_2_0 returns ConstExpression
+	 *     PostfixExpression.FunctionCall_1_2_0 returns ConstExpression
+	 *     PostfixExpression.IndexExpression_1_3_0 returns ConstExpression
 	 *     PrimaryExpression returns ConstExpression
 	 *
 	 * Constraint:
@@ -3172,7 +3308,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns IdentifierRef
 	 *     PostfixExpression.Postfix_1_0_0 returns IdentifierRef
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns IdentifierRef
-	 *     PostfixExpression.IndexExpression_1_2_0 returns IdentifierRef
+	 *     PostfixExpression.FunctionCall_1_2_0 returns IdentifierRef
+	 *     PostfixExpression.IndexExpression_1_3_0 returns IdentifierRef
 	 *     PrimaryExpression returns IdentifierRef
 	 *
 	 * Constraint:
@@ -3226,7 +3363,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns ListLiteral
 	 *     PostfixExpression.Postfix_1_0_0 returns ListLiteral
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns ListLiteral
-	 *     PostfixExpression.IndexExpression_1_2_0 returns ListLiteral
+	 *     PostfixExpression.FunctionCall_1_2_0 returns ListLiteral
+	 *     PostfixExpression.IndexExpression_1_3_0 returns ListLiteral
 	 *     PrimaryExpression returns ListLiteral
 	 *
 	 * Constraint:
@@ -3274,7 +3412,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns NewExpression
 	 *     PostfixExpression.Postfix_1_0_0 returns NewExpression
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns NewExpression
-	 *     PostfixExpression.IndexExpression_1_2_0 returns NewExpression
+	 *     PostfixExpression.FunctionCall_1_2_0 returns NewExpression
+	 *     PostfixExpression.IndexExpression_1_3_0 returns NewExpression
 	 *     PrimaryExpression returns NewExpression
 	 *
 	 * Constraint:
@@ -3322,7 +3461,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns NullLiteral
 	 *     PostfixExpression.Postfix_1_0_0 returns NullLiteral
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns NullLiteral
-	 *     PostfixExpression.IndexExpression_1_2_0 returns NullLiteral
+	 *     PostfixExpression.FunctionCall_1_2_0 returns NullLiteral
+	 *     PostfixExpression.IndexExpression_1_3_0 returns NullLiteral
 	 *     PrimaryExpression returns NullLiteral
 	 *
 	 * Constraint:
@@ -3370,7 +3510,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns NumberLiteral
 	 *     PostfixExpression.Postfix_1_0_0 returns NumberLiteral
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns NumberLiteral
-	 *     PostfixExpression.IndexExpression_1_2_0 returns NumberLiteral
+	 *     PostfixExpression.FunctionCall_1_2_0 returns NumberLiteral
+	 *     PostfixExpression.IndexExpression_1_3_0 returns NumberLiteral
 	 *     PrimaryExpression returns NumberLiteral
 	 *
 	 * Constraint:
@@ -3424,7 +3565,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns ParenthesizedExpression
 	 *     PostfixExpression.Postfix_1_0_0 returns ParenthesizedExpression
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns ParenthesizedExpression
-	 *     PostfixExpression.IndexExpression_1_2_0 returns ParenthesizedExpression
+	 *     PostfixExpression.FunctionCall_1_2_0 returns ParenthesizedExpression
+	 *     PostfixExpression.IndexExpression_1_3_0 returns ParenthesizedExpression
 	 *     PrimaryExpression returns ParenthesizedExpression
 	 *
 	 * Constraint:
@@ -3478,7 +3620,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns SetOrMapLiteral
 	 *     PostfixExpression.Postfix_1_0_0 returns SetOrMapLiteral
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns SetOrMapLiteral
-	 *     PostfixExpression.IndexExpression_1_2_0 returns SetOrMapLiteral
+	 *     PostfixExpression.FunctionCall_1_2_0 returns SetOrMapLiteral
+	 *     PostfixExpression.IndexExpression_1_3_0 returns SetOrMapLiteral
 	 *     PrimaryExpression returns SetOrMapLiteral
 	 *
 	 * Constraint:
@@ -3526,7 +3669,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns StringLiteral
 	 *     PostfixExpression.Postfix_1_0_0 returns StringLiteral
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns StringLiteral
-	 *     PostfixExpression.IndexExpression_1_2_0 returns StringLiteral
+	 *     PostfixExpression.FunctionCall_1_2_0 returns StringLiteral
+	 *     PostfixExpression.IndexExpression_1_3_0 returns StringLiteral
 	 *     PrimaryExpression returns StringLiteral
 	 *
 	 * Constraint:
@@ -3580,7 +3724,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns SuperExpression
 	 *     PostfixExpression.Postfix_1_0_0 returns SuperExpression
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns SuperExpression
-	 *     PostfixExpression.IndexExpression_1_2_0 returns SuperExpression
+	 *     PostfixExpression.FunctionCall_1_2_0 returns SuperExpression
+	 *     PostfixExpression.IndexExpression_1_3_0 returns SuperExpression
 	 *     PrimaryExpression returns SuperExpression
 	 *
 	 * Constraint:
@@ -3628,7 +3773,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PostfixExpression returns ThisExpression
 	 *     PostfixExpression.Postfix_1_0_0 returns ThisExpression
 	 *     PostfixExpression.MethodInvocation_1_1_0 returns ThisExpression
-	 *     PostfixExpression.IndexExpression_1_2_0 returns ThisExpression
+	 *     PostfixExpression.FunctionCall_1_2_0 returns ThisExpression
+	 *     PostfixExpression.IndexExpression_1_3_0 returns ThisExpression
 	 *     PrimaryExpression returns ThisExpression
 	 *
 	 * Constraint:

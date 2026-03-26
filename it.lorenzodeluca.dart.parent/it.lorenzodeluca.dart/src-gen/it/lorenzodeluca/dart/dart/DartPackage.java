@@ -3751,6 +3751,52 @@ public interface DartPackage extends EPackage
   int METHOD_INVOCATION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 4;
 
   /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.FunctionCallImpl <em>Function Call</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.FunctionCallImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getFunctionCall()
+   * @generated
+   */
+  int FUNCTION_CALL = 84;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_CALL__VALUE = EXPRESSION__VALUE;
+
+  /**
+   * The feature id for the '<em><b>Receiver</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_CALL__RECEIVER = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_CALL__ARGS = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Function Call</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_CALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.IndexExpressionImpl <em>Index Expression</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3758,7 +3804,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getIndexExpression()
    * @generated
    */
-  int INDEX_EXPRESSION = 84;
+  int INDEX_EXPRESSION = 85;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3804,7 +3850,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getThisExpression()
    * @generated
    */
-  int THIS_EXPRESSION = 85;
+  int THIS_EXPRESSION = 86;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3832,7 +3878,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getSuperExpression()
    * @generated
    */
-  int SUPER_EXPRESSION = 86;
+  int SUPER_EXPRESSION = 87;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3860,7 +3906,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNullLiteral()
    * @generated
    */
-  int NULL_LITERAL = 87;
+  int NULL_LITERAL = 88;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3888,7 +3934,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 88;
+  int BOOLEAN_LITERAL = 89;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3925,7 +3971,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNumberLiteral()
    * @generated
    */
-  int NUMBER_LITERAL = 89;
+  int NUMBER_LITERAL = 90;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3962,7 +4008,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 90;
+  int STRING_LITERAL = 91;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3999,7 +4045,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getIdentifierRef()
    * @generated
    */
-  int IDENTIFIER_REF = 91;
+  int IDENTIFIER_REF = 92;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4036,7 +4082,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNewExpression()
    * @generated
    */
-  int NEW_EXPRESSION = 92;
+  int NEW_EXPRESSION = 93;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4091,7 +4137,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getConstExpression()
    * @generated
    */
-  int CONST_EXPRESSION = 93;
+  int CONST_EXPRESSION = 94;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4146,7 +4192,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getListLiteral()
    * @generated
    */
-  int LIST_LITERAL = 94;
+  int LIST_LITERAL = 95;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4201,7 +4247,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getSetOrMapLiteral()
    * @generated
    */
-  int SET_OR_MAP_LITERAL = 95;
+  int SET_OR_MAP_LITERAL = 96;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4256,7 +4302,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getParenthesizedExpression()
    * @generated
    */
-  int PARENTHESIZED_EXPRESSION = 96;
+  int PARENTHESIZED_EXPRESSION = 97;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -7437,6 +7483,38 @@ public interface DartPackage extends EPackage
   EReference getMethodInvocation_Args();
 
   /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.FunctionCall <em>Function Call</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Function Call</em>'.
+   * @see it.lorenzodeluca.dart.dart.FunctionCall
+   * @generated
+   */
+  EClass getFunctionCall();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.FunctionCall#getReceiver <em>Receiver</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Receiver</em>'.
+   * @see it.lorenzodeluca.dart.dart.FunctionCall#getReceiver()
+   * @see #getFunctionCall()
+   * @generated
+   */
+  EReference getFunctionCall_Receiver();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.FunctionCall#getArgs <em>Args</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Args</em>'.
+   * @see it.lorenzodeluca.dart.dart.FunctionCall#getArgs()
+   * @see #getFunctionCall()
+   * @generated
+   */
+  EReference getFunctionCall_Args();
+
+  /**
    * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.IndexExpression <em>Index Expression</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -10317,6 +10395,32 @@ public interface DartPackage extends EPackage
      * @generated
      */
     EReference METHOD_INVOCATION__ARGS = eINSTANCE.getMethodInvocation_Args();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.FunctionCallImpl <em>Function Call</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.FunctionCallImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getFunctionCall()
+     * @generated
+     */
+    EClass FUNCTION_CALL = eINSTANCE.getFunctionCall();
+
+    /**
+     * The meta object literal for the '<em><b>Receiver</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCTION_CALL__RECEIVER = eINSTANCE.getFunctionCall_Receiver();
+
+    /**
+     * The meta object literal for the '<em><b>Args</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCTION_CALL__ARGS = eINSTANCE.getFunctionCall_Args();
 
     /**
      * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.IndexExpressionImpl <em>Index Expression</em>}' class.

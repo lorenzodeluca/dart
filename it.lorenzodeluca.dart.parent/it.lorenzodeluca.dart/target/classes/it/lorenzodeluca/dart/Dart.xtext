@@ -218,6 +218,7 @@ PostfixExpression returns Expression:
     PrimaryExpression (
         {Postfix.operand=current} operator=('++' | '--') |
         {MethodInvocation.receiver=current} '.' method=ID (typeArguments=TypeArguments)? args=Arguments |
+        {FunctionCall.receiver=current} args=Arguments |
         {IndexExpression.receiver=current} '[' index=Expression ']'
     )*;
 
@@ -251,7 +252,6 @@ Label:
 
 NonLabelledStatement:
     Block |
-    LocalVariableDeclaration |
     ForStatement |
     WhileStatement |
     DoStatement |
@@ -263,6 +263,13 @@ NonLabelledStatement:
     ContinueStatement |
     ReturnStatement |
     YieldStatement |
+    // Predicati precisi per variabili locali
+    =>('var' | 'final' | 'const' | 'late') LocalVariableDeclaration |
+    =>('void' | 'dynamic') LocalVariableDeclaration |
+    =>(ID ID '(') ExpressionStatement |    // es: foo bar() -- raro, trattalo come expr
+    =>(ID ID) LocalVariableDeclaration |   // es: String x
+    =>(ID '.') LocalVariableDeclaration |  // es: my.Type x
+    // Tutto il resto è ExpressionStatement: print(...), x = 5, ecc.
     ExpressionStatement;
 
 Block:
@@ -363,9 +370,18 @@ TopLevelDeclaration:
     MixinDeclaration | 
     ExtensionDeclaration | 
     EnumDeclaration | 
-    TypeAlias | 
-    FunctionDeclaration |
-    VariableDeclaration |
+    TypeAlias |
+    // void/dynamic void/dynamic return type function
+    =>('void' | 'dynamic') FunctionDeclaration |
+    // function with external keyword
+    =>('external') FunctionDeclaration |  
+    // function without return type
+    =>(ID '(') FunctionDeclaration |
+    // function with return type(without generics)
+    =>(ID ID '(') FunctionDeclaration |
+    // function with complex return type (es. List<int> foo())
+    =>(ID '<') FunctionDeclaration |
+    VariableDeclaration ';' |
     MixinApplicationClass;
 
 /* =========================================================================
@@ -387,6 +403,18 @@ TypeArguments:
 
 /* =========================================================================
  * 21. LEXICAL RULES
- * ========================================================================= */
+ * ========================================================================= 
+ */
 
 terminal SCRIPT_TAG: '#!' (!('\n'|'\r'))* ('\r'? '\n')?;
+
+/* =========================================================================
+ * Helper lookahead rules
+ * =========================================================================
+ */
+ 
+MetadataLookahead:
+    '@' ID ('.' ID)* ('(' (ID|STRING|',')* ')')?;
+
+TypeLookahead:
+    ('void' | 'dynamic' | 'Function' | ID) ('.' ID)* ('<' (ID | ',' | '<' | '>' | '.')* '>')? '?'?;
