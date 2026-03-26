@@ -13,6 +13,16 @@ This project provides comprehensive tooling for parsing the full Dart grammar.
 
 ## Getting Started
 
+### Project Structure
+```
+it.lorenzodeluca.dart.parent/
+├── it.lorenzodeluca.dart/          # Core grammar and parser
+│   └── src/.../Dart.xtext          # Main grammar definition
+├── it.lorenzodeluca.dart.ide/      # LSP / IDE integration layer
+└── it.lorenzodeluca.dart.tests/    # JUnit parser tests
+```
+
+
 ### Prerequisites
 
 *   **Eclipse IDE:** Ensure you have an Eclipse installation that includes the **Xtext** and **m2e** (Maven integration) plugins installed. The "Eclipse IDE for Java and DSL Developers" package usually includes these by default.
