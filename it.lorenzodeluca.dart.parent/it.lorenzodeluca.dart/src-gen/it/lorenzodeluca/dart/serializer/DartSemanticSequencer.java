@@ -2110,9 +2110,7 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (
 	 *         metadata+=Metadata* 
 	 *         isExternal?='external'? 
-	 *         returnType=Type? 
-	 *         name=ID 
-	 *         signature=FormalParameterPart 
+	 *         ((returnType=Type name=ID signature=FormalParameterPart) | (name=ID signature=FormalParameterPart)) 
 	 *         body=FunctionBody?
 	 *     )
 	 * </pre>
