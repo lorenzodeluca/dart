@@ -5,13 +5,23 @@ package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.LibraryName;
+import it.lorenzodeluca.dart.dart.Metadata;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +31,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.LibraryNameImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.LibraryNameImpl#getName <em>Name</em>}</li>
  * </ul>
  *
@@ -28,6 +39,16 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class LibraryNameImpl extends MinimalEObjectImpl.Container implements LibraryName
 {
+  /**
+   * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetadata()
+   * @generated
+   * @ordered
+   */
+  protected EList<Metadata> metadata;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -75,6 +96,21 @@ public class LibraryNameImpl extends MinimalEObjectImpl.Container implements Lib
    * @generated
    */
   @Override
+  public EList<Metadata> getMetadata()
+  {
+    if (metadata == null)
+    {
+      metadata = new EObjectContainmentEList<Metadata>(Metadata.class, this, DartPackage.LIBRARY_NAME__METADATA);
+    }
+    return metadata;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public String getName()
   {
     return name;
@@ -100,10 +136,28 @@ public class LibraryNameImpl extends MinimalEObjectImpl.Container implements Lib
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DartPackage.LIBRARY_NAME__METADATA:
+        return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
+      case DartPackage.LIBRARY_NAME__METADATA:
+        return getMetadata();
       case DartPackage.LIBRARY_NAME__NAME:
         return getName();
     }
@@ -115,11 +169,16 @@ public class LibraryNameImpl extends MinimalEObjectImpl.Container implements Lib
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
+      case DartPackage.LIBRARY_NAME__METADATA:
+        getMetadata().clear();
+        getMetadata().addAll((Collection<? extends Metadata>)newValue);
+        return;
       case DartPackage.LIBRARY_NAME__NAME:
         setName((String)newValue);
         return;
@@ -137,6 +196,9 @@ public class LibraryNameImpl extends MinimalEObjectImpl.Container implements Lib
   {
     switch (featureID)
     {
+      case DartPackage.LIBRARY_NAME__METADATA:
+        getMetadata().clear();
+        return;
       case DartPackage.LIBRARY_NAME__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -154,6 +216,8 @@ public class LibraryNameImpl extends MinimalEObjectImpl.Container implements Lib
   {
     switch (featureID)
     {
+      case DartPackage.LIBRARY_NAME__METADATA:
+        return metadata != null && !metadata.isEmpty();
       case DartPackage.LIBRARY_NAME__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }

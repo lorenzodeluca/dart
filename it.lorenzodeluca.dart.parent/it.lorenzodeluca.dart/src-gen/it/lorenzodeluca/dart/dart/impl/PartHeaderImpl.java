@@ -4,14 +4,24 @@
 package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
+import it.lorenzodeluca.dart.dart.Metadata;
 import it.lorenzodeluca.dart.dart.PartHeader;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +31,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.PartHeaderImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.PartHeaderImpl#getName <em>Name</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.PartHeaderImpl#getUri <em>Uri</em>}</li>
  * </ul>
@@ -29,6 +40,16 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class PartHeaderImpl extends MinimalEObjectImpl.Container implements PartHeader
 {
+  /**
+   * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetadata()
+   * @generated
+   * @ordered
+   */
+  protected EList<Metadata> metadata;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -96,6 +117,21 @@ public class PartHeaderImpl extends MinimalEObjectImpl.Container implements Part
    * @generated
    */
   @Override
+  public EList<Metadata> getMetadata()
+  {
+    if (metadata == null)
+    {
+      metadata = new EObjectContainmentEList<Metadata>(Metadata.class, this, DartPackage.PART_HEADER__METADATA);
+    }
+    return metadata;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public String getName()
   {
     return name;
@@ -146,10 +182,28 @@ public class PartHeaderImpl extends MinimalEObjectImpl.Container implements Part
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DartPackage.PART_HEADER__METADATA:
+        return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
+      case DartPackage.PART_HEADER__METADATA:
+        return getMetadata();
       case DartPackage.PART_HEADER__NAME:
         return getName();
       case DartPackage.PART_HEADER__URI:
@@ -163,11 +217,16 @@ public class PartHeaderImpl extends MinimalEObjectImpl.Container implements Part
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
+      case DartPackage.PART_HEADER__METADATA:
+        getMetadata().clear();
+        getMetadata().addAll((Collection<? extends Metadata>)newValue);
+        return;
       case DartPackage.PART_HEADER__NAME:
         setName((String)newValue);
         return;
@@ -188,6 +247,9 @@ public class PartHeaderImpl extends MinimalEObjectImpl.Container implements Part
   {
     switch (featureID)
     {
+      case DartPackage.PART_HEADER__METADATA:
+        getMetadata().clear();
+        return;
       case DartPackage.PART_HEADER__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -208,6 +270,8 @@ public class PartHeaderImpl extends MinimalEObjectImpl.Container implements Part
   {
     switch (featureID)
     {
+      case DartPackage.PART_HEADER__METADATA:
+        return metadata != null && !metadata.isEmpty();
       case DartPackage.PART_HEADER__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DartPackage.PART_HEADER__URI:

@@ -12,7 +12,6 @@ import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
@@ -22,18 +21,16 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected DartGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_CollectionLiteral___LeftCurlyBracketKeyword_3_1_0_RightCurlyBracketKeyword_3_1_2___or___LeftSquareBracketKeyword_3_0_0_RightSquareBracketKeyword_3_0_2__;
 	protected AbstractElementAlias match_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0;
 	protected AbstractElementAlias match_DefaultNamedParameter_ColonKeyword_2_0_1_or_EqualsSignKeyword_2_0_0;
-	protected AbstractElementAlias match_EnumDeclaration_CommaKeyword_5_q;
+	protected AbstractElementAlias match_EnumDeclaration_CommaKeyword_6_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (DartGrammarAccess) access;
-		match_CollectionLiteral___LeftCurlyBracketKeyword_3_1_0_RightCurlyBracketKeyword_3_1_2___or___LeftSquareBracketKeyword_3_0_0_RightSquareBracketKeyword_3_0_2__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getCollectionLiteralAccess().getLeftCurlyBracketKeyword_3_1_0()), new TokenAlias(false, false, grammarAccess.getCollectionLiteralAccess().getRightCurlyBracketKeyword_3_1_2())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getCollectionLiteralAccess().getLeftSquareBracketKeyword_3_0_0()), new TokenAlias(false, false, grammarAccess.getCollectionLiteralAccess().getRightSquareBracketKeyword_3_0_2())));
 		match_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getCombinatorAccess().getHideKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getCombinatorAccess().getShowKeyword_0_0()));
 		match_DefaultNamedParameter_ColonKeyword_2_0_1_or_EqualsSignKeyword_2_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getDefaultNamedParameterAccess().getColonKeyword_2_0_1()), new TokenAlias(false, false, grammarAccess.getDefaultNamedParameterAccess().getEqualsSignKeyword_2_0_0()));
-		match_EnumDeclaration_CommaKeyword_5_q = new TokenAlias(false, true, grammarAccess.getEnumDeclarationAccess().getCommaKeyword_5());
+		match_EnumDeclaration_CommaKeyword_6_q = new TokenAlias(false, true, grammarAccess.getEnumDeclarationAccess().getCommaKeyword_6());
 	}
 	
 	@Override
@@ -48,37 +45,16 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_CollectionLiteral___LeftCurlyBracketKeyword_3_1_0_RightCurlyBracketKeyword_3_1_2___or___LeftSquareBracketKeyword_3_0_0_RightSquareBracketKeyword_3_0_2__.equals(syntax))
-				emit_CollectionLiteral___LeftCurlyBracketKeyword_3_1_0_RightCurlyBracketKeyword_3_1_2___or___LeftSquareBracketKeyword_3_0_0_RightSquareBracketKeyword_3_0_2__(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0.equals(syntax))
+			if (match_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0.equals(syntax))
 				emit_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_DefaultNamedParameter_ColonKeyword_2_0_1_or_EqualsSignKeyword_2_0_0.equals(syntax))
 				emit_DefaultNamedParameter_ColonKeyword_2_0_1_or_EqualsSignKeyword_2_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_EnumDeclaration_CommaKeyword_5_q.equals(syntax))
-				emit_EnumDeclaration_CommaKeyword_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_EnumDeclaration_CommaKeyword_6_q.equals(syntax))
+				emit_EnumDeclaration_CommaKeyword_6_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
-	/**
-	 * <pre>
-	 * Ambiguous syntax:
-	 *     ('[' ']') | ('{' '}')
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) ':' value=Expression
-	 *     (rule start) (ambiguity) (rule start)
-	 *     isConst?='const' (ambiguity) ':' value=Expression
-	 *     isConst?='const' (ambiguity) (rule end)
-	 *     typeArguments=TypeArguments (ambiguity) ':' value=Expression
-	 *     typeArguments=TypeArguments (ambiguity) (rule end)
-	 
-	 * </pre>
-	 */
-	protected void emit_CollectionLiteral___LeftCurlyBracketKeyword_3_1_0_RightCurlyBracketKeyword_3_1_2___or___LeftSquareBracketKeyword_3_0_0_RightSquareBracketKeyword_3_0_2__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
@@ -117,7 +93,7 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 	 
 	 * </pre>
 	 */
-	protected void emit_EnumDeclaration_CommaKeyword_5_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_EnumDeclaration_CommaKeyword_6_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

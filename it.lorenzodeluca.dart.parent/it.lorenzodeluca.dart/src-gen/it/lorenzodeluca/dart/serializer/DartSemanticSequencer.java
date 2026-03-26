@@ -5,7 +5,6 @@ package it.lorenzodeluca.dart.serializer;
 
 import com.google.inject.Inject;
 import it.lorenzodeluca.dart.dart.Additive;
-import it.lorenzodeluca.dart.dart.AnnotatedTopLevel;
 import it.lorenzodeluca.dart.dart.Arguments;
 import it.lorenzodeluca.dart.dart.Assignment;
 import it.lorenzodeluca.dart.dart.BitwiseAnd;
@@ -16,7 +15,6 @@ import it.lorenzodeluca.dart.dart.BooleanLiteral;
 import it.lorenzodeluca.dart.dart.BreakStatement;
 import it.lorenzodeluca.dart.dart.CatchClause;
 import it.lorenzodeluca.dart.dart.ClassDeclaration;
-import it.lorenzodeluca.dart.dart.CollectionLiteral;
 import it.lorenzodeluca.dart.dart.Combinator;
 import it.lorenzodeluca.dart.dart.Conditional;
 import it.lorenzodeluca.dart.dart.ConstExpression;
@@ -27,7 +25,6 @@ import it.lorenzodeluca.dart.dart.DefaultCase;
 import it.lorenzodeluca.dart.dart.DefaultFormalParameter;
 import it.lorenzodeluca.dart.dart.DefaultNamedParameter;
 import it.lorenzodeluca.dart.dart.DoStatement;
-import it.lorenzodeluca.dart.dart.ElementWithMetadata;
 import it.lorenzodeluca.dart.dart.EnumDeclaration;
 import it.lorenzodeluca.dart.dart.EnumEntry;
 import it.lorenzodeluca.dart.dart.Equality;
@@ -42,13 +39,15 @@ import it.lorenzodeluca.dart.dart.FunctionDeclaration;
 import it.lorenzodeluca.dart.dart.IdentifierRef;
 import it.lorenzodeluca.dart.dart.IfNull;
 import it.lorenzodeluca.dart.dart.IfStatement;
-import it.lorenzodeluca.dart.dart.ImportOrExportContent;
 import it.lorenzodeluca.dart.dart.IndexExpression;
 import it.lorenzodeluca.dart.dart.InitializedIdentifier;
 import it.lorenzodeluca.dart.dart.Interfaces;
 import it.lorenzodeluca.dart.dart.Label;
 import it.lorenzodeluca.dart.dart.LibraryDeclaration;
+import it.lorenzodeluca.dart.dart.LibraryExport;
+import it.lorenzodeluca.dart.dart.LibraryImport;
 import it.lorenzodeluca.dart.dart.LibraryName;
+import it.lorenzodeluca.dart.dart.ListLiteral;
 import it.lorenzodeluca.dart.dart.LocalVariableDeclaration;
 import it.lorenzodeluca.dart.dart.LogicalAnd;
 import it.lorenzodeluca.dart.dart.LogicalOr;
@@ -68,7 +67,7 @@ import it.lorenzodeluca.dart.dart.NumberLiteral;
 import it.lorenzodeluca.dart.dart.OptionalPositionalFormalParameters;
 import it.lorenzodeluca.dart.dart.ParenthesizedExpression;
 import it.lorenzodeluca.dart.dart.PartDeclaration;
-import it.lorenzodeluca.dart.dart.PartDirectiveContent;
+import it.lorenzodeluca.dart.dart.PartDirective;
 import it.lorenzodeluca.dart.dart.PartHeader;
 import it.lorenzodeluca.dart.dart.Postfix;
 import it.lorenzodeluca.dart.dart.PrefixExpression;
@@ -76,6 +75,7 @@ import it.lorenzodeluca.dart.dart.Relational;
 import it.lorenzodeluca.dart.dart.RethrowStatement;
 import it.lorenzodeluca.dart.dart.ReturnStatement;
 import it.lorenzodeluca.dart.dart.ScriptTag;
+import it.lorenzodeluca.dart.dart.SetOrMapLiteral;
 import it.lorenzodeluca.dart.dart.Shift;
 import it.lorenzodeluca.dart.dart.Statement;
 import it.lorenzodeluca.dart.dart.StringLiteral;
@@ -157,9 +157,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
-			case DartPackage.ANNOTATED_TOP_LEVEL:
-				sequence_AnnotatedTopLevel(context, (AnnotatedTopLevel) semanticObject); 
-				return; 
 			case DartPackage.ARGUMENTS:
 				sequence_Arguments(context, (Arguments) semanticObject); 
 				return; 
@@ -320,51 +317,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case DartPackage.CLASS_DECLARATION:
 				sequence_ClassDeclaration(context, (ClassDeclaration) semanticObject); 
 				return; 
-			case DartPackage.COLLECTION_LITERAL:
-				if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
-						|| rule == grammarAccess.getPrimaryExpressionRule()
-						|| rule == grammarAccess.getCollectionLiteralRule()) {
-					sequence_CollectionLiteral(context, (CollectionLiteral) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_CollectionLiteral_MapOrSetElement(context, (CollectionLiteral) semanticObject); 
-					return; 
-				}
-				else break;
 			case DartPackage.COMBINATOR:
 				sequence_Combinator(context, (Combinator) semanticObject); 
 				return; 
@@ -442,9 +394,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case DartPackage.DO_STATEMENT:
 				sequence_DoStatement(context, (DoStatement) semanticObject); 
-				return; 
-			case DartPackage.ELEMENT_WITH_METADATA:
-				sequence_ElementWithMetadata(context, (ElementWithMetadata) semanticObject); 
 				return; 
 			case DartPackage.ENUM_DECLARATION:
 				sequence_EnumDeclaration(context, (EnumDeclaration) semanticObject); 
@@ -562,9 +511,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case DartPackage.IF_STATEMENT:
 				sequence_IfStatement(context, (IfStatement) semanticObject); 
 				return; 
-			case DartPackage.IMPORT_OR_EXPORT_CONTENT:
-				sequence_ImportOrExportContent(context, (ImportOrExportContent) semanticObject); 
-				return; 
 			case DartPackage.INDEX_EXPRESSION:
 				if (rule == grammarAccess.getMapOrSetElementRule()) {
 					sequence_MapOrSetElement_PostfixExpression(context, (IndexExpression) semanticObject); 
@@ -620,9 +566,59 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case DartPackage.LIBRARY_DECLARATION:
 				sequence_LibraryDeclaration(context, (LibraryDeclaration) semanticObject); 
 				return; 
+			case DartPackage.LIBRARY_EXPORT:
+				sequence_LibraryExport(context, (LibraryExport) semanticObject); 
+				return; 
+			case DartPackage.LIBRARY_IMPORT:
+				sequence_LibraryImport(context, (LibraryImport) semanticObject); 
+				return; 
 			case DartPackage.LIBRARY_NAME:
 				sequence_LibraryName(context, (LibraryName) semanticObject); 
 				return; 
+			case DartPackage.LIST_LITERAL:
+				if (rule == grammarAccess.getMapOrSetElementRule()) {
+					sequence_MapOrSetElement_PrimaryExpression(context, (ListLiteral) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getAssignmentExpressionRule()
+						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
+						|| rule == grammarAccess.getConditionalExpressionRule()
+						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
+						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
+						|| rule == grammarAccess.getIfNullExpressionRule()
+						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
+						|| rule == grammarAccess.getLogicalOrExpressionRule()
+						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
+						|| rule == grammarAccess.getLogicalAndExpressionRule()
+						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
+						|| rule == grammarAccess.getEqualityExpressionRule()
+						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
+						|| rule == grammarAccess.getRelationalExpressionRule()
+						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
+						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
+						|| rule == grammarAccess.getBitwiseOrExpressionRule()
+						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
+						|| rule == grammarAccess.getBitwiseXorExpressionRule()
+						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
+						|| rule == grammarAccess.getBitwiseAndExpressionRule()
+						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
+						|| rule == grammarAccess.getShiftExpressionRule()
+						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
+						|| rule == grammarAccess.getAdditiveExpressionRule()
+						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
+						|| rule == grammarAccess.getMultiplicativeExpressionRule()
+						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
+						|| rule == grammarAccess.getUnaryExpressionRule()
+						|| rule == grammarAccess.getPostfixExpressionRule()
+						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| rule == grammarAccess.getPrimaryExpressionRule()) {
+					sequence_PrimaryExpression(context, (ListLiteral) semanticObject); 
+					return; 
+				}
+				else break;
 			case DartPackage.LOCAL_VARIABLE_DECLARATION:
 				sequence_LocalVariableDeclaration(context, (LocalVariableDeclaration) semanticObject); 
 				return; 
@@ -953,8 +949,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case DartPackage.PART_DECLARATION:
 				sequence_PartDeclaration(context, (PartDeclaration) semanticObject); 
 				return; 
-			case DartPackage.PART_DIRECTIVE_CONTENT:
-				sequence_PartDirectiveContent(context, (PartDirectiveContent) semanticObject); 
+			case DartPackage.PART_DIRECTIVE:
+				sequence_PartDirective(context, (PartDirective) semanticObject); 
 				return; 
 			case DartPackage.PART_HEADER:
 				sequence_PartHeader(context, (PartHeader) semanticObject); 
@@ -1074,6 +1070,50 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case DartPackage.SCRIPT_TAG:
 				sequence_ScriptTag(context, (ScriptTag) semanticObject); 
 				return; 
+			case DartPackage.SET_OR_MAP_LITERAL:
+				if (rule == grammarAccess.getMapOrSetElementRule()) {
+					sequence_MapOrSetElement_PrimaryExpression(context, (SetOrMapLiteral) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getAssignmentExpressionRule()
+						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
+						|| rule == grammarAccess.getConditionalExpressionRule()
+						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
+						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
+						|| rule == grammarAccess.getIfNullExpressionRule()
+						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
+						|| rule == grammarAccess.getLogicalOrExpressionRule()
+						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
+						|| rule == grammarAccess.getLogicalAndExpressionRule()
+						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
+						|| rule == grammarAccess.getEqualityExpressionRule()
+						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
+						|| rule == grammarAccess.getRelationalExpressionRule()
+						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
+						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
+						|| rule == grammarAccess.getBitwiseOrExpressionRule()
+						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
+						|| rule == grammarAccess.getBitwiseXorExpressionRule()
+						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
+						|| rule == grammarAccess.getBitwiseAndExpressionRule()
+						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
+						|| rule == grammarAccess.getShiftExpressionRule()
+						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
+						|| rule == grammarAccess.getAdditiveExpressionRule()
+						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
+						|| rule == grammarAccess.getMultiplicativeExpressionRule()
+						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
+						|| rule == grammarAccess.getUnaryExpressionRule()
+						|| rule == grammarAccess.getPostfixExpressionRule()
+						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_2_0()
+						|| rule == grammarAccess.getPrimaryExpressionRule()) {
+					sequence_PrimaryExpression(context, (SetOrMapLiteral) semanticObject); 
+					return; 
+				}
+				else break;
 			case DartPackage.SHIFT:
 				if (rule == grammarAccess.getMapOrSetElementRule()) {
 					sequence_MapOrSetElement_ShiftExpression(context, (Shift) semanticObject); 
@@ -1368,20 +1408,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     AnnotatedTopLevel returns AnnotatedTopLevel
-	 *
-	 * Constraint:
-	 *     (metadata+=Metadata* member=TopLevelDeclarationContent)
-	 * </pre>
-	 */
-	protected void sequence_AnnotatedTopLevel(ISerializationContext context, AnnotatedTopLevel semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     Arguments returns Arguments
 	 *
 	 * Constraint:
@@ -1653,10 +1679,11 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * <pre>
 	 * Contexts:
 	 *     ClassDeclaration returns ClassDeclaration
-	 *     TopLevelDeclarationContent returns ClassDeclaration
+	 *     TopLevelDeclaration returns ClassDeclaration
 	 *
 	 * Constraint:
 	 *     (
+	 *         metadata+=Metadata* 
 	 *         isAbstract?='abstract'? 
 	 *         name=ID 
 	 *         typeParameters=TypeParameters? 
@@ -1667,78 +1694,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * </pre>
 	 */
 	protected void sequence_ClassDeclaration(ISerializationContext context, ClassDeclaration semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     Expression returns CollectionLiteral
-	 *     AssignmentExpression returns CollectionLiteral
-	 *     AssignmentExpression.Assignment_1_0 returns CollectionLiteral
-	 *     ConditionalExpression returns CollectionLiteral
-	 *     ConditionalExpression.Conditional_1_0 returns CollectionLiteral
-	 *     ExpressionWithoutCascade returns CollectionLiteral
-	 *     IfNullExpression returns CollectionLiteral
-	 *     IfNullExpression.IfNull_1_0 returns CollectionLiteral
-	 *     LogicalOrExpression returns CollectionLiteral
-	 *     LogicalOrExpression.LogicalOr_1_0 returns CollectionLiteral
-	 *     LogicalAndExpression returns CollectionLiteral
-	 *     LogicalAndExpression.LogicalAnd_1_0 returns CollectionLiteral
-	 *     EqualityExpression returns CollectionLiteral
-	 *     EqualityExpression.Equality_1_0 returns CollectionLiteral
-	 *     RelationalExpression returns CollectionLiteral
-	 *     RelationalExpression.Relational_1_0_0 returns CollectionLiteral
-	 *     RelationalExpression.TypeCheck_1_1_0 returns CollectionLiteral
-	 *     BitwiseOrExpression returns CollectionLiteral
-	 *     BitwiseOrExpression.BitwiseOr_1_0 returns CollectionLiteral
-	 *     BitwiseXorExpression returns CollectionLiteral
-	 *     BitwiseXorExpression.BitwiseXor_1_0 returns CollectionLiteral
-	 *     BitwiseAndExpression returns CollectionLiteral
-	 *     BitwiseAndExpression.BitwiseAnd_1_0 returns CollectionLiteral
-	 *     ShiftExpression returns CollectionLiteral
-	 *     ShiftExpression.Shift_1_0 returns CollectionLiteral
-	 *     AdditiveExpression returns CollectionLiteral
-	 *     AdditiveExpression.Additive_1_0 returns CollectionLiteral
-	 *     MultiplicativeExpression returns CollectionLiteral
-	 *     MultiplicativeExpression.Multiplicative_1_0 returns CollectionLiteral
-	 *     UnaryExpression returns CollectionLiteral
-	 *     PostfixExpression returns CollectionLiteral
-	 *     PostfixExpression.Postfix_1_0_0 returns CollectionLiteral
-	 *     PostfixExpression.MethodInvocation_1_1_0 returns CollectionLiteral
-	 *     PostfixExpression.IndexExpression_1_2_0 returns CollectionLiteral
-	 *     PrimaryExpression returns CollectionLiteral
-	 *     CollectionLiteral returns CollectionLiteral
-	 *
-	 * Constraint:
-	 *     (
-	 *         isConst?='const'? 
-	 *         typeArguments=TypeArguments? 
-	 *         ((listElements+=Expression listElements+=Expression*) | (mapElements+=MapOrSetElement mapElements+=MapOrSetElement*))?
-	 *     )
-	 * </pre>
-	 */
-	protected void sequence_CollectionLiteral(ISerializationContext context, CollectionLiteral semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns CollectionLiteral
-	 *
-	 * Constraint:
-	 *     (
-	 *         isConst?='const'? 
-	 *         typeArguments=TypeArguments? 
-	 *         ((listElements+=Expression listElements+=Expression*) | (mapElements+=MapOrSetElement mapElements+=MapOrSetElement*))? 
-	 *         value=Expression?
-	 *     )
-	 * </pre>
-	 */
-	protected void sequence_CollectionLiteral_MapOrSetElement(ISerializationContext context, CollectionLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1823,6 +1778,7 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         isExternal?='external'? 
+	 *         isStatic?='static'? 
 	 *         isLate?='late'? 
 	 *         (isFinal?='final' | isConst?='const')? 
 	 *         type=Type? 
@@ -1905,25 +1861,11 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     ElementWithMetadata returns ElementWithMetadata
-	 *
-	 * Constraint:
-	 *     (metadata+=Metadata* (element=ImportOrExportContent | element=PartDirectiveContent | member=TopLevelDeclarationContent))
-	 * </pre>
-	 */
-	protected void sequence_ElementWithMetadata(ISerializationContext context, ElementWithMetadata semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     EnumDeclaration returns EnumDeclaration
-	 *     TopLevelDeclarationContent returns EnumDeclaration
+	 *     TopLevelDeclaration returns EnumDeclaration
 	 *
 	 * Constraint:
-	 *     (name=ID entries+=EnumEntry entries+=EnumEntry*)
+	 *     (metadata+=Metadata* name=ID entries+=EnumEntry entries+=EnumEntry*)
 	 * </pre>
 	 */
 	protected void sequence_EnumDeclaration(ISerializationContext context, EnumDeclaration semanticObject) {
@@ -2010,10 +1952,10 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * <pre>
 	 * Contexts:
 	 *     ExtensionDeclaration returns ExtensionDeclaration
-	 *     TopLevelDeclarationContent returns ExtensionDeclaration
+	 *     TopLevelDeclaration returns ExtensionDeclaration
 	 *
 	 * Constraint:
-	 *     (name=ID? typeParameters=TypeParameters? onType=Type members+=MemberDeclaration*)
+	 *     (metadata+=Metadata* name=ID? typeParameters=TypeParameters? onType=Type members+=MemberDeclaration*)
 	 * </pre>
 	 */
 	protected void sequence_ExtensionDeclaration(ISerializationContext context, ExtensionDeclaration semanticObject) {
@@ -2102,10 +2044,17 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * <pre>
 	 * Contexts:
 	 *     FunctionDeclaration returns FunctionDeclaration
-	 *     TopLevelDeclarationContent returns FunctionDeclaration
+	 *     TopLevelDeclaration returns FunctionDeclaration
 	 *
 	 * Constraint:
-	 *     (isExternal?='external'? returnType=Type? name=ID signature=FormalParameterPart body=FunctionBody?)
+	 *     (
+	 *         metadata+=Metadata* 
+	 *         isExternal?='external'? 
+	 *         returnType=Type? 
+	 *         name=ID 
+	 *         signature=FormalParameterPart 
+	 *         body=FunctionBody?
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_FunctionDeclaration(ISerializationContext context, FunctionDeclaration semanticObject) {
@@ -2175,23 +2124,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     ImportOrExportContent returns ImportOrExportContent
-	 *
-	 * Constraint:
-	 *     (
-	 *         (isImport?='import' importURI=STRING (isDeferred?='deferred'? prefix=ID)? combinators+=Combinator*) | 
-	 *         (isExport?='export' exportURI=STRING combinators+=Combinator*)
-	 *     )
-	 * </pre>
-	 */
-	protected void sequence_ImportOrExportContent(ISerializationContext context, ImportOrExportContent semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     InitializedIdentifier returns InitializedIdentifier
 	 *
 	 * Constraint:
@@ -2245,9 +2177,22 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *
 	 * Constraint:
 	 *     (
-	 *         (scriptTag=ScriptTag? libraryName=LibraryName elements+=ElementWithMetadata+) | 
-	 *         (scriptTag=ScriptTag? elements+=ElementWithMetadata+) | 
-	 *         elements+=ElementWithMetadata+
+	 *         (scriptTag=ScriptTag ((directives+=ImportOrExport+ declarations+=TopLevelDeclaration+) | declarations+=TopLevelDeclaration+)) | 
+	 *         (
+	 *             ((scriptTag=ScriptTag libraryName=LibraryName) | libraryName=LibraryName) 
+	 *             ((directives+=ImportOrExport+ declarations+=TopLevelDeclaration+) | declarations+=TopLevelDeclaration+)
+	 *         ) | 
+	 *         (
+	 *             (
+	 *                 (scriptTag=ScriptTag ((libraryName=LibraryName directives+=ImportOrExport+) | directives+=ImportOrExport+)) | 
+	 *                 (libraryName=LibraryName directives+=ImportOrExport+) | 
+	 *                 directives+=ImportOrExport+
+	 *             )? 
+	 *             partDirectives+=PartDirective+ 
+	 *             declarations+=TopLevelDeclaration+
+	 *         ) | 
+	 *         (directives+=ImportOrExport+ declarations+=TopLevelDeclaration+) | 
+	 *         declarations+=TopLevelDeclaration+
 	 *     )?
 	 * </pre>
 	 */
@@ -2259,20 +2204,44 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     ImportOrExport returns LibraryExport
+	 *     LibraryExport returns LibraryExport
+	 *
+	 * Constraint:
+	 *     (metadata+=Metadata* exportURI=STRING combinators+=Combinator*)
+	 * </pre>
+	 */
+	protected void sequence_LibraryExport(ISerializationContext context, LibraryExport semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     ImportOrExport returns LibraryImport
+	 *     LibraryImport returns LibraryImport
+	 *
+	 * Constraint:
+	 *     (metadata+=Metadata* importURI=STRING (isDeferred?='deferred'? prefix=ID)? combinators+=Combinator*)
+	 * </pre>
+	 */
+	protected void sequence_LibraryImport(ISerializationContext context, LibraryImport semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     LibraryName returns LibraryName
 	 *
 	 * Constraint:
-	 *     name=QualifiedName
+	 *     (metadata+=Metadata* name=QualifiedName)
 	 * </pre>
 	 */
 	protected void sequence_LibraryName(ISerializationContext context, LibraryName semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DartPackage.Literals.LIBRARY_NAME__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.Literals.LIBRARY_NAME__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getLibraryNameAccess().getNameQualifiedNameParserRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -2497,6 +2466,20 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     MapOrSetElement returns ListLiteral
+	 *
+	 * Constraint:
+	 *     (isConst?='const'? typeArguments=TypeArguments? (elements+=Expression elements+=Expression*)? value=Expression?)
+	 * </pre>
+	 */
+	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, ListLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     MapOrSetElement returns NewExpression
 	 *
 	 * Constraint:
@@ -2546,6 +2529,20 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * </pre>
 	 */
 	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, ParenthesizedExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     MapOrSetElement returns SetOrMapLiteral
+	 *
+	 * Constraint:
+	 *     (isConst?='const'? typeArguments=TypeArguments? (elements+=MapOrSetElement elements+=MapOrSetElement*)? value=Expression?)
+	 * </pre>
+	 */
+	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, SetOrMapLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2670,7 +2667,7 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     MemberDeclaration returns MemberDeclaration
 	 *
 	 * Constraint:
-	 *     (metadata+=Metadata* isStatic?='static'? ((method=MethodSignature body=FunctionBody) | variable=Declaration))
+	 *     (metadata+=Metadata* ((method=MethodSignature body=FunctionBody) | declaration=Declaration))
 	 * </pre>
 	 */
 	protected void sequence_MemberDeclaration(ISerializationContext context, MemberDeclaration semanticObject) {
@@ -2698,7 +2695,14 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     MethodSignature returns MethodSignature
 	 *
 	 * Constraint:
-	 *     (returnType=Type? (isOperator?='operator' operator=Operator)? (isGetter?='get' | isSetter?='set')? name=ID parameters=FormalParameterList?)
+	 *     (
+	 *         isStatic?='static'? 
+	 *         returnType=Type? 
+	 *         (isOperator?='operator' operator=Operator)? 
+	 *         (isGetter?='get' | isSetter?='set')? 
+	 *         name=ID 
+	 *         parameters=FormalParameterList?
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_MethodSignature(ISerializationContext context, MethodSignature semanticObject) {
@@ -2710,7 +2714,7 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * <pre>
 	 * Contexts:
 	 *     MixinApplicationClass returns MixinApplicationClass
-	 *     TopLevelDeclarationContent returns MixinApplicationClass
+	 *     TopLevelDeclaration returns MixinApplicationClass
 	 *
 	 * Constraint:
 	 *     (name=ID typeParameters=TypeParameters? type=Type mixins=Mixins interfaces=Interfaces?)
@@ -2725,10 +2729,17 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * <pre>
 	 * Contexts:
 	 *     MixinDeclaration returns MixinDeclaration
-	 *     TopLevelDeclarationContent returns MixinDeclaration
+	 *     TopLevelDeclaration returns MixinDeclaration
 	 *
 	 * Constraint:
-	 *     (name=ID typeParameters=TypeParameters? (onTypes+=Type onTypes+=Type*)? interfaces=Interfaces? members+=MemberDeclaration*)
+	 *     (
+	 *         metadata+=Metadata* 
+	 *         name=ID 
+	 *         typeParameters=TypeParameters? 
+	 *         (onTypes+=Type onTypes+=Type*)? 
+	 *         interfaces=Interfaces? 
+	 *         members+=MemberDeclaration*
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_MixinDeclaration(ISerializationContext context, MixinDeclaration semanticObject) {
@@ -2843,7 +2854,7 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PartDeclaration returns PartDeclaration
 	 *
 	 * Constraint:
-	 *     (partHeader=PartHeader declarations+=AnnotatedTopLevel*)
+	 *     (partHeader=PartHeader declarations+=TopLevelDeclaration*)
 	 * </pre>
 	 */
 	protected void sequence_PartDeclaration(ISerializationContext context, PartDeclaration semanticObject) {
@@ -2854,20 +2865,14 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     PartDirectiveContent returns PartDirectiveContent
+	 *     PartDirective returns PartDirective
 	 *
 	 * Constraint:
-	 *     partURI=STRING
+	 *     (metadata+=Metadata* partURI=STRING)
 	 * </pre>
 	 */
-	protected void sequence_PartDirectiveContent(ISerializationContext context, PartDirectiveContent semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DartPackage.Literals.PART_DIRECTIVE_CONTENT__PART_URI) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.Literals.PART_DIRECTIVE_CONTENT__PART_URI));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPartDirectiveContentAccess().getPartURISTRINGTerminalRuleCall_1_0(), semanticObject.getPartURI());
-		feeder.finish();
+	protected void sequence_PartDirective(ISerializationContext context, PartDirective semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -2877,7 +2882,7 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PartHeader returns PartHeader
 	 *
 	 * Constraint:
-	 *     (name=QualifiedName | uri=STRING)
+	 *     (metadata+=Metadata* (name=QualifiedName | uri=STRING))
 	 * </pre>
 	 */
 	protected void sequence_PartHeader(ISerializationContext context, PartHeader semanticObject) {
@@ -3188,6 +3193,54 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Expression returns ListLiteral
+	 *     AssignmentExpression returns ListLiteral
+	 *     AssignmentExpression.Assignment_1_0 returns ListLiteral
+	 *     ConditionalExpression returns ListLiteral
+	 *     ConditionalExpression.Conditional_1_0 returns ListLiteral
+	 *     ExpressionWithoutCascade returns ListLiteral
+	 *     IfNullExpression returns ListLiteral
+	 *     IfNullExpression.IfNull_1_0 returns ListLiteral
+	 *     LogicalOrExpression returns ListLiteral
+	 *     LogicalOrExpression.LogicalOr_1_0 returns ListLiteral
+	 *     LogicalAndExpression returns ListLiteral
+	 *     LogicalAndExpression.LogicalAnd_1_0 returns ListLiteral
+	 *     EqualityExpression returns ListLiteral
+	 *     EqualityExpression.Equality_1_0 returns ListLiteral
+	 *     RelationalExpression returns ListLiteral
+	 *     RelationalExpression.Relational_1_0_0 returns ListLiteral
+	 *     RelationalExpression.TypeCheck_1_1_0 returns ListLiteral
+	 *     BitwiseOrExpression returns ListLiteral
+	 *     BitwiseOrExpression.BitwiseOr_1_0 returns ListLiteral
+	 *     BitwiseXorExpression returns ListLiteral
+	 *     BitwiseXorExpression.BitwiseXor_1_0 returns ListLiteral
+	 *     BitwiseAndExpression returns ListLiteral
+	 *     BitwiseAndExpression.BitwiseAnd_1_0 returns ListLiteral
+	 *     ShiftExpression returns ListLiteral
+	 *     ShiftExpression.Shift_1_0 returns ListLiteral
+	 *     AdditiveExpression returns ListLiteral
+	 *     AdditiveExpression.Additive_1_0 returns ListLiteral
+	 *     MultiplicativeExpression returns ListLiteral
+	 *     MultiplicativeExpression.Multiplicative_1_0 returns ListLiteral
+	 *     UnaryExpression returns ListLiteral
+	 *     PostfixExpression returns ListLiteral
+	 *     PostfixExpression.Postfix_1_0_0 returns ListLiteral
+	 *     PostfixExpression.MethodInvocation_1_1_0 returns ListLiteral
+	 *     PostfixExpression.IndexExpression_1_2_0 returns ListLiteral
+	 *     PrimaryExpression returns ListLiteral
+	 *
+	 * Constraint:
+	 *     (isConst?='const'? typeArguments=TypeArguments? (elements+=Expression elements+=Expression*)?)
+	 * </pre>
+	 */
+	protected void sequence_PrimaryExpression(ISerializationContext context, ListLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Expression returns NewExpression
 	 *     AssignmentExpression returns NewExpression
 	 *     AssignmentExpression.Assignment_1_0 returns NewExpression
@@ -3384,8 +3437,56 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.Literals.PARENTHESIZED_EXPRESSION__EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPrimaryExpressionAccess().getExpressionExpressionParserRuleCall_10_2_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getPrimaryExpressionAccess().getExpressionExpressionParserRuleCall_11_2_0(), semanticObject.getExpression());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Expression returns SetOrMapLiteral
+	 *     AssignmentExpression returns SetOrMapLiteral
+	 *     AssignmentExpression.Assignment_1_0 returns SetOrMapLiteral
+	 *     ConditionalExpression returns SetOrMapLiteral
+	 *     ConditionalExpression.Conditional_1_0 returns SetOrMapLiteral
+	 *     ExpressionWithoutCascade returns SetOrMapLiteral
+	 *     IfNullExpression returns SetOrMapLiteral
+	 *     IfNullExpression.IfNull_1_0 returns SetOrMapLiteral
+	 *     LogicalOrExpression returns SetOrMapLiteral
+	 *     LogicalOrExpression.LogicalOr_1_0 returns SetOrMapLiteral
+	 *     LogicalAndExpression returns SetOrMapLiteral
+	 *     LogicalAndExpression.LogicalAnd_1_0 returns SetOrMapLiteral
+	 *     EqualityExpression returns SetOrMapLiteral
+	 *     EqualityExpression.Equality_1_0 returns SetOrMapLiteral
+	 *     RelationalExpression returns SetOrMapLiteral
+	 *     RelationalExpression.Relational_1_0_0 returns SetOrMapLiteral
+	 *     RelationalExpression.TypeCheck_1_1_0 returns SetOrMapLiteral
+	 *     BitwiseOrExpression returns SetOrMapLiteral
+	 *     BitwiseOrExpression.BitwiseOr_1_0 returns SetOrMapLiteral
+	 *     BitwiseXorExpression returns SetOrMapLiteral
+	 *     BitwiseXorExpression.BitwiseXor_1_0 returns SetOrMapLiteral
+	 *     BitwiseAndExpression returns SetOrMapLiteral
+	 *     BitwiseAndExpression.BitwiseAnd_1_0 returns SetOrMapLiteral
+	 *     ShiftExpression returns SetOrMapLiteral
+	 *     ShiftExpression.Shift_1_0 returns SetOrMapLiteral
+	 *     AdditiveExpression returns SetOrMapLiteral
+	 *     AdditiveExpression.Additive_1_0 returns SetOrMapLiteral
+	 *     MultiplicativeExpression returns SetOrMapLiteral
+	 *     MultiplicativeExpression.Multiplicative_1_0 returns SetOrMapLiteral
+	 *     UnaryExpression returns SetOrMapLiteral
+	 *     PostfixExpression returns SetOrMapLiteral
+	 *     PostfixExpression.Postfix_1_0_0 returns SetOrMapLiteral
+	 *     PostfixExpression.MethodInvocation_1_1_0 returns SetOrMapLiteral
+	 *     PostfixExpression.IndexExpression_1_2_0 returns SetOrMapLiteral
+	 *     PrimaryExpression returns SetOrMapLiteral
+	 *
+	 * Constraint:
+	 *     (isConst?='const'? typeArguments=TypeArguments? (elements+=MapOrSetElement elements+=MapOrSetElement*)?)
+	 * </pre>
+	 */
+	protected void sequence_PrimaryExpression(ISerializationContext context, SetOrMapLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -3770,11 +3871,11 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     TopLevelDeclarationContent returns TypeAlias
+	 *     TopLevelDeclaration returns TypeAlias
 	 *     TypeAlias returns TypeAlias
 	 *
 	 * Constraint:
-	 *     (name=ID typeParameters=TypeParameters? type=Type)
+	 *     (metadata+=Metadata* name=ID typeParameters=TypeParameters? type=Type)
 	 * </pre>
 	 */
 	protected void sequence_TypeAlias(ISerializationContext context, TypeAlias semanticObject) {
@@ -3802,7 +3903,7 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     TypeName returns TypeName
 	 *
 	 * Constraint:
-	 *     (name='void' | name='dynamic' | name='Function' | name=QualifiedName)
+	 *     (name=QualifiedName | name='Function' | name='void' | name='dynamic')
 	 * </pre>
 	 */
 	protected void sequence_TypeName(ISerializationContext context, TypeName semanticObject) {
@@ -3909,10 +4010,11 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * <pre>
 	 * Contexts:
 	 *     VariableDeclaration returns VariableDeclaration
-	 *     TopLevelDeclarationContent returns VariableDeclaration
+	 *     TopLevelDeclaration returns VariableDeclaration
 	 *
 	 * Constraint:
 	 *     (
+	 *         metadata+=Metadata* 
 	 *         late?='late'? 
 	 *         (isVar?='var' | (isFinal?='final' type=Type?) | (isConst?='const' type=Type?) | type=Type) 
 	 *         variables+=InitializedIdentifier 

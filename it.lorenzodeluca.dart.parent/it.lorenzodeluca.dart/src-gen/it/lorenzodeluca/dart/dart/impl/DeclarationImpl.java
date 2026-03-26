@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsExternal <em>Is External</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsStatic <em>Is Static</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsLate <em>Is Late</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsFinal <em>Is Final</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsConst <em>Is Const</em>}</li>
@@ -57,6 +58,26 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
    * @ordered
    */
   protected boolean isExternal = IS_EXTERNAL_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isIsStatic() <em>Is Static</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsStatic()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_STATIC_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsStatic() <em>Is Static</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsStatic()
+   * @generated
+   * @ordered
+   */
+  protected boolean isStatic = IS_STATIC_EDEFAULT;
 
   /**
    * The default value of the '{@link #isIsLate() <em>Is Late</em>}' attribute.
@@ -202,6 +223,31 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
     isExternal = newIsExternal;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__IS_EXTERNAL, oldIsExternal, isExternal));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isIsStatic()
+  {
+    return isStatic;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsStatic(boolean newIsStatic)
+  {
+    boolean oldIsStatic = isStatic;
+    isStatic = newIsStatic;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__IS_STATIC, oldIsStatic, isStatic));
   }
 
   /**
@@ -434,6 +480,8 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
     {
       case DartPackage.DECLARATION__IS_EXTERNAL:
         return isIsExternal();
+      case DartPackage.DECLARATION__IS_STATIC:
+        return isIsStatic();
       case DartPackage.DECLARATION__IS_LATE:
         return isIsLate();
       case DartPackage.DECLARATION__IS_FINAL:
@@ -462,6 +510,9 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
     {
       case DartPackage.DECLARATION__IS_EXTERNAL:
         setIsExternal((Boolean)newValue);
+        return;
+      case DartPackage.DECLARATION__IS_STATIC:
+        setIsStatic((Boolean)newValue);
         return;
       case DartPackage.DECLARATION__IS_LATE:
         setIsLate((Boolean)newValue);
@@ -498,6 +549,9 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
       case DartPackage.DECLARATION__IS_EXTERNAL:
         setIsExternal(IS_EXTERNAL_EDEFAULT);
         return;
+      case DartPackage.DECLARATION__IS_STATIC:
+        setIsStatic(IS_STATIC_EDEFAULT);
+        return;
       case DartPackage.DECLARATION__IS_LATE:
         setIsLate(IS_LATE_EDEFAULT);
         return;
@@ -532,6 +586,8 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
     {
       case DartPackage.DECLARATION__IS_EXTERNAL:
         return isExternal != IS_EXTERNAL_EDEFAULT;
+      case DartPackage.DECLARATION__IS_STATIC:
+        return isStatic != IS_STATIC_EDEFAULT;
       case DartPackage.DECLARATION__IS_LATE:
         return isLate != IS_LATE_EDEFAULT;
       case DartPackage.DECLARATION__IS_FINAL:
@@ -561,6 +617,8 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (isExternal: ");
     result.append(isExternal);
+    result.append(", isStatic: ");
+    result.append(isStatic);
     result.append(", isLate: ");
     result.append(isLate);
     result.append(", isFinal: ");

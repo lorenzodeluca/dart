@@ -294,15 +294,6 @@ public interface DartFactory extends EFactory
   Expression createExpression();
 
   /**
-   * Returns a new object of class '<em>Collection Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Collection Literal</em>'.
-   * @generated
-   */
-  CollectionLiteral createCollectionLiteral();
-
-  /**
    * Returns a new object of class '<em>Map Or Set Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -510,42 +501,6 @@ public interface DartFactory extends EFactory
   LibraryDeclaration createLibraryDeclaration();
 
   /**
-   * Returns a new object of class '<em>Element With Metadata</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Element With Metadata</em>'.
-   * @generated
-   */
-  ElementWithMetadata createElementWithMetadata();
-
-  /**
-   * Returns a new object of class '<em>Import Or Export Content</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Import Or Export Content</em>'.
-   * @generated
-   */
-  ImportOrExportContent createImportOrExportContent();
-
-  /**
-   * Returns a new object of class '<em>Combinator</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Combinator</em>'.
-   * @generated
-   */
-  Combinator createCombinator();
-
-  /**
-   * Returns a new object of class '<em>Part Directive Content</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Part Directive Content</em>'.
-   * @generated
-   */
-  PartDirectiveContent createPartDirectiveContent();
-
-  /**
    * Returns a new object of class '<em>Part Declaration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -553,15 +508,6 @@ public interface DartFactory extends EFactory
    * @generated
    */
   PartDeclaration createPartDeclaration();
-
-  /**
-   * Returns a new object of class '<em>Annotated Top Level</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Annotated Top Level</em>'.
-   * @generated
-   */
-  AnnotatedTopLevel createAnnotatedTopLevel();
 
   /**
    * Returns a new object of class '<em>Script Tag</em>'.
@@ -582,6 +528,42 @@ public interface DartFactory extends EFactory
   LibraryName createLibraryName();
 
   /**
+   * Returns a new object of class '<em>Import Or Export</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Import Or Export</em>'.
+   * @generated
+   */
+  ImportOrExport createImportOrExport();
+
+  /**
+   * Returns a new object of class '<em>Library Import</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Library Import</em>'.
+   * @generated
+   */
+  LibraryImport createLibraryImport();
+
+  /**
+   * Returns a new object of class '<em>Library Export</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Library Export</em>'.
+   * @generated
+   */
+  LibraryExport createLibraryExport();
+
+  /**
+   * Returns a new object of class '<em>Part Directive</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Part Directive</em>'.
+   * @generated
+   */
+  PartDirective createPartDirective();
+
+  /**
    * Returns a new object of class '<em>Part Header</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -591,13 +573,22 @@ public interface DartFactory extends EFactory
   PartHeader createPartHeader();
 
   /**
-   * Returns a new object of class '<em>Top Level Declaration Content</em>'.
+   * Returns a new object of class '<em>Combinator</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Top Level Declaration Content</em>'.
+   * @return a new object of class '<em>Combinator</em>'.
    * @generated
    */
-  TopLevelDeclarationContent createTopLevelDeclarationContent();
+  Combinator createCombinator();
+
+  /**
+   * Returns a new object of class '<em>Top Level Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Top Level Declaration</em>'.
+   * @generated
+   */
+  TopLevelDeclaration createTopLevelDeclaration();
 
   /**
    * Returns a new object of class '<em>Type Alias</em>'.
@@ -877,6 +868,24 @@ public interface DartFactory extends EFactory
    * @generated
    */
   ConstExpression createConstExpression();
+
+  /**
+   * Returns a new object of class '<em>List Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>List Literal</em>'.
+   * @generated
+   */
+  ListLiteral createListLiteral();
+
+  /**
+   * Returns a new object of class '<em>Set Or Map Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Set Or Map Literal</em>'.
+   * @generated
+   */
+  SetOrMapLiteral createSetOrMapLiteral();
 
   /**
    * Returns a new object of class '<em>Parenthesized Expression</em>'.

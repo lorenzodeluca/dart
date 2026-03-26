@@ -3,6 +3,7 @@
  */
 package it.lorenzodeluca.dart.dart;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +14,7 @@ package it.lorenzodeluca.dart.dart;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.TypeAlias#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.TypeAlias#getName <em>Name</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.TypeAlias#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.TypeAlias#getType <em>Type</em>}</li>
@@ -22,8 +24,20 @@ package it.lorenzodeluca.dart.dart;
  * @model
  * @generated
  */
-public interface TypeAlias extends TopLevelDeclarationContent
+public interface TypeAlias extends TopLevelDeclaration
 {
+  /**
+   * Returns the value of the '<em><b>Metadata</b></em>' containment reference list.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.Metadata}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Metadata</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeAlias_Metadata()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Metadata> getMetadata();
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

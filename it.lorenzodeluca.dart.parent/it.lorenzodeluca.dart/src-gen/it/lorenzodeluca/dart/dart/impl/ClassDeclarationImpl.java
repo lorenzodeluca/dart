@@ -7,6 +7,7 @@ import it.lorenzodeluca.dart.dart.ClassDeclaration;
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.Interfaces;
 import it.lorenzodeluca.dart.dart.MemberDeclaration;
+import it.lorenzodeluca.dart.dart.Metadata;
 import it.lorenzodeluca.dart.dart.Superclass;
 import it.lorenzodeluca.dart.dart.TypeParameters;
 
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.ClassDeclarationImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.ClassDeclarationImpl#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.ClassDeclarationImpl#getName <em>Name</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.ClassDeclarationImpl#getTypeParameters <em>Type Parameters</em>}</li>
@@ -43,8 +45,18 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ClassDeclarationImpl extends TopLevelDeclarationContentImpl implements ClassDeclaration
+public class ClassDeclarationImpl extends TopLevelDeclarationImpl implements ClassDeclaration
 {
+  /**
+   * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetadata()
+   * @generated
+   * @ordered
+   */
+  protected EList<Metadata> metadata;
+
   /**
    * The default value of the '{@link #isIsAbstract() <em>Is Abstract</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -144,6 +156,21 @@ public class ClassDeclarationImpl extends TopLevelDeclarationContentImpl impleme
   protected EClass eStaticClass()
   {
     return DartPackage.Literals.CLASS_DECLARATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Metadata> getMetadata()
+  {
+    if (metadata == null)
+    {
+      metadata = new EObjectContainmentEList<Metadata>(Metadata.class, this, DartPackage.CLASS_DECLARATION__METADATA);
+    }
+    return metadata;
   }
 
   /**
@@ -371,6 +398,8 @@ public class ClassDeclarationImpl extends TopLevelDeclarationContentImpl impleme
   {
     switch (featureID)
     {
+      case DartPackage.CLASS_DECLARATION__METADATA:
+        return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
       case DartPackage.CLASS_DECLARATION__TYPE_PARAMETERS:
         return basicSetTypeParameters(null, msgs);
       case DartPackage.CLASS_DECLARATION__SUPERCLASS:
@@ -393,6 +422,8 @@ public class ClassDeclarationImpl extends TopLevelDeclarationContentImpl impleme
   {
     switch (featureID)
     {
+      case DartPackage.CLASS_DECLARATION__METADATA:
+        return getMetadata();
       case DartPackage.CLASS_DECLARATION__IS_ABSTRACT:
         return isIsAbstract();
       case DartPackage.CLASS_DECLARATION__NAME:
@@ -420,6 +451,10 @@ public class ClassDeclarationImpl extends TopLevelDeclarationContentImpl impleme
   {
     switch (featureID)
     {
+      case DartPackage.CLASS_DECLARATION__METADATA:
+        getMetadata().clear();
+        getMetadata().addAll((Collection<? extends Metadata>)newValue);
+        return;
       case DartPackage.CLASS_DECLARATION__IS_ABSTRACT:
         setIsAbstract((Boolean)newValue);
         return;
@@ -453,6 +488,9 @@ public class ClassDeclarationImpl extends TopLevelDeclarationContentImpl impleme
   {
     switch (featureID)
     {
+      case DartPackage.CLASS_DECLARATION__METADATA:
+        getMetadata().clear();
+        return;
       case DartPackage.CLASS_DECLARATION__IS_ABSTRACT:
         setIsAbstract(IS_ABSTRACT_EDEFAULT);
         return;
@@ -485,6 +523,8 @@ public class ClassDeclarationImpl extends TopLevelDeclarationContentImpl impleme
   {
     switch (featureID)
     {
+      case DartPackage.CLASS_DECLARATION__METADATA:
+        return metadata != null && !metadata.isEmpty();
       case DartPackage.CLASS_DECLARATION__IS_ABSTRACT:
         return isAbstract != IS_ABSTRACT_EDEFAULT;
       case DartPackage.CLASS_DECLARATION__NAME:

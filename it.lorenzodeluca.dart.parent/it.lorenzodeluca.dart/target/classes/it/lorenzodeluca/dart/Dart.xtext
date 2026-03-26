@@ -17,7 +17,7 @@ DartFile:
  * ========================================================================= */
 
 VariableDeclaration:
-    (late?='late')? 
+    (metadata+=Metadata)* (late?='late')? 
     (isVar?='var' | isFinal?='final' (type=Type)? | isConst?='const' (type=Type)? | type=Type) 
     variables+=InitializedIdentifier (',' variables+=InitializedIdentifier)*;
 
@@ -29,7 +29,7 @@ InitializedIdentifier:
  * ========================================================================= */
 
 FunctionDeclaration:
-    (isExternal?='external')? (returnType=Type)? name=ID signature=FormalParameterPart (body=FunctionBody | ';');
+    (metadata+=Metadata)* (isExternal?='external')? (returnType=Type)? name=ID signature=FormalParameterPart (body=FunctionBody | ';');
 
 FormalParameterPart:
     (typeParameters=TypeParameters)? parameters=FormalParameterList;
@@ -66,7 +66,7 @@ FunctionBody:
  * ========================================================================= */
 
 ClassDeclaration:
-    (isAbstract?='abstract')? 'class' name=ID (typeParameters=TypeParameters)? 
+    (metadata+=Metadata)* (isAbstract?='abstract')? 'class' name=ID (typeParameters=TypeParameters)? 
     (superclass=Superclass)? (interfaces=Interfaces)? 
     '{' (members+=MemberDeclaration)* '}';
 
@@ -79,22 +79,18 @@ Mixins:
 Interfaces:
     'implements' types+=Type (',' types+=Type)*;
 
+// FIX: Metodi e Dichiarazioni adesso sono assegnati a una proprietà specifica 
 MemberDeclaration:
-    (metadata+=Metadata)* (isStatic?='static')? (
-        // method
-        (method=MethodSignature body=FunctionBody) |
-        // variable
-        (variable=Declaration ';')
-);
+    (metadata+=Metadata)* (
+        method=MethodSignature body=FunctionBody |
+        declaration=Declaration ';'
+    );
 
 MethodSignature:
-    (returnType=Type)? (isOperator?='operator' operator=Operator)? 
-    (isGetter?='get' | isSetter?='set')? name=ID (parameters=FormalParameterList)?;
+    (isStatic?='static')? (returnType=Type)? (isOperator?='operator' operator=Operator)? (isGetter?='get' | isSetter?='set')? name=ID (parameters=FormalParameterList)?;
 
 Declaration:
-    (isExternal?='external')? 
-    (isLate?='late')? (isFinal?='final' | isConst?='const')? 
-    (type=Type)? name=ID ('=' initialValue=Expression)?;
+    (isExternal?='external')? (isStatic?='static')? (isLate?='late')? (isFinal?='final' | isConst?='const')? (type=Type)? name=ID ('=' initialValue=Expression)?;
 
 Operator:
     '~' | '==' | '[]' | '[]=' | '*' | '/' | '%' | '~/' | '+' | '-' | '<<' | '>>>' | '>>' | '&' | '^' | '|' | '>=' | '>' | '<=' | '<';
@@ -104,7 +100,7 @@ Operator:
  * ========================================================================= */
 
 MixinDeclaration:
-    'mixin' name=ID (typeParameters=TypeParameters)? 
+    (metadata+=Metadata)* 'mixin' name=ID (typeParameters=TypeParameters)? 
     ('on' onTypes+=Type (',' onTypes+=Type)*)? 
     (interfaces=Interfaces)? 
     '{' (members+=MemberDeclaration)* '}';
@@ -117,7 +113,7 @@ MixinApplicationClass:
  * ========================================================================= */
 
 ExtensionDeclaration:
-    'extension' (name=ID)? (typeParameters=TypeParameters)? 'on' onType=Type 
+    (metadata+=Metadata)* 'extension' (name=ID)? (typeParameters=TypeParameters)? 'on' onType=Type 
     '{' (members+=MemberDeclaration)* '}';
 
 /* =========================================================================
@@ -125,7 +121,7 @@ ExtensionDeclaration:
  * ========================================================================= */
 
 EnumDeclaration:
-    'enum' name=ID '{' entries+=EnumEntry (',' entries+=EnumEntry)* ','? '}';
+    (metadata+=Metadata)* 'enum' name=ID '{' entries+=EnumEntry (',' entries+=EnumEntry)* ','? '}';
 
 EnumEntry:
     (metadata+=Metadata)* name=ID;
@@ -147,6 +143,7 @@ TypeParameter:
 Metadata:
     '@' name=QualifiedName ('.' constructor=ID)? (arguments=Arguments)?;
 
+// FIX: Ora restituisce stringhe piatte, così può essere usato in TypeName in modo sicuro
 QualifiedName:
     ID ('.' ID)*;
 
@@ -232,25 +229,12 @@ PrimaryExpression returns Expression:
     {NumberLiteral} intValue=INT |
     {StringLiteral} stringValue=STRING |
     {IdentifierRef} name=ID |
-    /* ListLiteral and SetOrMapLiteral merged in CollectionLiteral to solve non-LL(*) conflicts
-     * The parser consumes 'const' and TypeArguments first, 
-     * then branches based on the opening bracket.
-     */
-    CollectionLiteral | 
     {NewExpression} 'new' type=Type ('.' constructor=ID)? args=Arguments |
     {ConstExpression} 'const' type=Type ('.' constructor=ID)? args=Arguments |
+    {ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
+    {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=MapOrSetElement (',' elements+=MapOrSetElement)*)? '}' |
     {ParenthesizedExpression} '(' expression=Expression ')';
 
-CollectionLiteral:
-    {CollectionLiteral}
-    (isConst?='const')? 
-    (typeArguments=TypeArguments)? 
-    (
-        ('[' (listElements+=Expression (',' listElements+=Expression)*)? ']') 
-        | 
-        ('{' (mapElements+=MapOrSetElement (',' mapElements+=MapOrSetElement)*)? '}')
-    );
-    
 MapOrSetElement:
     Expression (':' value=Expression)?;
 
@@ -258,6 +242,7 @@ MapOrSetElement:
  * 18. STATEMENTS
  * ========================================================================= */
 
+// FIX: Come per MemberDeclaration, se labels è processato l'oggetto esiste già
 Statement:
     (labels+=Label)* statement=NonLabelledStatement;
 
@@ -290,10 +275,8 @@ IfStatement:
     'if' '(' condition=Expression ')' thenStatement=Statement ('else' elseStatement=Statement)?;
 
 ForStatement:
-    (isAwait?='await')? 'for' '(' 
-    ( (=>init=VariableDeclaration) | (initExpr=Expression)? ) 
-    ';' condition=Expression? ';' update=Expression? ')' body=Statement;
-    
+    (isAwait?='await')? 'for' '(' (init=VariableDeclaration | initExpr=Expression)? ';' condition=Expression? ';' update=Expression? ')' body=Statement;
+
 WhileStatement:
     'while' '(' condition=Expression ')' body=Statement;
 
@@ -313,7 +296,7 @@ RethrowStatement:
     {RethrowStatement} 'rethrow' ';';
 
 TryStatement:
-    'try' block=Block (=>catchClauses+=CatchClause)* (finallyBlock=FinallyClause)?;
+    'try' block=Block (catchClauses+=CatchClause)* (finallyBlock=FinallyClause)?;
 
 CatchClause:
     ('on' type=Type)? ('catch' '(' exception=ID (',' stackTrace=ID)? ')')? block=Block;
@@ -343,55 +326,45 @@ ExpressionStatement:
 LibraryDeclaration:
     (scriptTag=ScriptTag)?
     (libraryName=LibraryName)?
-    (elements+=ElementWithMetadata)*;
-    
-   // (directives+=ImportOrExport)*
-   // (partDirectives+=PartDirective)*
-   // (declarations+=TopLevelDeclaration)*;
-
-// Unified rule to handle metadata for Imports, Exports, Parts and Top-level declarations
-//TODO: maybe rename to AnnotatedElement?
-ElementWithMetadata:
-    (metadata+=Metadata)* (
-        element=ImportOrExportContent | 
-        element=PartDirectiveContent | 
-        member=TopLevelDeclarationContent
-    );
-    
-ImportOrExportContent:
-    (isImport?='import' importURI=STRING (isDeferred?='deferred'? 'as' prefix=ID)? (combinators+=Combinator)* ';') |
-    (isExport?='export' exportURI=STRING (combinators+=Combinator)* ';');
-
-Combinator:
-	('show' | 'hide') identifiers+=ID (',' identifiers+=ID)*; 
-
-PartDirectiveContent:
-    'part' partURI=STRING ';';
+    (directives+=ImportOrExport)*
+    (partDirectives+=PartDirective)*
+    (declarations+=TopLevelDeclaration)*;
 
 PartDeclaration:
     partHeader=PartHeader
-    (declarations+=AnnotatedTopLevel)*;
-
-//to centralize the metadata handling for all the elements inside the topLevelDecaration 
-AnnotatedTopLevel:
-    (metadata+=Metadata)* member=TopLevelDeclarationContent;
+    (declarations+=TopLevelDeclaration)*;
 
 ScriptTag:
     content=SCRIPT_TAG;
 
 LibraryName:
-     'library' name=QualifiedName ';';
+    (metadata+=Metadata)* 'library' name=QualifiedName ';';
+
+ImportOrExport:
+    LibraryImport | LibraryExport;
+
+LibraryImport:
+    (metadata+=Metadata)* 'import' importURI=STRING (isDeferred?='deferred'? 'as' prefix=ID)? (combinators+=Combinator)* ';';
+
+LibraryExport:
+    (metadata+=Metadata)* 'export' exportURI=STRING (combinators+=Combinator)* ';';
+
+PartDirective:
+    (metadata+=Metadata)* 'part' partURI=STRING ';';
 
 PartHeader:
-     'part' 'of' (name=QualifiedName | uri=STRING) ';';
+    (metadata+=Metadata)* 'part' 'of' (name=QualifiedName | uri=STRING) ';';
 
-TopLevelDeclarationContent:
+Combinator:
+    ('show' | 'hide') identifiers+=ID (',' identifiers+=ID)*;
+
+TopLevelDeclaration:
     ClassDeclaration | 
     MixinDeclaration | 
     ExtensionDeclaration | 
     EnumDeclaration | 
     TypeAlias | 
-    =>FunctionDeclaration | 
+    FunctionDeclaration |
     VariableDeclaration |
     MixinApplicationClass;
 
@@ -400,13 +373,14 @@ TopLevelDeclarationContent:
  * ========================================================================= */
 
 TypeAlias:
-    'typedef' name=ID (=>typeParameters=TypeParameters)? '=' type=Type ';';
+    (metadata+=Metadata)* 'typedef' name=ID (typeParameters=TypeParameters)? '=' type=Type ';';
 
 Type:
     typeName=TypeName (typeArguments=TypeArguments)? (isNullable?='?')?;
 
+// FIX: name raggruppato in modo che copra sia le stringhe che il QualifiedName
 TypeName:
-    name='void' | name='dynamic' | name='Function' | name=QualifiedName;
+    name=(QualifiedName | 'Function' | 'void' | 'dynamic');
 
 TypeArguments:
     '<' types+=Type (',' types+=Type)* '>';

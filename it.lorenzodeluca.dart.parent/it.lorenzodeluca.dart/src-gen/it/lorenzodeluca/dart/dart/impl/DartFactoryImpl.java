@@ -95,7 +95,6 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.METADATA: return createMetadata();
       case DartPackage.ARGUMENTS: return createArguments();
       case DartPackage.EXPRESSION: return createExpression();
-      case DartPackage.COLLECTION_LITERAL: return createCollectionLiteral();
       case DartPackage.MAP_OR_SET_ELEMENT: return createMapOrSetElement();
       case DartPackage.STATEMENT: return createStatement();
       case DartPackage.LABEL: return createLabel();
@@ -119,16 +118,16 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.YIELD_STATEMENT: return createYieldStatement();
       case DartPackage.EXPRESSION_STATEMENT: return createExpressionStatement();
       case DartPackage.LIBRARY_DECLARATION: return createLibraryDeclaration();
-      case DartPackage.ELEMENT_WITH_METADATA: return createElementWithMetadata();
-      case DartPackage.IMPORT_OR_EXPORT_CONTENT: return createImportOrExportContent();
-      case DartPackage.COMBINATOR: return createCombinator();
-      case DartPackage.PART_DIRECTIVE_CONTENT: return createPartDirectiveContent();
       case DartPackage.PART_DECLARATION: return createPartDeclaration();
-      case DartPackage.ANNOTATED_TOP_LEVEL: return createAnnotatedTopLevel();
       case DartPackage.SCRIPT_TAG: return createScriptTag();
       case DartPackage.LIBRARY_NAME: return createLibraryName();
+      case DartPackage.IMPORT_OR_EXPORT: return createImportOrExport();
+      case DartPackage.LIBRARY_IMPORT: return createLibraryImport();
+      case DartPackage.LIBRARY_EXPORT: return createLibraryExport();
+      case DartPackage.PART_DIRECTIVE: return createPartDirective();
       case DartPackage.PART_HEADER: return createPartHeader();
-      case DartPackage.TOP_LEVEL_DECLARATION_CONTENT: return createTopLevelDeclarationContent();
+      case DartPackage.COMBINATOR: return createCombinator();
+      case DartPackage.TOP_LEVEL_DECLARATION: return createTopLevelDeclaration();
       case DartPackage.TYPE_ALIAS: return createTypeAlias();
       case DartPackage.TYPE: return createType();
       case DartPackage.TYPE_NAME: return createTypeName();
@@ -160,6 +159,8 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.IDENTIFIER_REF: return createIdentifierRef();
       case DartPackage.NEW_EXPRESSION: return createNewExpression();
       case DartPackage.CONST_EXPRESSION: return createConstExpression();
+      case DartPackage.LIST_LITERAL: return createListLiteral();
+      case DartPackage.SET_OR_MAP_LITERAL: return createSetOrMapLiteral();
       case DartPackage.PARENTHESIZED_EXPRESSION: return createParenthesizedExpression();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -532,18 +533,6 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
-  public CollectionLiteral createCollectionLiteral()
-  {
-    CollectionLiteralImpl collectionLiteral = new CollectionLiteralImpl();
-    return collectionLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public MapOrSetElement createMapOrSetElement()
   {
     MapOrSetElementImpl mapOrSetElement = new MapOrSetElementImpl();
@@ -820,70 +809,10 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
-  public ElementWithMetadata createElementWithMetadata()
-  {
-    ElementWithMetadataImpl elementWithMetadata = new ElementWithMetadataImpl();
-    return elementWithMetadata;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ImportOrExportContent createImportOrExportContent()
-  {
-    ImportOrExportContentImpl importOrExportContent = new ImportOrExportContentImpl();
-    return importOrExportContent;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Combinator createCombinator()
-  {
-    CombinatorImpl combinator = new CombinatorImpl();
-    return combinator;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public PartDirectiveContent createPartDirectiveContent()
-  {
-    PartDirectiveContentImpl partDirectiveContent = new PartDirectiveContentImpl();
-    return partDirectiveContent;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public PartDeclaration createPartDeclaration()
   {
     PartDeclarationImpl partDeclaration = new PartDeclarationImpl();
     return partDeclaration;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public AnnotatedTopLevel createAnnotatedTopLevel()
-  {
-    AnnotatedTopLevelImpl annotatedTopLevel = new AnnotatedTopLevelImpl();
-    return annotatedTopLevel;
   }
 
   /**
@@ -916,6 +845,54 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
+  public ImportOrExport createImportOrExport()
+  {
+    ImportOrExportImpl importOrExport = new ImportOrExportImpl();
+    return importOrExport;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public LibraryImport createLibraryImport()
+  {
+    LibraryImportImpl libraryImport = new LibraryImportImpl();
+    return libraryImport;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public LibraryExport createLibraryExport()
+  {
+    LibraryExportImpl libraryExport = new LibraryExportImpl();
+    return libraryExport;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public PartDirective createPartDirective()
+  {
+    PartDirectiveImpl partDirective = new PartDirectiveImpl();
+    return partDirective;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public PartHeader createPartHeader()
   {
     PartHeaderImpl partHeader = new PartHeaderImpl();
@@ -928,10 +905,22 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
-  public TopLevelDeclarationContent createTopLevelDeclarationContent()
+  public Combinator createCombinator()
   {
-    TopLevelDeclarationContentImpl topLevelDeclarationContent = new TopLevelDeclarationContentImpl();
-    return topLevelDeclarationContent;
+    CombinatorImpl combinator = new CombinatorImpl();
+    return combinator;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TopLevelDeclaration createTopLevelDeclaration()
+  {
+    TopLevelDeclarationImpl topLevelDeclaration = new TopLevelDeclarationImpl();
+    return topLevelDeclaration;
   }
 
   /**
@@ -1304,6 +1293,30 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
   {
     ConstExpressionImpl constExpression = new ConstExpressionImpl();
     return constExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ListLiteral createListLiteral()
+  {
+    ListLiteralImpl listLiteral = new ListLiteralImpl();
+    return listLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SetOrMapLiteral createSetOrMapLiteral()
+  {
+    SetOrMapLiteralImpl setOrMapLiteral = new SetOrMapLiteralImpl();
+    return setOrMapLiteral;
   }
 
   /**

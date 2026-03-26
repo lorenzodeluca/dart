@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.EnumDeclaration#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.EnumDeclaration#getName <em>Name</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.EnumDeclaration#getEntries <em>Entries</em>}</li>
  * </ul>
@@ -22,8 +23,20 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface EnumDeclaration extends TopLevelDeclarationContent
+public interface EnumDeclaration extends TopLevelDeclaration
 {
+  /**
+   * Returns the value of the '<em><b>Metadata</b></em>' containment reference list.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.Metadata}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Metadata</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getEnumDeclaration_Metadata()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Metadata> getMetadata();
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

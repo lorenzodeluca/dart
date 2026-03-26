@@ -7,15 +7,23 @@ import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.FormalParameterPart;
 import it.lorenzodeluca.dart.dart.FunctionBody;
 import it.lorenzodeluca.dart.dart.FunctionDeclaration;
+import it.lorenzodeluca.dart.dart.Metadata;
 import it.lorenzodeluca.dart.dart.Type;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +33,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.FunctionDeclarationImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.FunctionDeclarationImpl#isIsExternal <em>Is External</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.FunctionDeclarationImpl#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.FunctionDeclarationImpl#getName <em>Name</em>}</li>
@@ -34,8 +43,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class FunctionDeclarationImpl extends TopLevelDeclarationContentImpl implements FunctionDeclaration
+public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements FunctionDeclaration
 {
+  /**
+   * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetadata()
+   * @generated
+   * @ordered
+   */
+  protected EList<Metadata> metadata;
+
   /**
    * The default value of the '{@link #isIsExternal() <em>Is External</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -125,6 +144,21 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationContentImpl impl
   protected EClass eStaticClass()
   {
     return DartPackage.Literals.FUNCTION_DECLARATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Metadata> getMetadata()
+  {
+    if (metadata == null)
+    {
+      metadata = new EObjectContainmentEList<Metadata>(Metadata.class, this, DartPackage.FUNCTION_DECLARATION__METADATA);
+    }
+    return metadata;
   }
 
   /**
@@ -337,6 +371,8 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationContentImpl impl
   {
     switch (featureID)
     {
+      case DartPackage.FUNCTION_DECLARATION__METADATA:
+        return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
       case DartPackage.FUNCTION_DECLARATION__RETURN_TYPE:
         return basicSetReturnType(null, msgs);
       case DartPackage.FUNCTION_DECLARATION__SIGNATURE:
@@ -357,6 +393,8 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationContentImpl impl
   {
     switch (featureID)
     {
+      case DartPackage.FUNCTION_DECLARATION__METADATA:
+        return getMetadata();
       case DartPackage.FUNCTION_DECLARATION__IS_EXTERNAL:
         return isIsExternal();
       case DartPackage.FUNCTION_DECLARATION__RETURN_TYPE:
@@ -376,11 +414,16 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationContentImpl impl
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
+      case DartPackage.FUNCTION_DECLARATION__METADATA:
+        getMetadata().clear();
+        getMetadata().addAll((Collection<? extends Metadata>)newValue);
+        return;
       case DartPackage.FUNCTION_DECLARATION__IS_EXTERNAL:
         setIsExternal((Boolean)newValue);
         return;
@@ -410,6 +453,9 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationContentImpl impl
   {
     switch (featureID)
     {
+      case DartPackage.FUNCTION_DECLARATION__METADATA:
+        getMetadata().clear();
+        return;
       case DartPackage.FUNCTION_DECLARATION__IS_EXTERNAL:
         setIsExternal(IS_EXTERNAL_EDEFAULT);
         return;
@@ -439,6 +485,8 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationContentImpl impl
   {
     switch (featureID)
     {
+      case DartPackage.FUNCTION_DECLARATION__METADATA:
+        return metadata != null && !metadata.isEmpty();
       case DartPackage.FUNCTION_DECLARATION__IS_EXTERNAL:
         return isExternal != IS_EXTERNAL_EDEFAULT;
       case DartPackage.FUNCTION_DECLARATION__RETURN_TYPE:

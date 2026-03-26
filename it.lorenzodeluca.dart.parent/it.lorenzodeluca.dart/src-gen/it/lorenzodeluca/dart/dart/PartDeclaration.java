@@ -3,7 +3,6 @@
  */
 package it.lorenzodeluca.dart.dart;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.PartDeclaration#getPartHeader <em>Part Header</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.PartDeclaration#getDeclarations <em>Declarations</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getPartDeclaration()
@@ -45,17 +43,5 @@ public interface PartDeclaration extends DartFile
    * @generated
    */
   void setPartHeader(PartHeader value);
-
-  /**
-   * Returns the value of the '<em><b>Declarations</b></em>' containment reference list.
-   * The list contents are of type {@link it.lorenzodeluca.dart.dart.AnnotatedTopLevel}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Declarations</em>' containment reference list.
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getPartDeclaration_Declarations()
-   * @model containment="true"
-   * @generated
-   */
-  EList<AnnotatedTopLevel> getDeclarations();
 
 } // PartDeclaration

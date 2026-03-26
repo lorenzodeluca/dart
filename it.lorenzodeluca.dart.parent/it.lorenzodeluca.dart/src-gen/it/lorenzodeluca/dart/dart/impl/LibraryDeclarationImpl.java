@@ -4,9 +4,10 @@
 package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
-import it.lorenzodeluca.dart.dart.ElementWithMetadata;
+import it.lorenzodeluca.dart.dart.ImportOrExport;
 import it.lorenzodeluca.dart.dart.LibraryDeclaration;
 import it.lorenzodeluca.dart.dart.LibraryName;
+import it.lorenzodeluca.dart.dart.PartDirective;
 import it.lorenzodeluca.dart.dart.ScriptTag;
 
 import java.util.Collection;
@@ -34,7 +35,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.LibraryDeclarationImpl#getScriptTag <em>Script Tag</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.LibraryDeclarationImpl#getLibraryName <em>Library Name</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.LibraryDeclarationImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.LibraryDeclarationImpl#getDirectives <em>Directives</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.LibraryDeclarationImpl#getPartDirectives <em>Part Directives</em>}</li>
  * </ul>
  *
  * @generated
@@ -62,14 +64,24 @@ public class LibraryDeclarationImpl extends DartFileImpl implements LibraryDecla
   protected LibraryName libraryName;
 
   /**
-   * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+   * The cached value of the '{@link #getDirectives() <em>Directives</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getElements()
+   * @see #getDirectives()
    * @generated
    * @ordered
    */
-  protected EList<ElementWithMetadata> elements;
+  protected EList<ImportOrExport> directives;
+
+  /**
+   * The cached value of the '{@link #getPartDirectives() <em>Part Directives</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPartDirectives()
+   * @generated
+   * @ordered
+   */
+  protected EList<PartDirective> partDirectives;
 
   /**
    * <!-- begin-user-doc -->
@@ -198,13 +210,28 @@ public class LibraryDeclarationImpl extends DartFileImpl implements LibraryDecla
    * @generated
    */
   @Override
-  public EList<ElementWithMetadata> getElements()
+  public EList<ImportOrExport> getDirectives()
   {
-    if (elements == null)
+    if (directives == null)
     {
-      elements = new EObjectContainmentEList<ElementWithMetadata>(ElementWithMetadata.class, this, DartPackage.LIBRARY_DECLARATION__ELEMENTS);
+      directives = new EObjectContainmentEList<ImportOrExport>(ImportOrExport.class, this, DartPackage.LIBRARY_DECLARATION__DIRECTIVES);
     }
-    return elements;
+    return directives;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<PartDirective> getPartDirectives()
+  {
+    if (partDirectives == null)
+    {
+      partDirectives = new EObjectContainmentEList<PartDirective>(PartDirective.class, this, DartPackage.LIBRARY_DECLARATION__PART_DIRECTIVES);
+    }
+    return partDirectives;
   }
 
   /**
@@ -221,8 +248,10 @@ public class LibraryDeclarationImpl extends DartFileImpl implements LibraryDecla
         return basicSetScriptTag(null, msgs);
       case DartPackage.LIBRARY_DECLARATION__LIBRARY_NAME:
         return basicSetLibraryName(null, msgs);
-      case DartPackage.LIBRARY_DECLARATION__ELEMENTS:
-        return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+      case DartPackage.LIBRARY_DECLARATION__DIRECTIVES:
+        return ((InternalEList<?>)getDirectives()).basicRemove(otherEnd, msgs);
+      case DartPackage.LIBRARY_DECLARATION__PART_DIRECTIVES:
+        return ((InternalEList<?>)getPartDirectives()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -241,8 +270,10 @@ public class LibraryDeclarationImpl extends DartFileImpl implements LibraryDecla
         return getScriptTag();
       case DartPackage.LIBRARY_DECLARATION__LIBRARY_NAME:
         return getLibraryName();
-      case DartPackage.LIBRARY_DECLARATION__ELEMENTS:
-        return getElements();
+      case DartPackage.LIBRARY_DECLARATION__DIRECTIVES:
+        return getDirectives();
+      case DartPackage.LIBRARY_DECLARATION__PART_DIRECTIVES:
+        return getPartDirectives();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -264,9 +295,13 @@ public class LibraryDeclarationImpl extends DartFileImpl implements LibraryDecla
       case DartPackage.LIBRARY_DECLARATION__LIBRARY_NAME:
         setLibraryName((LibraryName)newValue);
         return;
-      case DartPackage.LIBRARY_DECLARATION__ELEMENTS:
-        getElements().clear();
-        getElements().addAll((Collection<? extends ElementWithMetadata>)newValue);
+      case DartPackage.LIBRARY_DECLARATION__DIRECTIVES:
+        getDirectives().clear();
+        getDirectives().addAll((Collection<? extends ImportOrExport>)newValue);
+        return;
+      case DartPackage.LIBRARY_DECLARATION__PART_DIRECTIVES:
+        getPartDirectives().clear();
+        getPartDirectives().addAll((Collection<? extends PartDirective>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -288,8 +323,11 @@ public class LibraryDeclarationImpl extends DartFileImpl implements LibraryDecla
       case DartPackage.LIBRARY_DECLARATION__LIBRARY_NAME:
         setLibraryName((LibraryName)null);
         return;
-      case DartPackage.LIBRARY_DECLARATION__ELEMENTS:
-        getElements().clear();
+      case DartPackage.LIBRARY_DECLARATION__DIRECTIVES:
+        getDirectives().clear();
+        return;
+      case DartPackage.LIBRARY_DECLARATION__PART_DIRECTIVES:
+        getPartDirectives().clear();
         return;
     }
     super.eUnset(featureID);
@@ -309,8 +347,10 @@ public class LibraryDeclarationImpl extends DartFileImpl implements LibraryDecla
         return scriptTag != null;
       case DartPackage.LIBRARY_DECLARATION__LIBRARY_NAME:
         return libraryName != null;
-      case DartPackage.LIBRARY_DECLARATION__ELEMENTS:
-        return elements != null && !elements.isEmpty();
+      case DartPackage.LIBRARY_DECLARATION__DIRECTIVES:
+        return directives != null && !directives.isEmpty();
+      case DartPackage.LIBRARY_DECLARATION__PART_DIRECTIVES:
+        return partDirectives != null && !partDirectives.isEmpty();
     }
     return super.eIsSet(featureID);
   }

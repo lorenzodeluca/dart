@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsExternal <em>Is External</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsStatic <em>Is Static</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsLate <em>Is Late</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsFinal <em>Is Final</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsConst <em>Is Const</em>}</li>
@@ -50,6 +51,28 @@ public interface Declaration extends EObject
    * @generated
    */
   void setIsExternal(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Is Static</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Static</em>' attribute.
+   * @see #setIsStatic(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_IsStatic()
+   * @model
+   * @generated
+   */
+  boolean isIsStatic();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#isIsStatic <em>Is Static</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Static</em>' attribute.
+   * @see #isIsStatic()
+   * @generated
+   */
+  void setIsStatic(boolean value);
 
   /**
    * Returns the value of the '<em><b>Is Late</b></em>' attribute.

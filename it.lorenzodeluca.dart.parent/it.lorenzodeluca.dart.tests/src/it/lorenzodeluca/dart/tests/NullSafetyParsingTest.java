@@ -8,19 +8,20 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import com.google.inject.Inject;
 
-import it.lorenzodeluca.dart.dart.CompilationUnit;
+import it.lorenzodeluca.dart.dart.DartFile;
+
 
 @ExtendWith(InjectionExtension.class)
 @InjectWith(DartInjectorProvider.class)
 public class NullSafetyParsingTest {
 
     @Inject
-    private ParseHelper<CompilationUnit> parseHelper;
+    private ParseHelper<DartFile> parseHelper;
 
     @Test
     void testSimpleNullableType() throws Exception {
         // Dichiarazione variabile con tipo nullabile
-        CompilationUnit result = parseHelper.parse("int? a;");
+    	DartFile result = parseHelper.parse("int? a;");
         Assertions.assertNotNull(result);
         Assertions.assertTrue(result.eResource().getErrors().isEmpty(), 
             "Il parser dovrebbe accettare 'int? a;' senza errori.");
@@ -29,7 +30,7 @@ public class NullSafetyParsingTest {
     @Test
     void testNestedGenericNullability() throws Exception {
         //  Null Safety annidato
-        CompilationUnit result = parseHelper.parse("List<String?>? names;");
+    	DartFile result = parseHelper.parse("List<String?>? names;");
         Assertions.assertNotNull(result);
         Assertions.assertTrue(result.eResource().getErrors().isEmpty(), 
             "Il parser dovrebbe gestire correttamente i ? annidati nei Generics.");
@@ -38,7 +39,7 @@ public class NullSafetyParsingTest {
     @Test
     void testLateNullableVariable() throws Exception {
         // Verifica la combinazione di modificatori (§8) e null safety
-        CompilationUnit result = parseHelper.parse("late String? description;");
+    	DartFile result = parseHelper.parse("late String? description;");
         Assertions.assertNotNull(result);
         Assertions.assertTrue(result.eResource().getErrors().isEmpty());
     }

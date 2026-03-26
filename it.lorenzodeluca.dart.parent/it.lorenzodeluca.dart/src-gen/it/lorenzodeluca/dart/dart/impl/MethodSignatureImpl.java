@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#isIsStatic <em>Is Static</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#isIsOperator <em>Is Operator</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#getOperator <em>Operator</em>}</li>
@@ -38,6 +39,26 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements MethodSignature
 {
+  /**
+   * The default value of the '{@link #isIsStatic() <em>Is Static</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsStatic()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_STATIC_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsStatic() <em>Is Static</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsStatic()
+   * @generated
+   * @ordered
+   */
+  protected boolean isStatic = IS_STATIC_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -177,6 +198,31 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
   protected EClass eStaticClass()
   {
     return DartPackage.Literals.METHOD_SIGNATURE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isIsStatic()
+  {
+    return isStatic;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsStatic(boolean newIsStatic)
+  {
+    boolean oldIsStatic = isStatic;
+    isStatic = newIsStatic;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.METHOD_SIGNATURE__IS_STATIC, oldIsStatic, isStatic));
   }
 
   /**
@@ -432,6 +478,8 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
+      case DartPackage.METHOD_SIGNATURE__IS_STATIC:
+        return isIsStatic();
       case DartPackage.METHOD_SIGNATURE__RETURN_TYPE:
         return getReturnType();
       case DartPackage.METHOD_SIGNATURE__IS_OPERATOR:
@@ -460,6 +508,9 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
+      case DartPackage.METHOD_SIGNATURE__IS_STATIC:
+        setIsStatic((Boolean)newValue);
+        return;
       case DartPackage.METHOD_SIGNATURE__RETURN_TYPE:
         setReturnType((Type)newValue);
         return;
@@ -495,6 +546,9 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
+      case DartPackage.METHOD_SIGNATURE__IS_STATIC:
+        setIsStatic(IS_STATIC_EDEFAULT);
+        return;
       case DartPackage.METHOD_SIGNATURE__RETURN_TYPE:
         setReturnType((Type)null);
         return;
@@ -530,6 +584,8 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
+      case DartPackage.METHOD_SIGNATURE__IS_STATIC:
+        return isStatic != IS_STATIC_EDEFAULT;
       case DartPackage.METHOD_SIGNATURE__RETURN_TYPE:
         return returnType != null;
       case DartPackage.METHOD_SIGNATURE__IS_OPERATOR:
@@ -559,7 +615,9 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (isOperator: ");
+    result.append(" (isStatic: ");
+    result.append(isStatic);
+    result.append(", isOperator: ");
     result.append(isOperator);
     result.append(", operator: ");
     result.append(operator);

@@ -6,6 +6,7 @@ package it.lorenzodeluca.dart.dart.impl;
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.ExtensionDeclaration;
 import it.lorenzodeluca.dart.dart.MemberDeclaration;
+import it.lorenzodeluca.dart.dart.Metadata;
 import it.lorenzodeluca.dart.dart.Type;
 import it.lorenzodeluca.dart.dart.TypeParameters;
 
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.ExtensionDeclarationImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.ExtensionDeclarationImpl#getName <em>Name</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.ExtensionDeclarationImpl#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.ExtensionDeclarationImpl#getOnType <em>On Type</em>}</li>
@@ -40,8 +42,18 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class ExtensionDeclarationImpl extends TopLevelDeclarationContentImpl implements ExtensionDeclaration
+public class ExtensionDeclarationImpl extends TopLevelDeclarationImpl implements ExtensionDeclaration
 {
+  /**
+   * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetadata()
+   * @generated
+   * @ordered
+   */
+  protected EList<Metadata> metadata;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -111,6 +123,21 @@ public class ExtensionDeclarationImpl extends TopLevelDeclarationContentImpl imp
   protected EClass eStaticClass()
   {
     return DartPackage.Literals.EXTENSION_DECLARATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Metadata> getMetadata()
+  {
+    if (metadata == null)
+    {
+      metadata = new EObjectContainmentEList<Metadata>(Metadata.class, this, DartPackage.EXTENSION_DECLARATION__METADATA);
+    }
+    return metadata;
   }
 
   /**
@@ -263,6 +290,8 @@ public class ExtensionDeclarationImpl extends TopLevelDeclarationContentImpl imp
   {
     switch (featureID)
     {
+      case DartPackage.EXTENSION_DECLARATION__METADATA:
+        return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
       case DartPackage.EXTENSION_DECLARATION__TYPE_PARAMETERS:
         return basicSetTypeParameters(null, msgs);
       case DartPackage.EXTENSION_DECLARATION__ON_TYPE:
@@ -283,6 +312,8 @@ public class ExtensionDeclarationImpl extends TopLevelDeclarationContentImpl imp
   {
     switch (featureID)
     {
+      case DartPackage.EXTENSION_DECLARATION__METADATA:
+        return getMetadata();
       case DartPackage.EXTENSION_DECLARATION__NAME:
         return getName();
       case DartPackage.EXTENSION_DECLARATION__TYPE_PARAMETERS:
@@ -306,6 +337,10 @@ public class ExtensionDeclarationImpl extends TopLevelDeclarationContentImpl imp
   {
     switch (featureID)
     {
+      case DartPackage.EXTENSION_DECLARATION__METADATA:
+        getMetadata().clear();
+        getMetadata().addAll((Collection<? extends Metadata>)newValue);
+        return;
       case DartPackage.EXTENSION_DECLARATION__NAME:
         setName((String)newValue);
         return;
@@ -333,6 +368,9 @@ public class ExtensionDeclarationImpl extends TopLevelDeclarationContentImpl imp
   {
     switch (featureID)
     {
+      case DartPackage.EXTENSION_DECLARATION__METADATA:
+        getMetadata().clear();
+        return;
       case DartPackage.EXTENSION_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -359,6 +397,8 @@ public class ExtensionDeclarationImpl extends TopLevelDeclarationContentImpl imp
   {
     switch (featureID)
     {
+      case DartPackage.EXTENSION_DECLARATION__METADATA:
+        return metadata != null && !metadata.isEmpty();
       case DartPackage.EXTENSION_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DartPackage.EXTENSION_DECLARATION__TYPE_PARAMETERS:

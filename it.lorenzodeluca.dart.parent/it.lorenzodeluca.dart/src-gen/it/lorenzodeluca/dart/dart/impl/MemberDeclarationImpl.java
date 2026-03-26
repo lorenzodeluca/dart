@@ -35,10 +35,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getMetadata <em>Metadata</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#isIsStatic <em>Is Static</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getMethod <em>Method</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getBody <em>Body</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getVariable <em>Variable</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getDeclaration <em>Declaration</em>}</li>
  * </ul>
  *
  * @generated
@@ -54,26 +53,6 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
    * @ordered
    */
   protected EList<Metadata> metadata;
-
-  /**
-   * The default value of the '{@link #isIsStatic() <em>Is Static</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsStatic()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean IS_STATIC_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isIsStatic() <em>Is Static</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsStatic()
-   * @generated
-   * @ordered
-   */
-  protected boolean isStatic = IS_STATIC_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getMethod() <em>Method</em>}' containment reference.
@@ -96,14 +75,14 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
   protected FunctionBody body;
 
   /**
-   * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference.
+   * The cached value of the '{@link #getDeclaration() <em>Declaration</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVariable()
+   * @see #getDeclaration()
    * @generated
    * @ordered
    */
-  protected Declaration variable;
+  protected Declaration declaration;
 
   /**
    * <!-- begin-user-doc -->
@@ -139,31 +118,6 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
       metadata = new EObjectContainmentEList<Metadata>(Metadata.class, this, DartPackage.MEMBER_DECLARATION__METADATA);
     }
     return metadata;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean isIsStatic()
-  {
-    return isStatic;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setIsStatic(boolean newIsStatic)
-  {
-    boolean oldIsStatic = isStatic;
-    isStatic = newIsStatic;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__IS_STATIC, oldIsStatic, isStatic));
   }
 
   /**
@@ -272,9 +226,9 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public Declaration getVariable()
+  public Declaration getDeclaration()
   {
-    return variable;
+    return declaration;
   }
 
   /**
@@ -282,13 +236,13 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVariable(Declaration newVariable, NotificationChain msgs)
+  public NotificationChain basicSetDeclaration(Declaration newDeclaration, NotificationChain msgs)
   {
-    Declaration oldVariable = variable;
-    variable = newVariable;
+    Declaration oldDeclaration = declaration;
+    declaration = newDeclaration;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__VARIABLE, oldVariable, newVariable);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__DECLARATION, oldDeclaration, newDeclaration);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -300,20 +254,20 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public void setVariable(Declaration newVariable)
+  public void setDeclaration(Declaration newDeclaration)
   {
-    if (newVariable != variable)
+    if (newDeclaration != declaration)
     {
       NotificationChain msgs = null;
-      if (variable != null)
-        msgs = ((InternalEObject)variable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__VARIABLE, null, msgs);
-      if (newVariable != null)
-        msgs = ((InternalEObject)newVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__VARIABLE, null, msgs);
-      msgs = basicSetVariable(newVariable, msgs);
+      if (declaration != null)
+        msgs = ((InternalEObject)declaration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__DECLARATION, null, msgs);
+      if (newDeclaration != null)
+        msgs = ((InternalEObject)newDeclaration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__DECLARATION, null, msgs);
+      msgs = basicSetDeclaration(newDeclaration, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__VARIABLE, newVariable, newVariable));
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__DECLARATION, newDeclaration, newDeclaration));
   }
 
   /**
@@ -332,8 +286,8 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
         return basicSetMethod(null, msgs);
       case DartPackage.MEMBER_DECLARATION__BODY:
         return basicSetBody(null, msgs);
-      case DartPackage.MEMBER_DECLARATION__VARIABLE:
-        return basicSetVariable(null, msgs);
+      case DartPackage.MEMBER_DECLARATION__DECLARATION:
+        return basicSetDeclaration(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -350,14 +304,12 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
     {
       case DartPackage.MEMBER_DECLARATION__METADATA:
         return getMetadata();
-      case DartPackage.MEMBER_DECLARATION__IS_STATIC:
-        return isIsStatic();
       case DartPackage.MEMBER_DECLARATION__METHOD:
         return getMethod();
       case DartPackage.MEMBER_DECLARATION__BODY:
         return getBody();
-      case DartPackage.MEMBER_DECLARATION__VARIABLE:
-        return getVariable();
+      case DartPackage.MEMBER_DECLARATION__DECLARATION:
+        return getDeclaration();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -377,17 +329,14 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
         getMetadata().clear();
         getMetadata().addAll((Collection<? extends Metadata>)newValue);
         return;
-      case DartPackage.MEMBER_DECLARATION__IS_STATIC:
-        setIsStatic((Boolean)newValue);
-        return;
       case DartPackage.MEMBER_DECLARATION__METHOD:
         setMethod((MethodSignature)newValue);
         return;
       case DartPackage.MEMBER_DECLARATION__BODY:
         setBody((FunctionBody)newValue);
         return;
-      case DartPackage.MEMBER_DECLARATION__VARIABLE:
-        setVariable((Declaration)newValue);
+      case DartPackage.MEMBER_DECLARATION__DECLARATION:
+        setDeclaration((Declaration)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -406,17 +355,14 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
       case DartPackage.MEMBER_DECLARATION__METADATA:
         getMetadata().clear();
         return;
-      case DartPackage.MEMBER_DECLARATION__IS_STATIC:
-        setIsStatic(IS_STATIC_EDEFAULT);
-        return;
       case DartPackage.MEMBER_DECLARATION__METHOD:
         setMethod((MethodSignature)null);
         return;
       case DartPackage.MEMBER_DECLARATION__BODY:
         setBody((FunctionBody)null);
         return;
-      case DartPackage.MEMBER_DECLARATION__VARIABLE:
-        setVariable((Declaration)null);
+      case DartPackage.MEMBER_DECLARATION__DECLARATION:
+        setDeclaration((Declaration)null);
         return;
     }
     super.eUnset(featureID);
@@ -434,33 +380,14 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
     {
       case DartPackage.MEMBER_DECLARATION__METADATA:
         return metadata != null && !metadata.isEmpty();
-      case DartPackage.MEMBER_DECLARATION__IS_STATIC:
-        return isStatic != IS_STATIC_EDEFAULT;
       case DartPackage.MEMBER_DECLARATION__METHOD:
         return method != null;
       case DartPackage.MEMBER_DECLARATION__BODY:
         return body != null;
-      case DartPackage.MEMBER_DECLARATION__VARIABLE:
-        return variable != null;
+      case DartPackage.MEMBER_DECLARATION__DECLARATION:
+        return declaration != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (isStatic: ");
-    result.append(isStatic);
-    result.append(')');
-    return result.toString();
   }
 
 } //MemberDeclarationImpl

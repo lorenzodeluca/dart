@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class MixinApplicationClassImpl extends TopLevelDeclarationContentImpl implements MixinApplicationClass
+public class MixinApplicationClassImpl extends TopLevelDeclarationImpl implements MixinApplicationClass
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.

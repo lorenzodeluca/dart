@@ -24,7 +24,7 @@ package it.lorenzodeluca.dart.dart;
  * @model
  * @generated
  */
-public interface MixinApplicationClass extends TopLevelDeclarationContent
+public interface MixinApplicationClass extends TopLevelDeclaration
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

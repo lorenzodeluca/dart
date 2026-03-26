@@ -84,7 +84,7 @@ public class DartSwitch<T> extends Switch<T>
       {
         VariableDeclaration variableDeclaration = (VariableDeclaration)theEObject;
         T result = caseVariableDeclaration(variableDeclaration);
-        if (result == null) result = caseTopLevelDeclarationContent(variableDeclaration);
+        if (result == null) result = caseTopLevelDeclaration(variableDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -99,7 +99,7 @@ public class DartSwitch<T> extends Switch<T>
       {
         FunctionDeclaration functionDeclaration = (FunctionDeclaration)theEObject;
         T result = caseFunctionDeclaration(functionDeclaration);
-        if (result == null) result = caseTopLevelDeclarationContent(functionDeclaration);
+        if (result == null) result = caseTopLevelDeclaration(functionDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -172,7 +172,7 @@ public class DartSwitch<T> extends Switch<T>
       {
         ClassDeclaration classDeclaration = (ClassDeclaration)theEObject;
         T result = caseClassDeclaration(classDeclaration);
-        if (result == null) result = caseTopLevelDeclarationContent(classDeclaration);
+        if (result == null) result = caseTopLevelDeclaration(classDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -222,7 +222,7 @@ public class DartSwitch<T> extends Switch<T>
       {
         MixinDeclaration mixinDeclaration = (MixinDeclaration)theEObject;
         T result = caseMixinDeclaration(mixinDeclaration);
-        if (result == null) result = caseTopLevelDeclarationContent(mixinDeclaration);
+        if (result == null) result = caseTopLevelDeclaration(mixinDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -230,7 +230,7 @@ public class DartSwitch<T> extends Switch<T>
       {
         MixinApplicationClass mixinApplicationClass = (MixinApplicationClass)theEObject;
         T result = caseMixinApplicationClass(mixinApplicationClass);
-        if (result == null) result = caseTopLevelDeclarationContent(mixinApplicationClass);
+        if (result == null) result = caseTopLevelDeclaration(mixinApplicationClass);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -238,7 +238,7 @@ public class DartSwitch<T> extends Switch<T>
       {
         ExtensionDeclaration extensionDeclaration = (ExtensionDeclaration)theEObject;
         T result = caseExtensionDeclaration(extensionDeclaration);
-        if (result == null) result = caseTopLevelDeclarationContent(extensionDeclaration);
+        if (result == null) result = caseTopLevelDeclaration(extensionDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -246,7 +246,7 @@ public class DartSwitch<T> extends Switch<T>
       {
         EnumDeclaration enumDeclaration = (EnumDeclaration)theEObject;
         T result = caseEnumDeclaration(enumDeclaration);
-        if (result == null) result = caseTopLevelDeclarationContent(enumDeclaration);
+        if (result == null) result = caseTopLevelDeclaration(enumDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -290,15 +290,6 @@ public class DartSwitch<T> extends Switch<T>
         Expression expression = (Expression)theEObject;
         T result = caseExpression(expression);
         if (result == null) result = caseMapOrSetElement(expression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DartPackage.COLLECTION_LITERAL:
-      {
-        CollectionLiteral collectionLiteral = (CollectionLiteral)theEObject;
-        T result = caseCollectionLiteral(collectionLiteral);
-        if (result == null) result = caseExpression(collectionLiteral);
-        if (result == null) result = caseMapOrSetElement(collectionLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -478,46 +469,11 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DartPackage.ELEMENT_WITH_METADATA:
-      {
-        ElementWithMetadata elementWithMetadata = (ElementWithMetadata)theEObject;
-        T result = caseElementWithMetadata(elementWithMetadata);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DartPackage.IMPORT_OR_EXPORT_CONTENT:
-      {
-        ImportOrExportContent importOrExportContent = (ImportOrExportContent)theEObject;
-        T result = caseImportOrExportContent(importOrExportContent);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DartPackage.COMBINATOR:
-      {
-        Combinator combinator = (Combinator)theEObject;
-        T result = caseCombinator(combinator);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DartPackage.PART_DIRECTIVE_CONTENT:
-      {
-        PartDirectiveContent partDirectiveContent = (PartDirectiveContent)theEObject;
-        T result = casePartDirectiveContent(partDirectiveContent);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case DartPackage.PART_DECLARATION:
       {
         PartDeclaration partDeclaration = (PartDeclaration)theEObject;
         T result = casePartDeclaration(partDeclaration);
         if (result == null) result = caseDartFile(partDeclaration);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DartPackage.ANNOTATED_TOP_LEVEL:
-      {
-        AnnotatedTopLevel annotatedTopLevel = (AnnotatedTopLevel)theEObject;
-        T result = caseAnnotatedTopLevel(annotatedTopLevel);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -535,6 +491,36 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DartPackage.IMPORT_OR_EXPORT:
+      {
+        ImportOrExport importOrExport = (ImportOrExport)theEObject;
+        T result = caseImportOrExport(importOrExport);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.LIBRARY_IMPORT:
+      {
+        LibraryImport libraryImport = (LibraryImport)theEObject;
+        T result = caseLibraryImport(libraryImport);
+        if (result == null) result = caseImportOrExport(libraryImport);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.LIBRARY_EXPORT:
+      {
+        LibraryExport libraryExport = (LibraryExport)theEObject;
+        T result = caseLibraryExport(libraryExport);
+        if (result == null) result = caseImportOrExport(libraryExport);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.PART_DIRECTIVE:
+      {
+        PartDirective partDirective = (PartDirective)theEObject;
+        T result = casePartDirective(partDirective);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DartPackage.PART_HEADER:
       {
         PartHeader partHeader = (PartHeader)theEObject;
@@ -542,10 +528,17 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DartPackage.TOP_LEVEL_DECLARATION_CONTENT:
+      case DartPackage.COMBINATOR:
       {
-        TopLevelDeclarationContent topLevelDeclarationContent = (TopLevelDeclarationContent)theEObject;
-        T result = caseTopLevelDeclarationContent(topLevelDeclarationContent);
+        Combinator combinator = (Combinator)theEObject;
+        T result = caseCombinator(combinator);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.TOP_LEVEL_DECLARATION:
+      {
+        TopLevelDeclaration topLevelDeclaration = (TopLevelDeclaration)theEObject;
+        T result = caseTopLevelDeclaration(topLevelDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -553,7 +546,7 @@ public class DartSwitch<T> extends Switch<T>
       {
         TypeAlias typeAlias = (TypeAlias)theEObject;
         T result = caseTypeAlias(typeAlias);
-        if (result == null) result = caseTopLevelDeclarationContent(typeAlias);
+        if (result == null) result = caseTopLevelDeclaration(typeAlias);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -818,6 +811,24 @@ public class DartSwitch<T> extends Switch<T>
         T result = caseConstExpression(constExpression);
         if (result == null) result = caseExpression(constExpression);
         if (result == null) result = caseMapOrSetElement(constExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.LIST_LITERAL:
+      {
+        ListLiteral listLiteral = (ListLiteral)theEObject;
+        T result = caseListLiteral(listLiteral);
+        if (result == null) result = caseExpression(listLiteral);
+        if (result == null) result = caseMapOrSetElement(listLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.SET_OR_MAP_LITERAL:
+      {
+        SetOrMapLiteral setOrMapLiteral = (SetOrMapLiteral)theEObject;
+        T result = caseSetOrMapLiteral(setOrMapLiteral);
+        if (result == null) result = caseExpression(setOrMapLiteral);
+        if (result == null) result = caseMapOrSetElement(setOrMapLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1315,22 +1326,6 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Collection Literal</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Collection Literal</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCollectionLiteral(CollectionLiteral object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Map Or Set Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1699,70 +1694,6 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Element With Metadata</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Element With Metadata</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseElementWithMetadata(ElementWithMetadata object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Import Or Export Content</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Import Or Export Content</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseImportOrExportContent(ImportOrExportContent object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Combinator</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Combinator</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCombinator(Combinator object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Part Directive Content</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Part Directive Content</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePartDirectiveContent(PartDirectiveContent object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Part Declaration</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1774,22 +1705,6 @@ public class DartSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePartDeclaration(PartDeclaration object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Annotated Top Level</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Annotated Top Level</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAnnotatedTopLevel(AnnotatedTopLevel object)
   {
     return null;
   }
@@ -1827,6 +1742,70 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Import Or Export</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Import Or Export</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseImportOrExport(ImportOrExport object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Library Import</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Library Import</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLibraryImport(LibraryImport object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Library Export</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Library Export</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLibraryExport(LibraryExport object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Part Directive</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Part Directive</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePartDirective(PartDirective object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Part Header</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1843,17 +1822,33 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Top Level Declaration Content</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Combinator</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Top Level Declaration Content</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Combinator</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseTopLevelDeclarationContent(TopLevelDeclarationContent object)
+  public T caseCombinator(Combinator object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Top Level Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Top Level Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTopLevelDeclaration(TopLevelDeclaration object)
   {
     return null;
   }
@@ -2350,6 +2345,38 @@ public class DartSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseConstExpression(ConstExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>List Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>List Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseListLiteral(ListLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Set Or Map Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Set Or Map Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSetOrMapLiteral(SetOrMapLiteral object)
   {
     return null;
   }

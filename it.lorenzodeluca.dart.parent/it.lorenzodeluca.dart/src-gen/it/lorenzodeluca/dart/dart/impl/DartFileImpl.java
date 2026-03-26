@@ -5,20 +5,47 @@ package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartFile;
 import it.lorenzodeluca.dart.dart.DartPackage;
+import it.lorenzodeluca.dart.dart.TopLevelDeclaration;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>File</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DartFileImpl#getDeclarations <em>Declarations</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class DartFileImpl extends MinimalEObjectImpl.Container implements DartFile
 {
+  /**
+   * The cached value of the '{@link #getDeclarations() <em>Declarations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDeclarations()
+   * @generated
+   * @ordered
+   */
+  protected EList<TopLevelDeclaration> declarations;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -38,6 +65,105 @@ public class DartFileImpl extends MinimalEObjectImpl.Container implements DartFi
   protected EClass eStaticClass()
   {
     return DartPackage.Literals.DART_FILE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<TopLevelDeclaration> getDeclarations()
+  {
+    if (declarations == null)
+    {
+      declarations = new EObjectContainmentEList<TopLevelDeclaration>(TopLevelDeclaration.class, this, DartPackage.DART_FILE__DECLARATIONS);
+    }
+    return declarations;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DartPackage.DART_FILE__DECLARATIONS:
+        return ((InternalEList<?>)getDeclarations()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case DartPackage.DART_FILE__DECLARATIONS:
+        return getDeclarations();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case DartPackage.DART_FILE__DECLARATIONS:
+        getDeclarations().clear();
+        getDeclarations().addAll((Collection<? extends TopLevelDeclaration>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case DartPackage.DART_FILE__DECLARATIONS:
+        getDeclarations().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case DartPackage.DART_FILE__DECLARATIONS:
+        return declarations != null && !declarations.isEmpty();
+    }
+    return super.eIsSet(featureID);
   }
 
 } //DartFileImpl

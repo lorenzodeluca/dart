@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.ClassDeclaration#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.ClassDeclaration#isIsAbstract <em>Is Abstract</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.ClassDeclaration#getName <em>Name</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.ClassDeclaration#getTypeParameters <em>Type Parameters</em>}</li>
@@ -26,8 +27,20 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ClassDeclaration extends TopLevelDeclarationContent
+public interface ClassDeclaration extends TopLevelDeclaration
 {
+  /**
+   * Returns the value of the '<em><b>Metadata</b></em>' containment reference list.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.Metadata}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Metadata</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getClassDeclaration_Metadata()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Metadata> getMetadata();
+
   /**
    * Returns the value of the '<em><b>Is Abstract</b></em>' attribute.
    * <!-- begin-user-doc -->

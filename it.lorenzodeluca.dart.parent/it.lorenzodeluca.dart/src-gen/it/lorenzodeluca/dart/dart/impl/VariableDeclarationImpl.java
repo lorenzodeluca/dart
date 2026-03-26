@@ -5,6 +5,7 @@ package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.InitializedIdentifier;
+import it.lorenzodeluca.dart.dart.Metadata;
 import it.lorenzodeluca.dart.dart.Type;
 import it.lorenzodeluca.dart.dart.VariableDeclaration;
 
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.VariableDeclarationImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.VariableDeclarationImpl#isLate <em>Late</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.VariableDeclarationImpl#isIsVar <em>Is Var</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.VariableDeclarationImpl#isIsFinal <em>Is Final</em>}</li>
@@ -41,8 +43,18 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class VariableDeclarationImpl extends TopLevelDeclarationContentImpl implements VariableDeclaration
+public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements VariableDeclaration
 {
+  /**
+   * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetadata()
+   * @generated
+   * @ordered
+   */
+  protected EList<Metadata> metadata;
+
   /**
    * The default value of the '{@link #isLate() <em>Late</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -162,6 +174,21 @@ public class VariableDeclarationImpl extends TopLevelDeclarationContentImpl impl
   protected EClass eStaticClass()
   {
     return DartPackage.Literals.VARIABLE_DECLARATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Metadata> getMetadata()
+  {
+    if (metadata == null)
+    {
+      metadata = new EObjectContainmentEList<Metadata>(Metadata.class, this, DartPackage.VARIABLE_DECLARATION__METADATA);
+    }
+    return metadata;
   }
 
   /**
@@ -339,6 +366,8 @@ public class VariableDeclarationImpl extends TopLevelDeclarationContentImpl impl
   {
     switch (featureID)
     {
+      case DartPackage.VARIABLE_DECLARATION__METADATA:
+        return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
       case DartPackage.VARIABLE_DECLARATION__TYPE:
         return basicSetType(null, msgs);
       case DartPackage.VARIABLE_DECLARATION__VARIABLES:
@@ -357,6 +386,8 @@ public class VariableDeclarationImpl extends TopLevelDeclarationContentImpl impl
   {
     switch (featureID)
     {
+      case DartPackage.VARIABLE_DECLARATION__METADATA:
+        return getMetadata();
       case DartPackage.VARIABLE_DECLARATION__LATE:
         return isLate();
       case DartPackage.VARIABLE_DECLARATION__IS_VAR:
@@ -384,6 +415,10 @@ public class VariableDeclarationImpl extends TopLevelDeclarationContentImpl impl
   {
     switch (featureID)
     {
+      case DartPackage.VARIABLE_DECLARATION__METADATA:
+        getMetadata().clear();
+        getMetadata().addAll((Collection<? extends Metadata>)newValue);
+        return;
       case DartPackage.VARIABLE_DECLARATION__LATE:
         setLate((Boolean)newValue);
         return;
@@ -417,6 +452,9 @@ public class VariableDeclarationImpl extends TopLevelDeclarationContentImpl impl
   {
     switch (featureID)
     {
+      case DartPackage.VARIABLE_DECLARATION__METADATA:
+        getMetadata().clear();
+        return;
       case DartPackage.VARIABLE_DECLARATION__LATE:
         setLate(LATE_EDEFAULT);
         return;
@@ -449,6 +487,8 @@ public class VariableDeclarationImpl extends TopLevelDeclarationContentImpl impl
   {
     switch (featureID)
     {
+      case DartPackage.VARIABLE_DECLARATION__METADATA:
+        return metadata != null && !metadata.isEmpty();
       case DartPackage.VARIABLE_DECLARATION__LATE:
         return late != LATE_EDEFAULT;
       case DartPackage.VARIABLE_DECLARATION__IS_VAR:

@@ -4,17 +4,25 @@
 package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
+import it.lorenzodeluca.dart.dart.Metadata;
 import it.lorenzodeluca.dart.dart.Type;
 import it.lorenzodeluca.dart.dart.TypeAlias;
 import it.lorenzodeluca.dart.dart.TypeParameters;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +32,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeAliasImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeAliasImpl#getName <em>Name</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeAliasImpl#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeAliasImpl#getType <em>Type</em>}</li>
@@ -31,8 +40,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class TypeAliasImpl extends TopLevelDeclarationContentImpl implements TypeAlias
+public class TypeAliasImpl extends TopLevelDeclarationImpl implements TypeAlias
 {
+  /**
+   * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetadata()
+   * @generated
+   * @ordered
+   */
+  protected EList<Metadata> metadata;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -92,6 +111,21 @@ public class TypeAliasImpl extends TopLevelDeclarationContentImpl implements Typ
   protected EClass eStaticClass()
   {
     return DartPackage.Literals.TYPE_ALIAS;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Metadata> getMetadata()
+  {
+    if (metadata == null)
+    {
+      metadata = new EObjectContainmentEList<Metadata>(Metadata.class, this, DartPackage.TYPE_ALIAS__METADATA);
+    }
+    return metadata;
   }
 
   /**
@@ -229,6 +263,8 @@ public class TypeAliasImpl extends TopLevelDeclarationContentImpl implements Typ
   {
     switch (featureID)
     {
+      case DartPackage.TYPE_ALIAS__METADATA:
+        return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
       case DartPackage.TYPE_ALIAS__TYPE_PARAMETERS:
         return basicSetTypeParameters(null, msgs);
       case DartPackage.TYPE_ALIAS__TYPE:
@@ -247,6 +283,8 @@ public class TypeAliasImpl extends TopLevelDeclarationContentImpl implements Typ
   {
     switch (featureID)
     {
+      case DartPackage.TYPE_ALIAS__METADATA:
+        return getMetadata();
       case DartPackage.TYPE_ALIAS__NAME:
         return getName();
       case DartPackage.TYPE_ALIAS__TYPE_PARAMETERS:
@@ -262,11 +300,16 @@ public class TypeAliasImpl extends TopLevelDeclarationContentImpl implements Typ
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
+      case DartPackage.TYPE_ALIAS__METADATA:
+        getMetadata().clear();
+        getMetadata().addAll((Collection<? extends Metadata>)newValue);
+        return;
       case DartPackage.TYPE_ALIAS__NAME:
         setName((String)newValue);
         return;
@@ -290,6 +333,9 @@ public class TypeAliasImpl extends TopLevelDeclarationContentImpl implements Typ
   {
     switch (featureID)
     {
+      case DartPackage.TYPE_ALIAS__METADATA:
+        getMetadata().clear();
+        return;
       case DartPackage.TYPE_ALIAS__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -313,6 +359,8 @@ public class TypeAliasImpl extends TopLevelDeclarationContentImpl implements Typ
   {
     switch (featureID)
     {
+      case DartPackage.TYPE_ALIAS__METADATA:
+        return metadata != null && !metadata.isEmpty();
       case DartPackage.TYPE_ALIAS__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DartPackage.TYPE_ALIAS__TYPE_PARAMETERS:

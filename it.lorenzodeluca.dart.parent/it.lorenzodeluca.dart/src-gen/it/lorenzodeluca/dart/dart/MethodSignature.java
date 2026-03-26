@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsStatic <em>Is Static</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsOperator <em>Is Operator</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#getOperator <em>Operator</em>}</li>
@@ -29,6 +30,28 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface MethodSignature extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Is Static</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Static</em>' attribute.
+   * @see #setIsStatic(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMethodSignature_IsStatic()
+   * @model
+   * @generated
+   */
+  boolean isIsStatic();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsStatic <em>Is Static</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Static</em>' attribute.
+   * @see #isIsStatic()
+   * @generated
+   */
+  void setIsStatic(boolean value);
+
   /**
    * Returns the value of the '<em><b>Return Type</b></em>' containment reference.
    * <!-- begin-user-doc -->

@@ -3,6 +3,8 @@
  */
 package it.lorenzodeluca.dart.dart;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.LibraryName#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.LibraryName#getName <em>Name</em>}</li>
  * </ul>
  *
@@ -23,6 +26,18 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface LibraryName extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Metadata</b></em>' containment reference list.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.Metadata}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Metadata</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getLibraryName_Metadata()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Metadata> getMetadata();
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

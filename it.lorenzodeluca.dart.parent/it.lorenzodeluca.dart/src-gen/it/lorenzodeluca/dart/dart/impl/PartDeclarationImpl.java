@@ -3,25 +3,17 @@
  */
 package it.lorenzodeluca.dart.dart.impl;
 
-import it.lorenzodeluca.dart.dart.AnnotatedTopLevel;
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.PartDeclaration;
 import it.lorenzodeluca.dart.dart.PartHeader;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,7 +24,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.PartDeclarationImpl#getPartHeader <em>Part Header</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.PartDeclarationImpl#getDeclarations <em>Declarations</em>}</li>
  * </ul>
  *
  * @generated
@@ -48,16 +39,6 @@ public class PartDeclarationImpl extends DartFileImpl implements PartDeclaration
    * @ordered
    */
   protected PartHeader partHeader;
-
-  /**
-   * The cached value of the '{@link #getDeclarations() <em>Declarations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDeclarations()
-   * @generated
-   * @ordered
-   */
-  protected EList<AnnotatedTopLevel> declarations;
 
   /**
    * <!-- begin-user-doc -->
@@ -136,29 +117,12 @@ public class PartDeclarationImpl extends DartFileImpl implements PartDeclaration
    * @generated
    */
   @Override
-  public EList<AnnotatedTopLevel> getDeclarations()
-  {
-    if (declarations == null)
-    {
-      declarations = new EObjectContainmentEList<AnnotatedTopLevel>(AnnotatedTopLevel.class, this, DartPackage.PART_DECLARATION__DECLARATIONS);
-    }
-    return declarations;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
       case DartPackage.PART_DECLARATION__PART_HEADER:
         return basicSetPartHeader(null, msgs);
-      case DartPackage.PART_DECLARATION__DECLARATIONS:
-        return ((InternalEList<?>)getDeclarations()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -175,8 +139,6 @@ public class PartDeclarationImpl extends DartFileImpl implements PartDeclaration
     {
       case DartPackage.PART_DECLARATION__PART_HEADER:
         return getPartHeader();
-      case DartPackage.PART_DECLARATION__DECLARATIONS:
-        return getDeclarations();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -186,7 +148,6 @@ public class PartDeclarationImpl extends DartFileImpl implements PartDeclaration
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -194,10 +155,6 @@ public class PartDeclarationImpl extends DartFileImpl implements PartDeclaration
     {
       case DartPackage.PART_DECLARATION__PART_HEADER:
         setPartHeader((PartHeader)newValue);
-        return;
-      case DartPackage.PART_DECLARATION__DECLARATIONS:
-        getDeclarations().clear();
-        getDeclarations().addAll((Collection<? extends AnnotatedTopLevel>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -216,9 +173,6 @@ public class PartDeclarationImpl extends DartFileImpl implements PartDeclaration
       case DartPackage.PART_DECLARATION__PART_HEADER:
         setPartHeader((PartHeader)null);
         return;
-      case DartPackage.PART_DECLARATION__DECLARATIONS:
-        getDeclarations().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -235,8 +189,6 @@ public class PartDeclarationImpl extends DartFileImpl implements PartDeclaration
     {
       case DartPackage.PART_DECLARATION__PART_HEADER:
         return partHeader != null;
-      case DartPackage.PART_DECLARATION__DECLARATIONS:
-        return declarations != null && !declarations.isEmpty();
     }
     return super.eIsSet(featureID);
   }

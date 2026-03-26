@@ -4,7 +4,6 @@
 package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.Additive;
-import it.lorenzodeluca.dart.dart.AnnotatedTopLevel;
 import it.lorenzodeluca.dart.dart.Arguments;
 import it.lorenzodeluca.dart.dart.Assignment;
 import it.lorenzodeluca.dart.dart.BitwiseAnd;
@@ -15,7 +14,6 @@ import it.lorenzodeluca.dart.dart.BooleanLiteral;
 import it.lorenzodeluca.dart.dart.BreakStatement;
 import it.lorenzodeluca.dart.dart.CatchClause;
 import it.lorenzodeluca.dart.dart.ClassDeclaration;
-import it.lorenzodeluca.dart.dart.CollectionLiteral;
 import it.lorenzodeluca.dart.dart.Combinator;
 import it.lorenzodeluca.dart.dart.Conditional;
 import it.lorenzodeluca.dart.dart.ConstExpression;
@@ -28,7 +26,6 @@ import it.lorenzodeluca.dart.dart.DefaultCase;
 import it.lorenzodeluca.dart.dart.DefaultFormalParameter;
 import it.lorenzodeluca.dart.dart.DefaultNamedParameter;
 import it.lorenzodeluca.dart.dart.DoStatement;
-import it.lorenzodeluca.dart.dart.ElementWithMetadata;
 import it.lorenzodeluca.dart.dart.EnumDeclaration;
 import it.lorenzodeluca.dart.dart.EnumEntry;
 import it.lorenzodeluca.dart.dart.Equality;
@@ -44,13 +41,16 @@ import it.lorenzodeluca.dart.dart.FunctionDeclaration;
 import it.lorenzodeluca.dart.dart.IdentifierRef;
 import it.lorenzodeluca.dart.dart.IfNull;
 import it.lorenzodeluca.dart.dart.IfStatement;
-import it.lorenzodeluca.dart.dart.ImportOrExportContent;
+import it.lorenzodeluca.dart.dart.ImportOrExport;
 import it.lorenzodeluca.dart.dart.IndexExpression;
 import it.lorenzodeluca.dart.dart.InitializedIdentifier;
 import it.lorenzodeluca.dart.dart.Interfaces;
 import it.lorenzodeluca.dart.dart.Label;
 import it.lorenzodeluca.dart.dart.LibraryDeclaration;
+import it.lorenzodeluca.dart.dart.LibraryExport;
+import it.lorenzodeluca.dart.dart.LibraryImport;
 import it.lorenzodeluca.dart.dart.LibraryName;
+import it.lorenzodeluca.dart.dart.ListLiteral;
 import it.lorenzodeluca.dart.dart.LocalVariableDeclaration;
 import it.lorenzodeluca.dart.dart.LogicalAnd;
 import it.lorenzodeluca.dart.dart.LogicalOr;
@@ -73,7 +73,7 @@ import it.lorenzodeluca.dart.dart.OptionalOrNamedFormalParameters;
 import it.lorenzodeluca.dart.dart.OptionalPositionalFormalParameters;
 import it.lorenzodeluca.dart.dart.ParenthesizedExpression;
 import it.lorenzodeluca.dart.dart.PartDeclaration;
-import it.lorenzodeluca.dart.dart.PartDirectiveContent;
+import it.lorenzodeluca.dart.dart.PartDirective;
 import it.lorenzodeluca.dart.dart.PartHeader;
 import it.lorenzodeluca.dart.dart.Postfix;
 import it.lorenzodeluca.dart.dart.PrefixExpression;
@@ -81,6 +81,7 @@ import it.lorenzodeluca.dart.dart.Relational;
 import it.lorenzodeluca.dart.dart.RethrowStatement;
 import it.lorenzodeluca.dart.dart.ReturnStatement;
 import it.lorenzodeluca.dart.dart.ScriptTag;
+import it.lorenzodeluca.dart.dart.SetOrMapLiteral;
 import it.lorenzodeluca.dart.dart.Shift;
 import it.lorenzodeluca.dart.dart.Statement;
 import it.lorenzodeluca.dart.dart.StringLiteral;
@@ -89,7 +90,7 @@ import it.lorenzodeluca.dart.dart.Superclass;
 import it.lorenzodeluca.dart.dart.SwitchCase;
 import it.lorenzodeluca.dart.dart.SwitchStatement;
 import it.lorenzodeluca.dart.dart.ThisExpression;
-import it.lorenzodeluca.dart.dart.TopLevelDeclarationContent;
+import it.lorenzodeluca.dart.dart.TopLevelDeclaration;
 import it.lorenzodeluca.dart.dart.TryStatement;
 import it.lorenzodeluca.dart.dart.Type;
 import it.lorenzodeluca.dart.dart.TypeAlias;
@@ -332,13 +333,6 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass collectionLiteralEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass mapOrSetElementEClass = null;
 
   /**
@@ -500,42 +494,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass elementWithMetadataEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass importOrExportContentEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass combinatorEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass partDirectiveContentEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass partDeclarationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass annotatedTopLevelEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -556,6 +515,34 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass importOrExportEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass libraryImportEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass libraryExportEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass partDirectiveEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass partHeaderEClass = null;
 
   /**
@@ -563,7 +550,14 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass topLevelDeclarationContentEClass = null;
+  private EClass combinatorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass topLevelDeclarationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -787,6 +781,20 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass listLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass setOrMapLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass parenthesizedExpressionEClass = null;
 
   /**
@@ -868,6 +876,17 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EReference getDartFile_Declarations()
+  {
+    return (EReference)dartFileEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getVariableDeclaration()
   {
     return variableDeclarationEClass;
@@ -879,9 +898,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getVariableDeclaration_Late()
+  public EReference getVariableDeclaration_Metadata()
   {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(0);
+    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -890,7 +909,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getVariableDeclaration_IsVar()
+  public EAttribute getVariableDeclaration_Late()
   {
     return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(1);
   }
@@ -901,7 +920,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getVariableDeclaration_IsFinal()
+  public EAttribute getVariableDeclaration_IsVar()
   {
     return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(2);
   }
@@ -912,9 +931,20 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EAttribute getVariableDeclaration_IsFinal()
+  {
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getVariableDeclaration_Type()
   {
-    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(3);
+    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -925,7 +955,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EAttribute getVariableDeclaration_IsConst()
   {
-    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)variableDeclarationEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -936,7 +966,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getVariableDeclaration_Variables()
   {
-    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(5);
+    return (EReference)variableDeclarationEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -989,9 +1019,20 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EReference getFunctionDeclaration_Metadata()
+  {
+    return (EReference)functionDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getFunctionDeclaration_IsExternal()
   {
-    return (EAttribute)functionDeclarationEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)functionDeclarationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1002,7 +1043,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getFunctionDeclaration_ReturnType()
   {
-    return (EReference)functionDeclarationEClass.getEStructuralFeatures().get(1);
+    return (EReference)functionDeclarationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1013,7 +1054,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EAttribute getFunctionDeclaration_Name()
   {
-    return (EAttribute)functionDeclarationEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)functionDeclarationEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1024,7 +1065,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getFunctionDeclaration_Signature()
   {
-    return (EReference)functionDeclarationEClass.getEStructuralFeatures().get(3);
+    return (EReference)functionDeclarationEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1035,7 +1076,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getFunctionDeclaration_Body()
   {
-    return (EReference)functionDeclarationEClass.getEStructuralFeatures().get(4);
+    return (EReference)functionDeclarationEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1374,9 +1415,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getClassDeclaration_IsAbstract()
+  public EReference getClassDeclaration_Metadata()
   {
-    return (EAttribute)classDeclarationEClass.getEStructuralFeatures().get(0);
+    return (EReference)classDeclarationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1385,7 +1426,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getClassDeclaration_Name()
+  public EAttribute getClassDeclaration_IsAbstract()
   {
     return (EAttribute)classDeclarationEClass.getEStructuralFeatures().get(1);
   }
@@ -1396,9 +1437,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getClassDeclaration_TypeParameters()
+  public EAttribute getClassDeclaration_Name()
   {
-    return (EReference)classDeclarationEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)classDeclarationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1407,7 +1448,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getClassDeclaration_Superclass()
+  public EReference getClassDeclaration_TypeParameters()
   {
     return (EReference)classDeclarationEClass.getEStructuralFeatures().get(3);
   }
@@ -1418,7 +1459,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getClassDeclaration_Interfaces()
+  public EReference getClassDeclaration_Superclass()
   {
     return (EReference)classDeclarationEClass.getEStructuralFeatures().get(4);
   }
@@ -1429,9 +1470,20 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getClassDeclaration_Members()
+  public EReference getClassDeclaration_Interfaces()
   {
     return (EReference)classDeclarationEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getClassDeclaration_Members()
+  {
+    return (EReference)classDeclarationEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1539,20 +1591,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getMemberDeclaration_IsStatic()
-  {
-    return (EAttribute)memberDeclarationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getMemberDeclaration_Method()
   {
-    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(2);
+    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1563,7 +1604,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getMemberDeclaration_Body()
   {
-    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(3);
+    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1572,9 +1613,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getMemberDeclaration_Variable()
+  public EReference getMemberDeclaration_Declaration()
   {
-    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(4);
+    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1594,9 +1635,20 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EAttribute getMethodSignature_IsStatic()
+  {
+    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getMethodSignature_ReturnType()
   {
-    return (EReference)methodSignatureEClass.getEStructuralFeatures().get(0);
+    return (EReference)methodSignatureEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1607,7 +1659,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EAttribute getMethodSignature_IsOperator()
   {
-    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1618,7 +1670,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EAttribute getMethodSignature_Operator()
   {
-    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1629,7 +1681,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EAttribute getMethodSignature_IsGetter()
   {
-    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1640,7 +1692,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EAttribute getMethodSignature_IsSetter()
   {
-    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1651,7 +1703,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EAttribute getMethodSignature_Name()
   {
-    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(5);
+    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1662,7 +1714,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getMethodSignature_Parameters()
   {
-    return (EReference)methodSignatureEClass.getEStructuralFeatures().get(6);
+    return (EReference)methodSignatureEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -1693,7 +1745,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getDeclaration_IsLate()
+  public EAttribute getDeclaration_IsStatic()
   {
     return (EAttribute)declarationEClass.getEStructuralFeatures().get(1);
   }
@@ -1704,7 +1756,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getDeclaration_IsFinal()
+  public EAttribute getDeclaration_IsLate()
   {
     return (EAttribute)declarationEClass.getEStructuralFeatures().get(2);
   }
@@ -1715,7 +1767,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getDeclaration_IsConst()
+  public EAttribute getDeclaration_IsFinal()
   {
     return (EAttribute)declarationEClass.getEStructuralFeatures().get(3);
   }
@@ -1726,9 +1778,20 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EAttribute getDeclaration_IsConst()
+  {
+    return (EAttribute)declarationEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getDeclaration_Type()
   {
-    return (EReference)declarationEClass.getEStructuralFeatures().get(4);
+    return (EReference)declarationEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1739,7 +1802,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EAttribute getDeclaration_Name()
   {
-    return (EAttribute)declarationEClass.getEStructuralFeatures().get(5);
+    return (EAttribute)declarationEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1750,7 +1813,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getDeclaration_InitialValue()
   {
-    return (EReference)declarationEClass.getEStructuralFeatures().get(6);
+    return (EReference)declarationEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -1770,9 +1833,20 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EReference getMixinDeclaration_Metadata()
+  {
+    return (EReference)mixinDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getMixinDeclaration_Name()
   {
-    return (EAttribute)mixinDeclarationEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)mixinDeclarationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1783,7 +1857,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getMixinDeclaration_TypeParameters()
   {
-    return (EReference)mixinDeclarationEClass.getEStructuralFeatures().get(1);
+    return (EReference)mixinDeclarationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1794,7 +1868,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getMixinDeclaration_OnTypes()
   {
-    return (EReference)mixinDeclarationEClass.getEStructuralFeatures().get(2);
+    return (EReference)mixinDeclarationEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1805,7 +1879,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getMixinDeclaration_Interfaces()
   {
-    return (EReference)mixinDeclarationEClass.getEStructuralFeatures().get(3);
+    return (EReference)mixinDeclarationEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1816,7 +1890,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getMixinDeclaration_Members()
   {
-    return (EReference)mixinDeclarationEClass.getEStructuralFeatures().get(4);
+    return (EReference)mixinDeclarationEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1902,9 +1976,20 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EReference getExtensionDeclaration_Metadata()
+  {
+    return (EReference)extensionDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getExtensionDeclaration_Name()
   {
-    return (EAttribute)extensionDeclarationEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)extensionDeclarationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1915,7 +2000,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getExtensionDeclaration_TypeParameters()
   {
-    return (EReference)extensionDeclarationEClass.getEStructuralFeatures().get(1);
+    return (EReference)extensionDeclarationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1926,7 +2011,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getExtensionDeclaration_OnType()
   {
-    return (EReference)extensionDeclarationEClass.getEStructuralFeatures().get(2);
+    return (EReference)extensionDeclarationEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1937,7 +2022,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getExtensionDeclaration_Members()
   {
-    return (EReference)extensionDeclarationEClass.getEStructuralFeatures().get(3);
+    return (EReference)extensionDeclarationEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1957,9 +2042,20 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EReference getEnumDeclaration_Metadata()
+  {
+    return (EReference)enumDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getEnumDeclaration_Name()
   {
-    return (EAttribute)enumDeclarationEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)enumDeclarationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1970,7 +2066,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getEnumDeclaration_Entries()
   {
-    return (EReference)enumDeclarationEClass.getEStructuralFeatures().get(1);
+    return (EReference)enumDeclarationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2158,61 +2254,6 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   public EReference getExpression_Value()
   {
     return (EReference)expressionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getCollectionLiteral()
-  {
-    return collectionLiteralEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getCollectionLiteral_IsConst()
-  {
-    return (EAttribute)collectionLiteralEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getCollectionLiteral_TypeArguments()
-  {
-    return (EReference)collectionLiteralEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getCollectionLiteral_ListElements()
-  {
-    return (EReference)collectionLiteralEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getCollectionLiteral_MapElements()
-  {
-    return (EReference)collectionLiteralEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -2936,7 +2977,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getLibraryDeclaration_Elements()
+  public EReference getLibraryDeclaration_Directives()
   {
     return (EReference)libraryDeclarationEClass.getEStructuralFeatures().get(2);
   }
@@ -2947,174 +2988,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EClass getElementWithMetadata()
+  public EReference getLibraryDeclaration_PartDirectives()
   {
-    return elementWithMetadataEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getElementWithMetadata_Metadata()
-  {
-    return (EReference)elementWithMetadataEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getElementWithMetadata_Element()
-  {
-    return (EReference)elementWithMetadataEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getElementWithMetadata_Member()
-  {
-    return (EReference)elementWithMetadataEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getImportOrExportContent()
-  {
-    return importOrExportContentEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getImportOrExportContent_IsImport()
-  {
-    return (EAttribute)importOrExportContentEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getImportOrExportContent_ImportURI()
-  {
-    return (EAttribute)importOrExportContentEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getImportOrExportContent_IsDeferred()
-  {
-    return (EAttribute)importOrExportContentEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getImportOrExportContent_Prefix()
-  {
-    return (EAttribute)importOrExportContentEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getImportOrExportContent_Combinators()
-  {
-    return (EReference)importOrExportContentEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getImportOrExportContent_IsExport()
-  {
-    return (EAttribute)importOrExportContentEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getImportOrExportContent_ExportURI()
-  {
-    return (EAttribute)importOrExportContentEClass.getEStructuralFeatures().get(6);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getCombinator()
-  {
-    return combinatorEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getCombinator_Identifiers()
-  {
-    return (EAttribute)combinatorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getPartDirectiveContent()
-  {
-    return partDirectiveContentEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getPartDirectiveContent_PartURI()
-  {
-    return (EAttribute)partDirectiveContentEClass.getEStructuralFeatures().get(0);
+    return (EReference)libraryDeclarationEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -3137,50 +3013,6 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   public EReference getPartDeclaration_PartHeader()
   {
     return (EReference)partDeclarationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getPartDeclaration_Declarations()
-  {
-    return (EReference)partDeclarationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getAnnotatedTopLevel()
-  {
-    return annotatedTopLevelEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getAnnotatedTopLevel_Metadata()
-  {
-    return (EReference)annotatedTopLevelEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getAnnotatedTopLevel_Member()
-  {
-    return (EReference)annotatedTopLevelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3222,9 +3054,152 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EReference getLibraryName_Metadata()
+  {
+    return (EReference)libraryNameEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getLibraryName_Name()
   {
-    return (EAttribute)libraryNameEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)libraryNameEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getImportOrExport()
+  {
+    return importOrExportEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getImportOrExport_Metadata()
+  {
+    return (EReference)importOrExportEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getImportOrExport_Combinators()
+  {
+    return (EReference)importOrExportEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLibraryImport()
+  {
+    return libraryImportEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLibraryImport_ImportURI()
+  {
+    return (EAttribute)libraryImportEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLibraryImport_IsDeferred()
+  {
+    return (EAttribute)libraryImportEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLibraryImport_Prefix()
+  {
+    return (EAttribute)libraryImportEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLibraryExport()
+  {
+    return libraryExportEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLibraryExport_ExportURI()
+  {
+    return (EAttribute)libraryExportEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPartDirective()
+  {
+    return partDirectiveEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPartDirective_Metadata()
+  {
+    return (EReference)partDirectiveEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPartDirective_PartURI()
+  {
+    return (EAttribute)partDirectiveEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3244,9 +3219,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getPartHeader_Name()
+  public EReference getPartHeader_Metadata()
   {
-    return (EAttribute)partHeaderEClass.getEStructuralFeatures().get(0);
+    return (EReference)partHeaderEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3255,7 +3230,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getPartHeader_Uri()
+  public EAttribute getPartHeader_Name()
   {
     return (EAttribute)partHeaderEClass.getEStructuralFeatures().get(1);
   }
@@ -3266,9 +3241,42 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EClass getTopLevelDeclarationContent()
+  public EAttribute getPartHeader_Uri()
   {
-    return topLevelDeclarationContentEClass;
+    return (EAttribute)partHeaderEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCombinator()
+  {
+    return combinatorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCombinator_Identifiers()
+  {
+    return (EAttribute)combinatorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTopLevelDeclaration()
+  {
+    return topLevelDeclarationEClass;
   }
 
   /**
@@ -3288,9 +3296,20 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EReference getTypeAlias_Metadata()
+  {
+    return (EReference)typeAliasEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EAttribute getTypeAlias_Name()
   {
-    return (EAttribute)typeAliasEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)typeAliasEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3301,7 +3320,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getTypeAlias_TypeParameters()
   {
-    return (EReference)typeAliasEClass.getEStructuralFeatures().get(1);
+    return (EReference)typeAliasEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -3312,7 +3331,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getTypeAlias_Type()
   {
-    return (EReference)typeAliasEClass.getEStructuralFeatures().get(2);
+    return (EReference)typeAliasEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -4322,6 +4341,94 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EClass getListLiteral()
+  {
+    return listLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getListLiteral_IsConst()
+  {
+    return (EAttribute)listLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getListLiteral_TypeArguments()
+  {
+    return (EReference)listLiteralEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getListLiteral_Elements()
+  {
+    return (EReference)listLiteralEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSetOrMapLiteral()
+  {
+    return setOrMapLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSetOrMapLiteral_IsConst()
+  {
+    return (EAttribute)setOrMapLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSetOrMapLiteral_TypeArguments()
+  {
+    return (EReference)setOrMapLiteralEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSetOrMapLiteral_Elements()
+  {
+    return (EReference)setOrMapLiteralEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getParenthesizedExpression()
   {
     return parenthesizedExpressionEClass;
@@ -4370,8 +4477,10 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
 
     // Create classes and their features
     dartFileEClass = createEClass(DART_FILE);
+    createEReference(dartFileEClass, DART_FILE__DECLARATIONS);
 
     variableDeclarationEClass = createEClass(VARIABLE_DECLARATION);
+    createEReference(variableDeclarationEClass, VARIABLE_DECLARATION__METADATA);
     createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__LATE);
     createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__IS_VAR);
     createEAttribute(variableDeclarationEClass, VARIABLE_DECLARATION__IS_FINAL);
@@ -4384,6 +4493,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     createEReference(initializedIdentifierEClass, INITIALIZED_IDENTIFIER__INITIAL_VALUE);
 
     functionDeclarationEClass = createEClass(FUNCTION_DECLARATION);
+    createEReference(functionDeclarationEClass, FUNCTION_DECLARATION__METADATA);
     createEAttribute(functionDeclarationEClass, FUNCTION_DECLARATION__IS_EXTERNAL);
     createEReference(functionDeclarationEClass, FUNCTION_DECLARATION__RETURN_TYPE);
     createEAttribute(functionDeclarationEClass, FUNCTION_DECLARATION__NAME);
@@ -4429,6 +4539,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     createEReference(functionBodyEClass, FUNCTION_BODY__BLOCK);
 
     classDeclarationEClass = createEClass(CLASS_DECLARATION);
+    createEReference(classDeclarationEClass, CLASS_DECLARATION__METADATA);
     createEAttribute(classDeclarationEClass, CLASS_DECLARATION__IS_ABSTRACT);
     createEAttribute(classDeclarationEClass, CLASS_DECLARATION__NAME);
     createEReference(classDeclarationEClass, CLASS_DECLARATION__TYPE_PARAMETERS);
@@ -4448,12 +4559,12 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
 
     memberDeclarationEClass = createEClass(MEMBER_DECLARATION);
     createEReference(memberDeclarationEClass, MEMBER_DECLARATION__METADATA);
-    createEAttribute(memberDeclarationEClass, MEMBER_DECLARATION__IS_STATIC);
     createEReference(memberDeclarationEClass, MEMBER_DECLARATION__METHOD);
     createEReference(memberDeclarationEClass, MEMBER_DECLARATION__BODY);
-    createEReference(memberDeclarationEClass, MEMBER_DECLARATION__VARIABLE);
+    createEReference(memberDeclarationEClass, MEMBER_DECLARATION__DECLARATION);
 
     methodSignatureEClass = createEClass(METHOD_SIGNATURE);
+    createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__IS_STATIC);
     createEReference(methodSignatureEClass, METHOD_SIGNATURE__RETURN_TYPE);
     createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__IS_OPERATOR);
     createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__OPERATOR);
@@ -4464,6 +4575,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
 
     declarationEClass = createEClass(DECLARATION);
     createEAttribute(declarationEClass, DECLARATION__IS_EXTERNAL);
+    createEAttribute(declarationEClass, DECLARATION__IS_STATIC);
     createEAttribute(declarationEClass, DECLARATION__IS_LATE);
     createEAttribute(declarationEClass, DECLARATION__IS_FINAL);
     createEAttribute(declarationEClass, DECLARATION__IS_CONST);
@@ -4472,6 +4584,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     createEReference(declarationEClass, DECLARATION__INITIAL_VALUE);
 
     mixinDeclarationEClass = createEClass(MIXIN_DECLARATION);
+    createEReference(mixinDeclarationEClass, MIXIN_DECLARATION__METADATA);
     createEAttribute(mixinDeclarationEClass, MIXIN_DECLARATION__NAME);
     createEReference(mixinDeclarationEClass, MIXIN_DECLARATION__TYPE_PARAMETERS);
     createEReference(mixinDeclarationEClass, MIXIN_DECLARATION__ON_TYPES);
@@ -4486,12 +4599,14 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     createEReference(mixinApplicationClassEClass, MIXIN_APPLICATION_CLASS__INTERFACES);
 
     extensionDeclarationEClass = createEClass(EXTENSION_DECLARATION);
+    createEReference(extensionDeclarationEClass, EXTENSION_DECLARATION__METADATA);
     createEAttribute(extensionDeclarationEClass, EXTENSION_DECLARATION__NAME);
     createEReference(extensionDeclarationEClass, EXTENSION_DECLARATION__TYPE_PARAMETERS);
     createEReference(extensionDeclarationEClass, EXTENSION_DECLARATION__ON_TYPE);
     createEReference(extensionDeclarationEClass, EXTENSION_DECLARATION__MEMBERS);
 
     enumDeclarationEClass = createEClass(ENUM_DECLARATION);
+    createEReference(enumDeclarationEClass, ENUM_DECLARATION__METADATA);
     createEAttribute(enumDeclarationEClass, ENUM_DECLARATION__NAME);
     createEReference(enumDeclarationEClass, ENUM_DECLARATION__ENTRIES);
 
@@ -4517,12 +4632,6 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
 
     expressionEClass = createEClass(EXPRESSION);
     createEReference(expressionEClass, EXPRESSION__VALUE);
-
-    collectionLiteralEClass = createEClass(COLLECTION_LITERAL);
-    createEAttribute(collectionLiteralEClass, COLLECTION_LITERAL__IS_CONST);
-    createEReference(collectionLiteralEClass, COLLECTION_LITERAL__TYPE_ARGUMENTS);
-    createEReference(collectionLiteralEClass, COLLECTION_LITERAL__LIST_ELEMENTS);
-    createEReference(collectionLiteralEClass, COLLECTION_LITERAL__MAP_ELEMENTS);
 
     mapOrSetElementEClass = createEClass(MAP_OR_SET_ELEMENT);
 
@@ -4611,49 +4720,47 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     libraryDeclarationEClass = createEClass(LIBRARY_DECLARATION);
     createEReference(libraryDeclarationEClass, LIBRARY_DECLARATION__SCRIPT_TAG);
     createEReference(libraryDeclarationEClass, LIBRARY_DECLARATION__LIBRARY_NAME);
-    createEReference(libraryDeclarationEClass, LIBRARY_DECLARATION__ELEMENTS);
-
-    elementWithMetadataEClass = createEClass(ELEMENT_WITH_METADATA);
-    createEReference(elementWithMetadataEClass, ELEMENT_WITH_METADATA__METADATA);
-    createEReference(elementWithMetadataEClass, ELEMENT_WITH_METADATA__ELEMENT);
-    createEReference(elementWithMetadataEClass, ELEMENT_WITH_METADATA__MEMBER);
-
-    importOrExportContentEClass = createEClass(IMPORT_OR_EXPORT_CONTENT);
-    createEAttribute(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__IS_IMPORT);
-    createEAttribute(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__IMPORT_URI);
-    createEAttribute(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__IS_DEFERRED);
-    createEAttribute(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__PREFIX);
-    createEReference(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__COMBINATORS);
-    createEAttribute(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__IS_EXPORT);
-    createEAttribute(importOrExportContentEClass, IMPORT_OR_EXPORT_CONTENT__EXPORT_URI);
-
-    combinatorEClass = createEClass(COMBINATOR);
-    createEAttribute(combinatorEClass, COMBINATOR__IDENTIFIERS);
-
-    partDirectiveContentEClass = createEClass(PART_DIRECTIVE_CONTENT);
-    createEAttribute(partDirectiveContentEClass, PART_DIRECTIVE_CONTENT__PART_URI);
+    createEReference(libraryDeclarationEClass, LIBRARY_DECLARATION__DIRECTIVES);
+    createEReference(libraryDeclarationEClass, LIBRARY_DECLARATION__PART_DIRECTIVES);
 
     partDeclarationEClass = createEClass(PART_DECLARATION);
     createEReference(partDeclarationEClass, PART_DECLARATION__PART_HEADER);
-    createEReference(partDeclarationEClass, PART_DECLARATION__DECLARATIONS);
-
-    annotatedTopLevelEClass = createEClass(ANNOTATED_TOP_LEVEL);
-    createEReference(annotatedTopLevelEClass, ANNOTATED_TOP_LEVEL__METADATA);
-    createEReference(annotatedTopLevelEClass, ANNOTATED_TOP_LEVEL__MEMBER);
 
     scriptTagEClass = createEClass(SCRIPT_TAG);
     createEAttribute(scriptTagEClass, SCRIPT_TAG__CONTENT);
 
     libraryNameEClass = createEClass(LIBRARY_NAME);
+    createEReference(libraryNameEClass, LIBRARY_NAME__METADATA);
     createEAttribute(libraryNameEClass, LIBRARY_NAME__NAME);
 
+    importOrExportEClass = createEClass(IMPORT_OR_EXPORT);
+    createEReference(importOrExportEClass, IMPORT_OR_EXPORT__METADATA);
+    createEReference(importOrExportEClass, IMPORT_OR_EXPORT__COMBINATORS);
+
+    libraryImportEClass = createEClass(LIBRARY_IMPORT);
+    createEAttribute(libraryImportEClass, LIBRARY_IMPORT__IMPORT_URI);
+    createEAttribute(libraryImportEClass, LIBRARY_IMPORT__IS_DEFERRED);
+    createEAttribute(libraryImportEClass, LIBRARY_IMPORT__PREFIX);
+
+    libraryExportEClass = createEClass(LIBRARY_EXPORT);
+    createEAttribute(libraryExportEClass, LIBRARY_EXPORT__EXPORT_URI);
+
+    partDirectiveEClass = createEClass(PART_DIRECTIVE);
+    createEReference(partDirectiveEClass, PART_DIRECTIVE__METADATA);
+    createEAttribute(partDirectiveEClass, PART_DIRECTIVE__PART_URI);
+
     partHeaderEClass = createEClass(PART_HEADER);
+    createEReference(partHeaderEClass, PART_HEADER__METADATA);
     createEAttribute(partHeaderEClass, PART_HEADER__NAME);
     createEAttribute(partHeaderEClass, PART_HEADER__URI);
 
-    topLevelDeclarationContentEClass = createEClass(TOP_LEVEL_DECLARATION_CONTENT);
+    combinatorEClass = createEClass(COMBINATOR);
+    createEAttribute(combinatorEClass, COMBINATOR__IDENTIFIERS);
+
+    topLevelDeclarationEClass = createEClass(TOP_LEVEL_DECLARATION);
 
     typeAliasEClass = createEClass(TYPE_ALIAS);
+    createEReference(typeAliasEClass, TYPE_ALIAS__METADATA);
     createEAttribute(typeAliasEClass, TYPE_ALIAS__NAME);
     createEReference(typeAliasEClass, TYPE_ALIAS__TYPE_PARAMETERS);
     createEReference(typeAliasEClass, TYPE_ALIAS__TYPE);
@@ -4779,6 +4886,16 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     createEAttribute(constExpressionEClass, CONST_EXPRESSION__CONSTRUCTOR);
     createEReference(constExpressionEClass, CONST_EXPRESSION__ARGS);
 
+    listLiteralEClass = createEClass(LIST_LITERAL);
+    createEAttribute(listLiteralEClass, LIST_LITERAL__IS_CONST);
+    createEReference(listLiteralEClass, LIST_LITERAL__TYPE_ARGUMENTS);
+    createEReference(listLiteralEClass, LIST_LITERAL__ELEMENTS);
+
+    setOrMapLiteralEClass = createEClass(SET_OR_MAP_LITERAL);
+    createEAttribute(setOrMapLiteralEClass, SET_OR_MAP_LITERAL__IS_CONST);
+    createEReference(setOrMapLiteralEClass, SET_OR_MAP_LITERAL__TYPE_ARGUMENTS);
+    createEReference(setOrMapLiteralEClass, SET_OR_MAP_LITERAL__ELEMENTS);
+
     parenthesizedExpressionEClass = createEClass(PARENTHESIZED_EXPRESSION);
     createEReference(parenthesizedExpressionEClass, PARENTHESIZED_EXPRESSION__EXPRESSION);
   }
@@ -4812,17 +4929,16 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    variableDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
-    functionDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
+    variableDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
+    functionDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
     optionalPositionalFormalParametersEClass.getESuperTypes().add(this.getOptionalOrNamedFormalParameters());
     namedFormalParametersEClass.getESuperTypes().add(this.getOptionalOrNamedFormalParameters());
-    classDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
-    mixinDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
-    mixinApplicationClassEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
-    extensionDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
-    enumDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
+    classDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
+    mixinDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
+    mixinApplicationClassEClass.getESuperTypes().add(this.getTopLevelDeclaration());
+    extensionDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
+    enumDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
     expressionEClass.getESuperTypes().add(this.getMapOrSetElement());
-    collectionLiteralEClass.getESuperTypes().add(this.getExpression());
     blockEClass.getESuperTypes().add(this.getNonLabelledStatement());
     localVariableDeclarationEClass.getESuperTypes().add(this.getNonLabelledStatement());
     ifStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
@@ -4839,7 +4955,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     expressionStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
     libraryDeclarationEClass.getESuperTypes().add(this.getDartFile());
     partDeclarationEClass.getESuperTypes().add(this.getDartFile());
-    typeAliasEClass.getESuperTypes().add(this.getTopLevelDeclarationContent());
+    libraryImportEClass.getESuperTypes().add(this.getImportOrExport());
+    libraryExportEClass.getESuperTypes().add(this.getImportOrExport());
+    typeAliasEClass.getESuperTypes().add(this.getTopLevelDeclaration());
     assignmentEClass.getESuperTypes().add(this.getExpression());
     conditionalEClass.getESuperTypes().add(this.getExpression());
     ifNullEClass.getESuperTypes().add(this.getExpression());
@@ -4867,12 +4985,16 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     identifierRefEClass.getESuperTypes().add(this.getExpression());
     newExpressionEClass.getESuperTypes().add(this.getExpression());
     constExpressionEClass.getESuperTypes().add(this.getExpression());
+    listLiteralEClass.getESuperTypes().add(this.getExpression());
+    setOrMapLiteralEClass.getESuperTypes().add(this.getExpression());
     parenthesizedExpressionEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(dartFileEClass, DartFile.class, "DartFile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDartFile_Declarations(), this.getTopLevelDeclaration(), null, "declarations", null, 0, -1, DartFile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableDeclarationEClass, VariableDeclaration.class, "VariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getVariableDeclaration_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDeclaration_Late(), ecorePackage.getEBoolean(), "late", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDeclaration_IsVar(), ecorePackage.getEBoolean(), "isVar", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVariableDeclaration_IsFinal(), ecorePackage.getEBoolean(), "isFinal", null, 0, 1, VariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4885,6 +5007,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     initEReference(getInitializedIdentifier_InitialValue(), this.getExpression(), null, "initialValue", null, 0, 1, InitializedIdentifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionDeclarationEClass, FunctionDeclaration.class, "FunctionDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFunctionDeclaration_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionDeclaration_IsExternal(), ecorePackage.getEBoolean(), "isExternal", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDeclaration_ReturnType(), this.getType(), null, "returnType", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4930,6 +5053,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     initEReference(getFunctionBody_Block(), this.getBlock(), null, "block", null, 0, 1, FunctionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(classDeclarationEClass, ClassDeclaration.class, "ClassDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getClassDeclaration_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, ClassDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassDeclaration_IsAbstract(), ecorePackage.getEBoolean(), "isAbstract", null, 0, 1, ClassDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClassDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, ClassDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassDeclaration_TypeParameters(), this.getTypeParameters(), null, "typeParameters", null, 0, 1, ClassDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4949,12 +5073,12 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
 
     initEClass(memberDeclarationEClass, MemberDeclaration.class, "MemberDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMemberDeclaration_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMemberDeclaration_IsStatic(), ecorePackage.getEBoolean(), "isStatic", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMemberDeclaration_Method(), this.getMethodSignature(), null, "method", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMemberDeclaration_Body(), this.getFunctionBody(), null, "body", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMemberDeclaration_Variable(), this.getDeclaration(), null, "variable", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMemberDeclaration_Declaration(), this.getDeclaration(), null, "declaration", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(methodSignatureEClass, MethodSignature.class, "MethodSignature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMethodSignature_IsStatic(), ecorePackage.getEBoolean(), "isStatic", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethodSignature_ReturnType(), this.getType(), null, "returnType", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMethodSignature_IsOperator(), ecorePackage.getEBoolean(), "isOperator", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMethodSignature_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4965,6 +5089,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
 
     initEClass(declarationEClass, Declaration.class, "Declaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDeclaration_IsExternal(), ecorePackage.getEBoolean(), "isExternal", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDeclaration_IsStatic(), ecorePackage.getEBoolean(), "isStatic", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDeclaration_IsLate(), ecorePackage.getEBoolean(), "isLate", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDeclaration_IsFinal(), ecorePackage.getEBoolean(), "isFinal", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDeclaration_IsConst(), ecorePackage.getEBoolean(), "isConst", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4973,6 +5098,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     initEReference(getDeclaration_InitialValue(), this.getExpression(), null, "initialValue", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(mixinDeclarationEClass, MixinDeclaration.class, "MixinDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMixinDeclaration_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, MixinDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMixinDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, MixinDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMixinDeclaration_TypeParameters(), this.getTypeParameters(), null, "typeParameters", null, 0, 1, MixinDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMixinDeclaration_OnTypes(), this.getType(), null, "onTypes", null, 0, -1, MixinDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4987,12 +5113,14 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     initEReference(getMixinApplicationClass_Interfaces(), this.getInterfaces(), null, "interfaces", null, 0, 1, MixinApplicationClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(extensionDeclarationEClass, ExtensionDeclaration.class, "ExtensionDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExtensionDeclaration_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, ExtensionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getExtensionDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, ExtensionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExtensionDeclaration_TypeParameters(), this.getTypeParameters(), null, "typeParameters", null, 0, 1, ExtensionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExtensionDeclaration_OnType(), this.getType(), null, "onType", null, 0, 1, ExtensionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getExtensionDeclaration_Members(), this.getMemberDeclaration(), null, "members", null, 0, -1, ExtensionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(enumDeclarationEClass, EnumDeclaration.class, "EnumDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEnumDeclaration_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, EnumDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEnumDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnumDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEnumDeclaration_Entries(), this.getEnumEntry(), null, "entries", null, 0, -1, EnumDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -5018,12 +5146,6 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExpression_Value(), this.getExpression(), null, "value", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(collectionLiteralEClass, CollectionLiteral.class, "CollectionLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getCollectionLiteral_IsConst(), ecorePackage.getEBoolean(), "isConst", null, 0, 1, CollectionLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCollectionLiteral_TypeArguments(), this.getTypeArguments(), null, "typeArguments", null, 0, 1, CollectionLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCollectionLiteral_ListElements(), this.getExpression(), null, "listElements", null, 0, -1, CollectionLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCollectionLiteral_MapElements(), this.getMapOrSetElement(), null, "mapElements", null, 0, -1, CollectionLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(mapOrSetElementEClass, MapOrSetElement.class, "MapOrSetElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -5112,49 +5234,47 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     initEClass(libraryDeclarationEClass, LibraryDeclaration.class, "LibraryDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLibraryDeclaration_ScriptTag(), this.getScriptTag(), null, "scriptTag", null, 0, 1, LibraryDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLibraryDeclaration_LibraryName(), this.getLibraryName(), null, "libraryName", null, 0, 1, LibraryDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getLibraryDeclaration_Elements(), this.getElementWithMetadata(), null, "elements", null, 0, -1, LibraryDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(elementWithMetadataEClass, ElementWithMetadata.class, "ElementWithMetadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getElementWithMetadata_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, ElementWithMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getElementWithMetadata_Element(), ecorePackage.getEObject(), null, "element", null, 0, 1, ElementWithMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getElementWithMetadata_Member(), this.getTopLevelDeclarationContent(), null, "member", null, 0, 1, ElementWithMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(importOrExportContentEClass, ImportOrExportContent.class, "ImportOrExportContent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImportOrExportContent_IsImport(), ecorePackage.getEBoolean(), "isImport", null, 0, 1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getImportOrExportContent_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getImportOrExportContent_IsDeferred(), ecorePackage.getEBoolean(), "isDeferred", null, 0, 1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getImportOrExportContent_Prefix(), ecorePackage.getEString(), "prefix", null, 0, 1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getImportOrExportContent_Combinators(), this.getCombinator(), null, "combinators", null, 0, -1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getImportOrExportContent_IsExport(), ecorePackage.getEBoolean(), "isExport", null, 0, 1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getImportOrExportContent_ExportURI(), ecorePackage.getEString(), "exportURI", null, 0, 1, ImportOrExportContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(combinatorEClass, Combinator.class, "Combinator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getCombinator_Identifiers(), ecorePackage.getEString(), "identifiers", null, 0, -1, Combinator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(partDirectiveContentEClass, PartDirectiveContent.class, "PartDirectiveContent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPartDirectiveContent_PartURI(), ecorePackage.getEString(), "partURI", null, 0, 1, PartDirectiveContent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLibraryDeclaration_Directives(), this.getImportOrExport(), null, "directives", null, 0, -1, LibraryDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLibraryDeclaration_PartDirectives(), this.getPartDirective(), null, "partDirectives", null, 0, -1, LibraryDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(partDeclarationEClass, PartDeclaration.class, "PartDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getPartDeclaration_PartHeader(), this.getPartHeader(), null, "partHeader", null, 0, 1, PartDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPartDeclaration_Declarations(), this.getAnnotatedTopLevel(), null, "declarations", null, 0, -1, PartDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(annotatedTopLevelEClass, AnnotatedTopLevel.class, "AnnotatedTopLevel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAnnotatedTopLevel_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, AnnotatedTopLevel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAnnotatedTopLevel_Member(), this.getTopLevelDeclarationContent(), null, "member", null, 0, 1, AnnotatedTopLevel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(scriptTagEClass, ScriptTag.class, "ScriptTag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getScriptTag_Content(), ecorePackage.getEString(), "content", null, 0, 1, ScriptTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(libraryNameEClass, LibraryName.class, "LibraryName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLibraryName_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, LibraryName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getLibraryName_Name(), ecorePackage.getEString(), "name", null, 0, 1, LibraryName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(importOrExportEClass, ImportOrExport.class, "ImportOrExport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getImportOrExport_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, ImportOrExport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getImportOrExport_Combinators(), this.getCombinator(), null, "combinators", null, 0, -1, ImportOrExport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(libraryImportEClass, LibraryImport.class, "LibraryImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLibraryImport_ImportURI(), ecorePackage.getEString(), "importURI", null, 0, 1, LibraryImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLibraryImport_IsDeferred(), ecorePackage.getEBoolean(), "isDeferred", null, 0, 1, LibraryImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLibraryImport_Prefix(), ecorePackage.getEString(), "prefix", null, 0, 1, LibraryImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(libraryExportEClass, LibraryExport.class, "LibraryExport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLibraryExport_ExportURI(), ecorePackage.getEString(), "exportURI", null, 0, 1, LibraryExport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(partDirectiveEClass, PartDirective.class, "PartDirective", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPartDirective_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, PartDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPartDirective_PartURI(), ecorePackage.getEString(), "partURI", null, 0, 1, PartDirective.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(partHeaderEClass, PartHeader.class, "PartHeader", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPartHeader_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, PartHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPartHeader_Name(), ecorePackage.getEString(), "name", null, 0, 1, PartHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPartHeader_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, PartHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(topLevelDeclarationContentEClass, TopLevelDeclarationContent.class, "TopLevelDeclarationContent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(combinatorEClass, Combinator.class, "Combinator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCombinator_Identifiers(), ecorePackage.getEString(), "identifiers", null, 0, -1, Combinator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(topLevelDeclarationEClass, TopLevelDeclaration.class, "TopLevelDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(typeAliasEClass, TypeAlias.class, "TypeAlias", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTypeAlias_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, TypeAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTypeAlias_Name(), ecorePackage.getEString(), "name", null, 0, 1, TypeAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTypeAlias_TypeParameters(), this.getTypeParameters(), null, "typeParameters", null, 0, 1, TypeAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTypeAlias_Type(), this.getType(), null, "type", null, 0, 1, TypeAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5279,6 +5399,16 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     initEReference(getConstExpression_Type(), this.getType(), null, "type", null, 0, 1, ConstExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getConstExpression_Constructor(), ecorePackage.getEString(), "constructor", null, 0, 1, ConstExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getConstExpression_Args(), this.getArguments(), null, "args", null, 0, 1, ConstExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(listLiteralEClass, ListLiteral.class, "ListLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getListLiteral_IsConst(), ecorePackage.getEBoolean(), "isConst", null, 0, 1, ListLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getListLiteral_TypeArguments(), this.getTypeArguments(), null, "typeArguments", null, 0, 1, ListLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getListLiteral_Elements(), this.getExpression(), null, "elements", null, 0, -1, ListLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(setOrMapLiteralEClass, SetOrMapLiteral.class, "SetOrMapLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSetOrMapLiteral_IsConst(), ecorePackage.getEBoolean(), "isConst", null, 0, 1, SetOrMapLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSetOrMapLiteral_TypeArguments(), this.getTypeArguments(), null, "typeArguments", null, 0, 1, SetOrMapLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSetOrMapLiteral_Elements(), this.getMapOrSetElement(), null, "elements", null, 0, -1, SetOrMapLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parenthesizedExpressionEClass, ParenthesizedExpression.class, "ParenthesizedExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getParenthesizedExpression_Expression(), this.getExpression(), null, "expression", null, 0, 1, ParenthesizedExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

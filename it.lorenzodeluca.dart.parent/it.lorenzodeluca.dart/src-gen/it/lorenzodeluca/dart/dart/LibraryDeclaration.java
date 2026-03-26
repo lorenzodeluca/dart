@@ -16,7 +16,8 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.LibraryDeclaration#getScriptTag <em>Script Tag</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.LibraryDeclaration#getLibraryName <em>Library Name</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.LibraryDeclaration#getElements <em>Elements</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.LibraryDeclaration#getDirectives <em>Directives</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.LibraryDeclaration#getPartDirectives <em>Part Directives</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getLibraryDeclaration()
@@ -70,15 +71,27 @@ public interface LibraryDeclaration extends DartFile
   void setLibraryName(LibraryName value);
 
   /**
-   * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-   * The list contents are of type {@link it.lorenzodeluca.dart.dart.ElementWithMetadata}.
+   * Returns the value of the '<em><b>Directives</b></em>' containment reference list.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.ImportOrExport}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Elements</em>' containment reference list.
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getLibraryDeclaration_Elements()
+   * @return the value of the '<em>Directives</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getLibraryDeclaration_Directives()
    * @model containment="true"
    * @generated
    */
-  EList<ElementWithMetadata> getElements();
+  EList<ImportOrExport> getDirectives();
+
+  /**
+   * Returns the value of the '<em><b>Part Directives</b></em>' containment reference list.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.PartDirective}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Part Directives</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getLibraryDeclaration_PartDirectives()
+   * @model containment="true"
+   * @generated
+   */
+  EList<PartDirective> getPartDirectives();
 
 } // LibraryDeclaration

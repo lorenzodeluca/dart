@@ -17,10 +17,9 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getMetadata <em>Metadata</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#isIsStatic <em>Is Static</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getMethod <em>Method</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getBody <em>Body</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getVariable <em>Variable</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getDeclaration <em>Declaration</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getMemberDeclaration()
@@ -40,28 +39,6 @@ public interface MemberDeclaration extends EObject
    * @generated
    */
   EList<Metadata> getMetadata();
-
-  /**
-   * Returns the value of the '<em><b>Is Static</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Static</em>' attribute.
-   * @see #setIsStatic(boolean)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getMemberDeclaration_IsStatic()
-   * @model
-   * @generated
-   */
-  boolean isIsStatic();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#isIsStatic <em>Is Static</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Static</em>' attribute.
-   * @see #isIsStatic()
-   * @generated
-   */
-  void setIsStatic(boolean value);
 
   /**
    * Returns the value of the '<em><b>Method</b></em>' containment reference.
@@ -108,25 +85,25 @@ public interface MemberDeclaration extends EObject
   void setBody(FunctionBody value);
 
   /**
-   * Returns the value of the '<em><b>Variable</b></em>' containment reference.
+   * Returns the value of the '<em><b>Declaration</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Variable</em>' containment reference.
-   * @see #setVariable(Declaration)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getMemberDeclaration_Variable()
+   * @return the value of the '<em>Declaration</em>' containment reference.
+   * @see #setDeclaration(Declaration)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMemberDeclaration_Declaration()
    * @model containment="true"
    * @generated
    */
-  Declaration getVariable();
+  Declaration getDeclaration();
 
   /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getVariable <em>Variable</em>}' containment reference.
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getDeclaration <em>Declaration</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Variable</em>' containment reference.
-   * @see #getVariable()
+   * @param value the new value of the '<em>Declaration</em>' containment reference.
+   * @see #getDeclaration()
    * @generated
    */
-  void setVariable(Declaration value);
+  void setDeclaration(Declaration value);
 
 } // MemberDeclaration

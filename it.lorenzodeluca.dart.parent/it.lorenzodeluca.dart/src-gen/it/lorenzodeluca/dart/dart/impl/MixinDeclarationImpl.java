@@ -6,6 +6,7 @@ package it.lorenzodeluca.dart.dart.impl;
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.Interfaces;
 import it.lorenzodeluca.dart.dart.MemberDeclaration;
+import it.lorenzodeluca.dart.dart.Metadata;
 import it.lorenzodeluca.dart.dart.MixinDeclaration;
 import it.lorenzodeluca.dart.dart.Type;
 import it.lorenzodeluca.dart.dart.TypeParameters;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MixinDeclarationImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MixinDeclarationImpl#getName <em>Name</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MixinDeclarationImpl#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MixinDeclarationImpl#getOnTypes <em>On Types</em>}</li>
@@ -42,8 +44,18 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class MixinDeclarationImpl extends TopLevelDeclarationContentImpl implements MixinDeclaration
+public class MixinDeclarationImpl extends TopLevelDeclarationImpl implements MixinDeclaration
 {
+  /**
+   * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetadata()
+   * @generated
+   * @ordered
+   */
+  protected EList<Metadata> metadata;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -123,6 +135,21 @@ public class MixinDeclarationImpl extends TopLevelDeclarationContentImpl impleme
   protected EClass eStaticClass()
   {
     return DartPackage.Literals.MIXIN_DECLARATION;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<Metadata> getMetadata()
+  {
+    if (metadata == null)
+    {
+      metadata = new EObjectContainmentEList<Metadata>(Metadata.class, this, DartPackage.MIXIN_DECLARATION__METADATA);
+    }
+    return metadata;
   }
 
   /**
@@ -290,6 +317,8 @@ public class MixinDeclarationImpl extends TopLevelDeclarationContentImpl impleme
   {
     switch (featureID)
     {
+      case DartPackage.MIXIN_DECLARATION__METADATA:
+        return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
       case DartPackage.MIXIN_DECLARATION__TYPE_PARAMETERS:
         return basicSetTypeParameters(null, msgs);
       case DartPackage.MIXIN_DECLARATION__ON_TYPES:
@@ -312,6 +341,8 @@ public class MixinDeclarationImpl extends TopLevelDeclarationContentImpl impleme
   {
     switch (featureID)
     {
+      case DartPackage.MIXIN_DECLARATION__METADATA:
+        return getMetadata();
       case DartPackage.MIXIN_DECLARATION__NAME:
         return getName();
       case DartPackage.MIXIN_DECLARATION__TYPE_PARAMETERS:
@@ -337,6 +368,10 @@ public class MixinDeclarationImpl extends TopLevelDeclarationContentImpl impleme
   {
     switch (featureID)
     {
+      case DartPackage.MIXIN_DECLARATION__METADATA:
+        getMetadata().clear();
+        getMetadata().addAll((Collection<? extends Metadata>)newValue);
+        return;
       case DartPackage.MIXIN_DECLARATION__NAME:
         setName((String)newValue);
         return;
@@ -368,6 +403,9 @@ public class MixinDeclarationImpl extends TopLevelDeclarationContentImpl impleme
   {
     switch (featureID)
     {
+      case DartPackage.MIXIN_DECLARATION__METADATA:
+        getMetadata().clear();
+        return;
       case DartPackage.MIXIN_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -397,6 +435,8 @@ public class MixinDeclarationImpl extends TopLevelDeclarationContentImpl impleme
   {
     switch (featureID)
     {
+      case DartPackage.MIXIN_DECLARATION__METADATA:
+        return metadata != null && !metadata.isEmpty();
       case DartPackage.MIXIN_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DartPackage.MIXIN_DECLARATION__TYPE_PARAMETERS:

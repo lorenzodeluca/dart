@@ -6,6 +6,7 @@ package it.lorenzodeluca.dart.dart.impl;
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.EnumDeclaration;
 import it.lorenzodeluca.dart.dart.EnumEntry;
+import it.lorenzodeluca.dart.dart.Metadata;
 
 import java.util.Collection;
 
@@ -30,14 +31,25 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumDeclarationImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumDeclarationImpl#getName <em>Name</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumDeclarationImpl#getEntries <em>Entries</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class EnumDeclarationImpl extends TopLevelDeclarationContentImpl implements EnumDeclaration
+public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements EnumDeclaration
 {
+  /**
+   * The cached value of the '{@link #getMetadata() <em>Metadata</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetadata()
+   * @generated
+   * @ordered
+   */
+  protected EList<Metadata> metadata;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -95,6 +107,21 @@ public class EnumDeclarationImpl extends TopLevelDeclarationContentImpl implemen
    * @generated
    */
   @Override
+  public EList<Metadata> getMetadata()
+  {
+    if (metadata == null)
+    {
+      metadata = new EObjectContainmentEList<Metadata>(Metadata.class, this, DartPackage.ENUM_DECLARATION__METADATA);
+    }
+    return metadata;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public String getName()
   {
     return name;
@@ -139,6 +166,8 @@ public class EnumDeclarationImpl extends TopLevelDeclarationContentImpl implemen
   {
     switch (featureID)
     {
+      case DartPackage.ENUM_DECLARATION__METADATA:
+        return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
       case DartPackage.ENUM_DECLARATION__ENTRIES:
         return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
     }
@@ -155,6 +184,8 @@ public class EnumDeclarationImpl extends TopLevelDeclarationContentImpl implemen
   {
     switch (featureID)
     {
+      case DartPackage.ENUM_DECLARATION__METADATA:
+        return getMetadata();
       case DartPackage.ENUM_DECLARATION__NAME:
         return getName();
       case DartPackage.ENUM_DECLARATION__ENTRIES:
@@ -174,6 +205,10 @@ public class EnumDeclarationImpl extends TopLevelDeclarationContentImpl implemen
   {
     switch (featureID)
     {
+      case DartPackage.ENUM_DECLARATION__METADATA:
+        getMetadata().clear();
+        getMetadata().addAll((Collection<? extends Metadata>)newValue);
+        return;
       case DartPackage.ENUM_DECLARATION__NAME:
         setName((String)newValue);
         return;
@@ -195,6 +230,9 @@ public class EnumDeclarationImpl extends TopLevelDeclarationContentImpl implemen
   {
     switch (featureID)
     {
+      case DartPackage.ENUM_DECLARATION__METADATA:
+        getMetadata().clear();
+        return;
       case DartPackage.ENUM_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -215,6 +253,8 @@ public class EnumDeclarationImpl extends TopLevelDeclarationContentImpl implemen
   {
     switch (featureID)
     {
+      case DartPackage.ENUM_DECLARATION__METADATA:
+        return metadata != null && !metadata.isEmpty();
       case DartPackage.ENUM_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case DartPackage.ENUM_DECLARATION__ENTRIES:
