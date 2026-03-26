@@ -79,7 +79,15 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		
 		///* =========================================================================
 		// * 8. VARIABLES
-		// * ========================================================================= */
+		// * =========================================================================
+		// */
+		///*
+		// * VariableDeclaration
+		// *   late? var id (= expr)?
+		// *   late? final type? id (= expr)?
+		// *   late? const type? id (= expr)?
+		// *   late? type id (= expr)?
+		// */
 		//VariableDeclaration:
 		//    (metadata+=Metadata)* (late?='late')?
 		//    (isVar?='var' | isFinal?='final' (type=Type)? | isConst?='const' (type=Type)? | type=Type)
@@ -314,6 +322,78 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//';'
 		public Keyword getSemicolonKeyword_3_1() { return cSemicolonKeyword_3_1; }
 	}
+	public class GetterSignatureElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.GetterSignature");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cReturnTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cReturnTypeTypeParserRuleCall_0_0 = (RuleCall)cReturnTypeAssignment_0.eContents().get(0);
+		private final Keyword cGetKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		
+		////(Spec §10.3) GetterSignature: type? get identifier
+		//GetterSignature:
+		//    (returnType=Type)? 'get' name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(returnType=Type)? 'get' name=ID
+		public Group getGroup() { return cGroup; }
+		
+		//(returnType=Type)?
+		public Assignment getReturnTypeAssignment_0() { return cReturnTypeAssignment_0; }
+		
+		//Type
+		public RuleCall getReturnTypeTypeParserRuleCall_0_0() { return cReturnTypeTypeParserRuleCall_0_0; }
+		
+		//'get'
+		public Keyword getGetKeyword_1() { return cGetKeyword_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+	}
+	public class SetterSignatureElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.SetterSignature");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cReturnTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cReturnTypeTypeParserRuleCall_0_0 = (RuleCall)cReturnTypeAssignment_0.eContents().get(0);
+		private final Keyword cSetKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cParametersAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cParametersFormalParameterListParserRuleCall_3_0 = (RuleCall)cParametersAssignment_3.eContents().get(0);
+		
+		////(Spec §10.4) SetterSignature: type? set identifier formalParameterList
+		//SetterSignature:
+		//    (returnType=Type)? 'set' name=ID parameters=FormalParameterList;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(returnType=Type)? 'set' name=ID parameters=FormalParameterList
+		public Group getGroup() { return cGroup; }
+		
+		//(returnType=Type)?
+		public Assignment getReturnTypeAssignment_0() { return cReturnTypeAssignment_0; }
+		
+		//Type
+		public RuleCall getReturnTypeTypeParserRuleCall_0_0() { return cReturnTypeTypeParserRuleCall_0_0; }
+		
+		//'set'
+		public Keyword getSetKeyword_1() { return cSetKeyword_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//parameters=FormalParameterList
+		public Assignment getParametersAssignment_3() { return cParametersAssignment_3; }
+		
+		//FormalParameterList
+		public RuleCall getParametersFormalParameterListParserRuleCall_3_0() { return cParametersFormalParameterListParserRuleCall_3_0; }
+	}
 	public class FormalParameterPartElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.FormalParameterPart");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -359,6 +439,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final RuleCall cOptionalParametersOptionalOrNamedFormalParametersParserRuleCall_3_1_0 = (RuleCall)cOptionalParametersAssignment_3_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
+		//// (Spec §9.2) handles: () / (params) / (params, optionalOrNamedParams) / (optionalOrNamedParams)
 		//FormalParameterList:
 		//    {FormalParameterList} '('
 		//        (normalParameters+=NormalFormalParameter (',' normalParameters+=NormalFormalParameter)*)?
@@ -426,6 +507,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
 		
+		////TODO?:functionFormalParameter and fieldFormalParameter
 		//NormalFormalParameter:
 		//    (metadata+=Metadata)* (isCovariant?='covariant')? (type=Type)? name=ID;
 		@Override public ParserRule getRule() { return rule; }
@@ -683,6 +765,15 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Assignment cBlockAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
 		private final RuleCall cBlockBlockParserRuleCall_2_1_0 = (RuleCall)cBlockAssignment_2_1.eContents().get(0);
 		
+		///*
+		// * (Spec §9.3):
+		// * async? '=>' expression ';'
+		// * (async '*'? | sync '*')? block
+		// *
+		// * case => flags:
+		// * async* => isStar + isAsync
+		// * sync* => isStar + isSync
+		// */
 		//FunctionBody:
 		//    (isAsync?='async' | isSync?='sync')? (isStar?='*')? ('=>' expression=Expression ';' | block=Block);
 		@Override public ParserRule getRule() { return rule; }
@@ -758,7 +849,16 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		
 		///* =========================================================================
 		// * 10. CLASSES
-		// * ========================================================================= */
+		// * =========================================================================
+		// * */
+		///*
+		// * Spec §10.1
+		// *
+		// * <classDeclaration> ::= abstract? class <typeIdentifier> <typeParameters>?
+		// * <superclass>? <interfaces>?
+		// * '{' (<metadata> <memberDeclaration>)* '}'
+		// * | abstract? class <mixinApplicationClass>
+		// */
 		//ClassDeclaration:
 		//    (metadata+=Metadata)* (isAbstract?='abstract')? 'class' name=ID (typeParameters=TypeParameters)?
 		//    (superclass=Superclass)? (interfaces=Interfaces)?
@@ -4570,8 +4670,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final RuleCall cMixinApplicationClassParserRuleCall_7_1 = (RuleCall)cGroup_7.eContents().get(1);
 		
 		//TopLevelDeclaration:
-		//    // void/dynamic void/dynamic return type function
-		//     FunctionDeclaration |
+		//    FunctionDeclaration |
 		//    ClassDeclaration |
 		//    MixinDeclaration |
 		//    ExtensionDeclaration |
@@ -4581,8 +4680,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//     =>(ID '=') MixinApplicationClass;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//// void/dynamic void/dynamic return type function
-		// FunctionDeclaration |
+		//FunctionDeclaration |
 		//ClassDeclaration |
 		//MixinDeclaration |
 		//ExtensionDeclaration |
@@ -4592,8 +4690,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		// =>(ID '=') MixinApplicationClass
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//// void/dynamic void/dynamic return type function
-		// FunctionDeclaration
+		//FunctionDeclaration
 		public RuleCall getFunctionDeclarationParserRuleCall_0() { return cFunctionDeclarationParserRuleCall_0; }
 		
 		//ClassDeclaration
@@ -4958,6 +5055,8 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	private final VariableDeclarationElements pVariableDeclaration;
 	private final InitializedIdentifierElements pInitializedIdentifier;
 	private final FunctionDeclarationElements pFunctionDeclaration;
+	private final GetterSignatureElements pGetterSignature;
+	private final SetterSignatureElements pSetterSignature;
 	private final FormalParameterPartElements pFormalParameterPart;
 	private final FormalParameterListElements pFormalParameterList;
 	private final NormalFormalParameterElements pNormalFormalParameter;
@@ -5059,6 +5158,8 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		this.pVariableDeclaration = new VariableDeclarationElements();
 		this.pInitializedIdentifier = new InitializedIdentifierElements();
 		this.pFunctionDeclaration = new FunctionDeclarationElements();
+		this.pGetterSignature = new GetterSignatureElements();
+		this.pSetterSignature = new SetterSignatureElements();
 		this.pFormalParameterPart = new FormalParameterPartElements();
 		this.pFormalParameterList = new FormalParameterListElements();
 		this.pNormalFormalParameter = new NormalFormalParameterElements();
@@ -5193,7 +5294,15 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	
 	///* =========================================================================
 	// * 8. VARIABLES
-	// * ========================================================================= */
+	// * =========================================================================
+	// */
+	///*
+	// * VariableDeclaration
+	// *   late? var id (= expr)?
+	// *   late? final type? id (= expr)?
+	// *   late? const type? id (= expr)?
+	// *   late? type id (= expr)?
+	// */
 	//VariableDeclaration:
 	//    (metadata+=Metadata)* (late?='late')?
 	//    (isVar?='var' | isFinal?='final' (type=Type)? | isConst?='const' (type=Type)? | type=Type)
@@ -5235,6 +5344,28 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return getFunctionDeclarationAccess().getRule();
 	}
 	
+	////(Spec §10.3) GetterSignature: type? get identifier
+	//GetterSignature:
+	//    (returnType=Type)? 'get' name=ID;
+	public GetterSignatureElements getGetterSignatureAccess() {
+		return pGetterSignature;
+	}
+	
+	public ParserRule getGetterSignatureRule() {
+		return getGetterSignatureAccess().getRule();
+	}
+	
+	////(Spec §10.4) SetterSignature: type? set identifier formalParameterList
+	//SetterSignature:
+	//    (returnType=Type)? 'set' name=ID parameters=FormalParameterList;
+	public SetterSignatureElements getSetterSignatureAccess() {
+		return pSetterSignature;
+	}
+	
+	public ParserRule getSetterSignatureRule() {
+		return getSetterSignatureAccess().getRule();
+	}
+	
 	//FormalParameterPart:
 	//    (typeParameters=TypeParameters)? parameters=FormalParameterList;
 	public FormalParameterPartElements getFormalParameterPartAccess() {
@@ -5245,6 +5376,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return getFormalParameterPartAccess().getRule();
 	}
 	
+	//// (Spec §9.2) handles: () / (params) / (params, optionalOrNamedParams) / (optionalOrNamedParams)
 	//FormalParameterList:
 	//    {FormalParameterList} '('
 	//        (normalParameters+=NormalFormalParameter (',' normalParameters+=NormalFormalParameter)*)?
@@ -5258,6 +5390,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return getFormalParameterListAccess().getRule();
 	}
 	
+	////TODO?:functionFormalParameter and fieldFormalParameter
 	//NormalFormalParameter:
 	//    (metadata+=Metadata)* (isCovariant?='covariant')? (type=Type)? name=ID;
 	public NormalFormalParameterElements getNormalFormalParameterAccess() {
@@ -5318,6 +5451,15 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return getDefaultNamedParameterAccess().getRule();
 	}
 	
+	///*
+	// * (Spec §9.3):
+	// * async? '=>' expression ';'
+	// * (async '*'? | sync '*')? block
+	// *
+	// * case => flags:
+	// * async* => isStar + isAsync
+	// * sync* => isStar + isSync
+	// */
 	//FunctionBody:
 	//    (isAsync?='async' | isSync?='sync')? (isStar?='*')? ('=>' expression=Expression ';' | block=Block);
 	public FunctionBodyElements getFunctionBodyAccess() {
@@ -5330,7 +5472,16 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	
 	///* =========================================================================
 	// * 10. CLASSES
-	// * ========================================================================= */
+	// * =========================================================================
+	// * */
+	///*
+	// * Spec §10.1
+	// *
+	// * <classDeclaration> ::= abstract? class <typeIdentifier> <typeParameters>?
+	// * <superclass>? <interfaces>?
+	// * '{' (<metadata> <memberDeclaration>)* '}'
+	// * | abstract? class <mixinApplicationClass>
+	// */
 	//ClassDeclaration:
 	//    (metadata+=Metadata)* (isAbstract?='abstract')? 'class' name=ID (typeParameters=TypeParameters)?
 	//    (superclass=Superclass)? (interfaces=Interfaces)?
@@ -6114,8 +6265,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	}
 	
 	//TopLevelDeclaration:
-	//    // void/dynamic void/dynamic return type function
-	//     FunctionDeclaration |
+	//    FunctionDeclaration |
 	//    ClassDeclaration |
 	//    MixinDeclaration |
 	//    ExtensionDeclaration |

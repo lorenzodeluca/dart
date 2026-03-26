@@ -96,6 +96,16 @@ public class DartAdapterFactory extends AdapterFactoryImpl
         return createFunctionDeclarationAdapter();
       }
       @Override
+      public Adapter caseGetterSignature(GetterSignature object)
+      {
+        return createGetterSignatureAdapter();
+      }
+      @Override
+      public Adapter caseSetterSignature(SetterSignature object)
+      {
+        return createSetterSignatureAdapter();
+      }
+      @Override
       public Adapter caseFormalParameterPart(FormalParameterPart object)
       {
         return createFormalParameterPartAdapter();
@@ -643,6 +653,36 @@ public class DartAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFunctionDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.GetterSignature <em>Getter Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.GetterSignature
+   * @generated
+   */
+  public Adapter createGetterSignatureAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.SetterSignature <em>Setter Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.SetterSignature
+   * @generated
+   */
+  public Adapter createSetterSignatureAdapter()
   {
     return null;
   }

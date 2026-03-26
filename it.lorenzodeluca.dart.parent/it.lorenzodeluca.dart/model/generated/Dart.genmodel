@@ -30,6 +30,15 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FunctionDeclaration/signature"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FunctionDeclaration/body"/>
     </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//GetterSignature">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//GetterSignature/returnType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//GetterSignature/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//SetterSignature">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//SetterSignature/returnType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//SetterSignature/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//SetterSignature/parameters"/>
+    </genClasses>
     <genClasses ecoreClass="Dart.ecore#//FormalParameterPart">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FormalParameterPart/typeParameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FormalParameterPart/parameters"/>

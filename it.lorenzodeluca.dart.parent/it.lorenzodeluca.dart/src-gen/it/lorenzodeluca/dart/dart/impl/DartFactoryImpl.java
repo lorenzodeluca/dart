@@ -69,6 +69,8 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.VARIABLE_DECLARATION: return createVariableDeclaration();
       case DartPackage.INITIALIZED_IDENTIFIER: return createInitializedIdentifier();
       case DartPackage.FUNCTION_DECLARATION: return createFunctionDeclaration();
+      case DartPackage.GETTER_SIGNATURE: return createGetterSignature();
+      case DartPackage.SETTER_SIGNATURE: return createSetterSignature();
       case DartPackage.FORMAL_PARAMETER_PART: return createFormalParameterPart();
       case DartPackage.FORMAL_PARAMETER_LIST: return createFormalParameterList();
       case DartPackage.NORMAL_FORMAL_PARAMETER: return createNormalFormalParameter();
@@ -214,6 +216,30 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
   {
     FunctionDeclarationImpl functionDeclaration = new FunctionDeclarationImpl();
     return functionDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public GetterSignature createGetterSignature()
+  {
+    GetterSignatureImpl getterSignature = new GetterSignatureImpl();
+    return getterSignature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SetterSignature createSetterSignature()
+  {
+    SetterSignatureImpl setterSignature = new SetterSignatureImpl();
+    return setterSignature;
   }
 
   /**

@@ -14,8 +14,16 @@ DartFile:
 
 /* =========================================================================
  * 8. VARIABLES
- * ========================================================================= */
+ * ========================================================================= 
+ */
 
+/*
+ * VariableDeclaration
+ *   late? var id (= expr)?
+ *   late? final type? id (= expr)?
+ *   late? const type? id (= expr)?
+ *   late? type id (= expr)?
+ */
 VariableDeclaration:
     (metadata+=Metadata)* (late?='late')? 
     (isVar?='var' | isFinal?='final' (type=Type)? | isConst?='const' (type=Type)? | type=Type) 
@@ -37,15 +45,25 @@ FunctionDeclaration:
     )
     (body=FunctionBody | ';');
 
+//(Spec §10.3) GetterSignature: type? get identifier
+GetterSignature:
+    (returnType=Type)? 'get' name=ID;
+    
+//(Spec §10.4) SetterSignature: type? set identifier formalParameterList    
+SetterSignature:
+    (returnType=Type)? 'set' name=ID parameters=FormalParameterList;
+    
 FormalParameterPart:
     (typeParameters=TypeParameters)? parameters=FormalParameterList;
 
+// (Spec §9.2) handles: () / (params) / (params, optionalOrNamedParams) / (optionalOrNamedParams)
 FormalParameterList:
     {FormalParameterList} '(' 
         (normalParameters+=NormalFormalParameter (',' normalParameters+=NormalFormalParameter)*)? 
         (',' optionalParameters=OptionalOrNamedFormalParameters)? 
     ')';
 
+//TODO?:functionFormalParameter and fieldFormalParameter
 NormalFormalParameter:
     (metadata+=Metadata)* (isCovariant?='covariant')? (type=Type)? name=ID;
 
@@ -64,13 +82,31 @@ DefaultFormalParameter:
 DefaultNamedParameter:
     (isRequired?='required')? parameter=NormalFormalParameter (('=' | ':') defaultValue=Expression)?;
 
+/*
+ * (Spec §9.3):
+ * async? '=>' expression ';'
+ * (async '*'? | sync '*')? block
+ * 
+ * case => flags:
+ * async* => isStar + isAsync
+ * sync* => isStar + isSync
+ */
 FunctionBody:
     (isAsync?='async' | isSync?='sync')? (isStar?='*')? ('=>' expression=Expression ';' | block=Block);
 
 /* =========================================================================
  * 10. CLASSES
- * ========================================================================= */
+ * ========================================================================= 
+ * */
 
+/*
+ * Spec §10.1
+ * 
+ * <classDeclaration> ::= abstract? class <typeIdentifier> <typeParameters>?
+ * <superclass>? <interfaces>?
+ * '{' (<metadata> <memberDeclaration>)* '}'
+ * | abstract? class <mixinApplicationClass>
+ */
 ClassDeclaration:
     (metadata+=Metadata)* (isAbstract?='abstract')? 'class' name=ID (typeParameters=TypeParameters)? 
     (superclass=Superclass)? (interfaces=Interfaces)? 

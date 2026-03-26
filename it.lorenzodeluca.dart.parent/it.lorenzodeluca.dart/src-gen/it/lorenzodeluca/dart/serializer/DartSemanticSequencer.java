@@ -37,6 +37,7 @@ import it.lorenzodeluca.dart.dart.FormalParameterPart;
 import it.lorenzodeluca.dart.dart.FunctionBody;
 import it.lorenzodeluca.dart.dart.FunctionCall;
 import it.lorenzodeluca.dart.dart.FunctionDeclaration;
+import it.lorenzodeluca.dart.dart.GetterSignature;
 import it.lorenzodeluca.dart.dart.IdentifierRef;
 import it.lorenzodeluca.dart.dart.IfNull;
 import it.lorenzodeluca.dart.dart.IfStatement;
@@ -77,6 +78,7 @@ import it.lorenzodeluca.dart.dart.RethrowStatement;
 import it.lorenzodeluca.dart.dart.ReturnStatement;
 import it.lorenzodeluca.dart.dart.ScriptTag;
 import it.lorenzodeluca.dart.dart.SetOrMapLiteral;
+import it.lorenzodeluca.dart.dart.SetterSignature;
 import it.lorenzodeluca.dart.dart.Shift;
 import it.lorenzodeluca.dart.dart.Statement;
 import it.lorenzodeluca.dart.dart.StringLiteral;
@@ -493,6 +495,9 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				else break;
 			case DartPackage.FUNCTION_DECLARATION:
 				sequence_FunctionDeclaration(context, (FunctionDeclaration) semanticObject); 
+				return; 
+			case DartPackage.GETTER_SIGNATURE:
+				sequence_GetterSignature(context, (GetterSignature) semanticObject); 
 				return; 
 			case DartPackage.IDENTIFIER_REF:
 				if (rule == grammarAccess.getMapOrSetElementRule()) {
@@ -1171,6 +1176,9 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case DartPackage.SETTER_SIGNATURE:
+				sequence_SetterSignature(context, (SetterSignature) semanticObject); 
+				return; 
 			case DartPackage.SHIFT:
 				if (rule == grammarAccess.getMapOrSetElementRule()) {
 					sequence_MapOrSetElement_ShiftExpression(context, (Shift) semanticObject); 
@@ -2116,6 +2124,20 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * </pre>
 	 */
 	protected void sequence_FunctionDeclaration(ISerializationContext context, FunctionDeclaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     GetterSignature returns GetterSignature
+	 *
+	 * Constraint:
+	 *     (returnType=Type? name=ID)
+	 * </pre>
+	 */
+	protected void sequence_GetterSignature(ISerializationContext context, GetterSignature semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -3899,6 +3921,20 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getScriptTagAccess().getContentSCRIPT_TAGTerminalRuleCall_0(), semanticObject.getContent());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     SetterSignature returns SetterSignature
+	 *
+	 * Constraint:
+	 *     (returnType=Type? name=ID parameters=FormalParameterList)
+	 * </pre>
+	 */
+	protected void sequence_SetterSignature(ISerializationContext context, SetterSignature semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

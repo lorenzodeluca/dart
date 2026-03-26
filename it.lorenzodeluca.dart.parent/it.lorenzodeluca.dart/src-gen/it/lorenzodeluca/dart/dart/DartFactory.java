@@ -60,6 +60,24 @@ public interface DartFactory extends EFactory
   FunctionDeclaration createFunctionDeclaration();
 
   /**
+   * Returns a new object of class '<em>Getter Signature</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Getter Signature</em>'.
+   * @generated
+   */
+  GetterSignature createGetterSignature();
+
+  /**
+   * Returns a new object of class '<em>Setter Signature</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Setter Signature</em>'.
+   * @generated
+   */
+  SetterSignature createSetterSignature();
+
+  /**
    * Returns a new object of class '<em>Formal Parameter Part</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

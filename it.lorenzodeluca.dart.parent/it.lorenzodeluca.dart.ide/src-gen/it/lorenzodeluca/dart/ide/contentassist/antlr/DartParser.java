@@ -78,6 +78,8 @@ public class DartParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFunctionDeclarationAccess().getGroup(), "rule__FunctionDeclaration__Group__0");
 			builder.put(grammarAccess.getFunctionDeclarationAccess().getGroup_2_0(), "rule__FunctionDeclaration__Group_2_0__0");
 			builder.put(grammarAccess.getFunctionDeclarationAccess().getGroup_2_1(), "rule__FunctionDeclaration__Group_2_1__0");
+			builder.put(grammarAccess.getGetterSignatureAccess().getGroup(), "rule__GetterSignature__Group__0");
+			builder.put(grammarAccess.getSetterSignatureAccess().getGroup(), "rule__SetterSignature__Group__0");
 			builder.put(grammarAccess.getFormalParameterPartAccess().getGroup(), "rule__FormalParameterPart__Group__0");
 			builder.put(grammarAccess.getFormalParameterListAccess().getGroup(), "rule__FormalParameterList__Group__0");
 			builder.put(grammarAccess.getFormalParameterListAccess().getGroup_2(), "rule__FormalParameterList__Group_2__0");
@@ -263,6 +265,11 @@ public class DartParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFunctionDeclarationAccess().getNameAssignment_2_1_0(), "rule__FunctionDeclaration__NameAssignment_2_1_0");
 			builder.put(grammarAccess.getFunctionDeclarationAccess().getSignatureAssignment_2_1_1(), "rule__FunctionDeclaration__SignatureAssignment_2_1_1");
 			builder.put(grammarAccess.getFunctionDeclarationAccess().getBodyAssignment_3_0(), "rule__FunctionDeclaration__BodyAssignment_3_0");
+			builder.put(grammarAccess.getGetterSignatureAccess().getReturnTypeAssignment_0(), "rule__GetterSignature__ReturnTypeAssignment_0");
+			builder.put(grammarAccess.getGetterSignatureAccess().getNameAssignment_2(), "rule__GetterSignature__NameAssignment_2");
+			builder.put(grammarAccess.getSetterSignatureAccess().getReturnTypeAssignment_0(), "rule__SetterSignature__ReturnTypeAssignment_0");
+			builder.put(grammarAccess.getSetterSignatureAccess().getNameAssignment_2(), "rule__SetterSignature__NameAssignment_2");
+			builder.put(grammarAccess.getSetterSignatureAccess().getParametersAssignment_3(), "rule__SetterSignature__ParametersAssignment_3");
 			builder.put(grammarAccess.getFormalParameterPartAccess().getTypeParametersAssignment_0(), "rule__FormalParameterPart__TypeParametersAssignment_0");
 			builder.put(grammarAccess.getFormalParameterPartAccess().getParametersAssignment_1(), "rule__FormalParameterPart__ParametersAssignment_1");
 			builder.put(grammarAccess.getFormalParameterListAccess().getNormalParametersAssignment_2_0(), "rule__FormalParameterList__NormalParametersAssignment_2_0");

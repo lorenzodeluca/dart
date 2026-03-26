@@ -39,6 +39,7 @@ import it.lorenzodeluca.dart.dart.FormalParameterPart;
 import it.lorenzodeluca.dart.dart.FunctionBody;
 import it.lorenzodeluca.dart.dart.FunctionCall;
 import it.lorenzodeluca.dart.dart.FunctionDeclaration;
+import it.lorenzodeluca.dart.dart.GetterSignature;
 import it.lorenzodeluca.dart.dart.IdentifierRef;
 import it.lorenzodeluca.dart.dart.IfNull;
 import it.lorenzodeluca.dart.dart.IfStatement;
@@ -83,6 +84,7 @@ import it.lorenzodeluca.dart.dart.RethrowStatement;
 import it.lorenzodeluca.dart.dart.ReturnStatement;
 import it.lorenzodeluca.dart.dart.ScriptTag;
 import it.lorenzodeluca.dart.dart.SetOrMapLiteral;
+import it.lorenzodeluca.dart.dart.SetterSignature;
 import it.lorenzodeluca.dart.dart.Shift;
 import it.lorenzodeluca.dart.dart.Statement;
 import it.lorenzodeluca.dart.dart.StringLiteral;
@@ -146,6 +148,20 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   private EClass functionDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass getterSignatureEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass setterSignatureEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1085,6 +1101,83 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   public EReference getFunctionDeclaration_Body()
   {
     return (EReference)functionDeclarationEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getGetterSignature()
+  {
+    return getterSignatureEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGetterSignature_ReturnType()
+  {
+    return (EReference)getterSignatureEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGetterSignature_Name()
+  {
+    return (EAttribute)getterSignatureEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSetterSignature()
+  {
+    return setterSignatureEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSetterSignature_ReturnType()
+  {
+    return (EReference)setterSignatureEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSetterSignature_Name()
+  {
+    return (EAttribute)setterSignatureEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSetterSignature_Parameters()
+  {
+    return (EReference)setterSignatureEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -4541,6 +4634,15 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     createEReference(functionDeclarationEClass, FUNCTION_DECLARATION__SIGNATURE);
     createEReference(functionDeclarationEClass, FUNCTION_DECLARATION__BODY);
 
+    getterSignatureEClass = createEClass(GETTER_SIGNATURE);
+    createEReference(getterSignatureEClass, GETTER_SIGNATURE__RETURN_TYPE);
+    createEAttribute(getterSignatureEClass, GETTER_SIGNATURE__NAME);
+
+    setterSignatureEClass = createEClass(SETTER_SIGNATURE);
+    createEReference(setterSignatureEClass, SETTER_SIGNATURE__RETURN_TYPE);
+    createEAttribute(setterSignatureEClass, SETTER_SIGNATURE__NAME);
+    createEReference(setterSignatureEClass, SETTER_SIGNATURE__PARAMETERS);
+
     formalParameterPartEClass = createEClass(FORMAL_PARAMETER_PART);
     createEReference(formalParameterPartEClass, FORMAL_PARAMETER_PART__TYPE_PARAMETERS);
     createEReference(formalParameterPartEClass, FORMAL_PARAMETER_PART__PARAMETERS);
@@ -5059,6 +5161,15 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     initEAttribute(getFunctionDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDeclaration_Signature(), this.getFormalParameterPart(), null, "signature", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionDeclaration_Body(), this.getFunctionBody(), null, "body", null, 0, 1, FunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(getterSignatureEClass, GetterSignature.class, "GetterSignature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getGetterSignature_ReturnType(), this.getType(), null, "returnType", null, 0, 1, GetterSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getGetterSignature_Name(), ecorePackage.getEString(), "name", null, 0, 1, GetterSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(setterSignatureEClass, SetterSignature.class, "SetterSignature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSetterSignature_ReturnType(), this.getType(), null, "returnType", null, 0, 1, SetterSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSetterSignature_Name(), ecorePackage.getEString(), "name", null, 0, 1, SetterSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSetterSignature_Parameters(), this.getFormalParameterList(), null, "parameters", null, 0, 1, SetterSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(formalParameterPartEClass, FormalParameterPart.class, "FormalParameterPart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFormalParameterPart_TypeParameters(), this.getTypeParameters(), null, "typeParameters", null, 0, 1, FormalParameterPart.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
