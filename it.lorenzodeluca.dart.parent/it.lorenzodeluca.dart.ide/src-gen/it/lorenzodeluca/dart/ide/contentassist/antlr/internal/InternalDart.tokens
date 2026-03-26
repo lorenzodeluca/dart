@@ -65,7 +65,7 @@
 'export'=110
 'extends'=75
 'extension'=80
-'external'=113
+'external'=114
 'false'=56
 'final'=58
 'finally'=103
@@ -97,7 +97,7 @@
 'this'=88
 'true'=55
 'try'=101
-'typedef'=114
+'typedef'=113
 'var'=57
 'void'=61
 'while'=95

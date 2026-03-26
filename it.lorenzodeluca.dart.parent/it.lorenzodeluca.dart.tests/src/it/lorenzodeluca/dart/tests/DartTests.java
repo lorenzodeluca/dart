@@ -16,8 +16,11 @@ import it.lorenzodeluca.dart.dart.FunctionDeclaration;
 import it.lorenzodeluca.dart.dart.IdentifierRef;
 import it.lorenzodeluca.dart.dart.LibraryDeclaration;
 import it.lorenzodeluca.dart.dart.NonLabelledStatement;
+import it.lorenzodeluca.dart.dart.ReturnStatement;
 import it.lorenzodeluca.dart.dart.StringLiteral;
 import it.lorenzodeluca.dart.dart.TopLevelDeclaration;
+import it.lorenzodeluca.dart.dart.VariableDeclaration;
+
 import org.eclipse.xtext.util.EmfFormatter;
 
 @ExtendWith(InjectionExtension.class)
@@ -28,8 +31,55 @@ public class DartTests {
     private ParseHelper<DartFile> parseHelper;
 	
     @Test
+    void testFunctionVsVariableAmbiguity() throws Exception {
+        String code = 
+            "String foo;\n" +
+            "String bar() { return 'hello'; }\n";
+        
+        DartFile result = parseHelper.parse(code);
+        System.out.println(EmfFormatter.objToStr(result));
+        
+        Assertions.assertNotNull(result);
+        Assertions.assertTrue(result.eResource().getErrors().isEmpty(),
+            "Parser errors: " + result.eResource().getErrors());
+        
+        LibraryDeclaration library = (LibraryDeclaration) result;
+        Assertions.assertEquals(2, library.getDeclarations().size(),
+            "Dovrebbero esserci 2 dichiarazioni top-level");
+        
+        // Prima dichiarazione: variabile String foo
+        TopLevelDeclaration firstDecl = library.getDeclarations().get(0);
+        Assertions.assertInstanceOf(VariableDeclaration.class, firstDecl,
+            "La prima dichiarazione dovrebbe essere una VariableDeclaration");
+        VariableDeclaration varDecl = (VariableDeclaration) firstDecl;
+        Assertions.assertEquals("foo", varDecl.getVariables().get(0).getName());
+        Assertions.assertEquals("String", varDecl.getType().getTypeName().getName());
+        
+        // Seconda dichiarazione: funzione String bar()
+        TopLevelDeclaration secondDecl = library.getDeclarations().get(1);
+        Assertions.assertInstanceOf(FunctionDeclaration.class, secondDecl,
+            "La seconda dichiarazione dovrebbe essere una FunctionDeclaration");
+        FunctionDeclaration funcDecl = (FunctionDeclaration) secondDecl;
+        Assertions.assertEquals("bar", funcDecl.getName());
+        Assertions.assertEquals("String", funcDecl.getReturnType().getTypeName().getName());
+        
+        // Verifica body della funzione
+        Block body = funcDecl.getBody().getBlock();
+        Assertions.assertNotNull(body);
+        Assertions.assertFalse(body.getStatements().isEmpty());
+        
+        // Verifica return 'hello'
+        NonLabelledStatement stmt = body.getStatements().get(0).getStatement();
+        Assertions.assertInstanceOf(ReturnStatement.class, stmt);
+        ReturnStatement returnStmt = (ReturnStatement) stmt;
+        Assertions.assertInstanceOf(StringLiteral.class, returnStmt.getExpression());
+        Assertions.assertEquals("hello", 
+            ((StringLiteral) returnStmt.getExpression()).getStringValue());
+    }
+    
+    @Test
     void testHelloWorldFunction() throws Exception {
-        String code = "main() { print('Hello World'); }";
+        String code = "void main() { print('Hello World'); }";
         DartFile result = parseHelper.parse(code);
 
         // DEBUG Print AST to console

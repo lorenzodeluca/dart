@@ -372,17 +372,7 @@ Combinator:
     ('show' | 'hide') identifiers+=ID (',' identifiers+=ID)*;
 
 TopLevelDeclaration:
-    // void/dynamic void/dynamic return type function
-    =>('void' | 'dynamic') FunctionDeclaration |
-    // function with external keyword
-    =>('external') FunctionDeclaration |  
-    // function without return type
-    =>(ID '(') FunctionDeclaration |
-    // function with return type(without generics)
-    =>(ID ID '(') FunctionDeclaration |
-    // function with complex return type (es. List<int> foo())
-    =>(ID '<') FunctionDeclaration |
-    
+    FunctionDeclaration |
     ClassDeclaration | 
     MixinDeclaration | 
     ExtensionDeclaration | 

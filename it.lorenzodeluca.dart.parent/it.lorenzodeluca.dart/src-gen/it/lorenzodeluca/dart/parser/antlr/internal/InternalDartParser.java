@@ -156,7 +156,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         }
         public InternalDartParser(TokenStream input, RecognizerSharedState state) {
             super(input, state);
-            this.state.ruleMemo = new HashMap[450+1];
+            this.state.ruleMemo = new HashMap[439+1];
              
              
         }
@@ -11262,11 +11262,11 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
             else if ( (LA89_0==86) ) {
                 int LA89_2 = input.LA(2);
 
-                if ( (LA89_2==87) ) {
-                    alt89=2;
-                }
-                else if ( (LA89_2==EOF||LA89_2==RULE_ID||(LA89_2>=97 && LA89_2<=98)||LA89_2==124) ) {
+                if ( (LA89_2==EOF||LA89_2==RULE_ID||(LA89_2>=97 && LA89_2<=98)||LA89_2==124) ) {
                     alt89=3;
+                }
+                else if ( (LA89_2==87) ) {
+                    alt89=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return current;}
@@ -22316,46 +22316,28 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTopLevelDeclaration"
-    // InternalDart.g:7947:1: ruleTopLevelDeclaration returns [EObject current=null] : ( ( ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) ) this_FunctionDeclaration_2= ruleFunctionDeclaration ) | ( ( ( 'external' )=>otherlv_3= 'external' ) this_FunctionDeclaration_4= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) ) this_FunctionDeclaration_7= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) ) this_FunctionDeclaration_11= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) ) this_FunctionDeclaration_14= ruleFunctionDeclaration ) | this_ClassDeclaration_15= ruleClassDeclaration | this_MixinDeclaration_16= ruleMixinDeclaration | this_ExtensionDeclaration_17= ruleExtensionDeclaration | this_EnumDeclaration_18= ruleEnumDeclaration | this_TypeAlias_19= ruleTypeAlias | (this_VariableDeclaration_20= ruleVariableDeclaration otherlv_21= ';' ) | ( ( ( ( RULE_ID '=' ) )=> (this_ID_22= RULE_ID otherlv_23= '=' ) ) this_MixinApplicationClass_24= ruleMixinApplicationClass ) ) ;
+    // InternalDart.g:7947:1: ruleTopLevelDeclaration returns [EObject current=null] : (this_FunctionDeclaration_0= ruleFunctionDeclaration | this_ClassDeclaration_1= ruleClassDeclaration | this_MixinDeclaration_2= ruleMixinDeclaration | this_ExtensionDeclaration_3= ruleExtensionDeclaration | this_EnumDeclaration_4= ruleEnumDeclaration | this_TypeAlias_5= ruleTypeAlias | (this_VariableDeclaration_6= ruleVariableDeclaration otherlv_7= ';' ) | ( ( ( ( RULE_ID '=' ) )=> (this_ID_8= RULE_ID otherlv_9= '=' ) ) this_MixinApplicationClass_10= ruleMixinApplicationClass ) ) ;
     public final EObject ruleTopLevelDeclaration() throws RecognitionException {
         EObject current = null;
         int ruleTopLevelDeclaration_StartIndex = input.index();
-        Token otherlv_0=null;
-        Token otherlv_1=null;
-        Token otherlv_3=null;
-        Token this_ID_5=null;
-        Token otherlv_6=null;
+        Token otherlv_7=null;
         Token this_ID_8=null;
-        Token this_ID_9=null;
-        Token otherlv_10=null;
-        Token this_ID_12=null;
-        Token otherlv_13=null;
-        Token otherlv_21=null;
-        Token this_ID_22=null;
-        Token otherlv_23=null;
-        EObject this_FunctionDeclaration_2 = null;
+        Token otherlv_9=null;
+        EObject this_FunctionDeclaration_0 = null;
 
-        EObject this_FunctionDeclaration_4 = null;
+        EObject this_ClassDeclaration_1 = null;
 
-        EObject this_FunctionDeclaration_7 = null;
+        EObject this_MixinDeclaration_2 = null;
 
-        EObject this_FunctionDeclaration_11 = null;
+        EObject this_ExtensionDeclaration_3 = null;
 
-        EObject this_FunctionDeclaration_14 = null;
+        EObject this_EnumDeclaration_4 = null;
 
-        EObject this_ClassDeclaration_15 = null;
+        EObject this_TypeAlias_5 = null;
 
-        EObject this_MixinDeclaration_16 = null;
+        EObject this_VariableDeclaration_6 = null;
 
-        EObject this_ExtensionDeclaration_17 = null;
-
-        EObject this_EnumDeclaration_18 = null;
-
-        EObject this_TypeAlias_19 = null;
-
-        EObject this_VariableDeclaration_20 = null;
-
-        EObject this_MixinApplicationClass_24 = null;
+        EObject this_MixinApplicationClass_10 = null;
 
 
 
@@ -22363,321 +22345,15 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 168) ) { return current; }
-            // InternalDart.g:7953:2: ( ( ( ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) ) this_FunctionDeclaration_2= ruleFunctionDeclaration ) | ( ( ( 'external' )=>otherlv_3= 'external' ) this_FunctionDeclaration_4= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) ) this_FunctionDeclaration_7= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) ) this_FunctionDeclaration_11= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) ) this_FunctionDeclaration_14= ruleFunctionDeclaration ) | this_ClassDeclaration_15= ruleClassDeclaration | this_MixinDeclaration_16= ruleMixinDeclaration | this_ExtensionDeclaration_17= ruleExtensionDeclaration | this_EnumDeclaration_18= ruleEnumDeclaration | this_TypeAlias_19= ruleTypeAlias | (this_VariableDeclaration_20= ruleVariableDeclaration otherlv_21= ';' ) | ( ( ( ( RULE_ID '=' ) )=> (this_ID_22= RULE_ID otherlv_23= '=' ) ) this_MixinApplicationClass_24= ruleMixinApplicationClass ) ) )
-            // InternalDart.g:7954:2: ( ( ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) ) this_FunctionDeclaration_2= ruleFunctionDeclaration ) | ( ( ( 'external' )=>otherlv_3= 'external' ) this_FunctionDeclaration_4= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) ) this_FunctionDeclaration_7= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) ) this_FunctionDeclaration_11= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) ) this_FunctionDeclaration_14= ruleFunctionDeclaration ) | this_ClassDeclaration_15= ruleClassDeclaration | this_MixinDeclaration_16= ruleMixinDeclaration | this_ExtensionDeclaration_17= ruleExtensionDeclaration | this_EnumDeclaration_18= ruleEnumDeclaration | this_TypeAlias_19= ruleTypeAlias | (this_VariableDeclaration_20= ruleVariableDeclaration otherlv_21= ';' ) | ( ( ( ( RULE_ID '=' ) )=> (this_ID_22= RULE_ID otherlv_23= '=' ) ) this_MixinApplicationClass_24= ruleMixinApplicationClass ) )
+            // InternalDart.g:7953:2: ( (this_FunctionDeclaration_0= ruleFunctionDeclaration | this_ClassDeclaration_1= ruleClassDeclaration | this_MixinDeclaration_2= ruleMixinDeclaration | this_ExtensionDeclaration_3= ruleExtensionDeclaration | this_EnumDeclaration_4= ruleEnumDeclaration | this_TypeAlias_5= ruleTypeAlias | (this_VariableDeclaration_6= ruleVariableDeclaration otherlv_7= ';' ) | ( ( ( ( RULE_ID '=' ) )=> (this_ID_8= RULE_ID otherlv_9= '=' ) ) this_MixinApplicationClass_10= ruleMixinApplicationClass ) ) )
+            // InternalDart.g:7954:2: (this_FunctionDeclaration_0= ruleFunctionDeclaration | this_ClassDeclaration_1= ruleClassDeclaration | this_MixinDeclaration_2= ruleMixinDeclaration | this_ExtensionDeclaration_3= ruleExtensionDeclaration | this_EnumDeclaration_4= ruleEnumDeclaration | this_TypeAlias_5= ruleTypeAlias | (this_VariableDeclaration_6= ruleVariableDeclaration otherlv_7= ';' ) | ( ( ( ( RULE_ID '=' ) )=> (this_ID_8= RULE_ID otherlv_9= '=' ) ) this_MixinApplicationClass_10= ruleMixinApplicationClass ) )
             {
-            // InternalDart.g:7954:2: ( ( ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) ) this_FunctionDeclaration_2= ruleFunctionDeclaration ) | ( ( ( 'external' )=>otherlv_3= 'external' ) this_FunctionDeclaration_4= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) ) this_FunctionDeclaration_7= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) ) this_FunctionDeclaration_11= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) ) this_FunctionDeclaration_14= ruleFunctionDeclaration ) | this_ClassDeclaration_15= ruleClassDeclaration | this_MixinDeclaration_16= ruleMixinDeclaration | this_ExtensionDeclaration_17= ruleExtensionDeclaration | this_EnumDeclaration_18= ruleEnumDeclaration | this_TypeAlias_19= ruleTypeAlias | (this_VariableDeclaration_20= ruleVariableDeclaration otherlv_21= ';' ) | ( ( ( ( RULE_ID '=' ) )=> (this_ID_22= RULE_ID otherlv_23= '=' ) ) this_MixinApplicationClass_24= ruleMixinApplicationClass ) )
-            int alt162=12;
-            alt162 = dfa162.predict(input);
-            switch (alt162) {
+            // InternalDart.g:7954:2: (this_FunctionDeclaration_0= ruleFunctionDeclaration | this_ClassDeclaration_1= ruleClassDeclaration | this_MixinDeclaration_2= ruleMixinDeclaration | this_ExtensionDeclaration_3= ruleExtensionDeclaration | this_EnumDeclaration_4= ruleEnumDeclaration | this_TypeAlias_5= ruleTypeAlias | (this_VariableDeclaration_6= ruleVariableDeclaration otherlv_7= ';' ) | ( ( ( ( RULE_ID '=' ) )=> (this_ID_8= RULE_ID otherlv_9= '=' ) ) this_MixinApplicationClass_10= ruleMixinApplicationClass ) )
+            int alt161=8;
+            alt161 = dfa161.predict(input);
+            switch (alt161) {
                 case 1 :
-                    // InternalDart.g:7955:3: ( ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) ) this_FunctionDeclaration_2= ruleFunctionDeclaration )
-                    {
-                    // InternalDart.g:7955:3: ( ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) ) this_FunctionDeclaration_2= ruleFunctionDeclaration )
-                    // InternalDart.g:7956:4: ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) ) this_FunctionDeclaration_2= ruleFunctionDeclaration
-                    {
-                    // InternalDart.g:7956:4: ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) )
-                    // InternalDart.g:7957:5: ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' )
-                    {
-                    // InternalDart.g:7963:5: (otherlv_0= 'void' | otherlv_1= 'dynamic' )
-                    int alt161=2;
-                    int LA161_0 = input.LA(1);
-
-                    if ( (LA161_0==97) ) {
-                        alt161=1;
-                    }
-                    else if ( (LA161_0==98) ) {
-                        alt161=2;
-                    }
-                    else {
-                        if (state.backtracking>0) {state.failed=true; return current;}
-                        NoViableAltException nvae =
-                            new NoViableAltException("", 161, 0, input);
-
-                        throw nvae;
-                    }
-                    switch (alt161) {
-                        case 1 :
-                            // InternalDart.g:7964:6: otherlv_0= 'void'
-                            {
-                            otherlv_0=(Token)match(input,97,FOLLOW_9); if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                              						newLeafNode(otherlv_0, grammarAccess.getTopLevelDeclarationAccess().getVoidKeyword_0_0_0_0());
-                              					
-                            }
-
-                            }
-                            break;
-                        case 2 :
-                            // InternalDart.g:7969:6: otherlv_1= 'dynamic'
-                            {
-                            otherlv_1=(Token)match(input,98,FOLLOW_9); if (state.failed) return current;
-                            if ( state.backtracking==0 ) {
-
-                              						newLeafNode(otherlv_1, grammarAccess.getTopLevelDeclarationAccess().getDynamicKeyword_0_0_0_1());
-                              					
-                            }
-
-                            }
-                            break;
-
-                    }
-
-
-                    }
-
-                    if ( state.backtracking==0 ) {
-
-                      				/* */
-                      			
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      				newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getFunctionDeclarationParserRuleCall_0_1());
-                      			
-                    }
-                    pushFollow(FOLLOW_2);
-                    this_FunctionDeclaration_2=ruleFunctionDeclaration();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      				current = this_FunctionDeclaration_2;
-                      				afterParserOrEnumRuleCall();
-                      			
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // InternalDart.g:7988:3: ( ( ( 'external' )=>otherlv_3= 'external' ) this_FunctionDeclaration_4= ruleFunctionDeclaration )
-                    {
-                    // InternalDart.g:7988:3: ( ( ( 'external' )=>otherlv_3= 'external' ) this_FunctionDeclaration_4= ruleFunctionDeclaration )
-                    // InternalDart.g:7989:4: ( ( 'external' )=>otherlv_3= 'external' ) this_FunctionDeclaration_4= ruleFunctionDeclaration
-                    {
-                    // InternalDart.g:7989:4: ( ( 'external' )=>otherlv_3= 'external' )
-                    // InternalDart.g:7990:5: ( 'external' )=>otherlv_3= 'external'
-                    {
-                    otherlv_3=(Token)match(input,18,FOLLOW_9); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      					newLeafNode(otherlv_3, grammarAccess.getTopLevelDeclarationAccess().getExternalKeyword_1_0_0());
-                      				
-                    }
-
-                    }
-
-                    if ( state.backtracking==0 ) {
-
-                      				/* */
-                      			
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      				newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getFunctionDeclarationParserRuleCall_1_1());
-                      			
-                    }
-                    pushFollow(FOLLOW_2);
-                    this_FunctionDeclaration_4=ruleFunctionDeclaration();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      				current = this_FunctionDeclaration_4;
-                      				afterParserOrEnumRuleCall();
-                      			
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 3 :
-                    // InternalDart.g:8010:3: ( ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) ) this_FunctionDeclaration_7= ruleFunctionDeclaration )
-                    {
-                    // InternalDart.g:8010:3: ( ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) ) this_FunctionDeclaration_7= ruleFunctionDeclaration )
-                    // InternalDart.g:8011:4: ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) ) this_FunctionDeclaration_7= ruleFunctionDeclaration
-                    {
-                    // InternalDart.g:8011:4: ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) )
-                    // InternalDart.g:8012:5: ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' )
-                    {
-                    // InternalDart.g:8017:5: (this_ID_5= RULE_ID otherlv_6= '(' )
-                    // InternalDart.g:8018:6: this_ID_5= RULE_ID otherlv_6= '('
-                    {
-                    this_ID_5=(Token)match(input,RULE_ID,FOLLOW_76); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      						newLeafNode(this_ID_5, grammarAccess.getTopLevelDeclarationAccess().getIDTerminalRuleCall_2_0_0_0());
-                      					
-                    }
-                    otherlv_6=(Token)match(input,20,FOLLOW_9); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      						newLeafNode(otherlv_6, grammarAccess.getTopLevelDeclarationAccess().getLeftParenthesisKeyword_2_0_0_1());
-                      					
-                    }
-
-                    }
-
-
-                    }
-
-                    if ( state.backtracking==0 ) {
-
-                      				/* */
-                      			
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      				newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getFunctionDeclarationParserRuleCall_2_1());
-                      			
-                    }
-                    pushFollow(FOLLOW_2);
-                    this_FunctionDeclaration_7=ruleFunctionDeclaration();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      				current = this_FunctionDeclaration_7;
-                      				afterParserOrEnumRuleCall();
-                      			
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 4 :
-                    // InternalDart.g:8041:3: ( ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) ) this_FunctionDeclaration_11= ruleFunctionDeclaration )
-                    {
-                    // InternalDart.g:8041:3: ( ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) ) this_FunctionDeclaration_11= ruleFunctionDeclaration )
-                    // InternalDart.g:8042:4: ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) ) this_FunctionDeclaration_11= ruleFunctionDeclaration
-                    {
-                    // InternalDart.g:8042:4: ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) )
-                    // InternalDart.g:8043:5: ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' )
-                    {
-                    // InternalDart.g:8049:5: (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' )
-                    // InternalDart.g:8050:6: this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '('
-                    {
-                    this_ID_8=(Token)match(input,RULE_ID,FOLLOW_5); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      						newLeafNode(this_ID_8, grammarAccess.getTopLevelDeclarationAccess().getIDTerminalRuleCall_3_0_0_0());
-                      					
-                    }
-                    this_ID_9=(Token)match(input,RULE_ID,FOLLOW_76); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      						newLeafNode(this_ID_9, grammarAccess.getTopLevelDeclarationAccess().getIDTerminalRuleCall_3_0_0_1());
-                      					
-                    }
-                    otherlv_10=(Token)match(input,20,FOLLOW_9); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      						newLeafNode(otherlv_10, grammarAccess.getTopLevelDeclarationAccess().getLeftParenthesisKeyword_3_0_0_2());
-                      					
-                    }
-
-                    }
-
-
-                    }
-
-                    if ( state.backtracking==0 ) {
-
-                      				/* */
-                      			
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      				newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getFunctionDeclarationParserRuleCall_3_1());
-                      			
-                    }
-                    pushFollow(FOLLOW_2);
-                    this_FunctionDeclaration_11=ruleFunctionDeclaration();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      				current = this_FunctionDeclaration_11;
-                      				afterParserOrEnumRuleCall();
-                      			
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 5 :
-                    // InternalDart.g:8077:3: ( ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) ) this_FunctionDeclaration_14= ruleFunctionDeclaration )
-                    {
-                    // InternalDart.g:8077:3: ( ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) ) this_FunctionDeclaration_14= ruleFunctionDeclaration )
-                    // InternalDart.g:8078:4: ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) ) this_FunctionDeclaration_14= ruleFunctionDeclaration
-                    {
-                    // InternalDart.g:8078:4: ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) )
-                    // InternalDart.g:8079:5: ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' )
-                    {
-                    // InternalDart.g:8084:5: (this_ID_12= RULE_ID otherlv_13= '<' )
-                    // InternalDart.g:8085:6: this_ID_12= RULE_ID otherlv_13= '<'
-                    {
-                    this_ID_12=(Token)match(input,RULE_ID,FOLLOW_115); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      						newLeafNode(this_ID_12, grammarAccess.getTopLevelDeclarationAccess().getIDTerminalRuleCall_4_0_0_0());
-                      					
-                    }
-                    otherlv_13=(Token)match(input,60,FOLLOW_9); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      						newLeafNode(otherlv_13, grammarAccess.getTopLevelDeclarationAccess().getLessThanSignKeyword_4_0_0_1());
-                      					
-                    }
-
-                    }
-
-
-                    }
-
-                    if ( state.backtracking==0 ) {
-
-                      				/* */
-                      			
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      				newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getFunctionDeclarationParserRuleCall_4_1());
-                      			
-                    }
-                    pushFollow(FOLLOW_2);
-                    this_FunctionDeclaration_14=ruleFunctionDeclaration();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      				current = this_FunctionDeclaration_14;
-                      				afterParserOrEnumRuleCall();
-                      			
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 6 :
-                    // InternalDart.g:8108:3: this_ClassDeclaration_15= ruleClassDeclaration
+                    // InternalDart.g:7955:3: this_FunctionDeclaration_0= ruleFunctionDeclaration
                     {
                     if ( state.backtracking==0 ) {
 
@@ -22686,17 +22362,152 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
                     }
                     if ( state.backtracking==0 ) {
 
-                      			newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getClassDeclarationParserRuleCall_5());
+                      			newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getFunctionDeclarationParserRuleCall_0());
                       		
                     }
                     pushFollow(FOLLOW_2);
-                    this_ClassDeclaration_15=ruleClassDeclaration();
+                    this_FunctionDeclaration_0=ruleFunctionDeclaration();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      			current = this_ClassDeclaration_15;
+                      			current = this_FunctionDeclaration_0;
+                      			afterParserOrEnumRuleCall();
+                      		
+                    }
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDart.g:7967:3: this_ClassDeclaration_1= ruleClassDeclaration
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      			newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getClassDeclarationParserRuleCall_1());
+                      		
+                    }
+                    pushFollow(FOLLOW_2);
+                    this_ClassDeclaration_1=ruleClassDeclaration();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      			current = this_ClassDeclaration_1;
+                      			afterParserOrEnumRuleCall();
+                      		
+                    }
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDart.g:7979:3: this_MixinDeclaration_2= ruleMixinDeclaration
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      			newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getMixinDeclarationParserRuleCall_2());
+                      		
+                    }
+                    pushFollow(FOLLOW_2);
+                    this_MixinDeclaration_2=ruleMixinDeclaration();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      			current = this_MixinDeclaration_2;
+                      			afterParserOrEnumRuleCall();
+                      		
+                    }
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDart.g:7991:3: this_ExtensionDeclaration_3= ruleExtensionDeclaration
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      			newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getExtensionDeclarationParserRuleCall_3());
+                      		
+                    }
+                    pushFollow(FOLLOW_2);
+                    this_ExtensionDeclaration_3=ruleExtensionDeclaration();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      			current = this_ExtensionDeclaration_3;
+                      			afterParserOrEnumRuleCall();
+                      		
+                    }
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDart.g:8003:3: this_EnumDeclaration_4= ruleEnumDeclaration
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      			newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getEnumDeclarationParserRuleCall_4());
+                      		
+                    }
+                    pushFollow(FOLLOW_2);
+                    this_EnumDeclaration_4=ruleEnumDeclaration();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      			current = this_EnumDeclaration_4;
+                      			afterParserOrEnumRuleCall();
+                      		
+                    }
+
+                    }
+                    break;
+                case 6 :
+                    // InternalDart.g:8015:3: this_TypeAlias_5= ruleTypeAlias
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      			/* */
+                      		
+                    }
+                    if ( state.backtracking==0 ) {
+
+                      			newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getTypeAliasParserRuleCall_5());
+                      		
+                    }
+                    pushFollow(FOLLOW_2);
+                    this_TypeAlias_5=ruleTypeAlias();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      			current = this_TypeAlias_5;
                       			afterParserOrEnumRuleCall();
                       		
                     }
@@ -22704,174 +22515,66 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalDart.g:8120:3: this_MixinDeclaration_16= ruleMixinDeclaration
+                    // InternalDart.g:8027:3: (this_VariableDeclaration_6= ruleVariableDeclaration otherlv_7= ';' )
+                    {
+                    // InternalDart.g:8027:3: (this_VariableDeclaration_6= ruleVariableDeclaration otherlv_7= ';' )
+                    // InternalDart.g:8028:4: this_VariableDeclaration_6= ruleVariableDeclaration otherlv_7= ';'
                     {
                     if ( state.backtracking==0 ) {
 
-                      			/* */
-                      		
+                      				/* */
+                      			
                     }
                     if ( state.backtracking==0 ) {
 
-                      			newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getMixinDeclarationParserRuleCall_6());
-                      		
+                      				newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getVariableDeclarationParserRuleCall_6_0());
+                      			
                     }
-                    pushFollow(FOLLOW_2);
-                    this_MixinDeclaration_16=ruleMixinDeclaration();
+                    pushFollow(FOLLOW_24);
+                    this_VariableDeclaration_6=ruleVariableDeclaration();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      			current = this_MixinDeclaration_16;
-                      			afterParserOrEnumRuleCall();
-                      		
+                      				current = this_VariableDeclaration_6;
+                      				afterParserOrEnumRuleCall();
+                      			
                     }
+                    otherlv_7=(Token)match(input,19,FOLLOW_2); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      				newLeafNode(otherlv_7, grammarAccess.getTopLevelDeclarationAccess().getSemicolonKeyword_6_1());
+                      			
+                    }
+
+                    }
+
 
                     }
                     break;
                 case 8 :
-                    // InternalDart.g:8132:3: this_ExtensionDeclaration_17= ruleExtensionDeclaration
+                    // InternalDart.g:8045:3: ( ( ( ( RULE_ID '=' ) )=> (this_ID_8= RULE_ID otherlv_9= '=' ) ) this_MixinApplicationClass_10= ruleMixinApplicationClass )
                     {
-                    if ( state.backtracking==0 ) {
-
-                      			/* */
-                      		
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      			newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getExtensionDeclarationParserRuleCall_7());
-                      		
-                    }
-                    pushFollow(FOLLOW_2);
-                    this_ExtensionDeclaration_17=ruleExtensionDeclaration();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      			current = this_ExtensionDeclaration_17;
-                      			afterParserOrEnumRuleCall();
-                      		
-                    }
-
-                    }
-                    break;
-                case 9 :
-                    // InternalDart.g:8144:3: this_EnumDeclaration_18= ruleEnumDeclaration
+                    // InternalDart.g:8045:3: ( ( ( ( RULE_ID '=' ) )=> (this_ID_8= RULE_ID otherlv_9= '=' ) ) this_MixinApplicationClass_10= ruleMixinApplicationClass )
+                    // InternalDart.g:8046:4: ( ( ( RULE_ID '=' ) )=> (this_ID_8= RULE_ID otherlv_9= '=' ) ) this_MixinApplicationClass_10= ruleMixinApplicationClass
                     {
-                    if ( state.backtracking==0 ) {
-
-                      			/* */
-                      		
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      			newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getEnumDeclarationParserRuleCall_8());
-                      		
-                    }
-                    pushFollow(FOLLOW_2);
-                    this_EnumDeclaration_18=ruleEnumDeclaration();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      			current = this_EnumDeclaration_18;
-                      			afterParserOrEnumRuleCall();
-                      		
-                    }
-
-                    }
-                    break;
-                case 10 :
-                    // InternalDart.g:8156:3: this_TypeAlias_19= ruleTypeAlias
+                    // InternalDart.g:8046:4: ( ( ( RULE_ID '=' ) )=> (this_ID_8= RULE_ID otherlv_9= '=' ) )
+                    // InternalDart.g:8047:5: ( ( RULE_ID '=' ) )=> (this_ID_8= RULE_ID otherlv_9= '=' )
                     {
-                    if ( state.backtracking==0 ) {
-
-                      			/* */
-                      		
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      			newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getTypeAliasParserRuleCall_9());
-                      		
-                    }
-                    pushFollow(FOLLOW_2);
-                    this_TypeAlias_19=ruleTypeAlias();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      			current = this_TypeAlias_19;
-                      			afterParserOrEnumRuleCall();
-                      		
-                    }
-
-                    }
-                    break;
-                case 11 :
-                    // InternalDart.g:8168:3: (this_VariableDeclaration_20= ruleVariableDeclaration otherlv_21= ';' )
+                    // InternalDart.g:8052:5: (this_ID_8= RULE_ID otherlv_9= '=' )
+                    // InternalDart.g:8053:6: this_ID_8= RULE_ID otherlv_9= '='
                     {
-                    // InternalDart.g:8168:3: (this_VariableDeclaration_20= ruleVariableDeclaration otherlv_21= ';' )
-                    // InternalDart.g:8169:4: this_VariableDeclaration_20= ruleVariableDeclaration otherlv_21= ';'
-                    {
+                    this_ID_8=(Token)match(input,RULE_ID,FOLLOW_45); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				/* */
-                      			
-                    }
-                    if ( state.backtracking==0 ) {
-
-                      				newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getVariableDeclarationParserRuleCall_10_0());
-                      			
-                    }
-                    pushFollow(FOLLOW_24);
-                    this_VariableDeclaration_20=ruleVariableDeclaration();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      				current = this_VariableDeclaration_20;
-                      				afterParserOrEnumRuleCall();
-                      			
-                    }
-                    otherlv_21=(Token)match(input,19,FOLLOW_2); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      				newLeafNode(otherlv_21, grammarAccess.getTopLevelDeclarationAccess().getSemicolonKeyword_10_1());
-                      			
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 12 :
-                    // InternalDart.g:8186:3: ( ( ( ( RULE_ID '=' ) )=> (this_ID_22= RULE_ID otherlv_23= '=' ) ) this_MixinApplicationClass_24= ruleMixinApplicationClass )
-                    {
-                    // InternalDart.g:8186:3: ( ( ( ( RULE_ID '=' ) )=> (this_ID_22= RULE_ID otherlv_23= '=' ) ) this_MixinApplicationClass_24= ruleMixinApplicationClass )
-                    // InternalDart.g:8187:4: ( ( ( RULE_ID '=' ) )=> (this_ID_22= RULE_ID otherlv_23= '=' ) ) this_MixinApplicationClass_24= ruleMixinApplicationClass
-                    {
-                    // InternalDart.g:8187:4: ( ( ( RULE_ID '=' ) )=> (this_ID_22= RULE_ID otherlv_23= '=' ) )
-                    // InternalDart.g:8188:5: ( ( RULE_ID '=' ) )=> (this_ID_22= RULE_ID otherlv_23= '=' )
-                    {
-                    // InternalDart.g:8193:5: (this_ID_22= RULE_ID otherlv_23= '=' )
-                    // InternalDart.g:8194:6: this_ID_22= RULE_ID otherlv_23= '='
-                    {
-                    this_ID_22=(Token)match(input,RULE_ID,FOLLOW_45); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      						newLeafNode(this_ID_22, grammarAccess.getTopLevelDeclarationAccess().getIDTerminalRuleCall_11_0_0_0());
+                      						newLeafNode(this_ID_8, grammarAccess.getTopLevelDeclarationAccess().getIDTerminalRuleCall_7_0_0_0());
                       					
                     }
-                    otherlv_23=(Token)match(input,17,FOLLOW_5); if (state.failed) return current;
+                    otherlv_9=(Token)match(input,17,FOLLOW_5); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      						newLeafNode(otherlv_23, grammarAccess.getTopLevelDeclarationAccess().getEqualsSignKeyword_11_0_0_1());
+                      						newLeafNode(otherlv_9, grammarAccess.getTopLevelDeclarationAccess().getEqualsSignKeyword_7_0_0_1());
                       					
                     }
 
@@ -22887,17 +22590,17 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
                     }
                     if ( state.backtracking==0 ) {
 
-                      				newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getMixinApplicationClassParserRuleCall_11_1());
+                      				newCompositeNode(grammarAccess.getTopLevelDeclarationAccess().getMixinApplicationClassParserRuleCall_7_1());
                       			
                     }
                     pushFollow(FOLLOW_2);
-                    this_MixinApplicationClass_24=ruleMixinApplicationClass();
+                    this_MixinApplicationClass_10=ruleMixinApplicationClass();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      				current = this_MixinApplicationClass_24;
+                      				current = this_MixinApplicationClass_10;
                       				afterParserOrEnumRuleCall();
                       			
                     }
@@ -22933,7 +22636,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTypeAlias"
-    // InternalDart.g:8220:1: entryRuleTypeAlias returns [EObject current=null] : iv_ruleTypeAlias= ruleTypeAlias EOF ;
+    // InternalDart.g:8079:1: entryRuleTypeAlias returns [EObject current=null] : iv_ruleTypeAlias= ruleTypeAlias EOF ;
     public final EObject entryRuleTypeAlias() throws RecognitionException {
         EObject current = null;
         int entryRuleTypeAlias_StartIndex = input.index();
@@ -22942,8 +22645,8 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 169) ) { return current; }
-            // InternalDart.g:8220:50: (iv_ruleTypeAlias= ruleTypeAlias EOF )
-            // InternalDart.g:8221:2: iv_ruleTypeAlias= ruleTypeAlias EOF
+            // InternalDart.g:8079:50: (iv_ruleTypeAlias= ruleTypeAlias EOF )
+            // InternalDart.g:8080:2: iv_ruleTypeAlias= ruleTypeAlias EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypeAliasRule()); 
@@ -22975,7 +22678,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTypeAlias"
-    // InternalDart.g:8227:1: ruleTypeAlias returns [EObject current=null] : ( ( (lv_metadata_0_0= ruleMetadata ) )* otherlv_1= 'typedef' ( (lv_name_2_0= RULE_ID ) ) ( (lv_typeParameters_3_0= ruleTypeParameters ) )? otherlv_4= '=' ( (lv_type_5_0= ruleType ) ) otherlv_6= ';' ) ;
+    // InternalDart.g:8086:1: ruleTypeAlias returns [EObject current=null] : ( ( (lv_metadata_0_0= ruleMetadata ) )* otherlv_1= 'typedef' ( (lv_name_2_0= RULE_ID ) ) ( (lv_typeParameters_3_0= ruleTypeParameters ) )? otherlv_4= '=' ( (lv_type_5_0= ruleType ) ) otherlv_6= ';' ) ;
     public final EObject ruleTypeAlias() throws RecognitionException {
         EObject current = null;
         int ruleTypeAlias_StartIndex = input.index();
@@ -22995,36 +22698,36 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 170) ) { return current; }
-            // InternalDart.g:8233:2: ( ( ( (lv_metadata_0_0= ruleMetadata ) )* otherlv_1= 'typedef' ( (lv_name_2_0= RULE_ID ) ) ( (lv_typeParameters_3_0= ruleTypeParameters ) )? otherlv_4= '=' ( (lv_type_5_0= ruleType ) ) otherlv_6= ';' ) )
-            // InternalDart.g:8234:2: ( ( (lv_metadata_0_0= ruleMetadata ) )* otherlv_1= 'typedef' ( (lv_name_2_0= RULE_ID ) ) ( (lv_typeParameters_3_0= ruleTypeParameters ) )? otherlv_4= '=' ( (lv_type_5_0= ruleType ) ) otherlv_6= ';' )
+            // InternalDart.g:8092:2: ( ( ( (lv_metadata_0_0= ruleMetadata ) )* otherlv_1= 'typedef' ( (lv_name_2_0= RULE_ID ) ) ( (lv_typeParameters_3_0= ruleTypeParameters ) )? otherlv_4= '=' ( (lv_type_5_0= ruleType ) ) otherlv_6= ';' ) )
+            // InternalDart.g:8093:2: ( ( (lv_metadata_0_0= ruleMetadata ) )* otherlv_1= 'typedef' ( (lv_name_2_0= RULE_ID ) ) ( (lv_typeParameters_3_0= ruleTypeParameters ) )? otherlv_4= '=' ( (lv_type_5_0= ruleType ) ) otherlv_6= ';' )
             {
-            // InternalDart.g:8234:2: ( ( (lv_metadata_0_0= ruleMetadata ) )* otherlv_1= 'typedef' ( (lv_name_2_0= RULE_ID ) ) ( (lv_typeParameters_3_0= ruleTypeParameters ) )? otherlv_4= '=' ( (lv_type_5_0= ruleType ) ) otherlv_6= ';' )
-            // InternalDart.g:8235:3: ( (lv_metadata_0_0= ruleMetadata ) )* otherlv_1= 'typedef' ( (lv_name_2_0= RULE_ID ) ) ( (lv_typeParameters_3_0= ruleTypeParameters ) )? otherlv_4= '=' ( (lv_type_5_0= ruleType ) ) otherlv_6= ';'
+            // InternalDart.g:8093:2: ( ( (lv_metadata_0_0= ruleMetadata ) )* otherlv_1= 'typedef' ( (lv_name_2_0= RULE_ID ) ) ( (lv_typeParameters_3_0= ruleTypeParameters ) )? otherlv_4= '=' ( (lv_type_5_0= ruleType ) ) otherlv_6= ';' )
+            // InternalDart.g:8094:3: ( (lv_metadata_0_0= ruleMetadata ) )* otherlv_1= 'typedef' ( (lv_name_2_0= RULE_ID ) ) ( (lv_typeParameters_3_0= ruleTypeParameters ) )? otherlv_4= '=' ( (lv_type_5_0= ruleType ) ) otherlv_6= ';'
             {
-            // InternalDart.g:8235:3: ( (lv_metadata_0_0= ruleMetadata ) )*
-            loop163:
+            // InternalDart.g:8094:3: ( (lv_metadata_0_0= ruleMetadata ) )*
+            loop162:
             do {
-                int alt163=2;
-                int LA163_0 = input.LA(1);
+                int alt162=2;
+                int LA162_0 = input.LA(1);
 
-                if ( (LA163_0==65) ) {
-                    alt163=1;
+                if ( (LA162_0==65) ) {
+                    alt162=1;
                 }
 
 
-                switch (alt163) {
+                switch (alt162) {
             	case 1 :
-            	    // InternalDart.g:8236:4: (lv_metadata_0_0= ruleMetadata )
+            	    // InternalDart.g:8095:4: (lv_metadata_0_0= ruleMetadata )
             	    {
-            	    // InternalDart.g:8236:4: (lv_metadata_0_0= ruleMetadata )
-            	    // InternalDart.g:8237:5: lv_metadata_0_0= ruleMetadata
+            	    // InternalDart.g:8095:4: (lv_metadata_0_0= ruleMetadata )
+            	    // InternalDart.g:8096:5: lv_metadata_0_0= ruleMetadata
             	    {
             	    if ( state.backtracking==0 ) {
 
             	      					newCompositeNode(grammarAccess.getTypeAliasAccess().getMetadataMetadataParserRuleCall_0_0());
             	      				
             	    }
-            	    pushFollow(FOLLOW_116);
+            	    pushFollow(FOLLOW_115);
             	    lv_metadata_0_0=ruleMetadata();
 
             	    state._fsp--;
@@ -23050,7 +22753,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop163;
+            	    break loop162;
                 }
             } while (true);
 
@@ -23060,11 +22763,11 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_1, grammarAccess.getTypeAliasAccess().getTypedefKeyword_1());
               		
             }
-            // InternalDart.g:8258:3: ( (lv_name_2_0= RULE_ID ) )
-            // InternalDart.g:8259:4: (lv_name_2_0= RULE_ID )
+            // InternalDart.g:8117:3: ( (lv_name_2_0= RULE_ID ) )
+            // InternalDart.g:8118:4: (lv_name_2_0= RULE_ID )
             {
-            // InternalDart.g:8259:4: (lv_name_2_0= RULE_ID )
-            // InternalDart.g:8260:5: lv_name_2_0= RULE_ID
+            // InternalDart.g:8118:4: (lv_name_2_0= RULE_ID )
+            // InternalDart.g:8119:5: lv_name_2_0= RULE_ID
             {
             lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_44); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -23090,19 +22793,19 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDart.g:8276:3: ( (lv_typeParameters_3_0= ruleTypeParameters ) )?
-            int alt164=2;
-            int LA164_0 = input.LA(1);
+            // InternalDart.g:8135:3: ( (lv_typeParameters_3_0= ruleTypeParameters ) )?
+            int alt163=2;
+            int LA163_0 = input.LA(1);
 
-            if ( (LA164_0==60) ) {
-                alt164=1;
+            if ( (LA163_0==60) ) {
+                alt163=1;
             }
-            switch (alt164) {
+            switch (alt163) {
                 case 1 :
-                    // InternalDart.g:8277:4: (lv_typeParameters_3_0= ruleTypeParameters )
+                    // InternalDart.g:8136:4: (lv_typeParameters_3_0= ruleTypeParameters )
                     {
-                    // InternalDart.g:8277:4: (lv_typeParameters_3_0= ruleTypeParameters )
-                    // InternalDart.g:8278:5: lv_typeParameters_3_0= ruleTypeParameters
+                    // InternalDart.g:8136:4: (lv_typeParameters_3_0= ruleTypeParameters )
+                    // InternalDart.g:8137:5: lv_typeParameters_3_0= ruleTypeParameters
                     {
                     if ( state.backtracking==0 ) {
 
@@ -23142,11 +22845,11 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_4, grammarAccess.getTypeAliasAccess().getEqualsSignKeyword_4());
               		
             }
-            // InternalDart.g:8299:3: ( (lv_type_5_0= ruleType ) )
-            // InternalDart.g:8300:4: (lv_type_5_0= ruleType )
+            // InternalDart.g:8158:3: ( (lv_type_5_0= ruleType ) )
+            // InternalDart.g:8159:4: (lv_type_5_0= ruleType )
             {
-            // InternalDart.g:8300:4: (lv_type_5_0= ruleType )
-            // InternalDart.g:8301:5: lv_type_5_0= ruleType
+            // InternalDart.g:8159:4: (lv_type_5_0= ruleType )
+            // InternalDart.g:8160:5: lv_type_5_0= ruleType
             {
             if ( state.backtracking==0 ) {
 
@@ -23209,7 +22912,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleType"
-    // InternalDart.g:8326:1: entryRuleType returns [EObject current=null] : iv_ruleType= ruleType EOF ;
+    // InternalDart.g:8185:1: entryRuleType returns [EObject current=null] : iv_ruleType= ruleType EOF ;
     public final EObject entryRuleType() throws RecognitionException {
         EObject current = null;
         int entryRuleType_StartIndex = input.index();
@@ -23218,8 +22921,8 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 171) ) { return current; }
-            // InternalDart.g:8326:45: (iv_ruleType= ruleType EOF )
-            // InternalDart.g:8327:2: iv_ruleType= ruleType EOF
+            // InternalDart.g:8185:45: (iv_ruleType= ruleType EOF )
+            // InternalDart.g:8186:2: iv_ruleType= ruleType EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypeRule()); 
@@ -23251,7 +22954,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleType"
-    // InternalDart.g:8333:1: ruleType returns [EObject current=null] : ( ( (lv_typeName_0_0= ruleTypeName ) ) ( (lv_typeArguments_1_0= ruleTypeArguments ) )? ( (lv_isNullable_2_0= '?' ) )? ) ;
+    // InternalDart.g:8192:1: ruleType returns [EObject current=null] : ( ( (lv_typeName_0_0= ruleTypeName ) ) ( (lv_typeArguments_1_0= ruleTypeArguments ) )? ( (lv_isNullable_2_0= '?' ) )? ) ;
     public final EObject ruleType() throws RecognitionException {
         EObject current = null;
         int ruleType_StartIndex = input.index();
@@ -23266,24 +22969,24 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 172) ) { return current; }
-            // InternalDart.g:8339:2: ( ( ( (lv_typeName_0_0= ruleTypeName ) ) ( (lv_typeArguments_1_0= ruleTypeArguments ) )? ( (lv_isNullable_2_0= '?' ) )? ) )
-            // InternalDart.g:8340:2: ( ( (lv_typeName_0_0= ruleTypeName ) ) ( (lv_typeArguments_1_0= ruleTypeArguments ) )? ( (lv_isNullable_2_0= '?' ) )? )
+            // InternalDart.g:8198:2: ( ( ( (lv_typeName_0_0= ruleTypeName ) ) ( (lv_typeArguments_1_0= ruleTypeArguments ) )? ( (lv_isNullable_2_0= '?' ) )? ) )
+            // InternalDart.g:8199:2: ( ( (lv_typeName_0_0= ruleTypeName ) ) ( (lv_typeArguments_1_0= ruleTypeArguments ) )? ( (lv_isNullable_2_0= '?' ) )? )
             {
-            // InternalDart.g:8340:2: ( ( (lv_typeName_0_0= ruleTypeName ) ) ( (lv_typeArguments_1_0= ruleTypeArguments ) )? ( (lv_isNullable_2_0= '?' ) )? )
-            // InternalDart.g:8341:3: ( (lv_typeName_0_0= ruleTypeName ) ) ( (lv_typeArguments_1_0= ruleTypeArguments ) )? ( (lv_isNullable_2_0= '?' ) )?
+            // InternalDart.g:8199:2: ( ( (lv_typeName_0_0= ruleTypeName ) ) ( (lv_typeArguments_1_0= ruleTypeArguments ) )? ( (lv_isNullable_2_0= '?' ) )? )
+            // InternalDart.g:8200:3: ( (lv_typeName_0_0= ruleTypeName ) ) ( (lv_typeArguments_1_0= ruleTypeArguments ) )? ( (lv_isNullable_2_0= '?' ) )?
             {
-            // InternalDart.g:8341:3: ( (lv_typeName_0_0= ruleTypeName ) )
-            // InternalDart.g:8342:4: (lv_typeName_0_0= ruleTypeName )
+            // InternalDart.g:8200:3: ( (lv_typeName_0_0= ruleTypeName ) )
+            // InternalDart.g:8201:4: (lv_typeName_0_0= ruleTypeName )
             {
-            // InternalDart.g:8342:4: (lv_typeName_0_0= ruleTypeName )
-            // InternalDart.g:8343:5: lv_typeName_0_0= ruleTypeName
+            // InternalDart.g:8201:4: (lv_typeName_0_0= ruleTypeName )
+            // InternalDart.g:8202:5: lv_typeName_0_0= ruleTypeName
             {
             if ( state.backtracking==0 ) {
 
               					newCompositeNode(grammarAccess.getTypeAccess().getTypeNameTypeNameParserRuleCall_0_0());
               				
             }
-            pushFollow(FOLLOW_117);
+            pushFollow(FOLLOW_116);
             lv_typeName_0_0=ruleTypeName();
 
             state._fsp--;
@@ -23307,19 +23010,19 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDart.g:8360:3: ( (lv_typeArguments_1_0= ruleTypeArguments ) )?
-            int alt165=2;
-            int LA165_0 = input.LA(1);
+            // InternalDart.g:8219:3: ( (lv_typeArguments_1_0= ruleTypeArguments ) )?
+            int alt164=2;
+            int LA164_0 = input.LA(1);
 
-            if ( (LA165_0==60) ) {
-                alt165=1;
+            if ( (LA164_0==60) ) {
+                alt164=1;
             }
-            switch (alt165) {
+            switch (alt164) {
                 case 1 :
-                    // InternalDart.g:8361:4: (lv_typeArguments_1_0= ruleTypeArguments )
+                    // InternalDart.g:8220:4: (lv_typeArguments_1_0= ruleTypeArguments )
                     {
-                    // InternalDart.g:8361:4: (lv_typeArguments_1_0= ruleTypeArguments )
-                    // InternalDart.g:8362:5: lv_typeArguments_1_0= ruleTypeArguments
+                    // InternalDart.g:8220:4: (lv_typeArguments_1_0= ruleTypeArguments )
+                    // InternalDart.g:8221:5: lv_typeArguments_1_0= ruleTypeArguments
                     {
                     if ( state.backtracking==0 ) {
 
@@ -23353,15 +23056,15 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDart.g:8379:3: ( (lv_isNullable_2_0= '?' ) )?
-            int alt166=2;
-            alt166 = dfa166.predict(input);
-            switch (alt166) {
+            // InternalDart.g:8238:3: ( (lv_isNullable_2_0= '?' ) )?
+            int alt165=2;
+            alt165 = dfa165.predict(input);
+            switch (alt165) {
                 case 1 :
-                    // InternalDart.g:8380:4: (lv_isNullable_2_0= '?' )
+                    // InternalDart.g:8239:4: (lv_isNullable_2_0= '?' )
                     {
-                    // InternalDart.g:8380:4: (lv_isNullable_2_0= '?' )
-                    // InternalDart.g:8381:5: lv_isNullable_2_0= '?'
+                    // InternalDart.g:8239:4: (lv_isNullable_2_0= '?' )
+                    // InternalDart.g:8240:5: lv_isNullable_2_0= '?'
                     {
                     lv_isNullable_2_0=(Token)match(input,80,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -23412,7 +23115,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTypeName"
-    // InternalDart.g:8397:1: entryRuleTypeName returns [EObject current=null] : iv_ruleTypeName= ruleTypeName EOF ;
+    // InternalDart.g:8256:1: entryRuleTypeName returns [EObject current=null] : iv_ruleTypeName= ruleTypeName EOF ;
     public final EObject entryRuleTypeName() throws RecognitionException {
         EObject current = null;
         int entryRuleTypeName_StartIndex = input.index();
@@ -23421,8 +23124,8 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 173) ) { return current; }
-            // InternalDart.g:8397:49: (iv_ruleTypeName= ruleTypeName EOF )
-            // InternalDart.g:8398:2: iv_ruleTypeName= ruleTypeName EOF
+            // InternalDart.g:8256:49: (iv_ruleTypeName= ruleTypeName EOF )
+            // InternalDart.g:8257:2: iv_ruleTypeName= ruleTypeName EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypeNameRule()); 
@@ -23454,7 +23157,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTypeName"
-    // InternalDart.g:8404:1: ruleTypeName returns [EObject current=null] : ( ( (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' ) ) ) ;
+    // InternalDart.g:8263:1: ruleTypeName returns [EObject current=null] : ( ( (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' ) ) ) ;
     public final EObject ruleTypeName() throws RecognitionException {
         EObject current = null;
         int ruleTypeName_StartIndex = input.index();
@@ -23469,49 +23172,49 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 174) ) { return current; }
-            // InternalDart.g:8410:2: ( ( ( (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' ) ) ) )
-            // InternalDart.g:8411:2: ( ( (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' ) ) )
+            // InternalDart.g:8269:2: ( ( ( (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' ) ) ) )
+            // InternalDart.g:8270:2: ( ( (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' ) ) )
             {
-            // InternalDart.g:8411:2: ( ( (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' ) ) )
-            // InternalDart.g:8412:3: ( (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' ) )
+            // InternalDart.g:8270:2: ( ( (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' ) ) )
+            // InternalDart.g:8271:3: ( (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' ) )
             {
-            // InternalDart.g:8412:3: ( (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' ) )
-            // InternalDart.g:8413:4: (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' )
+            // InternalDart.g:8271:3: ( (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' ) )
+            // InternalDart.g:8272:4: (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' )
             {
-            // InternalDart.g:8413:4: (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' )
-            int alt167=4;
+            // InternalDart.g:8272:4: (lv_name_0_1= ruleQualifiedName | lv_name_0_2= 'Function' | lv_name_0_3= 'void' | lv_name_0_4= 'dynamic' )
+            int alt166=4;
             switch ( input.LA(1) ) {
             case RULE_ID:
                 {
-                alt167=1;
+                alt166=1;
                 }
                 break;
             case 124:
                 {
-                alt167=2;
+                alt166=2;
                 }
                 break;
             case 97:
                 {
-                alt167=3;
+                alt166=3;
                 }
                 break;
             case 98:
                 {
-                alt167=4;
+                alt166=4;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 167, 0, input);
+                    new NoViableAltException("", 166, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt167) {
+            switch (alt166) {
                 case 1 :
-                    // InternalDart.g:8414:5: lv_name_0_1= ruleQualifiedName
+                    // InternalDart.g:8273:5: lv_name_0_1= ruleQualifiedName
                     {
                     if ( state.backtracking==0 ) {
 
@@ -23540,7 +23243,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDart.g:8430:5: lv_name_0_2= 'Function'
+                    // InternalDart.g:8289:5: lv_name_0_2= 'Function'
                     {
                     lv_name_0_2=(Token)match(input,124,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -23560,7 +23263,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalDart.g:8441:5: lv_name_0_3= 'void'
+                    // InternalDart.g:8300:5: lv_name_0_3= 'void'
                     {
                     lv_name_0_3=(Token)match(input,97,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -23580,7 +23283,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalDart.g:8452:5: lv_name_0_4= 'dynamic'
+                    // InternalDart.g:8311:5: lv_name_0_4= 'dynamic'
                     {
                     lv_name_0_4=(Token)match(input,98,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -23631,7 +23334,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTypeArguments"
-    // InternalDart.g:8468:1: entryRuleTypeArguments returns [EObject current=null] : iv_ruleTypeArguments= ruleTypeArguments EOF ;
+    // InternalDart.g:8327:1: entryRuleTypeArguments returns [EObject current=null] : iv_ruleTypeArguments= ruleTypeArguments EOF ;
     public final EObject entryRuleTypeArguments() throws RecognitionException {
         EObject current = null;
         int entryRuleTypeArguments_StartIndex = input.index();
@@ -23640,8 +23343,8 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 175) ) { return current; }
-            // InternalDart.g:8468:54: (iv_ruleTypeArguments= ruleTypeArguments EOF )
-            // InternalDart.g:8469:2: iv_ruleTypeArguments= ruleTypeArguments EOF
+            // InternalDart.g:8327:54: (iv_ruleTypeArguments= ruleTypeArguments EOF )
+            // InternalDart.g:8328:2: iv_ruleTypeArguments= ruleTypeArguments EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypeArgumentsRule()); 
@@ -23673,7 +23376,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTypeArguments"
-    // InternalDart.g:8475:1: ruleTypeArguments returns [EObject current=null] : (otherlv_0= '<' ( (lv_types_1_0= ruleType ) ) (otherlv_2= ',' ( (lv_types_3_0= ruleType ) ) )* otherlv_4= '>' ) ;
+    // InternalDart.g:8334:1: ruleTypeArguments returns [EObject current=null] : (otherlv_0= '<' ( (lv_types_1_0= ruleType ) ) (otherlv_2= ',' ( (lv_types_3_0= ruleType ) ) )* otherlv_4= '>' ) ;
     public final EObject ruleTypeArguments() throws RecognitionException {
         EObject current = null;
         int ruleTypeArguments_StartIndex = input.index();
@@ -23690,11 +23393,11 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
         try {
             if ( state.backtracking>0 && alreadyParsedRule(input, 176) ) { return current; }
-            // InternalDart.g:8481:2: ( (otherlv_0= '<' ( (lv_types_1_0= ruleType ) ) (otherlv_2= ',' ( (lv_types_3_0= ruleType ) ) )* otherlv_4= '>' ) )
-            // InternalDart.g:8482:2: (otherlv_0= '<' ( (lv_types_1_0= ruleType ) ) (otherlv_2= ',' ( (lv_types_3_0= ruleType ) ) )* otherlv_4= '>' )
+            // InternalDart.g:8340:2: ( (otherlv_0= '<' ( (lv_types_1_0= ruleType ) ) (otherlv_2= ',' ( (lv_types_3_0= ruleType ) ) )* otherlv_4= '>' ) )
+            // InternalDart.g:8341:2: (otherlv_0= '<' ( (lv_types_1_0= ruleType ) ) (otherlv_2= ',' ( (lv_types_3_0= ruleType ) ) )* otherlv_4= '>' )
             {
-            // InternalDart.g:8482:2: (otherlv_0= '<' ( (lv_types_1_0= ruleType ) ) (otherlv_2= ',' ( (lv_types_3_0= ruleType ) ) )* otherlv_4= '>' )
-            // InternalDart.g:8483:3: otherlv_0= '<' ( (lv_types_1_0= ruleType ) ) (otherlv_2= ',' ( (lv_types_3_0= ruleType ) ) )* otherlv_4= '>'
+            // InternalDart.g:8341:2: (otherlv_0= '<' ( (lv_types_1_0= ruleType ) ) (otherlv_2= ',' ( (lv_types_3_0= ruleType ) ) )* otherlv_4= '>' )
+            // InternalDart.g:8342:3: otherlv_0= '<' ( (lv_types_1_0= ruleType ) ) (otherlv_2= ',' ( (lv_types_3_0= ruleType ) ) )* otherlv_4= '>'
             {
             otherlv_0=(Token)match(input,60,FOLLOW_4); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -23702,11 +23405,11 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_0, grammarAccess.getTypeArgumentsAccess().getLessThanSignKeyword_0());
               		
             }
-            // InternalDart.g:8487:3: ( (lv_types_1_0= ruleType ) )
-            // InternalDart.g:8488:4: (lv_types_1_0= ruleType )
+            // InternalDart.g:8346:3: ( (lv_types_1_0= ruleType ) )
+            // InternalDart.g:8347:4: (lv_types_1_0= ruleType )
             {
-            // InternalDart.g:8488:4: (lv_types_1_0= ruleType )
-            // InternalDart.g:8489:5: lv_types_1_0= ruleType
+            // InternalDart.g:8347:4: (lv_types_1_0= ruleType )
+            // InternalDart.g:8348:5: lv_types_1_0= ruleType
             {
             if ( state.backtracking==0 ) {
 
@@ -23737,20 +23440,20 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDart.g:8506:3: (otherlv_2= ',' ( (lv_types_3_0= ruleType ) ) )*
-            loop168:
+            // InternalDart.g:8365:3: (otherlv_2= ',' ( (lv_types_3_0= ruleType ) ) )*
+            loop167:
             do {
-                int alt168=2;
-                int LA168_0 = input.LA(1);
+                int alt167=2;
+                int LA167_0 = input.LA(1);
 
-                if ( (LA168_0==16) ) {
-                    alt168=1;
+                if ( (LA167_0==16) ) {
+                    alt167=1;
                 }
 
 
-                switch (alt168) {
+                switch (alt167) {
             	case 1 :
-            	    // InternalDart.g:8507:4: otherlv_2= ',' ( (lv_types_3_0= ruleType ) )
+            	    // InternalDart.g:8366:4: otherlv_2= ',' ( (lv_types_3_0= ruleType ) )
             	    {
             	    otherlv_2=(Token)match(input,16,FOLLOW_4); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
@@ -23758,11 +23461,11 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
             	      				newLeafNode(otherlv_2, grammarAccess.getTypeArgumentsAccess().getCommaKeyword_2_0());
             	      			
             	    }
-            	    // InternalDart.g:8511:4: ( (lv_types_3_0= ruleType ) )
-            	    // InternalDart.g:8512:5: (lv_types_3_0= ruleType )
+            	    // InternalDart.g:8370:4: ( (lv_types_3_0= ruleType ) )
+            	    // InternalDart.g:8371:5: (lv_types_3_0= ruleType )
             	    {
-            	    // InternalDart.g:8512:5: (lv_types_3_0= ruleType )
-            	    // InternalDart.g:8513:6: lv_types_3_0= ruleType
+            	    // InternalDart.g:8371:5: (lv_types_3_0= ruleType )
+            	    // InternalDart.g:8372:6: lv_types_3_0= ruleType
             	    {
             	    if ( state.backtracking==0 ) {
 
@@ -23798,7 +23501,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop168;
+            	    break loop167;
                 }
             } while (true);
 
@@ -23986,13 +23689,13 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         }
 
         // InternalDart.g:5114:4: (otherlv_23= '.' ( (lv_constructor_24_0= RULE_ID ) ) )?
-        int alt187=2;
-        int LA187_0 = input.LA(1);
+        int alt186=2;
+        int LA186_0 = input.LA(1);
 
-        if ( (LA187_0==66) ) {
-            alt187=1;
+        if ( (LA186_0==66) ) {
+            alt186=1;
         }
-        switch (alt187) {
+        switch (alt186) {
             case 1 :
                 // InternalDart.g:5115:5: otherlv_23= '.' ( (lv_constructor_24_0= RULE_ID ) )
                 {
@@ -24077,13 +23780,13 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         }
 
         // InternalDart.g:5170:4: ( (lv_isConst_27_0= 'const' ) )?
-        int alt189=2;
-        int LA189_0 = input.LA(1);
+        int alt188=2;
+        int LA188_0 = input.LA(1);
 
-        if ( (LA189_0==15) ) {
-            alt189=1;
+        if ( (LA188_0==15) ) {
+            alt188=1;
         }
-        switch (alt189) {
+        switch (alt188) {
             case 1 :
                 // InternalDart.g:5171:5: (lv_isConst_27_0= 'const' )
                 {
@@ -24101,13 +23804,13 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         }
 
         // InternalDart.g:5184:4: ( (lv_typeArguments_28_0= ruleTypeArguments ) )?
-        int alt190=2;
-        int LA190_0 = input.LA(1);
+        int alt189=2;
+        int LA189_0 = input.LA(1);
 
-        if ( (LA190_0==60) ) {
-            alt190=1;
+        if ( (LA189_0==60) ) {
+            alt189=1;
         }
-        switch (alt190) {
+        switch (alt189) {
             case 1 :
                 // InternalDart.g:5185:5: (lv_typeArguments_28_0= ruleTypeArguments )
                 {
@@ -24135,13 +23838,13 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
         otherlv_29=(Token)match(input,23,FOLLOW_81); if (state.failed) return ;
         // InternalDart.g:5207:4: ( ( (lv_elements_30_0= ruleExpression ) ) (otherlv_31= ',' ( (lv_elements_32_0= ruleExpression ) ) )* )?
-        int alt192=2;
-        int LA192_0 = input.LA(1);
+        int alt191=2;
+        int LA191_0 = input.LA(1);
 
-        if ( ((LA192_0>=RULE_ID && LA192_0<=RULE_STRING)||LA192_0==15||LA192_0==20||LA192_0==23||LA192_0==25||LA192_0==42||LA192_0==50||LA192_0==60||(LA192_0>=87 && LA192_0<=96)) ) {
-            alt192=1;
+        if ( ((LA191_0>=RULE_ID && LA191_0<=RULE_STRING)||LA191_0==15||LA191_0==20||LA191_0==23||LA191_0==25||LA191_0==42||LA191_0==50||LA191_0==60||(LA191_0>=87 && LA191_0<=96)) ) {
+            alt191=1;
         }
-        switch (alt192) {
+        switch (alt191) {
             case 1 :
                 // InternalDart.g:5208:5: ( (lv_elements_30_0= ruleExpression ) ) (otherlv_31= ',' ( (lv_elements_32_0= ruleExpression ) ) )*
                 {
@@ -24168,17 +23871,17 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
                 }
 
                 // InternalDart.g:5227:5: (otherlv_31= ',' ( (lv_elements_32_0= ruleExpression ) ) )*
-                loop191:
+                loop190:
                 do {
-                    int alt191=2;
-                    int LA191_0 = input.LA(1);
+                    int alt190=2;
+                    int LA190_0 = input.LA(1);
 
-                    if ( (LA191_0==16) ) {
-                        alt191=1;
+                    if ( (LA190_0==16) ) {
+                        alt190=1;
                     }
 
 
-                    switch (alt191) {
+                    switch (alt190) {
                 	case 1 :
                 	    // InternalDart.g:5228:6: otherlv_31= ',' ( (lv_elements_32_0= ruleExpression ) )
                 	    {
@@ -24210,7 +23913,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
                 	    break;
 
                 	default :
-                	    break loop191;
+                	    break loop190;
                     }
                 } while (true);
 
@@ -24260,13 +23963,13 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         }
 
         // InternalDart.g:5270:4: ( (lv_isConst_35_0= 'const' ) )?
-        int alt194=2;
-        int LA194_0 = input.LA(1);
+        int alt193=2;
+        int LA193_0 = input.LA(1);
 
-        if ( (LA194_0==15) ) {
-            alt194=1;
+        if ( (LA193_0==15) ) {
+            alt193=1;
         }
-        switch (alt194) {
+        switch (alt193) {
             case 1 :
                 // InternalDart.g:5271:5: (lv_isConst_35_0= 'const' )
                 {
@@ -24284,13 +23987,13 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         }
 
         // InternalDart.g:5284:4: ( (lv_typeArguments_36_0= ruleTypeArguments ) )?
-        int alt195=2;
-        int LA195_0 = input.LA(1);
+        int alt194=2;
+        int LA194_0 = input.LA(1);
 
-        if ( (LA195_0==60) ) {
-            alt195=1;
+        if ( (LA194_0==60) ) {
+            alt194=1;
         }
-        switch (alt195) {
+        switch (alt194) {
             case 1 :
                 // InternalDart.g:5285:5: (lv_typeArguments_36_0= ruleTypeArguments )
                 {
@@ -24318,13 +24021,13 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
         otherlv_37=(Token)match(input,25,FOLLOW_83); if (state.failed) return ;
         // InternalDart.g:5307:4: ( ( (lv_elements_38_0= ruleMapOrSetElement ) ) (otherlv_39= ',' ( (lv_elements_40_0= ruleMapOrSetElement ) ) )* )?
-        int alt197=2;
-        int LA197_0 = input.LA(1);
+        int alt196=2;
+        int LA196_0 = input.LA(1);
 
-        if ( ((LA197_0>=RULE_ID && LA197_0<=RULE_STRING)||LA197_0==15||LA197_0==20||LA197_0==23||LA197_0==25||LA197_0==42||LA197_0==50||LA197_0==60||(LA197_0>=87 && LA197_0<=96)) ) {
-            alt197=1;
+        if ( ((LA196_0>=RULE_ID && LA196_0<=RULE_STRING)||LA196_0==15||LA196_0==20||LA196_0==23||LA196_0==25||LA196_0==42||LA196_0==50||LA196_0==60||(LA196_0>=87 && LA196_0<=96)) ) {
+            alt196=1;
         }
-        switch (alt197) {
+        switch (alt196) {
             case 1 :
                 // InternalDart.g:5308:5: ( (lv_elements_38_0= ruleMapOrSetElement ) ) (otherlv_39= ',' ( (lv_elements_40_0= ruleMapOrSetElement ) ) )*
                 {
@@ -24351,17 +24054,17 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
                 }
 
                 // InternalDart.g:5327:5: (otherlv_39= ',' ( (lv_elements_40_0= ruleMapOrSetElement ) ) )*
-                loop196:
+                loop195:
                 do {
-                    int alt196=2;
-                    int LA196_0 = input.LA(1);
+                    int alt195=2;
+                    int LA195_0 = input.LA(1);
 
-                    if ( (LA196_0==16) ) {
-                        alt196=1;
+                    if ( (LA195_0==16) ) {
+                        alt195=1;
                     }
 
 
-                    switch (alt196) {
+                    switch (alt195) {
                 	case 1 :
                 	    // InternalDart.g:5328:6: otherlv_39= ',' ( (lv_elements_40_0= ruleMapOrSetElement ) )
                 	    {
@@ -24393,7 +24096,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
                 	    break;
 
                 	default :
-                	    break loop196;
+                	    break loop195;
                     }
                 } while (true);
 
@@ -24477,37 +24180,37 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         // InternalDart.g:5716:5: ( ( 'var' | 'final' | 'const' | 'late' ) )=> (otherlv_12= 'var' | otherlv_13= 'final' | otherlv_14= 'const' | otherlv_15= 'late' )
         {
         // InternalDart.g:5726:5: (otherlv_12= 'var' | otherlv_13= 'final' | otherlv_14= 'const' | otherlv_15= 'late' )
-        int alt198=4;
+        int alt197=4;
         switch ( input.LA(1) ) {
         case 13:
             {
-            alt198=1;
+            alt197=1;
             }
             break;
         case 14:
             {
-            alt198=2;
+            alt197=2;
             }
             break;
         case 15:
             {
-            alt198=3;
+            alt197=3;
             }
             break;
         case 12:
             {
-            alt198=4;
+            alt197=4;
             }
             break;
         default:
             if (state.backtracking>0) {state.failed=true; return ;}
             NoViableAltException nvae =
-                new NoViableAltException("", 198, 0, input);
+                new NoViableAltException("", 197, 0, input);
 
             throw nvae;
         }
 
-        switch (alt198) {
+        switch (alt197) {
             case 1 :
                 // InternalDart.g:5727:6: otherlv_12= 'var'
                 {
@@ -24923,202 +24626,105 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end synpred236_InternalDart
 
-    // $ANTLR start synpred251_InternalDart
-    public final void synpred251_InternalDart_fragment() throws RecognitionException {   
-        Token otherlv_0=null;
-        Token otherlv_1=null;
-        EObject this_FunctionDeclaration_2 = null;
+    // $ANTLR start synpred248_InternalDart
+    public final void synpred248_InternalDart_fragment() throws RecognitionException {   
+        EObject this_FunctionDeclaration_0 = null;
 
 
-        // InternalDart.g:7955:3: ( ( ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) ) this_FunctionDeclaration_2= ruleFunctionDeclaration ) )
-        // InternalDart.g:7955:3: ( ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) ) this_FunctionDeclaration_2= ruleFunctionDeclaration )
+        // InternalDart.g:7955:3: (this_FunctionDeclaration_0= ruleFunctionDeclaration )
+        // InternalDart.g:7955:3: this_FunctionDeclaration_0= ruleFunctionDeclaration
         {
-        // InternalDart.g:7955:3: ( ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) ) this_FunctionDeclaration_2= ruleFunctionDeclaration )
-        // InternalDart.g:7956:4: ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) ) this_FunctionDeclaration_2= ruleFunctionDeclaration
-        {
-        // InternalDart.g:7956:4: ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) )
-        // InternalDart.g:7957:5: ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' )
-        {
-        // InternalDart.g:7963:5: (otherlv_0= 'void' | otherlv_1= 'dynamic' )
-        int alt202=2;
-        int LA202_0 = input.LA(1);
+        if ( state.backtracking==0 ) {
 
-        if ( (LA202_0==97) ) {
-            alt202=1;
+          			/* */
+          		
         }
-        else if ( (LA202_0==98) ) {
-            alt202=2;
-        }
-        else {
-            if (state.backtracking>0) {state.failed=true; return ;}
-            NoViableAltException nvae =
-                new NoViableAltException("", 202, 0, input);
-
-            throw nvae;
-        }
-        switch (alt202) {
-            case 1 :
-                // InternalDart.g:7964:6: otherlv_0= 'void'
-                {
-                otherlv_0=(Token)match(input,97,FOLLOW_9); if (state.failed) return ;
-
-                }
-                break;
-            case 2 :
-                // InternalDart.g:7969:6: otherlv_1= 'dynamic'
-                {
-                otherlv_1=(Token)match(input,98,FOLLOW_9); if (state.failed) return ;
-
-                }
-                break;
-
-        }
-
-
-        }
-
         pushFollow(FOLLOW_2);
-        this_FunctionDeclaration_2=ruleFunctionDeclaration();
+        this_FunctionDeclaration_0=ruleFunctionDeclaration();
 
         state._fsp--;
         if (state.failed) return ;
 
         }
+    }
+    // $ANTLR end synpred248_InternalDart
 
+    // $ANTLR start synpred249_InternalDart
+    public final void synpred249_InternalDart_fragment() throws RecognitionException {   
+        EObject this_ClassDeclaration_1 = null;
+
+
+        // InternalDart.g:7967:3: (this_ClassDeclaration_1= ruleClassDeclaration )
+        // InternalDart.g:7967:3: this_ClassDeclaration_1= ruleClassDeclaration
+        {
+        if ( state.backtracking==0 ) {
+
+          			/* */
+          		
+        }
+        pushFollow(FOLLOW_2);
+        this_ClassDeclaration_1=ruleClassDeclaration();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred249_InternalDart
+
+    // $ANTLR start synpred250_InternalDart
+    public final void synpred250_InternalDart_fragment() throws RecognitionException {   
+        EObject this_MixinDeclaration_2 = null;
+
+
+        // InternalDart.g:7979:3: (this_MixinDeclaration_2= ruleMixinDeclaration )
+        // InternalDart.g:7979:3: this_MixinDeclaration_2= ruleMixinDeclaration
+        {
+        if ( state.backtracking==0 ) {
+
+          			/* */
+          		
+        }
+        pushFollow(FOLLOW_2);
+        this_MixinDeclaration_2=ruleMixinDeclaration();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+    }
+    // $ANTLR end synpred250_InternalDart
+
+    // $ANTLR start synpred251_InternalDart
+    public final void synpred251_InternalDart_fragment() throws RecognitionException {   
+        EObject this_ExtensionDeclaration_3 = null;
+
+
+        // InternalDart.g:7991:3: (this_ExtensionDeclaration_3= ruleExtensionDeclaration )
+        // InternalDart.g:7991:3: this_ExtensionDeclaration_3= ruleExtensionDeclaration
+        {
+        if ( state.backtracking==0 ) {
+
+          			/* */
+          		
+        }
+        pushFollow(FOLLOW_2);
+        this_ExtensionDeclaration_3=ruleExtensionDeclaration();
+
+        state._fsp--;
+        if (state.failed) return ;
 
         }
     }
     // $ANTLR end synpred251_InternalDart
 
-    // $ANTLR start synpred255_InternalDart
-    public final void synpred255_InternalDart_fragment() throws RecognitionException {   
-        Token this_ID_5=null;
-        Token otherlv_6=null;
-        EObject this_FunctionDeclaration_7 = null;
+    // $ANTLR start synpred252_InternalDart
+    public final void synpred252_InternalDart_fragment() throws RecognitionException {   
+        EObject this_EnumDeclaration_4 = null;
 
 
-        // InternalDart.g:8010:3: ( ( ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) ) this_FunctionDeclaration_7= ruleFunctionDeclaration ) )
-        // InternalDart.g:8010:3: ( ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) ) this_FunctionDeclaration_7= ruleFunctionDeclaration )
-        {
-        // InternalDart.g:8010:3: ( ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) ) this_FunctionDeclaration_7= ruleFunctionDeclaration )
-        // InternalDart.g:8011:4: ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) ) this_FunctionDeclaration_7= ruleFunctionDeclaration
-        {
-        // InternalDart.g:8011:4: ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) )
-        // InternalDart.g:8012:5: ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' )
-        {
-        // InternalDart.g:8017:5: (this_ID_5= RULE_ID otherlv_6= '(' )
-        // InternalDart.g:8018:6: this_ID_5= RULE_ID otherlv_6= '('
-        {
-        this_ID_5=(Token)match(input,RULE_ID,FOLLOW_76); if (state.failed) return ;
-        otherlv_6=(Token)match(input,20,FOLLOW_9); if (state.failed) return ;
-
-        }
-
-
-        }
-
-        pushFollow(FOLLOW_2);
-        this_FunctionDeclaration_7=ruleFunctionDeclaration();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-
-
-        }
-    }
-    // $ANTLR end synpred255_InternalDart
-
-    // $ANTLR start synpred257_InternalDart
-    public final void synpred257_InternalDart_fragment() throws RecognitionException {   
-        Token this_ID_8=null;
-        Token this_ID_9=null;
-        Token otherlv_10=null;
-        EObject this_FunctionDeclaration_11 = null;
-
-
-        // InternalDart.g:8041:3: ( ( ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) ) this_FunctionDeclaration_11= ruleFunctionDeclaration ) )
-        // InternalDart.g:8041:3: ( ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) ) this_FunctionDeclaration_11= ruleFunctionDeclaration )
-        {
-        // InternalDart.g:8041:3: ( ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) ) this_FunctionDeclaration_11= ruleFunctionDeclaration )
-        // InternalDart.g:8042:4: ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) ) this_FunctionDeclaration_11= ruleFunctionDeclaration
-        {
-        // InternalDart.g:8042:4: ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) )
-        // InternalDart.g:8043:5: ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' )
-        {
-        // InternalDart.g:8049:5: (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' )
-        // InternalDart.g:8050:6: this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '('
-        {
-        this_ID_8=(Token)match(input,RULE_ID,FOLLOW_5); if (state.failed) return ;
-        this_ID_9=(Token)match(input,RULE_ID,FOLLOW_76); if (state.failed) return ;
-        otherlv_10=(Token)match(input,20,FOLLOW_9); if (state.failed) return ;
-
-        }
-
-
-        }
-
-        pushFollow(FOLLOW_2);
-        this_FunctionDeclaration_11=ruleFunctionDeclaration();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-
-
-        }
-    }
-    // $ANTLR end synpred257_InternalDart
-
-    // $ANTLR start synpred259_InternalDart
-    public final void synpred259_InternalDart_fragment() throws RecognitionException {   
-        Token this_ID_12=null;
-        Token otherlv_13=null;
-        EObject this_FunctionDeclaration_14 = null;
-
-
-        // InternalDart.g:8077:3: ( ( ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) ) this_FunctionDeclaration_14= ruleFunctionDeclaration ) )
-        // InternalDart.g:8077:3: ( ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) ) this_FunctionDeclaration_14= ruleFunctionDeclaration )
-        {
-        // InternalDart.g:8077:3: ( ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) ) this_FunctionDeclaration_14= ruleFunctionDeclaration )
-        // InternalDart.g:8078:4: ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) ) this_FunctionDeclaration_14= ruleFunctionDeclaration
-        {
-        // InternalDart.g:8078:4: ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) )
-        // InternalDart.g:8079:5: ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' )
-        {
-        // InternalDart.g:8084:5: (this_ID_12= RULE_ID otherlv_13= '<' )
-        // InternalDart.g:8085:6: this_ID_12= RULE_ID otherlv_13= '<'
-        {
-        this_ID_12=(Token)match(input,RULE_ID,FOLLOW_115); if (state.failed) return ;
-        otherlv_13=(Token)match(input,60,FOLLOW_9); if (state.failed) return ;
-
-        }
-
-
-        }
-
-        pushFollow(FOLLOW_2);
-        this_FunctionDeclaration_14=ruleFunctionDeclaration();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-
-
-        }
-    }
-    // $ANTLR end synpred259_InternalDart
-
-    // $ANTLR start synpred260_InternalDart
-    public final void synpred260_InternalDart_fragment() throws RecognitionException {   
-        EObject this_ClassDeclaration_15 = null;
-
-
-        // InternalDart.g:8108:3: (this_ClassDeclaration_15= ruleClassDeclaration )
-        // InternalDart.g:8108:3: this_ClassDeclaration_15= ruleClassDeclaration
+        // InternalDart.g:8003:3: (this_EnumDeclaration_4= ruleEnumDeclaration )
+        // InternalDart.g:8003:3: this_EnumDeclaration_4= ruleEnumDeclaration
         {
         if ( state.backtracking==0 ) {
 
@@ -25126,22 +24732,22 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
           		
         }
         pushFollow(FOLLOW_2);
-        this_ClassDeclaration_15=ruleClassDeclaration();
+        this_EnumDeclaration_4=ruleEnumDeclaration();
 
         state._fsp--;
         if (state.failed) return ;
 
         }
     }
-    // $ANTLR end synpred260_InternalDart
+    // $ANTLR end synpred252_InternalDart
 
-    // $ANTLR start synpred261_InternalDart
-    public final void synpred261_InternalDart_fragment() throws RecognitionException {   
-        EObject this_MixinDeclaration_16 = null;
+    // $ANTLR start synpred253_InternalDart
+    public final void synpred253_InternalDart_fragment() throws RecognitionException {   
+        EObject this_TypeAlias_5 = null;
 
 
-        // InternalDart.g:8120:3: (this_MixinDeclaration_16= ruleMixinDeclaration )
-        // InternalDart.g:8120:3: this_MixinDeclaration_16= ruleMixinDeclaration
+        // InternalDart.g:8015:3: (this_TypeAlias_5= ruleTypeAlias )
+        // InternalDart.g:8015:3: this_TypeAlias_5= ruleTypeAlias
         {
         if ( state.backtracking==0 ) {
 
@@ -25149,95 +24755,26 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
           		
         }
         pushFollow(FOLLOW_2);
-        this_MixinDeclaration_16=ruleMixinDeclaration();
+        this_TypeAlias_5=ruleTypeAlias();
 
         state._fsp--;
         if (state.failed) return ;
 
         }
     }
-    // $ANTLR end synpred261_InternalDart
+    // $ANTLR end synpred253_InternalDart
 
-    // $ANTLR start synpred262_InternalDart
-    public final void synpred262_InternalDart_fragment() throws RecognitionException {   
-        EObject this_ExtensionDeclaration_17 = null;
+    // $ANTLR start synpred254_InternalDart
+    public final void synpred254_InternalDart_fragment() throws RecognitionException {   
+        Token otherlv_7=null;
+        EObject this_VariableDeclaration_6 = null;
 
 
-        // InternalDart.g:8132:3: (this_ExtensionDeclaration_17= ruleExtensionDeclaration )
-        // InternalDart.g:8132:3: this_ExtensionDeclaration_17= ruleExtensionDeclaration
+        // InternalDart.g:8027:3: ( (this_VariableDeclaration_6= ruleVariableDeclaration otherlv_7= ';' ) )
+        // InternalDart.g:8027:3: (this_VariableDeclaration_6= ruleVariableDeclaration otherlv_7= ';' )
         {
-        if ( state.backtracking==0 ) {
-
-          			/* */
-          		
-        }
-        pushFollow(FOLLOW_2);
-        this_ExtensionDeclaration_17=ruleExtensionDeclaration();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-    }
-    // $ANTLR end synpred262_InternalDart
-
-    // $ANTLR start synpred263_InternalDart
-    public final void synpred263_InternalDart_fragment() throws RecognitionException {   
-        EObject this_EnumDeclaration_18 = null;
-
-
-        // InternalDart.g:8144:3: (this_EnumDeclaration_18= ruleEnumDeclaration )
-        // InternalDart.g:8144:3: this_EnumDeclaration_18= ruleEnumDeclaration
-        {
-        if ( state.backtracking==0 ) {
-
-          			/* */
-          		
-        }
-        pushFollow(FOLLOW_2);
-        this_EnumDeclaration_18=ruleEnumDeclaration();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-    }
-    // $ANTLR end synpred263_InternalDart
-
-    // $ANTLR start synpred264_InternalDart
-    public final void synpred264_InternalDart_fragment() throws RecognitionException {   
-        EObject this_TypeAlias_19 = null;
-
-
-        // InternalDart.g:8156:3: (this_TypeAlias_19= ruleTypeAlias )
-        // InternalDart.g:8156:3: this_TypeAlias_19= ruleTypeAlias
-        {
-        if ( state.backtracking==0 ) {
-
-          			/* */
-          		
-        }
-        pushFollow(FOLLOW_2);
-        this_TypeAlias_19=ruleTypeAlias();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-    }
-    // $ANTLR end synpred264_InternalDart
-
-    // $ANTLR start synpred265_InternalDart
-    public final void synpred265_InternalDart_fragment() throws RecognitionException {   
-        Token otherlv_21=null;
-        EObject this_VariableDeclaration_20 = null;
-
-
-        // InternalDart.g:8168:3: ( (this_VariableDeclaration_20= ruleVariableDeclaration otherlv_21= ';' ) )
-        // InternalDart.g:8168:3: (this_VariableDeclaration_20= ruleVariableDeclaration otherlv_21= ';' )
-        {
-        // InternalDart.g:8168:3: (this_VariableDeclaration_20= ruleVariableDeclaration otherlv_21= ';' )
-        // InternalDart.g:8169:4: this_VariableDeclaration_20= ruleVariableDeclaration otherlv_21= ';'
+        // InternalDart.g:8027:3: (this_VariableDeclaration_6= ruleVariableDeclaration otherlv_7= ';' )
+        // InternalDart.g:8028:4: this_VariableDeclaration_6= ruleVariableDeclaration otherlv_7= ';'
         {
         if ( state.backtracking==0 ) {
 
@@ -25245,26 +24782,26 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
           			
         }
         pushFollow(FOLLOW_24);
-        this_VariableDeclaration_20=ruleVariableDeclaration();
+        this_VariableDeclaration_6=ruleVariableDeclaration();
 
         state._fsp--;
         if (state.failed) return ;
-        otherlv_21=(Token)match(input,19,FOLLOW_2); if (state.failed) return ;
+        otherlv_7=(Token)match(input,19,FOLLOW_2); if (state.failed) return ;
 
         }
 
 
         }
     }
-    // $ANTLR end synpred265_InternalDart
+    // $ANTLR end synpred254_InternalDart
 
-    // $ANTLR start synpred266_InternalDart
-    public final void synpred266_InternalDart_fragment() throws RecognitionException {   
-        // InternalDart.g:8188:5: ( ( RULE_ID '=' ) )
-        // InternalDart.g:8188:6: ( RULE_ID '=' )
+    // $ANTLR start synpred255_InternalDart
+    public final void synpred255_InternalDart_fragment() throws RecognitionException {   
+        // InternalDart.g:8047:5: ( ( RULE_ID '=' ) )
+        // InternalDart.g:8047:6: ( RULE_ID '=' )
         {
-        // InternalDart.g:8188:6: ( RULE_ID '=' )
-        // InternalDart.g:8189:6: RULE_ID '='
+        // InternalDart.g:8047:6: ( RULE_ID '=' )
+        // InternalDart.g:8048:6: RULE_ID '='
         {
         match(input,RULE_ID,FOLLOW_45); if (state.failed) return ;
         match(input,17,FOLLOW_2); if (state.failed) return ;
@@ -25274,17 +24811,17 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
         }
     }
-    // $ANTLR end synpred266_InternalDart
+    // $ANTLR end synpred255_InternalDart
 
-    // $ANTLR start synpred270_InternalDart
-    public final void synpred270_InternalDart_fragment() throws RecognitionException {   
+    // $ANTLR start synpred259_InternalDart
+    public final void synpred259_InternalDart_fragment() throws RecognitionException {   
         Token lv_isNullable_2_0=null;
 
-        // InternalDart.g:8380:4: ( (lv_isNullable_2_0= '?' ) )
-        // InternalDart.g:8380:4: (lv_isNullable_2_0= '?' )
+        // InternalDart.g:8239:4: ( (lv_isNullable_2_0= '?' ) )
+        // InternalDart.g:8239:4: (lv_isNullable_2_0= '?' )
         {
-        // InternalDart.g:8380:4: (lv_isNullable_2_0= '?' )
-        // InternalDart.g:8381:5: lv_isNullable_2_0= '?'
+        // InternalDart.g:8239:4: (lv_isNullable_2_0= '?' )
+        // InternalDart.g:8240:5: lv_isNullable_2_0= '?'
         {
         lv_isNullable_2_0=(Token)match(input,80,FOLLOW_2); if (state.failed) return ;
 
@@ -25293,7 +24830,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
 
         }
     }
-    // $ANTLR end synpred270_InternalDart
+    // $ANTLR end synpred259_InternalDart
 
     // Delegated rules
 
@@ -25316,20 +24853,6 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         int start = input.mark();
         try {
             synpred196_InternalDart_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred257_InternalDart() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred257_InternalDart_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -25395,53 +24918,11 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred261_InternalDart() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred261_InternalDart_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
     public final boolean synpred204_InternalDart() {
         state.backtracking++;
         int start = input.mark();
         try {
             synpred204_InternalDart_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred262_InternalDart() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred262_InternalDart_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred263_InternalDart() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred263_InternalDart_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -25507,20 +24988,6 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred260_InternalDart() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred260_InternalDart_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
     public final boolean synpred230_InternalDart() {
         state.backtracking++;
         int start = input.mark();
@@ -25577,34 +25044,6 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred266_InternalDart() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred266_InternalDart_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred264_InternalDart() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred264_InternalDart_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
     public final boolean synpred210_InternalDart() {
         state.backtracking++;
         int start = input.mark();
@@ -25633,11 +25072,53 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred265_InternalDart() {
+    public final boolean synpred254_InternalDart() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred265_InternalDart_fragment(); // can never throw exception
+            synpred254_InternalDart_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred248_InternalDart() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred248_InternalDart_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred249_InternalDart() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred249_InternalDart_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred253_InternalDart() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred253_InternalDart_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -25652,6 +25133,20 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         int start = input.mark();
         try {
             synpred177_InternalDart_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred252_InternalDart() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred252_InternalDart_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -25703,11 +25198,11 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         state.failed=false;
         return success;
     }
-    public final boolean synpred270_InternalDart() {
+    public final boolean synpred250_InternalDart() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred270_InternalDart_fragment(); // can never throw exception
+            synpred250_InternalDart_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -25759,8 +25254,8 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
     protected DFA143 dfa143 = new DFA143(this);
     protected DFA144 dfa144 = new DFA144(this);
     protected DFA145 dfa145 = new DFA145(this);
-    protected DFA162 dfa162 = new DFA162(this);
-    protected DFA166 dfa166 = new DFA166(this);
+    protected DFA161 dfa161 = new DFA161(this);
+    protected DFA165 dfa165 = new DFA165(this);
     static final String dfa_1s = "\30\uffff";
     static final String dfa_2s = "\1\1\27\uffff";
     static final String dfa_3s = "\1\4\1\uffff\1\0\3\uffff\1\0\21\uffff";
@@ -26711,18 +26206,18 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         }
     }
     static final String dfa_69s = "\23\uffff";
-    static final String dfa_70s = "\1\1\22\uffff";
-    static final String dfa_71s = "\1\4\4\uffff\1\0\15\uffff";
-    static final String dfa_72s = "\1\174\4\uffff\1\0\15\uffff";
-    static final String dfa_73s = "\1\uffff\1\2\20\uffff\1\1";
-    static final String dfa_74s = "\5\uffff\1\0\15\uffff}>";
+    static final String dfa_70s = "\1\2\22\uffff";
+    static final String dfa_71s = "\1\4\1\0\21\uffff";
+    static final String dfa_72s = "\1\174\1\0\21\uffff";
+    static final String dfa_73s = "\2\uffff\1\2\17\uffff\1\1";
+    static final String dfa_74s = "\1\uffff\1\0\21\uffff}>";
     static final String[] dfa_75s = {
-            "\1\1\7\uffff\4\1\2\uffff\1\1\16\uffff\2\1\32\uffff\1\1\1\uffff\2\1\1\5\37\uffff\2\1\24\uffff\1\22\3\uffff\2\1",
-            "",
-            "",
-            "",
-            "",
+            "\1\2\7\uffff\4\2\2\uffff\1\2\16\uffff\2\2\32\uffff\1\2\1\uffff\2\2\1\1\37\uffff\2\2\24\uffff\1\22\3\uffff\2\2",
             "\1\uffff",
+            "",
+            "",
+            "",
+            "",
             "",
             "",
             "",
@@ -26767,18 +26262,18 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA145_5 = input.LA(1);
+                        int LA145_1 = input.LA(1);
 
                          
-                        int index145_5 = input.index();
+                        int index145_1 = input.index();
                         input.rewind();
                         s = -1;
                         if ( (synpred232_InternalDart()) ) {s = 18;}
 
-                        else if ( (true) ) {s = 1;}
+                        else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index145_5);
+                        input.seek(index145_1);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -26789,22 +26284,19 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
             throw nvae;
         }
     }
-    static final String dfa_76s = "\1\4\2\0\1\uffff\2\0\20\uffff";
-    static final String dfa_77s = "\1\174\2\0\1\uffff\2\0\20\uffff";
-    static final String dfa_78s = "\3\uffff\1\2\2\uffff\1\6\1\uffff\1\7\1\10\1\11\1\12\1\13\4\uffff\1\1\1\3\1\4\1\5\1\14";
-    static final String dfa_79s = "\1\uffff\1\0\1\1\1\uffff\1\2\1\3\20\uffff}>";
-    static final String[] dfa_80s = {
-            "\1\4\7\uffff\4\14\2\uffff\1\3\16\uffff\2\6\32\uffff\1\10\1\uffff\1\11\1\12\1\5\37\uffff\1\1\1\2\30\uffff\1\13\1\14",
-            "\1\uffff",
-            "\1\uffff",
-            "",
-            "\1\uffff",
+    static final String dfa_76s = "\22\uffff";
+    static final String dfa_77s = "\1\4\1\0\1\uffff\4\0\13\uffff";
+    static final String dfa_78s = "\1\174\1\0\1\uffff\4\0\13\uffff";
+    static final String dfa_79s = "\2\uffff\1\1\4\uffff\1\2\1\uffff\1\3\1\4\1\5\1\6\1\7\3\uffff\1\10";
+    static final String dfa_80s = "\1\uffff\1\0\1\uffff\1\1\1\2\1\3\1\4\13\uffff}>";
+    static final String[] dfa_81s = {
+            "\1\3\7\uffff\4\15\2\uffff\1\2\16\uffff\2\7\32\uffff\1\11\1\uffff\1\12\1\13\1\1\37\uffff\1\5\1\6\30\uffff\1\14\1\4",
             "\1\uffff",
             "",
-            "",
-            "",
-            "",
-            "",
+            "\1\uffff",
+            "\1\uffff",
+            "\1\uffff",
+            "\1\uffff",
             "",
             "",
             "",
@@ -26817,121 +26309,136 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
             "",
             ""
     };
-    static final char[] dfa_76 = DFA.unpackEncodedStringToUnsignedChars(dfa_76s);
+
+    static final short[] dfa_76 = DFA.unpackEncodedString(dfa_76s);
     static final char[] dfa_77 = DFA.unpackEncodedStringToUnsignedChars(dfa_77s);
-    static final short[] dfa_78 = DFA.unpackEncodedString(dfa_78s);
+    static final char[] dfa_78 = DFA.unpackEncodedStringToUnsignedChars(dfa_78s);
     static final short[] dfa_79 = DFA.unpackEncodedString(dfa_79s);
-    static final short[][] dfa_80 = unpackEncodedStringArray(dfa_80s);
+    static final short[] dfa_80 = DFA.unpackEncodedString(dfa_80s);
+    static final short[][] dfa_81 = unpackEncodedStringArray(dfa_81s);
 
-    class DFA162 extends DFA {
+    class DFA161 extends DFA {
 
-        public DFA162(BaseRecognizer recognizer) {
+        public DFA161(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 162;
-            this.eot = dfa_55;
-            this.eof = dfa_55;
-            this.min = dfa_76;
-            this.max = dfa_77;
-            this.accept = dfa_78;
-            this.special = dfa_79;
-            this.transition = dfa_80;
+            this.decisionNumber = 161;
+            this.eot = dfa_76;
+            this.eof = dfa_76;
+            this.min = dfa_77;
+            this.max = dfa_78;
+            this.accept = dfa_79;
+            this.special = dfa_80;
+            this.transition = dfa_81;
         }
         public String getDescription() {
-            return "7954:2: ( ( ( ( ( 'void' | 'dynamic' ) )=> (otherlv_0= 'void' | otherlv_1= 'dynamic' ) ) this_FunctionDeclaration_2= ruleFunctionDeclaration ) | ( ( ( 'external' )=>otherlv_3= 'external' ) this_FunctionDeclaration_4= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID '(' ) )=> (this_ID_5= RULE_ID otherlv_6= '(' ) ) this_FunctionDeclaration_7= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID RULE_ID '(' ) )=> (this_ID_8= RULE_ID this_ID_9= RULE_ID otherlv_10= '(' ) ) this_FunctionDeclaration_11= ruleFunctionDeclaration ) | ( ( ( ( RULE_ID '<' ) )=> (this_ID_12= RULE_ID otherlv_13= '<' ) ) this_FunctionDeclaration_14= ruleFunctionDeclaration ) | this_ClassDeclaration_15= ruleClassDeclaration | this_MixinDeclaration_16= ruleMixinDeclaration | this_ExtensionDeclaration_17= ruleExtensionDeclaration | this_EnumDeclaration_18= ruleEnumDeclaration | this_TypeAlias_19= ruleTypeAlias | (this_VariableDeclaration_20= ruleVariableDeclaration otherlv_21= ';' ) | ( ( ( ( RULE_ID '=' ) )=> (this_ID_22= RULE_ID otherlv_23= '=' ) ) this_MixinApplicationClass_24= ruleMixinApplicationClass ) )";
+            return "7954:2: (this_FunctionDeclaration_0= ruleFunctionDeclaration | this_ClassDeclaration_1= ruleClassDeclaration | this_MixinDeclaration_2= ruleMixinDeclaration | this_ExtensionDeclaration_3= ruleExtensionDeclaration | this_EnumDeclaration_4= ruleEnumDeclaration | this_TypeAlias_5= ruleTypeAlias | (this_VariableDeclaration_6= ruleVariableDeclaration otherlv_7= ';' ) | ( ( ( ( RULE_ID '=' ) )=> (this_ID_8= RULE_ID otherlv_9= '=' ) ) this_MixinApplicationClass_10= ruleMixinApplicationClass ) )";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA162_1 = input.LA(1);
+                        int LA161_1 = input.LA(1);
 
                          
-                        int index162_1 = input.index();
+                        int index161_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred251_InternalDart()) ) {s = 17;}
+                        if ( (synpred248_InternalDart()) ) {s = 2;}
 
-                        else if ( (synpred265_InternalDart()) ) {s = 12;}
+                        else if ( (synpred249_InternalDart()) ) {s = 7;}
+
+                        else if ( (synpred250_InternalDart()) ) {s = 9;}
+
+                        else if ( (synpred251_InternalDart()) ) {s = 10;}
+
+                        else if ( (synpred252_InternalDart()) ) {s = 11;}
+
+                        else if ( (synpred253_InternalDart()) ) {s = 12;}
+
+                        else if ( (synpred254_InternalDart()) ) {s = 13;}
 
                          
-                        input.seek(index162_1);
+                        input.seek(index161_1);
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA162_2 = input.LA(1);
+                        int LA161_3 = input.LA(1);
 
                          
-                        int index162_2 = input.index();
+                        int index161_3 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred251_InternalDart()) ) {s = 17;}
+                        if ( (synpred248_InternalDart()) ) {s = 2;}
 
-                        else if ( (synpred265_InternalDart()) ) {s = 12;}
+                        else if ( (synpred254_InternalDart()) ) {s = 13;}
+
+                        else if ( (synpred255_InternalDart()) ) {s = 17;}
 
                          
-                        input.seek(index162_2);
+                        input.seek(index161_3);
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA162_4 = input.LA(1);
+                        int LA161_4 = input.LA(1);
 
                          
-                        int index162_4 = input.index();
+                        int index161_4 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred255_InternalDart()) ) {s = 18;}
+                        if ( (synpred248_InternalDart()) ) {s = 2;}
 
-                        else if ( (synpred257_InternalDart()) ) {s = 19;}
-
-                        else if ( (synpred259_InternalDart()) ) {s = 20;}
-
-                        else if ( (synpred265_InternalDart()) ) {s = 12;}
-
-                        else if ( (synpred266_InternalDart()) ) {s = 21;}
+                        else if ( (synpred254_InternalDart()) ) {s = 13;}
 
                          
-                        input.seek(index162_4);
+                        input.seek(index161_4);
                         if ( s>=0 ) return s;
                         break;
                     case 3 : 
-                        int LA162_5 = input.LA(1);
+                        int LA161_5 = input.LA(1);
 
                          
-                        int index162_5 = input.index();
+                        int index161_5 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred260_InternalDart()) ) {s = 6;}
+                        if ( (synpred248_InternalDart()) ) {s = 2;}
 
-                        else if ( (synpred261_InternalDart()) ) {s = 8;}
-
-                        else if ( (synpred262_InternalDart()) ) {s = 9;}
-
-                        else if ( (synpred263_InternalDart()) ) {s = 10;}
-
-                        else if ( (synpred264_InternalDart()) ) {s = 11;}
-
-                        else if ( (synpred265_InternalDart()) ) {s = 12;}
+                        else if ( (synpred254_InternalDart()) ) {s = 13;}
 
                          
-                        input.seek(index162_5);
+                        input.seek(index161_5);
+                        if ( s>=0 ) return s;
+                        break;
+                    case 4 : 
+                        int LA161_6 = input.LA(1);
+
+                         
+                        int index161_6 = input.index();
+                        input.rewind();
+                        s = -1;
+                        if ( (synpred248_InternalDart()) ) {s = 2;}
+
+                        else if ( (synpred254_InternalDart()) ) {s = 13;}
+
+                         
+                        input.seek(index161_6);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 162, _s, input);
+                new NoViableAltException(getDescription(), 161, _s, input);
             error(nvae);
             throw nvae;
         }
     }
-    static final String dfa_81s = "\50\uffff";
-    static final String dfa_82s = "\1\2\47\uffff";
-    static final String dfa_83s = "\1\4\1\0\46\uffff";
-    static final String dfa_84s = "\1\155\1\0\46\uffff";
-    static final String dfa_85s = "\2\uffff\1\2\44\uffff\1\1";
-    static final String dfa_86s = "\1\uffff\1\0\46\uffff}>";
-    static final String[] dfa_87s = {
+    static final String dfa_82s = "\50\uffff";
+    static final String dfa_83s = "\1\2\47\uffff";
+    static final String dfa_84s = "\1\4\1\0\46\uffff";
+    static final String dfa_85s = "\1\155\1\0\46\uffff";
+    static final String dfa_86s = "\2\uffff\1\2\44\uffff\1\1";
+    static final String dfa_87s = "\1\uffff\1\0\46\uffff}>";
+    static final String[] dfa_88s = {
             "\1\2\13\uffff\2\2\1\uffff\3\2\2\uffff\3\2\1\uffff\1\2\7\uffff\2\2\1\uffff\3\2\1\uffff\1\2\16\uffff\1\2\7\uffff\16\2\1\1\4\2\30\uffff\1\2",
             "\1\uffff",
             "",
@@ -26974,53 +26481,53 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
             ""
     };
 
-    static final short[] dfa_81 = DFA.unpackEncodedString(dfa_81s);
     static final short[] dfa_82 = DFA.unpackEncodedString(dfa_82s);
-    static final char[] dfa_83 = DFA.unpackEncodedStringToUnsignedChars(dfa_83s);
+    static final short[] dfa_83 = DFA.unpackEncodedString(dfa_83s);
     static final char[] dfa_84 = DFA.unpackEncodedStringToUnsignedChars(dfa_84s);
-    static final short[] dfa_85 = DFA.unpackEncodedString(dfa_85s);
+    static final char[] dfa_85 = DFA.unpackEncodedStringToUnsignedChars(dfa_85s);
     static final short[] dfa_86 = DFA.unpackEncodedString(dfa_86s);
-    static final short[][] dfa_87 = unpackEncodedStringArray(dfa_87s);
+    static final short[] dfa_87 = DFA.unpackEncodedString(dfa_87s);
+    static final short[][] dfa_88 = unpackEncodedStringArray(dfa_88s);
 
-    class DFA166 extends DFA {
+    class DFA165 extends DFA {
 
-        public DFA166(BaseRecognizer recognizer) {
+        public DFA165(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 166;
-            this.eot = dfa_81;
-            this.eof = dfa_82;
-            this.min = dfa_83;
-            this.max = dfa_84;
-            this.accept = dfa_85;
-            this.special = dfa_86;
-            this.transition = dfa_87;
+            this.decisionNumber = 165;
+            this.eot = dfa_82;
+            this.eof = dfa_83;
+            this.min = dfa_84;
+            this.max = dfa_85;
+            this.accept = dfa_86;
+            this.special = dfa_87;
+            this.transition = dfa_88;
         }
         public String getDescription() {
-            return "8379:3: ( (lv_isNullable_2_0= '?' ) )?";
+            return "8238:3: ( (lv_isNullable_2_0= '?' ) )?";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             TokenStream input = (TokenStream)_input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA166_1 = input.LA(1);
+                        int LA165_1 = input.LA(1);
 
                          
-                        int index166_1 = input.index();
+                        int index165_1 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred270_InternalDart()) ) {s = 39;}
+                        if ( (synpred259_InternalDart()) ) {s = 39;}
 
                         else if ( (true) ) {s = 2;}
 
                          
-                        input.seek(index166_1);
+                        input.seek(index165_1);
                         if ( s>=0 ) return s;
                         break;
             }
             if (state.backtracking>0) {state.failed=true; return -1;}
             NoViableAltException nvae =
-                new NoViableAltException(getDescription(), 166, _s, input);
+                new NoViableAltException(getDescription(), 165, _s, input);
             error(nvae);
             throw nvae;
         }
@@ -27141,8 +26648,7 @@ public class InternalDartParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_112 = new BitSet(new long[]{0x000000000000F010L,0x1080000600000002L});
     public static final BitSet FOLLOW_113 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L});
     public static final BitSet FOLLOW_114 = new BitSet(new long[]{0x0000000000000050L});
-    public static final BitSet FOLLOW_115 = new BitSet(new long[]{0x1000000000000000L});
-    public static final BitSet FOLLOW_116 = new BitSet(new long[]{0x000000000000F010L,0x1800000600000002L});
-    public static final BitSet FOLLOW_117 = new BitSet(new long[]{0x1000000000000002L,0x0000000000010000L});
+    public static final BitSet FOLLOW_115 = new BitSet(new long[]{0x000000000000F010L,0x1800000600000002L});
+    public static final BitSet FOLLOW_116 = new BitSet(new long[]{0x1000000000000002L,0x0000000000010000L});
 
 }
