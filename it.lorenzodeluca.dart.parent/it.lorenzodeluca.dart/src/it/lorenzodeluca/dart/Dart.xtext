@@ -1,3 +1,19 @@
+/*
+ * General infos: even if at the beginning i wanted to write a grammar LL(1) without backtrack, after many hours i realized 
+ * that it was really complex and most of all it forced me to write rules that were pretty different
+ * from the original specifications(so they were harder to understand and mantain).
+ * 
+ * GenAI statement
+ * For writing the code included in this project GenAI tools were used mainly with the goal 
+ * of supporting the translation of the official dart 3 specifications productions written in the EBNF format 
+ * into the xtext grammar. The GenAI tools were mainly used to check the coherency of all the rules and helping it 
+ * been as close as possible to the original specifications. I take responsibility for all the modifications i made 
+ * due to the GenAI tools advices.
+ * Tools: Claude Sonnet, Gemini
+ * Queries/use period: 1/2/2026 - 1/5/2026
+ * Reason: The grammar of a general purpose programming language is really complex, its hard for a single person to translate such big grammar. The GenAI tools helped me spot mistakes, fix them quicker and reducing the time required to complete the project.
+ *  
+ */
 grammar it.lorenzodeluca.dart.Dart with org.eclipse.xtext.common.Terminals 
        hidden(WS, ML_COMMENT, SL_COMMENT)
 
@@ -121,19 +137,76 @@ Mixins:
 Interfaces:
     'implements' types+=Type (',' types+=Type)*;
 
-// FIX: Metodi e Dichiarazioni adesso sono assegnati a una proprietà specifica 
+/*
+ * Spec §10
+ * 
+ * <memberDeclaration> ::= <declaration> ';'
+ * | <methodSignature> <functionBody>
+ * 
+ */
 MemberDeclaration:
     (metadata+=Metadata)* (
         method=MethodSignature body=FunctionBody |
         declaration=Declaration ';'
     );
 
+/*
+ * MethodSignature.
+ * Spec §10:
+ * 
+ * <methodSignature> ::= <constructorSignature> <initializers>?
+ *| <factoryConstructorSignature>
+ *| static? <functionSignature>
+ *| static? <getterSignature>
+ *| static? <setterSignature>
+ *| <operatorSignature>
+ * 
+ * TODO !!!: constructorSignature,factoryConstructorSignature,redirectingFactory
+ */
 MethodSignature:
-    (isStatic?='static')? (returnType=Type)? (isOperator?='operator' operator=Operator)? (isGetter?='get' | isSetter?='set')? name=ID (parameters=FormalParameterList)?;
+    (isStatic?='static')?
+    (
+        // Getter: get name
+        (returnType=Type)? isGetter?='get' name=ID |
+        // Setter: set name (params)
+        (returnType=Type)? isSetter?='set' name=ID parameters=FormalParameterList |
+        // Operator overload: type? operator op (params)
+        (returnType=Type)? isOperator?='operator' operator=Operator parameters=FormalParameterList |
+        // Regular method: type? name params
+        (returnType=Type)? name=ID parameters=FormalParameterList
+    );
 
+/*
+ * Declaration.
+ * Spec §10:
+ * 
+ * declaration cover instance/static variable and method declarations inside a class body
+ * 
+ * <declaration> ::= external <factoryConstructorSignature>
+ *| external <constantConstructorSignature>
+ *| external <constructorSignature>
+ *| (external static?)? <getterSignature>
+ *| (external static?)? <setterSignature>
+ * 
+ * 
+ * 	 (external static?)? getterSignature        <- partially covered via MethodSignature
+ *   (external static?)? setterSignature        <- partially covered via MethodSignature
+ *   (external static?)? functionSignature      <- partially covered via MethodSignature
+ *   external? operatorSignature                <- partially covered via MethodSignature
+ *   static const type? staticFinalDeclarationList
+ *   static final type? staticFinalDeclarationList
+ *   static late? varOrType initializedIdentifierList
+ *   covariant late? varOrType initializedIdentifierList
+ *   late? final type? initializedIdentifierList
+ *   late? varOrType initializedIdentifierList
+ * 
+ * TODO !!!: constructorSignature,constantConstructorSignature,redirectingFactoryConstructorSignature
+ */
 Declaration:
     (isExternal?='external')? (isStatic?='static')? (isLate?='late')? (isFinal?='final' | isConst?='const')? (type=Type)? name=ID ('=' initialValue=Expression)?;
 
+
+// Spec §10.2.1
 Operator:
     '~' | '==' | '[]' | '[]=' | '*' | '/' | '%' | '~/' | '+' | '-' | '<<' | '>>>' | '>>' | '&' | '^' | '|' | '>=' | '>' | '<=' | '<';
 
@@ -141,12 +214,24 @@ Operator:
  * 12. MIXINS
  * ========================================================================= */
 
+/*
+ * Spec §12.2
+ * <mixinDeclaration> ::= mixin <typeIdentifier> <typeParameters>?
+ * (on <typeNotVoidList>)? <interfaces>?
+ * '{' (<metadata> <memberDeclaration>)* '}'
+ */
 MixinDeclaration:
     (metadata+=Metadata)* 'mixin' name=ID (typeParameters=TypeParameters)? 
     ('on' onTypes+=Type (',' onTypes+=Type)*)? 
     (interfaces=Interfaces)? 
     '{' (members+=MemberDeclaration)* '}';
 
+/*
+ * <mixinApplicationClass> ::= <identifier> <typeParameters>? '=' <mixinApplication> ';'
+ * 
+ * <mixinApplication> ::= <typeNotVoid> <mixins> <interfaces>?
+ * 
+ */
 MixinApplicationClass:
     name=ID (typeParameters=TypeParameters)? '=' type=Type mixins=Mixins (interfaces=Interfaces)? ';';
 
@@ -162,6 +247,9 @@ ExtensionDeclaration:
  * 14. ENUMS
  * ========================================================================= */
 
+//TODO: enhanced enums (with members, constructors, implements)
+//TODO: rename to enumType? are metadata duplicated with EnumEntry?
+//UPTOHE
 EnumDeclaration:
     (metadata+=Metadata)* 'enum' name=ID '{' entries+=EnumEntry (',' entries+=EnumEntry)* ','? '}';
 

@@ -3,7 +3,7 @@ Automatic-Module-Name: it.lorenzodeluca.dart.tests
 Bundle-ManifestVersion: 2
 Bundle-Name: it.lorenzodeluca.dart.tests
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.202603262156
+Bundle-Version: 1.0.0.202603272159
 Bundle-SymbolicName: it.lorenzodeluca.dart.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: it.lorenzodeluca.dart,org.eclipse.xtext.testing,org.ecli

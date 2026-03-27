@@ -1,3 +1,5 @@
+//TODO: add to the tests all the examples I find on the official dart tutorials for all the language functions
+
 package it.lorenzodeluca.dart.tests;
 
 import org.eclipse.xtext.testing.InjectWith;
