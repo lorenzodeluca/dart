@@ -415,7 +415,11 @@ PrimaryExpression returns Expression:
     {ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
     {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=MapOrSetElement (',' elements+=MapOrSetElement)*)? '}' |
     {ParenthesizedExpression} '(' expression=Expression ')';
-
+/*
+ * If ':' is present it is a map entry; otherwise it is a set element
+ * 
+ * TODO: spreadElement,ifElement,forElement
+ */
 MapOrSetElement:
     Expression (':' value=Expression)?;
 
@@ -423,13 +427,18 @@ MapOrSetElement:
  * 18. STATEMENTS
  * ========================================================================= */
 
-// FIX: Come per MemberDeclaration, se labels è processato l'oggetto esiste già
+/*
+ * <statements> ::= <statement>*
+ * <statement> ::= <label>* <nonLabelledStatement>
+ */
 Statement:
     (labels+=Label)* statement=NonLabelledStatement;
 
 Label:
     name=ID ':';
-
+/*
+ * <nonLabelledStatement> ::= <block>| <localVariableDeclaration>| <forStatement>| <whileStatement>| <doStatement>| <switchStatement>| <ifStatement>| <rethrowStatement>| <tryStatement>| <breakStatement>| <continueStatement>| <returnStatement>| <yieldStatement>| <yieldEachStatement>| <expressionStatement>| <assertStatement>| <localFunctionDeclaration>
+ */
 NonLabelledStatement:
     Block |
     ForStatement |
@@ -443,13 +452,17 @@ NonLabelledStatement:
     ContinueStatement |
     ReturnStatement |
     YieldStatement |
-    // Predicati precisi per variabili locali
+    AssertStatement |
+    // Unambiguous keyword starters for local variables
     =>('var' | 'final' | 'const' | 'late') LocalVariableDeclaration |
     =>('void' | 'dynamic') LocalVariableDeclaration |
-    =>(ID ID '(') ExpressionStatement |    // es: foo bar() -- raro, trattalo come expr
-    =>(ID ID) LocalVariableDeclaration |   // es: String x
-    =>(ID '.') LocalVariableDeclaration |  // es: my.Type x
-    // Tutto il resto è ExpressionStatement: print(...), x = 5, ecc.
+    // Local function: type name(  — e.g. String foo() { }
+    =>(ID ID '(') LocalFunctionDeclaration |
+    // Type + ID — local variable: String x
+    =>(ID ID) LocalVariableDeclaration |
+    // Qualified type — local variable: my.Type x
+    =>(ID '.') LocalVariableDeclaration |
+    // Everything else is an expression statement
     ExpressionStatement;
 
 Block:
@@ -457,10 +470,22 @@ Block:
 
 LocalVariableDeclaration:
     variable=VariableDeclaration ';';
+    
+/*
+ * Spec §18.0 - LocalFunctionDeclaration
+ * <localFunctionDeclaration> ::= <metadata> <functionSignature> <functionBody>
+ *  localFunctionDeclaration ::= metadata functionSignature functionBody
+ */
+LocalFunctionDeclaration:
+    (metadata+=Metadata)* (returnType=Type)? name=ID signature=FormalParameterPart body=FunctionBody;
 
 IfStatement:
     'if' '(' condition=Expression ')' thenStatement=Statement ('else' elseStatement=Statement)?;
 
+/*
+ * Spec §18.3.2
+ * 
+ */
 ForStatement:
     (isAwait?='await')? 'for' '(' (init=VariableDeclaration | initExpr=Expression)? ';' condition=Expression? ';' update=Expression? ')' body=Statement;
 
@@ -477,7 +502,7 @@ SwitchCase:
     (labels+=Label)* 'case' expression=Expression ':' (statements+=Statement)*;
 
 DefaultCase:
-    (labels+=Label)* 'default' ':' (statements+=Statement)*;
+    {DefaultCase} (labels+=Label)* 'default' ':' (statements+=Statement)*;
 
 RethrowStatement:
     {RethrowStatement} 'rethrow' ';';
@@ -485,6 +510,7 @@ RethrowStatement:
 TryStatement:
     'try' block=Block (catchClauses+=CatchClause)* (finallyBlock=FinallyClause)?;
 
+//18.11.1
 CatchClause:
     ('on' type=Type)? ('catch' '(' exception=ID (',' stackTrace=ID)? ')')? block=Block;
 
@@ -503,6 +529,15 @@ ReturnStatement:
 YieldStatement:
     {YieldStatement} 'yield' (isStar?='*')? expression=Expression ';';
 
+/*
+ * Spec §18.13
+ * <assertStatement> ::= <assertion> ';'
+ * <assertion> ::= assert '(' <expression> (',' <expression> )? ','? ')'
+ */
+AssertStatement:
+    {AssertStatement} 'assert' '(' condition=Expression (',' message=Expression)? ','? ')' ';';
+
+
 ExpressionStatement:
     expression=Expression ';';
 
@@ -511,6 +546,7 @@ ExpressionStatement:
  * ========================================================================= */
 
 LibraryDeclaration:
+	{LibraryDeclaration} // optional... With this an empty file will still have at least this(TODO: verify if it would have been better to not istantiane nothing in the AST)
     (scriptTag=ScriptTag)?
     (libraryName=LibraryName)?
     (directives+=ImportOrExport)*
@@ -530,6 +566,7 @@ LibraryName:
 ImportOrExport:
     LibraryImport | LibraryExport;
 
+// TODO: configurableUri
 LibraryImport:
     (metadata+=Metadata)* 'import' importURI=STRING (isDeferred?='deferred'? 'as' prefix=ID)? (combinators+=Combinator)* ';';
 
@@ -545,27 +582,95 @@ PartHeader:
 Combinator:
     ('show' | 'hide') identifiers+=ID (',' identifiers+=ID)*;
 
+/*
+ * Spec §19
+ * <topLevelDeclaration> ::= <classDeclaration>
+| <mixinDeclaration>
+| <extensionDeclaration>
+| <enumType>
+| <typeAlias>
+| external <functionSignature> ';'
+| external <getterSignature> ';'
+| external <setterSignature> ';'
+| <functionSignature> <functionBody>
+| <getterSignature> <functionBody>
+| <setterSignature> <functionBody>
+| (final | const) <type>? <staticFinalDeclarationList> ';'
+| late final <type>? <initializedIdentifierList> ';'
+| late? <varOrType> <initializedIdentifierList> ';'
+* 
+* TODO: rename TopLevelGetter,TopLevelSetter,ExternalGetter,ExternalSetter to match better the specs??
+ */
 TopLevelDeclaration:
+    // External top-level getter: external type? get name;
+    ExternalGetter |
+    // External top-level setter: external type? set name(params);
+    ExternalSetter |
+    // Top-level getter with body: type? get name { ... }
+    TopLevelGetter |
+    // Top-level setter with body: type? set name(params) { ... }
+    TopLevelSetter |
+    // Regular function or external function declaration
     FunctionDeclaration |
-    ClassDeclaration | 
-    MixinDeclaration | 
-    ExtensionDeclaration | 
-    EnumDeclaration | 
+    ClassDeclaration |
+    MixinDeclaration |
+    ExtensionDeclaration |
+    EnumDeclaration |
     TypeAlias |
     VariableDeclaration ';' |
-     =>(ID '=') MixinApplicationClass;
+    // MixinApplicationClass: name = Type with ... ;
+    =>(ID '=') MixinApplicationClass;
+    
+//int get myValue { return 42; }
+TopLevelGetter:
+    (metadata+=Metadata)* signature=GetterSignature body=FunctionBody;
+
+//set myValue(int var) { _var = var; }
+TopLevelSetter:
+    (metadata+=Metadata)* signature=SetterSignature body=FunctionBody;
+
+//external int get var;
+ExternalGetter:
+    (metadata+=Metadata)* 'external' signature=GetterSignature ';';
+
+//external set var(int v);
+ExternalSetter:
+    (metadata+=Metadata)* 'external' signature=SetterSignature ';';
+
 
 /* =========================================================================
  * 20. TYPES
  * ========================================================================= */
 
+/*
+ * 20.3
+ * <typeAlias> ::= typedef <typeIdentifier> <typeParameters>? '=' <type> ';' | typedef <functionTypeAlias>
+ */
 TypeAlias:
-    (metadata+=Metadata)* 'typedef' name=ID (typeParameters=TypeParameters)? '=' type=Type ';';
+    (metadata+=Metadata)* 'typedef'
+    (
+        // New style: typedef Name<T> = SomeType;
+        name=ID (typeParameters=TypeParameters)? '=' type=Type ';' |
+        // Old style: typedef ReturnType Name(params);
+        (returnType=Type)? name=ID signature=FormalParameterPart ';'
+    );
 
+/*
+ * <type> ::= <functionType> '?'?
+| <typeNotFunction>
+<typeNotVoid> ::= <functionType> '?'?
+| <typeNotVoidNotFunction> '?'?
+<typeNotFunction> ::= void
+| <typeNotVoidNotFunction> '?'?
+<typeNotVoidNotFunction> ::= <typeName> <typeArguments>?
+| (<typeIdentifier> '.')? Function
+<typeName> ::= <typeIdentifier> ('.' <typeIdentifier>)?
+<typeArguments> ::= '<' <typeList> '>'
+ */
+//TODO:Function types (void Function(int x))
 Type:
     typeName=TypeName (typeArguments=TypeArguments)? (isNullable?='?')?;
 
-// FIX: name raggruppato in modo che copra sia le stringhe che il QualifiedName
 TypeName:
     name=(QualifiedName | 'Function' | 'void' | 'dynamic');
 
@@ -578,14 +683,3 @@ TypeArguments:
  */
 
 terminal SCRIPT_TAG: '#!' (!('\n'|'\r'))* ('\r'? '\n')?;
-
-/* =========================================================================
- * Helper lookahead rules
- * =========================================================================
- */
- 
-MetadataLookahead:
-    '@' ID ('.' ID)* ('(' (ID|STRING|',')* ')')?;
-
-TypeLookahead:
-    ('void' | 'dynamic' | 'Function' | ID) ('.' ID)* ('<' (ID | ',' | '<' | '>' | '.')* '>')? '?'?;
