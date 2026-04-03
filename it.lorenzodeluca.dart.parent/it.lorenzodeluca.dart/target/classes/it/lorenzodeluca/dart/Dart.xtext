@@ -121,7 +121,7 @@ FunctionBody:
  * <classDeclaration> ::= abstract? class <typeIdentifier> <typeParameters>?
  * <superclass>? <interfaces>?
  * '{' (<metadata> <memberDeclaration>)* '}'
- * | abstract? class <mixinApplicationClass>
+ * | abstract? class <mixinApplicationClass> <-moved in TopLevelDeclaration, TODO maybe move it back here to match official specs
  */
 ClassDeclaration:
     (metadata+=Metadata)* (isAbstract?='abstract')? 'class' name=ID (typeParameters=TypeParameters)? 
@@ -146,7 +146,17 @@ Interfaces:
  */
 MemberDeclaration:
     (metadata+=Metadata)* (
+        // Constructor with initializers and body
+        constructor=ConstructorSignature 
+            (initializers=Initializers)? 
+            (body=FunctionBody | ';') |
+        // Factory constructor
+        factory=FactoryConstructorSignature body=FunctionBody |
+        // Redirecting factory
+        redirectingFactory=RedirectingFactoryConstructorSignature ';' |
+        // Regular method/getter/setter
         method=MethodSignature body=FunctionBody |
+        // Declaration ending with semicolon
         declaration=Declaration ';'
     );
 
@@ -200,16 +210,52 @@ MethodSignature:
  *   late? final type? initializedIdentifierList
  *   late? varOrType initializedIdentifierList
  * 
- * TODO !!!: constructorSignature,constantConstructorSignature,redirectingFactoryConstructorSignature
+ * TODO !!!: constructorSignature,constantConstructorSignature,redirectingFactoryConstructorSignature, partially covered stuff
  */
 Declaration:
-    (isExternal?='external')? (isStatic?='static')? (isLate?='late')? (isFinal?='final' | isConst?='const')? (type=Type)? name=ID ('=' initialValue=Expression)?;
+    (isExternal?='external')? (isStatic?='static')? (isCovariant?='covariant')?
+    (isLate?='late')? (isFinal?='final' | isConst?='const')?
+    (type=Type)? name=ID ('=' initialValue=Expression)?;
 
 
 // Spec §10.2.1
 Operator:
     '~' | '==' | '[]' | '[]=' | '*' | '/' | '%' | '~/' | '+' | '-' | '<<' | '>>>' | '>>' | '&' | '^' | '|' | '>=' | '>' | '<=' | '<';
 
+//Spec 10.7.1
+ConstructorSignature:
+    name=ConstructorName parameters=FormalParameterList;
+
+ConstructorName:
+    className=ID ('.' constructorId=ID)?;
+
+Initializers:
+    ':' entries+=InitializerEntry (',' entries+=InitializerEntry)*;
+
+InitializerEntry:
+    SuperInitializer | FieldInitializer | AssertInitializer;
+
+SuperInitializer:
+    {SuperInitializer} ('super' | 'super' '.' id=ID) args=Arguments;
+
+FieldInitializer:
+    {FieldInitializer} ('this' '.')? name=ID '=' expression=Expression;
+
+AssertInitializer:
+    {AssertInitializer} 'assert' '(' condition=Expression (',' message=Expression)? ','? ')';
+
+//10.7.2
+FactoryConstructorSignature:
+    (isConst?='const')? 'factory' name=ConstructorName parameters=FormalParameterList;
+
+RedirectingFactoryConstructorSignature:
+    (isConst?='const')? 'factory' name=ConstructorName parameters=FormalParameterList 
+    '=' redirectee=ConstructorDesignation;
+
+ConstructorDesignation:
+    name=QualifiedName (typeArguments=TypeArguments)? ('.' constructorId=ID)?;
+    
+    
 /* =========================================================================
  * 12. MIXINS
  * ========================================================================= */
@@ -401,6 +447,8 @@ PostfixExpression returns Expression:
  * Primary
  * Spec §17
  * <primary> ::= <thisExpression>| super <unconditionalAssignableSelector>| super <argumentPart>| <functionExpression>| <literal>| <identifier>| <newExpression>
+ 
+ TODO: string interpolation,constructorInvocation,functionExpression,symbolLiteral
  */
 PrimaryExpression returns Expression:
     {ThisExpression} 'this' |
@@ -412,6 +460,7 @@ PrimaryExpression returns Expression:
     {IdentifierRef} name=ID |
     {NewExpression} 'new' type=Type ('.' constructor=ID)? args=Arguments |
     {ConstExpression} 'const' type=Type ('.' constructor=ID)? args=Arguments |
+    // List literal - const? <type>? [ elements ]
     {ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
     {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=MapOrSetElement (',' elements+=MapOrSetElement)*)? '}' |
     {ParenthesizedExpression} '(' expression=Expression ')';
@@ -456,11 +505,11 @@ NonLabelledStatement:
     // Unambiguous keyword starters for local variables
     =>('var' | 'final' | 'const' | 'late') LocalVariableDeclaration |
     =>('void' | 'dynamic') LocalVariableDeclaration |
-    // Local function: type name(  — e.g. String foo() { }
+    // Local function: type name( String foo() { }
     =>(ID ID '(') LocalFunctionDeclaration |
-    // Type + ID — local variable: String x
+    // Type + ID - local variable: String x
     =>(ID ID) LocalVariableDeclaration |
-    // Qualified type — local variable: my.Type x
+    // Qualified type - local variable: my.Type x
     =>(ID '.') LocalVariableDeclaration |
     // Everything else is an expression statement
     ExpressionStatement;
@@ -589,15 +638,15 @@ Combinator:
 | <extensionDeclaration>
 | <enumType>
 | <typeAlias>
-| external <functionSignature> ';'
-| external <getterSignature> ';'
-| external <setterSignature> ';'
-| <functionSignature> <functionBody>
-| <getterSignature> <functionBody>
-| <setterSignature> <functionBody>
-| (final | const) <type>? <staticFinalDeclarationList> ';'
-| late final <type>? <initializedIdentifierList> ';'
-| late? <varOrType> <initializedIdentifierList> ';'
+| external <functionSignature> ';' //FunctionDeclaration isExternal
+| external <getterSignature> ';' //ExternalSetter
+| external <setterSignature> ';'  //ExternalSetter
+| <functionSignature> <functionBody> //FunctionDeclaration
+| <getterSignature> <functionBody> //TopLevelGetter
+| <setterSignature> <functionBody> //TopLevelSetter
+| (final | const) <type>? <staticFinalDeclarationList> ';' //VariableDeclaration
+| late final <type>? <initializedIdentifierList> ';'//VariableDeclaration
+| late? <varOrType> <initializedIdentifierList> ';'//VariableDeclaration
 * 
 * TODO: rename TopLevelGetter,TopLevelSetter,ExternalGetter,ExternalSetter to match better the specs??
  */
