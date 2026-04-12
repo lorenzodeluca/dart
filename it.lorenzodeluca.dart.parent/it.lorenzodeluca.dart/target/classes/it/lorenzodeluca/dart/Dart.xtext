@@ -755,6 +755,8 @@ TypeAlias:
     );
 
 /*
+ * spec 20.1 Static Types
+ * 
  * <type> ::= <functionType> '?'?
 | <typeNotFunction>
 <typeNotVoid> ::= <functionType> '?'?
@@ -766,15 +768,43 @@ TypeAlias:
 <typeName> ::= <typeIdentifier> ('.' <typeIdentifier>)?
 <typeArguments> ::= '<' <typeList> '>'
  */
-//TODO:Function types (void Function(int x))
-Type:
-    typeName=TypeName (typeArguments=TypeArguments)? (isNullable?='?')?;
+Type: FunctionType | TypeNotFunction;
 
-TypeName:
-    name=(QualifiedName | 'Function' | 'void' | 'dynamic');
+FunctionType: base=TypeNotFunction? tails+=FunctionTypeTail+;
 
-TypeArguments:
-    '<' types+=Type (',' types+=Type)* '>';
+FunctionTypeTail:
+    'Function' (typeParameters=TypeParameters)? parameters=ParameterTypeList  (isNullable?='?')?;
+
+TypeNotFunction:
+    isVoid?='void' (isNullable?='?')? |
+    name=TypeName (typeArguments=TypeArguments)? (isNullable?='?')?;
+
+TypeName: name=(QualifiedName | 'dynamic') | isFunction?='Function';
+
+// Parameter types for function types
+ParameterTypeList:
+    {ParameterTypeList} '(' 
+        (normalTypes+=NormalParameterType (',' normalTypes+=NormalParameterType)*)?
+        (',' optionalTypes=OptionalParameterTypes)?
+    ')';
+
+OptionalParameterTypes: OptionalPositionalParameterTypes | NamedParameterTypes;
+
+OptionalPositionalParameterTypes:
+    {OptionalPositionalParameterTypes} '[' 
+        types+=NormalParameterType (',' types+=NormalParameterType)* ','? 
+    ']';
+
+NamedParameterTypes:
+    {NamedParameterTypes} '{' 
+        types+=NamedParameterType (',' types+=NamedParameterType)* ','? 
+    '}';
+
+NormalParameterType: (metadata+=Metadata)* (type=Type name=ID | type=Type);
+
+NamedParameterType: (metadata+=Metadata)* (isRequired?='required')? type=Type name=ID;
+
+TypeArguments: '<' types+=Type (',' types+=Type)* '>';
 
 /* =========================================================================
  * 21. LEXICAL RULES
