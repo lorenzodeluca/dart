@@ -232,6 +232,79 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DartPackage.CONSTRUCTOR_SIGNATURE:
+      {
+        ConstructorSignature constructorSignature = (ConstructorSignature)theEObject;
+        T result = caseConstructorSignature(constructorSignature);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.CONSTRUCTOR_NAME:
+      {
+        ConstructorName constructorName = (ConstructorName)theEObject;
+        T result = caseConstructorName(constructorName);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.INITIALIZERS:
+      {
+        Initializers initializers = (Initializers)theEObject;
+        T result = caseInitializers(initializers);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.INITIALIZER_ENTRY:
+      {
+        InitializerEntry initializerEntry = (InitializerEntry)theEObject;
+        T result = caseInitializerEntry(initializerEntry);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.SUPER_INITIALIZER:
+      {
+        SuperInitializer superInitializer = (SuperInitializer)theEObject;
+        T result = caseSuperInitializer(superInitializer);
+        if (result == null) result = caseInitializerEntry(superInitializer);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.FIELD_INITIALIZER:
+      {
+        FieldInitializer fieldInitializer = (FieldInitializer)theEObject;
+        T result = caseFieldInitializer(fieldInitializer);
+        if (result == null) result = caseInitializerEntry(fieldInitializer);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.ASSERT_INITIALIZER:
+      {
+        AssertInitializer assertInitializer = (AssertInitializer)theEObject;
+        T result = caseAssertInitializer(assertInitializer);
+        if (result == null) result = caseInitializerEntry(assertInitializer);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.FACTORY_CONSTRUCTOR_SIGNATURE:
+      {
+        FactoryConstructorSignature factoryConstructorSignature = (FactoryConstructorSignature)theEObject;
+        T result = caseFactoryConstructorSignature(factoryConstructorSignature);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE:
+      {
+        RedirectingFactoryConstructorSignature redirectingFactoryConstructorSignature = (RedirectingFactoryConstructorSignature)theEObject;
+        T result = caseRedirectingFactoryConstructorSignature(redirectingFactoryConstructorSignature);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.CONSTRUCTOR_DESIGNATION:
+      {
+        ConstructorDesignation constructorDesignation = (ConstructorDesignation)theEObject;
+        T result = caseConstructorDesignation(constructorDesignation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DartPackage.MIXIN_DECLARATION:
       {
         MixinDeclaration mixinDeclaration = (MixinDeclaration)theEObject;
@@ -351,6 +424,14 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DartPackage.LOCAL_FUNCTION_DECLARATION:
+      {
+        LocalFunctionDeclaration localFunctionDeclaration = (LocalFunctionDeclaration)theEObject;
+        T result = caseLocalFunctionDeclaration(localFunctionDeclaration);
+        if (result == null) result = caseNonLabelledStatement(localFunctionDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DartPackage.IF_STATEMENT:
       {
         IfStatement ifStatement = (IfStatement)theEObject;
@@ -467,6 +548,14 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DartPackage.ASSERT_STATEMENT:
+      {
+        AssertStatement assertStatement = (AssertStatement)theEObject;
+        T result = caseAssertStatement(assertStatement);
+        if (result == null) result = caseNonLabelledStatement(assertStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DartPackage.EXPRESSION_STATEMENT:
       {
         ExpressionStatement expressionStatement = (ExpressionStatement)theEObject;
@@ -553,6 +642,38 @@ public class DartSwitch<T> extends Switch<T>
       {
         TopLevelDeclaration topLevelDeclaration = (TopLevelDeclaration)theEObject;
         T result = caseTopLevelDeclaration(topLevelDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.TOP_LEVEL_GETTER:
+      {
+        TopLevelGetter topLevelGetter = (TopLevelGetter)theEObject;
+        T result = caseTopLevelGetter(topLevelGetter);
+        if (result == null) result = caseTopLevelDeclaration(topLevelGetter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.TOP_LEVEL_SETTER:
+      {
+        TopLevelSetter topLevelSetter = (TopLevelSetter)theEObject;
+        T result = caseTopLevelSetter(topLevelSetter);
+        if (result == null) result = caseTopLevelDeclaration(topLevelSetter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.EXTERNAL_GETTER:
+      {
+        ExternalGetter externalGetter = (ExternalGetter)theEObject;
+        T result = caseExternalGetter(externalGetter);
+        if (result == null) result = caseTopLevelDeclaration(externalGetter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.EXTERNAL_SETTER:
+      {
+        ExternalSetter externalSetter = (ExternalSetter)theEObject;
+        T result = caseExternalSetter(externalSetter);
+        if (result == null) result = caseTopLevelDeclaration(externalSetter);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1221,6 +1342,166 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Constructor Signature</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Constructor Signature</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConstructorSignature(ConstructorSignature object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Constructor Name</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Constructor Name</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConstructorName(ConstructorName object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Initializers</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Initializers</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseInitializers(Initializers object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Initializer Entry</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Initializer Entry</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseInitializerEntry(InitializerEntry object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Super Initializer</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Super Initializer</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSuperInitializer(SuperInitializer object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Field Initializer</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Field Initializer</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFieldInitializer(FieldInitializer object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Assert Initializer</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Assert Initializer</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAssertInitializer(AssertInitializer object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Factory Constructor Signature</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Factory Constructor Signature</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFactoryConstructorSignature(FactoryConstructorSignature object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Redirecting Factory Constructor Signature</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Redirecting Factory Constructor Signature</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRedirectingFactoryConstructorSignature(RedirectingFactoryConstructorSignature object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Constructor Designation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Constructor Designation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConstructorDesignation(ConstructorDesignation object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Mixin Declaration</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1477,6 +1758,22 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Local Function Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Local Function Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLocalFunctionDeclaration(LocalFunctionDeclaration object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>If Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1717,6 +2014,22 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Assert Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Assert Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAssertStatement(AssertStatement object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Expression Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1904,6 +2217,70 @@ public class DartSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTopLevelDeclaration(TopLevelDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Top Level Getter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Top Level Getter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTopLevelGetter(TopLevelGetter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Top Level Setter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Top Level Setter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTopLevelSetter(TopLevelSetter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>External Getter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>External Getter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExternalGetter(ExternalGetter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>External Setter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>External Setter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExternalSetter(ExternalSetter object)
   {
     return null;
   }

@@ -222,6 +222,96 @@ public interface DartFactory extends EFactory
   Declaration createDeclaration();
 
   /**
+   * Returns a new object of class '<em>Constructor Signature</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Constructor Signature</em>'.
+   * @generated
+   */
+  ConstructorSignature createConstructorSignature();
+
+  /**
+   * Returns a new object of class '<em>Constructor Name</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Constructor Name</em>'.
+   * @generated
+   */
+  ConstructorName createConstructorName();
+
+  /**
+   * Returns a new object of class '<em>Initializers</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Initializers</em>'.
+   * @generated
+   */
+  Initializers createInitializers();
+
+  /**
+   * Returns a new object of class '<em>Initializer Entry</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Initializer Entry</em>'.
+   * @generated
+   */
+  InitializerEntry createInitializerEntry();
+
+  /**
+   * Returns a new object of class '<em>Super Initializer</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Super Initializer</em>'.
+   * @generated
+   */
+  SuperInitializer createSuperInitializer();
+
+  /**
+   * Returns a new object of class '<em>Field Initializer</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Field Initializer</em>'.
+   * @generated
+   */
+  FieldInitializer createFieldInitializer();
+
+  /**
+   * Returns a new object of class '<em>Assert Initializer</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Assert Initializer</em>'.
+   * @generated
+   */
+  AssertInitializer createAssertInitializer();
+
+  /**
+   * Returns a new object of class '<em>Factory Constructor Signature</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Factory Constructor Signature</em>'.
+   * @generated
+   */
+  FactoryConstructorSignature createFactoryConstructorSignature();
+
+  /**
+   * Returns a new object of class '<em>Redirecting Factory Constructor Signature</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Redirecting Factory Constructor Signature</em>'.
+   * @generated
+   */
+  RedirectingFactoryConstructorSignature createRedirectingFactoryConstructorSignature();
+
+  /**
+   * Returns a new object of class '<em>Constructor Designation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Constructor Designation</em>'.
+   * @generated
+   */
+  ConstructorDesignation createConstructorDesignation();
+
+  /**
    * Returns a new object of class '<em>Mixin Declaration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -366,6 +456,15 @@ public interface DartFactory extends EFactory
   LocalVariableDeclaration createLocalVariableDeclaration();
 
   /**
+   * Returns a new object of class '<em>Local Function Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Local Function Declaration</em>'.
+   * @generated
+   */
+  LocalFunctionDeclaration createLocalFunctionDeclaration();
+
+  /**
    * Returns a new object of class '<em>If Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -501,6 +600,15 @@ public interface DartFactory extends EFactory
   YieldStatement createYieldStatement();
 
   /**
+   * Returns a new object of class '<em>Assert Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Assert Statement</em>'.
+   * @generated
+   */
+  AssertStatement createAssertStatement();
+
+  /**
    * Returns a new object of class '<em>Expression Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -607,6 +715,42 @@ public interface DartFactory extends EFactory
    * @generated
    */
   TopLevelDeclaration createTopLevelDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Top Level Getter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Top Level Getter</em>'.
+   * @generated
+   */
+  TopLevelGetter createTopLevelGetter();
+
+  /**
+   * Returns a new object of class '<em>Top Level Setter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Top Level Setter</em>'.
+   * @generated
+   */
+  TopLevelSetter createTopLevelSetter();
+
+  /**
+   * Returns a new object of class '<em>External Getter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>External Getter</em>'.
+   * @generated
+   */
+  ExternalGetter createExternalGetter();
+
+  /**
+   * Returns a new object of class '<em>External Setter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>External Setter</em>'.
+   * @generated
+   */
+  ExternalSetter createExternalSetter();
 
   /**
    * Returns a new object of class '<em>Type Alias</em>'.

@@ -85,7 +85,7 @@ public class DartTests {
         DartFile result = parseHelper.parse(code);
 
         // DEBUG Print AST to console
-        System.out.println(EmfFormatter.objToStr(result));
+        //System.out.println(EmfFormatter.objToStr(result));
 
         
         Assertions.assertNotNull(result);
@@ -129,14 +129,14 @@ public class DartTests {
     @Test
     void testDebugReturnType() throws Exception {
         DartFile result = parseHelper.parse("void main() {}");
-        System.out.println(EmfFormatter.objToStr(result));
+        //System.out.println(EmfFormatter.objToStr(result));
         
         LibraryDeclaration library = (LibraryDeclaration) result;
         FunctionDeclaration func = (FunctionDeclaration) library.getDeclarations().get(0);
         
-        System.out.println("name: " + func.getName());
-        System.out.println("returnType: " + func.getReturnType());
-        System.out.println("errors: " + result.eResource().getErrors());
+        //System.out.println("name: " + func.getName());
+        //System.out.println("returnType: " + func.getReturnType());
+        //System.out.println("errors: " + result.eResource().getErrors());
     }
     
     /*

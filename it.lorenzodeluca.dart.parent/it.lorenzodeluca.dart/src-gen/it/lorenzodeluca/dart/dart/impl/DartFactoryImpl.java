@@ -87,6 +87,16 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.MEMBER_DECLARATION: return createMemberDeclaration();
       case DartPackage.METHOD_SIGNATURE: return createMethodSignature();
       case DartPackage.DECLARATION: return createDeclaration();
+      case DartPackage.CONSTRUCTOR_SIGNATURE: return createConstructorSignature();
+      case DartPackage.CONSTRUCTOR_NAME: return createConstructorName();
+      case DartPackage.INITIALIZERS: return createInitializers();
+      case DartPackage.INITIALIZER_ENTRY: return createInitializerEntry();
+      case DartPackage.SUPER_INITIALIZER: return createSuperInitializer();
+      case DartPackage.FIELD_INITIALIZER: return createFieldInitializer();
+      case DartPackage.ASSERT_INITIALIZER: return createAssertInitializer();
+      case DartPackage.FACTORY_CONSTRUCTOR_SIGNATURE: return createFactoryConstructorSignature();
+      case DartPackage.REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE: return createRedirectingFactoryConstructorSignature();
+      case DartPackage.CONSTRUCTOR_DESIGNATION: return createConstructorDesignation();
       case DartPackage.MIXIN_DECLARATION: return createMixinDeclaration();
       case DartPackage.MIXIN_APPLICATION_CLASS: return createMixinApplicationClass();
       case DartPackage.EXTENSION_DECLARATION: return createExtensionDeclaration();
@@ -103,6 +113,7 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.NON_LABELLED_STATEMENT: return createNonLabelledStatement();
       case DartPackage.BLOCK: return createBlock();
       case DartPackage.LOCAL_VARIABLE_DECLARATION: return createLocalVariableDeclaration();
+      case DartPackage.LOCAL_FUNCTION_DECLARATION: return createLocalFunctionDeclaration();
       case DartPackage.IF_STATEMENT: return createIfStatement();
       case DartPackage.FOR_STATEMENT: return createForStatement();
       case DartPackage.WHILE_STATEMENT: return createWhileStatement();
@@ -118,6 +129,7 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.CONTINUE_STATEMENT: return createContinueStatement();
       case DartPackage.RETURN_STATEMENT: return createReturnStatement();
       case DartPackage.YIELD_STATEMENT: return createYieldStatement();
+      case DartPackage.ASSERT_STATEMENT: return createAssertStatement();
       case DartPackage.EXPRESSION_STATEMENT: return createExpressionStatement();
       case DartPackage.LIBRARY_DECLARATION: return createLibraryDeclaration();
       case DartPackage.PART_DECLARATION: return createPartDeclaration();
@@ -130,6 +142,10 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.PART_HEADER: return createPartHeader();
       case DartPackage.COMBINATOR: return createCombinator();
       case DartPackage.TOP_LEVEL_DECLARATION: return createTopLevelDeclaration();
+      case DartPackage.TOP_LEVEL_GETTER: return createTopLevelGetter();
+      case DartPackage.TOP_LEVEL_SETTER: return createTopLevelSetter();
+      case DartPackage.EXTERNAL_GETTER: return createExternalGetter();
+      case DartPackage.EXTERNAL_SETTER: return createExternalSetter();
       case DartPackage.TYPE_ALIAS: return createTypeAlias();
       case DartPackage.TYPE: return createType();
       case DartPackage.TYPE_NAME: return createTypeName();
@@ -440,6 +456,126 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
+  public ConstructorSignature createConstructorSignature()
+  {
+    ConstructorSignatureImpl constructorSignature = new ConstructorSignatureImpl();
+    return constructorSignature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ConstructorName createConstructorName()
+  {
+    ConstructorNameImpl constructorName = new ConstructorNameImpl();
+    return constructorName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Initializers createInitializers()
+  {
+    InitializersImpl initializers = new InitializersImpl();
+    return initializers;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public InitializerEntry createInitializerEntry()
+  {
+    InitializerEntryImpl initializerEntry = new InitializerEntryImpl();
+    return initializerEntry;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SuperInitializer createSuperInitializer()
+  {
+    SuperInitializerImpl superInitializer = new SuperInitializerImpl();
+    return superInitializer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FieldInitializer createFieldInitializer()
+  {
+    FieldInitializerImpl fieldInitializer = new FieldInitializerImpl();
+    return fieldInitializer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public AssertInitializer createAssertInitializer()
+  {
+    AssertInitializerImpl assertInitializer = new AssertInitializerImpl();
+    return assertInitializer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FactoryConstructorSignature createFactoryConstructorSignature()
+  {
+    FactoryConstructorSignatureImpl factoryConstructorSignature = new FactoryConstructorSignatureImpl();
+    return factoryConstructorSignature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public RedirectingFactoryConstructorSignature createRedirectingFactoryConstructorSignature()
+  {
+    RedirectingFactoryConstructorSignatureImpl redirectingFactoryConstructorSignature = new RedirectingFactoryConstructorSignatureImpl();
+    return redirectingFactoryConstructorSignature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ConstructorDesignation createConstructorDesignation()
+  {
+    ConstructorDesignationImpl constructorDesignation = new ConstructorDesignationImpl();
+    return constructorDesignation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public MixinDeclaration createMixinDeclaration()
   {
     MixinDeclarationImpl mixinDeclaration = new MixinDeclarationImpl();
@@ -632,6 +768,18 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
+  public LocalFunctionDeclaration createLocalFunctionDeclaration()
+  {
+    LocalFunctionDeclarationImpl localFunctionDeclaration = new LocalFunctionDeclarationImpl();
+    return localFunctionDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public IfStatement createIfStatement()
   {
     IfStatementImpl ifStatement = new IfStatementImpl();
@@ -812,6 +960,18 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
+  public AssertStatement createAssertStatement()
+  {
+    AssertStatementImpl assertStatement = new AssertStatementImpl();
+    return assertStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public ExpressionStatement createExpressionStatement()
   {
     ExpressionStatementImpl expressionStatement = new ExpressionStatementImpl();
@@ -948,6 +1108,54 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
   {
     TopLevelDeclarationImpl topLevelDeclaration = new TopLevelDeclarationImpl();
     return topLevelDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TopLevelGetter createTopLevelGetter()
+  {
+    TopLevelGetterImpl topLevelGetter = new TopLevelGetterImpl();
+    return topLevelGetter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TopLevelSetter createTopLevelSetter()
+  {
+    TopLevelSetterImpl topLevelSetter = new TopLevelSetterImpl();
+    return topLevelSetter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ExternalGetter createExternalGetter()
+  {
+    ExternalGetterImpl externalGetter = new ExternalGetterImpl();
+    return externalGetter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ExternalSetter createExternalSetter()
+  {
+    ExternalSetterImpl externalSetter = new ExternalSetterImpl();
+    return externalSetter;
   }
 
   /**

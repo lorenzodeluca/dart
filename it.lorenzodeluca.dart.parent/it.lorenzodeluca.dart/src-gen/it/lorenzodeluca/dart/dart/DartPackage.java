@@ -93,7 +93,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTopLevelDeclaration()
    * @generated
    */
-  int TOP_LEVEL_DECLARATION = 64;
+  int TOP_LEVEL_DECLARATION = 76;
 
   /**
    * The number of structural features of the '<em>Top Level Declaration</em>' class.
@@ -925,13 +925,22 @@ public interface DartPackage extends EPackage
   int MEMBER_DECLARATION__METADATA = 0;
 
   /**
-   * The feature id for the '<em><b>Method</b></em>' containment reference.
+   * The feature id for the '<em><b>Constructor</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MEMBER_DECLARATION__METHOD = 1;
+  int MEMBER_DECLARATION__CONSTRUCTOR = 1;
+
+  /**
+   * The feature id for the '<em><b>Initializers</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEMBER_DECLARATION__INITIALIZERS = 2;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -940,7 +949,34 @@ public interface DartPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MEMBER_DECLARATION__BODY = 2;
+  int MEMBER_DECLARATION__BODY = 3;
+
+  /**
+   * The feature id for the '<em><b>Factory</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEMBER_DECLARATION__FACTORY = 4;
+
+  /**
+   * The feature id for the '<em><b>Redirecting Factory</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEMBER_DECLARATION__REDIRECTING_FACTORY = 5;
+
+  /**
+   * The feature id for the '<em><b>Method</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MEMBER_DECLARATION__METHOD = 6;
 
   /**
    * The feature id for the '<em><b>Declaration</b></em>' containment reference.
@@ -949,7 +985,7 @@ public interface DartPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MEMBER_DECLARATION__DECLARATION = 3;
+  int MEMBER_DECLARATION__DECLARATION = 7;
 
   /**
    * The number of structural features of the '<em>Member Declaration</em>' class.
@@ -958,7 +994,7 @@ public interface DartPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MEMBER_DECLARATION_FEATURE_COUNT = 4;
+  int MEMBER_DECLARATION_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl <em>Method Signature</em>}' class.
@@ -989,40 +1025,13 @@ public interface DartPackage extends EPackage
   int METHOD_SIGNATURE__RETURN_TYPE = 1;
 
   /**
-   * The feature id for the '<em><b>Is Operator</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METHOD_SIGNATURE__IS_OPERATOR = 2;
-
-  /**
-   * The feature id for the '<em><b>Operator</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METHOD_SIGNATURE__OPERATOR = 3;
-
-  /**
    * The feature id for the '<em><b>Is Getter</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METHOD_SIGNATURE__IS_GETTER = 4;
-
-  /**
-   * The feature id for the '<em><b>Is Setter</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METHOD_SIGNATURE__IS_SETTER = 5;
+  int METHOD_SIGNATURE__IS_GETTER = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1031,7 +1040,16 @@ public interface DartPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD_SIGNATURE__NAME = 6;
+  int METHOD_SIGNATURE__NAME = 3;
+
+  /**
+   * The feature id for the '<em><b>Is Setter</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD_SIGNATURE__IS_SETTER = 4;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference.
@@ -1040,7 +1058,25 @@ public interface DartPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD_SIGNATURE__PARAMETERS = 7;
+  int METHOD_SIGNATURE__PARAMETERS = 5;
+
+  /**
+   * The feature id for the '<em><b>Is Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD_SIGNATURE__IS_OPERATOR = 6;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD_SIGNATURE__OPERATOR = 7;
 
   /**
    * The number of structural features of the '<em>Method Signature</em>' class.
@@ -1080,13 +1116,22 @@ public interface DartPackage extends EPackage
   int DECLARATION__IS_STATIC = 1;
 
   /**
+   * The feature id for the '<em><b>Is Covariant</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DECLARATION__IS_COVARIANT = 2;
+
+  /**
    * The feature id for the '<em><b>Is Late</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DECLARATION__IS_LATE = 2;
+  int DECLARATION__IS_LATE = 3;
 
   /**
    * The feature id for the '<em><b>Is Final</b></em>' attribute.
@@ -1095,7 +1140,7 @@ public interface DartPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DECLARATION__IS_FINAL = 3;
+  int DECLARATION__IS_FINAL = 4;
 
   /**
    * The feature id for the '<em><b>Is Const</b></em>' attribute.
@@ -1104,7 +1149,7 @@ public interface DartPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DECLARATION__IS_CONST = 4;
+  int DECLARATION__IS_CONST = 5;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -1113,7 +1158,7 @@ public interface DartPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DECLARATION__TYPE = 5;
+  int DECLARATION__TYPE = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1122,7 +1167,7 @@ public interface DartPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DECLARATION__NAME = 6;
+  int DECLARATION__NAME = 7;
 
   /**
    * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
@@ -1131,7 +1176,7 @@ public interface DartPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DECLARATION__INITIAL_VALUE = 7;
+  int DECLARATION__INITIAL_VALUE = 8;
 
   /**
    * The number of structural features of the '<em>Declaration</em>' class.
@@ -1140,7 +1185,386 @@ public interface DartPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DECLARATION_FEATURE_COUNT = 8;
+  int DECLARATION_FEATURE_COUNT = 9;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.ConstructorSignatureImpl <em>Constructor Signature</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.ConstructorSignatureImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getConstructorSignature()
+   * @generated
+   */
+  int CONSTRUCTOR_SIGNATURE = 22;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRUCTOR_SIGNATURE__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRUCTOR_SIGNATURE__PARAMETERS = 1;
+
+  /**
+   * The number of structural features of the '<em>Constructor Signature</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRUCTOR_SIGNATURE_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.ConstructorNameImpl <em>Constructor Name</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.ConstructorNameImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getConstructorName()
+   * @generated
+   */
+  int CONSTRUCTOR_NAME = 23;
+
+  /**
+   * The feature id for the '<em><b>Class Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRUCTOR_NAME__CLASS_NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Constructor Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRUCTOR_NAME__CONSTRUCTOR_ID = 1;
+
+  /**
+   * The number of structural features of the '<em>Constructor Name</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRUCTOR_NAME_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.InitializersImpl <em>Initializers</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.InitializersImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getInitializers()
+   * @generated
+   */
+  int INITIALIZERS = 24;
+
+  /**
+   * The feature id for the '<em><b>Entries</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INITIALIZERS__ENTRIES = 0;
+
+  /**
+   * The number of structural features of the '<em>Initializers</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INITIALIZERS_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.InitializerEntryImpl <em>Initializer Entry</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.InitializerEntryImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getInitializerEntry()
+   * @generated
+   */
+  int INITIALIZER_ENTRY = 25;
+
+  /**
+   * The number of structural features of the '<em>Initializer Entry</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INITIALIZER_ENTRY_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.SuperInitializerImpl <em>Super Initializer</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.SuperInitializerImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getSuperInitializer()
+   * @generated
+   */
+  int SUPER_INITIALIZER = 26;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUPER_INITIALIZER__ID = INITIALIZER_ENTRY_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUPER_INITIALIZER__ARGS = INITIALIZER_ENTRY_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Super Initializer</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUPER_INITIALIZER_FEATURE_COUNT = INITIALIZER_ENTRY_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.FieldInitializerImpl <em>Field Initializer</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.FieldInitializerImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getFieldInitializer()
+   * @generated
+   */
+  int FIELD_INITIALIZER = 27;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_INITIALIZER__NAME = INITIALIZER_ENTRY_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_INITIALIZER__EXPRESSION = INITIALIZER_ENTRY_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Field Initializer</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD_INITIALIZER_FEATURE_COUNT = INITIALIZER_ENTRY_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.AssertInitializerImpl <em>Assert Initializer</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.AssertInitializerImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getAssertInitializer()
+   * @generated
+   */
+  int ASSERT_INITIALIZER = 28;
+
+  /**
+   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSERT_INITIALIZER__CONDITION = INITIALIZER_ENTRY_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Message</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSERT_INITIALIZER__MESSAGE = INITIALIZER_ENTRY_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Assert Initializer</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSERT_INITIALIZER_FEATURE_COUNT = INITIALIZER_ENTRY_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.FactoryConstructorSignatureImpl <em>Factory Constructor Signature</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.FactoryConstructorSignatureImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getFactoryConstructorSignature()
+   * @generated
+   */
+  int FACTORY_CONSTRUCTOR_SIGNATURE = 29;
+
+  /**
+   * The feature id for the '<em><b>Is Const</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FACTORY_CONSTRUCTOR_SIGNATURE__IS_CONST = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FACTORY_CONSTRUCTOR_SIGNATURE__NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FACTORY_CONSTRUCTOR_SIGNATURE__PARAMETERS = 2;
+
+  /**
+   * The number of structural features of the '<em>Factory Constructor Signature</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FACTORY_CONSTRUCTOR_SIGNATURE_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.RedirectingFactoryConstructorSignatureImpl <em>Redirecting Factory Constructor Signature</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.RedirectingFactoryConstructorSignatureImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getRedirectingFactoryConstructorSignature()
+   * @generated
+   */
+  int REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE = 30;
+
+  /**
+   * The feature id for the '<em><b>Is Const</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE__IS_CONST = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE__NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Parameters</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE__PARAMETERS = 2;
+
+  /**
+   * The feature id for the '<em><b>Redirectee</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE__REDIRECTEE = 3;
+
+  /**
+   * The number of structural features of the '<em>Redirecting Factory Constructor Signature</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE_FEATURE_COUNT = 4;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.ConstructorDesignationImpl <em>Constructor Designation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.ConstructorDesignationImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getConstructorDesignation()
+   * @generated
+   */
+  int CONSTRUCTOR_DESIGNATION = 31;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRUCTOR_DESIGNATION__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Type Arguments</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRUCTOR_DESIGNATION__TYPE_ARGUMENTS = 1;
+
+  /**
+   * The feature id for the '<em><b>Constructor Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRUCTOR_DESIGNATION__CONSTRUCTOR_ID = 2;
+
+  /**
+   * The number of structural features of the '<em>Constructor Designation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRUCTOR_DESIGNATION_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.MixinDeclarationImpl <em>Mixin Declaration</em>}' class.
@@ -1150,7 +1574,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getMixinDeclaration()
    * @generated
    */
-  int MIXIN_DECLARATION = 22;
+  int MIXIN_DECLARATION = 32;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -1223,7 +1647,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getMixinApplicationClass()
    * @generated
    */
-  int MIXIN_APPLICATION_CLASS = 23;
+  int MIXIN_APPLICATION_CLASS = 33;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1287,7 +1711,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getExtensionDeclaration()
    * @generated
    */
-  int EXTENSION_DECLARATION = 24;
+  int EXTENSION_DECLARATION = 34;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -1351,7 +1775,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getEnumDeclaration()
    * @generated
    */
-  int ENUM_DECLARATION = 25;
+  int ENUM_DECLARATION = 35;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -1397,7 +1821,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getEnumEntry()
    * @generated
    */
-  int ENUM_ENTRY = 26;
+  int ENUM_ENTRY = 36;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -1434,7 +1858,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTypeParameters()
    * @generated
    */
-  int TYPE_PARAMETERS = 27;
+  int TYPE_PARAMETERS = 37;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -1462,7 +1886,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTypeParameter()
    * @generated
    */
-  int TYPE_PARAMETER = 28;
+  int TYPE_PARAMETER = 38;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -1508,7 +1932,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getMetadata()
    * @generated
    */
-  int METADATA = 29;
+  int METADATA = 39;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1554,7 +1978,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getArguments()
    * @generated
    */
-  int ARGUMENTS = 30;
+  int ARGUMENTS = 40;
 
   /**
    * The feature id for the '<em><b>Arguments</b></em>' containment reference list.
@@ -1582,7 +2006,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getMapOrSetElement()
    * @generated
    */
-  int MAP_OR_SET_ELEMENT = 32;
+  int MAP_OR_SET_ELEMENT = 42;
 
   /**
    * The number of structural features of the '<em>Map Or Set Element</em>' class.
@@ -1601,7 +2025,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 31;
+  int EXPRESSION = 41;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -1629,7 +2053,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getStatement()
    * @generated
    */
-  int STATEMENT = 33;
+  int STATEMENT = 43;
 
   /**
    * The feature id for the '<em><b>Labels</b></em>' containment reference list.
@@ -1666,7 +2090,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLabel()
    * @generated
    */
-  int LABEL = 34;
+  int LABEL = 44;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1694,7 +2118,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNonLabelledStatement()
    * @generated
    */
-  int NON_LABELLED_STATEMENT = 35;
+  int NON_LABELLED_STATEMENT = 45;
 
   /**
    * The number of structural features of the '<em>Non Labelled Statement</em>' class.
@@ -1713,7 +2137,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getBlock()
    * @generated
    */
-  int BLOCK = 36;
+  int BLOCK = 46;
 
   /**
    * The feature id for the '<em><b>Statements</b></em>' containment reference list.
@@ -1741,7 +2165,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLocalVariableDeclaration()
    * @generated
    */
-  int LOCAL_VARIABLE_DECLARATION = 37;
+  int LOCAL_VARIABLE_DECLARATION = 47;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -1762,6 +2186,70 @@ public interface DartPackage extends EPackage
   int LOCAL_VARIABLE_DECLARATION_FEATURE_COUNT = NON_LABELLED_STATEMENT_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.LocalFunctionDeclarationImpl <em>Local Function Declaration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.LocalFunctionDeclarationImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLocalFunctionDeclaration()
+   * @generated
+   */
+  int LOCAL_FUNCTION_DECLARATION = 48;
+
+  /**
+   * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOCAL_FUNCTION_DECLARATION__METADATA = NON_LABELLED_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOCAL_FUNCTION_DECLARATION__RETURN_TYPE = NON_LABELLED_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOCAL_FUNCTION_DECLARATION__NAME = NON_LABELLED_STATEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Signature</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOCAL_FUNCTION_DECLARATION__SIGNATURE = NON_LABELLED_STATEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOCAL_FUNCTION_DECLARATION__BODY = NON_LABELLED_STATEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The number of structural features of the '<em>Local Function Declaration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOCAL_FUNCTION_DECLARATION_FEATURE_COUNT = NON_LABELLED_STATEMENT_FEATURE_COUNT + 5;
+
+  /**
    * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.IfStatementImpl <em>If Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1769,7 +2257,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getIfStatement()
    * @generated
    */
-  int IF_STATEMENT = 38;
+  int IF_STATEMENT = 49;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -1815,7 +2303,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getForStatement()
    * @generated
    */
-  int FOR_STATEMENT = 39;
+  int FOR_STATEMENT = 50;
 
   /**
    * The feature id for the '<em><b>Is Await</b></em>' attribute.
@@ -1888,7 +2376,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getWhileStatement()
    * @generated
    */
-  int WHILE_STATEMENT = 40;
+  int WHILE_STATEMENT = 51;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -1925,7 +2413,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getDoStatement()
    * @generated
    */
-  int DO_STATEMENT = 41;
+  int DO_STATEMENT = 52;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -1962,7 +2450,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getSwitchStatement()
    * @generated
    */
-  int SWITCH_STATEMENT = 42;
+  int SWITCH_STATEMENT = 53;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -2008,7 +2496,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getSwitchCase()
    * @generated
    */
-  int SWITCH_CASE = 43;
+  int SWITCH_CASE = 54;
 
   /**
    * The feature id for the '<em><b>Labels</b></em>' containment reference list.
@@ -2054,7 +2542,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getDefaultCase()
    * @generated
    */
-  int DEFAULT_CASE = 44;
+  int DEFAULT_CASE = 55;
 
   /**
    * The feature id for the '<em><b>Labels</b></em>' containment reference list.
@@ -2091,7 +2579,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getRethrowStatement()
    * @generated
    */
-  int RETHROW_STATEMENT = 45;
+  int RETHROW_STATEMENT = 56;
 
   /**
    * The number of structural features of the '<em>Rethrow Statement</em>' class.
@@ -2110,7 +2598,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTryStatement()
    * @generated
    */
-  int TRY_STATEMENT = 46;
+  int TRY_STATEMENT = 57;
 
   /**
    * The feature id for the '<em><b>Block</b></em>' containment reference.
@@ -2156,7 +2644,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getCatchClause()
    * @generated
    */
-  int CATCH_CLAUSE = 47;
+  int CATCH_CLAUSE = 58;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -2211,7 +2699,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getFinallyClause()
    * @generated
    */
-  int FINALLY_CLAUSE = 48;
+  int FINALLY_CLAUSE = 59;
 
   /**
    * The feature id for the '<em><b>Block</b></em>' containment reference.
@@ -2239,7 +2727,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getBreakStatement()
    * @generated
    */
-  int BREAK_STATEMENT = 49;
+  int BREAK_STATEMENT = 60;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -2267,7 +2755,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getContinueStatement()
    * @generated
    */
-  int CONTINUE_STATEMENT = 50;
+  int CONTINUE_STATEMENT = 61;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -2295,7 +2783,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getReturnStatement()
    * @generated
    */
-  int RETURN_STATEMENT = 51;
+  int RETURN_STATEMENT = 62;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -2323,7 +2811,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getYieldStatement()
    * @generated
    */
-  int YIELD_STATEMENT = 52;
+  int YIELD_STATEMENT = 63;
 
   /**
    * The feature id for the '<em><b>Is Star</b></em>' attribute.
@@ -2353,6 +2841,43 @@ public interface DartPackage extends EPackage
   int YIELD_STATEMENT_FEATURE_COUNT = NON_LABELLED_STATEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.AssertStatementImpl <em>Assert Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.AssertStatementImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getAssertStatement()
+   * @generated
+   */
+  int ASSERT_STATEMENT = 64;
+
+  /**
+   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSERT_STATEMENT__CONDITION = NON_LABELLED_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Message</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSERT_STATEMENT__MESSAGE = NON_LABELLED_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Assert Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSERT_STATEMENT_FEATURE_COUNT = NON_LABELLED_STATEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.ExpressionStatementImpl <em>Expression Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2360,7 +2885,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getExpressionStatement()
    * @generated
    */
-  int EXPRESSION_STATEMENT = 53;
+  int EXPRESSION_STATEMENT = 65;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -2388,7 +2913,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLibraryDeclaration()
    * @generated
    */
-  int LIBRARY_DECLARATION = 54;
+  int LIBRARY_DECLARATION = 66;
 
   /**
    * The feature id for the '<em><b>Declarations</b></em>' containment reference list.
@@ -2452,7 +2977,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getPartDeclaration()
    * @generated
    */
-  int PART_DECLARATION = 55;
+  int PART_DECLARATION = 67;
 
   /**
    * The feature id for the '<em><b>Declarations</b></em>' containment reference list.
@@ -2489,7 +3014,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getScriptTag()
    * @generated
    */
-  int SCRIPT_TAG = 56;
+  int SCRIPT_TAG = 68;
 
   /**
    * The feature id for the '<em><b>Content</b></em>' attribute.
@@ -2517,7 +3042,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLibraryName()
    * @generated
    */
-  int LIBRARY_NAME = 57;
+  int LIBRARY_NAME = 69;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -2554,7 +3079,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getImportOrExport()
    * @generated
    */
-  int IMPORT_OR_EXPORT = 58;
+  int IMPORT_OR_EXPORT = 70;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -2591,7 +3116,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLibraryImport()
    * @generated
    */
-  int LIBRARY_IMPORT = 59;
+  int LIBRARY_IMPORT = 71;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -2655,7 +3180,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLibraryExport()
    * @generated
    */
-  int LIBRARY_EXPORT = 60;
+  int LIBRARY_EXPORT = 72;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -2701,7 +3226,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getPartDirective()
    * @generated
    */
-  int PART_DIRECTIVE = 61;
+  int PART_DIRECTIVE = 73;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -2738,7 +3263,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getPartHeader()
    * @generated
    */
-  int PART_HEADER = 62;
+  int PART_HEADER = 74;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -2784,7 +3309,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getCombinator()
    * @generated
    */
-  int COMBINATOR = 63;
+  int COMBINATOR = 75;
 
   /**
    * The feature id for the '<em><b>Identifiers</b></em>' attribute list.
@@ -2805,6 +3330,172 @@ public interface DartPackage extends EPackage
   int COMBINATOR_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.TopLevelGetterImpl <em>Top Level Getter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.TopLevelGetterImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTopLevelGetter()
+   * @generated
+   */
+  int TOP_LEVEL_GETTER = 77;
+
+  /**
+   * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TOP_LEVEL_GETTER__METADATA = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Signature</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TOP_LEVEL_GETTER__SIGNATURE = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TOP_LEVEL_GETTER__BODY = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Top Level Getter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TOP_LEVEL_GETTER_FEATURE_COUNT = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.TopLevelSetterImpl <em>Top Level Setter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.TopLevelSetterImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTopLevelSetter()
+   * @generated
+   */
+  int TOP_LEVEL_SETTER = 78;
+
+  /**
+   * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TOP_LEVEL_SETTER__METADATA = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Signature</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TOP_LEVEL_SETTER__SIGNATURE = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TOP_LEVEL_SETTER__BODY = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Top Level Setter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TOP_LEVEL_SETTER_FEATURE_COUNT = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.ExternalGetterImpl <em>External Getter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.ExternalGetterImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getExternalGetter()
+   * @generated
+   */
+  int EXTERNAL_GETTER = 79;
+
+  /**
+   * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTERNAL_GETTER__METADATA = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Signature</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTERNAL_GETTER__SIGNATURE = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>External Getter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTERNAL_GETTER_FEATURE_COUNT = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.ExternalSetterImpl <em>External Setter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.ExternalSetterImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getExternalSetter()
+   * @generated
+   */
+  int EXTERNAL_SETTER = 80;
+
+  /**
+   * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTERNAL_SETTER__METADATA = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Signature</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTERNAL_SETTER__SIGNATURE = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>External Setter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTERNAL_SETTER_FEATURE_COUNT = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.TypeAliasImpl <em>Type Alias</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2812,7 +3503,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTypeAlias()
    * @generated
    */
-  int TYPE_ALIAS = 65;
+  int TYPE_ALIAS = 81;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -2851,13 +3542,31 @@ public interface DartPackage extends EPackage
   int TYPE_ALIAS__TYPE = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 3;
 
   /**
+   * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_ALIAS__RETURN_TYPE = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Signature</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_ALIAS__SIGNATURE = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 5;
+
+  /**
    * The number of structural features of the '<em>Type Alias</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPE_ALIAS_FEATURE_COUNT = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 4;
+  int TYPE_ALIAS_FEATURE_COUNT = TOP_LEVEL_DECLARATION_FEATURE_COUNT + 6;
 
   /**
    * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.TypeImpl <em>Type</em>}' class.
@@ -2867,7 +3576,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getType()
    * @generated
    */
-  int TYPE = 66;
+  int TYPE = 82;
 
   /**
    * The feature id for the '<em><b>Type Name</b></em>' containment reference.
@@ -2913,7 +3622,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTypeName()
    * @generated
    */
-  int TYPE_NAME = 67;
+  int TYPE_NAME = 83;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2941,7 +3650,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTypeArguments()
    * @generated
    */
-  int TYPE_ARGUMENTS = 68;
+  int TYPE_ARGUMENTS = 84;
 
   /**
    * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -2969,7 +3678,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getAssignment()
    * @generated
    */
-  int ASSIGNMENT = 69;
+  int ASSIGNMENT = 85;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3024,7 +3733,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getConditional()
    * @generated
    */
-  int CONDITIONAL = 70;
+  int CONDITIONAL = 86;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3079,7 +3788,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getIfNull()
    * @generated
    */
-  int IF_NULL = 71;
+  int IF_NULL = 87;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3125,7 +3834,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLogicalOr()
    * @generated
    */
-  int LOGICAL_OR = 72;
+  int LOGICAL_OR = 88;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3171,7 +3880,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLogicalAnd()
    * @generated
    */
-  int LOGICAL_AND = 73;
+  int LOGICAL_AND = 89;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3217,7 +3926,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getEquality()
    * @generated
    */
-  int EQUALITY = 74;
+  int EQUALITY = 90;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3272,7 +3981,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getRelational()
    * @generated
    */
-  int RELATIONAL = 75;
+  int RELATIONAL = 91;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3327,7 +4036,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTypeCheck()
    * @generated
    */
-  int TYPE_CHECK = 76;
+  int TYPE_CHECK = 92;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3382,7 +4091,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getBitwiseOr()
    * @generated
    */
-  int BITWISE_OR = 77;
+  int BITWISE_OR = 93;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3428,7 +4137,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getBitwiseXor()
    * @generated
    */
-  int BITWISE_XOR = 78;
+  int BITWISE_XOR = 94;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3474,7 +4183,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getBitwiseAnd()
    * @generated
    */
-  int BITWISE_AND = 79;
+  int BITWISE_AND = 95;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3520,7 +4229,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getShift()
    * @generated
    */
-  int SHIFT = 80;
+  int SHIFT = 96;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3575,7 +4284,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getAdditive()
    * @generated
    */
-  int ADDITIVE = 81;
+  int ADDITIVE = 97;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3630,7 +4339,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getMultiplicative()
    * @generated
    */
-  int MULTIPLICATIVE = 82;
+  int MULTIPLICATIVE = 98;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3685,7 +4394,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getPrefixExpression()
    * @generated
    */
-  int PREFIX_EXPRESSION = 83;
+  int PREFIX_EXPRESSION = 99;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3731,7 +4440,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getPostfix()
    * @generated
    */
-  int POSTFIX = 84;
+  int POSTFIX = 100;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3777,7 +4486,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getMethodInvocation()
    * @generated
    */
-  int METHOD_INVOCATION = 85;
+  int METHOD_INVOCATION = 101;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3841,7 +4550,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getFunctionCall()
    * @generated
    */
-  int FUNCTION_CALL = 86;
+  int FUNCTION_CALL = 102;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3887,7 +4596,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getIndexExpression()
    * @generated
    */
-  int INDEX_EXPRESSION = 87;
+  int INDEX_EXPRESSION = 103;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3933,7 +4642,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getThisExpression()
    * @generated
    */
-  int THIS_EXPRESSION = 88;
+  int THIS_EXPRESSION = 104;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3961,7 +4670,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getSuperExpression()
    * @generated
    */
-  int SUPER_EXPRESSION = 89;
+  int SUPER_EXPRESSION = 105;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -3989,7 +4698,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNullLiteral()
    * @generated
    */
-  int NULL_LITERAL = 90;
+  int NULL_LITERAL = 106;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4017,7 +4726,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 91;
+  int BOOLEAN_LITERAL = 107;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4054,7 +4763,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNumberLiteral()
    * @generated
    */
-  int NUMBER_LITERAL = 92;
+  int NUMBER_LITERAL = 108;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4091,7 +4800,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 93;
+  int STRING_LITERAL = 109;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4128,7 +4837,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getIdentifierRef()
    * @generated
    */
-  int IDENTIFIER_REF = 94;
+  int IDENTIFIER_REF = 110;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4165,7 +4874,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNewExpression()
    * @generated
    */
-  int NEW_EXPRESSION = 95;
+  int NEW_EXPRESSION = 111;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4220,7 +4929,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getConstExpression()
    * @generated
    */
-  int CONST_EXPRESSION = 96;
+  int CONST_EXPRESSION = 112;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4275,7 +4984,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getListLiteral()
    * @generated
    */
-  int LIST_LITERAL = 97;
+  int LIST_LITERAL = 113;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4330,7 +5039,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getSetOrMapLiteral()
    * @generated
    */
-  int SET_OR_MAP_LITERAL = 98;
+  int SET_OR_MAP_LITERAL = 114;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -4385,7 +5094,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getParenthesizedExpression()
    * @generated
    */
-  int PARENTHESIZED_EXPRESSION = 99;
+  int PARENTHESIZED_EXPRESSION = 115;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -5199,15 +5908,26 @@ public interface DartPackage extends EPackage
   EReference getMemberDeclaration_Metadata();
 
   /**
-   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getMethod <em>Method</em>}'.
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getConstructor <em>Constructor</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Method</em>'.
-   * @see it.lorenzodeluca.dart.dart.MemberDeclaration#getMethod()
+   * @return the meta object for the containment reference '<em>Constructor</em>'.
+   * @see it.lorenzodeluca.dart.dart.MemberDeclaration#getConstructor()
    * @see #getMemberDeclaration()
    * @generated
    */
-  EReference getMemberDeclaration_Method();
+  EReference getMemberDeclaration_Constructor();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getInitializers <em>Initializers</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Initializers</em>'.
+   * @see it.lorenzodeluca.dart.dart.MemberDeclaration#getInitializers()
+   * @see #getMemberDeclaration()
+   * @generated
+   */
+  EReference getMemberDeclaration_Initializers();
 
   /**
    * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getBody <em>Body</em>}'.
@@ -5219,6 +5939,39 @@ public interface DartPackage extends EPackage
    * @generated
    */
   EReference getMemberDeclaration_Body();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getFactory <em>Factory</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Factory</em>'.
+   * @see it.lorenzodeluca.dart.dart.MemberDeclaration#getFactory()
+   * @see #getMemberDeclaration()
+   * @generated
+   */
+  EReference getMemberDeclaration_Factory();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getRedirectingFactory <em>Redirecting Factory</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Redirecting Factory</em>'.
+   * @see it.lorenzodeluca.dart.dart.MemberDeclaration#getRedirectingFactory()
+   * @see #getMemberDeclaration()
+   * @generated
+   */
+  EReference getMemberDeclaration_RedirectingFactory();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getMethod <em>Method</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Method</em>'.
+   * @see it.lorenzodeluca.dart.dart.MemberDeclaration#getMethod()
+   * @see #getMemberDeclaration()
+   * @generated
+   */
+  EReference getMemberDeclaration_Method();
 
   /**
    * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getDeclaration <em>Declaration</em>}'.
@@ -5264,6 +6017,50 @@ public interface DartPackage extends EPackage
   EReference getMethodSignature_ReturnType();
 
   /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsGetter <em>Is Getter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Getter</em>'.
+   * @see it.lorenzodeluca.dart.dart.MethodSignature#isIsGetter()
+   * @see #getMethodSignature()
+   * @generated
+   */
+  EAttribute getMethodSignature_IsGetter();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.MethodSignature#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see it.lorenzodeluca.dart.dart.MethodSignature#getName()
+   * @see #getMethodSignature()
+   * @generated
+   */
+  EAttribute getMethodSignature_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsSetter <em>Is Setter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Setter</em>'.
+   * @see it.lorenzodeluca.dart.dart.MethodSignature#isIsSetter()
+   * @see #getMethodSignature()
+   * @generated
+   */
+  EAttribute getMethodSignature_IsSetter();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.MethodSignature#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Parameters</em>'.
+   * @see it.lorenzodeluca.dart.dart.MethodSignature#getParameters()
+   * @see #getMethodSignature()
+   * @generated
+   */
+  EReference getMethodSignature_Parameters();
+
+  /**
    * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsOperator <em>Is Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5284,50 +6081,6 @@ public interface DartPackage extends EPackage
    * @generated
    */
   EAttribute getMethodSignature_Operator();
-
-  /**
-   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsGetter <em>Is Getter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is Getter</em>'.
-   * @see it.lorenzodeluca.dart.dart.MethodSignature#isIsGetter()
-   * @see #getMethodSignature()
-   * @generated
-   */
-  EAttribute getMethodSignature_IsGetter();
-
-  /**
-   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsSetter <em>Is Setter</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is Setter</em>'.
-   * @see it.lorenzodeluca.dart.dart.MethodSignature#isIsSetter()
-   * @see #getMethodSignature()
-   * @generated
-   */
-  EAttribute getMethodSignature_IsSetter();
-
-  /**
-   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.MethodSignature#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see it.lorenzodeluca.dart.dart.MethodSignature#getName()
-   * @see #getMethodSignature()
-   * @generated
-   */
-  EAttribute getMethodSignature_Name();
-
-  /**
-   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.MethodSignature#getParameters <em>Parameters</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Parameters</em>'.
-   * @see it.lorenzodeluca.dart.dart.MethodSignature#getParameters()
-   * @see #getMethodSignature()
-   * @generated
-   */
-  EReference getMethodSignature_Parameters();
 
   /**
    * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.Declaration <em>Declaration</em>}'.
@@ -5360,6 +6113,17 @@ public interface DartPackage extends EPackage
    * @generated
    */
   EAttribute getDeclaration_IsStatic();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.Declaration#isIsCovariant <em>Is Covariant</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Covariant</em>'.
+   * @see it.lorenzodeluca.dart.dart.Declaration#isIsCovariant()
+   * @see #getDeclaration()
+   * @generated
+   */
+  EAttribute getDeclaration_IsCovariant();
 
   /**
    * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.Declaration#isIsLate <em>Is Late</em>}'.
@@ -5426,6 +6190,337 @@ public interface DartPackage extends EPackage
    * @generated
    */
   EReference getDeclaration_InitialValue();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.ConstructorSignature <em>Constructor Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Constructor Signature</em>'.
+   * @see it.lorenzodeluca.dart.dart.ConstructorSignature
+   * @generated
+   */
+  EClass getConstructorSignature();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.ConstructorSignature#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @see it.lorenzodeluca.dart.dart.ConstructorSignature#getName()
+   * @see #getConstructorSignature()
+   * @generated
+   */
+  EReference getConstructorSignature_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.ConstructorSignature#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Parameters</em>'.
+   * @see it.lorenzodeluca.dart.dart.ConstructorSignature#getParameters()
+   * @see #getConstructorSignature()
+   * @generated
+   */
+  EReference getConstructorSignature_Parameters();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.ConstructorName <em>Constructor Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Constructor Name</em>'.
+   * @see it.lorenzodeluca.dart.dart.ConstructorName
+   * @generated
+   */
+  EClass getConstructorName();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.ConstructorName#getClassName <em>Class Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Class Name</em>'.
+   * @see it.lorenzodeluca.dart.dart.ConstructorName#getClassName()
+   * @see #getConstructorName()
+   * @generated
+   */
+  EAttribute getConstructorName_ClassName();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.ConstructorName#getConstructorId <em>Constructor Id</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Constructor Id</em>'.
+   * @see it.lorenzodeluca.dart.dart.ConstructorName#getConstructorId()
+   * @see #getConstructorName()
+   * @generated
+   */
+  EAttribute getConstructorName_ConstructorId();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.Initializers <em>Initializers</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Initializers</em>'.
+   * @see it.lorenzodeluca.dart.dart.Initializers
+   * @generated
+   */
+  EClass getInitializers();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.lorenzodeluca.dart.dart.Initializers#getEntries <em>Entries</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Entries</em>'.
+   * @see it.lorenzodeluca.dart.dart.Initializers#getEntries()
+   * @see #getInitializers()
+   * @generated
+   */
+  EReference getInitializers_Entries();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.InitializerEntry <em>Initializer Entry</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Initializer Entry</em>'.
+   * @see it.lorenzodeluca.dart.dart.InitializerEntry
+   * @generated
+   */
+  EClass getInitializerEntry();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.SuperInitializer <em>Super Initializer</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Super Initializer</em>'.
+   * @see it.lorenzodeluca.dart.dart.SuperInitializer
+   * @generated
+   */
+  EClass getSuperInitializer();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.SuperInitializer#getId <em>Id</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id</em>'.
+   * @see it.lorenzodeluca.dart.dart.SuperInitializer#getId()
+   * @see #getSuperInitializer()
+   * @generated
+   */
+  EAttribute getSuperInitializer_Id();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.SuperInitializer#getArgs <em>Args</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Args</em>'.
+   * @see it.lorenzodeluca.dart.dart.SuperInitializer#getArgs()
+   * @see #getSuperInitializer()
+   * @generated
+   */
+  EReference getSuperInitializer_Args();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.FieldInitializer <em>Field Initializer</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Field Initializer</em>'.
+   * @see it.lorenzodeluca.dart.dart.FieldInitializer
+   * @generated
+   */
+  EClass getFieldInitializer();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.FieldInitializer#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see it.lorenzodeluca.dart.dart.FieldInitializer#getName()
+   * @see #getFieldInitializer()
+   * @generated
+   */
+  EAttribute getFieldInitializer_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.FieldInitializer#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see it.lorenzodeluca.dart.dart.FieldInitializer#getExpression()
+   * @see #getFieldInitializer()
+   * @generated
+   */
+  EReference getFieldInitializer_Expression();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.AssertInitializer <em>Assert Initializer</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Assert Initializer</em>'.
+   * @see it.lorenzodeluca.dart.dart.AssertInitializer
+   * @generated
+   */
+  EClass getAssertInitializer();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.AssertInitializer#getCondition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @see it.lorenzodeluca.dart.dart.AssertInitializer#getCondition()
+   * @see #getAssertInitializer()
+   * @generated
+   */
+  EReference getAssertInitializer_Condition();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.AssertInitializer#getMessage <em>Message</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Message</em>'.
+   * @see it.lorenzodeluca.dart.dart.AssertInitializer#getMessage()
+   * @see #getAssertInitializer()
+   * @generated
+   */
+  EReference getAssertInitializer_Message();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.FactoryConstructorSignature <em>Factory Constructor Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Factory Constructor Signature</em>'.
+   * @see it.lorenzodeluca.dart.dart.FactoryConstructorSignature
+   * @generated
+   */
+  EClass getFactoryConstructorSignature();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.FactoryConstructorSignature#isIsConst <em>Is Const</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Const</em>'.
+   * @see it.lorenzodeluca.dart.dart.FactoryConstructorSignature#isIsConst()
+   * @see #getFactoryConstructorSignature()
+   * @generated
+   */
+  EAttribute getFactoryConstructorSignature_IsConst();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.FactoryConstructorSignature#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @see it.lorenzodeluca.dart.dart.FactoryConstructorSignature#getName()
+   * @see #getFactoryConstructorSignature()
+   * @generated
+   */
+  EReference getFactoryConstructorSignature_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.FactoryConstructorSignature#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Parameters</em>'.
+   * @see it.lorenzodeluca.dart.dart.FactoryConstructorSignature#getParameters()
+   * @see #getFactoryConstructorSignature()
+   * @generated
+   */
+  EReference getFactoryConstructorSignature_Parameters();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature <em>Redirecting Factory Constructor Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Redirecting Factory Constructor Signature</em>'.
+   * @see it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature
+   * @generated
+   */
+  EClass getRedirectingFactoryConstructorSignature();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature#isIsConst <em>Is Const</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Const</em>'.
+   * @see it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature#isIsConst()
+   * @see #getRedirectingFactoryConstructorSignature()
+   * @generated
+   */
+  EAttribute getRedirectingFactoryConstructorSignature_IsConst();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @see it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature#getName()
+   * @see #getRedirectingFactoryConstructorSignature()
+   * @generated
+   */
+  EReference getRedirectingFactoryConstructorSignature_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature#getParameters <em>Parameters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Parameters</em>'.
+   * @see it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature#getParameters()
+   * @see #getRedirectingFactoryConstructorSignature()
+   * @generated
+   */
+  EReference getRedirectingFactoryConstructorSignature_Parameters();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature#getRedirectee <em>Redirectee</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Redirectee</em>'.
+   * @see it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature#getRedirectee()
+   * @see #getRedirectingFactoryConstructorSignature()
+   * @generated
+   */
+  EReference getRedirectingFactoryConstructorSignature_Redirectee();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.ConstructorDesignation <em>Constructor Designation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Constructor Designation</em>'.
+   * @see it.lorenzodeluca.dart.dart.ConstructorDesignation
+   * @generated
+   */
+  EClass getConstructorDesignation();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.ConstructorDesignation#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see it.lorenzodeluca.dart.dart.ConstructorDesignation#getName()
+   * @see #getConstructorDesignation()
+   * @generated
+   */
+  EAttribute getConstructorDesignation_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.ConstructorDesignation#getTypeArguments <em>Type Arguments</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Type Arguments</em>'.
+   * @see it.lorenzodeluca.dart.dart.ConstructorDesignation#getTypeArguments()
+   * @see #getConstructorDesignation()
+   * @generated
+   */
+  EReference getConstructorDesignation_TypeArguments();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.ConstructorDesignation#getConstructorId <em>Constructor Id</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Constructor Id</em>'.
+   * @see it.lorenzodeluca.dart.dart.ConstructorDesignation#getConstructorId()
+   * @see #getConstructorDesignation()
+   * @generated
+   */
+  EAttribute getConstructorDesignation_ConstructorId();
 
   /**
    * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.MixinDeclaration <em>Mixin Declaration</em>}'.
@@ -5973,6 +7068,71 @@ public interface DartPackage extends EPackage
   EReference getLocalVariableDeclaration_Variable();
 
   /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.LocalFunctionDeclaration <em>Local Function Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Local Function Declaration</em>'.
+   * @see it.lorenzodeluca.dart.dart.LocalFunctionDeclaration
+   * @generated
+   */
+  EClass getLocalFunctionDeclaration();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.lorenzodeluca.dart.dart.LocalFunctionDeclaration#getMetadata <em>Metadata</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Metadata</em>'.
+   * @see it.lorenzodeluca.dart.dart.LocalFunctionDeclaration#getMetadata()
+   * @see #getLocalFunctionDeclaration()
+   * @generated
+   */
+  EReference getLocalFunctionDeclaration_Metadata();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.LocalFunctionDeclaration#getReturnType <em>Return Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Return Type</em>'.
+   * @see it.lorenzodeluca.dart.dart.LocalFunctionDeclaration#getReturnType()
+   * @see #getLocalFunctionDeclaration()
+   * @generated
+   */
+  EReference getLocalFunctionDeclaration_ReturnType();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.LocalFunctionDeclaration#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see it.lorenzodeluca.dart.dart.LocalFunctionDeclaration#getName()
+   * @see #getLocalFunctionDeclaration()
+   * @generated
+   */
+  EAttribute getLocalFunctionDeclaration_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.LocalFunctionDeclaration#getSignature <em>Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Signature</em>'.
+   * @see it.lorenzodeluca.dart.dart.LocalFunctionDeclaration#getSignature()
+   * @see #getLocalFunctionDeclaration()
+   * @generated
+   */
+  EReference getLocalFunctionDeclaration_Signature();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.LocalFunctionDeclaration#getBody <em>Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Body</em>'.
+   * @see it.lorenzodeluca.dart.dart.LocalFunctionDeclaration#getBody()
+   * @see #getLocalFunctionDeclaration()
+   * @generated
+   */
+  EReference getLocalFunctionDeclaration_Body();
+
+  /**
    * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.IfStatement <em>If Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6497,6 +7657,38 @@ public interface DartPackage extends EPackage
   EReference getYieldStatement_Expression();
 
   /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.AssertStatement <em>Assert Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Assert Statement</em>'.
+   * @see it.lorenzodeluca.dart.dart.AssertStatement
+   * @generated
+   */
+  EClass getAssertStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.AssertStatement#getCondition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @see it.lorenzodeluca.dart.dart.AssertStatement#getCondition()
+   * @see #getAssertStatement()
+   * @generated
+   */
+  EReference getAssertStatement_Condition();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.AssertStatement#getMessage <em>Message</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Message</em>'.
+   * @see it.lorenzodeluca.dart.dart.AssertStatement#getMessage()
+   * @see #getAssertStatement()
+   * @generated
+   */
+  EReference getAssertStatement_Message();
+
+  /**
    * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.ExpressionStatement <em>Expression Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6848,6 +8040,156 @@ public interface DartPackage extends EPackage
   EClass getTopLevelDeclaration();
 
   /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.TopLevelGetter <em>Top Level Getter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Top Level Getter</em>'.
+   * @see it.lorenzodeluca.dart.dart.TopLevelGetter
+   * @generated
+   */
+  EClass getTopLevelGetter();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.lorenzodeluca.dart.dart.TopLevelGetter#getMetadata <em>Metadata</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Metadata</em>'.
+   * @see it.lorenzodeluca.dart.dart.TopLevelGetter#getMetadata()
+   * @see #getTopLevelGetter()
+   * @generated
+   */
+  EReference getTopLevelGetter_Metadata();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.TopLevelGetter#getSignature <em>Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Signature</em>'.
+   * @see it.lorenzodeluca.dart.dart.TopLevelGetter#getSignature()
+   * @see #getTopLevelGetter()
+   * @generated
+   */
+  EReference getTopLevelGetter_Signature();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.TopLevelGetter#getBody <em>Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Body</em>'.
+   * @see it.lorenzodeluca.dart.dart.TopLevelGetter#getBody()
+   * @see #getTopLevelGetter()
+   * @generated
+   */
+  EReference getTopLevelGetter_Body();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.TopLevelSetter <em>Top Level Setter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Top Level Setter</em>'.
+   * @see it.lorenzodeluca.dart.dart.TopLevelSetter
+   * @generated
+   */
+  EClass getTopLevelSetter();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.lorenzodeluca.dart.dart.TopLevelSetter#getMetadata <em>Metadata</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Metadata</em>'.
+   * @see it.lorenzodeluca.dart.dart.TopLevelSetter#getMetadata()
+   * @see #getTopLevelSetter()
+   * @generated
+   */
+  EReference getTopLevelSetter_Metadata();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.TopLevelSetter#getSignature <em>Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Signature</em>'.
+   * @see it.lorenzodeluca.dart.dart.TopLevelSetter#getSignature()
+   * @see #getTopLevelSetter()
+   * @generated
+   */
+  EReference getTopLevelSetter_Signature();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.TopLevelSetter#getBody <em>Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Body</em>'.
+   * @see it.lorenzodeluca.dart.dart.TopLevelSetter#getBody()
+   * @see #getTopLevelSetter()
+   * @generated
+   */
+  EReference getTopLevelSetter_Body();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.ExternalGetter <em>External Getter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>External Getter</em>'.
+   * @see it.lorenzodeluca.dart.dart.ExternalGetter
+   * @generated
+   */
+  EClass getExternalGetter();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.lorenzodeluca.dart.dart.ExternalGetter#getMetadata <em>Metadata</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Metadata</em>'.
+   * @see it.lorenzodeluca.dart.dart.ExternalGetter#getMetadata()
+   * @see #getExternalGetter()
+   * @generated
+   */
+  EReference getExternalGetter_Metadata();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.ExternalGetter#getSignature <em>Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Signature</em>'.
+   * @see it.lorenzodeluca.dart.dart.ExternalGetter#getSignature()
+   * @see #getExternalGetter()
+   * @generated
+   */
+  EReference getExternalGetter_Signature();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.ExternalSetter <em>External Setter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>External Setter</em>'.
+   * @see it.lorenzodeluca.dart.dart.ExternalSetter
+   * @generated
+   */
+  EClass getExternalSetter();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.lorenzodeluca.dart.dart.ExternalSetter#getMetadata <em>Metadata</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Metadata</em>'.
+   * @see it.lorenzodeluca.dart.dart.ExternalSetter#getMetadata()
+   * @see #getExternalSetter()
+   * @generated
+   */
+  EReference getExternalSetter_Metadata();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.ExternalSetter#getSignature <em>Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Signature</em>'.
+   * @see it.lorenzodeluca.dart.dart.ExternalSetter#getSignature()
+   * @see #getExternalSetter()
+   * @generated
+   */
+  EReference getExternalSetter_Signature();
+
+  /**
    * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.TypeAlias <em>Type Alias</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6900,6 +8242,28 @@ public interface DartPackage extends EPackage
    * @generated
    */
   EReference getTypeAlias_Type();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.TypeAlias#getReturnType <em>Return Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Return Type</em>'.
+   * @see it.lorenzodeluca.dart.dart.TypeAlias#getReturnType()
+   * @see #getTypeAlias()
+   * @generated
+   */
+  EReference getTypeAlias_ReturnType();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.TypeAlias#getSignature <em>Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Signature</em>'.
+   * @see it.lorenzodeluca.dart.dart.TypeAlias#getSignature()
+   * @see #getTypeAlias()
+   * @generated
+   */
+  EReference getTypeAlias_Signature();
 
   /**
    * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.Type <em>Type</em>}'.
@@ -8659,12 +10023,20 @@ public interface DartPackage extends EPackage
     EReference MEMBER_DECLARATION__METADATA = eINSTANCE.getMemberDeclaration_Metadata();
 
     /**
-     * The meta object literal for the '<em><b>Method</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Constructor</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MEMBER_DECLARATION__METHOD = eINSTANCE.getMemberDeclaration_Method();
+    EReference MEMBER_DECLARATION__CONSTRUCTOR = eINSTANCE.getMemberDeclaration_Constructor();
+
+    /**
+     * The meta object literal for the '<em><b>Initializers</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MEMBER_DECLARATION__INITIALIZERS = eINSTANCE.getMemberDeclaration_Initializers();
 
     /**
      * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
@@ -8673,6 +10045,30 @@ public interface DartPackage extends EPackage
      * @generated
      */
     EReference MEMBER_DECLARATION__BODY = eINSTANCE.getMemberDeclaration_Body();
+
+    /**
+     * The meta object literal for the '<em><b>Factory</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MEMBER_DECLARATION__FACTORY = eINSTANCE.getMemberDeclaration_Factory();
+
+    /**
+     * The meta object literal for the '<em><b>Redirecting Factory</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MEMBER_DECLARATION__REDIRECTING_FACTORY = eINSTANCE.getMemberDeclaration_RedirectingFactory();
+
+    /**
+     * The meta object literal for the '<em><b>Method</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MEMBER_DECLARATION__METHOD = eINSTANCE.getMemberDeclaration_Method();
 
     /**
      * The meta object literal for the '<em><b>Declaration</b></em>' containment reference feature.
@@ -8709,6 +10105,38 @@ public interface DartPackage extends EPackage
     EReference METHOD_SIGNATURE__RETURN_TYPE = eINSTANCE.getMethodSignature_ReturnType();
 
     /**
+     * The meta object literal for the '<em><b>Is Getter</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute METHOD_SIGNATURE__IS_GETTER = eINSTANCE.getMethodSignature_IsGetter();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute METHOD_SIGNATURE__NAME = eINSTANCE.getMethodSignature_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Is Setter</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute METHOD_SIGNATURE__IS_SETTER = eINSTANCE.getMethodSignature_IsSetter();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference METHOD_SIGNATURE__PARAMETERS = eINSTANCE.getMethodSignature_Parameters();
+
+    /**
      * The meta object literal for the '<em><b>Is Operator</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -8723,38 +10151,6 @@ public interface DartPackage extends EPackage
      * @generated
      */
     EAttribute METHOD_SIGNATURE__OPERATOR = eINSTANCE.getMethodSignature_Operator();
-
-    /**
-     * The meta object literal for the '<em><b>Is Getter</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute METHOD_SIGNATURE__IS_GETTER = eINSTANCE.getMethodSignature_IsGetter();
-
-    /**
-     * The meta object literal for the '<em><b>Is Setter</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute METHOD_SIGNATURE__IS_SETTER = eINSTANCE.getMethodSignature_IsSetter();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute METHOD_SIGNATURE__NAME = eINSTANCE.getMethodSignature_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference METHOD_SIGNATURE__PARAMETERS = eINSTANCE.getMethodSignature_Parameters();
 
     /**
      * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl <em>Declaration</em>}' class.
@@ -8781,6 +10177,14 @@ public interface DartPackage extends EPackage
      * @generated
      */
     EAttribute DECLARATION__IS_STATIC = eINSTANCE.getDeclaration_IsStatic();
+
+    /**
+     * The meta object literal for the '<em><b>Is Covariant</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DECLARATION__IS_COVARIANT = eINSTANCE.getDeclaration_IsCovariant();
 
     /**
      * The meta object literal for the '<em><b>Is Late</b></em>' attribute feature.
@@ -8829,6 +10233,274 @@ public interface DartPackage extends EPackage
      * @generated
      */
     EReference DECLARATION__INITIAL_VALUE = eINSTANCE.getDeclaration_InitialValue();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.ConstructorSignatureImpl <em>Constructor Signature</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.ConstructorSignatureImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getConstructorSignature()
+     * @generated
+     */
+    EClass CONSTRUCTOR_SIGNATURE = eINSTANCE.getConstructorSignature();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTRUCTOR_SIGNATURE__NAME = eINSTANCE.getConstructorSignature_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTRUCTOR_SIGNATURE__PARAMETERS = eINSTANCE.getConstructorSignature_Parameters();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.ConstructorNameImpl <em>Constructor Name</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.ConstructorNameImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getConstructorName()
+     * @generated
+     */
+    EClass CONSTRUCTOR_NAME = eINSTANCE.getConstructorName();
+
+    /**
+     * The meta object literal for the '<em><b>Class Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONSTRUCTOR_NAME__CLASS_NAME = eINSTANCE.getConstructorName_ClassName();
+
+    /**
+     * The meta object literal for the '<em><b>Constructor Id</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONSTRUCTOR_NAME__CONSTRUCTOR_ID = eINSTANCE.getConstructorName_ConstructorId();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.InitializersImpl <em>Initializers</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.InitializersImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getInitializers()
+     * @generated
+     */
+    EClass INITIALIZERS = eINSTANCE.getInitializers();
+
+    /**
+     * The meta object literal for the '<em><b>Entries</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference INITIALIZERS__ENTRIES = eINSTANCE.getInitializers_Entries();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.InitializerEntryImpl <em>Initializer Entry</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.InitializerEntryImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getInitializerEntry()
+     * @generated
+     */
+    EClass INITIALIZER_ENTRY = eINSTANCE.getInitializerEntry();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.SuperInitializerImpl <em>Super Initializer</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.SuperInitializerImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getSuperInitializer()
+     * @generated
+     */
+    EClass SUPER_INITIALIZER = eINSTANCE.getSuperInitializer();
+
+    /**
+     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SUPER_INITIALIZER__ID = eINSTANCE.getSuperInitializer_Id();
+
+    /**
+     * The meta object literal for the '<em><b>Args</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SUPER_INITIALIZER__ARGS = eINSTANCE.getSuperInitializer_Args();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.FieldInitializerImpl <em>Field Initializer</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.FieldInitializerImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getFieldInitializer()
+     * @generated
+     */
+    EClass FIELD_INITIALIZER = eINSTANCE.getFieldInitializer();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FIELD_INITIALIZER__NAME = eINSTANCE.getFieldInitializer_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Expression</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FIELD_INITIALIZER__EXPRESSION = eINSTANCE.getFieldInitializer_Expression();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.AssertInitializerImpl <em>Assert Initializer</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.AssertInitializerImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getAssertInitializer()
+     * @generated
+     */
+    EClass ASSERT_INITIALIZER = eINSTANCE.getAssertInitializer();
+
+    /**
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSERT_INITIALIZER__CONDITION = eINSTANCE.getAssertInitializer_Condition();
+
+    /**
+     * The meta object literal for the '<em><b>Message</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSERT_INITIALIZER__MESSAGE = eINSTANCE.getAssertInitializer_Message();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.FactoryConstructorSignatureImpl <em>Factory Constructor Signature</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.FactoryConstructorSignatureImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getFactoryConstructorSignature()
+     * @generated
+     */
+    EClass FACTORY_CONSTRUCTOR_SIGNATURE = eINSTANCE.getFactoryConstructorSignature();
+
+    /**
+     * The meta object literal for the '<em><b>Is Const</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FACTORY_CONSTRUCTOR_SIGNATURE__IS_CONST = eINSTANCE.getFactoryConstructorSignature_IsConst();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FACTORY_CONSTRUCTOR_SIGNATURE__NAME = eINSTANCE.getFactoryConstructorSignature_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FACTORY_CONSTRUCTOR_SIGNATURE__PARAMETERS = eINSTANCE.getFactoryConstructorSignature_Parameters();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.RedirectingFactoryConstructorSignatureImpl <em>Redirecting Factory Constructor Signature</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.RedirectingFactoryConstructorSignatureImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getRedirectingFactoryConstructorSignature()
+     * @generated
+     */
+    EClass REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE = eINSTANCE.getRedirectingFactoryConstructorSignature();
+
+    /**
+     * The meta object literal for the '<em><b>Is Const</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE__IS_CONST = eINSTANCE.getRedirectingFactoryConstructorSignature_IsConst();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE__NAME = eINSTANCE.getRedirectingFactoryConstructorSignature_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE__PARAMETERS = eINSTANCE.getRedirectingFactoryConstructorSignature_Parameters();
+
+    /**
+     * The meta object literal for the '<em><b>Redirectee</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE__REDIRECTEE = eINSTANCE.getRedirectingFactoryConstructorSignature_Redirectee();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.ConstructorDesignationImpl <em>Constructor Designation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.ConstructorDesignationImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getConstructorDesignation()
+     * @generated
+     */
+    EClass CONSTRUCTOR_DESIGNATION = eINSTANCE.getConstructorDesignation();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONSTRUCTOR_DESIGNATION__NAME = eINSTANCE.getConstructorDesignation_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Type Arguments</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTRUCTOR_DESIGNATION__TYPE_ARGUMENTS = eINSTANCE.getConstructorDesignation_TypeArguments();
+
+    /**
+     * The meta object literal for the '<em><b>Constructor Id</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONSTRUCTOR_DESIGNATION__CONSTRUCTOR_ID = eINSTANCE.getConstructorDesignation_ConstructorId();
 
     /**
      * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.MixinDeclarationImpl <em>Mixin Declaration</em>}' class.
@@ -9271,6 +10943,56 @@ public interface DartPackage extends EPackage
     EReference LOCAL_VARIABLE_DECLARATION__VARIABLE = eINSTANCE.getLocalVariableDeclaration_Variable();
 
     /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.LocalFunctionDeclarationImpl <em>Local Function Declaration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.LocalFunctionDeclarationImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLocalFunctionDeclaration()
+     * @generated
+     */
+    EClass LOCAL_FUNCTION_DECLARATION = eINSTANCE.getLocalFunctionDeclaration();
+
+    /**
+     * The meta object literal for the '<em><b>Metadata</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LOCAL_FUNCTION_DECLARATION__METADATA = eINSTANCE.getLocalFunctionDeclaration_Metadata();
+
+    /**
+     * The meta object literal for the '<em><b>Return Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LOCAL_FUNCTION_DECLARATION__RETURN_TYPE = eINSTANCE.getLocalFunctionDeclaration_ReturnType();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LOCAL_FUNCTION_DECLARATION__NAME = eINSTANCE.getLocalFunctionDeclaration_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Signature</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LOCAL_FUNCTION_DECLARATION__SIGNATURE = eINSTANCE.getLocalFunctionDeclaration_Signature();
+
+    /**
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference LOCAL_FUNCTION_DECLARATION__BODY = eINSTANCE.getLocalFunctionDeclaration_Body();
+
+    /**
      * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.IfStatementImpl <em>If Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -9693,6 +11415,32 @@ public interface DartPackage extends EPackage
     EReference YIELD_STATEMENT__EXPRESSION = eINSTANCE.getYieldStatement_Expression();
 
     /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.AssertStatementImpl <em>Assert Statement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.AssertStatementImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getAssertStatement()
+     * @generated
+     */
+    EClass ASSERT_STATEMENT = eINSTANCE.getAssertStatement();
+
+    /**
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSERT_STATEMENT__CONDITION = eINSTANCE.getAssertStatement_Condition();
+
+    /**
+     * The meta object literal for the '<em><b>Message</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSERT_STATEMENT__MESSAGE = eINSTANCE.getAssertStatement_Message();
+
+    /**
      * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.ExpressionStatementImpl <em>Expression Statement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -9981,6 +11729,126 @@ public interface DartPackage extends EPackage
     EClass TOP_LEVEL_DECLARATION = eINSTANCE.getTopLevelDeclaration();
 
     /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.TopLevelGetterImpl <em>Top Level Getter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.TopLevelGetterImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTopLevelGetter()
+     * @generated
+     */
+    EClass TOP_LEVEL_GETTER = eINSTANCE.getTopLevelGetter();
+
+    /**
+     * The meta object literal for the '<em><b>Metadata</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TOP_LEVEL_GETTER__METADATA = eINSTANCE.getTopLevelGetter_Metadata();
+
+    /**
+     * The meta object literal for the '<em><b>Signature</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TOP_LEVEL_GETTER__SIGNATURE = eINSTANCE.getTopLevelGetter_Signature();
+
+    /**
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TOP_LEVEL_GETTER__BODY = eINSTANCE.getTopLevelGetter_Body();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.TopLevelSetterImpl <em>Top Level Setter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.TopLevelSetterImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTopLevelSetter()
+     * @generated
+     */
+    EClass TOP_LEVEL_SETTER = eINSTANCE.getTopLevelSetter();
+
+    /**
+     * The meta object literal for the '<em><b>Metadata</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TOP_LEVEL_SETTER__METADATA = eINSTANCE.getTopLevelSetter_Metadata();
+
+    /**
+     * The meta object literal for the '<em><b>Signature</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TOP_LEVEL_SETTER__SIGNATURE = eINSTANCE.getTopLevelSetter_Signature();
+
+    /**
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TOP_LEVEL_SETTER__BODY = eINSTANCE.getTopLevelSetter_Body();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.ExternalGetterImpl <em>External Getter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.ExternalGetterImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getExternalGetter()
+     * @generated
+     */
+    EClass EXTERNAL_GETTER = eINSTANCE.getExternalGetter();
+
+    /**
+     * The meta object literal for the '<em><b>Metadata</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXTERNAL_GETTER__METADATA = eINSTANCE.getExternalGetter_Metadata();
+
+    /**
+     * The meta object literal for the '<em><b>Signature</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXTERNAL_GETTER__SIGNATURE = eINSTANCE.getExternalGetter_Signature();
+
+    /**
+     * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.ExternalSetterImpl <em>External Setter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see it.lorenzodeluca.dart.dart.impl.ExternalSetterImpl
+     * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getExternalSetter()
+     * @generated
+     */
+    EClass EXTERNAL_SETTER = eINSTANCE.getExternalSetter();
+
+    /**
+     * The meta object literal for the '<em><b>Metadata</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXTERNAL_SETTER__METADATA = eINSTANCE.getExternalSetter_Metadata();
+
+    /**
+     * The meta object literal for the '<em><b>Signature</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXTERNAL_SETTER__SIGNATURE = eINSTANCE.getExternalSetter_Signature();
+
+    /**
      * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.TypeAliasImpl <em>Type Alias</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -10021,6 +11889,22 @@ public interface DartPackage extends EPackage
      * @generated
      */
     EReference TYPE_ALIAS__TYPE = eINSTANCE.getTypeAlias_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Return Type</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TYPE_ALIAS__RETURN_TYPE = eINSTANCE.getTypeAlias_ReturnType();
+
+    /**
+     * The meta object literal for the '<em><b>Signature</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TYPE_ALIAS__SIGNATURE = eINSTANCE.getTypeAlias_Signature();
 
     /**
      * The meta object literal for the '{@link it.lorenzodeluca.dart.dart.impl.TypeImpl <em>Type</em>}' class.

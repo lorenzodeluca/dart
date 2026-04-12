@@ -17,8 +17,12 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getMetadata <em>Metadata</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getMethod <em>Method</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getConstructor <em>Constructor</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getInitializers <em>Initializers</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getBody <em>Body</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getFactory <em>Factory</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getRedirectingFactory <em>Redirecting Factory</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getMethod <em>Method</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getDeclaration <em>Declaration</em>}</li>
  * </ul>
  *
@@ -41,26 +45,48 @@ public interface MemberDeclaration extends EObject
   EList<Metadata> getMetadata();
 
   /**
-   * Returns the value of the '<em><b>Method</b></em>' containment reference.
+   * Returns the value of the '<em><b>Constructor</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Method</em>' containment reference.
-   * @see #setMethod(MethodSignature)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getMemberDeclaration_Method()
+   * @return the value of the '<em>Constructor</em>' containment reference.
+   * @see #setConstructor(ConstructorSignature)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMemberDeclaration_Constructor()
    * @model containment="true"
    * @generated
    */
-  MethodSignature getMethod();
+  ConstructorSignature getConstructor();
 
   /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getMethod <em>Method</em>}' containment reference.
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getConstructor <em>Constructor</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Method</em>' containment reference.
-   * @see #getMethod()
+   * @param value the new value of the '<em>Constructor</em>' containment reference.
+   * @see #getConstructor()
    * @generated
    */
-  void setMethod(MethodSignature value);
+  void setConstructor(ConstructorSignature value);
+
+  /**
+   * Returns the value of the '<em><b>Initializers</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Initializers</em>' containment reference.
+   * @see #setInitializers(Initializers)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMemberDeclaration_Initializers()
+   * @model containment="true"
+   * @generated
+   */
+  Initializers getInitializers();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getInitializers <em>Initializers</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Initializers</em>' containment reference.
+   * @see #getInitializers()
+   * @generated
+   */
+  void setInitializers(Initializers value);
 
   /**
    * Returns the value of the '<em><b>Body</b></em>' containment reference.
@@ -83,6 +109,72 @@ public interface MemberDeclaration extends EObject
    * @generated
    */
   void setBody(FunctionBody value);
+
+  /**
+   * Returns the value of the '<em><b>Factory</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Factory</em>' containment reference.
+   * @see #setFactory(FactoryConstructorSignature)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMemberDeclaration_Factory()
+   * @model containment="true"
+   * @generated
+   */
+  FactoryConstructorSignature getFactory();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getFactory <em>Factory</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Factory</em>' containment reference.
+   * @see #getFactory()
+   * @generated
+   */
+  void setFactory(FactoryConstructorSignature value);
+
+  /**
+   * Returns the value of the '<em><b>Redirecting Factory</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Redirecting Factory</em>' containment reference.
+   * @see #setRedirectingFactory(RedirectingFactoryConstructorSignature)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMemberDeclaration_RedirectingFactory()
+   * @model containment="true"
+   * @generated
+   */
+  RedirectingFactoryConstructorSignature getRedirectingFactory();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getRedirectingFactory <em>Redirecting Factory</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Redirecting Factory</em>' containment reference.
+   * @see #getRedirectingFactory()
+   * @generated
+   */
+  void setRedirectingFactory(RedirectingFactoryConstructorSignature value);
+
+  /**
+   * Returns the value of the '<em><b>Method</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Method</em>' containment reference.
+   * @see #setMethod(MethodSignature)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMemberDeclaration_Method()
+   * @model containment="true"
+   * @generated
+   */
+  MethodSignature getMethod();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MemberDeclaration#getMethod <em>Method</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Method</em>' containment reference.
+   * @see #getMethod()
+   * @generated
+   */
+  void setMethod(MethodSignature value);
 
   /**
    * Returns the value of the '<em><b>Declaration</b></em>' containment reference.

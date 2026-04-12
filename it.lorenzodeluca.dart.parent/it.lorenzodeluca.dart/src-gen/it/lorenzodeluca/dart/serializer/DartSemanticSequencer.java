@@ -6,6 +6,8 @@ package it.lorenzodeluca.dart.serializer;
 import com.google.inject.Inject;
 import it.lorenzodeluca.dart.dart.Additive;
 import it.lorenzodeluca.dart.dart.Arguments;
+import it.lorenzodeluca.dart.dart.AssertInitializer;
+import it.lorenzodeluca.dart.dart.AssertStatement;
 import it.lorenzodeluca.dart.dart.Assignment;
 import it.lorenzodeluca.dart.dart.BitwiseAnd;
 import it.lorenzodeluca.dart.dart.BitwiseOr;
@@ -18,6 +20,9 @@ import it.lorenzodeluca.dart.dart.ClassDeclaration;
 import it.lorenzodeluca.dart.dart.Combinator;
 import it.lorenzodeluca.dart.dart.Conditional;
 import it.lorenzodeluca.dart.dart.ConstExpression;
+import it.lorenzodeluca.dart.dart.ConstructorDesignation;
+import it.lorenzodeluca.dart.dart.ConstructorName;
+import it.lorenzodeluca.dart.dart.ConstructorSignature;
 import it.lorenzodeluca.dart.dart.ContinueStatement;
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.Declaration;
@@ -30,6 +35,10 @@ import it.lorenzodeluca.dart.dart.EnumEntry;
 import it.lorenzodeluca.dart.dart.Equality;
 import it.lorenzodeluca.dart.dart.ExpressionStatement;
 import it.lorenzodeluca.dart.dart.ExtensionDeclaration;
+import it.lorenzodeluca.dart.dart.ExternalGetter;
+import it.lorenzodeluca.dart.dart.ExternalSetter;
+import it.lorenzodeluca.dart.dart.FactoryConstructorSignature;
+import it.lorenzodeluca.dart.dart.FieldInitializer;
 import it.lorenzodeluca.dart.dart.FinallyClause;
 import it.lorenzodeluca.dart.dart.ForStatement;
 import it.lorenzodeluca.dart.dart.FormalParameterList;
@@ -43,6 +52,7 @@ import it.lorenzodeluca.dart.dart.IfNull;
 import it.lorenzodeluca.dart.dart.IfStatement;
 import it.lorenzodeluca.dart.dart.IndexExpression;
 import it.lorenzodeluca.dart.dart.InitializedIdentifier;
+import it.lorenzodeluca.dart.dart.Initializers;
 import it.lorenzodeluca.dart.dart.Interfaces;
 import it.lorenzodeluca.dart.dart.Label;
 import it.lorenzodeluca.dart.dart.LibraryDeclaration;
@@ -50,6 +60,7 @@ import it.lorenzodeluca.dart.dart.LibraryExport;
 import it.lorenzodeluca.dart.dart.LibraryImport;
 import it.lorenzodeluca.dart.dart.LibraryName;
 import it.lorenzodeluca.dart.dart.ListLiteral;
+import it.lorenzodeluca.dart.dart.LocalFunctionDeclaration;
 import it.lorenzodeluca.dart.dart.LocalVariableDeclaration;
 import it.lorenzodeluca.dart.dart.LogicalAnd;
 import it.lorenzodeluca.dart.dart.LogicalOr;
@@ -73,6 +84,7 @@ import it.lorenzodeluca.dart.dart.PartDirective;
 import it.lorenzodeluca.dart.dart.PartHeader;
 import it.lorenzodeluca.dart.dart.Postfix;
 import it.lorenzodeluca.dart.dart.PrefixExpression;
+import it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature;
 import it.lorenzodeluca.dart.dart.Relational;
 import it.lorenzodeluca.dart.dart.RethrowStatement;
 import it.lorenzodeluca.dart.dart.ReturnStatement;
@@ -83,10 +95,13 @@ import it.lorenzodeluca.dart.dart.Shift;
 import it.lorenzodeluca.dart.dart.Statement;
 import it.lorenzodeluca.dart.dart.StringLiteral;
 import it.lorenzodeluca.dart.dart.SuperExpression;
+import it.lorenzodeluca.dart.dart.SuperInitializer;
 import it.lorenzodeluca.dart.dart.Superclass;
 import it.lorenzodeluca.dart.dart.SwitchCase;
 import it.lorenzodeluca.dart.dart.SwitchStatement;
 import it.lorenzodeluca.dart.dart.ThisExpression;
+import it.lorenzodeluca.dart.dart.TopLevelGetter;
+import it.lorenzodeluca.dart.dart.TopLevelSetter;
 import it.lorenzodeluca.dart.dart.TryStatement;
 import it.lorenzodeluca.dart.dart.Type;
 import it.lorenzodeluca.dart.dart.TypeAlias;
@@ -162,6 +177,12 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				else break;
 			case DartPackage.ARGUMENTS:
 				sequence_Arguments(context, (Arguments) semanticObject); 
+				return; 
+			case DartPackage.ASSERT_INITIALIZER:
+				sequence_AssertInitializer(context, (AssertInitializer) semanticObject); 
+				return; 
+			case DartPackage.ASSERT_STATEMENT:
+				sequence_AssertStatement(context, (AssertStatement) semanticObject); 
 				return; 
 			case DartPackage.ASSIGNMENT:
 				if (rule == grammarAccess.getExpressionRule()
@@ -382,6 +403,15 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case DartPackage.CONSTRUCTOR_DESIGNATION:
+				sequence_ConstructorDesignation(context, (ConstructorDesignation) semanticObject); 
+				return; 
+			case DartPackage.CONSTRUCTOR_NAME:
+				sequence_ConstructorName(context, (ConstructorName) semanticObject); 
+				return; 
+			case DartPackage.CONSTRUCTOR_SIGNATURE:
+				sequence_ConstructorSignature(context, (ConstructorSignature) semanticObject); 
+				return; 
 			case DartPackage.CONTINUE_STATEMENT:
 				sequence_ContinueStatement(context, (ContinueStatement) semanticObject); 
 				return; 
@@ -433,6 +463,18 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case DartPackage.EXTENSION_DECLARATION:
 				sequence_ExtensionDeclaration(context, (ExtensionDeclaration) semanticObject); 
+				return; 
+			case DartPackage.EXTERNAL_GETTER:
+				sequence_ExternalGetter(context, (ExternalGetter) semanticObject); 
+				return; 
+			case DartPackage.EXTERNAL_SETTER:
+				sequence_ExternalSetter(context, (ExternalSetter) semanticObject); 
+				return; 
+			case DartPackage.FACTORY_CONSTRUCTOR_SIGNATURE:
+				sequence_FactoryConstructorSignature(context, (FactoryConstructorSignature) semanticObject); 
+				return; 
+			case DartPackage.FIELD_INITIALIZER:
+				sequence_FieldInitializer(context, (FieldInitializer) semanticObject); 
 				return; 
 			case DartPackage.FINALLY_CLAUSE:
 				sequence_FinallyClause(context, (FinallyClause) semanticObject); 
@@ -611,6 +653,9 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case DartPackage.INITIALIZED_IDENTIFIER:
 				sequence_InitializedIdentifier(context, (InitializedIdentifier) semanticObject); 
 				return; 
+			case DartPackage.INITIALIZERS:
+				sequence_Initializers(context, (Initializers) semanticObject); 
+				return; 
 			case DartPackage.INTERFACES:
 				sequence_Interfaces(context, (Interfaces) semanticObject); 
 				return; 
@@ -674,6 +719,9 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case DartPackage.LOCAL_FUNCTION_DECLARATION:
+				sequence_LocalFunctionDeclaration(context, (LocalFunctionDeclaration) semanticObject); 
+				return; 
 			case DartPackage.LOCAL_VARIABLE_DECLARATION:
 				sequence_LocalVariableDeclaration(context, (LocalVariableDeclaration) semanticObject); 
 				return; 
@@ -1098,6 +1146,9 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case DartPackage.REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE:
+				sequence_RedirectingFactoryConstructorSignature(context, (RedirectingFactoryConstructorSignature) semanticObject); 
+				return; 
 			case DartPackage.RELATIONAL:
 				if (rule == grammarAccess.getMapOrSetElementRule()) {
 					sequence_MapOrSetElement_RelationalExpression(context, (Relational) semanticObject); 
@@ -1306,6 +1357,9 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case DartPackage.SUPER_INITIALIZER:
+				sequence_SuperInitializer(context, (SuperInitializer) semanticObject); 
+				return; 
 			case DartPackage.SUPERCLASS:
 				sequence_Superclass(context, (Superclass) semanticObject); 
 				return; 
@@ -1360,6 +1414,12 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case DartPackage.TOP_LEVEL_GETTER:
+				sequence_TopLevelGetter(context, (TopLevelGetter) semanticObject); 
+				return; 
+			case DartPackage.TOP_LEVEL_SETTER:
+				sequence_TopLevelSetter(context, (TopLevelSetter) semanticObject); 
+				return; 
 			case DartPackage.TRY_STATEMENT:
 				sequence_TryStatement(context, (TryStatement) semanticObject); 
 				return; 
@@ -1483,6 +1543,36 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * </pre>
 	 */
 	protected void sequence_Arguments(ISerializationContext context, Arguments semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     InitializerEntry returns AssertInitializer
+	 *     AssertInitializer returns AssertInitializer
+	 *
+	 * Constraint:
+	 *     (condition=Expression message=Expression?)
+	 * </pre>
+	 */
+	protected void sequence_AssertInitializer(ISerializationContext context, AssertInitializer semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     NonLabelledStatement returns AssertStatement
+	 *     AssertStatement returns AssertStatement
+	 *
+	 * Constraint:
+	 *     (condition=Expression message=Expression?)
+	 * </pre>
+	 */
+	protected void sequence_AssertStatement(ISerializationContext context, AssertStatement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1826,6 +1916,57 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     ConstructorDesignation returns ConstructorDesignation
+	 *
+	 * Constraint:
+	 *     (name=QualifiedName typeArguments=TypeArguments? constructorId=ID?)
+	 * </pre>
+	 */
+	protected void sequence_ConstructorDesignation(ISerializationContext context, ConstructorDesignation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     ConstructorName returns ConstructorName
+	 *
+	 * Constraint:
+	 *     (className=ID constructorId=ID?)
+	 * </pre>
+	 */
+	protected void sequence_ConstructorName(ISerializationContext context, ConstructorName semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     ConstructorSignature returns ConstructorSignature
+	 *
+	 * Constraint:
+	 *     (name=ConstructorName parameters=FormalParameterList)
+	 * </pre>
+	 */
+	protected void sequence_ConstructorSignature(ISerializationContext context, ConstructorSignature semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DartPackage.Literals.CONSTRUCTOR_SIGNATURE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.Literals.CONSTRUCTOR_SIGNATURE__NAME));
+			if (transientValues.isValueTransient(semanticObject, DartPackage.Literals.CONSTRUCTOR_SIGNATURE__PARAMETERS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.Literals.CONSTRUCTOR_SIGNATURE__PARAMETERS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getConstructorSignatureAccess().getNameConstructorNameParserRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getConstructorSignatureAccess().getParametersFormalParameterListParserRuleCall_1_0(), semanticObject.getParameters());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     NonLabelledStatement returns ContinueStatement
 	 *     ContinueStatement returns ContinueStatement
 	 *
@@ -1847,6 +1988,7 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     (
 	 *         isExternal?='external'? 
 	 *         isStatic?='static'? 
+	 *         isCovariant?='covariant'? 
 	 *         isLate?='late'? 
 	 *         (isFinal?='final' | isConst?='const')? 
 	 *         type=Type? 
@@ -2028,6 +2170,74 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_ExtensionDeclaration(ISerializationContext context, ExtensionDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelDeclaration returns ExternalGetter
+	 *     ExternalGetter returns ExternalGetter
+	 *
+	 * Constraint:
+	 *     (metadata+=Metadata* signature=GetterSignature)
+	 * </pre>
+	 */
+	protected void sequence_ExternalGetter(ISerializationContext context, ExternalGetter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelDeclaration returns ExternalSetter
+	 *     ExternalSetter returns ExternalSetter
+	 *
+	 * Constraint:
+	 *     (metadata+=Metadata* signature=SetterSignature)
+	 * </pre>
+	 */
+	protected void sequence_ExternalSetter(ISerializationContext context, ExternalSetter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     FactoryConstructorSignature returns FactoryConstructorSignature
+	 *
+	 * Constraint:
+	 *     (isConst?='const'? name=ConstructorName parameters=FormalParameterList)
+	 * </pre>
+	 */
+	protected void sequence_FactoryConstructorSignature(ISerializationContext context, FactoryConstructorSignature semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     InitializerEntry returns FieldInitializer
+	 *     FieldInitializer returns FieldInitializer
+	 *
+	 * Constraint:
+	 *     (name=ID expression=Expression)
+	 * </pre>
+	 */
+	protected void sequence_FieldInitializer(ISerializationContext context, FieldInitializer semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DartPackage.Literals.FIELD_INITIALIZER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.Literals.FIELD_INITIALIZER__NAME));
+			if (transientValues.isValueTransient(semanticObject, DartPackage.Literals.FIELD_INITIALIZER__EXPRESSION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.Literals.FIELD_INITIALIZER__EXPRESSION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFieldInitializerAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getFieldInitializerAccess().getExpressionExpressionParserRuleCall_4_0(), semanticObject.getExpression());
+		feeder.finish();
 	}
 	
 	
@@ -2218,6 +2428,20 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Initializers returns Initializers
+	 *
+	 * Constraint:
+	 *     (entries+=InitializerEntry entries+=InitializerEntry*)
+	 * </pre>
+	 */
+	protected void sequence_Initializers(ISerializationContext context, Initializers semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Interfaces returns Interfaces
 	 *
 	 * Constraint:
@@ -2256,24 +2480,7 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     LibraryDeclaration returns LibraryDeclaration
 	 *
 	 * Constraint:
-	 *     (
-	 *         (scriptTag=ScriptTag ((directives+=ImportOrExport+ declarations+=TopLevelDeclaration+) | declarations+=TopLevelDeclaration+)) | 
-	 *         (
-	 *             ((scriptTag=ScriptTag libraryName=LibraryName) | libraryName=LibraryName) 
-	 *             ((directives+=ImportOrExport+ declarations+=TopLevelDeclaration+) | declarations+=TopLevelDeclaration+)
-	 *         ) | 
-	 *         (
-	 *             (
-	 *                 (scriptTag=ScriptTag ((libraryName=LibraryName directives+=ImportOrExport+) | directives+=ImportOrExport+)) | 
-	 *                 (libraryName=LibraryName directives+=ImportOrExport+) | 
-	 *                 directives+=ImportOrExport+
-	 *             )? 
-	 *             partDirectives+=PartDirective+ 
-	 *             declarations+=TopLevelDeclaration+
-	 *         ) | 
-	 *         (directives+=ImportOrExport+ declarations+=TopLevelDeclaration+) | 
-	 *         declarations+=TopLevelDeclaration+
-	 *     )?
+	 *     (scriptTag=ScriptTag? libraryName=LibraryName? directives+=ImportOrExport* partDirectives+=PartDirective* declarations+=TopLevelDeclaration*)
 	 * </pre>
 	 */
 	protected void sequence_LibraryDeclaration(ISerializationContext context, LibraryDeclaration semanticObject) {
@@ -2321,6 +2528,21 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * </pre>
 	 */
 	protected void sequence_LibraryName(ISerializationContext context, LibraryName semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     NonLabelledStatement returns LocalFunctionDeclaration
+	 *     LocalFunctionDeclaration returns LocalFunctionDeclaration
+	 *
+	 * Constraint:
+	 *     (metadata+=Metadata* returnType=Type? name=ID signature=FormalParameterPart body=FunctionBody)
+	 * </pre>
+	 */
+	protected void sequence_LocalFunctionDeclaration(ISerializationContext context, LocalFunctionDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2761,7 +2983,16 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     MemberDeclaration returns MemberDeclaration
 	 *
 	 * Constraint:
-	 *     (metadata+=Metadata* ((method=MethodSignature body=FunctionBody) | declaration=Declaration))
+	 *     (
+	 *         metadata+=Metadata* 
+	 *         (
+	 *             (constructor=ConstructorSignature initializers=Initializers? body=FunctionBody?) | 
+	 *             (factory=FactoryConstructorSignature body=FunctionBody) | 
+	 *             redirectingFactory=RedirectingFactoryConstructorSignature | 
+	 *             (method=MethodSignature body=FunctionBody) | 
+	 *             declaration=Declaration
+	 *         )
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_MemberDeclaration(ISerializationContext context, MemberDeclaration semanticObject) {
@@ -2791,11 +3022,12 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * Constraint:
 	 *     (
 	 *         isStatic?='static'? 
-	 *         returnType=Type? 
-	 *         (isOperator?='operator' operator=Operator)? 
-	 *         (isGetter?='get' | isSetter?='set')? 
-	 *         name=ID 
-	 *         parameters=FormalParameterList?
+	 *         (
+	 *             (returnType=Type? isGetter?='get' name=ID) | 
+	 *             (returnType=Type? isSetter?='set' name=ID parameters=FormalParameterList) | 
+	 *             (returnType=Type? isOperator?='operator' operator=Operator parameters=FormalParameterList) | 
+	 *             (returnType=Type? name=ID parameters=FormalParameterList)
+	 *         )
 	 *     )
 	 * </pre>
 	 */
@@ -3809,6 +4041,20 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     RedirectingFactoryConstructorSignature returns RedirectingFactoryConstructorSignature
+	 *
+	 * Constraint:
+	 *     (isConst?='const'? name=ConstructorName parameters=FormalParameterList redirectee=ConstructorDesignation)
+	 * </pre>
+	 */
+	protected void sequence_RedirectingFactoryConstructorSignature(ISerializationContext context, RedirectingFactoryConstructorSignature semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Expression returns Relational
 	 *     AssignmentExpression returns Relational
 	 *     AssignmentExpression.Assignment_1_0 returns Relational
@@ -3993,6 +4239,21 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     InitializerEntry returns SuperInitializer
+	 *     SuperInitializer returns SuperInitializer
+	 *
+	 * Constraint:
+	 *     (id=ID? args=Arguments)
+	 * </pre>
+	 */
+	protected void sequence_SuperInitializer(ISerializationContext context, SuperInitializer semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Superclass returns Superclass
 	 *
 	 * Constraint:
@@ -4036,6 +4297,36 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     TopLevelDeclaration returns TopLevelGetter
+	 *     TopLevelGetter returns TopLevelGetter
+	 *
+	 * Constraint:
+	 *     (metadata+=Metadata* signature=GetterSignature body=FunctionBody)
+	 * </pre>
+	 */
+	protected void sequence_TopLevelGetter(ISerializationContext context, TopLevelGetter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     TopLevelDeclaration returns TopLevelSetter
+	 *     TopLevelSetter returns TopLevelSetter
+	 *
+	 * Constraint:
+	 *     (metadata+=Metadata* signature=SetterSignature body=FunctionBody)
+	 * </pre>
+	 */
+	protected void sequence_TopLevelSetter(ISerializationContext context, TopLevelSetter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     NonLabelledStatement returns TryStatement
 	 *     TryStatement returns TryStatement
 	 *
@@ -4055,7 +4346,7 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     TypeAlias returns TypeAlias
 	 *
 	 * Constraint:
-	 *     (metadata+=Metadata* name=ID typeParameters=TypeParameters? type=Type)
+	 *     (metadata+=Metadata* ((name=ID typeParameters=TypeParameters? type=Type) | (returnType=Type? name=ID signature=FormalParameterPart)))
 	 * </pre>
 	 */
 	protected void sequence_TypeAlias(ISerializationContext context, TypeAlias semanticObject) {

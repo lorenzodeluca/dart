@@ -3,12 +3,16 @@
  */
 package it.lorenzodeluca.dart.dart.impl;
 
+import it.lorenzodeluca.dart.dart.ConstructorSignature;
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.Declaration;
+import it.lorenzodeluca.dart.dart.FactoryConstructorSignature;
 import it.lorenzodeluca.dart.dart.FunctionBody;
+import it.lorenzodeluca.dart.dart.Initializers;
 import it.lorenzodeluca.dart.dart.MemberDeclaration;
 import it.lorenzodeluca.dart.dart.Metadata;
 import it.lorenzodeluca.dart.dart.MethodSignature;
+import it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature;
 
 import java.util.Collection;
 
@@ -35,8 +39,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getMetadata <em>Metadata</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getMethod <em>Method</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getConstructor <em>Constructor</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getInitializers <em>Initializers</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getBody <em>Body</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getFactory <em>Factory</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getRedirectingFactory <em>Redirecting Factory</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getMethod <em>Method</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MemberDeclarationImpl#getDeclaration <em>Declaration</em>}</li>
  * </ul>
  *
@@ -55,14 +63,24 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
   protected EList<Metadata> metadata;
 
   /**
-   * The cached value of the '{@link #getMethod() <em>Method</em>}' containment reference.
+   * The cached value of the '{@link #getConstructor() <em>Constructor</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMethod()
+   * @see #getConstructor()
    * @generated
    * @ordered
    */
-  protected MethodSignature method;
+  protected ConstructorSignature constructor;
+
+  /**
+   * The cached value of the '{@link #getInitializers() <em>Initializers</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInitializers()
+   * @generated
+   * @ordered
+   */
+  protected Initializers initializers;
 
   /**
    * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
@@ -73,6 +91,36 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
    * @ordered
    */
   protected FunctionBody body;
+
+  /**
+   * The cached value of the '{@link #getFactory() <em>Factory</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFactory()
+   * @generated
+   * @ordered
+   */
+  protected FactoryConstructorSignature factory;
+
+  /**
+   * The cached value of the '{@link #getRedirectingFactory() <em>Redirecting Factory</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRedirectingFactory()
+   * @generated
+   * @ordered
+   */
+  protected RedirectingFactoryConstructorSignature redirectingFactory;
+
+  /**
+   * The cached value of the '{@link #getMethod() <em>Method</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMethod()
+   * @generated
+   * @ordered
+   */
+  protected MethodSignature method;
 
   /**
    * The cached value of the '{@link #getDeclaration() <em>Declaration</em>}' containment reference.
@@ -126,9 +174,9 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public MethodSignature getMethod()
+  public ConstructorSignature getConstructor()
   {
-    return method;
+    return constructor;
   }
 
   /**
@@ -136,13 +184,13 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetMethod(MethodSignature newMethod, NotificationChain msgs)
+  public NotificationChain basicSetConstructor(ConstructorSignature newConstructor, NotificationChain msgs)
   {
-    MethodSignature oldMethod = method;
-    method = newMethod;
+    ConstructorSignature oldConstructor = constructor;
+    constructor = newConstructor;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__METHOD, oldMethod, newMethod);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__CONSTRUCTOR, oldConstructor, newConstructor);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -154,20 +202,70 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public void setMethod(MethodSignature newMethod)
+  public void setConstructor(ConstructorSignature newConstructor)
   {
-    if (newMethod != method)
+    if (newConstructor != constructor)
     {
       NotificationChain msgs = null;
-      if (method != null)
-        msgs = ((InternalEObject)method).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__METHOD, null, msgs);
-      if (newMethod != null)
-        msgs = ((InternalEObject)newMethod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__METHOD, null, msgs);
-      msgs = basicSetMethod(newMethod, msgs);
+      if (constructor != null)
+        msgs = ((InternalEObject)constructor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__CONSTRUCTOR, null, msgs);
+      if (newConstructor != null)
+        msgs = ((InternalEObject)newConstructor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__CONSTRUCTOR, null, msgs);
+      msgs = basicSetConstructor(newConstructor, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__METHOD, newMethod, newMethod));
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__CONSTRUCTOR, newConstructor, newConstructor));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Initializers getInitializers()
+  {
+    return initializers;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetInitializers(Initializers newInitializers, NotificationChain msgs)
+  {
+    Initializers oldInitializers = initializers;
+    initializers = newInitializers;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__INITIALIZERS, oldInitializers, newInitializers);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setInitializers(Initializers newInitializers)
+  {
+    if (newInitializers != initializers)
+    {
+      NotificationChain msgs = null;
+      if (initializers != null)
+        msgs = ((InternalEObject)initializers).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__INITIALIZERS, null, msgs);
+      if (newInitializers != null)
+        msgs = ((InternalEObject)newInitializers).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__INITIALIZERS, null, msgs);
+      msgs = basicSetInitializers(newInitializers, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__INITIALIZERS, newInitializers, newInitializers));
   }
 
   /**
@@ -218,6 +316,156 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__BODY, newBody, newBody));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FactoryConstructorSignature getFactory()
+  {
+    return factory;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetFactory(FactoryConstructorSignature newFactory, NotificationChain msgs)
+  {
+    FactoryConstructorSignature oldFactory = factory;
+    factory = newFactory;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__FACTORY, oldFactory, newFactory);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setFactory(FactoryConstructorSignature newFactory)
+  {
+    if (newFactory != factory)
+    {
+      NotificationChain msgs = null;
+      if (factory != null)
+        msgs = ((InternalEObject)factory).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__FACTORY, null, msgs);
+      if (newFactory != null)
+        msgs = ((InternalEObject)newFactory).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__FACTORY, null, msgs);
+      msgs = basicSetFactory(newFactory, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__FACTORY, newFactory, newFactory));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public RedirectingFactoryConstructorSignature getRedirectingFactory()
+  {
+    return redirectingFactory;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRedirectingFactory(RedirectingFactoryConstructorSignature newRedirectingFactory, NotificationChain msgs)
+  {
+    RedirectingFactoryConstructorSignature oldRedirectingFactory = redirectingFactory;
+    redirectingFactory = newRedirectingFactory;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__REDIRECTING_FACTORY, oldRedirectingFactory, newRedirectingFactory);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setRedirectingFactory(RedirectingFactoryConstructorSignature newRedirectingFactory)
+  {
+    if (newRedirectingFactory != redirectingFactory)
+    {
+      NotificationChain msgs = null;
+      if (redirectingFactory != null)
+        msgs = ((InternalEObject)redirectingFactory).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__REDIRECTING_FACTORY, null, msgs);
+      if (newRedirectingFactory != null)
+        msgs = ((InternalEObject)newRedirectingFactory).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__REDIRECTING_FACTORY, null, msgs);
+      msgs = basicSetRedirectingFactory(newRedirectingFactory, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__REDIRECTING_FACTORY, newRedirectingFactory, newRedirectingFactory));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MethodSignature getMethod()
+  {
+    return method;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetMethod(MethodSignature newMethod, NotificationChain msgs)
+  {
+    MethodSignature oldMethod = method;
+    method = newMethod;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__METHOD, oldMethod, newMethod);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMethod(MethodSignature newMethod)
+  {
+    if (newMethod != method)
+    {
+      NotificationChain msgs = null;
+      if (method != null)
+        msgs = ((InternalEObject)method).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__METHOD, null, msgs);
+      if (newMethod != null)
+        msgs = ((InternalEObject)newMethod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.MEMBER_DECLARATION__METHOD, null, msgs);
+      msgs = basicSetMethod(newMethod, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.MEMBER_DECLARATION__METHOD, newMethod, newMethod));
   }
 
   /**
@@ -282,10 +530,18 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
     {
       case DartPackage.MEMBER_DECLARATION__METADATA:
         return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
-      case DartPackage.MEMBER_DECLARATION__METHOD:
-        return basicSetMethod(null, msgs);
+      case DartPackage.MEMBER_DECLARATION__CONSTRUCTOR:
+        return basicSetConstructor(null, msgs);
+      case DartPackage.MEMBER_DECLARATION__INITIALIZERS:
+        return basicSetInitializers(null, msgs);
       case DartPackage.MEMBER_DECLARATION__BODY:
         return basicSetBody(null, msgs);
+      case DartPackage.MEMBER_DECLARATION__FACTORY:
+        return basicSetFactory(null, msgs);
+      case DartPackage.MEMBER_DECLARATION__REDIRECTING_FACTORY:
+        return basicSetRedirectingFactory(null, msgs);
+      case DartPackage.MEMBER_DECLARATION__METHOD:
+        return basicSetMethod(null, msgs);
       case DartPackage.MEMBER_DECLARATION__DECLARATION:
         return basicSetDeclaration(null, msgs);
     }
@@ -304,10 +560,18 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
     {
       case DartPackage.MEMBER_DECLARATION__METADATA:
         return getMetadata();
-      case DartPackage.MEMBER_DECLARATION__METHOD:
-        return getMethod();
+      case DartPackage.MEMBER_DECLARATION__CONSTRUCTOR:
+        return getConstructor();
+      case DartPackage.MEMBER_DECLARATION__INITIALIZERS:
+        return getInitializers();
       case DartPackage.MEMBER_DECLARATION__BODY:
         return getBody();
+      case DartPackage.MEMBER_DECLARATION__FACTORY:
+        return getFactory();
+      case DartPackage.MEMBER_DECLARATION__REDIRECTING_FACTORY:
+        return getRedirectingFactory();
+      case DartPackage.MEMBER_DECLARATION__METHOD:
+        return getMethod();
       case DartPackage.MEMBER_DECLARATION__DECLARATION:
         return getDeclaration();
     }
@@ -329,11 +593,23 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
         getMetadata().clear();
         getMetadata().addAll((Collection<? extends Metadata>)newValue);
         return;
-      case DartPackage.MEMBER_DECLARATION__METHOD:
-        setMethod((MethodSignature)newValue);
+      case DartPackage.MEMBER_DECLARATION__CONSTRUCTOR:
+        setConstructor((ConstructorSignature)newValue);
+        return;
+      case DartPackage.MEMBER_DECLARATION__INITIALIZERS:
+        setInitializers((Initializers)newValue);
         return;
       case DartPackage.MEMBER_DECLARATION__BODY:
         setBody((FunctionBody)newValue);
+        return;
+      case DartPackage.MEMBER_DECLARATION__FACTORY:
+        setFactory((FactoryConstructorSignature)newValue);
+        return;
+      case DartPackage.MEMBER_DECLARATION__REDIRECTING_FACTORY:
+        setRedirectingFactory((RedirectingFactoryConstructorSignature)newValue);
+        return;
+      case DartPackage.MEMBER_DECLARATION__METHOD:
+        setMethod((MethodSignature)newValue);
         return;
       case DartPackage.MEMBER_DECLARATION__DECLARATION:
         setDeclaration((Declaration)newValue);
@@ -355,11 +631,23 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
       case DartPackage.MEMBER_DECLARATION__METADATA:
         getMetadata().clear();
         return;
-      case DartPackage.MEMBER_DECLARATION__METHOD:
-        setMethod((MethodSignature)null);
+      case DartPackage.MEMBER_DECLARATION__CONSTRUCTOR:
+        setConstructor((ConstructorSignature)null);
+        return;
+      case DartPackage.MEMBER_DECLARATION__INITIALIZERS:
+        setInitializers((Initializers)null);
         return;
       case DartPackage.MEMBER_DECLARATION__BODY:
         setBody((FunctionBody)null);
+        return;
+      case DartPackage.MEMBER_DECLARATION__FACTORY:
+        setFactory((FactoryConstructorSignature)null);
+        return;
+      case DartPackage.MEMBER_DECLARATION__REDIRECTING_FACTORY:
+        setRedirectingFactory((RedirectingFactoryConstructorSignature)null);
+        return;
+      case DartPackage.MEMBER_DECLARATION__METHOD:
+        setMethod((MethodSignature)null);
         return;
       case DartPackage.MEMBER_DECLARATION__DECLARATION:
         setDeclaration((Declaration)null);
@@ -380,10 +668,18 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
     {
       case DartPackage.MEMBER_DECLARATION__METADATA:
         return metadata != null && !metadata.isEmpty();
-      case DartPackage.MEMBER_DECLARATION__METHOD:
-        return method != null;
+      case DartPackage.MEMBER_DECLARATION__CONSTRUCTOR:
+        return constructor != null;
+      case DartPackage.MEMBER_DECLARATION__INITIALIZERS:
+        return initializers != null;
       case DartPackage.MEMBER_DECLARATION__BODY:
         return body != null;
+      case DartPackage.MEMBER_DECLARATION__FACTORY:
+        return factory != null;
+      case DartPackage.MEMBER_DECLARATION__REDIRECTING_FACTORY:
+        return redirectingFactory != null;
+      case DartPackage.MEMBER_DECLARATION__METHOD:
+        return method != null;
       case DartPackage.MEMBER_DECLARATION__DECLARATION:
         return declaration != null;
     }

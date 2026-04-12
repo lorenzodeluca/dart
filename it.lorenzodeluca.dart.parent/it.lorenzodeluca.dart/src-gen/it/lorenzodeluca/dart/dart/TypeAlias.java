@@ -18,6 +18,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link it.lorenzodeluca.dart.dart.TypeAlias#getName <em>Name</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.TypeAlias#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.TypeAlias#getType <em>Type</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.TypeAlias#getReturnType <em>Return Type</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.TypeAlias#getSignature <em>Signature</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeAlias()
@@ -103,5 +105,49 @@ public interface TypeAlias extends TopLevelDeclaration
    * @generated
    */
   void setType(Type value);
+
+  /**
+   * Returns the value of the '<em><b>Return Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Return Type</em>' containment reference.
+   * @see #setReturnType(Type)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeAlias_ReturnType()
+   * @model containment="true"
+   * @generated
+   */
+  Type getReturnType();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.TypeAlias#getReturnType <em>Return Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Return Type</em>' containment reference.
+   * @see #getReturnType()
+   * @generated
+   */
+  void setReturnType(Type value);
+
+  /**
+   * Returns the value of the '<em><b>Signature</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Signature</em>' containment reference.
+   * @see #setSignature(FormalParameterPart)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeAlias_Signature()
+   * @model containment="true"
+   * @generated
+   */
+  FormalParameterPart getSignature();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.TypeAlias#getSignature <em>Signature</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Signature</em>' containment reference.
+   * @see #getSignature()
+   * @generated
+   */
+  void setSignature(FormalParameterPart value);
 
 } // TypeAlias

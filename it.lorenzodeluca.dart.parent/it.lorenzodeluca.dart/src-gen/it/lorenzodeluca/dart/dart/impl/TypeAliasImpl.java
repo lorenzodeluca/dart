@@ -4,6 +4,7 @@
 package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
+import it.lorenzodeluca.dart.dart.FormalParameterPart;
 import it.lorenzodeluca.dart.dart.Metadata;
 import it.lorenzodeluca.dart.dart.Type;
 import it.lorenzodeluca.dart.dart.TypeAlias;
@@ -36,6 +37,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeAliasImpl#getName <em>Name</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeAliasImpl#getTypeParameters <em>Type Parameters</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeAliasImpl#getType <em>Type</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeAliasImpl#getReturnType <em>Return Type</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeAliasImpl#getSignature <em>Signature</em>}</li>
  * </ul>
  *
  * @generated
@@ -91,6 +94,26 @@ public class TypeAliasImpl extends TopLevelDeclarationImpl implements TypeAlias
    * @ordered
    */
   protected Type type;
+
+  /**
+   * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReturnType()
+   * @generated
+   * @ordered
+   */
+  protected Type returnType;
+
+  /**
+   * The cached value of the '{@link #getSignature() <em>Signature</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSignature()
+   * @generated
+   * @ordered
+   */
+  protected FormalParameterPart signature;
 
   /**
    * <!-- begin-user-doc -->
@@ -259,6 +282,106 @@ public class TypeAliasImpl extends TopLevelDeclarationImpl implements TypeAlias
    * @generated
    */
   @Override
+  public Type getReturnType()
+  {
+    return returnType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetReturnType(Type newReturnType, NotificationChain msgs)
+  {
+    Type oldReturnType = returnType;
+    returnType = newReturnType;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.TYPE_ALIAS__RETURN_TYPE, oldReturnType, newReturnType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setReturnType(Type newReturnType)
+  {
+    if (newReturnType != returnType)
+    {
+      NotificationChain msgs = null;
+      if (returnType != null)
+        msgs = ((InternalEObject)returnType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.TYPE_ALIAS__RETURN_TYPE, null, msgs);
+      if (newReturnType != null)
+        msgs = ((InternalEObject)newReturnType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.TYPE_ALIAS__RETURN_TYPE, null, msgs);
+      msgs = basicSetReturnType(newReturnType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.TYPE_ALIAS__RETURN_TYPE, newReturnType, newReturnType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FormalParameterPart getSignature()
+  {
+    return signature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSignature(FormalParameterPart newSignature, NotificationChain msgs)
+  {
+    FormalParameterPart oldSignature = signature;
+    signature = newSignature;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.TYPE_ALIAS__SIGNATURE, oldSignature, newSignature);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setSignature(FormalParameterPart newSignature)
+  {
+    if (newSignature != signature)
+    {
+      NotificationChain msgs = null;
+      if (signature != null)
+        msgs = ((InternalEObject)signature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.TYPE_ALIAS__SIGNATURE, null, msgs);
+      if (newSignature != null)
+        msgs = ((InternalEObject)newSignature).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.TYPE_ALIAS__SIGNATURE, null, msgs);
+      msgs = basicSetSignature(newSignature, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.TYPE_ALIAS__SIGNATURE, newSignature, newSignature));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -269,6 +392,10 @@ public class TypeAliasImpl extends TopLevelDeclarationImpl implements TypeAlias
         return basicSetTypeParameters(null, msgs);
       case DartPackage.TYPE_ALIAS__TYPE:
         return basicSetType(null, msgs);
+      case DartPackage.TYPE_ALIAS__RETURN_TYPE:
+        return basicSetReturnType(null, msgs);
+      case DartPackage.TYPE_ALIAS__SIGNATURE:
+        return basicSetSignature(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -291,6 +418,10 @@ public class TypeAliasImpl extends TopLevelDeclarationImpl implements TypeAlias
         return getTypeParameters();
       case DartPackage.TYPE_ALIAS__TYPE:
         return getType();
+      case DartPackage.TYPE_ALIAS__RETURN_TYPE:
+        return getReturnType();
+      case DartPackage.TYPE_ALIAS__SIGNATURE:
+        return getSignature();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -319,6 +450,12 @@ public class TypeAliasImpl extends TopLevelDeclarationImpl implements TypeAlias
       case DartPackage.TYPE_ALIAS__TYPE:
         setType((Type)newValue);
         return;
+      case DartPackage.TYPE_ALIAS__RETURN_TYPE:
+        setReturnType((Type)newValue);
+        return;
+      case DartPackage.TYPE_ALIAS__SIGNATURE:
+        setSignature((FormalParameterPart)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -345,6 +482,12 @@ public class TypeAliasImpl extends TopLevelDeclarationImpl implements TypeAlias
       case DartPackage.TYPE_ALIAS__TYPE:
         setType((Type)null);
         return;
+      case DartPackage.TYPE_ALIAS__RETURN_TYPE:
+        setReturnType((Type)null);
+        return;
+      case DartPackage.TYPE_ALIAS__SIGNATURE:
+        setSignature((FormalParameterPart)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -367,6 +510,10 @@ public class TypeAliasImpl extends TopLevelDeclarationImpl implements TypeAlias
         return typeParameters != null;
       case DartPackage.TYPE_ALIAS__TYPE:
         return type != null;
+      case DartPackage.TYPE_ALIAS__RETURN_TYPE:
+        return returnType != null;
+      case DartPackage.TYPE_ALIAS__SIGNATURE:
+        return signature != null;
     }
     return super.eIsSet(featureID);
   }

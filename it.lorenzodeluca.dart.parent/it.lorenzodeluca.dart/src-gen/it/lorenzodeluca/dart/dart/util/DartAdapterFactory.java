@@ -186,6 +186,56 @@ public class DartAdapterFactory extends AdapterFactoryImpl
         return createDeclarationAdapter();
       }
       @Override
+      public Adapter caseConstructorSignature(ConstructorSignature object)
+      {
+        return createConstructorSignatureAdapter();
+      }
+      @Override
+      public Adapter caseConstructorName(ConstructorName object)
+      {
+        return createConstructorNameAdapter();
+      }
+      @Override
+      public Adapter caseInitializers(Initializers object)
+      {
+        return createInitializersAdapter();
+      }
+      @Override
+      public Adapter caseInitializerEntry(InitializerEntry object)
+      {
+        return createInitializerEntryAdapter();
+      }
+      @Override
+      public Adapter caseSuperInitializer(SuperInitializer object)
+      {
+        return createSuperInitializerAdapter();
+      }
+      @Override
+      public Adapter caseFieldInitializer(FieldInitializer object)
+      {
+        return createFieldInitializerAdapter();
+      }
+      @Override
+      public Adapter caseAssertInitializer(AssertInitializer object)
+      {
+        return createAssertInitializerAdapter();
+      }
+      @Override
+      public Adapter caseFactoryConstructorSignature(FactoryConstructorSignature object)
+      {
+        return createFactoryConstructorSignatureAdapter();
+      }
+      @Override
+      public Adapter caseRedirectingFactoryConstructorSignature(RedirectingFactoryConstructorSignature object)
+      {
+        return createRedirectingFactoryConstructorSignatureAdapter();
+      }
+      @Override
+      public Adapter caseConstructorDesignation(ConstructorDesignation object)
+      {
+        return createConstructorDesignationAdapter();
+      }
+      @Override
       public Adapter caseMixinDeclaration(MixinDeclaration object)
       {
         return createMixinDeclarationAdapter();
@@ -266,6 +316,11 @@ public class DartAdapterFactory extends AdapterFactoryImpl
         return createLocalVariableDeclarationAdapter();
       }
       @Override
+      public Adapter caseLocalFunctionDeclaration(LocalFunctionDeclaration object)
+      {
+        return createLocalFunctionDeclarationAdapter();
+      }
+      @Override
       public Adapter caseIfStatement(IfStatement object)
       {
         return createIfStatementAdapter();
@@ -341,6 +396,11 @@ public class DartAdapterFactory extends AdapterFactoryImpl
         return createYieldStatementAdapter();
       }
       @Override
+      public Adapter caseAssertStatement(AssertStatement object)
+      {
+        return createAssertStatementAdapter();
+      }
+      @Override
       public Adapter caseExpressionStatement(ExpressionStatement object)
       {
         return createExpressionStatementAdapter();
@@ -399,6 +459,26 @@ public class DartAdapterFactory extends AdapterFactoryImpl
       public Adapter caseTopLevelDeclaration(TopLevelDeclaration object)
       {
         return createTopLevelDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseTopLevelGetter(TopLevelGetter object)
+      {
+        return createTopLevelGetterAdapter();
+      }
+      @Override
+      public Adapter caseTopLevelSetter(TopLevelSetter object)
+      {
+        return createTopLevelSetterAdapter();
+      }
+      @Override
+      public Adapter caseExternalGetter(ExternalGetter object)
+      {
+        return createExternalGetterAdapter();
+      }
+      @Override
+      public Adapter caseExternalSetter(ExternalSetter object)
+      {
+        return createExternalSetterAdapter();
       }
       @Override
       public Adapter caseTypeAlias(TypeAlias object)
@@ -928,6 +1008,156 @@ public class DartAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ConstructorSignature <em>Constructor Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ConstructorSignature
+   * @generated
+   */
+  public Adapter createConstructorSignatureAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ConstructorName <em>Constructor Name</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ConstructorName
+   * @generated
+   */
+  public Adapter createConstructorNameAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Initializers <em>Initializers</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.Initializers
+   * @generated
+   */
+  public Adapter createInitializersAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.InitializerEntry <em>Initializer Entry</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.InitializerEntry
+   * @generated
+   */
+  public Adapter createInitializerEntryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.SuperInitializer <em>Super Initializer</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.SuperInitializer
+   * @generated
+   */
+  public Adapter createSuperInitializerAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.FieldInitializer <em>Field Initializer</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.FieldInitializer
+   * @generated
+   */
+  public Adapter createFieldInitializerAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.AssertInitializer <em>Assert Initializer</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.AssertInitializer
+   * @generated
+   */
+  public Adapter createAssertInitializerAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.FactoryConstructorSignature <em>Factory Constructor Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.FactoryConstructorSignature
+   * @generated
+   */
+  public Adapter createFactoryConstructorSignatureAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature <em>Redirecting Factory Constructor Signature</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature
+   * @generated
+   */
+  public Adapter createRedirectingFactoryConstructorSignatureAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ConstructorDesignation <em>Constructor Designation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ConstructorDesignation
+   * @generated
+   */
+  public Adapter createConstructorDesignationAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.MixinDeclaration <em>Mixin Declaration</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1168,6 +1398,21 @@ public class DartAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.LocalFunctionDeclaration <em>Local Function Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.LocalFunctionDeclaration
+   * @generated
+   */
+  public Adapter createLocalFunctionDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.IfStatement <em>If Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1393,6 +1638,21 @@ public class DartAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.AssertStatement <em>Assert Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.AssertStatement
+   * @generated
+   */
+  public Adapter createAssertStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ExpressionStatement <em>Expression Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1568,6 +1828,66 @@ public class DartAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTopLevelDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.TopLevelGetter <em>Top Level Getter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.TopLevelGetter
+   * @generated
+   */
+  public Adapter createTopLevelGetterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.TopLevelSetter <em>Top Level Setter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.TopLevelSetter
+   * @generated
+   */
+  public Adapter createTopLevelSetterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ExternalGetter <em>External Getter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ExternalGetter
+   * @generated
+   */
+  public Adapter createExternalGetterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ExternalSetter <em>External Setter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ExternalSetter
+   * @generated
+   */
+  public Adapter createExternalSetterAdapter()
   {
     return null;
   }

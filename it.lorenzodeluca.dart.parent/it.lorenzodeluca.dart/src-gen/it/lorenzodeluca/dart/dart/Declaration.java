@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsExternal <em>Is External</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsStatic <em>Is Static</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsCovariant <em>Is Covariant</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsLate <em>Is Late</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsFinal <em>Is Final</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsConst <em>Is Const</em>}</li>
@@ -73,6 +74,28 @@ public interface Declaration extends EObject
    * @generated
    */
   void setIsStatic(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Is Covariant</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Covariant</em>' attribute.
+   * @see #setIsCovariant(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_IsCovariant()
+   * @model
+   * @generated
+   */
+  boolean isIsCovariant();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#isIsCovariant <em>Is Covariant</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Covariant</em>' attribute.
+   * @see #isIsCovariant()
+   * @generated
+   */
+  void setIsCovariant(boolean value);
 
   /**
    * Returns the value of the '<em><b>Is Late</b></em>' attribute.

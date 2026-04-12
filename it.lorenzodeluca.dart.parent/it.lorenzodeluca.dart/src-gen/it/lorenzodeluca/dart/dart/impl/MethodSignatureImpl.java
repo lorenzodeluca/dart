@@ -27,12 +27,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#isIsStatic <em>Is Static</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#getReturnType <em>Return Type</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#isIsGetter <em>Is Getter</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#isIsSetter <em>Is Setter</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#isIsOperator <em>Is Operator</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#getOperator <em>Operator</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#isIsGetter <em>Is Getter</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#isIsSetter <em>Is Setter</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#getName <em>Name</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.MethodSignatureImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  *
  * @generated
@@ -68,6 +68,76 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
    * @ordered
    */
   protected Type returnType;
+
+  /**
+   * The default value of the '{@link #isIsGetter() <em>Is Getter</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsGetter()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_GETTER_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsGetter() <em>Is Getter</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsGetter()
+   * @generated
+   * @ordered
+   */
+  protected boolean isGetter = IS_GETTER_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isIsSetter() <em>Is Setter</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsSetter()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_SETTER_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsSetter() <em>Is Setter</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsSetter()
+   * @generated
+   * @ordered
+   */
+  protected boolean isSetter = IS_SETTER_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getParameters()
+   * @generated
+   * @ordered
+   */
+  protected FormalParameterList parameters;
 
   /**
    * The default value of the '{@link #isIsOperator() <em>Is Operator</em>}' attribute.
@@ -108,76 +178,6 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
    * @ordered
    */
   protected String operator = OPERATOR_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #isIsGetter() <em>Is Getter</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsGetter()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean IS_GETTER_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isIsGetter() <em>Is Getter</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsGetter()
-   * @generated
-   * @ordered
-   */
-  protected boolean isGetter = IS_GETTER_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #isIsSetter() <em>Is Setter</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsSetter()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean IS_SETTER_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isIsSetter() <em>Is Setter</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsSetter()
-   * @generated
-   * @ordered
-   */
-  protected boolean isSetter = IS_SETTER_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getParameters()
-   * @generated
-   * @ordered
-   */
-  protected FormalParameterList parameters;
 
   /**
    * <!-- begin-user-doc -->
@@ -281,56 +281,6 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
    * @generated
    */
   @Override
-  public boolean isIsOperator()
-  {
-    return isOperator;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setIsOperator(boolean newIsOperator)
-  {
-    boolean oldIsOperator = isOperator;
-    isOperator = newIsOperator;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.METHOD_SIGNATURE__IS_OPERATOR, oldIsOperator, isOperator));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getOperator()
-  {
-    return operator;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setOperator(String newOperator)
-  {
-    String oldOperator = operator;
-    operator = newOperator;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.METHOD_SIGNATURE__OPERATOR, oldOperator, operator));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public boolean isIsGetter()
   {
     return isGetter;
@@ -356,31 +306,6 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
    * @generated
    */
   @Override
-  public boolean isIsSetter()
-  {
-    return isSetter;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setIsSetter(boolean newIsSetter)
-  {
-    boolean oldIsSetter = isSetter;
-    isSetter = newIsSetter;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.METHOD_SIGNATURE__IS_SETTER, oldIsSetter, isSetter));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public String getName()
   {
     return name;
@@ -398,6 +323,31 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.METHOD_SIGNATURE__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isIsSetter()
+  {
+    return isSetter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsSetter(boolean newIsSetter)
+  {
+    boolean oldIsSetter = isSetter;
+    isSetter = newIsSetter;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.METHOD_SIGNATURE__IS_SETTER, oldIsSetter, isSetter));
   }
 
   /**
@@ -456,6 +406,56 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
    * @generated
    */
   @Override
+  public boolean isIsOperator()
+  {
+    return isOperator;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsOperator(boolean newIsOperator)
+  {
+    boolean oldIsOperator = isOperator;
+    isOperator = newIsOperator;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.METHOD_SIGNATURE__IS_OPERATOR, oldIsOperator, isOperator));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getOperator()
+  {
+    return operator;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOperator(String newOperator)
+  {
+    String oldOperator = operator;
+    operator = newOperator;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.METHOD_SIGNATURE__OPERATOR, oldOperator, operator));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
@@ -482,18 +482,18 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
         return isIsStatic();
       case DartPackage.METHOD_SIGNATURE__RETURN_TYPE:
         return getReturnType();
+      case DartPackage.METHOD_SIGNATURE__IS_GETTER:
+        return isIsGetter();
+      case DartPackage.METHOD_SIGNATURE__NAME:
+        return getName();
+      case DartPackage.METHOD_SIGNATURE__IS_SETTER:
+        return isIsSetter();
+      case DartPackage.METHOD_SIGNATURE__PARAMETERS:
+        return getParameters();
       case DartPackage.METHOD_SIGNATURE__IS_OPERATOR:
         return isIsOperator();
       case DartPackage.METHOD_SIGNATURE__OPERATOR:
         return getOperator();
-      case DartPackage.METHOD_SIGNATURE__IS_GETTER:
-        return isIsGetter();
-      case DartPackage.METHOD_SIGNATURE__IS_SETTER:
-        return isIsSetter();
-      case DartPackage.METHOD_SIGNATURE__NAME:
-        return getName();
-      case DartPackage.METHOD_SIGNATURE__PARAMETERS:
-        return getParameters();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -514,23 +514,23 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
       case DartPackage.METHOD_SIGNATURE__RETURN_TYPE:
         setReturnType((Type)newValue);
         return;
+      case DartPackage.METHOD_SIGNATURE__IS_GETTER:
+        setIsGetter((Boolean)newValue);
+        return;
+      case DartPackage.METHOD_SIGNATURE__NAME:
+        setName((String)newValue);
+        return;
+      case DartPackage.METHOD_SIGNATURE__IS_SETTER:
+        setIsSetter((Boolean)newValue);
+        return;
+      case DartPackage.METHOD_SIGNATURE__PARAMETERS:
+        setParameters((FormalParameterList)newValue);
+        return;
       case DartPackage.METHOD_SIGNATURE__IS_OPERATOR:
         setIsOperator((Boolean)newValue);
         return;
       case DartPackage.METHOD_SIGNATURE__OPERATOR:
         setOperator((String)newValue);
-        return;
-      case DartPackage.METHOD_SIGNATURE__IS_GETTER:
-        setIsGetter((Boolean)newValue);
-        return;
-      case DartPackage.METHOD_SIGNATURE__IS_SETTER:
-        setIsSetter((Boolean)newValue);
-        return;
-      case DartPackage.METHOD_SIGNATURE__NAME:
-        setName((String)newValue);
-        return;
-      case DartPackage.METHOD_SIGNATURE__PARAMETERS:
-        setParameters((FormalParameterList)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -552,23 +552,23 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
       case DartPackage.METHOD_SIGNATURE__RETURN_TYPE:
         setReturnType((Type)null);
         return;
+      case DartPackage.METHOD_SIGNATURE__IS_GETTER:
+        setIsGetter(IS_GETTER_EDEFAULT);
+        return;
+      case DartPackage.METHOD_SIGNATURE__NAME:
+        setName(NAME_EDEFAULT);
+        return;
+      case DartPackage.METHOD_SIGNATURE__IS_SETTER:
+        setIsSetter(IS_SETTER_EDEFAULT);
+        return;
+      case DartPackage.METHOD_SIGNATURE__PARAMETERS:
+        setParameters((FormalParameterList)null);
+        return;
       case DartPackage.METHOD_SIGNATURE__IS_OPERATOR:
         setIsOperator(IS_OPERATOR_EDEFAULT);
         return;
       case DartPackage.METHOD_SIGNATURE__OPERATOR:
         setOperator(OPERATOR_EDEFAULT);
-        return;
-      case DartPackage.METHOD_SIGNATURE__IS_GETTER:
-        setIsGetter(IS_GETTER_EDEFAULT);
-        return;
-      case DartPackage.METHOD_SIGNATURE__IS_SETTER:
-        setIsSetter(IS_SETTER_EDEFAULT);
-        return;
-      case DartPackage.METHOD_SIGNATURE__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-      case DartPackage.METHOD_SIGNATURE__PARAMETERS:
-        setParameters((FormalParameterList)null);
         return;
     }
     super.eUnset(featureID);
@@ -588,18 +588,18 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
         return isStatic != IS_STATIC_EDEFAULT;
       case DartPackage.METHOD_SIGNATURE__RETURN_TYPE:
         return returnType != null;
+      case DartPackage.METHOD_SIGNATURE__IS_GETTER:
+        return isGetter != IS_GETTER_EDEFAULT;
+      case DartPackage.METHOD_SIGNATURE__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DartPackage.METHOD_SIGNATURE__IS_SETTER:
+        return isSetter != IS_SETTER_EDEFAULT;
+      case DartPackage.METHOD_SIGNATURE__PARAMETERS:
+        return parameters != null;
       case DartPackage.METHOD_SIGNATURE__IS_OPERATOR:
         return isOperator != IS_OPERATOR_EDEFAULT;
       case DartPackage.METHOD_SIGNATURE__OPERATOR:
         return OPERATOR_EDEFAULT == null ? operator != null : !OPERATOR_EDEFAULT.equals(operator);
-      case DartPackage.METHOD_SIGNATURE__IS_GETTER:
-        return isGetter != IS_GETTER_EDEFAULT;
-      case DartPackage.METHOD_SIGNATURE__IS_SETTER:
-        return isSetter != IS_SETTER_EDEFAULT;
-      case DartPackage.METHOD_SIGNATURE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case DartPackage.METHOD_SIGNATURE__PARAMETERS:
-        return parameters != null;
     }
     return super.eIsSet(featureID);
   }
@@ -617,16 +617,16 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (isStatic: ");
     result.append(isStatic);
+    result.append(", isGetter: ");
+    result.append(isGetter);
+    result.append(", name: ");
+    result.append(name);
+    result.append(", isSetter: ");
+    result.append(isSetter);
     result.append(", isOperator: ");
     result.append(isOperator);
     result.append(", operator: ");
     result.append(operator);
-    result.append(", isGetter: ");
-    result.append(isGetter);
-    result.append(", isSetter: ");
-    result.append(isSetter);
-    result.append(", name: ");
-    result.append(name);
     result.append(')');
     return result.toString();
   }

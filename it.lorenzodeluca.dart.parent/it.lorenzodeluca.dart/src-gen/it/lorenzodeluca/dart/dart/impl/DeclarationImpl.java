@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsExternal <em>Is External</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsStatic <em>Is Static</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsCovariant <em>Is Covariant</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsLate <em>Is Late</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsFinal <em>Is Final</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsConst <em>Is Const</em>}</li>
@@ -78,6 +79,26 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
    * @ordered
    */
   protected boolean isStatic = IS_STATIC_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isIsCovariant() <em>Is Covariant</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsCovariant()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_COVARIANT_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsCovariant() <em>Is Covariant</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsCovariant()
+   * @generated
+   * @ordered
+   */
+  protected boolean isCovariant = IS_COVARIANT_EDEFAULT;
 
   /**
    * The default value of the '{@link #isIsLate() <em>Is Late</em>}' attribute.
@@ -248,6 +269,31 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
     isStatic = newIsStatic;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__IS_STATIC, oldIsStatic, isStatic));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isIsCovariant()
+  {
+    return isCovariant;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsCovariant(boolean newIsCovariant)
+  {
+    boolean oldIsCovariant = isCovariant;
+    isCovariant = newIsCovariant;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__IS_COVARIANT, oldIsCovariant, isCovariant));
   }
 
   /**
@@ -482,6 +528,8 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
         return isIsExternal();
       case DartPackage.DECLARATION__IS_STATIC:
         return isIsStatic();
+      case DartPackage.DECLARATION__IS_COVARIANT:
+        return isIsCovariant();
       case DartPackage.DECLARATION__IS_LATE:
         return isIsLate();
       case DartPackage.DECLARATION__IS_FINAL:
@@ -513,6 +561,9 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
         return;
       case DartPackage.DECLARATION__IS_STATIC:
         setIsStatic((Boolean)newValue);
+        return;
+      case DartPackage.DECLARATION__IS_COVARIANT:
+        setIsCovariant((Boolean)newValue);
         return;
       case DartPackage.DECLARATION__IS_LATE:
         setIsLate((Boolean)newValue);
@@ -552,6 +603,9 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
       case DartPackage.DECLARATION__IS_STATIC:
         setIsStatic(IS_STATIC_EDEFAULT);
         return;
+      case DartPackage.DECLARATION__IS_COVARIANT:
+        setIsCovariant(IS_COVARIANT_EDEFAULT);
+        return;
       case DartPackage.DECLARATION__IS_LATE:
         setIsLate(IS_LATE_EDEFAULT);
         return;
@@ -588,6 +642,8 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
         return isExternal != IS_EXTERNAL_EDEFAULT;
       case DartPackage.DECLARATION__IS_STATIC:
         return isStatic != IS_STATIC_EDEFAULT;
+      case DartPackage.DECLARATION__IS_COVARIANT:
+        return isCovariant != IS_COVARIANT_EDEFAULT;
       case DartPackage.DECLARATION__IS_LATE:
         return isLate != IS_LATE_EDEFAULT;
       case DartPackage.DECLARATION__IS_FINAL:
@@ -619,6 +675,8 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
     result.append(isExternal);
     result.append(", isStatic: ");
     result.append(isStatic);
+    result.append(", isCovariant: ");
+    result.append(isCovariant);
     result.append(", isLate: ");
     result.append(isLate);
     result.append(", isFinal: ");

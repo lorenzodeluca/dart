@@ -5,6 +5,8 @@ package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.Additive;
 import it.lorenzodeluca.dart.dart.Arguments;
+import it.lorenzodeluca.dart.dart.AssertInitializer;
+import it.lorenzodeluca.dart.dart.AssertStatement;
 import it.lorenzodeluca.dart.dart.Assignment;
 import it.lorenzodeluca.dart.dart.BitwiseAnd;
 import it.lorenzodeluca.dart.dart.BitwiseOr;
@@ -17,6 +19,9 @@ import it.lorenzodeluca.dart.dart.ClassDeclaration;
 import it.lorenzodeluca.dart.dart.Combinator;
 import it.lorenzodeluca.dart.dart.Conditional;
 import it.lorenzodeluca.dart.dart.ConstExpression;
+import it.lorenzodeluca.dart.dart.ConstructorDesignation;
+import it.lorenzodeluca.dart.dart.ConstructorName;
+import it.lorenzodeluca.dart.dart.ConstructorSignature;
 import it.lorenzodeluca.dart.dart.ContinueStatement;
 import it.lorenzodeluca.dart.dart.DartFactory;
 import it.lorenzodeluca.dart.dart.DartFile;
@@ -32,6 +37,10 @@ import it.lorenzodeluca.dart.dart.Equality;
 import it.lorenzodeluca.dart.dart.Expression;
 import it.lorenzodeluca.dart.dart.ExpressionStatement;
 import it.lorenzodeluca.dart.dart.ExtensionDeclaration;
+import it.lorenzodeluca.dart.dart.ExternalGetter;
+import it.lorenzodeluca.dart.dart.ExternalSetter;
+import it.lorenzodeluca.dart.dart.FactoryConstructorSignature;
+import it.lorenzodeluca.dart.dart.FieldInitializer;
 import it.lorenzodeluca.dart.dart.FinallyClause;
 import it.lorenzodeluca.dart.dart.ForStatement;
 import it.lorenzodeluca.dart.dart.FormalParameterList;
@@ -46,6 +55,8 @@ import it.lorenzodeluca.dart.dart.IfStatement;
 import it.lorenzodeluca.dart.dart.ImportOrExport;
 import it.lorenzodeluca.dart.dart.IndexExpression;
 import it.lorenzodeluca.dart.dart.InitializedIdentifier;
+import it.lorenzodeluca.dart.dart.InitializerEntry;
+import it.lorenzodeluca.dart.dart.Initializers;
 import it.lorenzodeluca.dart.dart.Interfaces;
 import it.lorenzodeluca.dart.dart.Label;
 import it.lorenzodeluca.dart.dart.LibraryDeclaration;
@@ -53,6 +64,7 @@ import it.lorenzodeluca.dart.dart.LibraryExport;
 import it.lorenzodeluca.dart.dart.LibraryImport;
 import it.lorenzodeluca.dart.dart.LibraryName;
 import it.lorenzodeluca.dart.dart.ListLiteral;
+import it.lorenzodeluca.dart.dart.LocalFunctionDeclaration;
 import it.lorenzodeluca.dart.dart.LocalVariableDeclaration;
 import it.lorenzodeluca.dart.dart.LogicalAnd;
 import it.lorenzodeluca.dart.dart.LogicalOr;
@@ -79,6 +91,7 @@ import it.lorenzodeluca.dart.dart.PartDirective;
 import it.lorenzodeluca.dart.dart.PartHeader;
 import it.lorenzodeluca.dart.dart.Postfix;
 import it.lorenzodeluca.dart.dart.PrefixExpression;
+import it.lorenzodeluca.dart.dart.RedirectingFactoryConstructorSignature;
 import it.lorenzodeluca.dart.dart.Relational;
 import it.lorenzodeluca.dart.dart.RethrowStatement;
 import it.lorenzodeluca.dart.dart.ReturnStatement;
@@ -89,11 +102,14 @@ import it.lorenzodeluca.dart.dart.Shift;
 import it.lorenzodeluca.dart.dart.Statement;
 import it.lorenzodeluca.dart.dart.StringLiteral;
 import it.lorenzodeluca.dart.dart.SuperExpression;
+import it.lorenzodeluca.dart.dart.SuperInitializer;
 import it.lorenzodeluca.dart.dart.Superclass;
 import it.lorenzodeluca.dart.dart.SwitchCase;
 import it.lorenzodeluca.dart.dart.SwitchStatement;
 import it.lorenzodeluca.dart.dart.ThisExpression;
 import it.lorenzodeluca.dart.dart.TopLevelDeclaration;
+import it.lorenzodeluca.dart.dart.TopLevelGetter;
+import it.lorenzodeluca.dart.dart.TopLevelSetter;
 import it.lorenzodeluca.dart.dart.TryStatement;
 import it.lorenzodeluca.dart.dart.Type;
 import it.lorenzodeluca.dart.dart.TypeAlias;
@@ -280,6 +296,76 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass constructorSignatureEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass constructorNameEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass initializersEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass initializerEntryEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass superInitializerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass fieldInitializerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass assertInitializerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass factoryConstructorSignatureEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass redirectingFactoryConstructorSignatureEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass constructorDesignationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass mixinDeclarationEClass = null;
 
   /**
@@ -392,6 +478,13 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass localFunctionDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass ifStatementEClass = null;
 
   /**
@@ -497,6 +590,13 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass assertStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass expressionStatementEClass = null;
 
   /**
@@ -575,6 +675,34 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   private EClass topLevelDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass topLevelGetterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass topLevelSetterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass externalGetterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass externalSetterEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1692,7 +1820,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getMemberDeclaration_Method()
+  public EReference getMemberDeclaration_Constructor()
   {
     return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(1);
   }
@@ -1703,7 +1831,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getMemberDeclaration_Body()
+  public EReference getMemberDeclaration_Initializers()
   {
     return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(2);
   }
@@ -1714,9 +1842,53 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getMemberDeclaration_Declaration()
+  public EReference getMemberDeclaration_Body()
   {
     return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMemberDeclaration_Factory()
+  {
+    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMemberDeclaration_RedirectingFactory()
+  {
+    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMemberDeclaration_Method()
+  {
+    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMemberDeclaration_Declaration()
+  {
+    return (EReference)memberDeclarationEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -1758,7 +1930,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getMethodSignature_IsOperator()
+  public EAttribute getMethodSignature_IsGetter()
   {
     return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(2);
   }
@@ -1769,7 +1941,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getMethodSignature_Operator()
+  public EAttribute getMethodSignature_Name()
   {
     return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(3);
   }
@@ -1780,7 +1952,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getMethodSignature_IsGetter()
+  public EAttribute getMethodSignature_IsSetter()
   {
     return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(4);
   }
@@ -1791,9 +1963,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getMethodSignature_IsSetter()
+  public EReference getMethodSignature_Parameters()
   {
-    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(5);
+    return (EReference)methodSignatureEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -1802,7 +1974,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getMethodSignature_Name()
+  public EAttribute getMethodSignature_IsOperator()
   {
     return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(6);
   }
@@ -1813,9 +1985,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getMethodSignature_Parameters()
+  public EAttribute getMethodSignature_Operator()
   {
-    return (EReference)methodSignatureEClass.getEStructuralFeatures().get(7);
+    return (EAttribute)methodSignatureEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -1857,7 +2029,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getDeclaration_IsLate()
+  public EAttribute getDeclaration_IsCovariant()
   {
     return (EAttribute)declarationEClass.getEStructuralFeatures().get(2);
   }
@@ -1868,7 +2040,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getDeclaration_IsFinal()
+  public EAttribute getDeclaration_IsLate()
   {
     return (EAttribute)declarationEClass.getEStructuralFeatures().get(3);
   }
@@ -1879,7 +2051,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EAttribute getDeclaration_IsConst()
+  public EAttribute getDeclaration_IsFinal()
   {
     return (EAttribute)declarationEClass.getEStructuralFeatures().get(4);
   }
@@ -1890,9 +2062,20 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EAttribute getDeclaration_IsConst()
+  {
+    return (EAttribute)declarationEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getDeclaration_Type()
   {
-    return (EReference)declarationEClass.getEStructuralFeatures().get(5);
+    return (EReference)declarationEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -1903,7 +2086,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EAttribute getDeclaration_Name()
   {
-    return (EAttribute)declarationEClass.getEStructuralFeatures().get(6);
+    return (EAttribute)declarationEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -1914,7 +2097,348 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   @Override
   public EReference getDeclaration_InitialValue()
   {
-    return (EReference)declarationEClass.getEStructuralFeatures().get(7);
+    return (EReference)declarationEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getConstructorSignature()
+  {
+    return constructorSignatureEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConstructorSignature_Name()
+  {
+    return (EReference)constructorSignatureEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConstructorSignature_Parameters()
+  {
+    return (EReference)constructorSignatureEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getConstructorName()
+  {
+    return constructorNameEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getConstructorName_ClassName()
+  {
+    return (EAttribute)constructorNameEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getConstructorName_ConstructorId()
+  {
+    return (EAttribute)constructorNameEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getInitializers()
+  {
+    return initializersEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getInitializers_Entries()
+  {
+    return (EReference)initializersEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getInitializerEntry()
+  {
+    return initializerEntryEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSuperInitializer()
+  {
+    return superInitializerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSuperInitializer_Id()
+  {
+    return (EAttribute)superInitializerEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSuperInitializer_Args()
+  {
+    return (EReference)superInitializerEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFieldInitializer()
+  {
+    return fieldInitializerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFieldInitializer_Name()
+  {
+    return (EAttribute)fieldInitializerEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFieldInitializer_Expression()
+  {
+    return (EReference)fieldInitializerEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAssertInitializer()
+  {
+    return assertInitializerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAssertInitializer_Condition()
+  {
+    return (EReference)assertInitializerEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAssertInitializer_Message()
+  {
+    return (EReference)assertInitializerEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFactoryConstructorSignature()
+  {
+    return factoryConstructorSignatureEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFactoryConstructorSignature_IsConst()
+  {
+    return (EAttribute)factoryConstructorSignatureEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFactoryConstructorSignature_Name()
+  {
+    return (EReference)factoryConstructorSignatureEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFactoryConstructorSignature_Parameters()
+  {
+    return (EReference)factoryConstructorSignatureEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getRedirectingFactoryConstructorSignature()
+  {
+    return redirectingFactoryConstructorSignatureEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRedirectingFactoryConstructorSignature_IsConst()
+  {
+    return (EAttribute)redirectingFactoryConstructorSignatureEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRedirectingFactoryConstructorSignature_Name()
+  {
+    return (EReference)redirectingFactoryConstructorSignatureEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRedirectingFactoryConstructorSignature_Parameters()
+  {
+    return (EReference)redirectingFactoryConstructorSignatureEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRedirectingFactoryConstructorSignature_Redirectee()
+  {
+    return (EReference)redirectingFactoryConstructorSignatureEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getConstructorDesignation()
+  {
+    return constructorDesignationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getConstructorDesignation_Name()
+  {
+    return (EAttribute)constructorDesignationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConstructorDesignation_TypeArguments()
+  {
+    return (EReference)constructorDesignationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getConstructorDesignation_ConstructorId()
+  {
+    return (EAttribute)constructorDesignationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2484,6 +3008,72 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EClass getLocalFunctionDeclaration()
+  {
+    return localFunctionDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLocalFunctionDeclaration_Metadata()
+  {
+    return (EReference)localFunctionDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLocalFunctionDeclaration_ReturnType()
+  {
+    return (EReference)localFunctionDeclarationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLocalFunctionDeclaration_Name()
+  {
+    return (EAttribute)localFunctionDeclarationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLocalFunctionDeclaration_Signature()
+  {
+    return (EReference)localFunctionDeclarationEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLocalFunctionDeclaration_Body()
+  {
+    return (EReference)localFunctionDeclarationEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getIfStatement()
   {
     return ifStatementEClass;
@@ -3023,6 +3613,39 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EClass getAssertStatement()
+  {
+    return assertStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAssertStatement_Condition()
+  {
+    return (EReference)assertStatementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAssertStatement_Message()
+  {
+    return (EReference)assertStatementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getExpressionStatement()
   {
     return expressionStatementEClass;
@@ -3386,6 +4009,160 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
+  public EClass getTopLevelGetter()
+  {
+    return topLevelGetterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTopLevelGetter_Metadata()
+  {
+    return (EReference)topLevelGetterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTopLevelGetter_Signature()
+  {
+    return (EReference)topLevelGetterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTopLevelGetter_Body()
+  {
+    return (EReference)topLevelGetterEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTopLevelSetter()
+  {
+    return topLevelSetterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTopLevelSetter_Metadata()
+  {
+    return (EReference)topLevelSetterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTopLevelSetter_Signature()
+  {
+    return (EReference)topLevelSetterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTopLevelSetter_Body()
+  {
+    return (EReference)topLevelSetterEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExternalGetter()
+  {
+    return externalGetterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExternalGetter_Metadata()
+  {
+    return (EReference)externalGetterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExternalGetter_Signature()
+  {
+    return (EReference)externalGetterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExternalSetter()
+  {
+    return externalSetterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExternalSetter_Metadata()
+  {
+    return (EReference)externalSetterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExternalSetter_Signature()
+  {
+    return (EReference)externalSetterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getTypeAlias()
   {
     return typeAliasEClass;
@@ -3433,6 +4210,28 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   public EReference getTypeAlias_Type()
   {
     return (EReference)typeAliasEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTypeAlias_ReturnType()
+  {
+    return (EReference)typeAliasEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTypeAlias_Signature()
+  {
+    return (EReference)typeAliasEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -4702,29 +5501,75 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
 
     memberDeclarationEClass = createEClass(MEMBER_DECLARATION);
     createEReference(memberDeclarationEClass, MEMBER_DECLARATION__METADATA);
-    createEReference(memberDeclarationEClass, MEMBER_DECLARATION__METHOD);
+    createEReference(memberDeclarationEClass, MEMBER_DECLARATION__CONSTRUCTOR);
+    createEReference(memberDeclarationEClass, MEMBER_DECLARATION__INITIALIZERS);
     createEReference(memberDeclarationEClass, MEMBER_DECLARATION__BODY);
+    createEReference(memberDeclarationEClass, MEMBER_DECLARATION__FACTORY);
+    createEReference(memberDeclarationEClass, MEMBER_DECLARATION__REDIRECTING_FACTORY);
+    createEReference(memberDeclarationEClass, MEMBER_DECLARATION__METHOD);
     createEReference(memberDeclarationEClass, MEMBER_DECLARATION__DECLARATION);
 
     methodSignatureEClass = createEClass(METHOD_SIGNATURE);
     createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__IS_STATIC);
     createEReference(methodSignatureEClass, METHOD_SIGNATURE__RETURN_TYPE);
+    createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__IS_GETTER);
+    createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__NAME);
+    createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__IS_SETTER);
+    createEReference(methodSignatureEClass, METHOD_SIGNATURE__PARAMETERS);
     createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__IS_OPERATOR);
     createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__OPERATOR);
-    createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__IS_GETTER);
-    createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__IS_SETTER);
-    createEAttribute(methodSignatureEClass, METHOD_SIGNATURE__NAME);
-    createEReference(methodSignatureEClass, METHOD_SIGNATURE__PARAMETERS);
 
     declarationEClass = createEClass(DECLARATION);
     createEAttribute(declarationEClass, DECLARATION__IS_EXTERNAL);
     createEAttribute(declarationEClass, DECLARATION__IS_STATIC);
+    createEAttribute(declarationEClass, DECLARATION__IS_COVARIANT);
     createEAttribute(declarationEClass, DECLARATION__IS_LATE);
     createEAttribute(declarationEClass, DECLARATION__IS_FINAL);
     createEAttribute(declarationEClass, DECLARATION__IS_CONST);
     createEReference(declarationEClass, DECLARATION__TYPE);
     createEAttribute(declarationEClass, DECLARATION__NAME);
     createEReference(declarationEClass, DECLARATION__INITIAL_VALUE);
+
+    constructorSignatureEClass = createEClass(CONSTRUCTOR_SIGNATURE);
+    createEReference(constructorSignatureEClass, CONSTRUCTOR_SIGNATURE__NAME);
+    createEReference(constructorSignatureEClass, CONSTRUCTOR_SIGNATURE__PARAMETERS);
+
+    constructorNameEClass = createEClass(CONSTRUCTOR_NAME);
+    createEAttribute(constructorNameEClass, CONSTRUCTOR_NAME__CLASS_NAME);
+    createEAttribute(constructorNameEClass, CONSTRUCTOR_NAME__CONSTRUCTOR_ID);
+
+    initializersEClass = createEClass(INITIALIZERS);
+    createEReference(initializersEClass, INITIALIZERS__ENTRIES);
+
+    initializerEntryEClass = createEClass(INITIALIZER_ENTRY);
+
+    superInitializerEClass = createEClass(SUPER_INITIALIZER);
+    createEAttribute(superInitializerEClass, SUPER_INITIALIZER__ID);
+    createEReference(superInitializerEClass, SUPER_INITIALIZER__ARGS);
+
+    fieldInitializerEClass = createEClass(FIELD_INITIALIZER);
+    createEAttribute(fieldInitializerEClass, FIELD_INITIALIZER__NAME);
+    createEReference(fieldInitializerEClass, FIELD_INITIALIZER__EXPRESSION);
+
+    assertInitializerEClass = createEClass(ASSERT_INITIALIZER);
+    createEReference(assertInitializerEClass, ASSERT_INITIALIZER__CONDITION);
+    createEReference(assertInitializerEClass, ASSERT_INITIALIZER__MESSAGE);
+
+    factoryConstructorSignatureEClass = createEClass(FACTORY_CONSTRUCTOR_SIGNATURE);
+    createEAttribute(factoryConstructorSignatureEClass, FACTORY_CONSTRUCTOR_SIGNATURE__IS_CONST);
+    createEReference(factoryConstructorSignatureEClass, FACTORY_CONSTRUCTOR_SIGNATURE__NAME);
+    createEReference(factoryConstructorSignatureEClass, FACTORY_CONSTRUCTOR_SIGNATURE__PARAMETERS);
+
+    redirectingFactoryConstructorSignatureEClass = createEClass(REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE);
+    createEAttribute(redirectingFactoryConstructorSignatureEClass, REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE__IS_CONST);
+    createEReference(redirectingFactoryConstructorSignatureEClass, REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE__NAME);
+    createEReference(redirectingFactoryConstructorSignatureEClass, REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE__PARAMETERS);
+    createEReference(redirectingFactoryConstructorSignatureEClass, REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE__REDIRECTEE);
+
+    constructorDesignationEClass = createEClass(CONSTRUCTOR_DESIGNATION);
+    createEAttribute(constructorDesignationEClass, CONSTRUCTOR_DESIGNATION__NAME);
+    createEReference(constructorDesignationEClass, CONSTRUCTOR_DESIGNATION__TYPE_ARGUMENTS);
+    createEAttribute(constructorDesignationEClass, CONSTRUCTOR_DESIGNATION__CONSTRUCTOR_ID);
 
     mixinDeclarationEClass = createEClass(MIXIN_DECLARATION);
     createEReference(mixinDeclarationEClass, MIXIN_DECLARATION__METADATA);
@@ -4793,6 +5638,13 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     localVariableDeclarationEClass = createEClass(LOCAL_VARIABLE_DECLARATION);
     createEReference(localVariableDeclarationEClass, LOCAL_VARIABLE_DECLARATION__VARIABLE);
 
+    localFunctionDeclarationEClass = createEClass(LOCAL_FUNCTION_DECLARATION);
+    createEReference(localFunctionDeclarationEClass, LOCAL_FUNCTION_DECLARATION__METADATA);
+    createEReference(localFunctionDeclarationEClass, LOCAL_FUNCTION_DECLARATION__RETURN_TYPE);
+    createEAttribute(localFunctionDeclarationEClass, LOCAL_FUNCTION_DECLARATION__NAME);
+    createEReference(localFunctionDeclarationEClass, LOCAL_FUNCTION_DECLARATION__SIGNATURE);
+    createEReference(localFunctionDeclarationEClass, LOCAL_FUNCTION_DECLARATION__BODY);
+
     ifStatementEClass = createEClass(IF_STATEMENT);
     createEReference(ifStatementEClass, IF_STATEMENT__CONDITION);
     createEReference(ifStatementEClass, IF_STATEMENT__THEN_STATEMENT);
@@ -4857,6 +5709,10 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     createEAttribute(yieldStatementEClass, YIELD_STATEMENT__IS_STAR);
     createEReference(yieldStatementEClass, YIELD_STATEMENT__EXPRESSION);
 
+    assertStatementEClass = createEClass(ASSERT_STATEMENT);
+    createEReference(assertStatementEClass, ASSERT_STATEMENT__CONDITION);
+    createEReference(assertStatementEClass, ASSERT_STATEMENT__MESSAGE);
+
     expressionStatementEClass = createEClass(EXPRESSION_STATEMENT);
     createEReference(expressionStatementEClass, EXPRESSION_STATEMENT__EXPRESSION);
 
@@ -4902,11 +5758,31 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
 
     topLevelDeclarationEClass = createEClass(TOP_LEVEL_DECLARATION);
 
+    topLevelGetterEClass = createEClass(TOP_LEVEL_GETTER);
+    createEReference(topLevelGetterEClass, TOP_LEVEL_GETTER__METADATA);
+    createEReference(topLevelGetterEClass, TOP_LEVEL_GETTER__SIGNATURE);
+    createEReference(topLevelGetterEClass, TOP_LEVEL_GETTER__BODY);
+
+    topLevelSetterEClass = createEClass(TOP_LEVEL_SETTER);
+    createEReference(topLevelSetterEClass, TOP_LEVEL_SETTER__METADATA);
+    createEReference(topLevelSetterEClass, TOP_LEVEL_SETTER__SIGNATURE);
+    createEReference(topLevelSetterEClass, TOP_LEVEL_SETTER__BODY);
+
+    externalGetterEClass = createEClass(EXTERNAL_GETTER);
+    createEReference(externalGetterEClass, EXTERNAL_GETTER__METADATA);
+    createEReference(externalGetterEClass, EXTERNAL_GETTER__SIGNATURE);
+
+    externalSetterEClass = createEClass(EXTERNAL_SETTER);
+    createEReference(externalSetterEClass, EXTERNAL_SETTER__METADATA);
+    createEReference(externalSetterEClass, EXTERNAL_SETTER__SIGNATURE);
+
     typeAliasEClass = createEClass(TYPE_ALIAS);
     createEReference(typeAliasEClass, TYPE_ALIAS__METADATA);
     createEAttribute(typeAliasEClass, TYPE_ALIAS__NAME);
     createEReference(typeAliasEClass, TYPE_ALIAS__TYPE_PARAMETERS);
     createEReference(typeAliasEClass, TYPE_ALIAS__TYPE);
+    createEReference(typeAliasEClass, TYPE_ALIAS__RETURN_TYPE);
+    createEReference(typeAliasEClass, TYPE_ALIAS__SIGNATURE);
 
     typeEClass = createEClass(TYPE);
     createEReference(typeEClass, TYPE__TYPE_NAME);
@@ -5081,6 +5957,9 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     optionalPositionalFormalParametersEClass.getESuperTypes().add(this.getOptionalOrNamedFormalParameters());
     namedFormalParametersEClass.getESuperTypes().add(this.getOptionalOrNamedFormalParameters());
     classDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
+    superInitializerEClass.getESuperTypes().add(this.getInitializerEntry());
+    fieldInitializerEClass.getESuperTypes().add(this.getInitializerEntry());
+    assertInitializerEClass.getESuperTypes().add(this.getInitializerEntry());
     mixinDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
     mixinApplicationClassEClass.getESuperTypes().add(this.getTopLevelDeclaration());
     extensionDeclarationEClass.getESuperTypes().add(this.getTopLevelDeclaration());
@@ -5088,6 +5967,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     expressionEClass.getESuperTypes().add(this.getMapOrSetElement());
     blockEClass.getESuperTypes().add(this.getNonLabelledStatement());
     localVariableDeclarationEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    localFunctionDeclarationEClass.getESuperTypes().add(this.getNonLabelledStatement());
     ifStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
     forStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
     whileStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
@@ -5099,11 +5979,16 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     continueStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
     returnStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
     yieldStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
+    assertStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
     expressionStatementEClass.getESuperTypes().add(this.getNonLabelledStatement());
     libraryDeclarationEClass.getESuperTypes().add(this.getDartFile());
     partDeclarationEClass.getESuperTypes().add(this.getDartFile());
     libraryImportEClass.getESuperTypes().add(this.getImportOrExport());
     libraryExportEClass.getESuperTypes().add(this.getImportOrExport());
+    topLevelGetterEClass.getESuperTypes().add(this.getTopLevelDeclaration());
+    topLevelSetterEClass.getESuperTypes().add(this.getTopLevelDeclaration());
+    externalGetterEClass.getESuperTypes().add(this.getTopLevelDeclaration());
+    externalSetterEClass.getESuperTypes().add(this.getTopLevelDeclaration());
     typeAliasEClass.getESuperTypes().add(this.getTopLevelDeclaration());
     assignmentEClass.getESuperTypes().add(this.getExpression());
     conditionalEClass.getESuperTypes().add(this.getExpression());
@@ -5230,29 +6115,75 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
 
     initEClass(memberDeclarationEClass, MemberDeclaration.class, "MemberDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMemberDeclaration_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMemberDeclaration_Method(), this.getMethodSignature(), null, "method", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMemberDeclaration_Constructor(), this.getConstructorSignature(), null, "constructor", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMemberDeclaration_Initializers(), this.getInitializers(), null, "initializers", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMemberDeclaration_Body(), this.getFunctionBody(), null, "body", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMemberDeclaration_Factory(), this.getFactoryConstructorSignature(), null, "factory", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMemberDeclaration_RedirectingFactory(), this.getRedirectingFactoryConstructorSignature(), null, "redirectingFactory", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMemberDeclaration_Method(), this.getMethodSignature(), null, "method", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMemberDeclaration_Declaration(), this.getDeclaration(), null, "declaration", null, 0, 1, MemberDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(methodSignatureEClass, MethodSignature.class, "MethodSignature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMethodSignature_IsStatic(), ecorePackage.getEBoolean(), "isStatic", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethodSignature_ReturnType(), this.getType(), null, "returnType", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMethodSignature_IsGetter(), ecorePackage.getEBoolean(), "isGetter", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMethodSignature_Name(), ecorePackage.getEString(), "name", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMethodSignature_IsSetter(), ecorePackage.getEBoolean(), "isSetter", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethodSignature_Parameters(), this.getFormalParameterList(), null, "parameters", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMethodSignature_IsOperator(), ecorePackage.getEBoolean(), "isOperator", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMethodSignature_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMethodSignature_IsGetter(), ecorePackage.getEBoolean(), "isGetter", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMethodSignature_IsSetter(), ecorePackage.getEBoolean(), "isSetter", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getMethodSignature_Name(), ecorePackage.getEString(), "name", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMethodSignature_Parameters(), this.getFormalParameterList(), null, "parameters", null, 0, 1, MethodSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(declarationEClass, Declaration.class, "Declaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDeclaration_IsExternal(), ecorePackage.getEBoolean(), "isExternal", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDeclaration_IsStatic(), ecorePackage.getEBoolean(), "isStatic", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDeclaration_IsCovariant(), ecorePackage.getEBoolean(), "isCovariant", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDeclaration_IsLate(), ecorePackage.getEBoolean(), "isLate", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDeclaration_IsFinal(), ecorePackage.getEBoolean(), "isFinal", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDeclaration_IsConst(), ecorePackage.getEBoolean(), "isConst", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDeclaration_Type(), this.getType(), null, "type", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDeclaration_InitialValue(), this.getExpression(), null, "initialValue", null, 0, 1, Declaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(constructorSignatureEClass, ConstructorSignature.class, "ConstructorSignature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConstructorSignature_Name(), this.getConstructorName(), null, "name", null, 0, 1, ConstructorSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstructorSignature_Parameters(), this.getFormalParameterList(), null, "parameters", null, 0, 1, ConstructorSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(constructorNameEClass, ConstructorName.class, "ConstructorName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getConstructorName_ClassName(), ecorePackage.getEString(), "className", null, 0, 1, ConstructorName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConstructorName_ConstructorId(), ecorePackage.getEString(), "constructorId", null, 0, 1, ConstructorName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(initializersEClass, Initializers.class, "Initializers", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getInitializers_Entries(), this.getInitializerEntry(), null, "entries", null, 0, -1, Initializers.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(initializerEntryEClass, InitializerEntry.class, "InitializerEntry", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(superInitializerEClass, SuperInitializer.class, "SuperInitializer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSuperInitializer_Id(), ecorePackage.getEString(), "id", null, 0, 1, SuperInitializer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSuperInitializer_Args(), this.getArguments(), null, "args", null, 0, 1, SuperInitializer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(fieldInitializerEClass, FieldInitializer.class, "FieldInitializer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFieldInitializer_Name(), ecorePackage.getEString(), "name", null, 0, 1, FieldInitializer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFieldInitializer_Expression(), this.getExpression(), null, "expression", null, 0, 1, FieldInitializer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(assertInitializerEClass, AssertInitializer.class, "AssertInitializer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAssertInitializer_Condition(), this.getExpression(), null, "condition", null, 0, 1, AssertInitializer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAssertInitializer_Message(), this.getExpression(), null, "message", null, 0, 1, AssertInitializer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(factoryConstructorSignatureEClass, FactoryConstructorSignature.class, "FactoryConstructorSignature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFactoryConstructorSignature_IsConst(), ecorePackage.getEBoolean(), "isConst", null, 0, 1, FactoryConstructorSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFactoryConstructorSignature_Name(), this.getConstructorName(), null, "name", null, 0, 1, FactoryConstructorSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFactoryConstructorSignature_Parameters(), this.getFormalParameterList(), null, "parameters", null, 0, 1, FactoryConstructorSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(redirectingFactoryConstructorSignatureEClass, RedirectingFactoryConstructorSignature.class, "RedirectingFactoryConstructorSignature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRedirectingFactoryConstructorSignature_IsConst(), ecorePackage.getEBoolean(), "isConst", null, 0, 1, RedirectingFactoryConstructorSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRedirectingFactoryConstructorSignature_Name(), this.getConstructorName(), null, "name", null, 0, 1, RedirectingFactoryConstructorSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRedirectingFactoryConstructorSignature_Parameters(), this.getFormalParameterList(), null, "parameters", null, 0, 1, RedirectingFactoryConstructorSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRedirectingFactoryConstructorSignature_Redirectee(), this.getConstructorDesignation(), null, "redirectee", null, 0, 1, RedirectingFactoryConstructorSignature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(constructorDesignationEClass, ConstructorDesignation.class, "ConstructorDesignation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getConstructorDesignation_Name(), ecorePackage.getEString(), "name", null, 0, 1, ConstructorDesignation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstructorDesignation_TypeArguments(), this.getTypeArguments(), null, "typeArguments", null, 0, 1, ConstructorDesignation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConstructorDesignation_ConstructorId(), ecorePackage.getEString(), "constructorId", null, 0, 1, ConstructorDesignation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(mixinDeclarationEClass, MixinDeclaration.class, "MixinDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMixinDeclaration_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, MixinDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5321,6 +6252,13 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     initEClass(localVariableDeclarationEClass, LocalVariableDeclaration.class, "LocalVariableDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLocalVariableDeclaration_Variable(), this.getVariableDeclaration(), null, "variable", null, 0, 1, LocalVariableDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(localFunctionDeclarationEClass, LocalFunctionDeclaration.class, "LocalFunctionDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getLocalFunctionDeclaration_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, LocalFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLocalFunctionDeclaration_ReturnType(), this.getType(), null, "returnType", null, 0, 1, LocalFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getLocalFunctionDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, LocalFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLocalFunctionDeclaration_Signature(), this.getFormalParameterPart(), null, "signature", null, 0, 1, LocalFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLocalFunctionDeclaration_Body(), this.getFunctionBody(), null, "body", null, 0, 1, LocalFunctionDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(ifStatementEClass, IfStatement.class, "IfStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getIfStatement_Condition(), this.getExpression(), null, "condition", null, 0, 1, IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getIfStatement_ThenStatement(), this.getStatement(), null, "thenStatement", null, 0, 1, IfStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5385,6 +6323,10 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
     initEAttribute(getYieldStatement_IsStar(), ecorePackage.getEBoolean(), "isStar", null, 0, 1, YieldStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getYieldStatement_Expression(), this.getExpression(), null, "expression", null, 0, 1, YieldStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(assertStatementEClass, AssertStatement.class, "AssertStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAssertStatement_Condition(), this.getExpression(), null, "condition", null, 0, 1, AssertStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAssertStatement_Message(), this.getExpression(), null, "message", null, 0, 1, AssertStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(expressionStatementEClass, ExpressionStatement.class, "ExpressionStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getExpressionStatement_Expression(), this.getExpression(), null, "expression", null, 0, 1, ExpressionStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -5430,11 +6372,31 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
 
     initEClass(topLevelDeclarationEClass, TopLevelDeclaration.class, "TopLevelDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(topLevelGetterEClass, TopLevelGetter.class, "TopLevelGetter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTopLevelGetter_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, TopLevelGetter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTopLevelGetter_Signature(), this.getGetterSignature(), null, "signature", null, 0, 1, TopLevelGetter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTopLevelGetter_Body(), this.getFunctionBody(), null, "body", null, 0, 1, TopLevelGetter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(topLevelSetterEClass, TopLevelSetter.class, "TopLevelSetter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTopLevelSetter_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, TopLevelSetter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTopLevelSetter_Signature(), this.getSetterSignature(), null, "signature", null, 0, 1, TopLevelSetter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTopLevelSetter_Body(), this.getFunctionBody(), null, "body", null, 0, 1, TopLevelSetter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(externalGetterEClass, ExternalGetter.class, "ExternalGetter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExternalGetter_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, ExternalGetter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExternalGetter_Signature(), this.getGetterSignature(), null, "signature", null, 0, 1, ExternalGetter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(externalSetterEClass, ExternalSetter.class, "ExternalSetter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExternalSetter_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, ExternalSetter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExternalSetter_Signature(), this.getSetterSignature(), null, "signature", null, 0, 1, ExternalSetter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(typeAliasEClass, TypeAlias.class, "TypeAlias", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTypeAlias_Metadata(), this.getMetadata(), null, "metadata", null, 0, -1, TypeAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getTypeAlias_Name(), ecorePackage.getEString(), "name", null, 0, 1, TypeAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTypeAlias_TypeParameters(), this.getTypeParameters(), null, "typeParameters", null, 0, 1, TypeAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTypeAlias_Type(), this.getType(), null, "type", null, 0, 1, TypeAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTypeAlias_ReturnType(), this.getType(), null, "returnType", null, 0, 1, TypeAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTypeAlias_Signature(), this.getFormalParameterPart(), null, "signature", null, 0, 1, TypeAlias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getType_TypeName(), this.getTypeName(), null, "typeName", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

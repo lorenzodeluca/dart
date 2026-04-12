@@ -22,20 +22,24 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected DartGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_AssertInitializer_CommaKeyword_5_q;
+	protected AbstractElementAlias match_AssertStatement_CommaKeyword_5_q;
 	protected AbstractElementAlias match_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0;
 	protected AbstractElementAlias match_DefaultNamedParameter_ColonKeyword_2_0_1_or_EqualsSignKeyword_2_0_0;
 	protected AbstractElementAlias match_EnumDeclaration_CommaKeyword_6_q;
-	protected AbstractElementAlias match_NonLabelledStatement_ConstKeyword_12_0_0_2_or_DynamicKeyword_13_0_0_1_or_FinalKeyword_12_0_0_1_or_LateKeyword_12_0_0_3_or_VarKeyword_12_0_0_0_or_VoidKeyword_13_0_0_0_or___IDTerminalRuleCall_15_0_0_0_IDTerminalRuleCall_15_0_0_1___or___IDTerminalRuleCall_16_0_0_0_FullStopKeyword_16_0_0_1__;
-	protected AbstractElementAlias match_NonLabelledStatement___IDTerminalRuleCall_14_0_0_0_IDTerminalRuleCall_14_0_0_1_LeftParenthesisKeyword_14_0_0_2__q;
+	protected AbstractElementAlias match_FieldInitializer___ThisKeyword_1_0_FullStopKeyword_1_1__q;
+	protected AbstractElementAlias match_NonLabelledStatement_ConstKeyword_13_0_0_2_or_DynamicKeyword_14_0_0_1_or_FinalKeyword_13_0_0_1_or_LateKeyword_13_0_0_3_or_VarKeyword_13_0_0_0_or_VoidKeyword_14_0_0_0_or___IDTerminalRuleCall_16_0_0_0_IDTerminalRuleCall_16_0_0_1___or___IDTerminalRuleCall_17_0_0_0_FullStopKeyword_17_0_0_1__;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (DartGrammarAccess) access;
+		match_AssertInitializer_CommaKeyword_5_q = new TokenAlias(false, true, grammarAccess.getAssertInitializerAccess().getCommaKeyword_5());
+		match_AssertStatement_CommaKeyword_5_q = new TokenAlias(false, true, grammarAccess.getAssertStatementAccess().getCommaKeyword_5());
 		match_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getCombinatorAccess().getHideKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getCombinatorAccess().getShowKeyword_0_0()));
 		match_DefaultNamedParameter_ColonKeyword_2_0_1_or_EqualsSignKeyword_2_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getDefaultNamedParameterAccess().getColonKeyword_2_0_1()), new TokenAlias(false, false, grammarAccess.getDefaultNamedParameterAccess().getEqualsSignKeyword_2_0_0()));
 		match_EnumDeclaration_CommaKeyword_6_q = new TokenAlias(false, true, grammarAccess.getEnumDeclarationAccess().getCommaKeyword_6());
-		match_NonLabelledStatement_ConstKeyword_12_0_0_2_or_DynamicKeyword_13_0_0_1_or_FinalKeyword_12_0_0_1_or_LateKeyword_12_0_0_3_or_VarKeyword_12_0_0_0_or_VoidKeyword_13_0_0_0_or___IDTerminalRuleCall_15_0_0_0_IDTerminalRuleCall_15_0_0_1___or___IDTerminalRuleCall_16_0_0_0_FullStopKeyword_16_0_0_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_15_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_15_0_0_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_16_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getFullStopKeyword_16_0_0_1())), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getConstKeyword_12_0_0_2()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getDynamicKeyword_13_0_0_1()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getFinalKeyword_12_0_0_1()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getLateKeyword_12_0_0_3()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getVarKeyword_12_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getVoidKeyword_13_0_0_0()));
-		match_NonLabelledStatement___IDTerminalRuleCall_14_0_0_0_IDTerminalRuleCall_14_0_0_1_LeftParenthesisKeyword_14_0_0_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_14_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_14_0_0_1()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getLeftParenthesisKeyword_14_0_0_2()));
+		match_FieldInitializer___ThisKeyword_1_0_FullStopKeyword_1_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getFieldInitializerAccess().getThisKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getFieldInitializerAccess().getFullStopKeyword_1_1()));
+		match_NonLabelledStatement_ConstKeyword_13_0_0_2_or_DynamicKeyword_14_0_0_1_or_FinalKeyword_13_0_0_1_or_LateKeyword_13_0_0_3_or_VarKeyword_13_0_0_0_or_VoidKeyword_14_0_0_0_or___IDTerminalRuleCall_16_0_0_0_IDTerminalRuleCall_16_0_0_1___or___IDTerminalRuleCall_17_0_0_0_FullStopKeyword_17_0_0_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_16_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_16_0_0_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_17_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getFullStopKeyword_17_0_0_1())), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getConstKeyword_13_0_0_2()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getDynamicKeyword_14_0_0_1()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getFinalKeyword_13_0_0_1()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getLateKeyword_13_0_0_3()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getVarKeyword_13_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getVoidKeyword_14_0_0_0()));
 	}
 	
 	@Override
@@ -60,20 +64,54 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0.equals(syntax))
+			if (match_AssertInitializer_CommaKeyword_5_q.equals(syntax))
+				emit_AssertInitializer_CommaKeyword_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_AssertStatement_CommaKeyword_5_q.equals(syntax))
+				emit_AssertStatement_CommaKeyword_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0.equals(syntax))
 				emit_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_DefaultNamedParameter_ColonKeyword_2_0_1_or_EqualsSignKeyword_2_0_0.equals(syntax))
 				emit_DefaultNamedParameter_ColonKeyword_2_0_1_or_EqualsSignKeyword_2_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_EnumDeclaration_CommaKeyword_6_q.equals(syntax))
 				emit_EnumDeclaration_CommaKeyword_6_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_NonLabelledStatement_ConstKeyword_12_0_0_2_or_DynamicKeyword_13_0_0_1_or_FinalKeyword_12_0_0_1_or_LateKeyword_12_0_0_3_or_VarKeyword_12_0_0_0_or_VoidKeyword_13_0_0_0_or___IDTerminalRuleCall_15_0_0_0_IDTerminalRuleCall_15_0_0_1___or___IDTerminalRuleCall_16_0_0_0_FullStopKeyword_16_0_0_1__.equals(syntax))
-				emit_NonLabelledStatement_ConstKeyword_12_0_0_2_or_DynamicKeyword_13_0_0_1_or_FinalKeyword_12_0_0_1_or_LateKeyword_12_0_0_3_or_VarKeyword_12_0_0_0_or_VoidKeyword_13_0_0_0_or___IDTerminalRuleCall_15_0_0_0_IDTerminalRuleCall_15_0_0_1___or___IDTerminalRuleCall_16_0_0_0_FullStopKeyword_16_0_0_1__(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_NonLabelledStatement___IDTerminalRuleCall_14_0_0_0_IDTerminalRuleCall_14_0_0_1_LeftParenthesisKeyword_14_0_0_2__q.equals(syntax))
-				emit_NonLabelledStatement___IDTerminalRuleCall_14_0_0_0_IDTerminalRuleCall_14_0_0_1_LeftParenthesisKeyword_14_0_0_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_FieldInitializer___ThisKeyword_1_0_FullStopKeyword_1_1__q.equals(syntax))
+				emit_FieldInitializer___ThisKeyword_1_0_FullStopKeyword_1_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_NonLabelledStatement_ConstKeyword_13_0_0_2_or_DynamicKeyword_14_0_0_1_or_FinalKeyword_13_0_0_1_or_LateKeyword_13_0_0_3_or_VarKeyword_13_0_0_0_or_VoidKeyword_14_0_0_0_or___IDTerminalRuleCall_16_0_0_0_IDTerminalRuleCall_16_0_0_1___or___IDTerminalRuleCall_17_0_0_0_FullStopKeyword_17_0_0_1__.equals(syntax))
+				emit_NonLabelledStatement_ConstKeyword_13_0_0_2_or_DynamicKeyword_14_0_0_1_or_FinalKeyword_13_0_0_1_or_LateKeyword_13_0_0_3_or_VarKeyword_13_0_0_0_or_VoidKeyword_14_0_0_0_or___IDTerminalRuleCall_16_0_0_0_IDTerminalRuleCall_16_0_0_1___or___IDTerminalRuleCall_17_0_0_0_FullStopKeyword_17_0_0_1__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ','?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     condition=Expression (ambiguity) ')' (rule end)
+	 *     message=Expression (ambiguity) ')' (rule end)
+	 
+	 * </pre>
+	 */
+	protected void emit_AssertInitializer_CommaKeyword_5_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ','?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     condition=Expression (ambiguity) ')' ';' (rule end)
+	 *     message=Expression (ambiguity) ')' ';' (rule end)
+	 
+	 * </pre>
+	 */
+	protected void emit_AssertStatement_CommaKeyword_5_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
@@ -119,6 +157,20 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
+	 *     ('this' '.')?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) name=ID
+	 
+	 * </pre>
+	 */
+	protected void emit_FieldInitializer___ThisKeyword_1_0_FullStopKeyword_1_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
 	 *     (
 	  *         'var' | 
 	  *         'final' | 
@@ -135,21 +187,7 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 	 
 	 * </pre>
 	 */
-	protected void emit_NonLabelledStatement_ConstKeyword_12_0_0_2_or_DynamicKeyword_13_0_0_1_or_FinalKeyword_12_0_0_1_or_LateKeyword_12_0_0_3_or_VarKeyword_12_0_0_0_or_VoidKeyword_13_0_0_0_or___IDTerminalRuleCall_15_0_0_0_IDTerminalRuleCall_15_0_0_1___or___IDTerminalRuleCall_16_0_0_0_FullStopKeyword_16_0_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * <pre>
-	 * Ambiguous syntax:
-	 *     (ID ID '(')?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) expression=Expression
-	 
-	 * </pre>
-	 */
-	protected void emit_NonLabelledStatement___IDTerminalRuleCall_14_0_0_0_IDTerminalRuleCall_14_0_0_1_LeftParenthesisKeyword_14_0_0_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_NonLabelledStatement_ConstKeyword_13_0_0_2_or_DynamicKeyword_14_0_0_1_or_FinalKeyword_13_0_0_1_or_LateKeyword_13_0_0_3_or_VarKeyword_13_0_0_0_or_VoidKeyword_14_0_0_0_or___IDTerminalRuleCall_16_0_0_0_IDTerminalRuleCall_16_0_0_1___or___IDTerminalRuleCall_17_0_0_0_FullStopKeyword_17_0_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

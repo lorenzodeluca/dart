@@ -79,10 +79,39 @@ FormalParameterList:
         (',' optionalParameters=OptionalOrNamedFormalParameters)? 
     ')';
 
-//TODO?:functionFormalParameter and fieldFormalParameter
 NormalFormalParameter:
-    (metadata+=Metadata)* (isCovariant?='covariant')? (type=Type)? name=ID;
+    FieldFormalParameter | FunctionFormalParameter | SimpleFormalParameter;
 
+FieldFormalParameter:
+    (metadata+=Metadata)*
+    (type=FinalConstVarOrType)? 'this' '.' name=ID
+    (signature=FormalParameterPart)? (isNullable?='?')?;
+
+FunctionFormalParameter:
+    (metadata+=Metadata)*
+    (isCovariant?='covariant')? (type=Type)? name=ID
+    signature=FormalParameterPart (isNullable?='?')?;
+
+SimpleFormalParameter:
+    (metadata+=Metadata)*
+    (isCovariant?='covariant')?
+    (
+        isFinal?='final' (type=Type)? name=ID |
+        isConst?='const' (type=Type)? name=ID |
+        isVar?='var' name=ID |
+        type=Type name=ID |
+        name=ID
+    );
+    
+FinalConstVarOrType:
+    (isLate?='late')? (
+        isFinal?='final' (type=Type)? |
+        isConst?='const' (type=Type)? |
+        isVar?='var' |
+        type=Type
+    );
+    
+     
 OptionalOrNamedFormalParameters:
     OptionalPositionalFormalParameters | NamedFormalParameters;
 
@@ -196,25 +225,47 @@ MethodSignature:
  *| external <constructorSignature>
  *| (external static?)? <getterSignature>
  *| (external static?)? <setterSignature>
+ *|   (external static?)? functionSignature    
+ *|   external? operatorSignature               
+ *|   static const type? staticFinalDeclarationList
+ *|  static final type? staticFinalDeclarationList
+ *|   static late? varOrType initializedIdentifierList
+ *|   covariant late? varOrType initializedIdentifierList
+ *|  late? final type? initializedIdentifierList
+ *|   late? varOrType initializedIdentifierList
  * 
- * 
- * 	 (external static?)? getterSignature  
- *   (external static?)? setterSignature     
- *   (external static?)? functionSignature    
- *   external? operatorSignature               
- *   static const type? staticFinalDeclarationList
- *   static final type? staticFinalDeclarationList
- *   static late? varOrType initializedIdentifierList
- *   covariant late? varOrType initializedIdentifierList
- *   late? final type? initializedIdentifierList
- *   late? varOrType initializedIdentifierList
- * 
- * TODO !!!: constructorSignature,constantConstructorSignature,redirectingFactoryConstructorSignature, partially covered stuff
  */
 Declaration:
-    (isExternal?='external')? (isStatic?='static')? (isCovariant?='covariant')?
-    (isLate?='late')? (isFinal?='final' | isConst?='const')?
-    (type=Type)? name=ID ('=' initialValue=Expression)?;
+    // external getter/setter/function/operator
+    (isExternal?='external') (isStatic?='static')? (
+        getter=GetterSignature |
+        setter=SetterSignature |
+        functionSig=FunctionSignatureInDecl |
+        (isOperator?='operator') operator=Operator parameters=FormalParameterList
+    ) |
+    // static const type? id = expr, ...
+    (isStatic?='static') (isConst?='const') (type=Type)? variables+=StaticFinalDeclaration (',' variables+=StaticFinalDeclaration)* |
+    // static final type? id = expr, ...
+    (isStatic?='static') (isFinal?='final') (type=Type)? variables+=StaticFinalDeclaration (',' variables+=StaticFinalDeclaration)* |
+    // static late final type? id (= expr)?, ...
+    (isStatic?='static') (isLate?='late') (isFinal?='final') (type=Type)? variables+=InitializedIdentifier (',' variables+=InitializedIdentifier)* |
+    // static late? varOrType id (= expr)?, ...
+    (isStatic?='static') (isLate?='late')? (isVar?='var' | type=Type) variables+=InitializedIdentifier (',' variables+=InitializedIdentifier)* |
+    // covariant late final type? id, ...
+    (isCovariant?='covariant') (isLate?='late') (isFinal?='final') (type=Type)? plainVars+=ID (',' plainVars+=ID)* |
+    // covariant late? varOrType id (= expr)?, ...
+    (isCovariant?='covariant') (isLate?='late')? (isVar?='var' | type=Type) variables+=InitializedIdentifier (',' variables+=InitializedIdentifier)* |
+    // late? final type? id (= expr)?, ...
+    (isLate?='late')? (isFinal?='final') (type=Type)? variables+=InitializedIdentifier (',' variables+=InitializedIdentifier)* |
+    // late? varOrType id (= expr)?, ...
+    (isLate?='late')? (isVar?='var' | type=Type) variables+=InitializedIdentifier (',' variables+=InitializedIdentifier)*;
+
+// per Declaration per getter/setter/function esterni
+FunctionSignatureInDecl:
+    (returnType=Type)? name=ID signature=FormalParameterPart;
+
+StaticFinalDeclaration:
+    name=ID '=' expression=Expression;
 
 
 // Spec §10.2.1

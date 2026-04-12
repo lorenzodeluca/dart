@@ -16,12 +16,12 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsStatic <em>Is Static</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#getReturnType <em>Return Type</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsGetter <em>Is Getter</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsSetter <em>Is Setter</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#getParameters <em>Parameters</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsOperator <em>Is Operator</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#getOperator <em>Operator</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsGetter <em>Is Getter</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsSetter <em>Is Setter</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#getName <em>Name</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.MethodSignature#getParameters <em>Parameters</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getMethodSignature()
@@ -75,6 +75,94 @@ public interface MethodSignature extends EObject
   void setReturnType(Type value);
 
   /**
+   * Returns the value of the '<em><b>Is Getter</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Getter</em>' attribute.
+   * @see #setIsGetter(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMethodSignature_IsGetter()
+   * @model
+   * @generated
+   */
+  boolean isIsGetter();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsGetter <em>Is Getter</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Getter</em>' attribute.
+   * @see #isIsGetter()
+   * @generated
+   */
+  void setIsGetter(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMethodSignature_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MethodSignature#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Is Setter</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Setter</em>' attribute.
+   * @see #setIsSetter(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMethodSignature_IsSetter()
+   * @model
+   * @generated
+   */
+  boolean isIsSetter();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsSetter <em>Is Setter</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Setter</em>' attribute.
+   * @see #isIsSetter()
+   * @generated
+   */
+  void setIsSetter(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Parameters</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Parameters</em>' containment reference.
+   * @see #setParameters(FormalParameterList)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getMethodSignature_Parameters()
+   * @model containment="true"
+   * @generated
+   */
+  FormalParameterList getParameters();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MethodSignature#getParameters <em>Parameters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Parameters</em>' containment reference.
+   * @see #getParameters()
+   * @generated
+   */
+  void setParameters(FormalParameterList value);
+
+  /**
    * Returns the value of the '<em><b>Is Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -117,93 +205,5 @@ public interface MethodSignature extends EObject
    * @generated
    */
   void setOperator(String value);
-
-  /**
-   * Returns the value of the '<em><b>Is Getter</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Getter</em>' attribute.
-   * @see #setIsGetter(boolean)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getMethodSignature_IsGetter()
-   * @model
-   * @generated
-   */
-  boolean isIsGetter();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsGetter <em>Is Getter</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Getter</em>' attribute.
-   * @see #isIsGetter()
-   * @generated
-   */
-  void setIsGetter(boolean value);
-
-  /**
-   * Returns the value of the '<em><b>Is Setter</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Setter</em>' attribute.
-   * @see #setIsSetter(boolean)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getMethodSignature_IsSetter()
-   * @model
-   * @generated
-   */
-  boolean isIsSetter();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MethodSignature#isIsSetter <em>Is Setter</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Setter</em>' attribute.
-   * @see #isIsSetter()
-   * @generated
-   */
-  void setIsSetter(boolean value);
-
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getMethodSignature_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MethodSignature#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Parameters</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameters</em>' containment reference.
-   * @see #setParameters(FormalParameterList)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getMethodSignature_Parameters()
-   * @model containment="true"
-   * @generated
-   */
-  FormalParameterList getParameters();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.MethodSignature#getParameters <em>Parameters</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Parameters</em>' containment reference.
-   * @see #getParameters()
-   * @generated
-   */
-  void setParameters(FormalParameterList value);
 
 } // MethodSignature
