@@ -171,7 +171,6 @@ MemberDeclaration:
  *| static? <setterSignature>
  *| <operatorSignature>
  * 
- * TODO !!!: constructorSignature,factoryConstructorSignature,redirectingFactory
  */
 MethodSignature:
     (isStatic?='static')?
@@ -199,10 +198,10 @@ MethodSignature:
  *| (external static?)? <setterSignature>
  * 
  * 
- * 	 (external static?)? getterSignature        <- partially covered via MethodSignature
- *   (external static?)? setterSignature        <- partially covered via MethodSignature
- *   (external static?)? functionSignature      <- partially covered via MethodSignature
- *   external? operatorSignature                <- partially covered via MethodSignature
+ * 	 (external static?)? getterSignature  
+ *   (external static?)? setterSignature     
+ *   (external static?)? functionSignature    
+ *   external? operatorSignature               
  *   static const type? staticFinalDeclarationList
  *   static final type? staticFinalDeclarationList
  *   static late? varOrType initializedIdentifierList
