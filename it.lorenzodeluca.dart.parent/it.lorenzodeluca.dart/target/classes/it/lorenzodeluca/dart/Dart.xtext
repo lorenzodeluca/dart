@@ -343,13 +343,19 @@ ExtensionDeclaration:
  * 14. ENUMS
  * ========================================================================= */
 
-//TODO: enhanced enums (with members, constructors, implements)
-//TODO: rename to enumType? are metadata duplicated with EnumEntry?
 EnumDeclaration:
-    (metadata+=Metadata)* 'enum' name=ID '{' entries+=EnumEntry (',' entries+=EnumEntry)* ','? '}';
+    (metadata+=Metadata)* 'enum' name=ID (typeParameters=TypeParameters)?
+    (interfaces=Interfaces)?
+    '{' 
+        entries+=EnumEntry (',' entries+=EnumEntry)* ','?
+        (';' (members+=MemberDeclaration)*)?
+    '}';
 
 EnumEntry:
-    (metadata+=Metadata)* name=ID;
+    (metadata+=Metadata)* name=ID 
+    (typeArguments=TypeArguments)? 
+    ('.' constructorId=ID)? 
+    (args=Arguments)?;
 
 /* =========================================================================
  * 15. GENERICS
