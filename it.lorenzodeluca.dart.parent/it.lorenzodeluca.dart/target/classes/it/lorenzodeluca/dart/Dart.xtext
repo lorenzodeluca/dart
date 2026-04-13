@@ -395,10 +395,52 @@ Arguments:
  * 17. EXPRESSIONS
  * =========================================================================
  */
-//TODO!!!!: Cascade expressions (e..method()) and throw expressions
-Expression:
-    AssignmentExpression;
+Expression: AssignmentExpression | CascadeExpression | ThrowExpression;
 
+ThrowExpression:
+    {ThrowExpression} 'throw' expression=Expression;
+ 
+CascadeExpression returns Expression:
+    ConditionalExpression (
+        {Cascade.receiver=current} 
+        (isNullAware?='?..' | '..') 
+        sections+=CascadeSection+
+    )?;
+       
+CascadeSection:
+    {CascadeSection}
+    (
+        '[' index=Expression ']' |
+        name=ID
+    )
+    // selectors applicati dopo il cascade selector
+    (
+        ('.' method=ID (typeArguments=TypeArguments)? args=Arguments) |
+        ('?.' method=ID (typeArguments=TypeArguments)? args=Arguments) |
+        (args=Arguments) |
+        ('[' indexExpr=Expression ']') |
+        ('!' )
+    )*
+    // eventuale assegnamento finale
+    (assignmentOp=AssignmentOperator assignmentExpr=ExpressionWithoutCascade)?;
+
+CascadeSelector:
+    {IndexCascadeSelector} '[' index=Expression ']' |
+    {MemberCascadeSelector} name=ID;
+    
+CascadeSectionTail:
+    {CascadeSectionTail}
+    selectors+=Selector*
+    (
+        indexAssign=IndexSelector assignment=CascadeAssignment |
+        memberAssign=MemberSelector assignment=CascadeAssignment |
+        nullMemberAssign=NullAwareMemberSelector assignment=CascadeAssignment |
+        nullIndexAssign=NullAwareIndexSelector assignment=CascadeAssignment
+    )?;
+    
+CascadeAssignment:
+    operator=AssignmentOperator expression=ExpressionWithoutCascade;
+    
 AssignmentExpression returns Expression:
     ConditionalExpression ({Assignment.left=current} operator=AssignmentOperator right=AssignmentExpression)?;
 
@@ -414,7 +456,10 @@ ConditionalExpression returns Expression:
     IfNullExpression ({Conditional.condition=current} '?' thenExpr=ExpressionWithoutCascade ':' elseExpr=ExpressionWithoutCascade)?;
 
 ExpressionWithoutCascade returns Expression:
-    IfNullExpression; 
+    AssignmentExpression | ThrowExpressionWithoutCascade;
+
+ThrowExpressionWithoutCascade:
+    {ThrowExpression} 'throw' expression=ExpressionWithoutCascade;
 
 IfNullExpression returns Expression:
     LogicalOrExpression ({IfNull.left=current} '??' right=LogicalOrExpression)*;
@@ -487,11 +532,71 @@ UnaryExpression returns Expression:
  */
 PostfixExpression returns Expression:
     PrimaryExpression (
+        // postfix operators
         {Postfix.operand=current} operator=('++' | '--') |
-        {MethodInvocation.receiver=current} '.' method=ID (typeArguments=TypeArguments)? args=Arguments |
+        // method invocation: .name<types>(args)
+        {MethodInvocation.receiver=current} '.' method=ID 
+            (typeArguments=TypeArguments)? args=Arguments |
+        // null aware method: ?.name<types>(args)
+        {NullAwareMethodInvocation.receiver=current} '?.' method=ID
+            (typeArguments=TypeArguments)? args=Arguments |
+        // function call: (args)
         {FunctionCall.receiver=current} args=Arguments |
-        {IndexExpression.receiver=current} '[' index=Expression ']'
+        // index: [expr]
+        {IndexExpression.receiver=current} '[' index=Expression ']' |
+        // null aware index: ?[expr]
+        {NullAwareIndex.receiver=current} '?' '[' index=Expression ']' |
+        // null assert: !
+        {NullAssert.operand=current} '!' |
+        // property access: .name
+        {PropertyAccess.receiver=current} '.' name=ID |
+        // null aware property: ?.name
+        {NullAwarePropertyAccess.receiver=current} '?.' name=ID
     )*;
+
+Selector:
+    NullAssertSelector |
+    AssignableSelectorPart |
+    ArgumentPartSelector;
+
+NullAssertSelector:
+    {NullAssertSelector} '!';
+
+ArgumentPartSelector:
+    {ArgumentPartSelector} 
+    (typeArguments=TypeArguments)? args=Arguments;
+
+AssignableSelector:
+    IndexSelector | MemberSelector | NullAwareMemberSelector | NullAwareIndexSelector;
+
+IndexSelector:
+    {IndexSelector} '[' index=Expression ']';
+
+MemberSelector:
+    {MemberSelector} '.' name=ID;
+
+NullAwareMemberSelector:
+    {NullAwareMemberSelector} '?.' name=ID;
+
+NullAwareIndexSelector:
+    {NullAwareIndexSelector} '?' '[' index=Expression ']';
+    
+//17.36
+AssignableExpression returns Expression:
+    PrimaryExpression (
+        {IndexAssignable.receiver=current} '[' index=Expression ']' |
+        {MemberAssignable.receiver=current} '.' name=ID |
+        {NullAwareMemberAssignable.receiver=current} '?.' name=ID |
+        {NullAwareIndexAssignable.receiver=current} '?' '[' index=Expression ']'
+    )+ |
+    {SuperAssignable} 'super' (
+        '[' index=Expression ']' |
+        '.' name=ID
+    ) |
+    {IdentifierAssignable} name=ID;
+
+AssignableSelectorPart:
+    selectors+=Selector* assignable=AssignableSelector;
 
 /*
  * Primary
