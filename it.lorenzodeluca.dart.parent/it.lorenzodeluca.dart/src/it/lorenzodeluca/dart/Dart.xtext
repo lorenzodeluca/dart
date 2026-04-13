@@ -699,8 +699,23 @@ IfStatement:
  * 
  */
 ForStatement:
-    (isAwait?='await')? 'for' '(' (init=VariableDeclaration | initExpr=Expression)? ';' condition=Expression? ';' update=Expression? ')' body=Statement;
+    (isAwait?='await')? 'for' '(' forLoopParts=ForLoopParts ')' body=Statement;
 
+ForLoopParts:
+    ForInitializerStatement cond=Expression? ';' update=Expression? |    // traditional
+    ForInLoopParts 'in' iterable=Expression;                               // for-in
+
+ForInLoopParts:
+    (metadata+=Metadata)* 
+    (declaredId=DeclaredIdentifier | name=ID);
+
+DeclaredIdentifier:
+    (isCovariant?='covariant')? type=FinalConstVarOrType name=ID;
+
+ForInitializerStatement:
+    {ForInitializerStatement}
+    (localVar=VariableDeclaration ';' | expr=Expression? ';');
+    
 WhileStatement:
     'while' '(' condition=Expression ')' body=Statement;
 
