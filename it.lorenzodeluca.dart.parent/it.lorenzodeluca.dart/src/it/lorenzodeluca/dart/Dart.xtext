@@ -672,6 +672,8 @@ NonLabelledStatement:
     =>(ID ID) LocalVariableDeclaration |
     // Qualified type - local variable: my.Type x
     =>(ID '.') LocalVariableDeclaration |
+    // function without return type
+	=>(ID '(') LocalFunctionDeclaration |
     // Everything else is an expression statement
     ExpressionStatement;
 
