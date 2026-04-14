@@ -218,6 +218,7 @@ public class DartParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCascadeAssignmentAccess().getGroup(), "rule__CascadeAssignment__Group__0");
 			builder.put(grammarAccess.getAssignmentExpressionAccess().getGroup(), "rule__AssignmentExpression__Group__0");
 			builder.put(grammarAccess.getAssignmentExpressionAccess().getGroup_1(), "rule__AssignmentExpression__Group_1__0");
+			builder.put(grammarAccess.getFunctionExpressionAccess().getGroup(), "rule__FunctionExpression__Group__0");
 			builder.put(grammarAccess.getConditionalExpressionAccess().getGroup(), "rule__ConditionalExpression__Group__0");
 			builder.put(grammarAccess.getConditionalExpressionAccess().getGroup_1(), "rule__ConditionalExpression__Group_1__0");
 			builder.put(grammarAccess.getThrowExpressionWithoutCascadeAccess().getGroup(), "rule__ThrowExpressionWithoutCascade__Group__0");
@@ -274,6 +275,7 @@ public class DartParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPrimaryExpressionAccess().getGroup_10_4(), "rule__PrimaryExpression__Group_10_4__0");
 			builder.put(grammarAccess.getPrimaryExpressionAccess().getGroup_10_4_1(), "rule__PrimaryExpression__Group_10_4_1__0");
 			builder.put(grammarAccess.getPrimaryExpressionAccess().getGroup_11(), "rule__PrimaryExpression__Group_11__0");
+			builder.put(grammarAccess.getPrimaryExpressionAccess().getGroup_12(), "rule__PrimaryExpression__Group_12__0");
 			builder.put(grammarAccess.getExpressionElementAccess().getGroup(), "rule__ExpressionElement__Group__0");
 			builder.put(grammarAccess.getMapElementAccess().getGroup(), "rule__MapElement__Group__0");
 			builder.put(grammarAccess.getSpreadElementAccess().getGroup(), "rule__SpreadElement__Group__0");
@@ -621,6 +623,8 @@ public class DartParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getCascadeAssignmentAccess().getExpressionAssignment_1(), "rule__CascadeAssignment__ExpressionAssignment_1");
 			builder.put(grammarAccess.getAssignmentExpressionAccess().getOperatorAssignment_1_1(), "rule__AssignmentExpression__OperatorAssignment_1_1");
 			builder.put(grammarAccess.getAssignmentExpressionAccess().getRightAssignment_1_2(), "rule__AssignmentExpression__RightAssignment_1_2");
+			builder.put(grammarAccess.getFunctionExpressionAccess().getSignatureAssignment_0(), "rule__FunctionExpression__SignatureAssignment_0");
+			builder.put(grammarAccess.getFunctionExpressionAccess().getBodyAssignment_1(), "rule__FunctionExpression__BodyAssignment_1");
 			builder.put(grammarAccess.getConditionalExpressionAccess().getThenExprAssignment_1_2(), "rule__ConditionalExpression__ThenExprAssignment_1_2");
 			builder.put(grammarAccess.getConditionalExpressionAccess().getElseExprAssignment_1_4(), "rule__ConditionalExpression__ElseExprAssignment_1_4");
 			builder.put(grammarAccess.getThrowExpressionWithoutCascadeAccess().getExpressionAssignment_2(), "rule__ThrowExpressionWithoutCascade__ExpressionAssignment_2");
@@ -675,6 +679,7 @@ public class DartParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPrimaryExpressionAccess().getElementsAssignment_10_4_0(), "rule__PrimaryExpression__ElementsAssignment_10_4_0");
 			builder.put(grammarAccess.getPrimaryExpressionAccess().getElementsAssignment_10_4_1_1(), "rule__PrimaryExpression__ElementsAssignment_10_4_1_1");
 			builder.put(grammarAccess.getPrimaryExpressionAccess().getExpressionAssignment_11_2(), "rule__PrimaryExpression__ExpressionAssignment_11_2");
+			builder.put(grammarAccess.getPrimaryExpressionAccess().getFunctionExprAssignment_12_1(), "rule__PrimaryExpression__FunctionExprAssignment_12_1");
 			builder.put(grammarAccess.getExpressionElementAccess().getExpressionAssignment_1(), "rule__ExpressionElement__ExpressionAssignment_1");
 			builder.put(grammarAccess.getMapElementAccess().getKeyAssignment_1(), "rule__MapElement__KeyAssignment_1");
 			builder.put(grammarAccess.getMapElementAccess().getValueAssignment_3(), "rule__MapElement__ValueAssignment_3");

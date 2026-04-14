@@ -9,9 +9,10 @@
  * into the xtext grammar. The GenAI tools were mainly used to check the coherency of all the rules and helping it 
  * been as close as possible to the original specifications. I take responsibility for all the modifications i made 
  * due to the GenAI tools advices.
- * Tools: Claude Sonnet, Gemini
+ * Tools: Claude Sonnet, Gemini, OpenAI 5.3 Codex
  * Queries/use period: 1/2/2026 - 1/5/2026
- * Reason: The grammar of a general purpose programming language is really complex, its hard for a single person to translate such big grammar. The GenAI tools helped me spot mistakes, fix them quicker and reducing the time required to complete the project.
+ * Reason: The grammar of a general purpose programming language is really complex, its hard for a single person to translate such big grammar in such short time
+ * . The GenAI tools helped me spot mistakes, fix them quicker and reducing the time required to complete the project.
  *  
  */
 grammar it.lorenzodeluca.dart.Dart with org.eclipse.xtext.common.Terminals 
@@ -457,6 +458,10 @@ CascadeAssignment:
 AssignmentExpression returns Expression:
     ConditionalExpression ({Assignment.left=current} operator=AssignmentOperator right=AssignmentExpression)?;
 
+//spec 17.11 Function Expressions
+FunctionExpression:
+    signature=FormalParameterPart body=FunctionBody;
+
 //Spec §17.23
 /*
  * <assignmentOperator> ::= '=' | <compoundAssignmentOperator>
@@ -593,7 +598,8 @@ PrimaryExpression returns Expression:
     // List literal - const? <type>? [ elements ]
     {ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
     {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=CollectionElement (',' elements+=CollectionElement)* ','?)? '}' |
-    {ParenthesizedExpression} '(' expression=Expression ')';
+    {ParenthesizedExpression} '(' expression=Expression ')'|
+    {FunctionExpression} functionExpr=FunctionExpression;
 /*
  * If ':' is present it is a map entry; otherwise it is a set element
  * 

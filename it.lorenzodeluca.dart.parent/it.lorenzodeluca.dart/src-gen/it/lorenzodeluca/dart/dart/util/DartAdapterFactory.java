@@ -341,6 +341,11 @@ public class DartAdapterFactory extends AdapterFactoryImpl
         return createCascadeAssignmentAdapter();
       }
       @Override
+      public Adapter caseFunctionExpression(FunctionExpression object)
+      {
+        return createFunctionExpressionAdapter();
+      }
+      @Override
       public Adapter caseThrowExpressionWithoutCascade(ThrowExpressionWithoutCascade object)
       {
         return createThrowExpressionWithoutCascadeAdapter();
@@ -1658,6 +1663,21 @@ public class DartAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCascadeAssignmentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.FunctionExpression <em>Function Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.FunctionExpression
+   * @generated
+   */
+  public Adapter createFunctionExpressionAdapter()
   {
     return null;
   }

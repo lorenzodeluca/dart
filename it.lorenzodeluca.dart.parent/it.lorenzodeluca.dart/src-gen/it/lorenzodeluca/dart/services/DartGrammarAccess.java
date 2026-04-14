@@ -4134,6 +4134,34 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//AssignmentExpression
 		public RuleCall getRightAssignmentExpressionParserRuleCall_1_2_0() { return cRightAssignmentExpressionParserRuleCall_1_2_0; }
 	}
+	public class FunctionExpressionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.FunctionExpression");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cSignatureAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cSignatureFormalParameterPartParserRuleCall_0_0 = (RuleCall)cSignatureAssignment_0.eContents().get(0);
+		private final Assignment cBodyAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cBodyFunctionBodyParserRuleCall_1_0 = (RuleCall)cBodyAssignment_1.eContents().get(0);
+		
+		////spec 17.11 Function Expressions
+		//FunctionExpression:
+		//    signature=FormalParameterPart body=FunctionBody;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//signature=FormalParameterPart body=FunctionBody
+		public Group getGroup() { return cGroup; }
+		
+		//signature=FormalParameterPart
+		public Assignment getSignatureAssignment_0() { return cSignatureAssignment_0; }
+		
+		//FormalParameterPart
+		public RuleCall getSignatureFormalParameterPartParserRuleCall_0_0() { return cSignatureFormalParameterPartParserRuleCall_0_0; }
+		
+		//body=FunctionBody
+		public Assignment getBodyAssignment_1() { return cBodyAssignment_1; }
+		
+		//FunctionBody
+		public RuleCall getBodyFunctionBodyParserRuleCall_1_0() { return cBodyFunctionBodyParserRuleCall_1_0; }
+	}
 	public class AssignmentOperatorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.AssignmentOperator");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -5343,6 +5371,10 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Assignment cExpressionAssignment_11_2 = (Assignment)cGroup_11.eContents().get(2);
 		private final RuleCall cExpressionExpressionParserRuleCall_11_2_0 = (RuleCall)cExpressionAssignment_11_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_11_3 = (Keyword)cGroup_11.eContents().get(3);
+		private final Group cGroup_12 = (Group)cAlternatives.eContents().get(12);
+		private final Action cFunctionExpressionAction_12_0 = (Action)cGroup_12.eContents().get(0);
+		private final Assignment cFunctionExprAssignment_12_1 = (Assignment)cGroup_12.eContents().get(1);
+		private final RuleCall cFunctionExprFunctionExpressionParserRuleCall_12_1_0 = (RuleCall)cFunctionExprAssignment_12_1.eContents().get(0);
 		
 		///*
 		// * Primary
@@ -5363,7 +5395,8 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//    // List literal - const? <type>? [ elements ]
 		//    {ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
 		//    {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=CollectionElement (',' elements+=CollectionElement)* ','?)? '}' |
-		//    {ParenthesizedExpression} '(' expression=Expression ')';
+		//    {ParenthesizedExpression} '(' expression=Expression ')'|
+		//    {FunctionExpression} functionExpr=FunctionExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{ThisExpression} 'this' |
@@ -5378,7 +5411,8 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//// List literal - const? <type>? [ elements ]
 		//{ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
 		//{SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=CollectionElement (',' elements+=CollectionElement)* ','?)? '}' |
-		//{ParenthesizedExpression} '(' expression=Expression ')'
+		//{ParenthesizedExpression} '(' expression=Expression ')'|
+		//{FunctionExpression} functionExpr=FunctionExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{ThisExpression} 'this'
@@ -5640,6 +5674,18 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_11_3() { return cRightParenthesisKeyword_11_3; }
+		
+		//{FunctionExpression} functionExpr=FunctionExpression
+		public Group getGroup_12() { return cGroup_12; }
+		
+		//{FunctionExpression}
+		public Action getFunctionExpressionAction_12_0() { return cFunctionExpressionAction_12_0; }
+		
+		//functionExpr=FunctionExpression
+		public Assignment getFunctionExprAssignment_12_1() { return cFunctionExprAssignment_12_1; }
+		
+		//FunctionExpression
+		public RuleCall getFunctionExprFunctionExpressionParserRuleCall_12_1_0() { return cFunctionExprFunctionExpressionParserRuleCall_12_1_0; }
 	}
 	public class CollectionElementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.CollectionElement");
@@ -8655,6 +8701,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	private final CascadeSectionElements pCascadeSection;
 	private final CascadeAssignmentElements pCascadeAssignment;
 	private final AssignmentExpressionElements pAssignmentExpression;
+	private final FunctionExpressionElements pFunctionExpression;
 	private final AssignmentOperatorElements pAssignmentOperator;
 	private final ConditionalExpressionElements pConditionalExpression;
 	private final ExpressionWithoutCascadeElements pExpressionWithoutCascade;
@@ -8804,6 +8851,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		this.pCascadeSection = new CascadeSectionElements();
 		this.pCascadeAssignment = new CascadeAssignmentElements();
 		this.pAssignmentExpression = new AssignmentExpressionElements();
+		this.pFunctionExpression = new FunctionExpressionElements();
 		this.pAssignmentOperator = new AssignmentOperatorElements();
 		this.pConditionalExpression = new ConditionalExpressionElements();
 		this.pExpressionWithoutCascade = new ExpressionWithoutCascadeElements();
@@ -9739,6 +9787,17 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return getAssignmentExpressionAccess().getRule();
 	}
 	
+	////spec 17.11 Function Expressions
+	//FunctionExpression:
+	//    signature=FormalParameterPart body=FunctionBody;
+	public FunctionExpressionElements getFunctionExpressionAccess() {
+		return pFunctionExpression;
+	}
+	
+	public ParserRule getFunctionExpressionRule() {
+		return getFunctionExpressionAccess().getRule();
+	}
+	
 	////Spec §17.23
 	///*
 	// * <assignmentOperator> ::= '=' | <compoundAssignmentOperator>
@@ -10006,7 +10065,8 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	//    // List literal - const? <type>? [ elements ]
 	//    {ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
 	//    {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=CollectionElement (',' elements+=CollectionElement)* ','?)? '}' |
-	//    {ParenthesizedExpression} '(' expression=Expression ')';
+	//    {ParenthesizedExpression} '(' expression=Expression ')'|
+	//    {FunctionExpression} functionExpr=FunctionExpression;
 	public PrimaryExpressionElements getPrimaryExpressionAccess() {
 		return pPrimaryExpression;
 	}

@@ -118,6 +118,7 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.THROW_EXPRESSION: return createThrowExpression();
       case DartPackage.CASCADE_SECTION: return createCascadeSection();
       case DartPackage.CASCADE_ASSIGNMENT: return createCascadeAssignment();
+      case DartPackage.FUNCTION_EXPRESSION: return createFunctionExpression();
       case DartPackage.THROW_EXPRESSION_WITHOUT_CASCADE: return createThrowExpressionWithoutCascade();
       case DartPackage.COLLECTION_ELEMENT: return createCollectionElement();
       case DartPackage.EXPRESSION_ELEMENT: return createExpressionElement();
@@ -858,6 +859,18 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
   {
     CascadeAssignmentImpl cascadeAssignment = new CascadeAssignmentImpl();
     return cascadeAssignment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FunctionExpression createFunctionExpression()
+  {
+    FunctionExpressionImpl functionExpression = new FunctionExpressionImpl();
+    return functionExpression;
   }
 
   /**

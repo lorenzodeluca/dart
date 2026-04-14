@@ -281,6 +281,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//CascadeAssignment/operator"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//CascadeAssignment/expression"/>
     </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//FunctionExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FunctionExpression/signature"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FunctionExpression/body"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//FunctionExpression/functionExpr"/>
+    </genClasses>
     <genClasses ecoreClass="Dart.ecore#//ThrowExpressionWithoutCascade"/>
     <genClasses ecoreClass="Dart.ecore#//CollectionElement"/>
     <genClasses ecoreClass="Dart.ecore#//ExpressionElement">

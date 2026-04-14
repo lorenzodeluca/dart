@@ -461,6 +461,14 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DartPackage.FUNCTION_EXPRESSION:
+      {
+        FunctionExpression functionExpression = (FunctionExpression)theEObject;
+        T result = caseFunctionExpression(functionExpression);
+        if (result == null) result = caseExpression(functionExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DartPackage.THROW_EXPRESSION_WITHOUT_CASCADE:
       {
         ThrowExpressionWithoutCascade throwExpressionWithoutCascade = (ThrowExpressionWithoutCascade)theEObject;
@@ -2092,6 +2100,22 @@ public class DartSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCascadeAssignment(CascadeAssignment object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionExpression(FunctionExpression object)
   {
     return null;
   }

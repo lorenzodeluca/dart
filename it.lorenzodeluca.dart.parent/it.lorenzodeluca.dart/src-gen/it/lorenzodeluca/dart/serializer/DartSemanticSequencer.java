@@ -58,6 +58,7 @@ import it.lorenzodeluca.dart.dart.FormalParameterPart;
 import it.lorenzodeluca.dart.dart.FunctionBody;
 import it.lorenzodeluca.dart.dart.FunctionCall;
 import it.lorenzodeluca.dart.dart.FunctionDeclaration;
+import it.lorenzodeluca.dart.dart.FunctionExpression;
 import it.lorenzodeluca.dart.dart.FunctionFormalParameter;
 import it.lorenzodeluca.dart.dart.FunctionSignatureInDecl;
 import it.lorenzodeluca.dart.dart.FunctionType;
@@ -344,6 +345,59 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case DartPackage.FUNCTION_DECLARATION:
 				sequence_FunctionDeclaration(context, (FunctionDeclaration) semanticObject); 
 				return; 
+			case DartPackage.FUNCTION_EXPRESSION:
+				if (rule == grammarAccess.getFunctionExpressionRule()) {
+					sequence_FunctionExpression(context, (FunctionExpression) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getExpressionRule()
+						|| rule == grammarAccess.getCascadeExpressionRule()
+						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
+						|| rule == grammarAccess.getAssignmentExpressionRule()
+						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
+						|| rule == grammarAccess.getConditionalExpressionRule()
+						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
+						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
+						|| rule == grammarAccess.getIfNullExpressionRule()
+						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
+						|| rule == grammarAccess.getLogicalOrExpressionRule()
+						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
+						|| rule == grammarAccess.getLogicalAndExpressionRule()
+						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
+						|| rule == grammarAccess.getEqualityExpressionRule()
+						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
+						|| rule == grammarAccess.getRelationalExpressionRule()
+						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
+						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
+						|| rule == grammarAccess.getBitwiseOrExpressionRule()
+						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
+						|| rule == grammarAccess.getBitwiseXorExpressionRule()
+						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
+						|| rule == grammarAccess.getBitwiseAndExpressionRule()
+						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
+						|| rule == grammarAccess.getShiftExpressionRule()
+						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
+						|| rule == grammarAccess.getAdditiveExpressionRule()
+						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
+						|| rule == grammarAccess.getMultiplicativeExpressionRule()
+						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
+						|| rule == grammarAccess.getUnaryExpressionRule()
+						|| rule == grammarAccess.getPostfixExpressionRule()
+						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
+						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
+						|| rule == grammarAccess.getAssignableExpressionRule()
+						|| rule == grammarAccess.getPrimaryExpressionRule()) {
+					sequence_PrimaryExpression(context, (FunctionExpression) semanticObject); 
+					return; 
+				}
+				else break;
 			case DartPackage.FUNCTION_FORMAL_PARAMETER:
 				sequence_FunctionFormalParameter(context, (FunctionFormalParameter) semanticObject); 
 				return; 
@@ -1646,6 +1700,29 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_FunctionDeclaration(ISerializationContext context, FunctionDeclaration semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     FunctionExpression returns FunctionExpression
+	 *
+	 * Constraint:
+	 *     (signature=FormalParameterPart body=FunctionBody)
+	 * </pre>
+	 */
+	protected void sequence_FunctionExpression(ISerializationContext context, FunctionExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DartPackage.eINSTANCE.getFunctionExpression_Signature()) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.eINSTANCE.getFunctionExpression_Signature()));
+			if (transientValues.isValueTransient(semanticObject, DartPackage.eINSTANCE.getFunctionExpression_Body()) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.eINSTANCE.getFunctionExpression_Body()));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getFunctionExpressionAccess().getSignatureFormalParameterPartParserRuleCall_0_0(), semanticObject.getSignature());
+		feeder.accept(grammarAccess.getFunctionExpressionAccess().getBodyFunctionBodyParserRuleCall_1_0(), semanticObject.getBody());
+		feeder.finish();
 	}
 	
 	
@@ -3029,6 +3106,69 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_PrimaryExpression(ISerializationContext context, ConstExpression semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Expression returns FunctionExpression
+	 *     CascadeExpression returns FunctionExpression
+	 *     CascadeExpression.Cascade_1_0 returns FunctionExpression
+	 *     AssignmentExpression returns FunctionExpression
+	 *     AssignmentExpression.Assignment_1_0 returns FunctionExpression
+	 *     ConditionalExpression returns FunctionExpression
+	 *     ConditionalExpression.Conditional_1_0 returns FunctionExpression
+	 *     ExpressionWithoutCascade returns FunctionExpression
+	 *     IfNullExpression returns FunctionExpression
+	 *     IfNullExpression.IfNull_1_0 returns FunctionExpression
+	 *     LogicalOrExpression returns FunctionExpression
+	 *     LogicalOrExpression.LogicalOr_1_0 returns FunctionExpression
+	 *     LogicalAndExpression returns FunctionExpression
+	 *     LogicalAndExpression.LogicalAnd_1_0 returns FunctionExpression
+	 *     EqualityExpression returns FunctionExpression
+	 *     EqualityExpression.Equality_1_0 returns FunctionExpression
+	 *     RelationalExpression returns FunctionExpression
+	 *     RelationalExpression.Relational_1_0_0 returns FunctionExpression
+	 *     RelationalExpression.TypeCheck_1_1_0 returns FunctionExpression
+	 *     BitwiseOrExpression returns FunctionExpression
+	 *     BitwiseOrExpression.BitwiseOr_1_0 returns FunctionExpression
+	 *     BitwiseXorExpression returns FunctionExpression
+	 *     BitwiseXorExpression.BitwiseXor_1_0 returns FunctionExpression
+	 *     BitwiseAndExpression returns FunctionExpression
+	 *     BitwiseAndExpression.BitwiseAnd_1_0 returns FunctionExpression
+	 *     ShiftExpression returns FunctionExpression
+	 *     ShiftExpression.Shift_1_0 returns FunctionExpression
+	 *     AdditiveExpression returns FunctionExpression
+	 *     AdditiveExpression.Additive_1_0 returns FunctionExpression
+	 *     MultiplicativeExpression returns FunctionExpression
+	 *     MultiplicativeExpression.Multiplicative_1_0 returns FunctionExpression
+	 *     UnaryExpression returns FunctionExpression
+	 *     PostfixExpression returns FunctionExpression
+	 *     PostfixExpression.Postfix_1_0_0 returns FunctionExpression
+	 *     PostfixExpression.MethodInvocation_1_1_0 returns FunctionExpression
+	 *     PostfixExpression.NullAwareMethodInvocation_1_2_0 returns FunctionExpression
+	 *     PostfixExpression.FunctionCall_1_3_0 returns FunctionExpression
+	 *     PostfixExpression.IndexExpression_1_4_0 returns FunctionExpression
+	 *     PostfixExpression.NullAwareIndex_1_5_0 returns FunctionExpression
+	 *     PostfixExpression.NullAssert_1_6_0 returns FunctionExpression
+	 *     PostfixExpression.PropertyAccess_1_7_0 returns FunctionExpression
+	 *     PostfixExpression.NullAwarePropertyAccess_1_8_0 returns FunctionExpression
+	 *     AssignableExpression returns FunctionExpression
+	 *     PrimaryExpression returns FunctionExpression
+	 *
+	 * Constraint:
+	 *     functionExpr=FunctionExpression
+	 * </pre>
+	 */
+	protected void sequence_PrimaryExpression(ISerializationContext context, FunctionExpression semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DartPackage.eINSTANCE.getFunctionExpression_FunctionExpr()) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.eINSTANCE.getFunctionExpression_FunctionExpr()));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPrimaryExpressionAccess().getFunctionExprFunctionExpressionParserRuleCall_12_1_0(), semanticObject.getFunctionExpr());
+		feeder.finish();
 	}
 	
 	

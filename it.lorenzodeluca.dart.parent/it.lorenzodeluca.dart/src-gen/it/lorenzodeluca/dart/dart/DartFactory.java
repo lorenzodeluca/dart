@@ -501,6 +501,15 @@ public interface DartFactory extends EFactory
   CascadeAssignment createCascadeAssignment();
 
   /**
+   * Returns a new object of class '<em>Function Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Expression</em>'.
+   * @generated
+   */
+  FunctionExpression createFunctionExpression();
+
+  /**
    * Returns a new object of class '<em>Throw Expression Without Cascade</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
