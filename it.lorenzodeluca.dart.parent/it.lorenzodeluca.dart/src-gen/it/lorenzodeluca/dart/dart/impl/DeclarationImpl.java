@@ -5,17 +5,29 @@ package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.Declaration;
-import it.lorenzodeluca.dart.dart.Expression;
+import it.lorenzodeluca.dart.dart.FormalParameterList;
+import it.lorenzodeluca.dart.dart.FunctionSignatureInDecl;
+import it.lorenzodeluca.dart.dart.GetterSignature;
+import it.lorenzodeluca.dart.dart.SetterSignature;
 import it.lorenzodeluca.dart.dart.Type;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,13 +39,20 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsExternal <em>Is External</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsStatic <em>Is Static</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsCovariant <em>Is Covariant</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsLate <em>Is Late</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsFinal <em>Is Final</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#getGetter <em>Getter</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#getSetter <em>Setter</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#getFunctionSig <em>Function Sig</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsOperator <em>Is Operator</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#getOperator <em>Operator</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsConst <em>Is Const</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#getType <em>Type</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#getName <em>Name</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#getInitialValue <em>Initial Value</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#getVariables <em>Variables</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsFinal <em>Is Final</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsLate <em>Is Late</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsVar <em>Is Var</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#isIsCovariant <em>Is Covariant</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.DeclarationImpl#getPlainVars <em>Plain Vars</em>}</li>
  * </ul>
  *
  * @generated
@@ -81,64 +100,84 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
   protected boolean isStatic = IS_STATIC_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isIsCovariant() <em>Is Covariant</em>}' attribute.
+   * The cached value of the '{@link #getGetter() <em>Getter</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isIsCovariant()
+   * @see #getGetter()
    * @generated
    * @ordered
    */
-  protected static final boolean IS_COVARIANT_EDEFAULT = false;
+  protected GetterSignature getter;
 
   /**
-   * The cached value of the '{@link #isIsCovariant() <em>Is Covariant</em>}' attribute.
+   * The cached value of the '{@link #getSetter() <em>Setter</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isIsCovariant()
+   * @see #getSetter()
    * @generated
    * @ordered
    */
-  protected boolean isCovariant = IS_COVARIANT_EDEFAULT;
+  protected SetterSignature setter;
 
   /**
-   * The default value of the '{@link #isIsLate() <em>Is Late</em>}' attribute.
+   * The cached value of the '{@link #getFunctionSig() <em>Function Sig</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isIsLate()
+   * @see #getFunctionSig()
    * @generated
    * @ordered
    */
-  protected static final boolean IS_LATE_EDEFAULT = false;
+  protected FunctionSignatureInDecl functionSig;
 
   /**
-   * The cached value of the '{@link #isIsLate() <em>Is Late</em>}' attribute.
+   * The default value of the '{@link #isIsOperator() <em>Is Operator</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isIsLate()
+   * @see #isIsOperator()
    * @generated
    * @ordered
    */
-  protected boolean isLate = IS_LATE_EDEFAULT;
+  protected static final boolean IS_OPERATOR_EDEFAULT = false;
 
   /**
-   * The default value of the '{@link #isIsFinal() <em>Is Final</em>}' attribute.
+   * The cached value of the '{@link #isIsOperator() <em>Is Operator</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isIsFinal()
+   * @see #isIsOperator()
    * @generated
    * @ordered
    */
-  protected static final boolean IS_FINAL_EDEFAULT = false;
+  protected boolean isOperator = IS_OPERATOR_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #isIsFinal() <em>Is Final</em>}' attribute.
+   * The default value of the '{@link #getOperator() <em>Operator</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isIsFinal()
+   * @see #getOperator()
    * @generated
    * @ordered
    */
-  protected boolean isFinal = IS_FINAL_EDEFAULT;
+  protected static final String OPERATOR_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getOperator() <em>Operator</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOperator()
+   * @generated
+   * @ordered
+   */
+  protected String operator = OPERATOR_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getParameters()
+   * @generated
+   * @ordered
+   */
+  protected FormalParameterList parameters;
 
   /**
    * The default value of the '{@link #isIsConst() <em>Is Const</em>}' attribute.
@@ -171,34 +210,104 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
   protected Type type;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getVariables()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected EList<EObject> variables;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #isIsFinal() <em>Is Final</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #isIsFinal()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected static final boolean IS_FINAL_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getInitialValue() <em>Initial Value</em>}' containment reference.
+   * The cached value of the '{@link #isIsFinal() <em>Is Final</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInitialValue()
+   * @see #isIsFinal()
    * @generated
    * @ordered
    */
-  protected Expression initialValue;
+  protected boolean isFinal = IS_FINAL_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isIsLate() <em>Is Late</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsLate()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_LATE_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsLate() <em>Is Late</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsLate()
+   * @generated
+   * @ordered
+   */
+  protected boolean isLate = IS_LATE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isIsVar() <em>Is Var</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsVar()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_VAR_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsVar() <em>Is Var</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsVar()
+   * @generated
+   * @ordered
+   */
+  protected boolean isVar = IS_VAR_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isIsCovariant() <em>Is Covariant</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsCovariant()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_COVARIANT_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsCovariant() <em>Is Covariant</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsCovariant()
+   * @generated
+   * @ordered
+   */
+  protected boolean isCovariant = IS_COVARIANT_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getPlainVars() <em>Plain Vars</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPlainVars()
+   * @generated
+   * @ordered
+   */
+  protected EList<String> plainVars;
 
   /**
    * <!-- begin-user-doc -->
@@ -218,7 +327,7 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.DECLARATION;
+    return DartPackage.eINSTANCE.getDeclaration();
   }
 
   /**
@@ -277,9 +386,9 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
    * @generated
    */
   @Override
-  public boolean isIsCovariant()
+  public GetterSignature getGetter()
   {
-    return isCovariant;
+    return getter;
   }
 
   /**
@@ -287,13 +396,16 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setIsCovariant(boolean newIsCovariant)
+  public NotificationChain basicSetGetter(GetterSignature newGetter, NotificationChain msgs)
   {
-    boolean oldIsCovariant = isCovariant;
-    isCovariant = newIsCovariant;
+    GetterSignature oldGetter = getter;
+    getter = newGetter;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__IS_COVARIANT, oldIsCovariant, isCovariant));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__GETTER, oldGetter, newGetter);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -302,9 +414,20 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
    * @generated
    */
   @Override
-  public boolean isIsLate()
+  public void setGetter(GetterSignature newGetter)
   {
-    return isLate;
+    if (newGetter != getter)
+    {
+      NotificationChain msgs = null;
+      if (getter != null)
+        msgs = ((InternalEObject)getter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.DECLARATION__GETTER, null, msgs);
+      if (newGetter != null)
+        msgs = ((InternalEObject)newGetter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.DECLARATION__GETTER, null, msgs);
+      msgs = basicSetGetter(newGetter, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__GETTER, newGetter, newGetter));
   }
 
   /**
@@ -313,12 +436,26 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
    * @generated
    */
   @Override
-  public void setIsLate(boolean newIsLate)
+  public SetterSignature getSetter()
   {
-    boolean oldIsLate = isLate;
-    isLate = newIsLate;
+    return setter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSetter(SetterSignature newSetter, NotificationChain msgs)
+  {
+    SetterSignature oldSetter = setter;
+    setter = newSetter;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__IS_LATE, oldIsLate, isLate));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__SETTER, oldSetter, newSetter);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -327,9 +464,20 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
    * @generated
    */
   @Override
-  public boolean isIsFinal()
+  public void setSetter(SetterSignature newSetter)
   {
-    return isFinal;
+    if (newSetter != setter)
+    {
+      NotificationChain msgs = null;
+      if (setter != null)
+        msgs = ((InternalEObject)setter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.DECLARATION__SETTER, null, msgs);
+      if (newSetter != null)
+        msgs = ((InternalEObject)newSetter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.DECLARATION__SETTER, null, msgs);
+      msgs = basicSetSetter(newSetter, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__SETTER, newSetter, newSetter));
   }
 
   /**
@@ -338,12 +486,148 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
    * @generated
    */
   @Override
-  public void setIsFinal(boolean newIsFinal)
+  public FunctionSignatureInDecl getFunctionSig()
   {
-    boolean oldIsFinal = isFinal;
-    isFinal = newIsFinal;
+    return functionSig;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetFunctionSig(FunctionSignatureInDecl newFunctionSig, NotificationChain msgs)
+  {
+    FunctionSignatureInDecl oldFunctionSig = functionSig;
+    functionSig = newFunctionSig;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__IS_FINAL, oldIsFinal, isFinal));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__FUNCTION_SIG, oldFunctionSig, newFunctionSig);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setFunctionSig(FunctionSignatureInDecl newFunctionSig)
+  {
+    if (newFunctionSig != functionSig)
+    {
+      NotificationChain msgs = null;
+      if (functionSig != null)
+        msgs = ((InternalEObject)functionSig).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.DECLARATION__FUNCTION_SIG, null, msgs);
+      if (newFunctionSig != null)
+        msgs = ((InternalEObject)newFunctionSig).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.DECLARATION__FUNCTION_SIG, null, msgs);
+      msgs = basicSetFunctionSig(newFunctionSig, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__FUNCTION_SIG, newFunctionSig, newFunctionSig));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isIsOperator()
+  {
+    return isOperator;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsOperator(boolean newIsOperator)
+  {
+    boolean oldIsOperator = isOperator;
+    isOperator = newIsOperator;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__IS_OPERATOR, oldIsOperator, isOperator));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getOperator()
+  {
+    return operator;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOperator(String newOperator)
+  {
+    String oldOperator = operator;
+    operator = newOperator;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__OPERATOR, oldOperator, operator));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FormalParameterList getParameters()
+  {
+    return parameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetParameters(FormalParameterList newParameters, NotificationChain msgs)
+  {
+    FormalParameterList oldParameters = parameters;
+    parameters = newParameters;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__PARAMETERS, oldParameters, newParameters);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setParameters(FormalParameterList newParameters)
+  {
+    if (newParameters != parameters)
+    {
+      NotificationChain msgs = null;
+      if (parameters != null)
+        msgs = ((InternalEObject)parameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.DECLARATION__PARAMETERS, null, msgs);
+      if (newParameters != null)
+        msgs = ((InternalEObject)newParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.DECLARATION__PARAMETERS, null, msgs);
+      msgs = basicSetParameters(newParameters, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__PARAMETERS, newParameters, newParameters));
   }
 
   /**
@@ -427,51 +711,13 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
    * @generated
    */
   @Override
-  public String getName()
+  public EList<EObject> getVariables()
   {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Expression getInitialValue()
-  {
-    return initialValue;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetInitialValue(Expression newInitialValue, NotificationChain msgs)
-  {
-    Expression oldInitialValue = initialValue;
-    initialValue = newInitialValue;
-    if (eNotificationRequired())
+    if (variables == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__INITIAL_VALUE, oldInitialValue, newInitialValue);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      variables = new EObjectContainmentEList<EObject>(EObject.class, this, DartPackage.DECLARATION__VARIABLES);
     }
-    return msgs;
+    return variables;
   }
 
   /**
@@ -480,20 +726,113 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
    * @generated
    */
   @Override
-  public void setInitialValue(Expression newInitialValue)
+  public boolean isIsFinal()
   {
-    if (newInitialValue != initialValue)
+    return isFinal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsFinal(boolean newIsFinal)
+  {
+    boolean oldIsFinal = isFinal;
+    isFinal = newIsFinal;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__IS_FINAL, oldIsFinal, isFinal));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isIsLate()
+  {
+    return isLate;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsLate(boolean newIsLate)
+  {
+    boolean oldIsLate = isLate;
+    isLate = newIsLate;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__IS_LATE, oldIsLate, isLate));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isIsVar()
+  {
+    return isVar;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsVar(boolean newIsVar)
+  {
+    boolean oldIsVar = isVar;
+    isVar = newIsVar;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__IS_VAR, oldIsVar, isVar));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean isIsCovariant()
+  {
+    return isCovariant;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsCovariant(boolean newIsCovariant)
+  {
+    boolean oldIsCovariant = isCovariant;
+    isCovariant = newIsCovariant;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__IS_COVARIANT, oldIsCovariant, isCovariant));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<String> getPlainVars()
+  {
+    if (plainVars == null)
     {
-      NotificationChain msgs = null;
-      if (initialValue != null)
-        msgs = ((InternalEObject)initialValue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.DECLARATION__INITIAL_VALUE, null, msgs);
-      if (newInitialValue != null)
-        msgs = ((InternalEObject)newInitialValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.DECLARATION__INITIAL_VALUE, null, msgs);
-      msgs = basicSetInitialValue(newInitialValue, msgs);
-      if (msgs != null) msgs.dispatch();
+      plainVars = new EDataTypeEList<String>(String.class, this, DartPackage.DECLARATION__PLAIN_VARS);
     }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.DECLARATION__INITIAL_VALUE, newInitialValue, newInitialValue));
+    return plainVars;
   }
 
   /**
@@ -506,10 +845,18 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
   {
     switch (featureID)
     {
+      case DartPackage.DECLARATION__GETTER:
+        return basicSetGetter(null, msgs);
+      case DartPackage.DECLARATION__SETTER:
+        return basicSetSetter(null, msgs);
+      case DartPackage.DECLARATION__FUNCTION_SIG:
+        return basicSetFunctionSig(null, msgs);
+      case DartPackage.DECLARATION__PARAMETERS:
+        return basicSetParameters(null, msgs);
       case DartPackage.DECLARATION__TYPE:
         return basicSetType(null, msgs);
-      case DartPackage.DECLARATION__INITIAL_VALUE:
-        return basicSetInitialValue(null, msgs);
+      case DartPackage.DECLARATION__VARIABLES:
+        return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -528,20 +875,34 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
         return isIsExternal();
       case DartPackage.DECLARATION__IS_STATIC:
         return isIsStatic();
-      case DartPackage.DECLARATION__IS_COVARIANT:
-        return isIsCovariant();
-      case DartPackage.DECLARATION__IS_LATE:
-        return isIsLate();
-      case DartPackage.DECLARATION__IS_FINAL:
-        return isIsFinal();
+      case DartPackage.DECLARATION__GETTER:
+        return getGetter();
+      case DartPackage.DECLARATION__SETTER:
+        return getSetter();
+      case DartPackage.DECLARATION__FUNCTION_SIG:
+        return getFunctionSig();
+      case DartPackage.DECLARATION__IS_OPERATOR:
+        return isIsOperator();
+      case DartPackage.DECLARATION__OPERATOR:
+        return getOperator();
+      case DartPackage.DECLARATION__PARAMETERS:
+        return getParameters();
       case DartPackage.DECLARATION__IS_CONST:
         return isIsConst();
       case DartPackage.DECLARATION__TYPE:
         return getType();
-      case DartPackage.DECLARATION__NAME:
-        return getName();
-      case DartPackage.DECLARATION__INITIAL_VALUE:
-        return getInitialValue();
+      case DartPackage.DECLARATION__VARIABLES:
+        return getVariables();
+      case DartPackage.DECLARATION__IS_FINAL:
+        return isIsFinal();
+      case DartPackage.DECLARATION__IS_LATE:
+        return isIsLate();
+      case DartPackage.DECLARATION__IS_VAR:
+        return isIsVar();
+      case DartPackage.DECLARATION__IS_COVARIANT:
+        return isIsCovariant();
+      case DartPackage.DECLARATION__PLAIN_VARS:
+        return getPlainVars();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -551,6 +912,7 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -562,14 +924,23 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
       case DartPackage.DECLARATION__IS_STATIC:
         setIsStatic((Boolean)newValue);
         return;
-      case DartPackage.DECLARATION__IS_COVARIANT:
-        setIsCovariant((Boolean)newValue);
+      case DartPackage.DECLARATION__GETTER:
+        setGetter((GetterSignature)newValue);
         return;
-      case DartPackage.DECLARATION__IS_LATE:
-        setIsLate((Boolean)newValue);
+      case DartPackage.DECLARATION__SETTER:
+        setSetter((SetterSignature)newValue);
         return;
-      case DartPackage.DECLARATION__IS_FINAL:
-        setIsFinal((Boolean)newValue);
+      case DartPackage.DECLARATION__FUNCTION_SIG:
+        setFunctionSig((FunctionSignatureInDecl)newValue);
+        return;
+      case DartPackage.DECLARATION__IS_OPERATOR:
+        setIsOperator((Boolean)newValue);
+        return;
+      case DartPackage.DECLARATION__OPERATOR:
+        setOperator((String)newValue);
+        return;
+      case DartPackage.DECLARATION__PARAMETERS:
+        setParameters((FormalParameterList)newValue);
         return;
       case DartPackage.DECLARATION__IS_CONST:
         setIsConst((Boolean)newValue);
@@ -577,11 +948,25 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
       case DartPackage.DECLARATION__TYPE:
         setType((Type)newValue);
         return;
-      case DartPackage.DECLARATION__NAME:
-        setName((String)newValue);
+      case DartPackage.DECLARATION__VARIABLES:
+        getVariables().clear();
+        getVariables().addAll((Collection<? extends EObject>)newValue);
         return;
-      case DartPackage.DECLARATION__INITIAL_VALUE:
-        setInitialValue((Expression)newValue);
+      case DartPackage.DECLARATION__IS_FINAL:
+        setIsFinal((Boolean)newValue);
+        return;
+      case DartPackage.DECLARATION__IS_LATE:
+        setIsLate((Boolean)newValue);
+        return;
+      case DartPackage.DECLARATION__IS_VAR:
+        setIsVar((Boolean)newValue);
+        return;
+      case DartPackage.DECLARATION__IS_COVARIANT:
+        setIsCovariant((Boolean)newValue);
+        return;
+      case DartPackage.DECLARATION__PLAIN_VARS:
+        getPlainVars().clear();
+        getPlainVars().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -603,14 +988,23 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
       case DartPackage.DECLARATION__IS_STATIC:
         setIsStatic(IS_STATIC_EDEFAULT);
         return;
-      case DartPackage.DECLARATION__IS_COVARIANT:
-        setIsCovariant(IS_COVARIANT_EDEFAULT);
+      case DartPackage.DECLARATION__GETTER:
+        setGetter((GetterSignature)null);
         return;
-      case DartPackage.DECLARATION__IS_LATE:
-        setIsLate(IS_LATE_EDEFAULT);
+      case DartPackage.DECLARATION__SETTER:
+        setSetter((SetterSignature)null);
         return;
-      case DartPackage.DECLARATION__IS_FINAL:
-        setIsFinal(IS_FINAL_EDEFAULT);
+      case DartPackage.DECLARATION__FUNCTION_SIG:
+        setFunctionSig((FunctionSignatureInDecl)null);
+        return;
+      case DartPackage.DECLARATION__IS_OPERATOR:
+        setIsOperator(IS_OPERATOR_EDEFAULT);
+        return;
+      case DartPackage.DECLARATION__OPERATOR:
+        setOperator(OPERATOR_EDEFAULT);
+        return;
+      case DartPackage.DECLARATION__PARAMETERS:
+        setParameters((FormalParameterList)null);
         return;
       case DartPackage.DECLARATION__IS_CONST:
         setIsConst(IS_CONST_EDEFAULT);
@@ -618,11 +1012,23 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
       case DartPackage.DECLARATION__TYPE:
         setType((Type)null);
         return;
-      case DartPackage.DECLARATION__NAME:
-        setName(NAME_EDEFAULT);
+      case DartPackage.DECLARATION__VARIABLES:
+        getVariables().clear();
         return;
-      case DartPackage.DECLARATION__INITIAL_VALUE:
-        setInitialValue((Expression)null);
+      case DartPackage.DECLARATION__IS_FINAL:
+        setIsFinal(IS_FINAL_EDEFAULT);
+        return;
+      case DartPackage.DECLARATION__IS_LATE:
+        setIsLate(IS_LATE_EDEFAULT);
+        return;
+      case DartPackage.DECLARATION__IS_VAR:
+        setIsVar(IS_VAR_EDEFAULT);
+        return;
+      case DartPackage.DECLARATION__IS_COVARIANT:
+        setIsCovariant(IS_COVARIANT_EDEFAULT);
+        return;
+      case DartPackage.DECLARATION__PLAIN_VARS:
+        getPlainVars().clear();
         return;
     }
     super.eUnset(featureID);
@@ -642,20 +1048,34 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
         return isExternal != IS_EXTERNAL_EDEFAULT;
       case DartPackage.DECLARATION__IS_STATIC:
         return isStatic != IS_STATIC_EDEFAULT;
-      case DartPackage.DECLARATION__IS_COVARIANT:
-        return isCovariant != IS_COVARIANT_EDEFAULT;
-      case DartPackage.DECLARATION__IS_LATE:
-        return isLate != IS_LATE_EDEFAULT;
-      case DartPackage.DECLARATION__IS_FINAL:
-        return isFinal != IS_FINAL_EDEFAULT;
+      case DartPackage.DECLARATION__GETTER:
+        return getter != null;
+      case DartPackage.DECLARATION__SETTER:
+        return setter != null;
+      case DartPackage.DECLARATION__FUNCTION_SIG:
+        return functionSig != null;
+      case DartPackage.DECLARATION__IS_OPERATOR:
+        return isOperator != IS_OPERATOR_EDEFAULT;
+      case DartPackage.DECLARATION__OPERATOR:
+        return OPERATOR_EDEFAULT == null ? operator != null : !OPERATOR_EDEFAULT.equals(operator);
+      case DartPackage.DECLARATION__PARAMETERS:
+        return parameters != null;
       case DartPackage.DECLARATION__IS_CONST:
         return isConst != IS_CONST_EDEFAULT;
       case DartPackage.DECLARATION__TYPE:
         return type != null;
-      case DartPackage.DECLARATION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case DartPackage.DECLARATION__INITIAL_VALUE:
-        return initialValue != null;
+      case DartPackage.DECLARATION__VARIABLES:
+        return variables != null && !variables.isEmpty();
+      case DartPackage.DECLARATION__IS_FINAL:
+        return isFinal != IS_FINAL_EDEFAULT;
+      case DartPackage.DECLARATION__IS_LATE:
+        return isLate != IS_LATE_EDEFAULT;
+      case DartPackage.DECLARATION__IS_VAR:
+        return isVar != IS_VAR_EDEFAULT;
+      case DartPackage.DECLARATION__IS_COVARIANT:
+        return isCovariant != IS_COVARIANT_EDEFAULT;
+      case DartPackage.DECLARATION__PLAIN_VARS:
+        return plainVars != null && !plainVars.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -675,16 +1095,22 @@ public class DeclarationImpl extends MinimalEObjectImpl.Container implements Dec
     result.append(isExternal);
     result.append(", isStatic: ");
     result.append(isStatic);
-    result.append(", isCovariant: ");
-    result.append(isCovariant);
-    result.append(", isLate: ");
-    result.append(isLate);
-    result.append(", isFinal: ");
-    result.append(isFinal);
+    result.append(", isOperator: ");
+    result.append(isOperator);
+    result.append(", operator: ");
+    result.append(operator);
     result.append(", isConst: ");
     result.append(isConst);
-    result.append(", name: ");
-    result.append(name);
+    result.append(", isFinal: ");
+    result.append(isFinal);
+    result.append(", isLate: ");
+    result.append(isLate);
+    result.append(", isVar: ");
+    result.append(isVar);
+    result.append(", isCovariant: ");
+    result.append(isCovariant);
+    result.append(", plainVars: ");
+    result.append(plainVars);
     result.append(')');
     return result.toString();
   }

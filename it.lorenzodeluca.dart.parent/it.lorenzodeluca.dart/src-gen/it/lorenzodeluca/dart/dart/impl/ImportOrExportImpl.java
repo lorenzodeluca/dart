@@ -76,7 +76,7 @@ public class ImportOrExportImpl extends MinimalEObjectImpl.Container implements 
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.IMPORT_OR_EXPORT;
+    return DartPackage.eINSTANCE.getImportOrExport();
   }
 
   /**

@@ -58,7 +58,7 @@ public class LocalVariableDeclarationImpl extends NonLabelledStatementImpl imple
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.LOCAL_VARIABLE_DECLARATION;
+    return DartPackage.eINSTANCE.getLocalVariableDeclaration();
   }
 
   /**

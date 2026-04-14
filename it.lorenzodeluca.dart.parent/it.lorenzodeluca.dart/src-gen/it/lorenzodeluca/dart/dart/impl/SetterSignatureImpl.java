@@ -92,7 +92,7 @@ public class SetterSignatureImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.SETTER_SIGNATURE;
+    return DartPackage.eINSTANCE.getSetterSignature();
   }
 
   /**

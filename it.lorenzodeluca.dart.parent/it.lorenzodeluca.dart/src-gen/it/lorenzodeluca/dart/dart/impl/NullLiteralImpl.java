@@ -35,7 +35,7 @@ public class NullLiteralImpl extends ExpressionImpl implements NullLiteral
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.NULL_LITERAL;
+    return DartPackage.eINSTANCE.getNullLiteral();
   }
 
 } //NullLiteralImpl

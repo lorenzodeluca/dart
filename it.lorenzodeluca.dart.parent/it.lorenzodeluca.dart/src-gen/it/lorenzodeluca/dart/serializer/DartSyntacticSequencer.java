@@ -22,24 +22,36 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected DartGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Arguments_CommaKeyword_2_1_q;
 	protected AbstractElementAlias match_AssertInitializer_CommaKeyword_5_q;
 	protected AbstractElementAlias match_AssertStatement_CommaKeyword_5_q;
+	protected AbstractElementAlias match_CascadeSection_ExclamationMarkKeyword_2_4_a;
 	protected AbstractElementAlias match_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0;
 	protected AbstractElementAlias match_DefaultNamedParameter_ColonKeyword_2_0_1_or_EqualsSignKeyword_2_0_0;
-	protected AbstractElementAlias match_EnumDeclaration_CommaKeyword_6_q;
+	protected AbstractElementAlias match_EnumDeclaration_CommaKeyword_8_q;
+	protected AbstractElementAlias match_EnumDeclaration_SemicolonKeyword_9_0_q;
 	protected AbstractElementAlias match_FieldInitializer___ThisKeyword_1_0_FullStopKeyword_1_1__q;
+	protected AbstractElementAlias match_NamedParameterTypes_CommaKeyword_4_q;
 	protected AbstractElementAlias match_NonLabelledStatement_ConstKeyword_13_0_0_2_or_DynamicKeyword_14_0_0_1_or_FinalKeyword_13_0_0_1_or_LateKeyword_13_0_0_3_or_VarKeyword_13_0_0_0_or_VoidKeyword_14_0_0_0_or___IDTerminalRuleCall_16_0_0_0_IDTerminalRuleCall_16_0_0_1___or___IDTerminalRuleCall_17_0_0_0_FullStopKeyword_17_0_0_1__;
+	protected AbstractElementAlias match_NonLabelledStatement___IDTerminalRuleCall_15_0_0_0_IDTerminalRuleCall_15_0_0_1_LeftParenthesisKeyword_15_0_0_2___or___IDTerminalRuleCall_18_0_0_0_LeftParenthesisKeyword_18_0_0_1__;
+	protected AbstractElementAlias match_OptionalPositionalParameterTypes_CommaKeyword_4_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (DartGrammarAccess) access;
+		match_Arguments_CommaKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getArgumentsAccess().getCommaKeyword_2_1());
 		match_AssertInitializer_CommaKeyword_5_q = new TokenAlias(false, true, grammarAccess.getAssertInitializerAccess().getCommaKeyword_5());
 		match_AssertStatement_CommaKeyword_5_q = new TokenAlias(false, true, grammarAccess.getAssertStatementAccess().getCommaKeyword_5());
+		match_CascadeSection_ExclamationMarkKeyword_2_4_a = new TokenAlias(true, true, grammarAccess.getCascadeSectionAccess().getExclamationMarkKeyword_2_4());
 		match_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getCombinatorAccess().getHideKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getCombinatorAccess().getShowKeyword_0_0()));
 		match_DefaultNamedParameter_ColonKeyword_2_0_1_or_EqualsSignKeyword_2_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getDefaultNamedParameterAccess().getColonKeyword_2_0_1()), new TokenAlias(false, false, grammarAccess.getDefaultNamedParameterAccess().getEqualsSignKeyword_2_0_0()));
-		match_EnumDeclaration_CommaKeyword_6_q = new TokenAlias(false, true, grammarAccess.getEnumDeclarationAccess().getCommaKeyword_6());
+		match_EnumDeclaration_CommaKeyword_8_q = new TokenAlias(false, true, grammarAccess.getEnumDeclarationAccess().getCommaKeyword_8());
+		match_EnumDeclaration_SemicolonKeyword_9_0_q = new TokenAlias(false, true, grammarAccess.getEnumDeclarationAccess().getSemicolonKeyword_9_0());
 		match_FieldInitializer___ThisKeyword_1_0_FullStopKeyword_1_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getFieldInitializerAccess().getThisKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getFieldInitializerAccess().getFullStopKeyword_1_1()));
+		match_NamedParameterTypes_CommaKeyword_4_q = new TokenAlias(false, true, grammarAccess.getNamedParameterTypesAccess().getCommaKeyword_4());
 		match_NonLabelledStatement_ConstKeyword_13_0_0_2_or_DynamicKeyword_14_0_0_1_or_FinalKeyword_13_0_0_1_or_LateKeyword_13_0_0_3_or_VarKeyword_13_0_0_0_or_VoidKeyword_14_0_0_0_or___IDTerminalRuleCall_16_0_0_0_IDTerminalRuleCall_16_0_0_1___or___IDTerminalRuleCall_17_0_0_0_FullStopKeyword_17_0_0_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_16_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_16_0_0_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_17_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getFullStopKeyword_17_0_0_1())), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getConstKeyword_13_0_0_2()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getDynamicKeyword_14_0_0_1()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getFinalKeyword_13_0_0_1()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getLateKeyword_13_0_0_3()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getVarKeyword_13_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getVoidKeyword_14_0_0_0()));
+		match_NonLabelledStatement___IDTerminalRuleCall_15_0_0_0_IDTerminalRuleCall_15_0_0_1_LeftParenthesisKeyword_15_0_0_2___or___IDTerminalRuleCall_18_0_0_0_LeftParenthesisKeyword_18_0_0_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_15_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_15_0_0_1()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getLeftParenthesisKeyword_15_0_0_2())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_18_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getLeftParenthesisKeyword_18_0_0_1())));
+		match_OptionalPositionalParameterTypes_CommaKeyword_4_q = new TokenAlias(false, true, grammarAccess.getOptionalPositionalParameterTypesAccess().getCommaKeyword_4());
 	}
 	
 	@Override
@@ -64,24 +76,50 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_AssertInitializer_CommaKeyword_5_q.equals(syntax))
+			if (match_Arguments_CommaKeyword_2_1_q.equals(syntax))
+				emit_Arguments_CommaKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_AssertInitializer_CommaKeyword_5_q.equals(syntax))
 				emit_AssertInitializer_CommaKeyword_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_AssertStatement_CommaKeyword_5_q.equals(syntax))
 				emit_AssertStatement_CommaKeyword_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_CascadeSection_ExclamationMarkKeyword_2_4_a.equals(syntax))
+				emit_CascadeSection_ExclamationMarkKeyword_2_4_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0.equals(syntax))
 				emit_Combinator_HideKeyword_0_1_or_ShowKeyword_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_DefaultNamedParameter_ColonKeyword_2_0_1_or_EqualsSignKeyword_2_0_0.equals(syntax))
 				emit_DefaultNamedParameter_ColonKeyword_2_0_1_or_EqualsSignKeyword_2_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_EnumDeclaration_CommaKeyword_6_q.equals(syntax))
-				emit_EnumDeclaration_CommaKeyword_6_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_EnumDeclaration_CommaKeyword_8_q.equals(syntax))
+				emit_EnumDeclaration_CommaKeyword_8_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_EnumDeclaration_SemicolonKeyword_9_0_q.equals(syntax))
+				emit_EnumDeclaration_SemicolonKeyword_9_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_FieldInitializer___ThisKeyword_1_0_FullStopKeyword_1_1__q.equals(syntax))
 				emit_FieldInitializer___ThisKeyword_1_0_FullStopKeyword_1_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_NamedParameterTypes_CommaKeyword_4_q.equals(syntax))
+				emit_NamedParameterTypes_CommaKeyword_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_NonLabelledStatement_ConstKeyword_13_0_0_2_or_DynamicKeyword_14_0_0_1_or_FinalKeyword_13_0_0_1_or_LateKeyword_13_0_0_3_or_VarKeyword_13_0_0_0_or_VoidKeyword_14_0_0_0_or___IDTerminalRuleCall_16_0_0_0_IDTerminalRuleCall_16_0_0_1___or___IDTerminalRuleCall_17_0_0_0_FullStopKeyword_17_0_0_1__.equals(syntax))
 				emit_NonLabelledStatement_ConstKeyword_13_0_0_2_or_DynamicKeyword_14_0_0_1_or_FinalKeyword_13_0_0_1_or_LateKeyword_13_0_0_3_or_VarKeyword_13_0_0_0_or_VoidKeyword_14_0_0_0_or___IDTerminalRuleCall_16_0_0_0_IDTerminalRuleCall_16_0_0_1___or___IDTerminalRuleCall_17_0_0_0_FullStopKeyword_17_0_0_1__(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_NonLabelledStatement___IDTerminalRuleCall_15_0_0_0_IDTerminalRuleCall_15_0_0_1_LeftParenthesisKeyword_15_0_0_2___or___IDTerminalRuleCall_18_0_0_0_LeftParenthesisKeyword_18_0_0_1__.equals(syntax))
+				emit_NonLabelledStatement___IDTerminalRuleCall_15_0_0_0_IDTerminalRuleCall_15_0_0_1_LeftParenthesisKeyword_15_0_0_2___or___IDTerminalRuleCall_18_0_0_0_LeftParenthesisKeyword_18_0_0_1__(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_OptionalPositionalParameterTypes_CommaKeyword_4_q.equals(syntax))
+				emit_OptionalPositionalParameterTypes_CommaKeyword_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ','?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     argumentList=ArgumentList (ambiguity) ')' (rule end)
+	 
+	 * </pre>
+	 */
+	protected void emit_Arguments_CommaKeyword_2_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
@@ -109,6 +147,43 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * </pre>
 	 */
 	protected void emit_AssertStatement_CommaKeyword_5_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     '!'*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     args=Arguments (ambiguity) '.' method=ID
+	 *     args=Arguments (ambiguity) '?.' method=ID
+	 *     args=Arguments (ambiguity) '[' indexExpr=Expression
+	 *     args=Arguments (ambiguity) (rule end)
+	 *     args=Arguments (ambiguity) args=Arguments
+	 *     args=Arguments (ambiguity) assignmentOp=AssignmentOperator
+	 *     index=Expression ']' (ambiguity) '.' method=ID
+	 *     index=Expression ']' (ambiguity) '?.' method=ID
+	 *     index=Expression ']' (ambiguity) '[' indexExpr=Expression
+	 *     index=Expression ']' (ambiguity) (rule end)
+	 *     index=Expression ']' (ambiguity) args=Arguments
+	 *     index=Expression ']' (ambiguity) assignmentOp=AssignmentOperator
+	 *     indexExpr=Expression ']' (ambiguity) '.' method=ID
+	 *     indexExpr=Expression ']' (ambiguity) '?.' method=ID
+	 *     indexExpr=Expression ']' (ambiguity) '[' indexExpr=Expression
+	 *     indexExpr=Expression ']' (ambiguity) (rule end)
+	 *     indexExpr=Expression ']' (ambiguity) args=Arguments
+	 *     indexExpr=Expression ']' (ambiguity) assignmentOp=AssignmentOperator
+	 *     name=ID (ambiguity) '.' method=ID
+	 *     name=ID (ambiguity) '?.' method=ID
+	 *     name=ID (ambiguity) '[' indexExpr=Expression
+	 *     name=ID (ambiguity) (rule end)
+	 *     name=ID (ambiguity) args=Arguments
+	 *     name=ID (ambiguity) assignmentOp=AssignmentOperator
+	 
+	 * </pre>
+	 */
+	protected void emit_CascadeSection_ExclamationMarkKeyword_2_4_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -146,11 +221,26 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ','?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     entries+=EnumEntry (ambiguity) '}' (rule end)
+	 *     entries+=EnumEntry (ambiguity) ';' members+=MemberDeclaration
+	 *     entries+=EnumEntry (ambiguity) ';'? '}' (rule end)
 	 
 	 * </pre>
 	 */
-	protected void emit_EnumDeclaration_CommaKeyword_6_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_EnumDeclaration_CommaKeyword_8_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ';'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     entries+=EnumEntry ','? (ambiguity) '}' (rule end)
+	 
+	 * </pre>
+	 */
+	protected void emit_EnumDeclaration_SemicolonKeyword_9_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -165,6 +255,20 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * </pre>
 	 */
 	protected void emit_FieldInitializer___ThisKeyword_1_0_FullStopKeyword_1_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ','?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     types+=NamedParameterType (ambiguity) '}' (rule end)
+	 
+	 * </pre>
+	 */
+	protected void emit_NamedParameterTypes_CommaKeyword_4_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -188,6 +292,36 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * </pre>
 	 */
 	protected void emit_NonLabelledStatement_ConstKeyword_13_0_0_2_or_DynamicKeyword_14_0_0_1_or_FinalKeyword_13_0_0_1_or_LateKeyword_13_0_0_3_or_VarKeyword_13_0_0_0_or_VoidKeyword_14_0_0_0_or___IDTerminalRuleCall_16_0_0_0_IDTerminalRuleCall_16_0_0_1___or___IDTerminalRuleCall_17_0_0_0_FullStopKeyword_17_0_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     (ID ID '(') | (ID '(')
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) metadata+=Metadata
+	 *     (rule start) (ambiguity) name=ID
+	 *     (rule start) (ambiguity) returnType=Type
+	 
+	 * </pre>
+	 */
+	protected void emit_NonLabelledStatement___IDTerminalRuleCall_15_0_0_0_IDTerminalRuleCall_15_0_0_1_LeftParenthesisKeyword_15_0_0_2___or___IDTerminalRuleCall_18_0_0_0_LeftParenthesisKeyword_18_0_0_1__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ','?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     types+=NormalParameterType (ambiguity) ']' (rule end)
+	 
+	 * </pre>
+	 */
+	protected void emit_OptionalPositionalParameterTypes_CommaKeyword_4_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

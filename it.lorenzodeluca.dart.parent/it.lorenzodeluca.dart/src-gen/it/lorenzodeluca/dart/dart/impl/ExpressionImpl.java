@@ -57,7 +57,7 @@ public class ExpressionImpl extends MapOrSetElementImpl implements Expression
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.EXPRESSION;
+    return DartPackage.eINSTANCE.getExpression();
   }
 
   /**

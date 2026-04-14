@@ -3,8 +3,6 @@
  */
 package it.lorenzodeluca.dart.dart;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link it.lorenzodeluca.dart.dart.Arguments#getArguments <em>Arguments</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Arguments#getArgumentList <em>Argument List</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getArguments()
@@ -26,15 +24,25 @@ import org.eclipse.emf.ecore.EObject;
 public interface Arguments extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Arguments</b></em>' containment reference list.
-   * The list contents are of type {@link it.lorenzodeluca.dart.dart.Expression}.
+   * Returns the value of the '<em><b>Argument List</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Arguments</em>' containment reference list.
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getArguments_Arguments()
+   * @return the value of the '<em>Argument List</em>' containment reference.
+   * @see #setArgumentList(ArgumentList)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getArguments_ArgumentList()
    * @model containment="true"
    * @generated
    */
-  EList<Expression> getArguments();
+  ArgumentList getArgumentList();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Arguments#getArgumentList <em>Argument List</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Argument List</em>' containment reference.
+   * @see #getArgumentList()
+   * @generated
+   */
+  void setArgumentList(ArgumentList value);
 
 } // Arguments

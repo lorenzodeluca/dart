@@ -87,7 +87,7 @@ public class PartDirectiveImpl extends MinimalEObjectImpl.Container implements P
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.PART_DIRECTIVE;
+    return DartPackage.eINSTANCE.getPartDirective();
   }
 
   /**

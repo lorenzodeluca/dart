@@ -77,7 +77,7 @@ public class ExternalSetterImpl extends TopLevelDeclarationImpl implements Exter
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.EXTERNAL_SETTER;
+    return DartPackage.eINSTANCE.getExternalSetter();
   }
 
   /**

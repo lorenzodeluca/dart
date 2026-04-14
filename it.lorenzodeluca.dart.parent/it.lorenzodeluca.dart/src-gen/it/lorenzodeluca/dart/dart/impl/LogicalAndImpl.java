@@ -69,7 +69,7 @@ public class LogicalAndImpl extends ExpressionImpl implements LogicalAnd
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.LOGICAL_AND;
+    return DartPackage.eINSTANCE.getLogicalAnd();
   }
 
   /**

@@ -103,7 +103,7 @@ public class MethodInvocationImpl extends ExpressionImpl implements MethodInvoca
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.METHOD_INVOCATION;
+    return DartPackage.eINSTANCE.getMethodInvocation();
   }
 
   /**

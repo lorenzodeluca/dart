@@ -71,7 +71,7 @@ public class DefaultFormalParameterImpl extends MinimalEObjectImpl.Container imp
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.DEFAULT_FORMAL_PARAMETER;
+    return DartPackage.eINSTANCE.getDefaultFormalParameter();
   }
 
   /**

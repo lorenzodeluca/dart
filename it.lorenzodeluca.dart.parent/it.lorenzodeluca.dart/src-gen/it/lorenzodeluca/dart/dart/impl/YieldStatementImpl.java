@@ -79,7 +79,7 @@ public class YieldStatementImpl extends NonLabelledStatementImpl implements Yiel
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.YIELD_STATEMENT;
+    return DartPackage.eINSTANCE.getYieldStatement();
   }
 
   /**

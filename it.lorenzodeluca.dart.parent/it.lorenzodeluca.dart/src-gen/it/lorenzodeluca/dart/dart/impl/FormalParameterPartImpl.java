@@ -71,7 +71,7 @@ public class FormalParameterPartImpl extends MinimalEObjectImpl.Container implem
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.FORMAL_PARAMETER_PART;
+    return DartPackage.eINSTANCE.getFormalParameterPart();
   }
 
   /**

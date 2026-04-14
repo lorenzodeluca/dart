@@ -90,7 +90,7 @@ public class RelationalImpl extends ExpressionImpl implements Relational
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.RELATIONAL;
+    return DartPackage.eINSTANCE.getRelational();
   }
 
   /**

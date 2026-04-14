@@ -65,7 +65,7 @@ public class StringLiteralImpl extends ExpressionImpl implements StringLiteral
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.STRING_LITERAL;
+    return DartPackage.eINSTANCE.getStringLiteral();
   }
 
   /**

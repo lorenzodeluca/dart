@@ -101,7 +101,7 @@ public class LibraryDeclarationImpl extends DartFileImpl implements LibraryDecla
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.LIBRARY_DECLARATION;
+    return DartPackage.eINSTANCE.getLibraryDeclaration();
   }
 
   /**

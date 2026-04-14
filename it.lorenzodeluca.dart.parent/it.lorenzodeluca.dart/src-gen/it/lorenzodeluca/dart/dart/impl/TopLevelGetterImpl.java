@@ -89,7 +89,7 @@ public class TopLevelGetterImpl extends TopLevelDeclarationImpl implements TopLe
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.TOP_LEVEL_GETTER;
+    return DartPackage.eINSTANCE.getTopLevelGetter();
   }
 
   /**

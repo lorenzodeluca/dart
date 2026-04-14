@@ -37,7 +37,7 @@ public class NonLabelledStatementImpl extends MinimalEObjectImpl.Container imple
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.NON_LABELLED_STATEMENT;
+    return DartPackage.eINSTANCE.getNonLabelledStatement();
   }
 
 } //NonLabelledStatementImpl

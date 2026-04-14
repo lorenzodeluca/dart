@@ -80,7 +80,7 @@ public class ConditionalImpl extends ExpressionImpl implements Conditional
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.CONDITIONAL;
+    return DartPackage.eINSTANCE.getConditional();
   }
 
   /**

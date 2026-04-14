@@ -69,7 +69,7 @@ public class BitwiseXorImpl extends ExpressionImpl implements BitwiseXor
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.BITWISE_XOR;
+    return DartPackage.eINSTANCE.getBitwiseXor();
   }
 
   /**

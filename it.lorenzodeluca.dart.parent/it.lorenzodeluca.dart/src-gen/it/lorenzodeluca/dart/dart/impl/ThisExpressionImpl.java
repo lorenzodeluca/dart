@@ -35,7 +35,7 @@ public class ThisExpressionImpl extends ExpressionImpl implements ThisExpression
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.THIS_EXPRESSION;
+    return DartPackage.eINSTANCE.getThisExpression();
   }
 
 } //ThisExpressionImpl

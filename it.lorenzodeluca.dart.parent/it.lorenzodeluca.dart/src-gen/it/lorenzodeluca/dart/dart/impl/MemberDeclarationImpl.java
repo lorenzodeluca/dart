@@ -150,7 +150,7 @@ public class MemberDeclarationImpl extends MinimalEObjectImpl.Container implemen
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.MEMBER_DECLARATION;
+    return DartPackage.eINSTANCE.getMemberDeclaration();
   }
 
   /**

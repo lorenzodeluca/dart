@@ -91,7 +91,7 @@ public class TypeCheckImpl extends ExpressionImpl implements TypeCheck
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.TYPE_CHECK;
+    return DartPackage.eINSTANCE.getTypeCheck();
   }
 
   /**

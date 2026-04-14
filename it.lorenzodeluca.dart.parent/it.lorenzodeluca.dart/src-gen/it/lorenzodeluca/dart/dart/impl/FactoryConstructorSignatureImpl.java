@@ -92,7 +92,7 @@ public class FactoryConstructorSignatureImpl extends MinimalEObjectImpl.Containe
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.FACTORY_CONSTRUCTOR_SIGNATURE;
+    return DartPackage.eINSTANCE.getFactoryConstructorSignature();
   }
 
   /**

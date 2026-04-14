@@ -69,7 +69,7 @@ public class IndexExpressionImpl extends ExpressionImpl implements IndexExpressi
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.INDEX_EXPRESSION;
+    return DartPackage.eINSTANCE.getIndexExpression();
   }
 
   /**

@@ -173,7 +173,7 @@ public class VariableDeclarationImpl extends TopLevelDeclarationImpl implements 
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.VARIABLE_DECLARATION;
+    return DartPackage.eINSTANCE.getVariableDeclaration();
   }
 
   /**

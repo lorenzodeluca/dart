@@ -70,7 +70,7 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.FUNCTION_CALL;
+    return DartPackage.eINSTANCE.getFunctionCall();
   }
 
   /**

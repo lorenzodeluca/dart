@@ -58,7 +58,7 @@ public class ReturnStatementImpl extends NonLabelledStatementImpl implements Ret
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.RETURN_STATEMENT;
+    return DartPackage.eINSTANCE.getReturnStatement();
   }
 
   /**

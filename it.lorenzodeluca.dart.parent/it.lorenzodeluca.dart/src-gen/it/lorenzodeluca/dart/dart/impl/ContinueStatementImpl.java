@@ -65,7 +65,7 @@ public class ContinueStatementImpl extends NonLabelledStatementImpl implements C
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.CONTINUE_STATEMENT;
+    return DartPackage.eINSTANCE.getContinueStatement();
   }
 
   /**

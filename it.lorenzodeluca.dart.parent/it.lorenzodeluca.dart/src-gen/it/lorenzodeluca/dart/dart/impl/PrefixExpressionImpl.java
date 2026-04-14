@@ -79,7 +79,7 @@ public class PrefixExpressionImpl extends ExpressionImpl implements PrefixExpres
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.PREFIX_EXPRESSION;
+    return DartPackage.eINSTANCE.getPrefixExpression();
   }
 
   /**

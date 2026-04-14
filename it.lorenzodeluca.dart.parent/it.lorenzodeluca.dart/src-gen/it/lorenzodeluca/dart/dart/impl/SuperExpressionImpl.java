@@ -35,7 +35,7 @@ public class SuperExpressionImpl extends ExpressionImpl implements SuperExpressi
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.SUPER_EXPRESSION;
+    return DartPackage.eINSTANCE.getSuperExpression();
   }
 
 } //SuperExpressionImpl

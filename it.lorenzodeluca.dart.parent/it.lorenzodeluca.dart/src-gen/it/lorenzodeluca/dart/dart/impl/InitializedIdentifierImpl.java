@@ -80,7 +80,7 @@ public class InitializedIdentifierImpl extends MinimalEObjectImpl.Container impl
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.INITIALIZED_IDENTIFIER;
+    return DartPackage.eINSTANCE.getInitializedIdentifier();
   }
 
   /**

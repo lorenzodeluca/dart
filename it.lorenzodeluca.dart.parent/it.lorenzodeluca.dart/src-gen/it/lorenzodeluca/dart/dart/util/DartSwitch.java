@@ -138,6 +138,37 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DartPackage.FIELD_FORMAL_PARAMETER:
+      {
+        FieldFormalParameter fieldFormalParameter = (FieldFormalParameter)theEObject;
+        T result = caseFieldFormalParameter(fieldFormalParameter);
+        if (result == null) result = caseNormalFormalParameter(fieldFormalParameter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.FUNCTION_FORMAL_PARAMETER:
+      {
+        FunctionFormalParameter functionFormalParameter = (FunctionFormalParameter)theEObject;
+        T result = caseFunctionFormalParameter(functionFormalParameter);
+        if (result == null) result = caseNormalFormalParameter(functionFormalParameter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.SIMPLE_FORMAL_PARAMETER:
+      {
+        SimpleFormalParameter simpleFormalParameter = (SimpleFormalParameter)theEObject;
+        T result = caseSimpleFormalParameter(simpleFormalParameter);
+        if (result == null) result = caseNormalFormalParameter(simpleFormalParameter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.FINAL_CONST_VAR_OR_TYPE:
+      {
+        FinalConstVarOrType finalConstVarOrType = (FinalConstVarOrType)theEObject;
+        T result = caseFinalConstVarOrType(finalConstVarOrType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DartPackage.OPTIONAL_OR_NAMED_FORMAL_PARAMETERS:
       {
         OptionalOrNamedFormalParameters optionalOrNamedFormalParameters = (OptionalOrNamedFormalParameters)theEObject;
@@ -229,6 +260,20 @@ public class DartSwitch<T> extends Switch<T>
       {
         Declaration declaration = (Declaration)theEObject;
         T result = caseDeclaration(declaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.FUNCTION_SIGNATURE_IN_DECL:
+      {
+        FunctionSignatureInDecl functionSignatureInDecl = (FunctionSignatureInDecl)theEObject;
+        T result = caseFunctionSignatureInDecl(functionSignatureInDecl);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.STATIC_FINAL_DECLARATION:
+      {
+        StaticFinalDeclaration staticFinalDeclaration = (StaticFinalDeclaration)theEObject;
+        T result = caseStaticFinalDeclaration(staticFinalDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -372,11 +417,58 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DartPackage.ARGUMENT_LIST:
+      {
+        ArgumentList argumentList = (ArgumentList)theEObject;
+        T result = caseArgumentList(argumentList);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.NAMED_ARGUMENT:
+      {
+        NamedArgument namedArgument = (NamedArgument)theEObject;
+        T result = caseNamedArgument(namedArgument);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DartPackage.EXPRESSION:
       {
         Expression expression = (Expression)theEObject;
         T result = caseExpression(expression);
         if (result == null) result = caseMapOrSetElement(expression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.THROW_EXPRESSION:
+      {
+        ThrowExpression throwExpression = (ThrowExpression)theEObject;
+        T result = caseThrowExpression(throwExpression);
+        if (result == null) result = caseThrowExpressionWithoutCascade(throwExpression);
+        if (result == null) result = caseExpression(throwExpression);
+        if (result == null) result = caseMapOrSetElement(throwExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.CASCADE_SECTION:
+      {
+        CascadeSection cascadeSection = (CascadeSection)theEObject;
+        T result = caseCascadeSection(cascadeSection);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.CASCADE_ASSIGNMENT:
+      {
+        CascadeAssignment cascadeAssignment = (CascadeAssignment)theEObject;
+        T result = caseCascadeAssignment(cascadeAssignment);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.THROW_EXPRESSION_WITHOUT_CASCADE:
+      {
+        ThrowExpressionWithoutCascade throwExpressionWithoutCascade = (ThrowExpressionWithoutCascade)theEObject;
+        T result = caseThrowExpressionWithoutCascade(throwExpressionWithoutCascade);
+        if (result == null) result = caseExpression(throwExpressionWithoutCascade);
+        if (result == null) result = caseMapOrSetElement(throwExpressionWithoutCascade);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -445,6 +537,36 @@ public class DartSwitch<T> extends Switch<T>
         ForStatement forStatement = (ForStatement)theEObject;
         T result = caseForStatement(forStatement);
         if (result == null) result = caseNonLabelledStatement(forStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.FOR_LOOP_PARTS:
+      {
+        ForLoopParts forLoopParts = (ForLoopParts)theEObject;
+        T result = caseForLoopParts(forLoopParts);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.FOR_IN_LOOP_PARTS:
+      {
+        ForInLoopParts forInLoopParts = (ForInLoopParts)theEObject;
+        T result = caseForInLoopParts(forInLoopParts);
+        if (result == null) result = caseForLoopParts(forInLoopParts);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.DECLARED_IDENTIFIER:
+      {
+        DeclaredIdentifier declaredIdentifier = (DeclaredIdentifier)theEObject;
+        T result = caseDeclaredIdentifier(declaredIdentifier);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.FOR_INITIALIZER_STATEMENT:
+      {
+        ForInitializerStatement forInitializerStatement = (ForInitializerStatement)theEObject;
+        T result = caseForInitializerStatement(forInitializerStatement);
+        if (result == null) result = caseForLoopParts(forInitializerStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -692,6 +814,29 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DartPackage.FUNCTION_TYPE:
+      {
+        FunctionType functionType = (FunctionType)theEObject;
+        T result = caseFunctionType(functionType);
+        if (result == null) result = caseType(functionType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.FUNCTION_TYPE_TAIL:
+      {
+        FunctionTypeTail functionTypeTail = (FunctionTypeTail)theEObject;
+        T result = caseFunctionTypeTail(functionTypeTail);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.TYPE_NOT_FUNCTION:
+      {
+        TypeNotFunction typeNotFunction = (TypeNotFunction)theEObject;
+        T result = caseTypeNotFunction(typeNotFunction);
+        if (result == null) result = caseType(typeNotFunction);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DartPackage.TYPE_NAME:
       {
         TypeName typeName = (TypeName)theEObject;
@@ -699,10 +844,79 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DartPackage.PARAMETER_TYPE_LIST:
+      {
+        ParameterTypeList parameterTypeList = (ParameterTypeList)theEObject;
+        T result = caseParameterTypeList(parameterTypeList);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.OPTIONAL_PARAMETER_TYPES:
+      {
+        OptionalParameterTypes optionalParameterTypes = (OptionalParameterTypes)theEObject;
+        T result = caseOptionalParameterTypes(optionalParameterTypes);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.OPTIONAL_POSITIONAL_PARAMETER_TYPES:
+      {
+        OptionalPositionalParameterTypes optionalPositionalParameterTypes = (OptionalPositionalParameterTypes)theEObject;
+        T result = caseOptionalPositionalParameterTypes(optionalPositionalParameterTypes);
+        if (result == null) result = caseOptionalParameterTypes(optionalPositionalParameterTypes);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.NAMED_PARAMETER_TYPES:
+      {
+        NamedParameterTypes namedParameterTypes = (NamedParameterTypes)theEObject;
+        T result = caseNamedParameterTypes(namedParameterTypes);
+        if (result == null) result = caseOptionalParameterTypes(namedParameterTypes);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.NORMAL_PARAMETER_TYPE:
+      {
+        NormalParameterType normalParameterType = (NormalParameterType)theEObject;
+        T result = caseNormalParameterType(normalParameterType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.NAMED_PARAMETER_TYPE:
+      {
+        NamedParameterType namedParameterType = (NamedParameterType)theEObject;
+        T result = caseNamedParameterType(namedParameterType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DartPackage.TYPE_ARGUMENTS:
       {
         TypeArguments typeArguments = (TypeArguments)theEObject;
         T result = caseTypeArguments(typeArguments);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.ARGUMENT_LIST_NAMED_ONLY:
+      {
+        ArgumentListNamedOnly argumentListNamedOnly = (ArgumentListNamedOnly)theEObject;
+        T result = caseArgumentListNamedOnly(argumentListNamedOnly);
+        if (result == null) result = caseArgumentList(argumentListNamedOnly);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.ARGUMENT_LIST_POSITIONAL_THEN_NAMED:
+      {
+        ArgumentListPositionalThenNamed argumentListPositionalThenNamed = (ArgumentListPositionalThenNamed)theEObject;
+        T result = caseArgumentListPositionalThenNamed(argumentListPositionalThenNamed);
+        if (result == null) result = caseArgumentList(argumentListPositionalThenNamed);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.CASCADE:
+      {
+        Cascade cascade = (Cascade)theEObject;
+        T result = caseCascade(cascade);
+        if (result == null) result = caseExpression(cascade);
+        if (result == null) result = caseMapOrSetElement(cascade);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -859,6 +1073,15 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DartPackage.NULL_AWARE_METHOD_INVOCATION:
+      {
+        NullAwareMethodInvocation nullAwareMethodInvocation = (NullAwareMethodInvocation)theEObject;
+        T result = caseNullAwareMethodInvocation(nullAwareMethodInvocation);
+        if (result == null) result = caseExpression(nullAwareMethodInvocation);
+        if (result == null) result = caseMapOrSetElement(nullAwareMethodInvocation);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DartPackage.FUNCTION_CALL:
       {
         FunctionCall functionCall = (FunctionCall)theEObject;
@@ -874,6 +1097,42 @@ public class DartSwitch<T> extends Switch<T>
         T result = caseIndexExpression(indexExpression);
         if (result == null) result = caseExpression(indexExpression);
         if (result == null) result = caseMapOrSetElement(indexExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.NULL_AWARE_INDEX:
+      {
+        NullAwareIndex nullAwareIndex = (NullAwareIndex)theEObject;
+        T result = caseNullAwareIndex(nullAwareIndex);
+        if (result == null) result = caseExpression(nullAwareIndex);
+        if (result == null) result = caseMapOrSetElement(nullAwareIndex);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.NULL_ASSERT:
+      {
+        NullAssert nullAssert = (NullAssert)theEObject;
+        T result = caseNullAssert(nullAssert);
+        if (result == null) result = caseExpression(nullAssert);
+        if (result == null) result = caseMapOrSetElement(nullAssert);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.PROPERTY_ACCESS:
+      {
+        PropertyAccess propertyAccess = (PropertyAccess)theEObject;
+        T result = casePropertyAccess(propertyAccess);
+        if (result == null) result = caseExpression(propertyAccess);
+        if (result == null) result = caseMapOrSetElement(propertyAccess);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.NULL_AWARE_PROPERTY_ACCESS:
+      {
+        NullAwarePropertyAccess nullAwarePropertyAccess = (NullAwarePropertyAccess)theEObject;
+        T result = caseNullAwarePropertyAccess(nullAwarePropertyAccess);
+        if (result == null) result = caseExpression(nullAwarePropertyAccess);
+        if (result == null) result = caseMapOrSetElement(nullAwarePropertyAccess);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1134,6 +1393,70 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Field Formal Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Field Formal Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFieldFormalParameter(FieldFormalParameter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function Formal Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function Formal Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionFormalParameter(FunctionFormalParameter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Simple Formal Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Simple Formal Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSimpleFormalParameter(SimpleFormalParameter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Final Const Var Or Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Final Const Var Or Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFinalConstVarOrType(FinalConstVarOrType object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Optional Or Named Formal Parameters</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1337,6 +1660,38 @@ public class DartSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseDeclaration(Declaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function Signature In Decl</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function Signature In Decl</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionSignatureInDecl(FunctionSignatureInDecl object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Static Final Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Static Final Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStaticFinalDeclaration(StaticFinalDeclaration object)
   {
     return null;
   }
@@ -1646,6 +2001,38 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Argument List</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Argument List</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseArgumentList(ArgumentList object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Named Argument</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Named Argument</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNamedArgument(NamedArgument object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1657,6 +2044,70 @@ public class DartSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseExpression(Expression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Throw Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Throw Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseThrowExpression(ThrowExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Cascade Section</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Cascade Section</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCascadeSection(CascadeSection object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Cascade Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Cascade Assignment</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCascadeAssignment(CascadeAssignment object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Throw Expression Without Cascade</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Throw Expression Without Cascade</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseThrowExpressionWithoutCascade(ThrowExpressionWithoutCascade object)
   {
     return null;
   }
@@ -1801,6 +2252,70 @@ public class DartSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseForStatement(ForStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>For Loop Parts</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>For Loop Parts</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseForLoopParts(ForLoopParts object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>For In Loop Parts</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>For In Loop Parts</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseForInLoopParts(ForInLoopParts object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Declared Identifier</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Declared Identifier</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDeclaredIdentifier(DeclaredIdentifier object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>For Initializer Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>For Initializer Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseForInitializerStatement(ForInitializerStatement object)
   {
     return null;
   }
@@ -2318,6 +2833,54 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Function Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionType(FunctionType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function Type Tail</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function Type Tail</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionTypeTail(FunctionTypeTail object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Type Not Function</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Type Not Function</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTypeNotFunction(TypeNotFunction object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Type Name</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -2334,6 +2897,102 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter Type List</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter Type List</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameterTypeList(ParameterTypeList object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Optional Parameter Types</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Optional Parameter Types</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOptionalParameterTypes(OptionalParameterTypes object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Optional Positional Parameter Types</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Optional Positional Parameter Types</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOptionalPositionalParameterTypes(OptionalPositionalParameterTypes object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Named Parameter Types</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Named Parameter Types</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNamedParameterTypes(NamedParameterTypes object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Normal Parameter Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Normal Parameter Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNormalParameterType(NormalParameterType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Named Parameter Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Named Parameter Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNamedParameterType(NamedParameterType object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Type Arguments</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -2345,6 +3004,54 @@ public class DartSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTypeArguments(TypeArguments object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Argument List Named Only</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Argument List Named Only</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseArgumentListNamedOnly(ArgumentListNamedOnly object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Argument List Positional Then Named</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Argument List Positional Then Named</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseArgumentListPositionalThenNamed(ArgumentListPositionalThenNamed object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Cascade</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Cascade</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCascade(Cascade object)
   {
     return null;
   }
@@ -2622,6 +3329,22 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Null Aware Method Invocation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Null Aware Method Invocation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNullAwareMethodInvocation(NullAwareMethodInvocation object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Function Call</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -2649,6 +3372,70 @@ public class DartSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseIndexExpression(IndexExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Null Aware Index</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Null Aware Index</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNullAwareIndex(NullAwareIndex object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Null Assert</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Null Assert</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNullAssert(NullAssert object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Property Access</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Property Access</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePropertyAccess(PropertyAccess object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Null Aware Property Access</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Null Aware Property Access</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNullAwarePropertyAccess(NullAwarePropertyAccess object)
   {
     return null;
   }

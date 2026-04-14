@@ -76,7 +76,7 @@ public class DefaultCaseImpl extends MinimalEObjectImpl.Container implements Def
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.DEFAULT_CASE;
+    return DartPackage.eINSTANCE.getDefaultCase();
   }
 
   /**

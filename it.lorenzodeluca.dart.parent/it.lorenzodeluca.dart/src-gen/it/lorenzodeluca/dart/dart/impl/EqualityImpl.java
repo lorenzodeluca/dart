@@ -90,7 +90,7 @@ public class EqualityImpl extends ExpressionImpl implements Equality
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.EQUALITY;
+    return DartPackage.eINSTANCE.getEquality();
   }
 
   /**

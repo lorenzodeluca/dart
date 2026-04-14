@@ -79,7 +79,7 @@ public class FieldInitializerImpl extends InitializerEntryImpl implements FieldI
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.FIELD_INITIALIZER;
+    return DartPackage.eINSTANCE.getFieldInitializer();
   }
 
   /**

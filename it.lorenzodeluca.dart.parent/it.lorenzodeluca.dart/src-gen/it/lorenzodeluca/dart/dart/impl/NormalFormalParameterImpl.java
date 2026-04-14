@@ -6,7 +6,6 @@ package it.lorenzodeluca.dart.dart.impl;
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.Metadata;
 import it.lorenzodeluca.dart.dart.NormalFormalParameter;
-import it.lorenzodeluca.dart.dart.Type;
 
 import java.util.Collection;
 
@@ -33,8 +32,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.NormalFormalParameterImpl#getMetadata <em>Metadata</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.NormalFormalParameterImpl#isIsCovariant <em>Is Covariant</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.NormalFormalParameterImpl#getType <em>Type</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.NormalFormalParameterImpl#getName <em>Name</em>}</li>
  * </ul>
  *
@@ -51,36 +48,6 @@ public class NormalFormalParameterImpl extends MinimalEObjectImpl.Container impl
    * @ordered
    */
   protected EList<Metadata> metadata;
-
-  /**
-   * The default value of the '{@link #isIsCovariant() <em>Is Covariant</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsCovariant()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean IS_COVARIANT_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isIsCovariant() <em>Is Covariant</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsCovariant()
-   * @generated
-   * @ordered
-   */
-  protected boolean isCovariant = IS_COVARIANT_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected Type type;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -120,7 +87,7 @@ public class NormalFormalParameterImpl extends MinimalEObjectImpl.Container impl
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.NORMAL_FORMAL_PARAMETER;
+    return DartPackage.eINSTANCE.getNormalFormalParameter();
   }
 
   /**
@@ -136,81 +103,6 @@ public class NormalFormalParameterImpl extends MinimalEObjectImpl.Container impl
       metadata = new EObjectContainmentEList<Metadata>(Metadata.class, this, DartPackage.NORMAL_FORMAL_PARAMETER__METADATA);
     }
     return metadata;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean isIsCovariant()
-  {
-    return isCovariant;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setIsCovariant(boolean newIsCovariant)
-  {
-    boolean oldIsCovariant = isCovariant;
-    isCovariant = newIsCovariant;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.NORMAL_FORMAL_PARAMETER__IS_COVARIANT, oldIsCovariant, isCovariant));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Type getType()
-  {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetType(Type newType, NotificationChain msgs)
-  {
-    Type oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.NORMAL_FORMAL_PARAMETER__TYPE, oldType, newType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setType(Type newType)
-  {
-    if (newType != type)
-    {
-      NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.NORMAL_FORMAL_PARAMETER__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.NORMAL_FORMAL_PARAMETER__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.NORMAL_FORMAL_PARAMETER__TYPE, newType, newType));
   }
 
   /**
@@ -250,8 +142,6 @@ public class NormalFormalParameterImpl extends MinimalEObjectImpl.Container impl
     {
       case DartPackage.NORMAL_FORMAL_PARAMETER__METADATA:
         return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
-      case DartPackage.NORMAL_FORMAL_PARAMETER__TYPE:
-        return basicSetType(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -268,10 +158,6 @@ public class NormalFormalParameterImpl extends MinimalEObjectImpl.Container impl
     {
       case DartPackage.NORMAL_FORMAL_PARAMETER__METADATA:
         return getMetadata();
-      case DartPackage.NORMAL_FORMAL_PARAMETER__IS_COVARIANT:
-        return isIsCovariant();
-      case DartPackage.NORMAL_FORMAL_PARAMETER__TYPE:
-        return getType();
       case DartPackage.NORMAL_FORMAL_PARAMETER__NAME:
         return getName();
     }
@@ -293,12 +179,6 @@ public class NormalFormalParameterImpl extends MinimalEObjectImpl.Container impl
         getMetadata().clear();
         getMetadata().addAll((Collection<? extends Metadata>)newValue);
         return;
-      case DartPackage.NORMAL_FORMAL_PARAMETER__IS_COVARIANT:
-        setIsCovariant((Boolean)newValue);
-        return;
-      case DartPackage.NORMAL_FORMAL_PARAMETER__TYPE:
-        setType((Type)newValue);
-        return;
       case DartPackage.NORMAL_FORMAL_PARAMETER__NAME:
         setName((String)newValue);
         return;
@@ -319,12 +199,6 @@ public class NormalFormalParameterImpl extends MinimalEObjectImpl.Container impl
       case DartPackage.NORMAL_FORMAL_PARAMETER__METADATA:
         getMetadata().clear();
         return;
-      case DartPackage.NORMAL_FORMAL_PARAMETER__IS_COVARIANT:
-        setIsCovariant(IS_COVARIANT_EDEFAULT);
-        return;
-      case DartPackage.NORMAL_FORMAL_PARAMETER__TYPE:
-        setType((Type)null);
-        return;
       case DartPackage.NORMAL_FORMAL_PARAMETER__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -344,10 +218,6 @@ public class NormalFormalParameterImpl extends MinimalEObjectImpl.Container impl
     {
       case DartPackage.NORMAL_FORMAL_PARAMETER__METADATA:
         return metadata != null && !metadata.isEmpty();
-      case DartPackage.NORMAL_FORMAL_PARAMETER__IS_COVARIANT:
-        return isCovariant != IS_COVARIANT_EDEFAULT;
-      case DartPackage.NORMAL_FORMAL_PARAMETER__TYPE:
-        return type != null;
       case DartPackage.NORMAL_FORMAL_PARAMETER__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
@@ -365,9 +235,7 @@ public class NormalFormalParameterImpl extends MinimalEObjectImpl.Container impl
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (isCovariant: ");
-    result.append(isCovariant);
-    result.append(", name: ");
+    result.append(" (name: ");
     result.append(name);
     result.append(')');
     return result.toString();

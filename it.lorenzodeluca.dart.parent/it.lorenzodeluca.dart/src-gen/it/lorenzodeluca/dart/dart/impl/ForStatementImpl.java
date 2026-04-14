@@ -4,10 +4,9 @@
 package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
-import it.lorenzodeluca.dart.dart.Expression;
+import it.lorenzodeluca.dart.dart.ForLoopParts;
 import it.lorenzodeluca.dart.dart.ForStatement;
 import it.lorenzodeluca.dart.dart.Statement;
-import it.lorenzodeluca.dart.dart.VariableDeclaration;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -26,10 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.ForStatementImpl#isIsAwait <em>Is Await</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.ForStatementImpl#getInit <em>Init</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.ForStatementImpl#getInitExpr <em>Init Expr</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.ForStatementImpl#getCondition <em>Condition</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.ForStatementImpl#getUpdate <em>Update</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.ForStatementImpl#getForLoopParts <em>For Loop Parts</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.ForStatementImpl#getBody <em>Body</em>}</li>
  * </ul>
  *
@@ -58,44 +54,14 @@ public class ForStatementImpl extends NonLabelledStatementImpl implements ForSta
   protected boolean isAwait = IS_AWAIT_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getInit() <em>Init</em>}' containment reference.
+   * The cached value of the '{@link #getForLoopParts() <em>For Loop Parts</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInit()
+   * @see #getForLoopParts()
    * @generated
    * @ordered
    */
-  protected VariableDeclaration init;
-
-  /**
-   * The cached value of the '{@link #getInitExpr() <em>Init Expr</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getInitExpr()
-   * @generated
-   * @ordered
-   */
-  protected Expression initExpr;
-
-  /**
-   * The cached value of the '{@link #getCondition() <em>Condition</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCondition()
-   * @generated
-   * @ordered
-   */
-  protected Expression condition;
-
-  /**
-   * The cached value of the '{@link #getUpdate() <em>Update</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getUpdate()
-   * @generated
-   * @ordered
-   */
-  protected Expression update;
+  protected ForLoopParts forLoopParts;
 
   /**
    * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
@@ -125,7 +91,7 @@ public class ForStatementImpl extends NonLabelledStatementImpl implements ForSta
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.FOR_STATEMENT;
+    return DartPackage.eINSTANCE.getForStatement();
   }
 
   /**
@@ -159,9 +125,9 @@ public class ForStatementImpl extends NonLabelledStatementImpl implements ForSta
    * @generated
    */
   @Override
-  public VariableDeclaration getInit()
+  public ForLoopParts getForLoopParts()
   {
-    return init;
+    return forLoopParts;
   }
 
   /**
@@ -169,13 +135,13 @@ public class ForStatementImpl extends NonLabelledStatementImpl implements ForSta
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetInit(VariableDeclaration newInit, NotificationChain msgs)
+  public NotificationChain basicSetForLoopParts(ForLoopParts newForLoopParts, NotificationChain msgs)
   {
-    VariableDeclaration oldInit = init;
-    init = newInit;
+    ForLoopParts oldForLoopParts = forLoopParts;
+    forLoopParts = newForLoopParts;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.FOR_STATEMENT__INIT, oldInit, newInit);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.FOR_STATEMENT__FOR_LOOP_PARTS, oldForLoopParts, newForLoopParts);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -187,170 +153,20 @@ public class ForStatementImpl extends NonLabelledStatementImpl implements ForSta
    * @generated
    */
   @Override
-  public void setInit(VariableDeclaration newInit)
+  public void setForLoopParts(ForLoopParts newForLoopParts)
   {
-    if (newInit != init)
+    if (newForLoopParts != forLoopParts)
     {
       NotificationChain msgs = null;
-      if (init != null)
-        msgs = ((InternalEObject)init).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.FOR_STATEMENT__INIT, null, msgs);
-      if (newInit != null)
-        msgs = ((InternalEObject)newInit).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.FOR_STATEMENT__INIT, null, msgs);
-      msgs = basicSetInit(newInit, msgs);
+      if (forLoopParts != null)
+        msgs = ((InternalEObject)forLoopParts).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.FOR_STATEMENT__FOR_LOOP_PARTS, null, msgs);
+      if (newForLoopParts != null)
+        msgs = ((InternalEObject)newForLoopParts).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.FOR_STATEMENT__FOR_LOOP_PARTS, null, msgs);
+      msgs = basicSetForLoopParts(newForLoopParts, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.FOR_STATEMENT__INIT, newInit, newInit));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Expression getInitExpr()
-  {
-    return initExpr;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetInitExpr(Expression newInitExpr, NotificationChain msgs)
-  {
-    Expression oldInitExpr = initExpr;
-    initExpr = newInitExpr;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.FOR_STATEMENT__INIT_EXPR, oldInitExpr, newInitExpr);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setInitExpr(Expression newInitExpr)
-  {
-    if (newInitExpr != initExpr)
-    {
-      NotificationChain msgs = null;
-      if (initExpr != null)
-        msgs = ((InternalEObject)initExpr).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.FOR_STATEMENT__INIT_EXPR, null, msgs);
-      if (newInitExpr != null)
-        msgs = ((InternalEObject)newInitExpr).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.FOR_STATEMENT__INIT_EXPR, null, msgs);
-      msgs = basicSetInitExpr(newInitExpr, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.FOR_STATEMENT__INIT_EXPR, newInitExpr, newInitExpr));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Expression getCondition()
-  {
-    return condition;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetCondition(Expression newCondition, NotificationChain msgs)
-  {
-    Expression oldCondition = condition;
-    condition = newCondition;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.FOR_STATEMENT__CONDITION, oldCondition, newCondition);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setCondition(Expression newCondition)
-  {
-    if (newCondition != condition)
-    {
-      NotificationChain msgs = null;
-      if (condition != null)
-        msgs = ((InternalEObject)condition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.FOR_STATEMENT__CONDITION, null, msgs);
-      if (newCondition != null)
-        msgs = ((InternalEObject)newCondition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.FOR_STATEMENT__CONDITION, null, msgs);
-      msgs = basicSetCondition(newCondition, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.FOR_STATEMENT__CONDITION, newCondition, newCondition));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Expression getUpdate()
-  {
-    return update;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetUpdate(Expression newUpdate, NotificationChain msgs)
-  {
-    Expression oldUpdate = update;
-    update = newUpdate;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.FOR_STATEMENT__UPDATE, oldUpdate, newUpdate);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setUpdate(Expression newUpdate)
-  {
-    if (newUpdate != update)
-    {
-      NotificationChain msgs = null;
-      if (update != null)
-        msgs = ((InternalEObject)update).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.FOR_STATEMENT__UPDATE, null, msgs);
-      if (newUpdate != null)
-        msgs = ((InternalEObject)newUpdate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.FOR_STATEMENT__UPDATE, null, msgs);
-      msgs = basicSetUpdate(newUpdate, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.FOR_STATEMENT__UPDATE, newUpdate, newUpdate));
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.FOR_STATEMENT__FOR_LOOP_PARTS, newForLoopParts, newForLoopParts));
   }
 
   /**
@@ -413,14 +229,8 @@ public class ForStatementImpl extends NonLabelledStatementImpl implements ForSta
   {
     switch (featureID)
     {
-      case DartPackage.FOR_STATEMENT__INIT:
-        return basicSetInit(null, msgs);
-      case DartPackage.FOR_STATEMENT__INIT_EXPR:
-        return basicSetInitExpr(null, msgs);
-      case DartPackage.FOR_STATEMENT__CONDITION:
-        return basicSetCondition(null, msgs);
-      case DartPackage.FOR_STATEMENT__UPDATE:
-        return basicSetUpdate(null, msgs);
+      case DartPackage.FOR_STATEMENT__FOR_LOOP_PARTS:
+        return basicSetForLoopParts(null, msgs);
       case DartPackage.FOR_STATEMENT__BODY:
         return basicSetBody(null, msgs);
     }
@@ -439,14 +249,8 @@ public class ForStatementImpl extends NonLabelledStatementImpl implements ForSta
     {
       case DartPackage.FOR_STATEMENT__IS_AWAIT:
         return isIsAwait();
-      case DartPackage.FOR_STATEMENT__INIT:
-        return getInit();
-      case DartPackage.FOR_STATEMENT__INIT_EXPR:
-        return getInitExpr();
-      case DartPackage.FOR_STATEMENT__CONDITION:
-        return getCondition();
-      case DartPackage.FOR_STATEMENT__UPDATE:
-        return getUpdate();
+      case DartPackage.FOR_STATEMENT__FOR_LOOP_PARTS:
+        return getForLoopParts();
       case DartPackage.FOR_STATEMENT__BODY:
         return getBody();
     }
@@ -466,17 +270,8 @@ public class ForStatementImpl extends NonLabelledStatementImpl implements ForSta
       case DartPackage.FOR_STATEMENT__IS_AWAIT:
         setIsAwait((Boolean)newValue);
         return;
-      case DartPackage.FOR_STATEMENT__INIT:
-        setInit((VariableDeclaration)newValue);
-        return;
-      case DartPackage.FOR_STATEMENT__INIT_EXPR:
-        setInitExpr((Expression)newValue);
-        return;
-      case DartPackage.FOR_STATEMENT__CONDITION:
-        setCondition((Expression)newValue);
-        return;
-      case DartPackage.FOR_STATEMENT__UPDATE:
-        setUpdate((Expression)newValue);
+      case DartPackage.FOR_STATEMENT__FOR_LOOP_PARTS:
+        setForLoopParts((ForLoopParts)newValue);
         return;
       case DartPackage.FOR_STATEMENT__BODY:
         setBody((Statement)newValue);
@@ -498,17 +293,8 @@ public class ForStatementImpl extends NonLabelledStatementImpl implements ForSta
       case DartPackage.FOR_STATEMENT__IS_AWAIT:
         setIsAwait(IS_AWAIT_EDEFAULT);
         return;
-      case DartPackage.FOR_STATEMENT__INIT:
-        setInit((VariableDeclaration)null);
-        return;
-      case DartPackage.FOR_STATEMENT__INIT_EXPR:
-        setInitExpr((Expression)null);
-        return;
-      case DartPackage.FOR_STATEMENT__CONDITION:
-        setCondition((Expression)null);
-        return;
-      case DartPackage.FOR_STATEMENT__UPDATE:
-        setUpdate((Expression)null);
+      case DartPackage.FOR_STATEMENT__FOR_LOOP_PARTS:
+        setForLoopParts((ForLoopParts)null);
         return;
       case DartPackage.FOR_STATEMENT__BODY:
         setBody((Statement)null);
@@ -529,14 +315,8 @@ public class ForStatementImpl extends NonLabelledStatementImpl implements ForSta
     {
       case DartPackage.FOR_STATEMENT__IS_AWAIT:
         return isAwait != IS_AWAIT_EDEFAULT;
-      case DartPackage.FOR_STATEMENT__INIT:
-        return init != null;
-      case DartPackage.FOR_STATEMENT__INIT_EXPR:
-        return initExpr != null;
-      case DartPackage.FOR_STATEMENT__CONDITION:
-        return condition != null;
-      case DartPackage.FOR_STATEMENT__UPDATE:
-        return update != null;
+      case DartPackage.FOR_STATEMENT__FOR_LOOP_PARTS:
+        return forLoopParts != null;
       case DartPackage.FOR_STATEMENT__BODY:
         return body != null;
     }

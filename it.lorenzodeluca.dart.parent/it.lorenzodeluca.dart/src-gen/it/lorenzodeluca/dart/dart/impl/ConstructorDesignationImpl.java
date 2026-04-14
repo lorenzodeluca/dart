@@ -101,7 +101,7 @@ public class ConstructorDesignationImpl extends MinimalEObjectImpl.Container imp
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.CONSTRUCTOR_DESIGNATION;
+    return DartPackage.eINSTANCE.getConstructorDesignation();
   }
 
   /**

@@ -69,7 +69,7 @@ public class BitwiseOrImpl extends ExpressionImpl implements BitwiseOr
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.BITWISE_OR;
+    return DartPackage.eINSTANCE.getBitwiseOr();
   }
 
   /**

@@ -37,7 +37,7 @@ public class TopLevelDeclarationImpl extends MinimalEObjectImpl.Container implem
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.TOP_LEVEL_DECLARATION;
+    return DartPackage.eINSTANCE.getTopLevelDeclaration();
   }
 
 } //TopLevelDeclarationImpl

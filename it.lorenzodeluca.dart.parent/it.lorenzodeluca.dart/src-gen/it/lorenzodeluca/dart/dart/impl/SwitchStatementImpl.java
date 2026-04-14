@@ -89,7 +89,7 @@ public class SwitchStatementImpl extends NonLabelledStatementImpl implements Swi
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.SWITCH_STATEMENT;
+    return DartPackage.eINSTANCE.getSwitchStatement();
   }
 
   /**

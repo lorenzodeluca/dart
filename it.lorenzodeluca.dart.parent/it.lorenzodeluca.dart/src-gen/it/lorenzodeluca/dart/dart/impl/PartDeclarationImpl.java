@@ -58,7 +58,7 @@ public class PartDeclarationImpl extends DartFileImpl implements PartDeclaration
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.PART_DECLARATION;
+    return DartPackage.eINSTANCE.getPartDeclaration();
   }
 
   /**

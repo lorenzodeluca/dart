@@ -65,7 +65,7 @@ public class NumberLiteralImpl extends ExpressionImpl implements NumberLiteral
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.NUMBER_LITERAL;
+    return DartPackage.eINSTANCE.getNumberLiteral();
   }
 
   /**

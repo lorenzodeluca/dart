@@ -65,7 +65,7 @@ public class IdentifierRefImpl extends ExpressionImpl implements IdentifierRef
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.IDENTIFIER_REF;
+    return DartPackage.eINSTANCE.getIdentifierRef();
   }
 
   /**

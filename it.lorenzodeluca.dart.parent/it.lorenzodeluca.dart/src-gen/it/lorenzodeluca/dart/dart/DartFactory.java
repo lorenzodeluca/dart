@@ -105,6 +105,42 @@ public interface DartFactory extends EFactory
   NormalFormalParameter createNormalFormalParameter();
 
   /**
+   * Returns a new object of class '<em>Field Formal Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Field Formal Parameter</em>'.
+   * @generated
+   */
+  FieldFormalParameter createFieldFormalParameter();
+
+  /**
+   * Returns a new object of class '<em>Function Formal Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Formal Parameter</em>'.
+   * @generated
+   */
+  FunctionFormalParameter createFunctionFormalParameter();
+
+  /**
+   * Returns a new object of class '<em>Simple Formal Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Simple Formal Parameter</em>'.
+   * @generated
+   */
+  SimpleFormalParameter createSimpleFormalParameter();
+
+  /**
+   * Returns a new object of class '<em>Final Const Var Or Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Final Const Var Or Type</em>'.
+   * @generated
+   */
+  FinalConstVarOrType createFinalConstVarOrType();
+
+  /**
    * Returns a new object of class '<em>Optional Or Named Formal Parameters</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -220,6 +256,24 @@ public interface DartFactory extends EFactory
    * @generated
    */
   Declaration createDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Function Signature In Decl</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Signature In Decl</em>'.
+   * @generated
+   */
+  FunctionSignatureInDecl createFunctionSignatureInDecl();
+
+  /**
+   * Returns a new object of class '<em>Static Final Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Static Final Declaration</em>'.
+   * @generated
+   */
+  StaticFinalDeclaration createStaticFinalDeclaration();
 
   /**
    * Returns a new object of class '<em>Constructor Signature</em>'.
@@ -393,6 +447,24 @@ public interface DartFactory extends EFactory
   Arguments createArguments();
 
   /**
+   * Returns a new object of class '<em>Argument List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Argument List</em>'.
+   * @generated
+   */
+  ArgumentList createArgumentList();
+
+  /**
+   * Returns a new object of class '<em>Named Argument</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Named Argument</em>'.
+   * @generated
+   */
+  NamedArgument createNamedArgument();
+
+  /**
    * Returns a new object of class '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -400,6 +472,42 @@ public interface DartFactory extends EFactory
    * @generated
    */
   Expression createExpression();
+
+  /**
+   * Returns a new object of class '<em>Throw Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Throw Expression</em>'.
+   * @generated
+   */
+  ThrowExpression createThrowExpression();
+
+  /**
+   * Returns a new object of class '<em>Cascade Section</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cascade Section</em>'.
+   * @generated
+   */
+  CascadeSection createCascadeSection();
+
+  /**
+   * Returns a new object of class '<em>Cascade Assignment</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cascade Assignment</em>'.
+   * @generated
+   */
+  CascadeAssignment createCascadeAssignment();
+
+  /**
+   * Returns a new object of class '<em>Throw Expression Without Cascade</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Throw Expression Without Cascade</em>'.
+   * @generated
+   */
+  ThrowExpressionWithoutCascade createThrowExpressionWithoutCascade();
 
   /**
    * Returns a new object of class '<em>Map Or Set Element</em>'.
@@ -481,6 +589,42 @@ public interface DartFactory extends EFactory
    * @generated
    */
   ForStatement createForStatement();
+
+  /**
+   * Returns a new object of class '<em>For Loop Parts</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>For Loop Parts</em>'.
+   * @generated
+   */
+  ForLoopParts createForLoopParts();
+
+  /**
+   * Returns a new object of class '<em>For In Loop Parts</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>For In Loop Parts</em>'.
+   * @generated
+   */
+  ForInLoopParts createForInLoopParts();
+
+  /**
+   * Returns a new object of class '<em>Declared Identifier</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Declared Identifier</em>'.
+   * @generated
+   */
+  DeclaredIdentifier createDeclaredIdentifier();
+
+  /**
+   * Returns a new object of class '<em>For Initializer Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>For Initializer Statement</em>'.
+   * @generated
+   */
+  ForInitializerStatement createForInitializerStatement();
 
   /**
    * Returns a new object of class '<em>While Statement</em>'.
@@ -771,6 +915,33 @@ public interface DartFactory extends EFactory
   Type createType();
 
   /**
+   * Returns a new object of class '<em>Function Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Type</em>'.
+   * @generated
+   */
+  FunctionType createFunctionType();
+
+  /**
+   * Returns a new object of class '<em>Function Type Tail</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Type Tail</em>'.
+   * @generated
+   */
+  FunctionTypeTail createFunctionTypeTail();
+
+  /**
+   * Returns a new object of class '<em>Type Not Function</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type Not Function</em>'.
+   * @generated
+   */
+  TypeNotFunction createTypeNotFunction();
+
+  /**
    * Returns a new object of class '<em>Type Name</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -780,6 +951,60 @@ public interface DartFactory extends EFactory
   TypeName createTypeName();
 
   /**
+   * Returns a new object of class '<em>Parameter Type List</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter Type List</em>'.
+   * @generated
+   */
+  ParameterTypeList createParameterTypeList();
+
+  /**
+   * Returns a new object of class '<em>Optional Parameter Types</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Optional Parameter Types</em>'.
+   * @generated
+   */
+  OptionalParameterTypes createOptionalParameterTypes();
+
+  /**
+   * Returns a new object of class '<em>Optional Positional Parameter Types</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Optional Positional Parameter Types</em>'.
+   * @generated
+   */
+  OptionalPositionalParameterTypes createOptionalPositionalParameterTypes();
+
+  /**
+   * Returns a new object of class '<em>Named Parameter Types</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Named Parameter Types</em>'.
+   * @generated
+   */
+  NamedParameterTypes createNamedParameterTypes();
+
+  /**
+   * Returns a new object of class '<em>Normal Parameter Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Normal Parameter Type</em>'.
+   * @generated
+   */
+  NormalParameterType createNormalParameterType();
+
+  /**
+   * Returns a new object of class '<em>Named Parameter Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Named Parameter Type</em>'.
+   * @generated
+   */
+  NamedParameterType createNamedParameterType();
+
+  /**
    * Returns a new object of class '<em>Type Arguments</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -787,6 +1012,33 @@ public interface DartFactory extends EFactory
    * @generated
    */
   TypeArguments createTypeArguments();
+
+  /**
+   * Returns a new object of class '<em>Argument List Named Only</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Argument List Named Only</em>'.
+   * @generated
+   */
+  ArgumentListNamedOnly createArgumentListNamedOnly();
+
+  /**
+   * Returns a new object of class '<em>Argument List Positional Then Named</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Argument List Positional Then Named</em>'.
+   * @generated
+   */
+  ArgumentListPositionalThenNamed createArgumentListPositionalThenNamed();
+
+  /**
+   * Returns a new object of class '<em>Cascade</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Cascade</em>'.
+   * @generated
+   */
+  Cascade createCascade();
 
   /**
    * Returns a new object of class '<em>Assignment</em>'.
@@ -942,6 +1194,15 @@ public interface DartFactory extends EFactory
   MethodInvocation createMethodInvocation();
 
   /**
+   * Returns a new object of class '<em>Null Aware Method Invocation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Null Aware Method Invocation</em>'.
+   * @generated
+   */
+  NullAwareMethodInvocation createNullAwareMethodInvocation();
+
+  /**
    * Returns a new object of class '<em>Function Call</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -958,6 +1219,42 @@ public interface DartFactory extends EFactory
    * @generated
    */
   IndexExpression createIndexExpression();
+
+  /**
+   * Returns a new object of class '<em>Null Aware Index</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Null Aware Index</em>'.
+   * @generated
+   */
+  NullAwareIndex createNullAwareIndex();
+
+  /**
+   * Returns a new object of class '<em>Null Assert</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Null Assert</em>'.
+   * @generated
+   */
+  NullAssert createNullAssert();
+
+  /**
+   * Returns a new object of class '<em>Property Access</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property Access</em>'.
+   * @generated
+   */
+  PropertyAccess createPropertyAccess();
+
+  /**
+   * Returns a new object of class '<em>Null Aware Property Access</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Null Aware Property Access</em>'.
+   * @generated
+   */
+  NullAwarePropertyAccess createNullAwarePropertyAccess();
 
   /**
    * Returns a new object of class '<em>This Expression</em>'.

@@ -90,7 +90,7 @@ public class SwitchCaseImpl extends MinimalEObjectImpl.Container implements Swit
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.SWITCH_CASE;
+    return DartPackage.eINSTANCE.getSwitchCase();
   }
 
   /**

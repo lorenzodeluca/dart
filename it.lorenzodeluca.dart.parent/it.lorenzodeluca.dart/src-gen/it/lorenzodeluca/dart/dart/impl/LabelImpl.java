@@ -66,7 +66,7 @@ public class LabelImpl extends MinimalEObjectImpl.Container implements Label
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.LABEL;
+    return DartPackage.eINSTANCE.getLabel();
   }
 
   /**

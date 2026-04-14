@@ -99,7 +99,7 @@ public class TypeParameterImpl extends MinimalEObjectImpl.Container implements T
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.TYPE_PARAMETER;
+    return DartPackage.eINSTANCE.getTypeParameter();
   }
 
   /**

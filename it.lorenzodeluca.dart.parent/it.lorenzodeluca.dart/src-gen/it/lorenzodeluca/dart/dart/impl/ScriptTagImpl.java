@@ -66,7 +66,7 @@ public class ScriptTagImpl extends MinimalEObjectImpl.Container implements Scrip
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.SCRIPT_TAG;
+    return DartPackage.eINSTANCE.getScriptTag();
   }
 
   /**

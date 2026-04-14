@@ -62,7 +62,7 @@ public class BlockImpl extends NonLabelledStatementImpl implements Block
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.BLOCK;
+    return DartPackage.eINSTANCE.getBlock();
   }
 
   /**

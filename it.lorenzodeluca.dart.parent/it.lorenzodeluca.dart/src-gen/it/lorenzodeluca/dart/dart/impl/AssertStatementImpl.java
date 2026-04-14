@@ -69,7 +69,7 @@ public class AssertStatementImpl extends NonLabelledStatementImpl implements Ass
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.ASSERT_STATEMENT;
+    return DartPackage.eINSTANCE.getAssertStatement();
   }
 
   /**

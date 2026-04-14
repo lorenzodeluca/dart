@@ -58,7 +58,7 @@ public class ParenthesizedExpressionImpl extends ExpressionImpl implements Paren
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.PARENTHESIZED_EXPRESSION;
+    return DartPackage.eINSTANCE.getParenthesizedExpression();
   }
 
   /**

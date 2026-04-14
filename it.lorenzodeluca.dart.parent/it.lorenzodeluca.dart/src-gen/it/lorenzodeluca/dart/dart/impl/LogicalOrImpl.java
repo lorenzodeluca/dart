@@ -69,7 +69,7 @@ public class LogicalOrImpl extends ExpressionImpl implements LogicalOr
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.LOGICAL_OR;
+    return DartPackage.eINSTANCE.getLogicalOr();
   }
 
   /**

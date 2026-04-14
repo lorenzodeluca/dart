@@ -64,7 +64,7 @@ public class InterfacesImpl extends MinimalEObjectImpl.Container implements Inte
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.INTERFACES;
+    return DartPackage.eINSTANCE.getInterfaces();
   }
 
   /**

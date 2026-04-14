@@ -92,7 +92,7 @@ public class DefaultNamedParameterImpl extends MinimalEObjectImpl.Container impl
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.DEFAULT_NAMED_PARAMETER;
+    return DartPackage.eINSTANCE.getDefaultNamedParameter();
   }
 
   /**

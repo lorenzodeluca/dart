@@ -104,7 +104,7 @@ public class RedirectingFactoryConstructorSignatureImpl extends MinimalEObjectIm
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE;
+    return DartPackage.eINSTANCE.getRedirectingFactoryConstructorSignature();
   }
 
   /**

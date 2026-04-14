@@ -37,7 +37,7 @@ public class MapOrSetElementImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.MAP_OR_SET_ELEMENT;
+    return DartPackage.eINSTANCE.getMapOrSetElement();
   }
 
 } //MapOrSetElementImpl

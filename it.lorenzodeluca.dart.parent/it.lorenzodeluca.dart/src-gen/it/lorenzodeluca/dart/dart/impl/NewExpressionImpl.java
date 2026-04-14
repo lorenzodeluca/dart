@@ -91,7 +91,7 @@ public class NewExpressionImpl extends ExpressionImpl implements NewExpression
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.NEW_EXPRESSION;
+    return DartPackage.eINSTANCE.getNewExpression();
   }
 
   /**

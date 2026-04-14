@@ -6,7 +6,10 @@ package it.lorenzodeluca.dart.dart.impl;
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.EnumDeclaration;
 import it.lorenzodeluca.dart.dart.EnumEntry;
+import it.lorenzodeluca.dart.dart.Interfaces;
+import it.lorenzodeluca.dart.dart.MemberDeclaration;
 import it.lorenzodeluca.dart.dart.Metadata;
+import it.lorenzodeluca.dart.dart.TypeParameters;
 
 import java.util.Collection;
 
@@ -33,7 +36,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumDeclarationImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumDeclarationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumDeclarationImpl#getTypeParameters <em>Type Parameters</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumDeclarationImpl#getInterfaces <em>Interfaces</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumDeclarationImpl#getEntries <em>Entries</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumDeclarationImpl#getMembers <em>Members</em>}</li>
  * </ul>
  *
  * @generated
@@ -71,6 +77,26 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
   protected String name = NAME_EDEFAULT;
 
   /**
+   * The cached value of the '{@link #getTypeParameters() <em>Type Parameters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypeParameters()
+   * @generated
+   * @ordered
+   */
+  protected TypeParameters typeParameters;
+
+  /**
+   * The cached value of the '{@link #getInterfaces() <em>Interfaces</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInterfaces()
+   * @generated
+   * @ordered
+   */
+  protected Interfaces interfaces;
+
+  /**
    * The cached value of the '{@link #getEntries() <em>Entries</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -79,6 +105,16 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
    * @ordered
    */
   protected EList<EnumEntry> entries;
+
+  /**
+   * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMembers()
+   * @generated
+   * @ordered
+   */
+  protected EList<MemberDeclaration> members;
 
   /**
    * <!-- begin-user-doc -->
@@ -98,7 +134,7 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.ENUM_DECLARATION;
+    return DartPackage.eINSTANCE.getEnumDeclaration();
   }
 
   /**
@@ -147,6 +183,106 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
    * @generated
    */
   @Override
+  public TypeParameters getTypeParameters()
+  {
+    return typeParameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTypeParameters(TypeParameters newTypeParameters, NotificationChain msgs)
+  {
+    TypeParameters oldTypeParameters = typeParameters;
+    typeParameters = newTypeParameters;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.ENUM_DECLARATION__TYPE_PARAMETERS, oldTypeParameters, newTypeParameters);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTypeParameters(TypeParameters newTypeParameters)
+  {
+    if (newTypeParameters != typeParameters)
+    {
+      NotificationChain msgs = null;
+      if (typeParameters != null)
+        msgs = ((InternalEObject)typeParameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.ENUM_DECLARATION__TYPE_PARAMETERS, null, msgs);
+      if (newTypeParameters != null)
+        msgs = ((InternalEObject)newTypeParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.ENUM_DECLARATION__TYPE_PARAMETERS, null, msgs);
+      msgs = basicSetTypeParameters(newTypeParameters, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.ENUM_DECLARATION__TYPE_PARAMETERS, newTypeParameters, newTypeParameters));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Interfaces getInterfaces()
+  {
+    return interfaces;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetInterfaces(Interfaces newInterfaces, NotificationChain msgs)
+  {
+    Interfaces oldInterfaces = interfaces;
+    interfaces = newInterfaces;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.ENUM_DECLARATION__INTERFACES, oldInterfaces, newInterfaces);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setInterfaces(Interfaces newInterfaces)
+  {
+    if (newInterfaces != interfaces)
+    {
+      NotificationChain msgs = null;
+      if (interfaces != null)
+        msgs = ((InternalEObject)interfaces).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.ENUM_DECLARATION__INTERFACES, null, msgs);
+      if (newInterfaces != null)
+        msgs = ((InternalEObject)newInterfaces).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.ENUM_DECLARATION__INTERFACES, null, msgs);
+      msgs = basicSetInterfaces(newInterfaces, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.ENUM_DECLARATION__INTERFACES, newInterfaces, newInterfaces));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<EnumEntry> getEntries()
   {
     if (entries == null)
@@ -162,14 +298,35 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
    * @generated
    */
   @Override
+  public EList<MemberDeclaration> getMembers()
+  {
+    if (members == null)
+    {
+      members = new EObjectContainmentEList<MemberDeclaration>(MemberDeclaration.class, this, DartPackage.ENUM_DECLARATION__MEMBERS);
+    }
+    return members;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
       case DartPackage.ENUM_DECLARATION__METADATA:
         return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
+      case DartPackage.ENUM_DECLARATION__TYPE_PARAMETERS:
+        return basicSetTypeParameters(null, msgs);
+      case DartPackage.ENUM_DECLARATION__INTERFACES:
+        return basicSetInterfaces(null, msgs);
       case DartPackage.ENUM_DECLARATION__ENTRIES:
         return ((InternalEList<?>)getEntries()).basicRemove(otherEnd, msgs);
+      case DartPackage.ENUM_DECLARATION__MEMBERS:
+        return ((InternalEList<?>)getMembers()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -188,8 +345,14 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
         return getMetadata();
       case DartPackage.ENUM_DECLARATION__NAME:
         return getName();
+      case DartPackage.ENUM_DECLARATION__TYPE_PARAMETERS:
+        return getTypeParameters();
+      case DartPackage.ENUM_DECLARATION__INTERFACES:
+        return getInterfaces();
       case DartPackage.ENUM_DECLARATION__ENTRIES:
         return getEntries();
+      case DartPackage.ENUM_DECLARATION__MEMBERS:
+        return getMembers();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -212,9 +375,19 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
       case DartPackage.ENUM_DECLARATION__NAME:
         setName((String)newValue);
         return;
+      case DartPackage.ENUM_DECLARATION__TYPE_PARAMETERS:
+        setTypeParameters((TypeParameters)newValue);
+        return;
+      case DartPackage.ENUM_DECLARATION__INTERFACES:
+        setInterfaces((Interfaces)newValue);
+        return;
       case DartPackage.ENUM_DECLARATION__ENTRIES:
         getEntries().clear();
         getEntries().addAll((Collection<? extends EnumEntry>)newValue);
+        return;
+      case DartPackage.ENUM_DECLARATION__MEMBERS:
+        getMembers().clear();
+        getMembers().addAll((Collection<? extends MemberDeclaration>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -236,8 +409,17 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
       case DartPackage.ENUM_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case DartPackage.ENUM_DECLARATION__TYPE_PARAMETERS:
+        setTypeParameters((TypeParameters)null);
+        return;
+      case DartPackage.ENUM_DECLARATION__INTERFACES:
+        setInterfaces((Interfaces)null);
+        return;
       case DartPackage.ENUM_DECLARATION__ENTRIES:
         getEntries().clear();
+        return;
+      case DartPackage.ENUM_DECLARATION__MEMBERS:
+        getMembers().clear();
         return;
     }
     super.eUnset(featureID);
@@ -257,8 +439,14 @@ public class EnumDeclarationImpl extends TopLevelDeclarationImpl implements Enum
         return metadata != null && !metadata.isEmpty();
       case DartPackage.ENUM_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DartPackage.ENUM_DECLARATION__TYPE_PARAMETERS:
+        return typeParameters != null;
+      case DartPackage.ENUM_DECLARATION__INTERFACES:
+        return interfaces != null;
       case DartPackage.ENUM_DECLARATION__ENTRIES:
         return entries != null && !entries.isEmpty();
+      case DartPackage.ENUM_DECLARATION__MEMBERS:
+        return members != null && !members.isEmpty();
     }
     return super.eIsSet(featureID);
   }

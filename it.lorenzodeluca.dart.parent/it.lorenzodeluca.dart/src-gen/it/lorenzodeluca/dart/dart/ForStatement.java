@@ -14,10 +14,7 @@ package it.lorenzodeluca.dart.dart;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.ForStatement#isIsAwait <em>Is Await</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.ForStatement#getInit <em>Init</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.ForStatement#getInitExpr <em>Init Expr</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.ForStatement#getCondition <em>Condition</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.ForStatement#getUpdate <em>Update</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.ForStatement#getForLoopParts <em>For Loop Parts</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.ForStatement#getBody <em>Body</em>}</li>
  * </ul>
  *
@@ -50,92 +47,26 @@ public interface ForStatement extends NonLabelledStatement
   void setIsAwait(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Init</b></em>' containment reference.
+   * Returns the value of the '<em><b>For Loop Parts</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Init</em>' containment reference.
-   * @see #setInit(VariableDeclaration)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getForStatement_Init()
+   * @return the value of the '<em>For Loop Parts</em>' containment reference.
+   * @see #setForLoopParts(ForLoopParts)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getForStatement_ForLoopParts()
    * @model containment="true"
    * @generated
    */
-  VariableDeclaration getInit();
+  ForLoopParts getForLoopParts();
 
   /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.ForStatement#getInit <em>Init</em>}' containment reference.
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.ForStatement#getForLoopParts <em>For Loop Parts</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Init</em>' containment reference.
-   * @see #getInit()
+   * @param value the new value of the '<em>For Loop Parts</em>' containment reference.
+   * @see #getForLoopParts()
    * @generated
    */
-  void setInit(VariableDeclaration value);
-
-  /**
-   * Returns the value of the '<em><b>Init Expr</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Init Expr</em>' containment reference.
-   * @see #setInitExpr(Expression)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getForStatement_InitExpr()
-   * @model containment="true"
-   * @generated
-   */
-  Expression getInitExpr();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.ForStatement#getInitExpr <em>Init Expr</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Init Expr</em>' containment reference.
-   * @see #getInitExpr()
-   * @generated
-   */
-  void setInitExpr(Expression value);
-
-  /**
-   * Returns the value of the '<em><b>Condition</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Condition</em>' containment reference.
-   * @see #setCondition(Expression)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getForStatement_Condition()
-   * @model containment="true"
-   * @generated
-   */
-  Expression getCondition();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.ForStatement#getCondition <em>Condition</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Condition</em>' containment reference.
-   * @see #getCondition()
-   * @generated
-   */
-  void setCondition(Expression value);
-
-  /**
-   * Returns the value of the '<em><b>Update</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Update</em>' containment reference.
-   * @see #setUpdate(Expression)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getForStatement_Update()
-   * @model containment="true"
-   * @generated
-   */
-  Expression getUpdate();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.ForStatement#getUpdate <em>Update</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Update</em>' containment reference.
-   * @see #getUpdate()
-   * @generated
-   */
-  void setUpdate(Expression value);
+  void setForLoopParts(ForLoopParts value);
 
   /**
    * Returns the value of the '<em><b>Body</b></em>' containment reference.

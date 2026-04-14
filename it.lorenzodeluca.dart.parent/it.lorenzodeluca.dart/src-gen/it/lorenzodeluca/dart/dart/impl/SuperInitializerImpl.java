@@ -79,7 +79,7 @@ public class SuperInitializerImpl extends InitializerEntryImpl implements SuperI
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.SUPER_INITIALIZER;
+    return DartPackage.eINSTANCE.getSuperInitializer();
   }
 
   /**

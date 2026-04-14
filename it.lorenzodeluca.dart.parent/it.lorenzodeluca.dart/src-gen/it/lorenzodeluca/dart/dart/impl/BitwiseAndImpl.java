@@ -69,7 +69,7 @@ public class BitwiseAndImpl extends ExpressionImpl implements BitwiseAnd
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.BITWISE_AND;
+    return DartPackage.eINSTANCE.getBitwiseAnd();
   }
 
   /**

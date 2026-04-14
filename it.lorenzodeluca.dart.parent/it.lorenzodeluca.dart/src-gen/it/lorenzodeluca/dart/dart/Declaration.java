@@ -3,6 +3,8 @@
  */
 package it.lorenzodeluca.dart.dart;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,13 +18,20 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsExternal <em>Is External</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsStatic <em>Is Static</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsCovariant <em>Is Covariant</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsLate <em>Is Late</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsFinal <em>Is Final</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#getGetter <em>Getter</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#getSetter <em>Setter</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#getFunctionSig <em>Function Sig</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsOperator <em>Is Operator</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#getOperator <em>Operator</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#getParameters <em>Parameters</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsConst <em>Is Const</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#getType <em>Type</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#getName <em>Name</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#getInitialValue <em>Initial Value</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#getVariables <em>Variables</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsFinal <em>Is Final</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsLate <em>Is Late</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsVar <em>Is Var</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#isIsCovariant <em>Is Covariant</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.Declaration#getPlainVars <em>Plain Vars</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration()
@@ -76,70 +85,136 @@ public interface Declaration extends EObject
   void setIsStatic(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Is Covariant</b></em>' attribute.
+   * Returns the value of the '<em><b>Getter</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Covariant</em>' attribute.
-   * @see #setIsCovariant(boolean)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_IsCovariant()
+   * @return the value of the '<em>Getter</em>' containment reference.
+   * @see #setGetter(GetterSignature)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_Getter()
+   * @model containment="true"
+   * @generated
+   */
+  GetterSignature getGetter();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#getGetter <em>Getter</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Getter</em>' containment reference.
+   * @see #getGetter()
+   * @generated
+   */
+  void setGetter(GetterSignature value);
+
+  /**
+   * Returns the value of the '<em><b>Setter</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Setter</em>' containment reference.
+   * @see #setSetter(SetterSignature)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_Setter()
+   * @model containment="true"
+   * @generated
+   */
+  SetterSignature getSetter();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#getSetter <em>Setter</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Setter</em>' containment reference.
+   * @see #getSetter()
+   * @generated
+   */
+  void setSetter(SetterSignature value);
+
+  /**
+   * Returns the value of the '<em><b>Function Sig</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Function Sig</em>' containment reference.
+   * @see #setFunctionSig(FunctionSignatureInDecl)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_FunctionSig()
+   * @model containment="true"
+   * @generated
+   */
+  FunctionSignatureInDecl getFunctionSig();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#getFunctionSig <em>Function Sig</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Function Sig</em>' containment reference.
+   * @see #getFunctionSig()
+   * @generated
+   */
+  void setFunctionSig(FunctionSignatureInDecl value);
+
+  /**
+   * Returns the value of the '<em><b>Is Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Operator</em>' attribute.
+   * @see #setIsOperator(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_IsOperator()
    * @model
    * @generated
    */
-  boolean isIsCovariant();
+  boolean isIsOperator();
 
   /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#isIsCovariant <em>Is Covariant</em>}' attribute.
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#isIsOperator <em>Is Operator</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Covariant</em>' attribute.
-   * @see #isIsCovariant()
+   * @param value the new value of the '<em>Is Operator</em>' attribute.
+   * @see #isIsOperator()
    * @generated
    */
-  void setIsCovariant(boolean value);
+  void setIsOperator(boolean value);
 
   /**
-   * Returns the value of the '<em><b>Is Late</b></em>' attribute.
+   * Returns the value of the '<em><b>Operator</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Late</em>' attribute.
-   * @see #setIsLate(boolean)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_IsLate()
+   * @return the value of the '<em>Operator</em>' attribute.
+   * @see #setOperator(String)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_Operator()
    * @model
    * @generated
    */
-  boolean isIsLate();
+  String getOperator();
 
   /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#isIsLate <em>Is Late</em>}' attribute.
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#getOperator <em>Operator</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Late</em>' attribute.
-   * @see #isIsLate()
+   * @param value the new value of the '<em>Operator</em>' attribute.
+   * @see #getOperator()
    * @generated
    */
-  void setIsLate(boolean value);
+  void setOperator(String value);
 
   /**
-   * Returns the value of the '<em><b>Is Final</b></em>' attribute.
+   * Returns the value of the '<em><b>Parameters</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Final</em>' attribute.
-   * @see #setIsFinal(boolean)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_IsFinal()
-   * @model
+   * @return the value of the '<em>Parameters</em>' containment reference.
+   * @see #setParameters(FormalParameterList)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_Parameters()
+   * @model containment="true"
    * @generated
    */
-  boolean isIsFinal();
+  FormalParameterList getParameters();
 
   /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#isIsFinal <em>Is Final</em>}' attribute.
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#getParameters <em>Parameters</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Final</em>' attribute.
-   * @see #isIsFinal()
+   * @param value the new value of the '<em>Parameters</em>' containment reference.
+   * @see #getParameters()
    * @generated
    */
-  void setIsFinal(boolean value);
+  void setParameters(FormalParameterList value);
 
   /**
    * Returns the value of the '<em><b>Is Const</b></em>' attribute.
@@ -186,47 +261,115 @@ public interface Declaration extends EObject
   void setType(Type value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Initial Value</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Initial Value</em>' containment reference.
-   * @see #setInitialValue(Expression)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_InitialValue()
+   * @return the value of the '<em>Variables</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_Variables()
    * @model containment="true"
    * @generated
    */
-  Expression getInitialValue();
+  EList<EObject> getVariables();
 
   /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#getInitialValue <em>Initial Value</em>}' containment reference.
+   * Returns the value of the '<em><b>Is Final</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Initial Value</em>' containment reference.
-   * @see #getInitialValue()
+   * @return the value of the '<em>Is Final</em>' attribute.
+   * @see #setIsFinal(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_IsFinal()
+   * @model
    * @generated
    */
-  void setInitialValue(Expression value);
+  boolean isIsFinal();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#isIsFinal <em>Is Final</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Final</em>' attribute.
+   * @see #isIsFinal()
+   * @generated
+   */
+  void setIsFinal(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Is Late</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Late</em>' attribute.
+   * @see #setIsLate(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_IsLate()
+   * @model
+   * @generated
+   */
+  boolean isIsLate();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#isIsLate <em>Is Late</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Late</em>' attribute.
+   * @see #isIsLate()
+   * @generated
+   */
+  void setIsLate(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Is Var</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Var</em>' attribute.
+   * @see #setIsVar(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_IsVar()
+   * @model
+   * @generated
+   */
+  boolean isIsVar();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#isIsVar <em>Is Var</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Var</em>' attribute.
+   * @see #isIsVar()
+   * @generated
+   */
+  void setIsVar(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Is Covariant</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Covariant</em>' attribute.
+   * @see #setIsCovariant(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_IsCovariant()
+   * @model
+   * @generated
+   */
+  boolean isIsCovariant();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Declaration#isIsCovariant <em>Is Covariant</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Covariant</em>' attribute.
+   * @see #isIsCovariant()
+   * @generated
+   */
+  void setIsCovariant(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Plain Vars</b></em>' attribute list.
+   * The list contents are of type {@link java.lang.String}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Plain Vars</em>' attribute list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getDeclaration_PlainVars()
+   * @model unique="false"
+   * @generated
+   */
+  EList<String> getPlainVars();
 
 } // Declaration

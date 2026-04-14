@@ -90,7 +90,7 @@ public class ShiftImpl extends ExpressionImpl implements Shift
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.SHIFT;
+    return DartPackage.eINSTANCE.getShift();
   }
 
   /**

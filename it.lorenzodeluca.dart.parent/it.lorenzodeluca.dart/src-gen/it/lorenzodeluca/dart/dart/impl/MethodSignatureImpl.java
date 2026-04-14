@@ -197,7 +197,7 @@ public class MethodSignatureImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.METHOD_SIGNATURE;
+    return DartPackage.eINSTANCE.getMethodSignature();
   }
 
   /**

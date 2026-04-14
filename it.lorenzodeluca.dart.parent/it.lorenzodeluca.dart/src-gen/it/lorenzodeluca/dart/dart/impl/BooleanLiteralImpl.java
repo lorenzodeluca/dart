@@ -65,7 +65,7 @@ public class BooleanLiteralImpl extends ExpressionImpl implements BooleanLiteral
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.BOOLEAN_LITERAL;
+    return DartPackage.eINSTANCE.getBooleanLiteral();
   }
 
   /**

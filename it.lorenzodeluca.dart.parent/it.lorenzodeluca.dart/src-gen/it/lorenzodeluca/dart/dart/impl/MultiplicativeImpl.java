@@ -90,7 +90,7 @@ public class MultiplicativeImpl extends ExpressionImpl implements Multiplicative
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.MULTIPLICATIVE;
+    return DartPackage.eINSTANCE.getMultiplicative();
   }
 
   /**

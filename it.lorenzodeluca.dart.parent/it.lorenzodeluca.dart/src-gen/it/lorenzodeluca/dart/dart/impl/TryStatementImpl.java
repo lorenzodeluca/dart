@@ -89,7 +89,7 @@ public class TryStatementImpl extends NonLabelledStatementImpl implements TrySta
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.TRY_STATEMENT;
+    return DartPackage.eINSTANCE.getTryStatement();
   }
 
   /**

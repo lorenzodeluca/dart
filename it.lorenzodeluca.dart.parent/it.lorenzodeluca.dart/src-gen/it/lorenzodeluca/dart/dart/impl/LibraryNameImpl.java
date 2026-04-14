@@ -87,7 +87,7 @@ public class LibraryNameImpl extends MinimalEObjectImpl.Container implements Lib
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.LIBRARY_NAME;
+    return DartPackage.eINSTANCE.getLibraryName();
   }
 
   /**

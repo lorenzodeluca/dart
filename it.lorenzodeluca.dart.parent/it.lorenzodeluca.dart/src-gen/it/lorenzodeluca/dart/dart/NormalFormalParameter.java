@@ -17,8 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.NormalFormalParameter#getMetadata <em>Metadata</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.NormalFormalParameter#isIsCovariant <em>Is Covariant</em>}</li>
- *   <li>{@link it.lorenzodeluca.dart.dart.NormalFormalParameter#getType <em>Type</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.NormalFormalParameter#getName <em>Name</em>}</li>
  * </ul>
  *
@@ -39,50 +37,6 @@ public interface NormalFormalParameter extends EObject
    * @generated
    */
   EList<Metadata> getMetadata();
-
-  /**
-   * Returns the value of the '<em><b>Is Covariant</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Covariant</em>' attribute.
-   * @see #setIsCovariant(boolean)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getNormalFormalParameter_IsCovariant()
-   * @model
-   * @generated
-   */
-  boolean isIsCovariant();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.NormalFormalParameter#isIsCovariant <em>Is Covariant</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Covariant</em>' attribute.
-   * @see #isIsCovariant()
-   * @generated
-   */
-  void setIsCovariant(boolean value);
-
-  /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(Type)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getNormalFormalParameter_Type()
-   * @model containment="true"
-   * @generated
-   */
-  Type getType();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.NormalFormalParameter#getType <em>Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
-   * @see #getType()
-   * @generated
-   */
-  void setType(Type value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

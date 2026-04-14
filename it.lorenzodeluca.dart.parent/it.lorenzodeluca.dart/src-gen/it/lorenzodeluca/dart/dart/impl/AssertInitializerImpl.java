@@ -69,7 +69,7 @@ public class AssertInitializerImpl extends InitializerEntryImpl implements Asser
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.ASSERT_INITIALIZER;
+    return DartPackage.eINSTANCE.getAssertInitializer();
   }
 
   /**

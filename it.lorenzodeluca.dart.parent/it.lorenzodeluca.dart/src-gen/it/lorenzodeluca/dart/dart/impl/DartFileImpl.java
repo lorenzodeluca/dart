@@ -64,7 +64,7 @@ public class DartFileImpl extends MinimalEObjectImpl.Container implements DartFi
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.DART_FILE;
+    return DartPackage.eINSTANCE.getDartFile();
   }
 
   /**

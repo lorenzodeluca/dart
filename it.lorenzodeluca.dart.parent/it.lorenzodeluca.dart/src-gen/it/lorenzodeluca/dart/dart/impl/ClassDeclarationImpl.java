@@ -155,7 +155,7 @@ public class ClassDeclarationImpl extends TopLevelDeclarationImpl implements Cla
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.CLASS_DECLARATION;
+    return DartPackage.eINSTANCE.getClassDeclaration();
   }
 
   /**

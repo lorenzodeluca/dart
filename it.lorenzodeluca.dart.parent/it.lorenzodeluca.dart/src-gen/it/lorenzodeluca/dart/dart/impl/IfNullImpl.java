@@ -69,7 +69,7 @@ public class IfNullImpl extends ExpressionImpl implements IfNull
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.IF_NULL;
+    return DartPackage.eINSTANCE.getIfNull();
   }
 
   /**

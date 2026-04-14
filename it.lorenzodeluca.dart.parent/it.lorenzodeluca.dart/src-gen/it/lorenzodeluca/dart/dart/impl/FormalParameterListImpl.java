@@ -78,7 +78,7 @@ public class FormalParameterListImpl extends MinimalEObjectImpl.Container implem
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.FORMAL_PARAMETER_LIST;
+    return DartPackage.eINSTANCE.getFormalParameterList();
   }
 
   /**

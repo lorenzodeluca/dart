@@ -79,7 +79,7 @@ public class PostfixImpl extends ExpressionImpl implements Postfix
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.POSTFIX;
+    return DartPackage.eINSTANCE.getPostfix();
   }
 
   /**

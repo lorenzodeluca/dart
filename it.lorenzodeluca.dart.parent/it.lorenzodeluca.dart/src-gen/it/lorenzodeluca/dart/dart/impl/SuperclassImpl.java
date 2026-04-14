@@ -71,7 +71,7 @@ public class SuperclassImpl extends MinimalEObjectImpl.Container implements Supe
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.SUPERCLASS;
+    return DartPackage.eINSTANCE.getSuperclass();
   }
 
   /**

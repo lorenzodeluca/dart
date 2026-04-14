@@ -101,7 +101,7 @@ public class MetadataImpl extends MinimalEObjectImpl.Container implements Metada
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.METADATA;
+    return DartPackage.eINSTANCE.getMetadata();
   }
 
   /**

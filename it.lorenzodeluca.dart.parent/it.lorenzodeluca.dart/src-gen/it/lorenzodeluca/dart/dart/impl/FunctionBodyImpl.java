@@ -134,7 +134,7 @@ public class FunctionBodyImpl extends MinimalEObjectImpl.Container implements Fu
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.FUNCTION_BODY;
+    return DartPackage.eINSTANCE.getFunctionBody();
   }
 
   /**

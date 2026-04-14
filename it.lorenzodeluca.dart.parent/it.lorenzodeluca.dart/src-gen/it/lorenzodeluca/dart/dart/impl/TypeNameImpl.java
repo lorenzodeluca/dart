@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeNameImpl#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.TypeNameImpl#isIsFunction <em>Is Function</em>}</li>
  * </ul>
  *
  * @generated
@@ -49,6 +50,26 @@ public class TypeNameImpl extends MinimalEObjectImpl.Container implements TypeNa
   protected String name = NAME_EDEFAULT;
 
   /**
+   * The default value of the '{@link #isIsFunction() <em>Is Function</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsFunction()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean IS_FUNCTION_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isIsFunction() <em>Is Function</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isIsFunction()
+   * @generated
+   * @ordered
+   */
+  protected boolean isFunction = IS_FUNCTION_EDEFAULT;
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -66,7 +87,7 @@ public class TypeNameImpl extends MinimalEObjectImpl.Container implements TypeNa
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.TYPE_NAME;
+    return DartPackage.eINSTANCE.getTypeName();
   }
 
   /**
@@ -100,12 +121,39 @@ public class TypeNameImpl extends MinimalEObjectImpl.Container implements TypeNa
    * @generated
    */
   @Override
+  public boolean isIsFunction()
+  {
+    return isFunction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setIsFunction(boolean newIsFunction)
+  {
+    boolean oldIsFunction = isFunction;
+    isFunction = newIsFunction;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.TYPE_NAME__IS_FUNCTION, oldIsFunction, isFunction));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
       case DartPackage.TYPE_NAME__NAME:
         return getName();
+      case DartPackage.TYPE_NAME__IS_FUNCTION:
+        return isIsFunction();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -122,6 +170,9 @@ public class TypeNameImpl extends MinimalEObjectImpl.Container implements TypeNa
     {
       case DartPackage.TYPE_NAME__NAME:
         setName((String)newValue);
+        return;
+      case DartPackage.TYPE_NAME__IS_FUNCTION:
+        setIsFunction((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -140,6 +191,9 @@ public class TypeNameImpl extends MinimalEObjectImpl.Container implements TypeNa
       case DartPackage.TYPE_NAME__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case DartPackage.TYPE_NAME__IS_FUNCTION:
+        setIsFunction(IS_FUNCTION_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -156,6 +210,8 @@ public class TypeNameImpl extends MinimalEObjectImpl.Container implements TypeNa
     {
       case DartPackage.TYPE_NAME__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DartPackage.TYPE_NAME__IS_FUNCTION:
+        return isFunction != IS_FUNCTION_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -173,6 +229,8 @@ public class TypeNameImpl extends MinimalEObjectImpl.Container implements TypeNa
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", isFunction: ");
+    result.append(isFunction);
     result.append(')');
     return result.toString();
   }

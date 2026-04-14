@@ -65,7 +65,7 @@ public class BreakStatementImpl extends NonLabelledStatementImpl implements Brea
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.BREAK_STATEMENT;
+    return DartPackage.eINSTANCE.getBreakStatement();
   }
 
   /**

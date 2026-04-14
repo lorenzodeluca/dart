@@ -62,7 +62,7 @@ public class NamedFormalParametersImpl extends OptionalOrNamedFormalParametersIm
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.NAMED_FORMAL_PARAMETERS;
+    return DartPackage.eINSTANCE.getNamedFormalParameters();
   }
 
   /**

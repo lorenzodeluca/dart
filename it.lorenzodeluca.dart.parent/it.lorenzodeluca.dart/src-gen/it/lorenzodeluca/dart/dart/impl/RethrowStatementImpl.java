@@ -35,7 +35,7 @@ public class RethrowStatementImpl extends NonLabelledStatementImpl implements Re
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.RETHROW_STATEMENT;
+    return DartPackage.eINSTANCE.getRethrowStatement();
   }
 
 } //RethrowStatementImpl

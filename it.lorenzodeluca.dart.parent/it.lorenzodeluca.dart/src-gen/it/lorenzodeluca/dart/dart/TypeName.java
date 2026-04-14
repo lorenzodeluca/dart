@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.TypeName#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.TypeName#isIsFunction <em>Is Function</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeName()
@@ -44,5 +45,27 @@ public interface TypeName extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Is Function</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Is Function</em>' attribute.
+   * @see #setIsFunction(boolean)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getTypeName_IsFunction()
+   * @model
+   * @generated
+   */
+  boolean isIsFunction();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.TypeName#isIsFunction <em>Is Function</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Is Function</em>' attribute.
+   * @see #isIsFunction()
+   * @generated
+   */
+  void setIsFunction(boolean value);
 
 } // TypeName

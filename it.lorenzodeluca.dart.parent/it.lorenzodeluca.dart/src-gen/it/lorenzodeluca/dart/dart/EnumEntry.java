@@ -18,6 +18,9 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.EnumEntry#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.EnumEntry#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.EnumEntry#getTypeArguments <em>Type Arguments</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.EnumEntry#getConstructorId <em>Constructor Id</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.EnumEntry#getArgs <em>Args</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getEnumEntry()
@@ -59,5 +62,71 @@ public interface EnumEntry extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Type Arguments</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type Arguments</em>' containment reference.
+   * @see #setTypeArguments(TypeArguments)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getEnumEntry_TypeArguments()
+   * @model containment="true"
+   * @generated
+   */
+  TypeArguments getTypeArguments();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.EnumEntry#getTypeArguments <em>Type Arguments</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type Arguments</em>' containment reference.
+   * @see #getTypeArguments()
+   * @generated
+   */
+  void setTypeArguments(TypeArguments value);
+
+  /**
+   * Returns the value of the '<em><b>Constructor Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Constructor Id</em>' attribute.
+   * @see #setConstructorId(String)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getEnumEntry_ConstructorId()
+   * @model
+   * @generated
+   */
+  String getConstructorId();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.EnumEntry#getConstructorId <em>Constructor Id</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Constructor Id</em>' attribute.
+   * @see #getConstructorId()
+   * @generated
+   */
+  void setConstructorId(String value);
+
+  /**
+   * Returns the value of the '<em><b>Args</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Args</em>' containment reference.
+   * @see #setArgs(Arguments)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getEnumEntry_Args()
+   * @model containment="true"
+   * @generated
+   */
+  Arguments getArgs();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.EnumEntry#getArgs <em>Args</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Args</em>' containment reference.
+   * @see #getArgs()
+   * @generated
+   */
+  void setArgs(Arguments value);
 
 } // EnumEntry

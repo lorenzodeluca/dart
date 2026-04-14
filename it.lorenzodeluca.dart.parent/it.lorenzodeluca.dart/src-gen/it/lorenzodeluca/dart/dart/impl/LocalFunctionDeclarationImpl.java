@@ -122,7 +122,7 @@ public class LocalFunctionDeclarationImpl extends NonLabelledStatementImpl imple
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.LOCAL_FUNCTION_DECLARATION;
+    return DartPackage.eINSTANCE.getLocalFunctionDeclaration();
   }
 
   /**

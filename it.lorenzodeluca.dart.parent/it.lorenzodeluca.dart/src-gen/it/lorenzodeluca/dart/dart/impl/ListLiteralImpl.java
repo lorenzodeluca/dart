@@ -98,7 +98,7 @@ public class ListLiteralImpl extends ExpressionImpl implements ListLiteral
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.LIST_LITERAL;
+    return DartPackage.eINSTANCE.getListLiteral();
   }
 
   /**

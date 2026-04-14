@@ -90,7 +90,7 @@ public class AdditiveImpl extends ExpressionImpl implements Additive
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.ADDITIVE;
+    return DartPackage.eINSTANCE.getAdditive();
   }
 
   /**

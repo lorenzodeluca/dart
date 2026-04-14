@@ -70,7 +70,7 @@ public class WhileStatementImpl extends NonLabelledStatementImpl implements Whil
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.WHILE_STATEMENT;
+    return DartPackage.eINSTANCE.getWhileStatement();
   }
 
   /**

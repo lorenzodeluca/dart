@@ -143,7 +143,7 @@ public class FunctionDeclarationImpl extends TopLevelDeclarationImpl implements 
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.FUNCTION_DECLARATION;
+    return DartPackage.eINSTANCE.getFunctionDeclaration();
   }
 
   /**

@@ -74,6 +74,10 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.FORMAL_PARAMETER_PART: return createFormalParameterPart();
       case DartPackage.FORMAL_PARAMETER_LIST: return createFormalParameterList();
       case DartPackage.NORMAL_FORMAL_PARAMETER: return createNormalFormalParameter();
+      case DartPackage.FIELD_FORMAL_PARAMETER: return createFieldFormalParameter();
+      case DartPackage.FUNCTION_FORMAL_PARAMETER: return createFunctionFormalParameter();
+      case DartPackage.SIMPLE_FORMAL_PARAMETER: return createSimpleFormalParameter();
+      case DartPackage.FINAL_CONST_VAR_OR_TYPE: return createFinalConstVarOrType();
       case DartPackage.OPTIONAL_OR_NAMED_FORMAL_PARAMETERS: return createOptionalOrNamedFormalParameters();
       case DartPackage.OPTIONAL_POSITIONAL_FORMAL_PARAMETERS: return createOptionalPositionalFormalParameters();
       case DartPackage.NAMED_FORMAL_PARAMETERS: return createNamedFormalParameters();
@@ -87,6 +91,8 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.MEMBER_DECLARATION: return createMemberDeclaration();
       case DartPackage.METHOD_SIGNATURE: return createMethodSignature();
       case DartPackage.DECLARATION: return createDeclaration();
+      case DartPackage.FUNCTION_SIGNATURE_IN_DECL: return createFunctionSignatureInDecl();
+      case DartPackage.STATIC_FINAL_DECLARATION: return createStaticFinalDeclaration();
       case DartPackage.CONSTRUCTOR_SIGNATURE: return createConstructorSignature();
       case DartPackage.CONSTRUCTOR_NAME: return createConstructorName();
       case DartPackage.INITIALIZERS: return createInitializers();
@@ -106,7 +112,13 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.TYPE_PARAMETER: return createTypeParameter();
       case DartPackage.METADATA: return createMetadata();
       case DartPackage.ARGUMENTS: return createArguments();
+      case DartPackage.ARGUMENT_LIST: return createArgumentList();
+      case DartPackage.NAMED_ARGUMENT: return createNamedArgument();
       case DartPackage.EXPRESSION: return createExpression();
+      case DartPackage.THROW_EXPRESSION: return createThrowExpression();
+      case DartPackage.CASCADE_SECTION: return createCascadeSection();
+      case DartPackage.CASCADE_ASSIGNMENT: return createCascadeAssignment();
+      case DartPackage.THROW_EXPRESSION_WITHOUT_CASCADE: return createThrowExpressionWithoutCascade();
       case DartPackage.MAP_OR_SET_ELEMENT: return createMapOrSetElement();
       case DartPackage.STATEMENT: return createStatement();
       case DartPackage.LABEL: return createLabel();
@@ -116,6 +128,10 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.LOCAL_FUNCTION_DECLARATION: return createLocalFunctionDeclaration();
       case DartPackage.IF_STATEMENT: return createIfStatement();
       case DartPackage.FOR_STATEMENT: return createForStatement();
+      case DartPackage.FOR_LOOP_PARTS: return createForLoopParts();
+      case DartPackage.FOR_IN_LOOP_PARTS: return createForInLoopParts();
+      case DartPackage.DECLARED_IDENTIFIER: return createDeclaredIdentifier();
+      case DartPackage.FOR_INITIALIZER_STATEMENT: return createForInitializerStatement();
       case DartPackage.WHILE_STATEMENT: return createWhileStatement();
       case DartPackage.DO_STATEMENT: return createDoStatement();
       case DartPackage.SWITCH_STATEMENT: return createSwitchStatement();
@@ -148,8 +164,20 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.EXTERNAL_SETTER: return createExternalSetter();
       case DartPackage.TYPE_ALIAS: return createTypeAlias();
       case DartPackage.TYPE: return createType();
+      case DartPackage.FUNCTION_TYPE: return createFunctionType();
+      case DartPackage.FUNCTION_TYPE_TAIL: return createFunctionTypeTail();
+      case DartPackage.TYPE_NOT_FUNCTION: return createTypeNotFunction();
       case DartPackage.TYPE_NAME: return createTypeName();
+      case DartPackage.PARAMETER_TYPE_LIST: return createParameterTypeList();
+      case DartPackage.OPTIONAL_PARAMETER_TYPES: return createOptionalParameterTypes();
+      case DartPackage.OPTIONAL_POSITIONAL_PARAMETER_TYPES: return createOptionalPositionalParameterTypes();
+      case DartPackage.NAMED_PARAMETER_TYPES: return createNamedParameterTypes();
+      case DartPackage.NORMAL_PARAMETER_TYPE: return createNormalParameterType();
+      case DartPackage.NAMED_PARAMETER_TYPE: return createNamedParameterType();
       case DartPackage.TYPE_ARGUMENTS: return createTypeArguments();
+      case DartPackage.ARGUMENT_LIST_NAMED_ONLY: return createArgumentListNamedOnly();
+      case DartPackage.ARGUMENT_LIST_POSITIONAL_THEN_NAMED: return createArgumentListPositionalThenNamed();
+      case DartPackage.CASCADE: return createCascade();
       case DartPackage.ASSIGNMENT: return createAssignment();
       case DartPackage.CONDITIONAL: return createConditional();
       case DartPackage.IF_NULL: return createIfNull();
@@ -167,8 +195,13 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.PREFIX_EXPRESSION: return createPrefixExpression();
       case DartPackage.POSTFIX: return createPostfix();
       case DartPackage.METHOD_INVOCATION: return createMethodInvocation();
+      case DartPackage.NULL_AWARE_METHOD_INVOCATION: return createNullAwareMethodInvocation();
       case DartPackage.FUNCTION_CALL: return createFunctionCall();
       case DartPackage.INDEX_EXPRESSION: return createIndexExpression();
+      case DartPackage.NULL_AWARE_INDEX: return createNullAwareIndex();
+      case DartPackage.NULL_ASSERT: return createNullAssert();
+      case DartPackage.PROPERTY_ACCESS: return createPropertyAccess();
+      case DartPackage.NULL_AWARE_PROPERTY_ACCESS: return createNullAwarePropertyAccess();
       case DartPackage.THIS_EXPRESSION: return createThisExpression();
       case DartPackage.SUPER_EXPRESSION: return createSuperExpression();
       case DartPackage.NULL_LITERAL: return createNullLiteral();
@@ -292,6 +325,54 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
   {
     NormalFormalParameterImpl normalFormalParameter = new NormalFormalParameterImpl();
     return normalFormalParameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FieldFormalParameter createFieldFormalParameter()
+  {
+    FieldFormalParameterImpl fieldFormalParameter = new FieldFormalParameterImpl();
+    return fieldFormalParameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FunctionFormalParameter createFunctionFormalParameter()
+  {
+    FunctionFormalParameterImpl functionFormalParameter = new FunctionFormalParameterImpl();
+    return functionFormalParameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SimpleFormalParameter createSimpleFormalParameter()
+  {
+    SimpleFormalParameterImpl simpleFormalParameter = new SimpleFormalParameterImpl();
+    return simpleFormalParameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FinalConstVarOrType createFinalConstVarOrType()
+  {
+    FinalConstVarOrTypeImpl finalConstVarOrType = new FinalConstVarOrTypeImpl();
+    return finalConstVarOrType;
   }
 
   /**
@@ -448,6 +529,30 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
   {
     DeclarationImpl declaration = new DeclarationImpl();
     return declaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FunctionSignatureInDecl createFunctionSignatureInDecl()
+  {
+    FunctionSignatureInDeclImpl functionSignatureInDecl = new FunctionSignatureInDeclImpl();
+    return functionSignatureInDecl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StaticFinalDeclaration createStaticFinalDeclaration()
+  {
+    StaticFinalDeclarationImpl staticFinalDeclaration = new StaticFinalDeclarationImpl();
+    return staticFinalDeclaration;
   }
 
   /**
@@ -684,10 +789,82 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
+  public ArgumentList createArgumentList()
+  {
+    ArgumentListImpl argumentList = new ArgumentListImpl();
+    return argumentList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NamedArgument createNamedArgument()
+  {
+    NamedArgumentImpl namedArgument = new NamedArgumentImpl();
+    return namedArgument;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Expression createExpression()
   {
     ExpressionImpl expression = new ExpressionImpl();
     return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ThrowExpression createThrowExpression()
+  {
+    ThrowExpressionImpl throwExpression = new ThrowExpressionImpl();
+    return throwExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CascadeSection createCascadeSection()
+  {
+    CascadeSectionImpl cascadeSection = new CascadeSectionImpl();
+    return cascadeSection;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public CascadeAssignment createCascadeAssignment()
+  {
+    CascadeAssignmentImpl cascadeAssignment = new CascadeAssignmentImpl();
+    return cascadeAssignment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ThrowExpressionWithoutCascade createThrowExpressionWithoutCascade()
+  {
+    ThrowExpressionWithoutCascadeImpl throwExpressionWithoutCascade = new ThrowExpressionWithoutCascadeImpl();
+    return throwExpressionWithoutCascade;
   }
 
   /**
@@ -796,6 +973,54 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
   {
     ForStatementImpl forStatement = new ForStatementImpl();
     return forStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ForLoopParts createForLoopParts()
+  {
+    ForLoopPartsImpl forLoopParts = new ForLoopPartsImpl();
+    return forLoopParts;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ForInLoopParts createForInLoopParts()
+  {
+    ForInLoopPartsImpl forInLoopParts = new ForInLoopPartsImpl();
+    return forInLoopParts;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DeclaredIdentifier createDeclaredIdentifier()
+  {
+    DeclaredIdentifierImpl declaredIdentifier = new DeclaredIdentifierImpl();
+    return declaredIdentifier;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ForInitializerStatement createForInitializerStatement()
+  {
+    ForInitializerStatementImpl forInitializerStatement = new ForInitializerStatementImpl();
+    return forInitializerStatement;
   }
 
   /**
@@ -1188,6 +1413,42 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
+  public FunctionType createFunctionType()
+  {
+    FunctionTypeImpl functionType = new FunctionTypeImpl();
+    return functionType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FunctionTypeTail createFunctionTypeTail()
+  {
+    FunctionTypeTailImpl functionTypeTail = new FunctionTypeTailImpl();
+    return functionTypeTail;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public TypeNotFunction createTypeNotFunction()
+  {
+    TypeNotFunctionImpl typeNotFunction = new TypeNotFunctionImpl();
+    return typeNotFunction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public TypeName createTypeName()
   {
     TypeNameImpl typeName = new TypeNameImpl();
@@ -1200,10 +1461,118 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
+  public ParameterTypeList createParameterTypeList()
+  {
+    ParameterTypeListImpl parameterTypeList = new ParameterTypeListImpl();
+    return parameterTypeList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public OptionalParameterTypes createOptionalParameterTypes()
+  {
+    OptionalParameterTypesImpl optionalParameterTypes = new OptionalParameterTypesImpl();
+    return optionalParameterTypes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public OptionalPositionalParameterTypes createOptionalPositionalParameterTypes()
+  {
+    OptionalPositionalParameterTypesImpl optionalPositionalParameterTypes = new OptionalPositionalParameterTypesImpl();
+    return optionalPositionalParameterTypes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NamedParameterTypes createNamedParameterTypes()
+  {
+    NamedParameterTypesImpl namedParameterTypes = new NamedParameterTypesImpl();
+    return namedParameterTypes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NormalParameterType createNormalParameterType()
+  {
+    NormalParameterTypeImpl normalParameterType = new NormalParameterTypeImpl();
+    return normalParameterType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NamedParameterType createNamedParameterType()
+  {
+    NamedParameterTypeImpl namedParameterType = new NamedParameterTypeImpl();
+    return namedParameterType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public TypeArguments createTypeArguments()
   {
     TypeArgumentsImpl typeArguments = new TypeArgumentsImpl();
     return typeArguments;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ArgumentListNamedOnly createArgumentListNamedOnly()
+  {
+    ArgumentListNamedOnlyImpl argumentListNamedOnly = new ArgumentListNamedOnlyImpl();
+    return argumentListNamedOnly;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ArgumentListPositionalThenNamed createArgumentListPositionalThenNamed()
+  {
+    ArgumentListPositionalThenNamedImpl argumentListPositionalThenNamed = new ArgumentListPositionalThenNamedImpl();
+    return argumentListPositionalThenNamed;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Cascade createCascade()
+  {
+    CascadeImpl cascade = new CascadeImpl();
+    return cascade;
   }
 
   /**
@@ -1416,6 +1785,18 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
+  public NullAwareMethodInvocation createNullAwareMethodInvocation()
+  {
+    NullAwareMethodInvocationImpl nullAwareMethodInvocation = new NullAwareMethodInvocationImpl();
+    return nullAwareMethodInvocation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public FunctionCall createFunctionCall()
   {
     FunctionCallImpl functionCall = new FunctionCallImpl();
@@ -1432,6 +1813,54 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
   {
     IndexExpressionImpl indexExpression = new IndexExpressionImpl();
     return indexExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NullAwareIndex createNullAwareIndex()
+  {
+    NullAwareIndexImpl nullAwareIndex = new NullAwareIndexImpl();
+    return nullAwareIndex;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NullAssert createNullAssert()
+  {
+    NullAssertImpl nullAssert = new NullAssertImpl();
+    return nullAssert;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public PropertyAccess createPropertyAccess()
+  {
+    PropertyAccessImpl propertyAccess = new PropertyAccessImpl();
+    return propertyAccess;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NullAwarePropertyAccess createNullAwarePropertyAccess()
+  {
+    NullAwarePropertyAccessImpl nullAwarePropertyAccess = new NullAwarePropertyAccessImpl();
+    return nullAwarePropertyAccess;
   }
 
   /**

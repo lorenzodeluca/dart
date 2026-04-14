@@ -37,7 +37,7 @@ public class OptionalOrNamedFormalParametersImpl extends MinimalEObjectImpl.Cont
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.OPTIONAL_OR_NAMED_FORMAL_PARAMETERS;
+    return DartPackage.eINSTANCE.getOptionalOrNamedFormalParameters();
   }
 
 } //OptionalOrNamedFormalParametersImpl

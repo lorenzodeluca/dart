@@ -81,7 +81,7 @@ public class IfStatementImpl extends NonLabelledStatementImpl implements IfState
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.IF_STATEMENT;
+    return DartPackage.eINSTANCE.getIfStatement();
   }
 
   /**

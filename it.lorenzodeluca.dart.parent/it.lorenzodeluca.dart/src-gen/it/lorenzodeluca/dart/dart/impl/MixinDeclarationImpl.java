@@ -134,7 +134,7 @@ public class MixinDeclarationImpl extends TopLevelDeclarationImpl implements Mix
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.MIXIN_DECLARATION;
+    return DartPackage.eINSTANCE.getMixinDeclaration();
   }
 
   /**

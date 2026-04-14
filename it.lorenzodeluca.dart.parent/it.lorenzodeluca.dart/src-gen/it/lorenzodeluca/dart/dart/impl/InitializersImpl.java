@@ -64,7 +64,7 @@ public class InitializersImpl extends MinimalEObjectImpl.Container implements In
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.INITIALIZERS;
+    return DartPackage.eINSTANCE.getInitializers();
   }
 
   /**

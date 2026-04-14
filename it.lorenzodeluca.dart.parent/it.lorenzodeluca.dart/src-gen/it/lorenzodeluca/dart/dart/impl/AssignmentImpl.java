@@ -90,7 +90,7 @@ public class AssignmentImpl extends ExpressionImpl implements Assignment
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.ASSIGNMENT;
+    return DartPackage.eINSTANCE.getAssignment();
   }
 
   /**

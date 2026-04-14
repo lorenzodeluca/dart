@@ -65,7 +65,7 @@ public class LibraryExportImpl extends ImportOrExportImpl implements LibraryExpo
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.LIBRARY_EXPORT;
+    return DartPackage.eINSTANCE.getLibraryExport();
   }
 
   /**

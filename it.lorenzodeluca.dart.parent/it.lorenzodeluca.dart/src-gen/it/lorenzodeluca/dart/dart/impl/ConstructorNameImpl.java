@@ -87,7 +87,7 @@ public class ConstructorNameImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.CONSTRUCTOR_NAME;
+    return DartPackage.eINSTANCE.getConstructorName();
   }
 
   /**

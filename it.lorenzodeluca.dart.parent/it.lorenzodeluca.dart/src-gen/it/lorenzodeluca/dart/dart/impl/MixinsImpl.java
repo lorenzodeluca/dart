@@ -64,7 +64,7 @@ public class MixinsImpl extends MinimalEObjectImpl.Container implements Mixins
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.MIXINS;
+    return DartPackage.eINSTANCE.getMixins();
   }
 
   /**

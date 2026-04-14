@@ -107,7 +107,7 @@ public class LibraryImportImpl extends ImportOrExportImpl implements LibraryImpo
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.LIBRARY_IMPORT;
+    return DartPackage.eINSTANCE.getLibraryImport();
   }
 
   /**

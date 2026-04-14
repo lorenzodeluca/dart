@@ -59,7 +59,7 @@ public class CombinatorImpl extends MinimalEObjectImpl.Container implements Comb
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.COMBINATOR;
+    return DartPackage.eINSTANCE.getCombinator();
   }
 
   /**

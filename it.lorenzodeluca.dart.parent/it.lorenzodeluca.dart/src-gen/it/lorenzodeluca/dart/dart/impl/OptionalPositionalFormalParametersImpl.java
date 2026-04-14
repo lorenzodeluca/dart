@@ -62,7 +62,7 @@ public class OptionalPositionalFormalParametersImpl extends OptionalOrNamedForma
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.OPTIONAL_POSITIONAL_FORMAL_PARAMETERS;
+    return DartPackage.eINSTANCE.getOptionalPositionalFormalParameters();
   }
 
   /**

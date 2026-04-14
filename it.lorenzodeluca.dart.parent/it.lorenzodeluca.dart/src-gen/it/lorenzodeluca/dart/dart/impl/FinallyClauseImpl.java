@@ -59,7 +59,7 @@ public class FinallyClauseImpl extends MinimalEObjectImpl.Container implements F
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.FINALLY_CLAUSE;
+    return DartPackage.eINSTANCE.getFinallyClause();
   }
 
   /**

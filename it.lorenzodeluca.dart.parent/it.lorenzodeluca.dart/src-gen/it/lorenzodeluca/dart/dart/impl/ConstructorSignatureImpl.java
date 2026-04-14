@@ -71,7 +71,7 @@ public class ConstructorSignatureImpl extends MinimalEObjectImpl.Container imple
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.CONSTRUCTOR_SIGNATURE;
+    return DartPackage.eINSTANCE.getConstructorSignature();
   }
 
   /**

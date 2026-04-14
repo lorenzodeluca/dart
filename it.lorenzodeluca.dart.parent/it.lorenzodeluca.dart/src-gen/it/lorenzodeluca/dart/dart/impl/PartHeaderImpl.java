@@ -108,7 +108,7 @@ public class PartHeaderImpl extends MinimalEObjectImpl.Container implements Part
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.PART_HEADER;
+    return DartPackage.eINSTANCE.getPartHeader();
   }
 
   /**

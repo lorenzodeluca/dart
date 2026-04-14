@@ -122,7 +122,7 @@ public class ExtensionDeclarationImpl extends TopLevelDeclarationImpl implements
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.EXTENSION_DECLARATION;
+    return DartPackage.eINSTANCE.getExtensionDeclaration();
   }
 
   /**

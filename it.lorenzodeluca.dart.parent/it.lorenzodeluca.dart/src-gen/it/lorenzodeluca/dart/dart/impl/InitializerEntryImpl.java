@@ -37,7 +37,7 @@ public class InitializerEntryImpl extends MinimalEObjectImpl.Container implement
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.INITIALIZER_ENTRY;
+    return DartPackage.eINSTANCE.getInitializerEntry();
   }
 
 } //InitializerEntryImpl

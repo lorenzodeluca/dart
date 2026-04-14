@@ -78,7 +78,7 @@ public class StatementImpl extends MinimalEObjectImpl.Container implements State
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.STATEMENT;
+    return DartPackage.eINSTANCE.getStatement();
   }
 
   /**

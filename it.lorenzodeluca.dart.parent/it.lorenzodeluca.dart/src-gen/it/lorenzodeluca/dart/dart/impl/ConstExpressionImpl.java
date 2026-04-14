@@ -91,7 +91,7 @@ public class ConstExpressionImpl extends ExpressionImpl implements ConstExpressi
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.CONST_EXPRESSION;
+    return DartPackage.eINSTANCE.getConstExpression();
   }
 
   /**

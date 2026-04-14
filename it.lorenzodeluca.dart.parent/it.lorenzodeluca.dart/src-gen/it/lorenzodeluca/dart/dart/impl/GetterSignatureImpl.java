@@ -80,7 +80,7 @@ public class GetterSignatureImpl extends MinimalEObjectImpl.Container implements
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.GETTER_SIGNATURE;
+    return DartPackage.eINSTANCE.getGetterSignature();
   }
 
   /**

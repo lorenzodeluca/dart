@@ -58,7 +58,7 @@ public class ExpressionStatementImpl extends NonLabelledStatementImpl implements
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.EXPRESSION_STATEMENT;
+    return DartPackage.eINSTANCE.getExpressionStatement();
   }
 
   /**

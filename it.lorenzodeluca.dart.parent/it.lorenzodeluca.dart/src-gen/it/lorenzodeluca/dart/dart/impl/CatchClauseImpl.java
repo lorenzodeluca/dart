@@ -113,7 +113,7 @@ public class CatchClauseImpl extends MinimalEObjectImpl.Container implements Cat
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.CATCH_CLAUSE;
+    return DartPackage.eINSTANCE.getCatchClause();
   }
 
   /**

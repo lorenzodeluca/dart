@@ -64,7 +64,7 @@ public class TypeArgumentsImpl extends MinimalEObjectImpl.Container implements T
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.TYPE_ARGUMENTS;
+    return DartPackage.eINSTANCE.getTypeArguments();
   }
 
   /**

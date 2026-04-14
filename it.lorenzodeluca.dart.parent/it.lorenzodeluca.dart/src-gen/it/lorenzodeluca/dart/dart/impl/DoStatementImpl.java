@@ -70,7 +70,7 @@ public class DoStatementImpl extends NonLabelledStatementImpl implements DoState
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.DO_STATEMENT;
+    return DartPackage.eINSTANCE.getDoStatement();
   }
 
   /**

@@ -98,7 +98,7 @@ public class SetOrMapLiteralImpl extends ExpressionImpl implements SetOrMapLiter
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.SET_OR_MAP_LITERAL;
+    return DartPackage.eINSTANCE.getSetOrMapLiteral();
   }
 
   /**

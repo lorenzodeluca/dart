@@ -3,23 +3,18 @@
  */
 package it.lorenzodeluca.dart.dart.impl;
 
+import it.lorenzodeluca.dart.dart.ArgumentList;
 import it.lorenzodeluca.dart.dart.Arguments;
 import it.lorenzodeluca.dart.dart.DartPackage;
-import it.lorenzodeluca.dart.dart.Expression;
 
-import java.util.Collection;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +24,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.ArgumentsImpl#getArguments <em>Arguments</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.ArgumentsImpl#getArgumentList <em>Argument List</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,14 +32,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ArgumentsImpl extends MinimalEObjectImpl.Container implements Arguments
 {
   /**
-   * The cached value of the '{@link #getArguments() <em>Arguments</em>}' containment reference list.
+   * The cached value of the '{@link #getArgumentList() <em>Argument List</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getArguments()
+   * @see #getArgumentList()
    * @generated
    * @ordered
    */
-  protected EList<Expression> arguments;
+  protected ArgumentList argumentList;
 
   /**
    * <!-- begin-user-doc -->
@@ -64,7 +59,7 @@ public class ArgumentsImpl extends MinimalEObjectImpl.Container implements Argum
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.ARGUMENTS;
+    return DartPackage.eINSTANCE.getArguments();
   }
 
   /**
@@ -73,13 +68,48 @@ public class ArgumentsImpl extends MinimalEObjectImpl.Container implements Argum
    * @generated
    */
   @Override
-  public EList<Expression> getArguments()
+  public ArgumentList getArgumentList()
   {
-    if (arguments == null)
+    return argumentList;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetArgumentList(ArgumentList newArgumentList, NotificationChain msgs)
+  {
+    ArgumentList oldArgumentList = argumentList;
+    argumentList = newArgumentList;
+    if (eNotificationRequired())
     {
-      arguments = new EObjectContainmentEList<Expression>(Expression.class, this, DartPackage.ARGUMENTS__ARGUMENTS);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.ARGUMENTS__ARGUMENT_LIST, oldArgumentList, newArgumentList);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return arguments;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setArgumentList(ArgumentList newArgumentList)
+  {
+    if (newArgumentList != argumentList)
+    {
+      NotificationChain msgs = null;
+      if (argumentList != null)
+        msgs = ((InternalEObject)argumentList).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.ARGUMENTS__ARGUMENT_LIST, null, msgs);
+      if (newArgumentList != null)
+        msgs = ((InternalEObject)newArgumentList).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.ARGUMENTS__ARGUMENT_LIST, null, msgs);
+      msgs = basicSetArgumentList(newArgumentList, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.ARGUMENTS__ARGUMENT_LIST, newArgumentList, newArgumentList));
   }
 
   /**
@@ -92,8 +122,8 @@ public class ArgumentsImpl extends MinimalEObjectImpl.Container implements Argum
   {
     switch (featureID)
     {
-      case DartPackage.ARGUMENTS__ARGUMENTS:
-        return ((InternalEList<?>)getArguments()).basicRemove(otherEnd, msgs);
+      case DartPackage.ARGUMENTS__ARGUMENT_LIST:
+        return basicSetArgumentList(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -108,8 +138,8 @@ public class ArgumentsImpl extends MinimalEObjectImpl.Container implements Argum
   {
     switch (featureID)
     {
-      case DartPackage.ARGUMENTS__ARGUMENTS:
-        return getArguments();
+      case DartPackage.ARGUMENTS__ARGUMENT_LIST:
+        return getArgumentList();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,15 +149,13 @@ public class ArgumentsImpl extends MinimalEObjectImpl.Container implements Argum
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case DartPackage.ARGUMENTS__ARGUMENTS:
-        getArguments().clear();
-        getArguments().addAll((Collection<? extends Expression>)newValue);
+      case DartPackage.ARGUMENTS__ARGUMENT_LIST:
+        setArgumentList((ArgumentList)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -143,8 +171,8 @@ public class ArgumentsImpl extends MinimalEObjectImpl.Container implements Argum
   {
     switch (featureID)
     {
-      case DartPackage.ARGUMENTS__ARGUMENTS:
-        getArguments().clear();
+      case DartPackage.ARGUMENTS__ARGUMENT_LIST:
+        setArgumentList((ArgumentList)null);
         return;
     }
     super.eUnset(featureID);
@@ -160,8 +188,8 @@ public class ArgumentsImpl extends MinimalEObjectImpl.Container implements Argum
   {
     switch (featureID)
     {
-      case DartPackage.ARGUMENTS__ARGUMENTS:
-        return arguments != null && !arguments.isEmpty();
+      case DartPackage.ARGUMENTS__ARGUMENT_LIST:
+        return argumentList != null;
     }
     return super.eIsSet(featureID);
   }

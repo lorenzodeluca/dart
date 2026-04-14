@@ -115,7 +115,7 @@ public class MixinApplicationClassImpl extends TopLevelDeclarationImpl implement
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.MIXIN_APPLICATION_CLASS;
+    return DartPackage.eINSTANCE.getMixinApplicationClass();
   }
 
   /**

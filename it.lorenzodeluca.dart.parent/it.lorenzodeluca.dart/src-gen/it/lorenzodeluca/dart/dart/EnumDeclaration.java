@@ -16,7 +16,10 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.EnumDeclaration#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.EnumDeclaration#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.EnumDeclaration#getTypeParameters <em>Type Parameters</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.EnumDeclaration#getInterfaces <em>Interfaces</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.EnumDeclaration#getEntries <em>Entries</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.EnumDeclaration#getMembers <em>Members</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getEnumDeclaration()
@@ -60,6 +63,50 @@ public interface EnumDeclaration extends TopLevelDeclaration
   void setName(String value);
 
   /**
+   * Returns the value of the '<em><b>Type Parameters</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type Parameters</em>' containment reference.
+   * @see #setTypeParameters(TypeParameters)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getEnumDeclaration_TypeParameters()
+   * @model containment="true"
+   * @generated
+   */
+  TypeParameters getTypeParameters();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.EnumDeclaration#getTypeParameters <em>Type Parameters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type Parameters</em>' containment reference.
+   * @see #getTypeParameters()
+   * @generated
+   */
+  void setTypeParameters(TypeParameters value);
+
+  /**
+   * Returns the value of the '<em><b>Interfaces</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Interfaces</em>' containment reference.
+   * @see #setInterfaces(Interfaces)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getEnumDeclaration_Interfaces()
+   * @model containment="true"
+   * @generated
+   */
+  Interfaces getInterfaces();
+
+  /**
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.EnumDeclaration#getInterfaces <em>Interfaces</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Interfaces</em>' containment reference.
+   * @see #getInterfaces()
+   * @generated
+   */
+  void setInterfaces(Interfaces value);
+
+  /**
    * Returns the value of the '<em><b>Entries</b></em>' containment reference list.
    * The list contents are of type {@link it.lorenzodeluca.dart.dart.EnumEntry}.
    * <!-- begin-user-doc -->
@@ -70,5 +117,17 @@ public interface EnumDeclaration extends TopLevelDeclaration
    * @generated
    */
   EList<EnumEntry> getEntries();
+
+  /**
+   * Returns the value of the '<em><b>Members</b></em>' containment reference list.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.MemberDeclaration}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Members</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getEnumDeclaration_Members()
+   * @model containment="true"
+   * @generated
+   */
+  EList<MemberDeclaration> getMembers();
 
 } // EnumDeclaration

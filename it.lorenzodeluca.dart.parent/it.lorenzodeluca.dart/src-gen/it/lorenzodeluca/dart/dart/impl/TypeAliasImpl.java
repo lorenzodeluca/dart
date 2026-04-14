@@ -133,7 +133,7 @@ public class TypeAliasImpl extends TopLevelDeclarationImpl implements TypeAlias
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.TYPE_ALIAS;
+    return DartPackage.eINSTANCE.getTypeAlias();
   }
 
   /**

@@ -3,9 +3,11 @@
  */
 package it.lorenzodeluca.dart.dart.impl;
 
+import it.lorenzodeluca.dart.dart.Arguments;
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.EnumEntry;
 import it.lorenzodeluca.dart.dart.Metadata;
+import it.lorenzodeluca.dart.dart.TypeArguments;
 
 import java.util.Collection;
 
@@ -33,6 +35,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumEntryImpl#getMetadata <em>Metadata</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumEntryImpl#getName <em>Name</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumEntryImpl#getTypeArguments <em>Type Arguments</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumEntryImpl#getConstructorId <em>Constructor Id</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.EnumEntryImpl#getArgs <em>Args</em>}</li>
  * </ul>
  *
  * @generated
@@ -70,6 +75,46 @@ public class EnumEntryImpl extends MinimalEObjectImpl.Container implements EnumE
   protected String name = NAME_EDEFAULT;
 
   /**
+   * The cached value of the '{@link #getTypeArguments() <em>Type Arguments</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypeArguments()
+   * @generated
+   * @ordered
+   */
+  protected TypeArguments typeArguments;
+
+  /**
+   * The default value of the '{@link #getConstructorId() <em>Constructor Id</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConstructorId()
+   * @generated
+   * @ordered
+   */
+  protected static final String CONSTRUCTOR_ID_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getConstructorId() <em>Constructor Id</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConstructorId()
+   * @generated
+   * @ordered
+   */
+  protected String constructorId = CONSTRUCTOR_ID_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getArgs()
+   * @generated
+   * @ordered
+   */
+  protected Arguments args;
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -87,7 +132,7 @@ public class EnumEntryImpl extends MinimalEObjectImpl.Container implements EnumE
   @Override
   protected EClass eStaticClass()
   {
-    return DartPackage.Literals.ENUM_ENTRY;
+    return DartPackage.eINSTANCE.getEnumEntry();
   }
 
   /**
@@ -136,12 +181,141 @@ public class EnumEntryImpl extends MinimalEObjectImpl.Container implements EnumE
    * @generated
    */
   @Override
+  public TypeArguments getTypeArguments()
+  {
+    return typeArguments;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTypeArguments(TypeArguments newTypeArguments, NotificationChain msgs)
+  {
+    TypeArguments oldTypeArguments = typeArguments;
+    typeArguments = newTypeArguments;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.ENUM_ENTRY__TYPE_ARGUMENTS, oldTypeArguments, newTypeArguments);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTypeArguments(TypeArguments newTypeArguments)
+  {
+    if (newTypeArguments != typeArguments)
+    {
+      NotificationChain msgs = null;
+      if (typeArguments != null)
+        msgs = ((InternalEObject)typeArguments).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.ENUM_ENTRY__TYPE_ARGUMENTS, null, msgs);
+      if (newTypeArguments != null)
+        msgs = ((InternalEObject)newTypeArguments).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.ENUM_ENTRY__TYPE_ARGUMENTS, null, msgs);
+      msgs = basicSetTypeArguments(newTypeArguments, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.ENUM_ENTRY__TYPE_ARGUMENTS, newTypeArguments, newTypeArguments));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getConstructorId()
+  {
+    return constructorId;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setConstructorId(String newConstructorId)
+  {
+    String oldConstructorId = constructorId;
+    constructorId = newConstructorId;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.ENUM_ENTRY__CONSTRUCTOR_ID, oldConstructorId, constructorId));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Arguments getArgs()
+  {
+    return args;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetArgs(Arguments newArgs, NotificationChain msgs)
+  {
+    Arguments oldArgs = args;
+    args = newArgs;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.ENUM_ENTRY__ARGS, oldArgs, newArgs);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setArgs(Arguments newArgs)
+  {
+    if (newArgs != args)
+    {
+      NotificationChain msgs = null;
+      if (args != null)
+        msgs = ((InternalEObject)args).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.ENUM_ENTRY__ARGS, null, msgs);
+      if (newArgs != null)
+        msgs = ((InternalEObject)newArgs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.ENUM_ENTRY__ARGS, null, msgs);
+      msgs = basicSetArgs(newArgs, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.ENUM_ENTRY__ARGS, newArgs, newArgs));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
       case DartPackage.ENUM_ENTRY__METADATA:
         return ((InternalEList<?>)getMetadata()).basicRemove(otherEnd, msgs);
+      case DartPackage.ENUM_ENTRY__TYPE_ARGUMENTS:
+        return basicSetTypeArguments(null, msgs);
+      case DartPackage.ENUM_ENTRY__ARGS:
+        return basicSetArgs(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -160,6 +334,12 @@ public class EnumEntryImpl extends MinimalEObjectImpl.Container implements EnumE
         return getMetadata();
       case DartPackage.ENUM_ENTRY__NAME:
         return getName();
+      case DartPackage.ENUM_ENTRY__TYPE_ARGUMENTS:
+        return getTypeArguments();
+      case DartPackage.ENUM_ENTRY__CONSTRUCTOR_ID:
+        return getConstructorId();
+      case DartPackage.ENUM_ENTRY__ARGS:
+        return getArgs();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -182,6 +362,15 @@ public class EnumEntryImpl extends MinimalEObjectImpl.Container implements EnumE
       case DartPackage.ENUM_ENTRY__NAME:
         setName((String)newValue);
         return;
+      case DartPackage.ENUM_ENTRY__TYPE_ARGUMENTS:
+        setTypeArguments((TypeArguments)newValue);
+        return;
+      case DartPackage.ENUM_ENTRY__CONSTRUCTOR_ID:
+        setConstructorId((String)newValue);
+        return;
+      case DartPackage.ENUM_ENTRY__ARGS:
+        setArgs((Arguments)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -202,6 +391,15 @@ public class EnumEntryImpl extends MinimalEObjectImpl.Container implements EnumE
       case DartPackage.ENUM_ENTRY__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case DartPackage.ENUM_ENTRY__TYPE_ARGUMENTS:
+        setTypeArguments((TypeArguments)null);
+        return;
+      case DartPackage.ENUM_ENTRY__CONSTRUCTOR_ID:
+        setConstructorId(CONSTRUCTOR_ID_EDEFAULT);
+        return;
+      case DartPackage.ENUM_ENTRY__ARGS:
+        setArgs((Arguments)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -220,6 +418,12 @@ public class EnumEntryImpl extends MinimalEObjectImpl.Container implements EnumE
         return metadata != null && !metadata.isEmpty();
       case DartPackage.ENUM_ENTRY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DartPackage.ENUM_ENTRY__TYPE_ARGUMENTS:
+        return typeArguments != null;
+      case DartPackage.ENUM_ENTRY__CONSTRUCTOR_ID:
+        return CONSTRUCTOR_ID_EDEFAULT == null ? constructorId != null : !CONSTRUCTOR_ID_EDEFAULT.equals(constructorId);
+      case DartPackage.ENUM_ENTRY__ARGS:
+        return args != null;
     }
     return super.eIsSet(featureID);
   }
@@ -237,6 +441,8 @@ public class EnumEntryImpl extends MinimalEObjectImpl.Container implements EnumE
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", constructorId: ");
+    result.append(constructorId);
     result.append(')');
     return result.toString();
   }
