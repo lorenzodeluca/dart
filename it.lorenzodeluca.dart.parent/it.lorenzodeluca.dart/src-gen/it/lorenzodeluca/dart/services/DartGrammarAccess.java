@@ -5330,11 +5330,12 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Keyword cLeftCurlyBracketKeyword_10_3 = (Keyword)cGroup_10.eContents().get(3);
 		private final Group cGroup_10_4 = (Group)cGroup_10.eContents().get(4);
 		private final Assignment cElementsAssignment_10_4_0 = (Assignment)cGroup_10_4.eContents().get(0);
-		private final RuleCall cElementsMapOrSetElementParserRuleCall_10_4_0_0 = (RuleCall)cElementsAssignment_10_4_0.eContents().get(0);
+		private final RuleCall cElementsCollectionElementParserRuleCall_10_4_0_0 = (RuleCall)cElementsAssignment_10_4_0.eContents().get(0);
 		private final Group cGroup_10_4_1 = (Group)cGroup_10_4.eContents().get(1);
 		private final Keyword cCommaKeyword_10_4_1_0 = (Keyword)cGroup_10_4_1.eContents().get(0);
 		private final Assignment cElementsAssignment_10_4_1_1 = (Assignment)cGroup_10_4_1.eContents().get(1);
-		private final RuleCall cElementsMapOrSetElementParserRuleCall_10_4_1_1_0 = (RuleCall)cElementsAssignment_10_4_1_1.eContents().get(0);
+		private final RuleCall cElementsCollectionElementParserRuleCall_10_4_1_1_0 = (RuleCall)cElementsAssignment_10_4_1_1.eContents().get(0);
+		private final Keyword cCommaKeyword_10_4_2 = (Keyword)cGroup_10_4.eContents().get(2);
 		private final Keyword cRightCurlyBracketKeyword_10_5 = (Keyword)cGroup_10.eContents().get(5);
 		private final Group cGroup_11 = (Group)cAlternatives.eContents().get(11);
 		private final Action cParenthesizedExpressionAction_11_0 = (Action)cGroup_11.eContents().get(0);
@@ -5361,7 +5362,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//    {ConstExpression} 'const' type=Type ('.' constructor=ID)? args=Arguments |
 		//    // List literal - const? <type>? [ elements ]
 		//    {ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
-		//    {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=MapOrSetElement (',' elements+=MapOrSetElement)*)? '}' |
+		//    {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=CollectionElement (',' elements+=CollectionElement)* ','?)? '}' |
 		//    {ParenthesizedExpression} '(' expression=Expression ')';
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -5376,7 +5377,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//{ConstExpression} 'const' type=Type ('.' constructor=ID)? args=Arguments |
 		//// List literal - const? <type>? [ elements ]
 		//{ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
-		//{SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=MapOrSetElement (',' elements+=MapOrSetElement)*)? '}' |
+		//{SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=CollectionElement (',' elements+=CollectionElement)* ','?)? '}' |
 		//{ParenthesizedExpression} '(' expression=Expression ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
@@ -5574,7 +5575,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//']'
 		public Keyword getRightSquareBracketKeyword_9_5() { return cRightSquareBracketKeyword_9_5; }
 		
-		//{SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=MapOrSetElement (',' elements+=MapOrSetElement)*)? '}'
+		//{SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=CollectionElement (',' elements+=CollectionElement)* ','?)? '}'
 		public Group getGroup_10() { return cGroup_10; }
 		
 		//{SetOrMapLiteral}
@@ -5595,26 +5596,29 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_10_3() { return cLeftCurlyBracketKeyword_10_3; }
 		
-		//(elements+=MapOrSetElement (',' elements+=MapOrSetElement)*)?
+		//(elements+=CollectionElement (',' elements+=CollectionElement)* ','?)?
 		public Group getGroup_10_4() { return cGroup_10_4; }
 		
-		//elements+=MapOrSetElement
+		//elements+=CollectionElement
 		public Assignment getElementsAssignment_10_4_0() { return cElementsAssignment_10_4_0; }
 		
-		//MapOrSetElement
-		public RuleCall getElementsMapOrSetElementParserRuleCall_10_4_0_0() { return cElementsMapOrSetElementParserRuleCall_10_4_0_0; }
+		//CollectionElement
+		public RuleCall getElementsCollectionElementParserRuleCall_10_4_0_0() { return cElementsCollectionElementParserRuleCall_10_4_0_0; }
 		
-		//(',' elements+=MapOrSetElement)*
+		//(',' elements+=CollectionElement)*
 		public Group getGroup_10_4_1() { return cGroup_10_4_1; }
 		
 		//','
 		public Keyword getCommaKeyword_10_4_1_0() { return cCommaKeyword_10_4_1_0; }
 		
-		//elements+=MapOrSetElement
+		//elements+=CollectionElement
 		public Assignment getElementsAssignment_10_4_1_1() { return cElementsAssignment_10_4_1_1; }
 		
-		//MapOrSetElement
-		public RuleCall getElementsMapOrSetElementParserRuleCall_10_4_1_1_0() { return cElementsMapOrSetElementParserRuleCall_10_4_1_1_0; }
+		//CollectionElement
+		public RuleCall getElementsCollectionElementParserRuleCall_10_4_1_1_0() { return cElementsCollectionElementParserRuleCall_10_4_1_1_0; }
+		
+		//','?
+		public Keyword getCommaKeyword_10_4_2() { return cCommaKeyword_10_4_2; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_10_5() { return cRightCurlyBracketKeyword_10_5; }
@@ -5637,41 +5641,251 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//')'
 		public Keyword getRightParenthesisKeyword_11_3() { return cRightParenthesisKeyword_11_3; }
 	}
-	public class MapOrSetElementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.MapOrSetElement");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cExpressionParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cColonKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cValueExpressionParserRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
+	public class CollectionElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.CollectionElement");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cIfElementParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cForElementParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cSpreadElementParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cMapElementParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cExpressionElementParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		
 		///*
 		// * If ':' is present it is a map entry; otherwise it is a set element
 		// *
-		// * TODO: spreadElement,ifElement,forElement
 		// */
-		//MapOrSetElement:
-		//    Expression (':' value=Expression)?;
+		//CollectionElement:
+		//    IfElement |
+		//    ForElement |
+		//    SpreadElement |
+		//    MapElement |
+		//    ExpressionElement;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Expression (':' value=Expression)?
+		//IfElement |
+		//ForElement |
+		//SpreadElement |
+		//MapElement |
+		//ExpressionElement
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//IfElement
+		public RuleCall getIfElementParserRuleCall_0() { return cIfElementParserRuleCall_0; }
+		
+		//ForElement
+		public RuleCall getForElementParserRuleCall_1() { return cForElementParserRuleCall_1; }
+		
+		//SpreadElement
+		public RuleCall getSpreadElementParserRuleCall_2() { return cSpreadElementParserRuleCall_2; }
+		
+		//MapElement
+		public RuleCall getMapElementParserRuleCall_3() { return cMapElementParserRuleCall_3; }
+		
+		//ExpressionElement
+		public RuleCall getExpressionElementParserRuleCall_4() { return cExpressionElementParserRuleCall_4; }
+	}
+	public class ExpressionElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.ExpressionElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cExpressionElementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cExpressionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cExpressionExpressionParserRuleCall_1_0 = (RuleCall)cExpressionAssignment_1.eContents().get(0);
+		
+		//ExpressionElement:
+		//    {ExpressionElement} expression=Expression;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{ExpressionElement} expression=Expression
 		public Group getGroup() { return cGroup; }
 		
-		//Expression
-		public RuleCall getExpressionParserRuleCall_0() { return cExpressionParserRuleCall_0; }
+		//{ExpressionElement}
+		public Action getExpressionElementAction_0() { return cExpressionElementAction_0; }
 		
-		//(':' value=Expression)?
-		public Group getGroup_1() { return cGroup_1; }
+		//expression=Expression
+		public Assignment getExpressionAssignment_1() { return cExpressionAssignment_1; }
+		
+		//Expression
+		public RuleCall getExpressionExpressionParserRuleCall_1_0() { return cExpressionExpressionParserRuleCall_1_0; }
+	}
+	public class MapElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.MapElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cMapElementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cKeyAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cKeyExpressionParserRuleCall_1_0 = (RuleCall)cKeyAssignment_1.eContents().get(0);
+		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cValueExpressionParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
+		
+		//MapElement:
+		//    {MapElement} key=Expression ':' value=Expression;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{MapElement} key=Expression ':' value=Expression
+		public Group getGroup() { return cGroup; }
+		
+		//{MapElement}
+		public Action getMapElementAction_0() { return cMapElementAction_0; }
+		
+		//key=Expression
+		public Assignment getKeyAssignment_1() { return cKeyAssignment_1; }
+		
+		//Expression
+		public RuleCall getKeyExpressionParserRuleCall_1_0() { return cKeyExpressionParserRuleCall_1_0; }
 		
 		//':'
-		public Keyword getColonKeyword_1_0() { return cColonKeyword_1_0; }
+		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 		
 		//value=Expression
-		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
+		public Assignment getValueAssignment_3() { return cValueAssignment_3; }
 		
 		//Expression
-		public RuleCall getValueExpressionParserRuleCall_1_1_0() { return cValueExpressionParserRuleCall_1_1_0; }
+		public RuleCall getValueExpressionParserRuleCall_3_0() { return cValueExpressionParserRuleCall_3_0; }
+	}
+	public class SpreadElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.SpreadElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cSpreadElementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cIsNullAwareAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cIsNullAwareFullStopFullStopFullStopQuestionMarkKeyword_1_0 = (Keyword)cIsNullAwareAssignment_1.eContents().get(0);
+		private final Keyword cFullStopFullStopFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cExpressionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cExpressionExpressionParserRuleCall_3_0 = (RuleCall)cExpressionAssignment_3.eContents().get(0);
+		
+		//SpreadElement:
+		//    {SpreadElement} isNullAware?='...?'? '...' expression=Expression;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{SpreadElement} isNullAware?='...?'? '...' expression=Expression
+		public Group getGroup() { return cGroup; }
+		
+		//{SpreadElement}
+		public Action getSpreadElementAction_0() { return cSpreadElementAction_0; }
+		
+		//isNullAware?='...?'?
+		public Assignment getIsNullAwareAssignment_1() { return cIsNullAwareAssignment_1; }
+		
+		//'...?'
+		public Keyword getIsNullAwareFullStopFullStopFullStopQuestionMarkKeyword_1_0() { return cIsNullAwareFullStopFullStopFullStopQuestionMarkKeyword_1_0; }
+		
+		//'...'
+		public Keyword getFullStopFullStopFullStopKeyword_2() { return cFullStopFullStopFullStopKeyword_2; }
+		
+		//expression=Expression
+		public Assignment getExpressionAssignment_3() { return cExpressionAssignment_3; }
+		
+		//Expression
+		public RuleCall getExpressionExpressionParserRuleCall_3_0() { return cExpressionExpressionParserRuleCall_3_0; }
+	}
+	public class IfElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.IfElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cIfElementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cIfKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cConditionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cConditionExpressionParserRuleCall_3_0 = (RuleCall)cConditionAssignment_3.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cThenElementAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cThenElementCollectionElementParserRuleCall_5_0 = (RuleCall)cThenElementAssignment_5.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cElseKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cElseElementAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cElseElementCollectionElementParserRuleCall_6_1_0 = (RuleCall)cElseElementAssignment_6_1.eContents().get(0);
+		
+		//IfElement:
+		//    {IfElement} 'if' '(' condition=Expression ')' thenElement=CollectionElement ('else' elseElement=CollectionElement)?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{IfElement} 'if' '(' condition=Expression ')' thenElement=CollectionElement ('else' elseElement=CollectionElement)?
+		public Group getGroup() { return cGroup; }
+		
+		//{IfElement}
+		public Action getIfElementAction_0() { return cIfElementAction_0; }
+		
+		//'if'
+		public Keyword getIfKeyword_1() { return cIfKeyword_1; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_2() { return cLeftParenthesisKeyword_2; }
+		
+		//condition=Expression
+		public Assignment getConditionAssignment_3() { return cConditionAssignment_3; }
+		
+		//Expression
+		public RuleCall getConditionExpressionParserRuleCall_3_0() { return cConditionExpressionParserRuleCall_3_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_4() { return cRightParenthesisKeyword_4; }
+		
+		//thenElement=CollectionElement
+		public Assignment getThenElementAssignment_5() { return cThenElementAssignment_5; }
+		
+		//CollectionElement
+		public RuleCall getThenElementCollectionElementParserRuleCall_5_0() { return cThenElementCollectionElementParserRuleCall_5_0; }
+		
+		//('else' elseElement=CollectionElement)?
+		public Group getGroup_6() { return cGroup_6; }
+		
+		//'else'
+		public Keyword getElseKeyword_6_0() { return cElseKeyword_6_0; }
+		
+		//elseElement=CollectionElement
+		public Assignment getElseElementAssignment_6_1() { return cElseElementAssignment_6_1; }
+		
+		//CollectionElement
+		public RuleCall getElseElementCollectionElementParserRuleCall_6_1_0() { return cElseElementCollectionElementParserRuleCall_6_1_0; }
+	}
+	public class ForElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.ForElement");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cForElementAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cIsAwaitAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cIsAwaitAwaitKeyword_1_0 = (Keyword)cIsAwaitAssignment_1.eContents().get(0);
+		private final Keyword cForKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cForLoopPartsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cForLoopPartsForLoopPartsParserRuleCall_4_0 = (RuleCall)cForLoopPartsAssignment_4.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cElementAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cElementCollectionElementParserRuleCall_6_0 = (RuleCall)cElementAssignment_6.eContents().get(0);
+		
+		//ForElement:
+		//    {ForElement} isAwait?='await'? 'for' '(' forLoopParts=ForLoopParts ')' element=CollectionElement;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{ForElement} isAwait?='await'? 'for' '(' forLoopParts=ForLoopParts ')' element=CollectionElement
+		public Group getGroup() { return cGroup; }
+		
+		//{ForElement}
+		public Action getForElementAction_0() { return cForElementAction_0; }
+		
+		//isAwait?='await'?
+		public Assignment getIsAwaitAssignment_1() { return cIsAwaitAssignment_1; }
+		
+		//'await'
+		public Keyword getIsAwaitAwaitKeyword_1_0() { return cIsAwaitAwaitKeyword_1_0; }
+		
+		//'for'
+		public Keyword getForKeyword_2() { return cForKeyword_2; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_3() { return cLeftParenthesisKeyword_3; }
+		
+		//forLoopParts=ForLoopParts
+		public Assignment getForLoopPartsAssignment_4() { return cForLoopPartsAssignment_4; }
+		
+		//ForLoopParts
+		public RuleCall getForLoopPartsForLoopPartsParserRuleCall_4_0() { return cForLoopPartsForLoopPartsParserRuleCall_4_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
+		
+		//element=CollectionElement
+		public Assignment getElementAssignment_6() { return cElementAssignment_6; }
+		
+		//CollectionElement
+		public RuleCall getElementCollectionElementParserRuleCall_6_0() { return cElementCollectionElementParserRuleCall_6_0; }
 	}
 	public class StatementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "it.lorenzodeluca.dart.Dart.Statement");
@@ -8461,7 +8675,12 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	private final PostfixExpressionElements pPostfixExpression;
 	private final AssignableExpressionElements pAssignableExpression;
 	private final PrimaryExpressionElements pPrimaryExpression;
-	private final MapOrSetElementElements pMapOrSetElement;
+	private final CollectionElementElements pCollectionElement;
+	private final ExpressionElementElements pExpressionElement;
+	private final MapElementElements pMapElement;
+	private final SpreadElementElements pSpreadElement;
+	private final IfElementElements pIfElement;
+	private final ForElementElements pForElement;
 	private final StatementElements pStatement;
 	private final LabelElements pLabel;
 	private final NonLabelledStatementElements pNonLabelledStatement;
@@ -8605,7 +8824,12 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		this.pPostfixExpression = new PostfixExpressionElements();
 		this.pAssignableExpression = new AssignableExpressionElements();
 		this.pPrimaryExpression = new PrimaryExpressionElements();
-		this.pMapOrSetElement = new MapOrSetElementElements();
+		this.pCollectionElement = new CollectionElementElements();
+		this.pExpressionElement = new ExpressionElementElements();
+		this.pMapElement = new MapElementElements();
+		this.pSpreadElement = new SpreadElementElements();
+		this.pIfElement = new IfElementElements();
+		this.pForElement = new ForElementElements();
 		this.pStatement = new StatementElements();
 		this.pLabel = new LabelElements();
 		this.pNonLabelledStatement = new NonLabelledStatementElements();
@@ -9781,7 +10005,7 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	//    {ConstExpression} 'const' type=Type ('.' constructor=ID)? args=Arguments |
 	//    // List literal - const? <type>? [ elements ]
 	//    {ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
-	//    {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=MapOrSetElement (',' elements+=MapOrSetElement)*)? '}' |
+	//    {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=CollectionElement (',' elements+=CollectionElement)* ','?)? '}' |
 	//    {ParenthesizedExpression} '(' expression=Expression ')';
 	public PrimaryExpressionElements getPrimaryExpressionAccess() {
 		return pPrimaryExpression;
@@ -9794,16 +10018,69 @@ public class DartGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	///*
 	// * If ':' is present it is a map entry; otherwise it is a set element
 	// *
-	// * TODO: spreadElement,ifElement,forElement
 	// */
-	//MapOrSetElement:
-	//    Expression (':' value=Expression)?;
-	public MapOrSetElementElements getMapOrSetElementAccess() {
-		return pMapOrSetElement;
+	//CollectionElement:
+	//    IfElement |
+	//    ForElement |
+	//    SpreadElement |
+	//    MapElement |
+	//    ExpressionElement;
+	public CollectionElementElements getCollectionElementAccess() {
+		return pCollectionElement;
 	}
 	
-	public ParserRule getMapOrSetElementRule() {
-		return getMapOrSetElementAccess().getRule();
+	public ParserRule getCollectionElementRule() {
+		return getCollectionElementAccess().getRule();
+	}
+	
+	//ExpressionElement:
+	//    {ExpressionElement} expression=Expression;
+	public ExpressionElementElements getExpressionElementAccess() {
+		return pExpressionElement;
+	}
+	
+	public ParserRule getExpressionElementRule() {
+		return getExpressionElementAccess().getRule();
+	}
+	
+	//MapElement:
+	//    {MapElement} key=Expression ':' value=Expression;
+	public MapElementElements getMapElementAccess() {
+		return pMapElement;
+	}
+	
+	public ParserRule getMapElementRule() {
+		return getMapElementAccess().getRule();
+	}
+	
+	//SpreadElement:
+	//    {SpreadElement} isNullAware?='...?'? '...' expression=Expression;
+	public SpreadElementElements getSpreadElementAccess() {
+		return pSpreadElement;
+	}
+	
+	public ParserRule getSpreadElementRule() {
+		return getSpreadElementAccess().getRule();
+	}
+	
+	//IfElement:
+	//    {IfElement} 'if' '(' condition=Expression ')' thenElement=CollectionElement ('else' elseElement=CollectionElement)?;
+	public IfElementElements getIfElementAccess() {
+		return pIfElement;
+	}
+	
+	public ParserRule getIfElementRule() {
+		return getIfElementAccess().getRule();
+	}
+	
+	//ForElement:
+	//    {ForElement} isAwait?='await'? 'for' '(' forLoopParts=ForLoopParts ')' element=CollectionElement;
+	public ForElementElements getForElementAccess() {
+		return pForElement;
+	}
+	
+	public ParserRule getForElementRule() {
+		return getForElementAccess().getRule();
 	}
 	
 	///* =========================================================================

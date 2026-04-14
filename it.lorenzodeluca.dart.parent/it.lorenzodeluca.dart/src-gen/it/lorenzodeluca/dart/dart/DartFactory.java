@@ -510,13 +510,58 @@ public interface DartFactory extends EFactory
   ThrowExpressionWithoutCascade createThrowExpressionWithoutCascade();
 
   /**
-   * Returns a new object of class '<em>Map Or Set Element</em>'.
+   * Returns a new object of class '<em>Collection Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Map Or Set Element</em>'.
+   * @return a new object of class '<em>Collection Element</em>'.
    * @generated
    */
-  MapOrSetElement createMapOrSetElement();
+  CollectionElement createCollectionElement();
+
+  /**
+   * Returns a new object of class '<em>Expression Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression Element</em>'.
+   * @generated
+   */
+  ExpressionElement createExpressionElement();
+
+  /**
+   * Returns a new object of class '<em>Map Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Map Element</em>'.
+   * @generated
+   */
+  MapElement createMapElement();
+
+  /**
+   * Returns a new object of class '<em>Spread Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Spread Element</em>'.
+   * @generated
+   */
+  SpreadElement createSpreadElement();
+
+  /**
+   * Returns a new object of class '<em>If Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>If Element</em>'.
+   * @generated
+   */
+  IfElement createIfElement();
+
+  /**
+   * Returns a new object of class '<em>For Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>For Element</em>'.
+   * @generated
+   */
+  ForElement createForElement();
 
   /**
    * Returns a new object of class '<em>Statement</em>'.

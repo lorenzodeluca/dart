@@ -4,7 +4,7 @@
 package it.lorenzodeluca.dart.tests
 
 import com.google.inject.Inject
-import it.lorenzodeluca.dart.dart.CompilationUnit
+import it.lorenzodeluca.dart.dart.DartFile
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.extensions.InjectionExtension
 import org.eclipse.xtext.testing.util.ParseHelper
@@ -16,7 +16,7 @@ import org.junit.jupiter.api.^extension.ExtendWith
 @InjectWith(DartInjectorProvider)
 class DartParsingTest {
 	@Inject
-	ParseHelper<CompilationUnit> parseHelper
+	ParseHelper<DartFile> parseHelper
 	
 	@Test
 	def void loadModel() {

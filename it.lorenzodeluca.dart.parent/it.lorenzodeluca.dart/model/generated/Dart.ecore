@@ -353,10 +353,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Expression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Expression" eSuperTypes="#//MapOrSetElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Expression"
-        containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="ThrowExpression" eSuperTypes="#//Expression #//ThrowExpressionWithoutCascade">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
         containment="true"/>
@@ -382,7 +379,37 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ThrowExpressionWithoutCascade" eSuperTypes="#//Expression"/>
-  <eClassifiers xsi:type="ecore:EClass" name="MapOrSetElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CollectionElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionElement" eSuperTypes="#//CollectionElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MapElement" eSuperTypes="#//CollectionElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpreadElement" eSuperTypes="#//CollectionElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isNullAware" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IfElement" eSuperTypes="#//CollectionElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="thenElement" eType="#//CollectionElement"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elseElement" eType="#//CollectionElement"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForElement" eSuperTypes="#//CollectionElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAwait" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="forLoopParts" eType="#//ForLoopParts"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="#//CollectionElement"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="labels" upperBound="-1"
         eType="#//Label" containment="true"/>
@@ -885,7 +912,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="typeArguments" eType="#//TypeArguments"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
-        eType="#//MapOrSetElement" containment="true"/>
+        eType="#//CollectionElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParenthesizedExpression" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"

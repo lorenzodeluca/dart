@@ -3,45 +3,18 @@
  */
 package it.lorenzodeluca.dart.dart;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Expression</b></em>'.
  * <!-- end-user-doc -->
  *
- * <p>
- * The following features are supported:
- * </p>
- * <ul>
- *   <li>{@link it.lorenzodeluca.dart.dart.Expression#getValue <em>Value</em>}</li>
- * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getExpression()
  * @model
  * @generated
  */
-public interface Expression extends MapOrSetElement
+public interface Expression extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Value</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' containment reference.
-   * @see #setValue(Expression)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getExpression_Value()
-   * @model containment="true"
-   * @generated
-   */
-  Expression getValue();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.Expression#getValue <em>Value</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' containment reference.
-   * @see #getValue()
-   * @generated
-   */
-  void setValue(Expression value);
-
 } // Expression

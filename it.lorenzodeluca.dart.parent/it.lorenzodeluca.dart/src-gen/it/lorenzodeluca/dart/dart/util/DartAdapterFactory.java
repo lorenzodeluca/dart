@@ -346,9 +346,34 @@ public class DartAdapterFactory extends AdapterFactoryImpl
         return createThrowExpressionWithoutCascadeAdapter();
       }
       @Override
-      public Adapter caseMapOrSetElement(MapOrSetElement object)
+      public Adapter caseCollectionElement(CollectionElement object)
       {
-        return createMapOrSetElementAdapter();
+        return createCollectionElementAdapter();
+      }
+      @Override
+      public Adapter caseExpressionElement(ExpressionElement object)
+      {
+        return createExpressionElementAdapter();
+      }
+      @Override
+      public Adapter caseMapElement(MapElement object)
+      {
+        return createMapElementAdapter();
+      }
+      @Override
+      public Adapter caseSpreadElement(SpreadElement object)
+      {
+        return createSpreadElementAdapter();
+      }
+      @Override
+      public Adapter caseIfElement(IfElement object)
+      {
+        return createIfElementAdapter();
+      }
+      @Override
+      public Adapter caseForElement(ForElement object)
+      {
+        return createForElementAdapter();
       }
       @Override
       public Adapter caseStatement(Statement object)
@@ -1653,16 +1678,91 @@ public class DartAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.MapOrSetElement <em>Map Or Set Element</em>}'.
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.CollectionElement <em>Collection Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.MapOrSetElement
+   * @see it.lorenzodeluca.dart.dart.CollectionElement
    * @generated
    */
-  public Adapter createMapOrSetElementAdapter()
+  public Adapter createCollectionElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ExpressionElement <em>Expression Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ExpressionElement
+   * @generated
+   */
+  public Adapter createExpressionElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.MapElement <em>Map Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.MapElement
+   * @generated
+   */
+  public Adapter createMapElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.SpreadElement <em>Spread Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.SpreadElement
+   * @generated
+   */
+  public Adapter createSpreadElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.IfElement <em>If Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.IfElement
+   * @generated
+   */
+  public Adapter createIfElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.ForElement <em>For Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.ForElement
+   * @generated
+   */
+  public Adapter createForElementAdapter()
   {
     return null;
   }

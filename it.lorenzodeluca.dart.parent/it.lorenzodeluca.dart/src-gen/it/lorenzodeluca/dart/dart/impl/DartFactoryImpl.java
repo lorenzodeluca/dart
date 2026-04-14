@@ -119,7 +119,12 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.CASCADE_SECTION: return createCascadeSection();
       case DartPackage.CASCADE_ASSIGNMENT: return createCascadeAssignment();
       case DartPackage.THROW_EXPRESSION_WITHOUT_CASCADE: return createThrowExpressionWithoutCascade();
-      case DartPackage.MAP_OR_SET_ELEMENT: return createMapOrSetElement();
+      case DartPackage.COLLECTION_ELEMENT: return createCollectionElement();
+      case DartPackage.EXPRESSION_ELEMENT: return createExpressionElement();
+      case DartPackage.MAP_ELEMENT: return createMapElement();
+      case DartPackage.SPREAD_ELEMENT: return createSpreadElement();
+      case DartPackage.IF_ELEMENT: return createIfElement();
+      case DartPackage.FOR_ELEMENT: return createForElement();
       case DartPackage.STATEMENT: return createStatement();
       case DartPackage.LABEL: return createLabel();
       case DartPackage.NON_LABELLED_STATEMENT: return createNonLabelledStatement();
@@ -873,10 +878,70 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
-  public MapOrSetElement createMapOrSetElement()
+  public CollectionElement createCollectionElement()
   {
-    MapOrSetElementImpl mapOrSetElement = new MapOrSetElementImpl();
-    return mapOrSetElement;
+    CollectionElementImpl collectionElement = new CollectionElementImpl();
+    return collectionElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ExpressionElement createExpressionElement()
+  {
+    ExpressionElementImpl expressionElement = new ExpressionElementImpl();
+    return expressionElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MapElement createMapElement()
+  {
+    MapElementImpl mapElement = new MapElementImpl();
+    return mapElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SpreadElement createSpreadElement()
+  {
+    SpreadElementImpl spreadElement = new SpreadElementImpl();
+    return spreadElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IfElement createIfElement()
+  {
+    IfElementImpl ifElement = new IfElementImpl();
+    return ifElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ForElement createForElement()
+  {
+    ForElementImpl forElement = new ForElementImpl();
+    return forElement;
   }
 
   /**

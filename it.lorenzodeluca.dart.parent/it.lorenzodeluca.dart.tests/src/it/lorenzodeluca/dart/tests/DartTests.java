@@ -8,6 +8,7 @@ import org.eclipse.xtext.testing.InjectWith;
 import it.lorenzodeluca.dart.tests.DartInjectorProvider;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
+import org.eclipse.xtext.util.EmfFormatter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -105,6 +106,9 @@ public class DartTests {
         String code = "void main() { print('Hello World'); }";
         LibraryDeclaration lib = parseLibrary(code);
 
+        DartFile result = parseHelper.parse(code);
+        System.out.println(EmfFormatter.objToStr(result));
+        
         TopLevelDeclaration firstDecl = lib.getDeclarations().get(0);
         Assertions.assertInstanceOf(FunctionDeclaration.class, firstDecl);
         FunctionDeclaration mainFunc = (FunctionDeclaration) firstDecl;

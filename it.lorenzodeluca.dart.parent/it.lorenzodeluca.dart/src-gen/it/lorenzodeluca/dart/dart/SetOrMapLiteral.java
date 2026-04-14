@@ -71,7 +71,7 @@ public interface SetOrMapLiteral extends Expression
 
   /**
    * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-   * The list contents are of type {@link it.lorenzodeluca.dart.dart.MapOrSetElement}.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.CollectionElement}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Elements</em>' containment reference list.
@@ -79,6 +79,6 @@ public interface SetOrMapLiteral extends Expression
    * @model containment="true"
    * @generated
    */
-  EList<MapOrSetElement> getElements();
+  EList<CollectionElement> getElements();
 
 } // SetOrMapLiteral

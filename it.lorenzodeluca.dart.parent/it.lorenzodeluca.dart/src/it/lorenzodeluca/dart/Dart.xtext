@@ -592,15 +592,33 @@ PrimaryExpression returns Expression:
     {ConstExpression} 'const' type=Type ('.' constructor=ID)? args=Arguments |
     // List literal - const? <type>? [ elements ]
     {ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
-    {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=MapOrSetElement (',' elements+=MapOrSetElement)*)? '}' |
+    {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=CollectionElement (',' elements+=CollectionElement)* ','?)? '}' |
     {ParenthesizedExpression} '(' expression=Expression ')';
 /*
  * If ':' is present it is a map entry; otherwise it is a set element
  * 
- * TODO: spreadElement,ifElement,forElement
  */
-MapOrSetElement:
-    Expression (':' value=Expression)?;
+CollectionElement:
+    IfElement |
+    ForElement |
+    SpreadElement |
+    MapElement |
+    ExpressionElement;
+
+ExpressionElement:
+    {ExpressionElement} expression=Expression;
+
+MapElement:
+    {MapElement} key=Expression ':' value=Expression;
+
+SpreadElement:
+    {SpreadElement} isNullAware?='...?'? '...' expression=Expression;
+
+IfElement:
+    {IfElement} 'if' '(' condition=Expression ')' thenElement=CollectionElement ('else' elseElement=CollectionElement)?;
+
+ForElement:
+    {ForElement} isAwait?='await'? 'for' '(' forLoopParts=ForLoopParts ')' element=CollectionElement;
 
 /* =========================================================================
  * 18. STATEMENTS

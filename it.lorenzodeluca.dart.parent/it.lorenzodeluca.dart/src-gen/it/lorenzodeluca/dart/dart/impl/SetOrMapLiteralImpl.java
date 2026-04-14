@@ -3,8 +3,8 @@
  */
 package it.lorenzodeluca.dart.dart.impl;
 
+import it.lorenzodeluca.dart.dart.CollectionElement;
 import it.lorenzodeluca.dart.dart.DartPackage;
-import it.lorenzodeluca.dart.dart.MapOrSetElement;
 import it.lorenzodeluca.dart.dart.SetOrMapLiteral;
 import it.lorenzodeluca.dart.dart.TypeArguments;
 
@@ -78,7 +78,7 @@ public class SetOrMapLiteralImpl extends ExpressionImpl implements SetOrMapLiter
    * @generated
    * @ordered
    */
-  protected EList<MapOrSetElement> elements;
+  protected EList<CollectionElement> elements;
 
   /**
    * <!-- begin-user-doc -->
@@ -182,11 +182,11 @@ public class SetOrMapLiteralImpl extends ExpressionImpl implements SetOrMapLiter
    * @generated
    */
   @Override
-  public EList<MapOrSetElement> getElements()
+  public EList<CollectionElement> getElements()
   {
     if (elements == null)
     {
-      elements = new EObjectContainmentEList<MapOrSetElement>(MapOrSetElement.class, this, DartPackage.SET_OR_MAP_LITERAL__ELEMENTS);
+      elements = new EObjectContainmentEList<CollectionElement>(CollectionElement.class, this, DartPackage.SET_OR_MAP_LITERAL__ELEMENTS);
     }
     return elements;
   }
@@ -248,7 +248,7 @@ public class SetOrMapLiteralImpl extends ExpressionImpl implements SetOrMapLiter
         return;
       case DartPackage.SET_OR_MAP_LITERAL__ELEMENTS:
         getElements().clear();
-        getElements().addAll((Collection<? extends MapOrSetElement>)newValue);
+        getElements().addAll((Collection<? extends CollectionElement>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

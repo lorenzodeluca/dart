@@ -39,6 +39,7 @@ import it.lorenzodeluca.dart.dart.DoStatement;
 import it.lorenzodeluca.dart.dart.EnumDeclaration;
 import it.lorenzodeluca.dart.dart.EnumEntry;
 import it.lorenzodeluca.dart.dart.Equality;
+import it.lorenzodeluca.dart.dart.ExpressionElement;
 import it.lorenzodeluca.dart.dart.ExpressionStatement;
 import it.lorenzodeluca.dart.dart.ExtensionDeclaration;
 import it.lorenzodeluca.dart.dart.ExternalGetter;
@@ -48,6 +49,7 @@ import it.lorenzodeluca.dart.dart.FieldFormalParameter;
 import it.lorenzodeluca.dart.dart.FieldInitializer;
 import it.lorenzodeluca.dart.dart.FinalConstVarOrType;
 import it.lorenzodeluca.dart.dart.FinallyClause;
+import it.lorenzodeluca.dart.dart.ForElement;
 import it.lorenzodeluca.dart.dart.ForInLoopParts;
 import it.lorenzodeluca.dart.dart.ForInitializerStatement;
 import it.lorenzodeluca.dart.dart.ForStatement;
@@ -62,6 +64,7 @@ import it.lorenzodeluca.dart.dart.FunctionType;
 import it.lorenzodeluca.dart.dart.FunctionTypeTail;
 import it.lorenzodeluca.dart.dart.GetterSignature;
 import it.lorenzodeluca.dart.dart.IdentifierRef;
+import it.lorenzodeluca.dart.dart.IfElement;
 import it.lorenzodeluca.dart.dart.IfNull;
 import it.lorenzodeluca.dart.dart.IfStatement;
 import it.lorenzodeluca.dart.dart.IndexExpression;
@@ -78,6 +81,7 @@ import it.lorenzodeluca.dart.dart.LocalFunctionDeclaration;
 import it.lorenzodeluca.dart.dart.LocalVariableDeclaration;
 import it.lorenzodeluca.dart.dart.LogicalAnd;
 import it.lorenzodeluca.dart.dart.LogicalOr;
+import it.lorenzodeluca.dart.dart.MapElement;
 import it.lorenzodeluca.dart.dart.MemberDeclaration;
 import it.lorenzodeluca.dart.dart.Metadata;
 import it.lorenzodeluca.dart.dart.MethodInvocation;
@@ -117,6 +121,7 @@ import it.lorenzodeluca.dart.dart.SetOrMapLiteral;
 import it.lorenzodeluca.dart.dart.SetterSignature;
 import it.lorenzodeluca.dart.dart.Shift;
 import it.lorenzodeluca.dart.dart.SimpleFormalParameter;
+import it.lorenzodeluca.dart.dart.SpreadElement;
 import it.lorenzodeluca.dart.dart.Statement;
 import it.lorenzodeluca.dart.dart.StaticFinalDeclaration;
 import it.lorenzodeluca.dart.dart.StringLiteral;
@@ -167,43 +172,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		if (epackage == DartPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
 			case DartPackage.ADDITIVE:
-				if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()) {
-					sequence_AdditiveExpression(context, (Additive) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_AdditiveExpression_MapOrSetElement(context, (Additive) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_AdditiveExpression(context, (Additive) semanticObject); 
+				return; 
 			case DartPackage.ARGUMENT_LIST_NAMED_ONLY:
 				sequence_ArgumentList(context, (ArgumentListNamedOnly) semanticObject); 
 				return; 
@@ -220,183 +190,29 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_AssertStatement(context, (AssertStatement) semanticObject); 
 				return; 
 			case DartPackage.ASSIGNMENT:
-				if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()) {
-					sequence_AssignmentExpression(context, (Assignment) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_AssignmentExpression_MapOrSetElement(context, (Assignment) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_AssignmentExpression(context, (Assignment) semanticObject); 
+				return; 
 			case DartPackage.BITWISE_AND:
-				if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()) {
-					sequence_BitwiseAndExpression(context, (BitwiseAnd) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_BitwiseAndExpression_MapOrSetElement(context, (BitwiseAnd) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_BitwiseAndExpression(context, (BitwiseAnd) semanticObject); 
+				return; 
 			case DartPackage.BITWISE_OR:
-				if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()) {
-					sequence_BitwiseOrExpression(context, (BitwiseOr) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_BitwiseOrExpression_MapOrSetElement(context, (BitwiseOr) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_BitwiseOrExpression(context, (BitwiseOr) semanticObject); 
+				return; 
 			case DartPackage.BITWISE_XOR:
-				if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()) {
-					sequence_BitwiseXorExpression(context, (BitwiseXor) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_BitwiseXorExpression_MapOrSetElement(context, (BitwiseXor) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_BitwiseXorExpression(context, (BitwiseXor) semanticObject); 
+				return; 
 			case DartPackage.BLOCK:
 				sequence_Block(context, (Block) semanticObject); 
 				return; 
 			case DartPackage.BOOLEAN_LITERAL:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PrimaryExpression(context, (BooleanLiteral) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()
-						|| rule == grammarAccess.getPrimaryExpressionRule()) {
-					sequence_PrimaryExpression(context, (BooleanLiteral) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PrimaryExpression(context, (BooleanLiteral) semanticObject); 
+				return; 
 			case DartPackage.BREAK_STATEMENT:
 				sequence_BreakStatement(context, (BreakStatement) semanticObject); 
 				return; 
 			case DartPackage.CASCADE:
-				if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()) {
-					sequence_CascadeExpression(context, (Cascade) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_CascadeExpression_MapOrSetElement(context, (Cascade) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_CascadeExpression(context, (Cascade) semanticObject); 
+				return; 
 			case DartPackage.CASCADE_ASSIGNMENT:
 				sequence_CascadeAssignment(context, (CascadeAssignment) semanticObject); 
 				return; 
@@ -413,74 +229,11 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_Combinator(context, (Combinator) semanticObject); 
 				return; 
 			case DartPackage.CONDITIONAL:
-				if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()) {
-					sequence_ConditionalExpression(context, (Conditional) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_ConditionalExpression_MapOrSetElement(context, (Conditional) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_ConditionalExpression(context, (Conditional) semanticObject); 
+				return; 
 			case DartPackage.CONST_EXPRESSION:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PrimaryExpression(context, (ConstExpression) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()
-						|| rule == grammarAccess.getPrimaryExpressionRule()) {
-					sequence_PrimaryExpression(context, (ConstExpression) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PrimaryExpression(context, (ConstExpression) semanticObject); 
+				return; 
 			case DartPackage.CONSTRUCTOR_DESIGNATION:
 				sequence_ConstructorDesignation(context, (ConstructorDesignation) semanticObject); 
 				return; 
@@ -518,29 +271,11 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_EnumEntry(context, (EnumEntry) semanticObject); 
 				return; 
 			case DartPackage.EQUALITY:
-				if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()) {
-					sequence_EqualityExpression(context, (Equality) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_EqualityExpression_MapOrSetElement(context, (Equality) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_EqualityExpression(context, (Equality) semanticObject); 
+				return; 
+			case DartPackage.EXPRESSION_ELEMENT:
+				sequence_ExpressionElement(context, (ExpressionElement) semanticObject); 
+				return; 
 			case DartPackage.EXPRESSION_STATEMENT:
 				sequence_ExpressionStatement(context, (ExpressionStatement) semanticObject); 
 				return; 
@@ -567,6 +302,9 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case DartPackage.FINALLY_CLAUSE:
 				sequence_FinallyClause(context, (FinallyClause) semanticObject); 
+				return; 
+			case DartPackage.FOR_ELEMENT:
+				sequence_ForElement(context, (ForElement) semanticObject); 
 				return; 
 			case DartPackage.FOR_IN_LOOP_PARTS:
 				if (rule == grammarAccess.getForInLoopPartsRule()) {
@@ -601,57 +339,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_FunctionBody(context, (FunctionBody) semanticObject); 
 				return; 
 			case DartPackage.FUNCTION_CALL:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PostfixExpression(context, (FunctionCall) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()) {
-					sequence_PostfixExpression(context, (FunctionCall) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PostfixExpression(context, (FunctionCall) semanticObject); 
+				return; 
 			case DartPackage.FUNCTION_DECLARATION:
 				sequence_FunctionDeclaration(context, (FunctionDeclaration) semanticObject); 
 				return; 
@@ -671,132 +360,20 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_GetterSignature(context, (GetterSignature) semanticObject); 
 				return; 
 			case DartPackage.IDENTIFIER_REF:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PrimaryExpression(context, (IdentifierRef) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()
-						|| rule == grammarAccess.getPrimaryExpressionRule()) {
-					sequence_PrimaryExpression(context, (IdentifierRef) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PrimaryExpression(context, (IdentifierRef) semanticObject); 
+				return; 
+			case DartPackage.IF_ELEMENT:
+				sequence_IfElement(context, (IfElement) semanticObject); 
+				return; 
 			case DartPackage.IF_NULL:
-				if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()) {
-					sequence_IfNullExpression(context, (IfNull) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_IfNullExpression_MapOrSetElement(context, (IfNull) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_IfNullExpression(context, (IfNull) semanticObject); 
+				return; 
 			case DartPackage.IF_STATEMENT:
 				sequence_IfStatement(context, (IfStatement) semanticObject); 
 				return; 
 			case DartPackage.INDEX_EXPRESSION:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PostfixExpression(context, (IndexExpression) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()) {
-					sequence_PostfixExpression(context, (IndexExpression) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PostfixExpression(context, (IndexExpression) semanticObject); 
+				return; 
 			case DartPackage.INITIALIZED_IDENTIFIER:
 				sequence_InitializedIdentifier(context, (InitializedIdentifier) semanticObject); 
 				return; 
@@ -822,58 +399,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_LibraryName(context, (LibraryName) semanticObject); 
 				return; 
 			case DartPackage.LIST_LITERAL:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PrimaryExpression(context, (ListLiteral) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()
-						|| rule == grammarAccess.getPrimaryExpressionRule()) {
-					sequence_PrimaryExpression(context, (ListLiteral) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PrimaryExpression(context, (ListLiteral) semanticObject); 
+				return; 
 			case DartPackage.LOCAL_FUNCTION_DECLARATION:
 				sequence_LocalFunctionDeclaration(context, (LocalFunctionDeclaration) semanticObject); 
 				return; 
@@ -881,49 +408,14 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_LocalVariableDeclaration(context, (LocalVariableDeclaration) semanticObject); 
 				return; 
 			case DartPackage.LOGICAL_AND:
-				if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()) {
-					sequence_LogicalAndExpression(context, (LogicalAnd) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_LogicalAndExpression_MapOrSetElement(context, (LogicalAnd) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_LogicalAndExpression(context, (LogicalAnd) semanticObject); 
+				return; 
 			case DartPackage.LOGICAL_OR:
-				if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()) {
-					sequence_LogicalOrExpression(context, (LogicalOr) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_LogicalOrExpression_MapOrSetElement(context, (LogicalOr) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_LogicalOrExpression(context, (LogicalOr) semanticObject); 
+				return; 
+			case DartPackage.MAP_ELEMENT:
+				sequence_MapElement(context, (MapElement) semanticObject); 
+				return; 
 			case DartPackage.MEMBER_DECLARATION:
 				sequence_MemberDeclaration(context, (MemberDeclaration) semanticObject); 
 				return; 
@@ -931,57 +423,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_Metadata(context, (Metadata) semanticObject); 
 				return; 
 			case DartPackage.METHOD_INVOCATION:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PostfixExpression(context, (MethodInvocation) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()) {
-					sequence_PostfixExpression(context, (MethodInvocation) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PostfixExpression(context, (MethodInvocation) semanticObject); 
+				return; 
 			case DartPackage.METHOD_SIGNATURE:
 				sequence_MethodSignature(context, (MethodSignature) semanticObject); 
 				return; 
@@ -995,45 +438,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_Mixins(context, (Mixins) semanticObject); 
 				return; 
 			case DartPackage.MULTIPLICATIVE:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_MultiplicativeExpression(context, (Multiplicative) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()) {
-					sequence_MultiplicativeExpression(context, (Multiplicative) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_MultiplicativeExpression(context, (Multiplicative) semanticObject); 
+				return; 
 			case DartPackage.NAMED_ARGUMENT:
 				sequence_NamedArgument(context, (NamedArgument) semanticObject); 
 				return; 
@@ -1047,375 +453,29 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_NamedParameterTypes(context, (NamedParameterTypes) semanticObject); 
 				return; 
 			case DartPackage.NEW_EXPRESSION:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PrimaryExpression(context, (NewExpression) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()
-						|| rule == grammarAccess.getPrimaryExpressionRule()) {
-					sequence_PrimaryExpression(context, (NewExpression) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PrimaryExpression(context, (NewExpression) semanticObject); 
+				return; 
 			case DartPackage.NORMAL_PARAMETER_TYPE:
 				sequence_NormalParameterType(context, (NormalParameterType) semanticObject); 
 				return; 
 			case DartPackage.NULL_ASSERT:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PostfixExpression(context, (NullAssert) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()) {
-					sequence_PostfixExpression(context, (NullAssert) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PostfixExpression(context, (NullAssert) semanticObject); 
+				return; 
 			case DartPackage.NULL_AWARE_INDEX:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PostfixExpression(context, (NullAwareIndex) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()) {
-					sequence_PostfixExpression(context, (NullAwareIndex) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PostfixExpression(context, (NullAwareIndex) semanticObject); 
+				return; 
 			case DartPackage.NULL_AWARE_METHOD_INVOCATION:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PostfixExpression(context, (NullAwareMethodInvocation) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()) {
-					sequence_PostfixExpression(context, (NullAwareMethodInvocation) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PostfixExpression(context, (NullAwareMethodInvocation) semanticObject); 
+				return; 
 			case DartPackage.NULL_AWARE_PROPERTY_ACCESS:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PostfixExpression(context, (NullAwarePropertyAccess) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()) {
-					sequence_PostfixExpression(context, (NullAwarePropertyAccess) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PostfixExpression(context, (NullAwarePropertyAccess) semanticObject); 
+				return; 
 			case DartPackage.NULL_LITERAL:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PrimaryExpression(context, (NullLiteral) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()
-						|| rule == grammarAccess.getPrimaryExpressionRule()) {
-					sequence_PrimaryExpression(context, (NullLiteral) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PrimaryExpression(context, (NullLiteral) semanticObject); 
+				return; 
 			case DartPackage.NUMBER_LITERAL:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PrimaryExpression(context, (NumberLiteral) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()
-						|| rule == grammarAccess.getPrimaryExpressionRule()) {
-					sequence_PrimaryExpression(context, (NumberLiteral) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PrimaryExpression(context, (NumberLiteral) semanticObject); 
+				return; 
 			case DartPackage.OPTIONAL_POSITIONAL_FORMAL_PARAMETERS:
 				sequence_OptionalPositionalFormalParameters(context, (OptionalPositionalFormalParameters) semanticObject); 
 				return; 
@@ -1426,58 +486,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_ParameterTypeList(context, (ParameterTypeList) semanticObject); 
 				return; 
 			case DartPackage.PARENTHESIZED_EXPRESSION:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PrimaryExpression(context, (ParenthesizedExpression) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()
-						|| rule == grammarAccess.getPrimaryExpressionRule()) {
-					sequence_PrimaryExpression(context, (ParenthesizedExpression) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PrimaryExpression(context, (ParenthesizedExpression) semanticObject); 
+				return; 
 			case DartPackage.PART_DECLARATION:
 				sequence_PartDeclaration(context, (PartDeclaration) semanticObject); 
 				return; 
@@ -1488,179 +498,20 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_PartHeader(context, (PartHeader) semanticObject); 
 				return; 
 			case DartPackage.POSTFIX:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PostfixExpression(context, (Postfix) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()) {
-					sequence_PostfixExpression(context, (Postfix) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PostfixExpression(context, (Postfix) semanticObject); 
+				return; 
 			case DartPackage.PREFIX_EXPRESSION:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_UnaryExpression(context, (PrefixExpression) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()) {
-					sequence_UnaryExpression(context, (PrefixExpression) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_UnaryExpression(context, (PrefixExpression) semanticObject); 
+				return; 
 			case DartPackage.PROPERTY_ACCESS:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PostfixExpression(context, (PropertyAccess) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()) {
-					sequence_PostfixExpression(context, (PropertyAccess) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PostfixExpression(context, (PropertyAccess) semanticObject); 
+				return; 
 			case DartPackage.REDIRECTING_FACTORY_CONSTRUCTOR_SIGNATURE:
 				sequence_RedirectingFactoryConstructorSignature(context, (RedirectingFactoryConstructorSignature) semanticObject); 
 				return; 
 			case DartPackage.RELATIONAL:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_RelationalExpression(context, (Relational) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()) {
-					sequence_RelationalExpression(context, (Relational) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_RelationalExpression(context, (Relational) semanticObject); 
+				return; 
 			case DartPackage.RETHROW_STATEMENT:
 				sequence_RethrowStatement(context, (RethrowStatement) semanticObject); 
 				return; 
@@ -1671,99 +522,19 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_ScriptTag(context, (ScriptTag) semanticObject); 
 				return; 
 			case DartPackage.SET_OR_MAP_LITERAL:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PrimaryExpression(context, (SetOrMapLiteral) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()
-						|| rule == grammarAccess.getPrimaryExpressionRule()) {
-					sequence_PrimaryExpression(context, (SetOrMapLiteral) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PrimaryExpression(context, (SetOrMapLiteral) semanticObject); 
+				return; 
 			case DartPackage.SETTER_SIGNATURE:
 				sequence_SetterSignature(context, (SetterSignature) semanticObject); 
 				return; 
 			case DartPackage.SHIFT:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_ShiftExpression(context, (Shift) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()) {
-					sequence_ShiftExpression(context, (Shift) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_ShiftExpression(context, (Shift) semanticObject); 
+				return; 
 			case DartPackage.SIMPLE_FORMAL_PARAMETER:
 				sequence_SimpleFormalParameter(context, (SimpleFormalParameter) semanticObject); 
+				return; 
+			case DartPackage.SPREAD_ELEMENT:
+				sequence_SpreadElement(context, (SpreadElement) semanticObject); 
 				return; 
 			case DartPackage.STATEMENT:
 				sequence_Statement(context, (Statement) semanticObject); 
@@ -1772,111 +543,11 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_StaticFinalDeclaration(context, (StaticFinalDeclaration) semanticObject); 
 				return; 
 			case DartPackage.STRING_LITERAL:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PrimaryExpression(context, (StringLiteral) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()
-						|| rule == grammarAccess.getPrimaryExpressionRule()) {
-					sequence_PrimaryExpression(context, (StringLiteral) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PrimaryExpression(context, (StringLiteral) semanticObject); 
+				return; 
 			case DartPackage.SUPER_EXPRESSION:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PrimaryExpression(context, (SuperExpression) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()
-						|| rule == grammarAccess.getPrimaryExpressionRule()) {
-					sequence_PrimaryExpression(context, (SuperExpression) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PrimaryExpression(context, (SuperExpression) semanticObject); 
+				return; 
 			case DartPackage.SUPER_INITIALIZER:
 				sequence_SuperInitializer(context, (SuperInitializer) semanticObject); 
 				return; 
@@ -1890,64 +561,10 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_SwitchStatement(context, (SwitchStatement) semanticObject); 
 				return; 
 			case DartPackage.THIS_EXPRESSION:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_PrimaryExpression(context, (ThisExpression) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()
-						|| action == grammarAccess.getRelationalExpressionAccess().getRelationalLeftAction_1_0_0()
-						|| action == grammarAccess.getRelationalExpressionAccess().getTypeCheckLeftAction_1_1_0()
-						|| rule == grammarAccess.getBitwiseOrExpressionRule()
-						|| action == grammarAccess.getBitwiseOrExpressionAccess().getBitwiseOrLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseXorExpressionRule()
-						|| action == grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0()
-						|| rule == grammarAccess.getBitwiseAndExpressionRule()
-						|| action == grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0()
-						|| rule == grammarAccess.getShiftExpressionRule()
-						|| action == grammarAccess.getShiftExpressionAccess().getShiftLeftAction_1_0()
-						|| rule == grammarAccess.getAdditiveExpressionRule()
-						|| action == grammarAccess.getAdditiveExpressionAccess().getAdditiveLeftAction_1_0()
-						|| rule == grammarAccess.getMultiplicativeExpressionRule()
-						|| action == grammarAccess.getMultiplicativeExpressionAccess().getMultiplicativeLeftAction_1_0()
-						|| rule == grammarAccess.getUnaryExpressionRule()
-						|| rule == grammarAccess.getPostfixExpressionRule()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPostfixOperandAction_1_0_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getMethodInvocationReceiverAction_1_1_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareMethodInvocationReceiverAction_1_2_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getFunctionCallReceiverAction_1_3_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getIndexExpressionReceiverAction_1_4_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwareIndexReceiverAction_1_5_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAssertOperandAction_1_6_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getPropertyAccessReceiverAction_1_7_0()
-						|| action == grammarAccess.getPostfixExpressionAccess().getNullAwarePropertyAccessReceiverAction_1_8_0()
-						|| rule == grammarAccess.getAssignableExpressionRule()
-						|| rule == grammarAccess.getPrimaryExpressionRule()) {
-					sequence_PrimaryExpression(context, (ThisExpression) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_PrimaryExpression(context, (ThisExpression) semanticObject); 
+				return; 
 			case DartPackage.THROW_EXPRESSION:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_ThrowExpression(context, (ThrowExpression) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionWithoutCascadeRule()
+				if (rule == grammarAccess.getExpressionWithoutCascadeRule()
 						|| rule == grammarAccess.getThrowExpressionWithoutCascadeRule()) {
 					sequence_ThrowExpressionWithoutCascade(context, (ThrowExpression) semanticObject); 
 					return; 
@@ -1974,31 +591,8 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_TypeArguments(context, (TypeArguments) semanticObject); 
 				return; 
 			case DartPackage.TYPE_CHECK:
-				if (rule == grammarAccess.getMapOrSetElementRule()) {
-					sequence_MapOrSetElement_RelationalExpression(context, (TypeCheck) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getExpressionRule()
-						|| rule == grammarAccess.getCascadeExpressionRule()
-						|| action == grammarAccess.getCascadeExpressionAccess().getCascadeReceiverAction_1_0()
-						|| rule == grammarAccess.getAssignmentExpressionRule()
-						|| action == grammarAccess.getAssignmentExpressionAccess().getAssignmentLeftAction_1_0()
-						|| rule == grammarAccess.getConditionalExpressionRule()
-						|| action == grammarAccess.getConditionalExpressionAccess().getConditionalConditionAction_1_0()
-						|| rule == grammarAccess.getExpressionWithoutCascadeRule()
-						|| rule == grammarAccess.getIfNullExpressionRule()
-						|| action == grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalOrExpressionRule()
-						|| action == grammarAccess.getLogicalOrExpressionAccess().getLogicalOrLeftAction_1_0()
-						|| rule == grammarAccess.getLogicalAndExpressionRule()
-						|| action == grammarAccess.getLogicalAndExpressionAccess().getLogicalAndLeftAction_1_0()
-						|| rule == grammarAccess.getEqualityExpressionRule()
-						|| action == grammarAccess.getEqualityExpressionAccess().getEqualityLeftAction_1_0()
-						|| rule == grammarAccess.getRelationalExpressionRule()) {
-					sequence_RelationalExpression(context, (TypeCheck) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_RelationalExpression(context, (TypeCheck) semanticObject); 
+				return; 
 			case DartPackage.TYPE_NAME:
 				sequence_TypeName(context, (TypeName) semanticObject); 
 				return; 
@@ -2063,20 +657,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * </pre>
 	 */
 	protected void sequence_AdditiveExpression(ISerializationContext context, Additive semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns Additive
-	 *
-	 * Constraint:
-	 *     (left=AdditiveExpression_Additive_1_0 (operator='+' | operator='-') right=MultiplicativeExpression value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_AdditiveExpression_MapOrSetElement(ISerializationContext context, Additive semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2184,20 +764,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     MapOrSetElement returns Assignment
-	 *
-	 * Constraint:
-	 *     (left=AssignmentExpression_Assignment_1_0 operator=AssignmentOperator right=AssignmentExpression value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_AssignmentExpression_MapOrSetElement(ISerializationContext context, Assignment semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     Expression returns BitwiseAnd
 	 *     CascadeExpression returns BitwiseAnd
 	 *     CascadeExpression.Cascade_1_0 returns BitwiseAnd
@@ -2239,20 +805,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		feeder.accept(grammarAccess.getBitwiseAndExpressionAccess().getBitwiseAndLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getBitwiseAndExpressionAccess().getRightShiftExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns BitwiseAnd
-	 *
-	 * Constraint:
-	 *     (left=BitwiseAndExpression_BitwiseAnd_1_0 right=ShiftExpression value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_BitwiseAndExpression_MapOrSetElement(ISerializationContext context, BitwiseAnd semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -2302,20 +854,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     MapOrSetElement returns BitwiseOr
-	 *
-	 * Constraint:
-	 *     (left=BitwiseOrExpression_BitwiseOr_1_0 right=BitwiseXorExpression value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_BitwiseOrExpression_MapOrSetElement(ISerializationContext context, BitwiseOr semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     Expression returns BitwiseXor
 	 *     CascadeExpression returns BitwiseXor
 	 *     CascadeExpression.Cascade_1_0 returns BitwiseXor
@@ -2355,20 +893,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		feeder.accept(grammarAccess.getBitwiseXorExpressionAccess().getBitwiseXorLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getBitwiseXorExpressionAccess().getRightBitwiseAndExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns BitwiseXor
-	 *
-	 * Constraint:
-	 *     (left=BitwiseXorExpression_BitwiseXor_1_0 right=BitwiseAndExpression value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_BitwiseXorExpression_MapOrSetElement(ISerializationContext context, BitwiseXor semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -2436,20 +960,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * </pre>
 	 */
 	protected void sequence_CascadeExpression(ISerializationContext context, Cascade semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns Cascade
-	 *
-	 * Constraint:
-	 *     (receiver=CascadeExpression_Cascade_1_0 isNullAware?='?..'? sections+=CascadeSection+ value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_CascadeExpression_MapOrSetElement(ISerializationContext context, Cascade semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2556,20 +1066,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		feeder.accept(grammarAccess.getConditionalExpressionAccess().getThenExprExpressionWithoutCascadeParserRuleCall_1_2_0(), semanticObject.getThenExpr());
 		feeder.accept(grammarAccess.getConditionalExpressionAccess().getElseExprExpressionWithoutCascadeParserRuleCall_1_4_0(), semanticObject.getElseExpr());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns Conditional
-	 *
-	 * Constraint:
-	 *     (condition=ConditionalExpression_Conditional_1_0 thenExpr=ExpressionWithoutCascade elseExpr=ExpressionWithoutCascade value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_ConditionalExpression_MapOrSetElement(ISerializationContext context, Conditional semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -2834,14 +1330,21 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     MapOrSetElement returns Equality
+	 *     CollectionElement returns ExpressionElement
+	 *     ExpressionElement returns ExpressionElement
 	 *
 	 * Constraint:
-	 *     (left=EqualityExpression_Equality_1_0 (operator='==' | operator='!=') right=RelationalExpression value=Expression?)
+	 *     expression=Expression
 	 * </pre>
 	 */
-	protected void sequence_EqualityExpression_MapOrSetElement(ISerializationContext context, Equality semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_ExpressionElement(ISerializationContext context, ExpressionElement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DartPackage.eINSTANCE.getExpressionElement_Expression()) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.eINSTANCE.getExpressionElement_Expression()));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getExpressionElementAccess().getExpressionExpressionParserRuleCall_1_0(), semanticObject.getExpression());
+		feeder.finish();
 	}
 	
 	
@@ -2995,6 +1498,21 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getFinallyClauseAccess().getBlockBlockParserRuleCall_1_0(), semanticObject.getBlock());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     CollectionElement returns ForElement
+	 *     ForElement returns ForElement
+	 *
+	 * Constraint:
+	 *     (isAwait?='await'? forLoopParts=ForLoopParts element=CollectionElement)
+	 * </pre>
+	 */
+	protected void sequence_ForElement(ISerializationContext context, ForElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -3213,6 +1731,21 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     CollectionElement returns IfElement
+	 *     IfElement returns IfElement
+	 *
+	 * Constraint:
+	 *     (condition=Expression thenElement=CollectionElement elseElement=CollectionElement?)
+	 * </pre>
+	 */
+	protected void sequence_IfElement(ISerializationContext context, IfElement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Expression returns IfNull
 	 *     CascadeExpression returns IfNull
 	 *     CascadeExpression.Cascade_1_0 returns IfNull
@@ -3239,20 +1772,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		feeder.accept(grammarAccess.getIfNullExpressionAccess().getIfNullLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getIfNullExpressionAccess().getRightLogicalOrExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns IfNull
-	 *
-	 * Constraint:
-	 *     (left=IfNullExpression_IfNull_1_0 right=LogicalOrExpression value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_IfNullExpression_MapOrSetElement(ISerializationContext context, IfNull semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -3467,20 +1986,6 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     MapOrSetElement returns LogicalAnd
-	 *
-	 * Constraint:
-	 *     (left=LogicalAndExpression_LogicalAnd_1_0 right=EqualityExpression value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_LogicalAndExpression_MapOrSetElement(ISerializationContext context, LogicalAnd semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
 	 *     Expression returns LogicalOr
 	 *     CascadeExpression returns LogicalOr
 	 *     CascadeExpression.Cascade_1_0 returns LogicalOr
@@ -3515,413 +2020,24 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     MapOrSetElement returns LogicalOr
+	 *     CollectionElement returns MapElement
+	 *     MapElement returns MapElement
 	 *
 	 * Constraint:
-	 *     (left=LogicalOrExpression_LogicalOr_1_0 right=LogicalAndExpression value=Expression?)
+	 *     (key=Expression value=Expression)
 	 * </pre>
 	 */
-	protected void sequence_LogicalOrExpression_MapOrSetElement(ISerializationContext context, LogicalOr semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns Multiplicative
-	 *
-	 * Constraint:
-	 *     (
-	 *         left=MultiplicativeExpression_Multiplicative_1_0 
-	 *         (operator='*' | operator='/' | operator='%' | operator='~/') 
-	 *         right=UnaryExpression 
-	 *         value=Expression?
-	 *     )
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_MultiplicativeExpression(ISerializationContext context, Multiplicative semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns FunctionCall
-	 *
-	 * Constraint:
-	 *     (receiver=PostfixExpression_FunctionCall_1_3_0 args=Arguments value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PostfixExpression(ISerializationContext context, FunctionCall semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns IndexExpression
-	 *
-	 * Constraint:
-	 *     (receiver=PostfixExpression_IndexExpression_1_4_0 index=Expression value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PostfixExpression(ISerializationContext context, IndexExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns MethodInvocation
-	 *
-	 * Constraint:
-	 *     (receiver=PostfixExpression_MethodInvocation_1_1_0 method=ID typeArguments=TypeArguments? args=Arguments value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PostfixExpression(ISerializationContext context, MethodInvocation semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns NullAssert
-	 *
-	 * Constraint:
-	 *     (operand=PostfixExpression_NullAssert_1_6_0 value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PostfixExpression(ISerializationContext context, NullAssert semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns NullAwareIndex
-	 *
-	 * Constraint:
-	 *     (receiver=PostfixExpression_NullAwareIndex_1_5_0 index=Expression value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PostfixExpression(ISerializationContext context, NullAwareIndex semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns NullAwareMethodInvocation
-	 *
-	 * Constraint:
-	 *     (receiver=PostfixExpression_NullAwareMethodInvocation_1_2_0 method=ID typeArguments=TypeArguments? args=Arguments value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PostfixExpression(ISerializationContext context, NullAwareMethodInvocation semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns NullAwarePropertyAccess
-	 *
-	 * Constraint:
-	 *     (receiver=PostfixExpression_NullAwarePropertyAccess_1_8_0 name=ID value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PostfixExpression(ISerializationContext context, NullAwarePropertyAccess semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns Postfix
-	 *
-	 * Constraint:
-	 *     (operand=PostfixExpression_Postfix_1_0_0 (operator='++' | operator='--') value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PostfixExpression(ISerializationContext context, Postfix semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns PropertyAccess
-	 *
-	 * Constraint:
-	 *     (receiver=PostfixExpression_PropertyAccess_1_7_0 name=ID value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PostfixExpression(ISerializationContext context, PropertyAccess semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns BooleanLiteral
-	 *
-	 * Constraint:
-	 *     ((boolValue='true' | boolValue='false') value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, BooleanLiteral semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns ConstExpression
-	 *
-	 * Constraint:
-	 *     (type=Type constructor=ID? args=Arguments value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, ConstExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns IdentifierRef
-	 *
-	 * Constraint:
-	 *     (name=ID value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, IdentifierRef semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns ListLiteral
-	 *
-	 * Constraint:
-	 *     (isConst?='const'? typeArguments=TypeArguments? (elements+=Expression elements+=Expression*)? value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, ListLiteral semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns NewExpression
-	 *
-	 * Constraint:
-	 *     (type=Type constructor=ID? args=Arguments value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, NewExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns NullLiteral
-	 *
-	 * Constraint:
-	 *     value=Expression?
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, NullLiteral semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns NumberLiteral
-	 *
-	 * Constraint:
-	 *     (intValue=INT value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, NumberLiteral semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns ParenthesizedExpression
-	 *
-	 * Constraint:
-	 *     (expression=Expression value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, ParenthesizedExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns SetOrMapLiteral
-	 *
-	 * Constraint:
-	 *     (isConst?='const'? typeArguments=TypeArguments? (elements+=MapOrSetElement elements+=MapOrSetElement*)? value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, SetOrMapLiteral semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns StringLiteral
-	 *
-	 * Constraint:
-	 *     (stringValue=STRING value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, StringLiteral semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns SuperExpression
-	 *
-	 * Constraint:
-	 *     value=Expression?
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, SuperExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns ThisExpression
-	 *
-	 * Constraint:
-	 *     value=Expression?
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_PrimaryExpression(ISerializationContext context, ThisExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns Relational
-	 *
-	 * Constraint:
-	 *     (
-	 *         left=RelationalExpression_Relational_1_0_0 
-	 *         (operator='&gt;=' | operator='&gt;' | operator='&lt;=' | operator='&lt;') 
-	 *         right=BitwiseOrExpression 
-	 *         value=Expression?
-	 *     )
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_RelationalExpression(ISerializationContext context, Relational semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns TypeCheck
-	 *
-	 * Constraint:
-	 *     (left=RelationalExpression_TypeCheck_1_1_0 operator=TypeCheckOperator type=Type value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_RelationalExpression(ISerializationContext context, TypeCheck semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns Shift
-	 *
-	 * Constraint:
-	 *     (left=ShiftExpression_Shift_1_0 (operator='&lt;&lt;' | operator='&gt;&gt;&gt;' | operator='&gt;&gt;') right=AdditiveExpression value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_ShiftExpression(ISerializationContext context, Shift semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns ThrowExpression
-	 *
-	 * Constraint:
-	 *     (expression=Expression value=Expression?)
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_ThrowExpression(ISerializationContext context, ThrowExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
-	 *     MapOrSetElement returns PrefixExpression
-	 *
-	 * Constraint:
-	 *     (
-	 *         (
-	 *             operator='-' | 
-	 *             operator='!' | 
-	 *             operator='~' | 
-	 *             operator='++' | 
-	 *             operator='--' | 
-	 *             operator='await'
-	 *         ) 
-	 *         operand=UnaryExpression 
-	 *         value=Expression?
-	 *     )
-	 * </pre>
-	 */
-	protected void sequence_MapOrSetElement_UnaryExpression(ISerializationContext context, PrefixExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_MapElement(ISerializationContext context, MapElement semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DartPackage.eINSTANCE.getMapElement_Key()) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.eINSTANCE.getMapElement_Key()));
+			if (transientValues.isValueTransient(semanticObject, DartPackage.eINSTANCE.getMapElement_Value()) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DartPackage.eINSTANCE.getMapElement_Value()));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMapElementAccess().getKeyExpressionParserRuleCall_1_0(), semanticObject.getKey());
+		feeder.accept(grammarAccess.getMapElementAccess().getValueExpressionParserRuleCall_3_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	
@@ -5325,7 +3441,7 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PrimaryExpression returns SetOrMapLiteral
 	 *
 	 * Constraint:
-	 *     (isConst?='const'? typeArguments=TypeArguments? (elements+=MapOrSetElement elements+=MapOrSetElement*)?)
+	 *     (isConst?='const'? typeArguments=TypeArguments? (elements+=CollectionElement elements+=CollectionElement*)?)
 	 * </pre>
 	 */
 	protected void sequence_PrimaryExpression(ISerializationContext context, SetOrMapLiteral semanticObject) {
@@ -5715,6 +3831,21 @@ public class DartSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 * </pre>
 	 */
 	protected void sequence_SimpleFormalParameter(ISerializationContext context, SimpleFormalParameter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     CollectionElement returns SpreadElement
+	 *     SpreadElement returns SpreadElement
+	 *
+	 * Constraint:
+	 *     (isNullAware?='...?'? expression=Expression)
+	 * </pre>
+	 */
+	protected void sequence_SpreadElement(ISerializationContext context, SpreadElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -423,7 +423,42 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass mapOrSetElementEClass = null;
+  private EClass collectionElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mapElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass spreadElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ifElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass forElementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -3670,17 +3705,6 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EReference getExpression_Value()
-  {
-        return (EReference)getExpression().getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getThrowExpression()
   {
     if (throwExpressionEClass == null)
@@ -3862,13 +3886,209 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
    * @generated
    */
   @Override
-  public EClass getMapOrSetElement()
+  public EClass getCollectionElement()
   {
-    if (mapOrSetElementEClass == null)
+    if (collectionElementEClass == null)
     {
-      mapOrSetElementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(54);
+      collectionElementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(54);
     }
-    return mapOrSetElementEClass;
+    return collectionElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExpressionElement()
+  {
+    if (expressionElementEClass == null)
+    {
+      expressionElementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(55);
+    }
+    return expressionElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExpressionElement_Expression()
+  {
+        return (EReference)getExpressionElement().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMapElement()
+  {
+    if (mapElementEClass == null)
+    {
+      mapElementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(56);
+    }
+    return mapElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMapElement_Key()
+  {
+        return (EReference)getMapElement().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMapElement_Value()
+  {
+        return (EReference)getMapElement().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSpreadElement()
+  {
+    if (spreadElementEClass == null)
+    {
+      spreadElementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(57);
+    }
+    return spreadElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSpreadElement_IsNullAware()
+  {
+        return (EAttribute)getSpreadElement().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpreadElement_Expression()
+  {
+        return (EReference)getSpreadElement().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getIfElement()
+  {
+    if (ifElementEClass == null)
+    {
+      ifElementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(58);
+    }
+    return ifElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfElement_Condition()
+  {
+        return (EReference)getIfElement().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfElement_ThenElement()
+  {
+        return (EReference)getIfElement().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIfElement_ElseElement()
+  {
+        return (EReference)getIfElement().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getForElement()
+  {
+    if (forElementEClass == null)
+    {
+      forElementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(59);
+    }
+    return forElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getForElement_IsAwait()
+  {
+        return (EAttribute)getForElement().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForElement_ForLoopParts()
+  {
+        return (EReference)getForElement().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForElement_Element()
+  {
+        return (EReference)getForElement().getEStructuralFeatures().get(2);
   }
 
   /**
@@ -3881,7 +4101,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (statementEClass == null)
     {
-      statementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(55);
+      statementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(60);
     }
     return statementEClass;
   }
@@ -3918,7 +4138,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (labelEClass == null)
     {
-      labelEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(56);
+      labelEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(61);
     }
     return labelEClass;
   }
@@ -3944,7 +4164,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (nonLabelledStatementEClass == null)
     {
-      nonLabelledStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(57);
+      nonLabelledStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(62);
     }
     return nonLabelledStatementEClass;
   }
@@ -3959,7 +4179,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (blockEClass == null)
     {
-      blockEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(58);
+      blockEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(63);
     }
     return blockEClass;
   }
@@ -3985,7 +4205,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (localVariableDeclarationEClass == null)
     {
-      localVariableDeclarationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(59);
+      localVariableDeclarationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(64);
     }
     return localVariableDeclarationEClass;
   }
@@ -4011,7 +4231,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (localFunctionDeclarationEClass == null)
     {
-      localFunctionDeclarationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(60);
+      localFunctionDeclarationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(65);
     }
     return localFunctionDeclarationEClass;
   }
@@ -4081,7 +4301,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (ifStatementEClass == null)
     {
-      ifStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(61);
+      ifStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(66);
     }
     return ifStatementEClass;
   }
@@ -4129,7 +4349,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (forStatementEClass == null)
     {
-      forStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(62);
+      forStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(67);
     }
     return forStatementEClass;
   }
@@ -4177,7 +4397,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (forLoopPartsEClass == null)
     {
-      forLoopPartsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(63);
+      forLoopPartsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(68);
     }
     return forLoopPartsEClass;
   }
@@ -4192,7 +4412,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (forInLoopPartsEClass == null)
     {
-      forInLoopPartsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(64);
+      forInLoopPartsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(69);
     }
     return forInLoopPartsEClass;
   }
@@ -4251,7 +4471,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (declaredIdentifierEClass == null)
     {
-      declaredIdentifierEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(65);
+      declaredIdentifierEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(70);
     }
     return declaredIdentifierEClass;
   }
@@ -4299,7 +4519,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (forInitializerStatementEClass == null)
     {
-      forInitializerStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(66);
+      forInitializerStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(71);
     }
     return forInitializerStatementEClass;
   }
@@ -4358,7 +4578,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (whileStatementEClass == null)
     {
-      whileStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(67);
+      whileStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(72);
     }
     return whileStatementEClass;
   }
@@ -4395,7 +4615,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (doStatementEClass == null)
     {
-      doStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(68);
+      doStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(73);
     }
     return doStatementEClass;
   }
@@ -4432,7 +4652,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (switchStatementEClass == null)
     {
-      switchStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(69);
+      switchStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(74);
     }
     return switchStatementEClass;
   }
@@ -4480,7 +4700,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (switchCaseEClass == null)
     {
-      switchCaseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(70);
+      switchCaseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(75);
     }
     return switchCaseEClass;
   }
@@ -4528,7 +4748,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (defaultCaseEClass == null)
     {
-      defaultCaseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(71);
+      defaultCaseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(76);
     }
     return defaultCaseEClass;
   }
@@ -4565,7 +4785,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (rethrowStatementEClass == null)
     {
-      rethrowStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(72);
+      rethrowStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(77);
     }
     return rethrowStatementEClass;
   }
@@ -4580,7 +4800,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (tryStatementEClass == null)
     {
-      tryStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(73);
+      tryStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(78);
     }
     return tryStatementEClass;
   }
@@ -4628,7 +4848,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (catchClauseEClass == null)
     {
-      catchClauseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(74);
+      catchClauseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(79);
     }
     return catchClauseEClass;
   }
@@ -4687,7 +4907,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (finallyClauseEClass == null)
     {
-      finallyClauseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(75);
+      finallyClauseEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(80);
     }
     return finallyClauseEClass;
   }
@@ -4713,7 +4933,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (breakStatementEClass == null)
     {
-      breakStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(76);
+      breakStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(81);
     }
     return breakStatementEClass;
   }
@@ -4739,7 +4959,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (continueStatementEClass == null)
     {
-      continueStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(77);
+      continueStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(82);
     }
     return continueStatementEClass;
   }
@@ -4765,7 +4985,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (returnStatementEClass == null)
     {
-      returnStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(78);
+      returnStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(83);
     }
     return returnStatementEClass;
   }
@@ -4791,7 +5011,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (yieldStatementEClass == null)
     {
-      yieldStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(79);
+      yieldStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(84);
     }
     return yieldStatementEClass;
   }
@@ -4828,7 +5048,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (assertStatementEClass == null)
     {
-      assertStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(80);
+      assertStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(85);
     }
     return assertStatementEClass;
   }
@@ -4865,7 +5085,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (expressionStatementEClass == null)
     {
-      expressionStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(81);
+      expressionStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(86);
     }
     return expressionStatementEClass;
   }
@@ -4891,7 +5111,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (libraryDeclarationEClass == null)
     {
-      libraryDeclarationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(82);
+      libraryDeclarationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(87);
     }
     return libraryDeclarationEClass;
   }
@@ -4950,7 +5170,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (partDeclarationEClass == null)
     {
-      partDeclarationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(83);
+      partDeclarationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(88);
     }
     return partDeclarationEClass;
   }
@@ -4976,7 +5196,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (scriptTagEClass == null)
     {
-      scriptTagEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(84);
+      scriptTagEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(89);
     }
     return scriptTagEClass;
   }
@@ -5002,7 +5222,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (libraryNameEClass == null)
     {
-      libraryNameEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(85);
+      libraryNameEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(90);
     }
     return libraryNameEClass;
   }
@@ -5039,7 +5259,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (importOrExportEClass == null)
     {
-      importOrExportEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(86);
+      importOrExportEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(91);
     }
     return importOrExportEClass;
   }
@@ -5076,7 +5296,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (libraryImportEClass == null)
     {
-      libraryImportEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(87);
+      libraryImportEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(92);
     }
     return libraryImportEClass;
   }
@@ -5124,7 +5344,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (libraryExportEClass == null)
     {
-      libraryExportEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(88);
+      libraryExportEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(93);
     }
     return libraryExportEClass;
   }
@@ -5150,7 +5370,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (partDirectiveEClass == null)
     {
-      partDirectiveEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(89);
+      partDirectiveEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(94);
     }
     return partDirectiveEClass;
   }
@@ -5187,7 +5407,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (partHeaderEClass == null)
     {
-      partHeaderEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(90);
+      partHeaderEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(95);
     }
     return partHeaderEClass;
   }
@@ -5235,7 +5455,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (combinatorEClass == null)
     {
-      combinatorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(91);
+      combinatorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(96);
     }
     return combinatorEClass;
   }
@@ -5261,7 +5481,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (topLevelDeclarationEClass == null)
     {
-      topLevelDeclarationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(92);
+      topLevelDeclarationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(97);
     }
     return topLevelDeclarationEClass;
   }
@@ -5276,7 +5496,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (topLevelGetterEClass == null)
     {
-      topLevelGetterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(93);
+      topLevelGetterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(98);
     }
     return topLevelGetterEClass;
   }
@@ -5324,7 +5544,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (topLevelSetterEClass == null)
     {
-      topLevelSetterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(94);
+      topLevelSetterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(99);
     }
     return topLevelSetterEClass;
   }
@@ -5372,7 +5592,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (externalGetterEClass == null)
     {
-      externalGetterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(95);
+      externalGetterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(100);
     }
     return externalGetterEClass;
   }
@@ -5409,7 +5629,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (externalSetterEClass == null)
     {
-      externalSetterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(96);
+      externalSetterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(101);
     }
     return externalSetterEClass;
   }
@@ -5446,7 +5666,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (typeAliasEClass == null)
     {
-      typeAliasEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(97);
+      typeAliasEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(102);
     }
     return typeAliasEClass;
   }
@@ -5527,7 +5747,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (typeEClass == null)
     {
-      typeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(98);
+      typeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(103);
     }
     return typeEClass;
   }
@@ -5542,7 +5762,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (functionTypeEClass == null)
     {
-      functionTypeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(99);
+      functionTypeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(104);
     }
     return functionTypeEClass;
   }
@@ -5579,7 +5799,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (functionTypeTailEClass == null)
     {
-      functionTypeTailEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(100);
+      functionTypeTailEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(105);
     }
     return functionTypeTailEClass;
   }
@@ -5627,7 +5847,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (typeNotFunctionEClass == null)
     {
-      typeNotFunctionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(101);
+      typeNotFunctionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(106);
     }
     return typeNotFunctionEClass;
   }
@@ -5686,7 +5906,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (typeNameEClass == null)
     {
-      typeNameEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(102);
+      typeNameEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(107);
     }
     return typeNameEClass;
   }
@@ -5723,7 +5943,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (parameterTypeListEClass == null)
     {
-      parameterTypeListEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(103);
+      parameterTypeListEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(108);
     }
     return parameterTypeListEClass;
   }
@@ -5760,7 +5980,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (optionalParameterTypesEClass == null)
     {
-      optionalParameterTypesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(104);
+      optionalParameterTypesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(109);
     }
     return optionalParameterTypesEClass;
   }
@@ -5775,7 +5995,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (optionalPositionalParameterTypesEClass == null)
     {
-      optionalPositionalParameterTypesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(105);
+      optionalPositionalParameterTypesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(110);
     }
     return optionalPositionalParameterTypesEClass;
   }
@@ -5801,7 +6021,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (namedParameterTypesEClass == null)
     {
-      namedParameterTypesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(106);
+      namedParameterTypesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(111);
     }
     return namedParameterTypesEClass;
   }
@@ -5827,7 +6047,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (normalParameterTypeEClass == null)
     {
-      normalParameterTypeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(107);
+      normalParameterTypeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(112);
     }
     return normalParameterTypeEClass;
   }
@@ -5875,7 +6095,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (namedParameterTypeEClass == null)
     {
-      namedParameterTypeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(108);
+      namedParameterTypeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(113);
     }
     return namedParameterTypeEClass;
   }
@@ -5934,7 +6154,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (typeArgumentsEClass == null)
     {
-      typeArgumentsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(109);
+      typeArgumentsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(114);
     }
     return typeArgumentsEClass;
   }
@@ -5960,7 +6180,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (argumentListNamedOnlyEClass == null)
     {
-      argumentListNamedOnlyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(110);
+      argumentListNamedOnlyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(115);
     }
     return argumentListNamedOnlyEClass;
   }
@@ -5975,7 +6195,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (argumentListPositionalThenNamedEClass == null)
     {
-      argumentListPositionalThenNamedEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(111);
+      argumentListPositionalThenNamedEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(116);
     }
     return argumentListPositionalThenNamedEClass;
   }
@@ -6001,7 +6221,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (cascadeEClass == null)
     {
-      cascadeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(112);
+      cascadeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(117);
     }
     return cascadeEClass;
   }
@@ -6049,7 +6269,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (assignmentEClass == null)
     {
-      assignmentEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(113);
+      assignmentEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(118);
     }
     return assignmentEClass;
   }
@@ -6097,7 +6317,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (conditionalEClass == null)
     {
-      conditionalEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(114);
+      conditionalEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(119);
     }
     return conditionalEClass;
   }
@@ -6145,7 +6365,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (ifNullEClass == null)
     {
-      ifNullEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(115);
+      ifNullEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(120);
     }
     return ifNullEClass;
   }
@@ -6182,7 +6402,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (logicalOrEClass == null)
     {
-      logicalOrEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(116);
+      logicalOrEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(121);
     }
     return logicalOrEClass;
   }
@@ -6219,7 +6439,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (logicalAndEClass == null)
     {
-      logicalAndEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(117);
+      logicalAndEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(122);
     }
     return logicalAndEClass;
   }
@@ -6256,7 +6476,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (equalityEClass == null)
     {
-      equalityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(118);
+      equalityEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(123);
     }
     return equalityEClass;
   }
@@ -6304,7 +6524,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (relationalEClass == null)
     {
-      relationalEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(119);
+      relationalEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(124);
     }
     return relationalEClass;
   }
@@ -6352,7 +6572,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (typeCheckEClass == null)
     {
-      typeCheckEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(120);
+      typeCheckEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(125);
     }
     return typeCheckEClass;
   }
@@ -6400,7 +6620,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (bitwiseOrEClass == null)
     {
-      bitwiseOrEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(121);
+      bitwiseOrEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(126);
     }
     return bitwiseOrEClass;
   }
@@ -6437,7 +6657,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (bitwiseXorEClass == null)
     {
-      bitwiseXorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(122);
+      bitwiseXorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(127);
     }
     return bitwiseXorEClass;
   }
@@ -6474,7 +6694,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (bitwiseAndEClass == null)
     {
-      bitwiseAndEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(123);
+      bitwiseAndEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(128);
     }
     return bitwiseAndEClass;
   }
@@ -6511,7 +6731,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (shiftEClass == null)
     {
-      shiftEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(124);
+      shiftEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(129);
     }
     return shiftEClass;
   }
@@ -6559,7 +6779,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (additiveEClass == null)
     {
-      additiveEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(125);
+      additiveEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(130);
     }
     return additiveEClass;
   }
@@ -6607,7 +6827,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (multiplicativeEClass == null)
     {
-      multiplicativeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(126);
+      multiplicativeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(131);
     }
     return multiplicativeEClass;
   }
@@ -6655,7 +6875,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (prefixExpressionEClass == null)
     {
-      prefixExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(127);
+      prefixExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(132);
     }
     return prefixExpressionEClass;
   }
@@ -6692,7 +6912,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (postfixEClass == null)
     {
-      postfixEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(128);
+      postfixEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(133);
     }
     return postfixEClass;
   }
@@ -6729,7 +6949,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (methodInvocationEClass == null)
     {
-      methodInvocationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(129);
+      methodInvocationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(134);
     }
     return methodInvocationEClass;
   }
@@ -6788,7 +7008,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (nullAwareMethodInvocationEClass == null)
     {
-      nullAwareMethodInvocationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(130);
+      nullAwareMethodInvocationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(135);
     }
     return nullAwareMethodInvocationEClass;
   }
@@ -6847,7 +7067,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (functionCallEClass == null)
     {
-      functionCallEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(131);
+      functionCallEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(136);
     }
     return functionCallEClass;
   }
@@ -6884,7 +7104,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (indexExpressionEClass == null)
     {
-      indexExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(132);
+      indexExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(137);
     }
     return indexExpressionEClass;
   }
@@ -6921,7 +7141,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (nullAwareIndexEClass == null)
     {
-      nullAwareIndexEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(133);
+      nullAwareIndexEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(138);
     }
     return nullAwareIndexEClass;
   }
@@ -6958,7 +7178,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (nullAssertEClass == null)
     {
-      nullAssertEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(134);
+      nullAssertEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(139);
     }
     return nullAssertEClass;
   }
@@ -6984,7 +7204,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (propertyAccessEClass == null)
     {
-      propertyAccessEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(135);
+      propertyAccessEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(140);
     }
     return propertyAccessEClass;
   }
@@ -7021,7 +7241,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (nullAwarePropertyAccessEClass == null)
     {
-      nullAwarePropertyAccessEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(136);
+      nullAwarePropertyAccessEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(141);
     }
     return nullAwarePropertyAccessEClass;
   }
@@ -7058,7 +7278,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (thisExpressionEClass == null)
     {
-      thisExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(137);
+      thisExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(142);
     }
     return thisExpressionEClass;
   }
@@ -7073,7 +7293,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (superExpressionEClass == null)
     {
-      superExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(138);
+      superExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(143);
     }
     return superExpressionEClass;
   }
@@ -7088,7 +7308,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (nullLiteralEClass == null)
     {
-      nullLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(139);
+      nullLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(144);
     }
     return nullLiteralEClass;
   }
@@ -7103,7 +7323,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (booleanLiteralEClass == null)
     {
-      booleanLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(140);
+      booleanLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(145);
     }
     return booleanLiteralEClass;
   }
@@ -7129,7 +7349,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (numberLiteralEClass == null)
     {
-      numberLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(141);
+      numberLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(146);
     }
     return numberLiteralEClass;
   }
@@ -7155,7 +7375,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (stringLiteralEClass == null)
     {
-      stringLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(142);
+      stringLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(147);
     }
     return stringLiteralEClass;
   }
@@ -7181,7 +7401,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (identifierRefEClass == null)
     {
-      identifierRefEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(143);
+      identifierRefEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(148);
     }
     return identifierRefEClass;
   }
@@ -7207,7 +7427,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (newExpressionEClass == null)
     {
-      newExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(144);
+      newExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(149);
     }
     return newExpressionEClass;
   }
@@ -7255,7 +7475,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (constExpressionEClass == null)
     {
-      constExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(145);
+      constExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(150);
     }
     return constExpressionEClass;
   }
@@ -7303,7 +7523,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (listLiteralEClass == null)
     {
-      listLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(146);
+      listLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(151);
     }
     return listLiteralEClass;
   }
@@ -7351,7 +7571,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (setOrMapLiteralEClass == null)
     {
-      setOrMapLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(147);
+      setOrMapLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(152);
     }
     return setOrMapLiteralEClass;
   }
@@ -7399,7 +7619,7 @@ public class DartPackageImpl extends EPackageImpl implements DartPackage
   {
     if (parenthesizedExpressionEClass == null)
     {
-      parenthesizedExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(148);
+      parenthesizedExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(DartPackage.eNS_URI).getEClassifiers().get(153);
     }
     return parenthesizedExpressionEClass;
   }

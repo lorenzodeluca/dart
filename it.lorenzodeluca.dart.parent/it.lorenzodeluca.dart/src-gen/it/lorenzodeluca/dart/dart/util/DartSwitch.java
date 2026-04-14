@@ -435,7 +435,6 @@ public class DartSwitch<T> extends Switch<T>
       {
         Expression expression = (Expression)theEObject;
         T result = caseExpression(expression);
-        if (result == null) result = caseMapOrSetElement(expression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -445,7 +444,6 @@ public class DartSwitch<T> extends Switch<T>
         T result = caseThrowExpression(throwExpression);
         if (result == null) result = caseThrowExpressionWithoutCascade(throwExpression);
         if (result == null) result = caseExpression(throwExpression);
-        if (result == null) result = caseMapOrSetElement(throwExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -468,14 +466,53 @@ public class DartSwitch<T> extends Switch<T>
         ThrowExpressionWithoutCascade throwExpressionWithoutCascade = (ThrowExpressionWithoutCascade)theEObject;
         T result = caseThrowExpressionWithoutCascade(throwExpressionWithoutCascade);
         if (result == null) result = caseExpression(throwExpressionWithoutCascade);
-        if (result == null) result = caseMapOrSetElement(throwExpressionWithoutCascade);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DartPackage.MAP_OR_SET_ELEMENT:
+      case DartPackage.COLLECTION_ELEMENT:
       {
-        MapOrSetElement mapOrSetElement = (MapOrSetElement)theEObject;
-        T result = caseMapOrSetElement(mapOrSetElement);
+        CollectionElement collectionElement = (CollectionElement)theEObject;
+        T result = caseCollectionElement(collectionElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.EXPRESSION_ELEMENT:
+      {
+        ExpressionElement expressionElement = (ExpressionElement)theEObject;
+        T result = caseExpressionElement(expressionElement);
+        if (result == null) result = caseCollectionElement(expressionElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.MAP_ELEMENT:
+      {
+        MapElement mapElement = (MapElement)theEObject;
+        T result = caseMapElement(mapElement);
+        if (result == null) result = caseCollectionElement(mapElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.SPREAD_ELEMENT:
+      {
+        SpreadElement spreadElement = (SpreadElement)theEObject;
+        T result = caseSpreadElement(spreadElement);
+        if (result == null) result = caseCollectionElement(spreadElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.IF_ELEMENT:
+      {
+        IfElement ifElement = (IfElement)theEObject;
+        T result = caseIfElement(ifElement);
+        if (result == null) result = caseCollectionElement(ifElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.FOR_ELEMENT:
+      {
+        ForElement forElement = (ForElement)theEObject;
+        T result = caseForElement(forElement);
+        if (result == null) result = caseCollectionElement(forElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -916,7 +953,6 @@ public class DartSwitch<T> extends Switch<T>
         Cascade cascade = (Cascade)theEObject;
         T result = caseCascade(cascade);
         if (result == null) result = caseExpression(cascade);
-        if (result == null) result = caseMapOrSetElement(cascade);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -925,7 +961,6 @@ public class DartSwitch<T> extends Switch<T>
         Assignment assignment = (Assignment)theEObject;
         T result = caseAssignment(assignment);
         if (result == null) result = caseExpression(assignment);
-        if (result == null) result = caseMapOrSetElement(assignment);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -934,7 +969,6 @@ public class DartSwitch<T> extends Switch<T>
         Conditional conditional = (Conditional)theEObject;
         T result = caseConditional(conditional);
         if (result == null) result = caseExpression(conditional);
-        if (result == null) result = caseMapOrSetElement(conditional);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -943,7 +977,6 @@ public class DartSwitch<T> extends Switch<T>
         IfNull ifNull = (IfNull)theEObject;
         T result = caseIfNull(ifNull);
         if (result == null) result = caseExpression(ifNull);
-        if (result == null) result = caseMapOrSetElement(ifNull);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -952,7 +985,6 @@ public class DartSwitch<T> extends Switch<T>
         LogicalOr logicalOr = (LogicalOr)theEObject;
         T result = caseLogicalOr(logicalOr);
         if (result == null) result = caseExpression(logicalOr);
-        if (result == null) result = caseMapOrSetElement(logicalOr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -961,7 +993,6 @@ public class DartSwitch<T> extends Switch<T>
         LogicalAnd logicalAnd = (LogicalAnd)theEObject;
         T result = caseLogicalAnd(logicalAnd);
         if (result == null) result = caseExpression(logicalAnd);
-        if (result == null) result = caseMapOrSetElement(logicalAnd);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -970,7 +1001,6 @@ public class DartSwitch<T> extends Switch<T>
         Equality equality = (Equality)theEObject;
         T result = caseEquality(equality);
         if (result == null) result = caseExpression(equality);
-        if (result == null) result = caseMapOrSetElement(equality);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -979,7 +1009,6 @@ public class DartSwitch<T> extends Switch<T>
         Relational relational = (Relational)theEObject;
         T result = caseRelational(relational);
         if (result == null) result = caseExpression(relational);
-        if (result == null) result = caseMapOrSetElement(relational);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -988,7 +1017,6 @@ public class DartSwitch<T> extends Switch<T>
         TypeCheck typeCheck = (TypeCheck)theEObject;
         T result = caseTypeCheck(typeCheck);
         if (result == null) result = caseExpression(typeCheck);
-        if (result == null) result = caseMapOrSetElement(typeCheck);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -997,7 +1025,6 @@ public class DartSwitch<T> extends Switch<T>
         BitwiseOr bitwiseOr = (BitwiseOr)theEObject;
         T result = caseBitwiseOr(bitwiseOr);
         if (result == null) result = caseExpression(bitwiseOr);
-        if (result == null) result = caseMapOrSetElement(bitwiseOr);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1006,7 +1033,6 @@ public class DartSwitch<T> extends Switch<T>
         BitwiseXor bitwiseXor = (BitwiseXor)theEObject;
         T result = caseBitwiseXor(bitwiseXor);
         if (result == null) result = caseExpression(bitwiseXor);
-        if (result == null) result = caseMapOrSetElement(bitwiseXor);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1015,7 +1041,6 @@ public class DartSwitch<T> extends Switch<T>
         BitwiseAnd bitwiseAnd = (BitwiseAnd)theEObject;
         T result = caseBitwiseAnd(bitwiseAnd);
         if (result == null) result = caseExpression(bitwiseAnd);
-        if (result == null) result = caseMapOrSetElement(bitwiseAnd);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1024,7 +1049,6 @@ public class DartSwitch<T> extends Switch<T>
         Shift shift = (Shift)theEObject;
         T result = caseShift(shift);
         if (result == null) result = caseExpression(shift);
-        if (result == null) result = caseMapOrSetElement(shift);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1033,7 +1057,6 @@ public class DartSwitch<T> extends Switch<T>
         Additive additive = (Additive)theEObject;
         T result = caseAdditive(additive);
         if (result == null) result = caseExpression(additive);
-        if (result == null) result = caseMapOrSetElement(additive);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1042,7 +1065,6 @@ public class DartSwitch<T> extends Switch<T>
         Multiplicative multiplicative = (Multiplicative)theEObject;
         T result = caseMultiplicative(multiplicative);
         if (result == null) result = caseExpression(multiplicative);
-        if (result == null) result = caseMapOrSetElement(multiplicative);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1051,7 +1073,6 @@ public class DartSwitch<T> extends Switch<T>
         PrefixExpression prefixExpression = (PrefixExpression)theEObject;
         T result = casePrefixExpression(prefixExpression);
         if (result == null) result = caseExpression(prefixExpression);
-        if (result == null) result = caseMapOrSetElement(prefixExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1060,7 +1081,6 @@ public class DartSwitch<T> extends Switch<T>
         Postfix postfix = (Postfix)theEObject;
         T result = casePostfix(postfix);
         if (result == null) result = caseExpression(postfix);
-        if (result == null) result = caseMapOrSetElement(postfix);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1069,7 +1089,6 @@ public class DartSwitch<T> extends Switch<T>
         MethodInvocation methodInvocation = (MethodInvocation)theEObject;
         T result = caseMethodInvocation(methodInvocation);
         if (result == null) result = caseExpression(methodInvocation);
-        if (result == null) result = caseMapOrSetElement(methodInvocation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1078,7 +1097,6 @@ public class DartSwitch<T> extends Switch<T>
         NullAwareMethodInvocation nullAwareMethodInvocation = (NullAwareMethodInvocation)theEObject;
         T result = caseNullAwareMethodInvocation(nullAwareMethodInvocation);
         if (result == null) result = caseExpression(nullAwareMethodInvocation);
-        if (result == null) result = caseMapOrSetElement(nullAwareMethodInvocation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1087,7 +1105,6 @@ public class DartSwitch<T> extends Switch<T>
         FunctionCall functionCall = (FunctionCall)theEObject;
         T result = caseFunctionCall(functionCall);
         if (result == null) result = caseExpression(functionCall);
-        if (result == null) result = caseMapOrSetElement(functionCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1096,7 +1113,6 @@ public class DartSwitch<T> extends Switch<T>
         IndexExpression indexExpression = (IndexExpression)theEObject;
         T result = caseIndexExpression(indexExpression);
         if (result == null) result = caseExpression(indexExpression);
-        if (result == null) result = caseMapOrSetElement(indexExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1105,7 +1121,6 @@ public class DartSwitch<T> extends Switch<T>
         NullAwareIndex nullAwareIndex = (NullAwareIndex)theEObject;
         T result = caseNullAwareIndex(nullAwareIndex);
         if (result == null) result = caseExpression(nullAwareIndex);
-        if (result == null) result = caseMapOrSetElement(nullAwareIndex);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1114,7 +1129,6 @@ public class DartSwitch<T> extends Switch<T>
         NullAssert nullAssert = (NullAssert)theEObject;
         T result = caseNullAssert(nullAssert);
         if (result == null) result = caseExpression(nullAssert);
-        if (result == null) result = caseMapOrSetElement(nullAssert);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1123,7 +1137,6 @@ public class DartSwitch<T> extends Switch<T>
         PropertyAccess propertyAccess = (PropertyAccess)theEObject;
         T result = casePropertyAccess(propertyAccess);
         if (result == null) result = caseExpression(propertyAccess);
-        if (result == null) result = caseMapOrSetElement(propertyAccess);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1132,7 +1145,6 @@ public class DartSwitch<T> extends Switch<T>
         NullAwarePropertyAccess nullAwarePropertyAccess = (NullAwarePropertyAccess)theEObject;
         T result = caseNullAwarePropertyAccess(nullAwarePropertyAccess);
         if (result == null) result = caseExpression(nullAwarePropertyAccess);
-        if (result == null) result = caseMapOrSetElement(nullAwarePropertyAccess);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1141,7 +1153,6 @@ public class DartSwitch<T> extends Switch<T>
         ThisExpression thisExpression = (ThisExpression)theEObject;
         T result = caseThisExpression(thisExpression);
         if (result == null) result = caseExpression(thisExpression);
-        if (result == null) result = caseMapOrSetElement(thisExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1150,7 +1161,6 @@ public class DartSwitch<T> extends Switch<T>
         SuperExpression superExpression = (SuperExpression)theEObject;
         T result = caseSuperExpression(superExpression);
         if (result == null) result = caseExpression(superExpression);
-        if (result == null) result = caseMapOrSetElement(superExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1159,7 +1169,6 @@ public class DartSwitch<T> extends Switch<T>
         NullLiteral nullLiteral = (NullLiteral)theEObject;
         T result = caseNullLiteral(nullLiteral);
         if (result == null) result = caseExpression(nullLiteral);
-        if (result == null) result = caseMapOrSetElement(nullLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1168,7 +1177,6 @@ public class DartSwitch<T> extends Switch<T>
         BooleanLiteral booleanLiteral = (BooleanLiteral)theEObject;
         T result = caseBooleanLiteral(booleanLiteral);
         if (result == null) result = caseExpression(booleanLiteral);
-        if (result == null) result = caseMapOrSetElement(booleanLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1177,7 +1185,6 @@ public class DartSwitch<T> extends Switch<T>
         NumberLiteral numberLiteral = (NumberLiteral)theEObject;
         T result = caseNumberLiteral(numberLiteral);
         if (result == null) result = caseExpression(numberLiteral);
-        if (result == null) result = caseMapOrSetElement(numberLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1186,7 +1193,6 @@ public class DartSwitch<T> extends Switch<T>
         StringLiteral stringLiteral = (StringLiteral)theEObject;
         T result = caseStringLiteral(stringLiteral);
         if (result == null) result = caseExpression(stringLiteral);
-        if (result == null) result = caseMapOrSetElement(stringLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1195,7 +1201,6 @@ public class DartSwitch<T> extends Switch<T>
         IdentifierRef identifierRef = (IdentifierRef)theEObject;
         T result = caseIdentifierRef(identifierRef);
         if (result == null) result = caseExpression(identifierRef);
-        if (result == null) result = caseMapOrSetElement(identifierRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1204,7 +1209,6 @@ public class DartSwitch<T> extends Switch<T>
         NewExpression newExpression = (NewExpression)theEObject;
         T result = caseNewExpression(newExpression);
         if (result == null) result = caseExpression(newExpression);
-        if (result == null) result = caseMapOrSetElement(newExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1213,7 +1217,6 @@ public class DartSwitch<T> extends Switch<T>
         ConstExpression constExpression = (ConstExpression)theEObject;
         T result = caseConstExpression(constExpression);
         if (result == null) result = caseExpression(constExpression);
-        if (result == null) result = caseMapOrSetElement(constExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1222,7 +1225,6 @@ public class DartSwitch<T> extends Switch<T>
         ListLiteral listLiteral = (ListLiteral)theEObject;
         T result = caseListLiteral(listLiteral);
         if (result == null) result = caseExpression(listLiteral);
-        if (result == null) result = caseMapOrSetElement(listLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1231,7 +1233,6 @@ public class DartSwitch<T> extends Switch<T>
         SetOrMapLiteral setOrMapLiteral = (SetOrMapLiteral)theEObject;
         T result = caseSetOrMapLiteral(setOrMapLiteral);
         if (result == null) result = caseExpression(setOrMapLiteral);
-        if (result == null) result = caseMapOrSetElement(setOrMapLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1240,7 +1241,6 @@ public class DartSwitch<T> extends Switch<T>
         ParenthesizedExpression parenthesizedExpression = (ParenthesizedExpression)theEObject;
         T result = caseParenthesizedExpression(parenthesizedExpression);
         if (result == null) result = caseExpression(parenthesizedExpression);
-        if (result == null) result = caseMapOrSetElement(parenthesizedExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -2113,17 +2113,97 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Map Or Set Element</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Collection Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Map Or Set Element</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Collection Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMapOrSetElement(MapOrSetElement object)
+  public T caseCollectionElement(CollectionElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Expression Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Expression Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseExpressionElement(ExpressionElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Map Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Map Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMapElement(MapElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Spread Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Spread Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSpreadElement(SpreadElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>If Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>If Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIfElement(IfElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>For Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>For Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseForElement(ForElement object)
   {
     return null;
   }

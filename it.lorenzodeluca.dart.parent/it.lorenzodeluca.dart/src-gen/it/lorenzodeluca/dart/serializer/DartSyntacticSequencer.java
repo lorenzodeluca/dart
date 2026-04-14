@@ -35,6 +35,7 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_NonLabelledStatement_ConstKeyword_13_0_0_2_or_DynamicKeyword_14_0_0_1_or_FinalKeyword_13_0_0_1_or_LateKeyword_13_0_0_3_or_VarKeyword_13_0_0_0_or_VoidKeyword_14_0_0_0_or___IDTerminalRuleCall_16_0_0_0_IDTerminalRuleCall_16_0_0_1___or___IDTerminalRuleCall_17_0_0_0_FullStopKeyword_17_0_0_1__;
 	protected AbstractElementAlias match_NonLabelledStatement___IDTerminalRuleCall_15_0_0_0_IDTerminalRuleCall_15_0_0_1_LeftParenthesisKeyword_15_0_0_2___or___IDTerminalRuleCall_18_0_0_0_LeftParenthesisKeyword_18_0_0_1__;
 	protected AbstractElementAlias match_OptionalPositionalParameterTypes_CommaKeyword_4_q;
+	protected AbstractElementAlias match_PrimaryExpression_CommaKeyword_10_4_2_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
@@ -52,6 +53,7 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_NonLabelledStatement_ConstKeyword_13_0_0_2_or_DynamicKeyword_14_0_0_1_or_FinalKeyword_13_0_0_1_or_LateKeyword_13_0_0_3_or_VarKeyword_13_0_0_0_or_VoidKeyword_14_0_0_0_or___IDTerminalRuleCall_16_0_0_0_IDTerminalRuleCall_16_0_0_1___or___IDTerminalRuleCall_17_0_0_0_FullStopKeyword_17_0_0_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_16_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_16_0_0_1())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_17_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getFullStopKeyword_17_0_0_1())), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getConstKeyword_13_0_0_2()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getDynamicKeyword_14_0_0_1()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getFinalKeyword_13_0_0_1()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getLateKeyword_13_0_0_3()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getVarKeyword_13_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getVoidKeyword_14_0_0_0()));
 		match_NonLabelledStatement___IDTerminalRuleCall_15_0_0_0_IDTerminalRuleCall_15_0_0_1_LeftParenthesisKeyword_15_0_0_2___or___IDTerminalRuleCall_18_0_0_0_LeftParenthesisKeyword_18_0_0_1__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_15_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_15_0_0_1()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getLeftParenthesisKeyword_15_0_0_2())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getIDTerminalRuleCall_18_0_0_0()), new TokenAlias(false, false, grammarAccess.getNonLabelledStatementAccess().getLeftParenthesisKeyword_18_0_0_1())));
 		match_OptionalPositionalParameterTypes_CommaKeyword_4_q = new TokenAlias(false, true, grammarAccess.getOptionalPositionalParameterTypesAccess().getCommaKeyword_4());
+		match_PrimaryExpression_CommaKeyword_10_4_2_q = new TokenAlias(false, true, grammarAccess.getPrimaryExpressionAccess().getCommaKeyword_10_4_2());
 	}
 	
 	@Override
@@ -102,6 +104,8 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_NonLabelledStatement___IDTerminalRuleCall_15_0_0_0_IDTerminalRuleCall_15_0_0_1_LeftParenthesisKeyword_15_0_0_2___or___IDTerminalRuleCall_18_0_0_0_LeftParenthesisKeyword_18_0_0_1__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_OptionalPositionalParameterTypes_CommaKeyword_4_q.equals(syntax))
 				emit_OptionalPositionalParameterTypes_CommaKeyword_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_PrimaryExpression_CommaKeyword_10_4_2_q.equals(syntax))
+				emit_PrimaryExpression_CommaKeyword_10_4_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -322,6 +326,20 @@ public class DartSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * </pre>
 	 */
 	protected void emit_OptionalPositionalParameterTypes_CommaKeyword_4_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     ','?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     elements+=CollectionElement (ambiguity) '}' (rule end)
+	 
+	 * </pre>
+	 */
+	protected void emit_PrimaryExpression_CommaKeyword_10_4_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

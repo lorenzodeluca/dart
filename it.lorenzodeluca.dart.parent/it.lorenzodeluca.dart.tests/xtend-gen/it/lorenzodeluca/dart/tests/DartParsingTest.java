@@ -4,6 +4,7 @@
 package it.lorenzodeluca.dart.tests;
 
 import com.google.inject.Inject;
+import it.lorenzodeluca.dart.dart.DartFile;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.extensions.InjectionExtension;
 import org.eclipse.xtext.testing.util.ParseHelper;
@@ -15,17 +16,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @SuppressWarnings("all")
 public class DartParsingTest {
   @Inject
-  private /* ParseHelper<CompilationUnit> */Object parseHelper;
+  private ParseHelper<DartFile> parseHelper;
 
   @Test
   public void loadModel() {
     throw new Error("Unresolved compilation problems:"
-      + "\nThe field DartParsingTest.parseHelper refers to the missing type CompilationUnit"
       + "\nAccess restriction: The type Assertions is not accessible due to restriction on required project it.lorenzodeluca.dart.tests"
-      + "\nAccess restriction: The type Assertions is not accessible due to restriction on required project it.lorenzodeluca.dart.tests"
-      + "\neResource cannot be resolved"
-      + "\nerrors cannot be resolved"
-      + "\nisEmpty cannot be resolved"
-      + "\njoin cannot be resolved");
+      + "\nAccess restriction: The type Assertions is not accessible due to restriction on required project it.lorenzodeluca.dart.tests");
   }
 }
