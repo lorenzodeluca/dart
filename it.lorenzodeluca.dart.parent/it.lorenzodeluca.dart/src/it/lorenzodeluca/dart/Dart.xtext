@@ -591,7 +591,7 @@ PrimaryExpression returns Expression:
     {NullLiteral} 'null' |
     {BooleanLiteral} boolValue=('true' | 'false') |
     {NumberLiteral} intValue=INT |
-    {StringLiteral} stringValue=STRING |
+    {StringLiteral} stringLiteral=StringLiteral |
     {IdentifierRef} name=ID |
     {NewExpression} 'new' type=Type ('.' constructor=ID)? args=Arguments |
     {ConstExpression} 'const' type=Type ('.' constructor=ID)? args=Arguments |
@@ -626,6 +626,24 @@ IfElement:
 
 ForElement:
     {ForElement} isAwait?='await'? 'for' '(' forLoopParts=ForLoopParts ')' element=CollectionElement;
+
+/*
+ * 17.7 Strings
+ */
+ StringLiteral:
+    {StringLiteral} parts+=StringPart+;
+    
+StringPart:
+    PlainStringPart | InterpolationPart;
+ 
+PlainStringPart:
+    value=STRING;
+    
+InterpolationPart:
+    '$' name=ID |
+    '${' expression=Expression '}';
+
+
 
 /*17.8 
  * <symbolLiteral> ::= '#' (<identifier> ('.' <identifier>)* | <operator> | void)
