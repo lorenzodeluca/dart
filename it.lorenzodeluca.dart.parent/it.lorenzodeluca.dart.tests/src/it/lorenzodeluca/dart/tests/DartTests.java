@@ -176,7 +176,7 @@ public class DartTests {
         ReturnStatement ret = (ReturnStatement) stmt;
         Assertions.assertInstanceOf(StringLiteral.class, ret.getExpression());
         Assertions.assertEquals("hello",
-            ((StringLiteral) ret.getExpression()).getStringValue());
+            ((StringLiteral) ret.getExpression()));
     }
 
     @Test

@@ -818,12 +818,15 @@ LibraryName:
 ImportOrExport:
     LibraryImport | LibraryExport;
 
-// TODO: configurableUri
 LibraryImport:
-    (metadata+=Metadata)* 'import' importURI=STRING (isDeferred?='deferred'? 'as' prefix=ID)? (combinators+=Combinator)* ';';
+    (metadata+=Metadata)* 'import' importURI=ConfigurableUri 
+    ( ('deferred' 'as' prefix=ID) | ('as' prefix=ID) )? 
+    (combinators+=Combinator)* ';';
+
 
 LibraryExport:
-    (metadata+=Metadata)* 'export' exportURI=STRING (combinators+=Combinator)* ';';
+    (metadata+=Metadata)* 'export' exportURI=ConfigurableUri 
+    (combinators+=Combinator)* ';';
 
 PartDirective:
     (metadata+=Metadata)* 'part' partURI=STRING ';';
@@ -833,9 +836,11 @@ PartHeader:
 
 Combinator:
     ('show' | 'hide') identifiers+=ID (',' identifiers+=ID)*;
-
+  
+  
+  
 /*
- * Spec ยง19
+ * Spec ง19
  * <topLevelDeclaration> ::= <classDeclaration>
 | <mixinDeclaration>
 | <extensionDeclaration>
@@ -888,6 +893,19 @@ ExternalGetter:
 //external set var(int v);
 ExternalSetter:
     (metadata+=Metadata)* 'external' signature=SetterSignature ';';
+
+//19.7 
+/*
+ * <uri> ::= <stringLiteral>
+<configurableUri> ::= <uri> <configurationUri>*
+<configurationUri> ::= if '(' <uriTest> ')' <uri>
+  */
+  
+ConfigurableUri: base=STRING configurations+=ConfigurationUri*;
+  
+ConfigurationUri: 'if' '(' test=UriTest ')' uri=STRING;
+
+UriTest: key=QualifiedName ('==' value=STRING)?;
 
 
 /* =========================================================================
