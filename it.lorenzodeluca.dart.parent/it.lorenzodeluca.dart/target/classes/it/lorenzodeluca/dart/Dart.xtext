@@ -1,5 +1,5 @@
 /*
- * General infos: even if at the beginning i wanted to write a grammar LL(1) without backtrack, after many hours i realized 
+ * General infos: even if at the beginning i wanted to write a grammar LL(1) without backtracking, after many hours i realized 
  * that it was really complex and most of all it forced me to write rules that were pretty different
  * from the original specifications(so they were harder to understand and mantain).
  * 
@@ -62,18 +62,18 @@ FunctionDeclaration:
     )
     (body=FunctionBody | ';');
 
-//(Spec ง10.3) GetterSignature: type? get identifier
+//(Spec ยง10.3) GetterSignature: type? get identifier
 GetterSignature:
     (returnType=Type)? 'get' name=ID;
     
-//(Spec ง10.4) SetterSignature: type? set identifier formalParameterList    
+//(Spec ยง10.4) SetterSignature: type? set identifier formalParameterList    
 SetterSignature:
     (returnType=Type)? 'set' name=ID parameters=FormalParameterList;
     
 FormalParameterPart:
     (typeParameters=TypeParameters)? parameters=FormalParameterList;
 
-// (Spec ง9.2) handles: () / (params) / (params, optionalOrNamedParams) / (optionalOrNamedParams)
+// (Spec ยง9.2) handles: () / (params) / (params, optionalOrNamedParams) / (optionalOrNamedParams)
 FormalParameterList:
     {FormalParameterList} '(' 
         (normalParameters+=NormalFormalParameter (',' normalParameters+=NormalFormalParameter)*)? 
@@ -138,7 +138,7 @@ DefaultNamedParameter:
     (isRequired?='required')? parameter=NormalFormalParameter (('=' | ':') defaultValue=Expression)?;
 
 /*
- * (Spec ง9.3):
+ * (Spec ยง9.3):
  * async? '=>' expression ';'
  * (async '*'? | sync '*')? block
  * 
@@ -155,7 +155,7 @@ FunctionBody:
  * */
 
 /*
- * Spec ง10.1
+ * Spec ยง10.1
  * 
  * <classDeclaration> ::= abstract? class <typeIdentifier> <typeParameters>?
  * <superclass>? <interfaces>?
@@ -177,7 +177,7 @@ Interfaces:
     'implements' types+=Type (',' types+=Type)*;
 
 /*
- * Spec ง10
+ * Spec ยง10
  * 
  * <memberDeclaration> ::= <declaration> ';'
  * | <methodSignature> <functionBody>
@@ -201,7 +201,7 @@ MemberDeclaration:
 
 /*
  * MethodSignature.
- * Spec ง10:
+ * Spec ยง10:
  * 
  * <methodSignature> ::= <constructorSignature> <initializers>?
  *| <factoryConstructorSignature>
@@ -226,7 +226,7 @@ MethodSignature:
 
 /*
  * Declaration.
- * Spec ง10:
+ * Spec ยง10:
  * 
  * declaration cover instance/static variable and method declarations inside a class body
  * 
@@ -278,7 +278,7 @@ StaticFinalDeclaration:
     name=ID '=' expression=Expression;
 
 
-// Spec ง10.2.1
+// Spec ยง10.2.1
 Operator:
     '~' | '==' | '[]' | '[]=' | '*' | '/' | '%' | '~/' | '+' | '-' | '<<' | '>>>' | '>>' | '&' | '^' | '|' | '>=' | '>' | '<=' | '<';
 
@@ -321,7 +321,7 @@ ConstructorDesignation:
  * ========================================================================= */
 
 /*
- * Spec ง12.2
+ * Spec ยง12.2
  * <mixinDeclaration> ::= mixin <typeIdentifier> <typeParameters>?
  * (on <typeNotVoidList>)? <interfaces>?
  * '{' (<metadata> <memberDeclaration>)* '}'
@@ -390,14 +390,14 @@ Metadata:
     '@' name=QualifiedName ('.' constructor=ID)? (arguments=Arguments)?;
 
 /*
- * Spec ง17.38
+ * Spec ยง17.38
  * <qualifiedNamed> ::= <typeIdentifierd> '.' <identifierd> | <typeIdentifierd> '.' <typeIdentifierd> '.' <identifierd>
  * 
  */
 QualifiedName:
     ID ('.' ID)*;
 
-//Spec ง 17.15.1
+//Spec ยง 17.15.1
 /*
  * 	<arguments> ::= '(' (<argumentList> ','?)? ')'
  *	<argumentList> ::= <namedArgument> (',' <namedArgument>)* | <expressionList> (',' <namedArgument>)*
@@ -462,7 +462,7 @@ AssignmentExpression returns Expression:
 FunctionExpression:
     signature=FormalParameterPart body=FunctionBody;
 
-//Spec ง17.23
+//Spec ยง17.23
 /*
  * <assignmentOperator> ::= '=' | <compoundAssignmentOperator>
  * <compoundAssignmentOperator> ::= '*=' | '/='| '~/=' | '%='| '+='| '-='| '<<='| '>>>='| '>>='| '&='| '^='| '|='| '??='
@@ -492,7 +492,7 @@ EqualityExpression returns Expression:
     RelationalExpression ({Equality.left=current} operator=('==' | '!=') right=RelationalExpression)?;
 
 /*
- * Spec ง17.28
+ * Spec ยง17.28
  * <relationalExpression> ::= <bitwiseOrExpression>(<typeTest> | <typeCast> | <relationalOperator> <bitwiseOrExpression>)?| super <relationalOperator> <bitwiseOrExpression>
  * <relationalOperator> ::= '>='| '>'| '<='| '<'
  */
@@ -503,7 +503,7 @@ RelationalExpression returns Expression:
     )?;
 
 /*
- * Spec ง17.39 e Spec ง17.40
+ * Spec ยง17.39 e Spec ยง17.40
  * <typeTest> ::= <isOperator> <typeNotVoid>
  * <isOperator> ::= is '!'?
  * <typeCast> ::= <asOperator> <typeNotVoid>
@@ -530,7 +530,7 @@ AdditiveExpression returns Expression:
 MultiplicativeExpression returns Expression:
     UnaryExpression ({Multiplicative.left=current} operator=('*' | '/' | '%' | '~/') right=UnaryExpression)*;
 
-/* Spec ง17.33
+/* Spec ยง17.33
  * <unaryExpression> ::= <prefixOperator> <unaryExpression>
 | <awaitExpression>
 | <postfixExpression>
@@ -543,7 +543,7 @@ UnaryExpression returns Expression:
 
 /*
  * PostfixExpression.
- * Spec ง17.35
+ * Spec ยง17.35
  * <postfixExpression> ::= <assignableExpression> <postfixOperator> | <primary> <selector>*
  * <postfixOperator> ::= <incrementOperator>
  * <constructorInvocation> ::= <typeName> <typeArguments> '.' <identifier> <arguments>
@@ -580,10 +580,10 @@ AssignableExpression returns Expression:
 
 /*
  * Primary
- * Spec ง17
+ * Spec ยง17
  * <primary> ::= <thisExpression>| super <unconditionalAssignableSelector>| super <argumentPart>| <functionExpression>| <literal>| <identifier>| <newExpression>
  
- TODO: string interpolation,constructorInvocation,functionExpression,symbolLiteral
+ TODO: string interpolation,constructorInvocation
  */
 PrimaryExpression returns Expression:
     {ThisExpression} 'this' |
@@ -599,7 +599,8 @@ PrimaryExpression returns Expression:
     {ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
     {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=CollectionElement (',' elements+=CollectionElement)* ','?)? '}' |
     {ParenthesizedExpression} '(' expression=Expression ')'|
-    {FunctionExpression} functionExpr=FunctionExpression;
+    {FunctionExpression} functionExpr=FunctionExpression|
+    {SymbolLiteral} symbol=SymbolLiteral;
 /*
  * If ':' is present it is a map entry; otherwise it is a set element
  * 
@@ -625,6 +626,11 @@ IfElement:
 
 ForElement:
     {ForElement} isAwait?='await'? 'for' '(' forLoopParts=ForLoopParts ')' element=CollectionElement;
+
+/*17.8 
+ * <symbolLiteral> ::= '#' (<identifier> ('.' <identifier>)* | <operator> | void)
+*/
+SymbolLiteral: '#' ( name=QualifiedName | operator=Operator |  isVoid?='void' );
 
 /* =========================================================================
  * 18. STATEMENTS
@@ -677,7 +683,7 @@ LocalVariableDeclaration:
     variable=VariableDeclaration ';';
     
 /*
- * Spec ง18.0 - LocalFunctionDeclaration
+ * Spec ยง18.0 - LocalFunctionDeclaration
  * <localFunctionDeclaration> ::= <metadata> <functionSignature> <functionBody>
  *  localFunctionDeclaration ::= metadata functionSignature functionBody
  */
@@ -688,7 +694,7 @@ IfStatement:
     'if' '(' condition=Expression ')' thenStatement=Statement ('else' elseStatement=Statement)?;
 
 /*
- * Spec ง18.3.2
+ * Spec ยง18.3.2
  * 
  */
 ForStatement:
@@ -750,7 +756,7 @@ YieldStatement:
     {YieldStatement} 'yield' (isStar?='*')? expression=Expression ';';
 
 /*
- * Spec ง18.13
+ * Spec ยง18.13
  * <assertStatement> ::= <assertion> ';'
  * <assertion> ::= assert '(' <expression> (',' <expression> )? ','? ')'
  */
@@ -803,7 +809,7 @@ Combinator:
     ('show' | 'hide') identifiers+=ID (',' identifiers+=ID)*;
 
 /*
- * Spec ง19
+ * Spec ยง19
  * <topLevelDeclaration> ::= <classDeclaration>
 | <mixinDeclaration>
 | <extensionDeclaration>

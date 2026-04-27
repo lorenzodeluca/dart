@@ -583,7 +583,7 @@ AssignableExpression returns Expression:
  * Spec §17
  * <primary> ::= <thisExpression>| super <unconditionalAssignableSelector>| super <argumentPart>| <functionExpression>| <literal>| <identifier>| <newExpression>
  
- TODO: string interpolation,constructorInvocation,functionExpression,symbolLiteral
+ TODO: string interpolation,constructorInvocation
  */
 PrimaryExpression returns Expression:
     {ThisExpression} 'this' |
@@ -599,7 +599,8 @@ PrimaryExpression returns Expression:
     {ListLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '[' (elements+=Expression (',' elements+=Expression)*)? ']' |
     {SetOrMapLiteral} (isConst?='const')? (typeArguments=TypeArguments)? '{' (elements+=CollectionElement (',' elements+=CollectionElement)* ','?)? '}' |
     {ParenthesizedExpression} '(' expression=Expression ')'|
-    {FunctionExpression} functionExpr=FunctionExpression;
+    {FunctionExpression} functionExpr=FunctionExpression|
+    {SymbolLiteral} symbol=SymbolLiteral;
 /*
  * If ':' is present it is a map entry; otherwise it is a set element
  * 
@@ -625,6 +626,11 @@ IfElement:
 
 ForElement:
     {ForElement} isAwait?='await'? 'for' '(' forLoopParts=ForLoopParts ')' element=CollectionElement;
+
+/*17.8 
+ * <symbolLiteral> ::= '#' (<identifier> ('.' <identifier>)* | <operator> | void)
+*/
+SymbolLiteral: '#' ( name=QualifiedName | operator=Operator |  isVoid?='void' );
 
 /* =========================================================================
  * 18. STATEMENTS
