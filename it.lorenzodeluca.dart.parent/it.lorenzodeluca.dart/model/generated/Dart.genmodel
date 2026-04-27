@@ -309,6 +309,24 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ForElement/forLoopParts"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ForElement/element"/>
     </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//StringLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//StringLiteral/stringLiteral"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//StringLiteral/parts"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//StringPart"/>
+    <genClasses ecoreClass="Dart.ecore#//PlainStringPart">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//PlainStringPart/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//InterpolationPart">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//InterpolationPart/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//InterpolationPart/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//SymbolLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//SymbolLiteral/symbol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//SymbolLiteral/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//SymbolLiteral/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//SymbolLiteral/isVoid"/>
+    </genClasses>
     <genClasses ecoreClass="Dart.ecore#//Statement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Statement/labels"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//Statement/statement"/>
@@ -404,13 +422,15 @@
     <genClasses ecoreClass="Dart.ecore#//ReturnStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ReturnStatement/expression"/>
     </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//YieldStatement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//YieldStatement/isStar"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//YieldStatement/expression"/>
-    </genClasses>
     <genClasses ecoreClass="Dart.ecore#//AssertStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//AssertStatement/condition"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//AssertStatement/message"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//YieldStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//YieldStatement/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="Dart.ecore#//YieldEachStatement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//YieldEachStatement/expression"/>
     </genClasses>
     <genClasses ecoreClass="Dart.ecore#//ExpressionStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dart.ecore#//ExpressionStatement/expression"/>
@@ -651,9 +671,6 @@
     </genClasses>
     <genClasses ecoreClass="Dart.ecore#//NumberLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//NumberLiteral/intValue"/>
-    </genClasses>
-    <genClasses ecoreClass="Dart.ecore#//StringLiteral">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//StringLiteral/stringValue"/>
     </genClasses>
     <genClasses ecoreClass="Dart.ecore#//IdentifierRef">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dart.ecore#//IdentifierRef/name"/>

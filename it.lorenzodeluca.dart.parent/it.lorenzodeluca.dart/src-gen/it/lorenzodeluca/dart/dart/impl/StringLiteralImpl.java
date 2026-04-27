@@ -5,12 +5,22 @@ package it.lorenzodeluca.dart.dart.impl;
 
 import it.lorenzodeluca.dart.dart.DartPackage;
 import it.lorenzodeluca.dart.dart.StringLiteral;
+import it.lorenzodeluca.dart.dart.StringPart;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +30,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.StringLiteralImpl#getStringValue <em>String Value</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.StringLiteralImpl#getStringLiteral <em>String Literal</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.impl.StringLiteralImpl#getParts <em>Parts</em>}</li>
  * </ul>
  *
  * @generated
@@ -28,24 +39,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class StringLiteralImpl extends ExpressionImpl implements StringLiteral
 {
   /**
-   * The default value of the '{@link #getStringValue() <em>String Value</em>}' attribute.
+   * The cached value of the '{@link #getStringLiteral() <em>String Literal</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getStringValue()
+   * @see #getStringLiteral()
    * @generated
    * @ordered
    */
-  protected static final String STRING_VALUE_EDEFAULT = null;
+  protected StringLiteral stringLiteral;
 
   /**
-   * The cached value of the '{@link #getStringValue() <em>String Value</em>}' attribute.
+   * The cached value of the '{@link #getParts() <em>Parts</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getStringValue()
+   * @see #getParts()
    * @generated
    * @ordered
    */
-  protected String stringValue = STRING_VALUE_EDEFAULT;
+  protected EList<StringPart> parts;
 
   /**
    * <!-- begin-user-doc -->
@@ -74,9 +85,26 @@ public class StringLiteralImpl extends ExpressionImpl implements StringLiteral
    * @generated
    */
   @Override
-  public String getStringValue()
+  public StringLiteral getStringLiteral()
   {
-    return stringValue;
+    return stringLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetStringLiteral(StringLiteral newStringLiteral, NotificationChain msgs)
+  {
+    StringLiteral oldStringLiteral = stringLiteral;
+    stringLiteral = newStringLiteral;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DartPackage.STRING_LITERAL__STRING_LITERAL, oldStringLiteral, newStringLiteral);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -85,12 +113,53 @@ public class StringLiteralImpl extends ExpressionImpl implements StringLiteral
    * @generated
    */
   @Override
-  public void setStringValue(String newStringValue)
+  public void setStringLiteral(StringLiteral newStringLiteral)
   {
-    String oldStringValue = stringValue;
-    stringValue = newStringValue;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.STRING_LITERAL__STRING_VALUE, oldStringValue, stringValue));
+    if (newStringLiteral != stringLiteral)
+    {
+      NotificationChain msgs = null;
+      if (stringLiteral != null)
+        msgs = ((InternalEObject)stringLiteral).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DartPackage.STRING_LITERAL__STRING_LITERAL, null, msgs);
+      if (newStringLiteral != null)
+        msgs = ((InternalEObject)newStringLiteral).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DartPackage.STRING_LITERAL__STRING_LITERAL, null, msgs);
+      msgs = basicSetStringLiteral(newStringLiteral, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.STRING_LITERAL__STRING_LITERAL, newStringLiteral, newStringLiteral));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<StringPart> getParts()
+  {
+    if (parts == null)
+    {
+      parts = new EObjectContainmentEList<StringPart>(StringPart.class, this, DartPackage.STRING_LITERAL__PARTS);
+    }
+    return parts;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DartPackage.STRING_LITERAL__STRING_LITERAL:
+        return basicSetStringLiteral(null, msgs);
+      case DartPackage.STRING_LITERAL__PARTS:
+        return ((InternalEList<?>)getParts()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -103,8 +172,10 @@ public class StringLiteralImpl extends ExpressionImpl implements StringLiteral
   {
     switch (featureID)
     {
-      case DartPackage.STRING_LITERAL__STRING_VALUE:
-        return getStringValue();
+      case DartPackage.STRING_LITERAL__STRING_LITERAL:
+        return getStringLiteral();
+      case DartPackage.STRING_LITERAL__PARTS:
+        return getParts();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -114,13 +185,18 @@ public class StringLiteralImpl extends ExpressionImpl implements StringLiteral
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case DartPackage.STRING_LITERAL__STRING_VALUE:
-        setStringValue((String)newValue);
+      case DartPackage.STRING_LITERAL__STRING_LITERAL:
+        setStringLiteral((StringLiteral)newValue);
+        return;
+      case DartPackage.STRING_LITERAL__PARTS:
+        getParts().clear();
+        getParts().addAll((Collection<? extends StringPart>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +212,11 @@ public class StringLiteralImpl extends ExpressionImpl implements StringLiteral
   {
     switch (featureID)
     {
-      case DartPackage.STRING_LITERAL__STRING_VALUE:
-        setStringValue(STRING_VALUE_EDEFAULT);
+      case DartPackage.STRING_LITERAL__STRING_LITERAL:
+        setStringLiteral((StringLiteral)null);
+        return;
+      case DartPackage.STRING_LITERAL__PARTS:
+        getParts().clear();
         return;
     }
     super.eUnset(featureID);
@@ -153,27 +232,12 @@ public class StringLiteralImpl extends ExpressionImpl implements StringLiteral
   {
     switch (featureID)
     {
-      case DartPackage.STRING_LITERAL__STRING_VALUE:
-        return STRING_VALUE_EDEFAULT == null ? stringValue != null : !STRING_VALUE_EDEFAULT.equals(stringValue);
+      case DartPackage.STRING_LITERAL__STRING_LITERAL:
+        return stringLiteral != null;
+      case DartPackage.STRING_LITERAL__PARTS:
+        return parts != null && !parts.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (stringValue: ");
-    result.append(stringValue);
-    result.append(')');
-    return result.toString();
   }
 
 } //StringLiteralImpl

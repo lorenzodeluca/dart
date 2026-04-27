@@ -139,7 +139,7 @@ public class DartTests {
         Assertions.assertEquals(1, pos.getPositional().size());
         Assertions.assertInstanceOf(StringLiteral.class, pos.getPositional().get(0));
         Assertions.assertEquals("Hello World",
-            ((StringLiteral) pos.getPositional().get(0)).getStringValue());
+            ((StringLiteral) pos.getPositional().get(0)));
     }
 
     @Test

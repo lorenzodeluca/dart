@@ -573,6 +573,51 @@ public interface DartFactory extends EFactory
   ForElement createForElement();
 
   /**
+   * Returns a new object of class '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Literal</em>'.
+   * @generated
+   */
+  StringLiteral createStringLiteral();
+
+  /**
+   * Returns a new object of class '<em>String Part</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Part</em>'.
+   * @generated
+   */
+  StringPart createStringPart();
+
+  /**
+   * Returns a new object of class '<em>Plain String Part</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Plain String Part</em>'.
+   * @generated
+   */
+  PlainStringPart createPlainStringPart();
+
+  /**
+   * Returns a new object of class '<em>Interpolation Part</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Interpolation Part</em>'.
+   * @generated
+   */
+  InterpolationPart createInterpolationPart();
+
+  /**
+   * Returns a new object of class '<em>Symbol Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Symbol Literal</em>'.
+   * @generated
+   */
+  SymbolLiteral createSymbolLiteral();
+
+  /**
    * Returns a new object of class '<em>Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -789,6 +834,15 @@ public interface DartFactory extends EFactory
   ReturnStatement createReturnStatement();
 
   /**
+   * Returns a new object of class '<em>Assert Statement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Assert Statement</em>'.
+   * @generated
+   */
+  AssertStatement createAssertStatement();
+
+  /**
    * Returns a new object of class '<em>Yield Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -798,13 +852,13 @@ public interface DartFactory extends EFactory
   YieldStatement createYieldStatement();
 
   /**
-   * Returns a new object of class '<em>Assert Statement</em>'.
+   * Returns a new object of class '<em>Yield Each Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Assert Statement</em>'.
+   * @return a new object of class '<em>Yield Each Statement</em>'.
    * @generated
    */
-  AssertStatement createAssertStatement();
+  YieldEachStatement createYieldEachStatement();
 
   /**
    * Returns a new object of class '<em>Expression Statement</em>'.
@@ -1354,15 +1408,6 @@ public interface DartFactory extends EFactory
    * @generated
    */
   NumberLiteral createNumberLiteral();
-
-  /**
-   * Returns a new object of class '<em>String Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Literal</em>'.
-   * @generated
-   */
-  StringLiteral createStringLiteral();
 
   /**
    * Returns a new object of class '<em>Identifier Ref</em>'.

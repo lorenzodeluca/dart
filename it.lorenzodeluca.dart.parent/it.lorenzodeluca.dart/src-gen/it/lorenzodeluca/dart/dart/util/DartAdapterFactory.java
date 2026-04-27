@@ -381,6 +381,31 @@ public class DartAdapterFactory extends AdapterFactoryImpl
         return createForElementAdapter();
       }
       @Override
+      public Adapter caseStringLiteral(StringLiteral object)
+      {
+        return createStringLiteralAdapter();
+      }
+      @Override
+      public Adapter caseStringPart(StringPart object)
+      {
+        return createStringPartAdapter();
+      }
+      @Override
+      public Adapter casePlainStringPart(PlainStringPart object)
+      {
+        return createPlainStringPartAdapter();
+      }
+      @Override
+      public Adapter caseInterpolationPart(InterpolationPart object)
+      {
+        return createInterpolationPartAdapter();
+      }
+      @Override
+      public Adapter caseSymbolLiteral(SymbolLiteral object)
+      {
+        return createSymbolLiteralAdapter();
+      }
+      @Override
       public Adapter caseStatement(Statement object)
       {
         return createStatementAdapter();
@@ -501,14 +526,19 @@ public class DartAdapterFactory extends AdapterFactoryImpl
         return createReturnStatementAdapter();
       }
       @Override
+      public Adapter caseAssertStatement(AssertStatement object)
+      {
+        return createAssertStatementAdapter();
+      }
+      @Override
       public Adapter caseYieldStatement(YieldStatement object)
       {
         return createYieldStatementAdapter();
       }
       @Override
-      public Adapter caseAssertStatement(AssertStatement object)
+      public Adapter caseYieldEachStatement(YieldEachStatement object)
       {
-        return createAssertStatementAdapter();
+        return createYieldEachStatementAdapter();
       }
       @Override
       public Adapter caseExpressionStatement(ExpressionStatement object)
@@ -814,11 +844,6 @@ public class DartAdapterFactory extends AdapterFactoryImpl
       public Adapter caseNumberLiteral(NumberLiteral object)
       {
         return createNumberLiteralAdapter();
-      }
-      @Override
-      public Adapter caseStringLiteral(StringLiteral object)
-      {
-        return createStringLiteralAdapter();
       }
       @Override
       public Adapter caseIdentifierRef(IdentifierRef object)
@@ -1788,6 +1813,81 @@ public class DartAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.StringLiteral
+   * @generated
+   */
+  public Adapter createStringLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.StringPart <em>String Part</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.StringPart
+   * @generated
+   */
+  public Adapter createStringPartAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.PlainStringPart <em>Plain String Part</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.PlainStringPart
+   * @generated
+   */
+  public Adapter createPlainStringPartAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.InterpolationPart <em>Interpolation Part</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.InterpolationPart
+   * @generated
+   */
+  public Adapter createInterpolationPartAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.SymbolLiteral <em>Symbol Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.SymbolLiteral
+   * @generated
+   */
+  public Adapter createSymbolLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.Statement <em>Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -2148,6 +2248,21 @@ public class DartAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.AssertStatement <em>Assert Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see it.lorenzodeluca.dart.dart.AssertStatement
+   * @generated
+   */
+  public Adapter createAssertStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.YieldStatement <em>Yield Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -2163,16 +2278,16 @@ public class DartAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.AssertStatement <em>Assert Statement</em>}'.
+   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.YieldEachStatement <em>Yield Each Statement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.AssertStatement
+   * @see it.lorenzodeluca.dart.dart.YieldEachStatement
    * @generated
    */
-  public Adapter createAssertStatementAdapter()
+  public Adapter createYieldEachStatementAdapter()
   {
     return null;
   }
@@ -3088,21 +3203,6 @@ public class DartAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNumberLiteralAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link it.lorenzodeluca.dart.dart.StringLiteral <em>String Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see it.lorenzodeluca.dart.dart.StringLiteral
-   * @generated
-   */
-  public Adapter createStringLiteralAdapter()
   {
     return null;
   }

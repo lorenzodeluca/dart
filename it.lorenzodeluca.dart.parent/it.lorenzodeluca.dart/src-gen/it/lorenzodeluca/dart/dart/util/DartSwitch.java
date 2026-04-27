@@ -524,6 +524,45 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DartPackage.STRING_LITERAL:
+      {
+        StringLiteral stringLiteral = (StringLiteral)theEObject;
+        T result = caseStringLiteral(stringLiteral);
+        if (result == null) result = caseExpression(stringLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.STRING_PART:
+      {
+        StringPart stringPart = (StringPart)theEObject;
+        T result = caseStringPart(stringPart);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.PLAIN_STRING_PART:
+      {
+        PlainStringPart plainStringPart = (PlainStringPart)theEObject;
+        T result = casePlainStringPart(plainStringPart);
+        if (result == null) result = caseStringPart(plainStringPart);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.INTERPOLATION_PART:
+      {
+        InterpolationPart interpolationPart = (InterpolationPart)theEObject;
+        T result = caseInterpolationPart(interpolationPart);
+        if (result == null) result = caseStringPart(interpolationPart);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DartPackage.SYMBOL_LITERAL:
+      {
+        SymbolLiteral symbolLiteral = (SymbolLiteral)theEObject;
+        T result = caseSymbolLiteral(symbolLiteral);
+        if (result == null) result = caseExpression(symbolLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DartPackage.STATEMENT:
       {
         Statement statement = (Statement)theEObject;
@@ -707,6 +746,14 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case DartPackage.ASSERT_STATEMENT:
+      {
+        AssertStatement assertStatement = (AssertStatement)theEObject;
+        T result = caseAssertStatement(assertStatement);
+        if (result == null) result = caseNonLabelledStatement(assertStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case DartPackage.YIELD_STATEMENT:
       {
         YieldStatement yieldStatement = (YieldStatement)theEObject;
@@ -715,11 +762,11 @@ public class DartSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DartPackage.ASSERT_STATEMENT:
+      case DartPackage.YIELD_EACH_STATEMENT:
       {
-        AssertStatement assertStatement = (AssertStatement)theEObject;
-        T result = caseAssertStatement(assertStatement);
-        if (result == null) result = caseNonLabelledStatement(assertStatement);
+        YieldEachStatement yieldEachStatement = (YieldEachStatement)theEObject;
+        T result = caseYieldEachStatement(yieldEachStatement);
+        if (result == null) result = caseNonLabelledStatement(yieldEachStatement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1193,14 +1240,6 @@ public class DartSwitch<T> extends Switch<T>
         NumberLiteral numberLiteral = (NumberLiteral)theEObject;
         T result = caseNumberLiteral(numberLiteral);
         if (result == null) result = caseExpression(numberLiteral);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DartPackage.STRING_LITERAL:
-      {
-        StringLiteral stringLiteral = (StringLiteral)theEObject;
-        T result = caseStringLiteral(stringLiteral);
-        if (result == null) result = caseExpression(stringLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -2233,6 +2272,86 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringLiteral(StringLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Part</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Part</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringPart(StringPart object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Plain String Part</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Plain String Part</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePlainStringPart(PlainStringPart object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Interpolation Part</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Interpolation Part</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseInterpolationPart(InterpolationPart object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Symbol Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Symbol Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSymbolLiteral(SymbolLiteral object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -2617,6 +2736,22 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Assert Statement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Assert Statement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAssertStatement(AssertStatement object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Yield Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -2633,17 +2768,17 @@ public class DartSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Assert Statement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Yield Each Statement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Assert Statement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Yield Each Statement</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAssertStatement(AssertStatement object)
+  public T caseYieldEachStatement(YieldEachStatement object)
   {
     return null;
   }
@@ -3620,22 +3755,6 @@ public class DartSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseNumberLiteral(NumberLiteral object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>String Literal</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>String Literal</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStringLiteral(StringLiteral object)
   {
     return null;
   }

@@ -93,7 +93,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTopLevelDeclaration()
    * @generated
    */
-  int TOP_LEVEL_DECLARATION = 98;
+  int TOP_LEVEL_DECLARATION = 104;
 
   /**
    * The number of structural features of the '<em>Top Level Declaration</em>' class.
@@ -2964,6 +2964,182 @@ public interface DartPackage extends EPackage
   int FOR_ELEMENT_FEATURE_COUNT = COLLECTION_ELEMENT_FEATURE_COUNT + 3;
 
   /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.StringLiteralImpl <em>String Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.StringLiteralImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getStringLiteral()
+   * @generated
+   */
+  int STRING_LITERAL = 61;
+
+  /**
+   * The feature id for the '<em><b>String Literal</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__STRING_LITERAL = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Parts</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__PARTS = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>String Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.StringPartImpl <em>String Part</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.StringPartImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getStringPart()
+   * @generated
+   */
+  int STRING_PART = 62;
+
+  /**
+   * The number of structural features of the '<em>String Part</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_PART_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.PlainStringPartImpl <em>Plain String Part</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.PlainStringPartImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getPlainStringPart()
+   * @generated
+   */
+  int PLAIN_STRING_PART = 63;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLAIN_STRING_PART__VALUE = STRING_PART_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Plain String Part</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PLAIN_STRING_PART_FEATURE_COUNT = STRING_PART_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.InterpolationPartImpl <em>Interpolation Part</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.InterpolationPartImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getInterpolationPart()
+   * @generated
+   */
+  int INTERPOLATION_PART = 64;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTERPOLATION_PART__NAME = STRING_PART_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTERPOLATION_PART__EXPRESSION = STRING_PART_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Interpolation Part</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTERPOLATION_PART_FEATURE_COUNT = STRING_PART_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.SymbolLiteralImpl <em>Symbol Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.SymbolLiteralImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getSymbolLiteral()
+   * @generated
+   */
+  int SYMBOL_LITERAL = 65;
+
+  /**
+   * The feature id for the '<em><b>Symbol</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOL_LITERAL__SYMBOL = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOL_LITERAL__NAME = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOL_LITERAL__OPERATOR = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Is Void</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOL_LITERAL__IS_VOID = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>Symbol Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOL_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 4;
+
+  /**
    * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.StatementImpl <em>Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2971,7 +3147,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getStatement()
    * @generated
    */
-  int STATEMENT = 61;
+  int STATEMENT = 66;
 
   /**
    * The feature id for the '<em><b>Labels</b></em>' containment reference list.
@@ -3008,7 +3184,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLabel()
    * @generated
    */
-  int LABEL = 62;
+  int LABEL = 67;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3036,7 +3212,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNonLabelledStatement()
    * @generated
    */
-  int NON_LABELLED_STATEMENT = 63;
+  int NON_LABELLED_STATEMENT = 68;
 
   /**
    * The number of structural features of the '<em>Non Labelled Statement</em>' class.
@@ -3055,7 +3231,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getBlock()
    * @generated
    */
-  int BLOCK = 64;
+  int BLOCK = 69;
 
   /**
    * The feature id for the '<em><b>Statements</b></em>' containment reference list.
@@ -3083,7 +3259,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLocalVariableDeclaration()
    * @generated
    */
-  int LOCAL_VARIABLE_DECLARATION = 65;
+  int LOCAL_VARIABLE_DECLARATION = 70;
 
   /**
    * The feature id for the '<em><b>Variable</b></em>' containment reference.
@@ -3111,7 +3287,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLocalFunctionDeclaration()
    * @generated
    */
-  int LOCAL_FUNCTION_DECLARATION = 66;
+  int LOCAL_FUNCTION_DECLARATION = 71;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -3175,7 +3351,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getIfStatement()
    * @generated
    */
-  int IF_STATEMENT = 67;
+  int IF_STATEMENT = 72;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -3221,7 +3397,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getForStatement()
    * @generated
    */
-  int FOR_STATEMENT = 68;
+  int FOR_STATEMENT = 73;
 
   /**
    * The feature id for the '<em><b>Is Await</b></em>' attribute.
@@ -3267,7 +3443,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getForLoopParts()
    * @generated
    */
-  int FOR_LOOP_PARTS = 69;
+  int FOR_LOOP_PARTS = 74;
 
   /**
    * The number of structural features of the '<em>For Loop Parts</em>' class.
@@ -3286,7 +3462,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getForInLoopParts()
    * @generated
    */
-  int FOR_IN_LOOP_PARTS = 70;
+  int FOR_IN_LOOP_PARTS = 75;
 
   /**
    * The feature id for the '<em><b>Iterable</b></em>' containment reference.
@@ -3341,7 +3517,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getDeclaredIdentifier()
    * @generated
    */
-  int DECLARED_IDENTIFIER = 71;
+  int DECLARED_IDENTIFIER = 76;
 
   /**
    * The feature id for the '<em><b>Is Covariant</b></em>' attribute.
@@ -3387,7 +3563,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getForInitializerStatement()
    * @generated
    */
-  int FOR_INITIALIZER_STATEMENT = 72;
+  int FOR_INITIALIZER_STATEMENT = 77;
 
   /**
    * The feature id for the '<em><b>Cond</b></em>' containment reference.
@@ -3442,7 +3618,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getWhileStatement()
    * @generated
    */
-  int WHILE_STATEMENT = 73;
+  int WHILE_STATEMENT = 78;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -3479,7 +3655,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getDoStatement()
    * @generated
    */
-  int DO_STATEMENT = 74;
+  int DO_STATEMENT = 79;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference.
@@ -3516,7 +3692,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getSwitchStatement()
    * @generated
    */
-  int SWITCH_STATEMENT = 75;
+  int SWITCH_STATEMENT = 80;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -3562,7 +3738,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getSwitchCase()
    * @generated
    */
-  int SWITCH_CASE = 76;
+  int SWITCH_CASE = 81;
 
   /**
    * The feature id for the '<em><b>Labels</b></em>' containment reference list.
@@ -3608,7 +3784,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getDefaultCase()
    * @generated
    */
-  int DEFAULT_CASE = 77;
+  int DEFAULT_CASE = 82;
 
   /**
    * The feature id for the '<em><b>Labels</b></em>' containment reference list.
@@ -3645,7 +3821,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getRethrowStatement()
    * @generated
    */
-  int RETHROW_STATEMENT = 78;
+  int RETHROW_STATEMENT = 83;
 
   /**
    * The number of structural features of the '<em>Rethrow Statement</em>' class.
@@ -3664,7 +3840,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTryStatement()
    * @generated
    */
-  int TRY_STATEMENT = 79;
+  int TRY_STATEMENT = 84;
 
   /**
    * The feature id for the '<em><b>Block</b></em>' containment reference.
@@ -3710,7 +3886,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getCatchClause()
    * @generated
    */
-  int CATCH_CLAUSE = 80;
+  int CATCH_CLAUSE = 85;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -3765,7 +3941,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getFinallyClause()
    * @generated
    */
-  int FINALLY_CLAUSE = 81;
+  int FINALLY_CLAUSE = 86;
 
   /**
    * The feature id for the '<em><b>Block</b></em>' containment reference.
@@ -3793,7 +3969,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getBreakStatement()
    * @generated
    */
-  int BREAK_STATEMENT = 82;
+  int BREAK_STATEMENT = 87;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -3821,7 +3997,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getContinueStatement()
    * @generated
    */
-  int CONTINUE_STATEMENT = 83;
+  int CONTINUE_STATEMENT = 88;
 
   /**
    * The feature id for the '<em><b>Label</b></em>' attribute.
@@ -3849,7 +4025,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getReturnStatement()
    * @generated
    */
-  int RETURN_STATEMENT = 84;
+  int RETURN_STATEMENT = 89;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -3870,43 +4046,6 @@ public interface DartPackage extends EPackage
   int RETURN_STATEMENT_FEATURE_COUNT = NON_LABELLED_STATEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.YieldStatementImpl <em>Yield Statement</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see it.lorenzodeluca.dart.dart.impl.YieldStatementImpl
-   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getYieldStatement()
-   * @generated
-   */
-  int YIELD_STATEMENT = 85;
-
-  /**
-   * The feature id for the '<em><b>Is Star</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YIELD_STATEMENT__IS_STAR = NON_LABELLED_STATEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Expression</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YIELD_STATEMENT__EXPRESSION = NON_LABELLED_STATEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Yield Statement</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int YIELD_STATEMENT_FEATURE_COUNT = NON_LABELLED_STATEMENT_FEATURE_COUNT + 2;
-
-  /**
    * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.AssertStatementImpl <em>Assert Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3914,7 +4053,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getAssertStatement()
    * @generated
    */
-  int ASSERT_STATEMENT = 86;
+  int ASSERT_STATEMENT = 90;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -3944,6 +4083,62 @@ public interface DartPackage extends EPackage
   int ASSERT_STATEMENT_FEATURE_COUNT = NON_LABELLED_STATEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.YieldStatementImpl <em>Yield Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.YieldStatementImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getYieldStatement()
+   * @generated
+   */
+  int YIELD_STATEMENT = 91;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YIELD_STATEMENT__EXPRESSION = NON_LABELLED_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Yield Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YIELD_STATEMENT_FEATURE_COUNT = NON_LABELLED_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.YieldEachStatementImpl <em>Yield Each Statement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see it.lorenzodeluca.dart.dart.impl.YieldEachStatementImpl
+   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getYieldEachStatement()
+   * @generated
+   */
+  int YIELD_EACH_STATEMENT = 92;
+
+  /**
+   * The feature id for the '<em><b>Expression</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YIELD_EACH_STATEMENT__EXPRESSION = NON_LABELLED_STATEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Yield Each Statement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int YIELD_EACH_STATEMENT_FEATURE_COUNT = NON_LABELLED_STATEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.ExpressionStatementImpl <em>Expression Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3951,7 +4146,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getExpressionStatement()
    * @generated
    */
-  int EXPRESSION_STATEMENT = 87;
+  int EXPRESSION_STATEMENT = 93;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -3979,7 +4174,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLibraryDeclaration()
    * @generated
    */
-  int LIBRARY_DECLARATION = 88;
+  int LIBRARY_DECLARATION = 94;
 
   /**
    * The feature id for the '<em><b>Declarations</b></em>' containment reference list.
@@ -4043,7 +4238,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getPartDeclaration()
    * @generated
    */
-  int PART_DECLARATION = 89;
+  int PART_DECLARATION = 95;
 
   /**
    * The feature id for the '<em><b>Declarations</b></em>' containment reference list.
@@ -4080,7 +4275,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getScriptTag()
    * @generated
    */
-  int SCRIPT_TAG = 90;
+  int SCRIPT_TAG = 96;
 
   /**
    * The feature id for the '<em><b>Content</b></em>' attribute.
@@ -4108,7 +4303,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLibraryName()
    * @generated
    */
-  int LIBRARY_NAME = 91;
+  int LIBRARY_NAME = 97;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -4145,7 +4340,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getImportOrExport()
    * @generated
    */
-  int IMPORT_OR_EXPORT = 92;
+  int IMPORT_OR_EXPORT = 98;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -4182,7 +4377,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLibraryImport()
    * @generated
    */
-  int LIBRARY_IMPORT = 93;
+  int LIBRARY_IMPORT = 99;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -4246,7 +4441,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLibraryExport()
    * @generated
    */
-  int LIBRARY_EXPORT = 94;
+  int LIBRARY_EXPORT = 100;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -4292,7 +4487,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getPartDirective()
    * @generated
    */
-  int PART_DIRECTIVE = 95;
+  int PART_DIRECTIVE = 101;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -4329,7 +4524,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getPartHeader()
    * @generated
    */
-  int PART_HEADER = 96;
+  int PART_HEADER = 102;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -4375,7 +4570,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getCombinator()
    * @generated
    */
-  int COMBINATOR = 97;
+  int COMBINATOR = 103;
 
   /**
    * The feature id for the '<em><b>Identifiers</b></em>' attribute list.
@@ -4403,7 +4598,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTopLevelGetter()
    * @generated
    */
-  int TOP_LEVEL_GETTER = 99;
+  int TOP_LEVEL_GETTER = 105;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -4449,7 +4644,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTopLevelSetter()
    * @generated
    */
-  int TOP_LEVEL_SETTER = 100;
+  int TOP_LEVEL_SETTER = 106;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -4495,7 +4690,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getExternalGetter()
    * @generated
    */
-  int EXTERNAL_GETTER = 101;
+  int EXTERNAL_GETTER = 107;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -4532,7 +4727,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getExternalSetter()
    * @generated
    */
-  int EXTERNAL_SETTER = 102;
+  int EXTERNAL_SETTER = 108;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -4569,7 +4764,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTypeAlias()
    * @generated
    */
-  int TYPE_ALIAS = 103;
+  int TYPE_ALIAS = 109;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -4642,7 +4837,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getType()
    * @generated
    */
-  int TYPE = 104;
+  int TYPE = 110;
 
   /**
    * The number of structural features of the '<em>Type</em>' class.
@@ -4661,7 +4856,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getFunctionType()
    * @generated
    */
-  int FUNCTION_TYPE = 105;
+  int FUNCTION_TYPE = 111;
 
   /**
    * The feature id for the '<em><b>Base</b></em>' containment reference.
@@ -4698,7 +4893,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getFunctionTypeTail()
    * @generated
    */
-  int FUNCTION_TYPE_TAIL = 106;
+  int FUNCTION_TYPE_TAIL = 112;
 
   /**
    * The feature id for the '<em><b>Type Parameters</b></em>' containment reference.
@@ -4744,7 +4939,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTypeNotFunction()
    * @generated
    */
-  int TYPE_NOT_FUNCTION = 107;
+  int TYPE_NOT_FUNCTION = 113;
 
   /**
    * The feature id for the '<em><b>Is Void</b></em>' attribute.
@@ -4799,7 +4994,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTypeName()
    * @generated
    */
-  int TYPE_NAME = 108;
+  int TYPE_NAME = 114;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4836,7 +5031,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getParameterTypeList()
    * @generated
    */
-  int PARAMETER_TYPE_LIST = 109;
+  int PARAMETER_TYPE_LIST = 115;
 
   /**
    * The feature id for the '<em><b>Normal Types</b></em>' containment reference list.
@@ -4873,7 +5068,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getOptionalParameterTypes()
    * @generated
    */
-  int OPTIONAL_PARAMETER_TYPES = 110;
+  int OPTIONAL_PARAMETER_TYPES = 116;
 
   /**
    * The number of structural features of the '<em>Optional Parameter Types</em>' class.
@@ -4892,7 +5087,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getOptionalPositionalParameterTypes()
    * @generated
    */
-  int OPTIONAL_POSITIONAL_PARAMETER_TYPES = 111;
+  int OPTIONAL_POSITIONAL_PARAMETER_TYPES = 117;
 
   /**
    * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -4920,7 +5115,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNamedParameterTypes()
    * @generated
    */
-  int NAMED_PARAMETER_TYPES = 112;
+  int NAMED_PARAMETER_TYPES = 118;
 
   /**
    * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -4948,7 +5143,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNormalParameterType()
    * @generated
    */
-  int NORMAL_PARAMETER_TYPE = 113;
+  int NORMAL_PARAMETER_TYPE = 119;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -4994,7 +5189,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNamedParameterType()
    * @generated
    */
-  int NAMED_PARAMETER_TYPE = 114;
+  int NAMED_PARAMETER_TYPE = 120;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -5049,7 +5244,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTypeArguments()
    * @generated
    */
-  int TYPE_ARGUMENTS = 115;
+  int TYPE_ARGUMENTS = 121;
 
   /**
    * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -5077,7 +5272,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getArgumentListNamedOnly()
    * @generated
    */
-  int ARGUMENT_LIST_NAMED_ONLY = 116;
+  int ARGUMENT_LIST_NAMED_ONLY = 122;
 
   /**
    * The feature id for the '<em><b>Named</b></em>' containment reference list.
@@ -5105,7 +5300,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getArgumentListPositionalThenNamed()
    * @generated
    */
-  int ARGUMENT_LIST_POSITIONAL_THEN_NAMED = 117;
+  int ARGUMENT_LIST_POSITIONAL_THEN_NAMED = 123;
 
   /**
    * The feature id for the '<em><b>Named</b></em>' containment reference list.
@@ -5142,7 +5337,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getCascade()
    * @generated
    */
-  int CASCADE = 118;
+  int CASCADE = 124;
 
   /**
    * The feature id for the '<em><b>Receiver</b></em>' containment reference.
@@ -5188,7 +5383,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getAssignment()
    * @generated
    */
-  int ASSIGNMENT = 119;
+  int ASSIGNMENT = 125;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -5234,7 +5429,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getConditional()
    * @generated
    */
-  int CONDITIONAL = 120;
+  int CONDITIONAL = 126;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -5280,7 +5475,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getIfNull()
    * @generated
    */
-  int IF_NULL = 121;
+  int IF_NULL = 127;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -5317,7 +5512,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLogicalOr()
    * @generated
    */
-  int LOGICAL_OR = 122;
+  int LOGICAL_OR = 128;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -5354,7 +5549,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getLogicalAnd()
    * @generated
    */
-  int LOGICAL_AND = 123;
+  int LOGICAL_AND = 129;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -5391,7 +5586,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getEquality()
    * @generated
    */
-  int EQUALITY = 124;
+  int EQUALITY = 130;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -5437,7 +5632,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getRelational()
    * @generated
    */
-  int RELATIONAL = 125;
+  int RELATIONAL = 131;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -5483,7 +5678,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getTypeCheck()
    * @generated
    */
-  int TYPE_CHECK = 126;
+  int TYPE_CHECK = 132;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -5529,7 +5724,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getBitwiseOr()
    * @generated
    */
-  int BITWISE_OR = 127;
+  int BITWISE_OR = 133;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -5566,7 +5761,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getBitwiseXor()
    * @generated
    */
-  int BITWISE_XOR = 128;
+  int BITWISE_XOR = 134;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -5603,7 +5798,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getBitwiseAnd()
    * @generated
    */
-  int BITWISE_AND = 129;
+  int BITWISE_AND = 135;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -5640,7 +5835,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getShift()
    * @generated
    */
-  int SHIFT = 130;
+  int SHIFT = 136;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -5686,7 +5881,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getAdditive()
    * @generated
    */
-  int ADDITIVE = 131;
+  int ADDITIVE = 137;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -5732,7 +5927,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getMultiplicative()
    * @generated
    */
-  int MULTIPLICATIVE = 132;
+  int MULTIPLICATIVE = 138;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -5778,7 +5973,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getPrefixExpression()
    * @generated
    */
-  int PREFIX_EXPRESSION = 133;
+  int PREFIX_EXPRESSION = 139;
 
   /**
    * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -5815,7 +6010,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getPostfix()
    * @generated
    */
-  int POSTFIX = 134;
+  int POSTFIX = 140;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -5852,7 +6047,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getMethodInvocation()
    * @generated
    */
-  int METHOD_INVOCATION = 135;
+  int METHOD_INVOCATION = 141;
 
   /**
    * The feature id for the '<em><b>Receiver</b></em>' containment reference.
@@ -5907,7 +6102,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNullAwareMethodInvocation()
    * @generated
    */
-  int NULL_AWARE_METHOD_INVOCATION = 136;
+  int NULL_AWARE_METHOD_INVOCATION = 142;
 
   /**
    * The feature id for the '<em><b>Receiver</b></em>' containment reference.
@@ -5962,7 +6157,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getFunctionCall()
    * @generated
    */
-  int FUNCTION_CALL = 137;
+  int FUNCTION_CALL = 143;
 
   /**
    * The feature id for the '<em><b>Receiver</b></em>' containment reference.
@@ -5999,7 +6194,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getIndexExpression()
    * @generated
    */
-  int INDEX_EXPRESSION = 138;
+  int INDEX_EXPRESSION = 144;
 
   /**
    * The feature id for the '<em><b>Receiver</b></em>' containment reference.
@@ -6036,7 +6231,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNullAwareIndex()
    * @generated
    */
-  int NULL_AWARE_INDEX = 139;
+  int NULL_AWARE_INDEX = 145;
 
   /**
    * The feature id for the '<em><b>Receiver</b></em>' containment reference.
@@ -6073,7 +6268,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNullAssert()
    * @generated
    */
-  int NULL_ASSERT = 140;
+  int NULL_ASSERT = 146;
 
   /**
    * The feature id for the '<em><b>Operand</b></em>' containment reference.
@@ -6101,7 +6296,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getPropertyAccess()
    * @generated
    */
-  int PROPERTY_ACCESS = 141;
+  int PROPERTY_ACCESS = 147;
 
   /**
    * The feature id for the '<em><b>Receiver</b></em>' containment reference.
@@ -6138,7 +6333,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNullAwarePropertyAccess()
    * @generated
    */
-  int NULL_AWARE_PROPERTY_ACCESS = 142;
+  int NULL_AWARE_PROPERTY_ACCESS = 148;
 
   /**
    * The feature id for the '<em><b>Receiver</b></em>' containment reference.
@@ -6175,7 +6370,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getThisExpression()
    * @generated
    */
-  int THIS_EXPRESSION = 143;
+  int THIS_EXPRESSION = 149;
 
   /**
    * The number of structural features of the '<em>This Expression</em>' class.
@@ -6194,7 +6389,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getSuperExpression()
    * @generated
    */
-  int SUPER_EXPRESSION = 144;
+  int SUPER_EXPRESSION = 150;
 
   /**
    * The number of structural features of the '<em>Super Expression</em>' class.
@@ -6213,7 +6408,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNullLiteral()
    * @generated
    */
-  int NULL_LITERAL = 145;
+  int NULL_LITERAL = 151;
 
   /**
    * The number of structural features of the '<em>Null Literal</em>' class.
@@ -6232,7 +6427,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 146;
+  int BOOLEAN_LITERAL = 152;
 
   /**
    * The feature id for the '<em><b>Bool Value</b></em>' attribute.
@@ -6260,7 +6455,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNumberLiteral()
    * @generated
    */
-  int NUMBER_LITERAL = 147;
+  int NUMBER_LITERAL = 153;
 
   /**
    * The feature id for the '<em><b>Int Value</b></em>' attribute.
@@ -6281,34 +6476,6 @@ public interface DartPackage extends EPackage
   int NUMBER_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.StringLiteralImpl <em>String Literal</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see it.lorenzodeluca.dart.dart.impl.StringLiteralImpl
-   * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getStringLiteral()
-   * @generated
-   */
-  int STRING_LITERAL = 148;
-
-  /**
-   * The feature id for the '<em><b>String Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_LITERAL__STRING_VALUE = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>String Literal</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link it.lorenzodeluca.dart.dart.impl.IdentifierRefImpl <em>Identifier Ref</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6316,7 +6483,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getIdentifierRef()
    * @generated
    */
-  int IDENTIFIER_REF = 149;
+  int IDENTIFIER_REF = 154;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -6344,7 +6511,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getNewExpression()
    * @generated
    */
-  int NEW_EXPRESSION = 150;
+  int NEW_EXPRESSION = 155;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -6390,7 +6557,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getConstExpression()
    * @generated
    */
-  int CONST_EXPRESSION = 151;
+  int CONST_EXPRESSION = 156;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -6436,7 +6603,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getListLiteral()
    * @generated
    */
-  int LIST_LITERAL = 152;
+  int LIST_LITERAL = 157;
 
   /**
    * The feature id for the '<em><b>Is Const</b></em>' attribute.
@@ -6482,7 +6649,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getSetOrMapLiteral()
    * @generated
    */
-  int SET_OR_MAP_LITERAL = 153;
+  int SET_OR_MAP_LITERAL = 158;
 
   /**
    * The feature id for the '<em><b>Is Const</b></em>' attribute.
@@ -6528,7 +6695,7 @@ public interface DartPackage extends EPackage
    * @see it.lorenzodeluca.dart.dart.impl.DartPackageImpl#getParenthesizedExpression()
    * @generated
    */
-  int PARENTHESIZED_EXPRESSION = 154;
+  int PARENTHESIZED_EXPRESSION = 159;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -9206,6 +9373,155 @@ public interface DartPackage extends EPackage
   EReference getForElement_Element();
 
   /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Literal</em>'.
+   * @see it.lorenzodeluca.dart.dart.StringLiteral
+   * @generated
+   */
+  EClass getStringLiteral();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.StringLiteral#getStringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>String Literal</em>'.
+   * @see it.lorenzodeluca.dart.dart.StringLiteral#getStringLiteral()
+   * @see #getStringLiteral()
+   * @generated
+   */
+  EReference getStringLiteral_StringLiteral();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link it.lorenzodeluca.dart.dart.StringLiteral#getParts <em>Parts</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parts</em>'.
+   * @see it.lorenzodeluca.dart.dart.StringLiteral#getParts()
+   * @see #getStringLiteral()
+   * @generated
+   */
+  EReference getStringLiteral_Parts();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.StringPart <em>String Part</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Part</em>'.
+   * @see it.lorenzodeluca.dart.dart.StringPart
+   * @generated
+   */
+  EClass getStringPart();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.PlainStringPart <em>Plain String Part</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Plain String Part</em>'.
+   * @see it.lorenzodeluca.dart.dart.PlainStringPart
+   * @generated
+   */
+  EClass getPlainStringPart();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.PlainStringPart#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see it.lorenzodeluca.dart.dart.PlainStringPart#getValue()
+   * @see #getPlainStringPart()
+   * @generated
+   */
+  EAttribute getPlainStringPart_Value();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.InterpolationPart <em>Interpolation Part</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Interpolation Part</em>'.
+   * @see it.lorenzodeluca.dart.dart.InterpolationPart
+   * @generated
+   */
+  EClass getInterpolationPart();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.InterpolationPart#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see it.lorenzodeluca.dart.dart.InterpolationPart#getName()
+   * @see #getInterpolationPart()
+   * @generated
+   */
+  EAttribute getInterpolationPart_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.InterpolationPart#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see it.lorenzodeluca.dart.dart.InterpolationPart#getExpression()
+   * @see #getInterpolationPart()
+   * @generated
+   */
+  EReference getInterpolationPart_Expression();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.SymbolLiteral <em>Symbol Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Symbol Literal</em>'.
+   * @see it.lorenzodeluca.dart.dart.SymbolLiteral
+   * @generated
+   */
+  EClass getSymbolLiteral();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.SymbolLiteral#getSymbol <em>Symbol</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Symbol</em>'.
+   * @see it.lorenzodeluca.dart.dart.SymbolLiteral#getSymbol()
+   * @see #getSymbolLiteral()
+   * @generated
+   */
+  EReference getSymbolLiteral_Symbol();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.SymbolLiteral#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see it.lorenzodeluca.dart.dart.SymbolLiteral#getName()
+   * @see #getSymbolLiteral()
+   * @generated
+   */
+  EAttribute getSymbolLiteral_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.SymbolLiteral#getOperator <em>Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Operator</em>'.
+   * @see it.lorenzodeluca.dart.dart.SymbolLiteral#getOperator()
+   * @see #getSymbolLiteral()
+   * @generated
+   */
+  EAttribute getSymbolLiteral_Operator();
+
+  /**
+   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.SymbolLiteral#isIsVoid <em>Is Void</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Is Void</em>'.
+   * @see it.lorenzodeluca.dart.dart.SymbolLiteral#isIsVoid()
+   * @see #getSymbolLiteral()
+   * @generated
+   */
+  EAttribute getSymbolLiteral_IsVoid();
+
+  /**
    * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.Statement <em>Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -9996,38 +10312,6 @@ public interface DartPackage extends EPackage
   EReference getReturnStatement_Expression();
 
   /**
-   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.YieldStatement <em>Yield Statement</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Yield Statement</em>'.
-   * @see it.lorenzodeluca.dart.dart.YieldStatement
-   * @generated
-   */
-  EClass getYieldStatement();
-
-  /**
-   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.YieldStatement#isIsStar <em>Is Star</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Is Star</em>'.
-   * @see it.lorenzodeluca.dart.dart.YieldStatement#isIsStar()
-   * @see #getYieldStatement()
-   * @generated
-   */
-  EAttribute getYieldStatement_IsStar();
-
-  /**
-   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.YieldStatement#getExpression <em>Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Expression</em>'.
-   * @see it.lorenzodeluca.dart.dart.YieldStatement#getExpression()
-   * @see #getYieldStatement()
-   * @generated
-   */
-  EReference getYieldStatement_Expression();
-
-  /**
    * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.AssertStatement <em>Assert Statement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -10058,6 +10342,48 @@ public interface DartPackage extends EPackage
    * @generated
    */
   EReference getAssertStatement_Message();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.YieldStatement <em>Yield Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Yield Statement</em>'.
+   * @see it.lorenzodeluca.dart.dart.YieldStatement
+   * @generated
+   */
+  EClass getYieldStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.YieldStatement#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see it.lorenzodeluca.dart.dart.YieldStatement#getExpression()
+   * @see #getYieldStatement()
+   * @generated
+   */
+  EReference getYieldStatement_Expression();
+
+  /**
+   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.YieldEachStatement <em>Yield Each Statement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Yield Each Statement</em>'.
+   * @see it.lorenzodeluca.dart.dart.YieldEachStatement
+   * @generated
+   */
+  EClass getYieldEachStatement();
+
+  /**
+   * Returns the meta object for the containment reference '{@link it.lorenzodeluca.dart.dart.YieldEachStatement#getExpression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expression</em>'.
+   * @see it.lorenzodeluca.dart.dart.YieldEachStatement#getExpression()
+   * @see #getYieldEachStatement()
+   * @generated
+   */
+  EReference getYieldEachStatement_Expression();
 
   /**
    * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.ExpressionStatement <em>Expression Statement</em>}'.
@@ -12043,27 +12369,6 @@ public interface DartPackage extends EPackage
    * @generated
    */
   EAttribute getNumberLiteral_IntValue();
-
-  /**
-   * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.StringLiteral <em>String Literal</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>String Literal</em>'.
-   * @see it.lorenzodeluca.dart.dart.StringLiteral
-   * @generated
-   */
-  EClass getStringLiteral();
-
-  /**
-   * Returns the meta object for the attribute '{@link it.lorenzodeluca.dart.dart.StringLiteral#getStringValue <em>String Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>String Value</em>'.
-   * @see it.lorenzodeluca.dart.dart.StringLiteral#getStringValue()
-   * @see #getStringLiteral()
-   * @generated
-   */
-  EAttribute getStringLiteral_StringValue();
 
   /**
    * Returns the meta object for class '{@link it.lorenzodeluca.dart.dart.IdentifierRef <em>Identifier Ref</em>}'.

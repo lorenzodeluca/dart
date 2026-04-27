@@ -126,6 +126,11 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.SPREAD_ELEMENT: return createSpreadElement();
       case DartPackage.IF_ELEMENT: return createIfElement();
       case DartPackage.FOR_ELEMENT: return createForElement();
+      case DartPackage.STRING_LITERAL: return createStringLiteral();
+      case DartPackage.STRING_PART: return createStringPart();
+      case DartPackage.PLAIN_STRING_PART: return createPlainStringPart();
+      case DartPackage.INTERPOLATION_PART: return createInterpolationPart();
+      case DartPackage.SYMBOL_LITERAL: return createSymbolLiteral();
       case DartPackage.STATEMENT: return createStatement();
       case DartPackage.LABEL: return createLabel();
       case DartPackage.NON_LABELLED_STATEMENT: return createNonLabelledStatement();
@@ -150,8 +155,9 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.BREAK_STATEMENT: return createBreakStatement();
       case DartPackage.CONTINUE_STATEMENT: return createContinueStatement();
       case DartPackage.RETURN_STATEMENT: return createReturnStatement();
-      case DartPackage.YIELD_STATEMENT: return createYieldStatement();
       case DartPackage.ASSERT_STATEMENT: return createAssertStatement();
+      case DartPackage.YIELD_STATEMENT: return createYieldStatement();
+      case DartPackage.YIELD_EACH_STATEMENT: return createYieldEachStatement();
       case DartPackage.EXPRESSION_STATEMENT: return createExpressionStatement();
       case DartPackage.LIBRARY_DECLARATION: return createLibraryDeclaration();
       case DartPackage.PART_DECLARATION: return createPartDeclaration();
@@ -213,7 +219,6 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
       case DartPackage.NULL_LITERAL: return createNullLiteral();
       case DartPackage.BOOLEAN_LITERAL: return createBooleanLiteral();
       case DartPackage.NUMBER_LITERAL: return createNumberLiteral();
-      case DartPackage.STRING_LITERAL: return createStringLiteral();
       case DartPackage.IDENTIFIER_REF: return createIdentifierRef();
       case DartPackage.NEW_EXPRESSION: return createNewExpression();
       case DartPackage.CONST_EXPRESSION: return createConstExpression();
@@ -963,6 +968,66 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
+  public StringLiteral createStringLiteral()
+  {
+    StringLiteralImpl stringLiteral = new StringLiteralImpl();
+    return stringLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StringPart createStringPart()
+  {
+    StringPartImpl stringPart = new StringPartImpl();
+    return stringPart;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public PlainStringPart createPlainStringPart()
+  {
+    PlainStringPartImpl plainStringPart = new PlainStringPartImpl();
+    return plainStringPart;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public InterpolationPart createInterpolationPart()
+  {
+    InterpolationPartImpl interpolationPart = new InterpolationPartImpl();
+    return interpolationPart;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public SymbolLiteral createSymbolLiteral()
+  {
+    SymbolLiteralImpl symbolLiteral = new SymbolLiteralImpl();
+    return symbolLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Statement createStatement()
   {
     StatementImpl statement = new StatementImpl();
@@ -1251,6 +1316,18 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
+  public AssertStatement createAssertStatement()
+  {
+    AssertStatementImpl assertStatement = new AssertStatementImpl();
+    return assertStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public YieldStatement createYieldStatement()
   {
     YieldStatementImpl yieldStatement = new YieldStatementImpl();
@@ -1263,10 +1340,10 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
    * @generated
    */
   @Override
-  public AssertStatement createAssertStatement()
+  public YieldEachStatement createYieldEachStatement()
   {
-    AssertStatementImpl assertStatement = new AssertStatementImpl();
-    return assertStatement;
+    YieldEachStatementImpl yieldEachStatement = new YieldEachStatementImpl();
+    return yieldEachStatement;
   }
 
   /**
@@ -1999,18 +2076,6 @@ public class DartFactoryImpl extends EFactoryImpl implements DartFactory
   {
     NumberLiteralImpl numberLiteral = new NumberLiteralImpl();
     return numberLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public StringLiteral createStringLiteral()
-  {
-    StringLiteralImpl stringLiteral = new StringLiteralImpl();
-    return stringLiteral;
   }
 
   /**

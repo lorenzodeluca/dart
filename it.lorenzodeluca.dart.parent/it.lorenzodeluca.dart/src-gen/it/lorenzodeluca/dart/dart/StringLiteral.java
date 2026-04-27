@@ -3,6 +3,7 @@
  */
 package it.lorenzodeluca.dart.dart;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,7 +14,8 @@ package it.lorenzodeluca.dart.dart;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link it.lorenzodeluca.dart.dart.StringLiteral#getStringValue <em>String Value</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.StringLiteral#getStringLiteral <em>String Literal</em>}</li>
+ *   <li>{@link it.lorenzodeluca.dart.dart.StringLiteral#getParts <em>Parts</em>}</li>
  * </ul>
  *
  * @see it.lorenzodeluca.dart.dart.DartPackage#getStringLiteral()
@@ -23,25 +25,37 @@ package it.lorenzodeluca.dart.dart;
 public interface StringLiteral extends Expression
 {
   /**
-   * Returns the value of the '<em><b>String Value</b></em>' attribute.
+   * Returns the value of the '<em><b>String Literal</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>String Value</em>' attribute.
-   * @see #setStringValue(String)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getStringLiteral_StringValue()
-   * @model
+   * @return the value of the '<em>String Literal</em>' containment reference.
+   * @see #setStringLiteral(StringLiteral)
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getStringLiteral_StringLiteral()
+   * @model containment="true"
    * @generated
    */
-  String getStringValue();
+  StringLiteral getStringLiteral();
 
   /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.StringLiteral#getStringValue <em>String Value</em>}' attribute.
+   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.StringLiteral#getStringLiteral <em>String Literal</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>String Value</em>' attribute.
-   * @see #getStringValue()
+   * @param value the new value of the '<em>String Literal</em>' containment reference.
+   * @see #getStringLiteral()
    * @generated
    */
-  void setStringValue(String value);
+  void setStringLiteral(StringLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Parts</b></em>' containment reference list.
+   * The list contents are of type {@link it.lorenzodeluca.dart.dart.StringPart}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Parts</em>' containment reference list.
+   * @see it.lorenzodeluca.dart.dart.DartPackage#getStringLiteral_Parts()
+   * @model containment="true"
+   * @generated
+   */
+  EList<StringPart> getParts();
 
 } // StringLiteral

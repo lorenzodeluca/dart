@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link it.lorenzodeluca.dart.dart.impl.YieldStatementImpl#isIsStar <em>Is Star</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.impl.YieldStatementImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
@@ -31,26 +30,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class YieldStatementImpl extends NonLabelledStatementImpl implements YieldStatement
 {
-  /**
-   * The default value of the '{@link #isIsStar() <em>Is Star</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsStar()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean IS_STAR_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isIsStar() <em>Is Star</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isIsStar()
-   * @generated
-   * @ordered
-   */
-  protected boolean isStar = IS_STAR_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -80,31 +59,6 @@ public class YieldStatementImpl extends NonLabelledStatementImpl implements Yiel
   protected EClass eStaticClass()
   {
     return DartPackage.eINSTANCE.getYieldStatement();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean isIsStar()
-  {
-    return isStar;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setIsStar(boolean newIsStar)
-  {
-    boolean oldIsStar = isStar;
-    isStar = newIsStar;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DartPackage.YIELD_STATEMENT__IS_STAR, oldIsStar, isStar));
   }
 
   /**
@@ -183,8 +137,6 @@ public class YieldStatementImpl extends NonLabelledStatementImpl implements Yiel
   {
     switch (featureID)
     {
-      case DartPackage.YIELD_STATEMENT__IS_STAR:
-        return isIsStar();
       case DartPackage.YIELD_STATEMENT__EXPRESSION:
         return getExpression();
     }
@@ -201,9 +153,6 @@ public class YieldStatementImpl extends NonLabelledStatementImpl implements Yiel
   {
     switch (featureID)
     {
-      case DartPackage.YIELD_STATEMENT__IS_STAR:
-        setIsStar((Boolean)newValue);
-        return;
       case DartPackage.YIELD_STATEMENT__EXPRESSION:
         setExpression((Expression)newValue);
         return;
@@ -221,9 +170,6 @@ public class YieldStatementImpl extends NonLabelledStatementImpl implements Yiel
   {
     switch (featureID)
     {
-      case DartPackage.YIELD_STATEMENT__IS_STAR:
-        setIsStar(IS_STAR_EDEFAULT);
-        return;
       case DartPackage.YIELD_STATEMENT__EXPRESSION:
         setExpression((Expression)null);
         return;
@@ -241,29 +187,10 @@ public class YieldStatementImpl extends NonLabelledStatementImpl implements Yiel
   {
     switch (featureID)
     {
-      case DartPackage.YIELD_STATEMENT__IS_STAR:
-        return isStar != IS_STAR_EDEFAULT;
       case DartPackage.YIELD_STATEMENT__EXPRESSION:
         return expression != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (isStar: ");
-    result.append(isStar);
-    result.append(')');
-    return result.toString();
   }
 
 } //YieldStatementImpl

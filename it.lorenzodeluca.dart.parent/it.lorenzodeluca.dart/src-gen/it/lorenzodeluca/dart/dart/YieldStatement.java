@@ -13,7 +13,6 @@ package it.lorenzodeluca.dart.dart;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link it.lorenzodeluca.dart.dart.YieldStatement#isIsStar <em>Is Star</em>}</li>
  *   <li>{@link it.lorenzodeluca.dart.dart.YieldStatement#getExpression <em>Expression</em>}</li>
  * </ul>
  *
@@ -23,28 +22,6 @@ package it.lorenzodeluca.dart.dart;
  */
 public interface YieldStatement extends NonLabelledStatement
 {
-  /**
-   * Returns the value of the '<em><b>Is Star</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Is Star</em>' attribute.
-   * @see #setIsStar(boolean)
-   * @see it.lorenzodeluca.dart.dart.DartPackage#getYieldStatement_IsStar()
-   * @model
-   * @generated
-   */
-  boolean isIsStar();
-
-  /**
-   * Sets the value of the '{@link it.lorenzodeluca.dart.dart.YieldStatement#isIsStar <em>Is Star</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Is Star</em>' attribute.
-   * @see #isIsStar()
-   * @generated
-   */
-  void setIsStar(boolean value);
-
   /**
    * Returns the value of the '<em><b>Expression</b></em>' containment reference.
    * <!-- begin-user-doc -->
