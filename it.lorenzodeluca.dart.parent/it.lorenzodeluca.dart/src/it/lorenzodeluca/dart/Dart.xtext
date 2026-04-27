@@ -629,6 +629,8 @@ ForElement:
 
 /*
  * 17.7 Strings
+ * <stringLiteral> ::= (<multilineString> | <singleLineString>)+
+ * this implementation is a semplification using parsel layer interpolation...
  */
  StringLiteral:
     {StringLiteral} parts+=StringPart+;
