@@ -681,6 +681,7 @@ NonLabelledStatement:
     ContinueStatement |
     ReturnStatement |
     YieldStatement |
+    YieldEachStatement |
     AssertStatement |
     // Unambiguous keyword starters for local variables
     =>('var' | 'final' | 'const' | 'late') LocalVariableDeclaration |
@@ -772,9 +773,6 @@ ContinueStatement:
 ReturnStatement:
     {ReturnStatement} 'return' expression=Expression? ';';
 
-YieldStatement:
-    {YieldStatement} 'yield' (isStar?='*')? expression=Expression ';';
-
 /*
  * Spec §18.13
  * <assertStatement> ::= <assertion> ';'
@@ -783,6 +781,14 @@ YieldStatement:
 AssertStatement:
     {AssertStatement} 'assert' '(' condition=Expression (',' message=Expression)? ','? ')' ';';
 
+//18.16 Yield
+//<yieldStatement> ::= yield <expression> ';'
+YieldStatement:
+    {YieldStatement} 'yield' expression=Expression ';';
+    
+//18.17 Yield-Each
+//<yieldEachStatement> ::= yield '*' <expression> ';'
+YieldEachStatement: {YieldEachStatement} 'yield' '*' expression=Expression ';';
 
 ExpressionStatement:
     expression=Expression ';';
