@@ -391,11 +391,11 @@ Metadata:
 
 /*
  * Spec §17.38
- * <qualifiedNamed> ::= <typeIdentifierd> '.' <identifierd> | <typeIdentifierd> '.' <typeIdentifierd> '.' <identifierd>
+ * <qualifiedName> ::= <typeIdentifier> '.' <identifier> | <typeIdentifier> '.' <typeIdentifier> '.' <identifier>
  * 
  */
-QualifiedName:
-    ID ('.' ID)*;
+QualifiedName: first=ID '.' second=ID ('.' third=ID)?;
+
 
 //Spec § 17.15.1
 /*
@@ -510,7 +510,7 @@ RelationalExpression returns Expression:
  * <asOperator> ::= as
  */
 TypeCheckOperator:
-    'as' | 'is' '!' | 'is';
+    'as' | 'is' ('!')?;
 
 BitwiseOrExpression returns Expression:
     BitwiseXorExpression ({BitwiseOr.left=current} '|' right=BitwiseXorExpression)*;
